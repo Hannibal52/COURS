@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Ma page principale</title>
+
+    <style>
+ .iframe-wrapper {
+        position: relative;
+        width: 1100px;
+        height: 900px;
+        overflow: hidden;
+      }
+      .iframe-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        overflow: hidden;
+      }
+      div{
+        overflow: hidden;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="conteneur"></div>
+    <script>
+        // Le code JavaScript dans le fichier "main.js"
+// Charge le contenu des 25 fichiers "RS_instructorPPT_Chapter1-1.html" à "RS_instructorPPT_Chapter1-25.html"
+var conteneur = document.getElementById('conteneur');
+
+for (var i = 1; i <= 60; i++) {
+  var url = '8/RS_instructorPPT_Chapter8-' + i + '.html';
+  var iframe = document.createElement('iframe');
+  iframe.src = url;
+
+  var wrapper = document.createElement('div');
+  wrapper.className = 'iframe-wrapper';
+  wrapper.appendChild(iframe);
+
+  conteneur.appendChild(wrapper);
+}
+    </script>
+  </body>
+</html>
