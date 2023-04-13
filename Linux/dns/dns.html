@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.4.2.3 (Linux)" />
+	<meta name="author" content="Olivier Vilella" />
+	<meta name="created" content="2022-02-05T13:26:00" />
+	<meta name="changedby" content="Olivier Vilella" />
+	<meta name="changed" content="2022-02-05T13:26:00" />
+	<meta name="AppVersion" content="16.0000" />
+	<style type="text/css">
+		@page {
+			size: 8.5in 11in;
+			margin: 0.98in
+		}
+
+		p {
+			font-size: 11pt;
+			line-height: 115%;
+			text-align: left;
+			orphans: 2;
+			widows: 2;
+			margin-bottom: 0.1in;
+			direction: ltr;
+			background: transparent
+		}
+	</style>
+</head>
+
+<body lang="fr-FR" link="#000080" vlink="#800000" dir="ltr">
+	<p align="center" style="line-height: 108%; margin-bottom: 0.11in">
+		<font size="4" style="font-size: 16pt"><u>Installation serveur DNS
+				sous Linux Debian 10</u></font>
+	</p>
+	<p align="center" style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Configuration&nbsp;:</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Serveur dhcp-1&nbsp;:
+		debian 10</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Serveur dns-2&nbsp;
+		: debian10</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Client win10 :
+		windows 10</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Domaine&nbsp;:
+		m2i.lan</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Plan
+		d’adressage&nbsp;:</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Adresse du
+		réseau&nbsp;: 192.168.74.0/24</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Adresse du
+		serveur dhcp-1&nbsp;:&nbsp;192.168.74.140</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Adresse du
+		serveur dns-2&nbsp;: déterminée par dhcp-1</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Adresse du client
+		win10&nbsp;: déterminée par dhcp-1</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Les manipulations
+		seront effectuées avec un compte utilisateur avec les droits sudoers
+		(olivier)</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Dhcp-1 et dns-2
+		étant des serveurs nous prendrons la main dessus via putty&nbsp;</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<ol>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Configuration
+				du fichier /etc/hosts</p>
+	</ol>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Sudo nano /etc/hosts</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		A la ligne 127.0.1.1 ajouter le nom du server&nbsp;: ici dns-2</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="1d9c9f72e8a08b93.gif" name="Object1" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ol start="2">
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Installation
+				du service bind9</p>
+	</ol>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Tout d’abord
+				vérifier que le système est à jour</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Sudo apt-get update</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">installation
+				su service bind9</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Sudo apt-get install bind9</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<ol start="3">
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Configuration
+				du service bind9</p>
+	</ol>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">sauvegarder
+				le fichier que nous allons modifier named.conf.local&nbsp;:</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Sudo cp /etc/bind/named.conf.local /etc/bind/named.conf.local&nbsp;.saved</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Le fichier /etc/bind/named.conf.local est copié dans le fichier
+		/etc/bind/named.conf.local.saved</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">éditer et
+				modifier le fichier /etc/bind/named.conf.local</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		Sudo nano /etc/bind/named.conf.local</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Déclaration
+				de la zone de recherche</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		zone &quot;m2i.lan&quot; <font face="Wingdings, serif"></font>
+		zone «&nbsp;nom.de.domaine&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		type master <font face="Wingdings, serif"></font> zone de
+		recherche principale</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		file &quot;/etc/bind/db.m2i.lan&quot; <font face="Wingdings, serif"></font>
+		fichier de configuration (db = database)</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		texte à modifier&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		zone &quot;m2i.lan&quot; {</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		type master;</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		file &quot;/etc/bind/db.m2i.lan&quot;;</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		};</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Déclaration
+				de la zone de recherche inversée</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		Zone &quot;74.168.192.in-addr.arpa&quot; <font face="Wingdings, serif"></font>
+		zone «&nbsp;adresse-réseau-moins-dernier-bit.in.addr-arrpa&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		type master <font face="Wingdings, serif"></font> zone de
+		recherche principale</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		file &quot;/etc/bind/db.74.168.192.in-addr.arpa <font face="Wingdings, serif"></font>
+		fichier de configuration</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		texte à modifier&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		zone &quot;74.168.192.in-addr.arpa&quot; {</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		type master;</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		file &quot;/etc/bind/db.74.168.192.in-addr.arpa&quot;;</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		};</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="26fa8ed6d19ee40.gif" name="Object2" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Editer et
+				modifier le fichier named.conf.options</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		Configurer le serveur de nom qui sera interrogé si dns-2 ne connait
+		pas
+	</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		Sudo nano /etc/bind/named.conf.options</p>
+	<p style="line-height: 108%; margin-left: 0.75in; margin-bottom: 0.11in">
+		Décommenter la ligne forwarders et entrer l’adresse 8.8.8.8
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="354ec53ed4f914ec.gif" name="Object3" align="bottom" />
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Création et
+				configuration des fichiers db</p>
+	</ul>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Db.m2i.lan</p>
+	</ul>
+	<ul>
+		<ul>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Copie du
+					fichier /etc/bind/db.local qui va nous servir de base et le
+					renommer en db.m2i.lan</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Sudo cp
+					/etc/bind/db.local /ect/bind/db.m2i.lan</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Configuration
+					de db.m2i.lan</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Sudo nano
+					/etc/bind/db.m2i.lan</p>
+		</ul>
+	</ul>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="9aae898e7503421d.gif" name="Object4" align="bottom" />
+	</p>
+	<ul>
+		<ul>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Ajouter les
+					lignes suivantes&nbsp;:</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">$ORIGIN
+					«&nbsp;nom de domaine ».</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in"><a name="_Hlk94089402"></a>
+					Modifier la ligne @ IN SOA «&nbsp;nom serveur.nom
+					domaine.&nbsp;» root.&nbsp;«&nbsp;nom domaine».
+				</p>
+			<li>
+				<p style="line-height: 108%; margin-bottom: 0.11in">Modifier
+					les 3 dernières lignes</p>
+		</ul>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		@ IN NS «&nbsp;nom serveur.nom domaine.&nbsp;»
+	</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		dns-2 IN A «&nbsp;@IP dns-2»</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		dhcp-1 IN A «&nbsp;@IP dhcp-1»</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		NS = Name server</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		A = hôte ipv4</p>
+	<p style="line-height: 108%; margin-left: 1.25in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="ebdc10ef9c00c60b.gif" name="Object5" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">db.74.168.192.in-addr.arpa</p>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">copie du
+				fichier /etc/bind/db.127 et le renommer en
+				db.74.168.192.in-addr.arpa</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		sudo cp /etc/bind/db.127 /etc/bind/ db.74.168.192.in-addr.arpa</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		edition et modification de db.74.168.192.in-addr.arpa
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="a62b23ec733b27eb.gif" name="Shape1" alt="Shape1" align="bottom"
+			width="619" height="354" />
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">sudo nano
+				/etc/bind/db.74.168.192.in-addr.arpa</p>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">ajouter la
+				ligne $ORIGIN 74.168.192.in-addr.arpa.</p>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Modifier la
+				ligne @ IN SOA «&nbsp;nom serveur.nom domaine.&nbsp;»
+				root.&nbsp;«&nbsp;nom domaine».
+			</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">modifier les
+				3 dernières lignes</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		@ IN NS «&nbsp;nom serveur.nom domaine.&nbsp;»
+		root.&nbsp;«&nbsp;nom domaine».
+	</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		«&nbsp;dernier bit @ip&nbsp;» IN PTR «&nbsp;nom
+		serveur.nom domaine.&nbsp;»
+	</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		«&nbsp;dernier bit @ip&nbsp;» IN PTR «&nbsp;nom
+		serveur.nom domaine.&nbsp;»
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="1fbeeafeb808c729.gif" name="Object6" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Edition de /etc/resolv.conf</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Sudo nano /etc/resolv.conf</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Modifier les champs
+	</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Domain&nbsp;:&nbsp;«&nbsp;nom de domaine&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Search «&nbsp;nom de domaine&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Name server&nbsp;:&nbsp;«&nbsp;@IP dns&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		<img src="65231cabccc41a22.gif" name="Object7" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.25in; margin-bottom: 0.11in">
+		Tests</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Redémarrer
+				dns-2&nbsp;: Sudo reboot</p>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Test de
+				connexion&nbsp;: ping «&nbsp;nom du serveur » ici&nbsp;: Ping
+				dhcp-1</p>
+	</ul>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="70a43f2508037d25.gif" name="Object8" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Dhcp-1
+		(192.168.74.140) répond&nbsp;: le nom est bien résolu</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Depuis le
+				client win 10</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		Configurer le serveur dns du client comme étant dns-2</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="ab8832d7ebf98439.gif" name="Object9" align="bottom" />
+	</p>
+	<p style="line-height: 108%; text-indent: 0.5in; margin-bottom: 0.11in">
+		Il suffit d’entrer l’adresse de dns-2 (192.168.74.141) dans le
+		champ serveur DNS préféré</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"> Ouvrir une
+		invite de commande (win+r cmd)</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"> Ping «&nbsp;nom
+		du serveur&nbsp;» ici&nbsp;: ping dhcp-1.m2i.lan (ici&nbsp;: nom
+		complet)</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="3826702a67a8299f.gif" name="Object10" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"> Le nom est bien
+		résolu.</p>
+	<ul>
+		<li>
+			<p style="line-height: 108%; margin-bottom: 0.11in">Le test
+				ultime&nbsp;!</p>
+	</ul>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		Enlever le dns fixe du client win10 et le redémarrer</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		Configurer dns-2 comme étant le dns du réseau sur dhcp-1</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		Sur dhcp-1&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Sudo nano /etc/dhcp/dhcpd.conf (éditer le fichier de conf)</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Décommenter option domain-name et déclarer le domaine «&nbsp;nom
+		domaine&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ici&nbsp;: m2i.lan</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Remplacer la ligne&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Option domain-name-servers 8.8.8.8.</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Par&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Option domain-name-servers «&nbsp;adresse du dns »</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ici&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		&nbsp;Option domain-name-servers 192.168.74.141</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="940587bd79539427.gif" name="Object11" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Redémarrer la machine&nbsp;: sudo reboot</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Retourner sur le client win10</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Vérifier qu’il n’y a pas d’adresse de DNS préféré</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="89a86d33d7290ea0.gif" name="Object12" align="bottom" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ouvrir une invite de commande
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Renouvellement de l’adresse IP</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ipconfig/all (pour vérifier)</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ipconfig /release</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ipconfig/renew</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ipconfig /all (pour vérifier)</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		ping «&nbsp;nom du serveur&nbsp;»</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ici&nbsp;:</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		Ping dhcp-1.m2i.lan</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><img
+			src="3dac5e55ed26865b.gif" name="Shape2" alt="Shape2" align="bottom"
+			width="627" height="328" />
+	</p>
+	<p style="line-height: 108%; margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-left: 1in; margin-bottom: 0.11in">
+		<br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Le serveur
+		répond&nbsp;: le nom est résolu&nbsp;!</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Congratulations&nbsp;!</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">Dépannage&nbsp;:
+		regarder les fichiers /etc/resolv.conf&nbsp;:
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">domain m2i.lan</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">search m2i.lan</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in">nameserver&nbsp;:
+		@ipdns&nbsp;: 192.168.74.141</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+	<p style="line-height: 108%; margin-bottom: 0.11in"><br />
+		<br />
+
+	</p>
+</body>
+
+</html>
