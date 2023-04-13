@@ -42,7 +42,6 @@
         .treeview label {
             cursor: pointer;
             display: block;
-            padding: 0.5rem;
             text-decoration: none;
             width: 100%;
         }
@@ -82,26 +81,26 @@
         }
 
         li {
-            padding: 5px 10px;
+           
+            padding-left:30px;
             color: #ffffff;
             width: auto;
             list-style-type: none;
 
         }
 
-        
+        .cont {
+            display: flex;
+        }
+
         .name {
             text-decoration: none;
             color: white;
         }
 
-        .sousEl {
-            padding: 5px 10px;
-            color: #ffffff;
-            width: auto;
-            list-style-type: none;
+        
+         
 
-        }
 
         .notactive {
             text-decoration: none;
@@ -126,22 +125,33 @@
             overflow: visible;
             background-color: #4b4b4b;
         }
+        .el{
+            list-style-type: none;
+            width: 90%;
+            float: right;
+        }
+        
+        .sousEl {
+            
+            color: #ffffff;
+            width: auto;
+            list-style-type: none;
+            width: 90%;
+            float: right;
+            /* ajustez la valeur du retrait selon vos besoins */
+  
+
+        }
 
         a {
             font-size: 18px;
-            flex: 1;
-          
         }
 
         label {
             font-size: 18px;
         }
-
+ 
        
-
-        
-
-        
     </style>
 
 </head>
@@ -155,83 +165,81 @@
                         <label for="fil">Réseaux</label>
                         <input type="checkbox" id="fil" />
                         <div class="content">
-                            <ul>
+                            <ul  class="el">
                                 <li id="file">
-                                    <label for="sis1"> &nbsp; Cisco docs list</label>
+                                    <label for="sis1">Cisco docs list</label>
                                     <input type="checkbox" id="sis1" />
                                     <div class="content">
-                                         <ul class="sousEl">
+                                        <ul class="sousEl">
                                            <li id="file">
                                                  <a class="name" href="#"
                                                         data-src="Réseaux/CISCO/1/RS_instructorPPT_Chapter1.html">
-                                                        &nbsp; &nbsp;Présentation des réseaux commutés 1</a>
+                                                        1 Présentation des réseaux commutés 1</a>
                                             </li>
                                             <li id="file">
                                                  <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/2/RS_instructorPPT_Chapter2.html">
-                                                            &nbsp; &nbsp;Présentation des réseaux commutés 2</a> 
+                                                            Présentation des réseaux commutés 2 </a> 
                                             </li>
 
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/3/RS_instructorPPT_Chapter3.html">
-                                                            &nbsp; &nbsp;Implémentation de la sécurité VLAN</a>
+                                                            Implémentation de la sécurité VLAN</a>
                                                    
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/4/RS_instructorPPT_Chapter4.html">
-                                                            &nbsp; &nbsp;Concepts du routage</a>
+                                                            Concepts du routage</a>
                                             </li>
                                             <li id="file">
                                                <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/5/RS_instructorPPT_Chapter5.html">
-                                                            &nbsp; &nbsp;Routage inter-VLAN</a>
+                                                           Routage inter-VLAN</a>
                                             </li>
                                             <li id="file">
                                                <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/6/RS_instructorPPT_Chapter6.html">
-                                                            &nbsp; &nbsp;Routage statique</a>
+                                                           Routage statique </a>
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/7/RS_instructorPPT_Chapter7.html">
-                                                            &nbsp; &nbsp;Routage dynamique</a>
+                                                            Routage dynamique</a>
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/8/RS_instructorPPT_Chapter8.html">
-                                                            &nbsp; &nbsp;OSPF à zone unique</a>
+                                                            OSPF à zone unique</a>
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/9/RS_instructorPPT_Chapter9.html">
-                                                            &nbsp; &nbsp;Listes de contrôle d'accès</a>
+                                                            Listes de contrôle d'accès</a>
                                             </li>
                                             <li id="file">
                                                <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/10/RS_instructorPPT_Chapter10.html">
-                                                            &nbsp;&nbsp;DHCPN</a>
+                                                            DHCP</a>
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#"
                                                             data-src="Réseaux/CISCO/11/RS_instructorPPT_Chapter11.html">
-                                                            &nbsp; &nbsp;Traduction d'adresse réseau pour IPv4</a>
+                                                            Traduction d'adresse réseau pour IPv4</a>
                                             </li>
 
 
                                         </ul>
                                 </li>
-                                <li id="file"><a class="name" href="#" data-type="pdf"  data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf"> &nbsp; &nbsp;
+                                <li id="file"><a class="name" href="#" data-type="pdf"
+                                        data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
                                         Routage</a></li>
-                                <li id="file"><a class="name" href="#" data-src="Réseaux/VLAN-VTP.html"> &nbsp;
-                                        &nbsp;
+                                <li id="file"><a class="name" href="#" data-src="Réseaux/VLAN-VTP.html"> 
                                         VLAN - VTP</a></li>
                                 <li id="file"><a class="name" href="#" data-src="Réseaux/Config router basic.html">
-                                        &nbsp; &nbsp;
                                         Routeur</a></li>
-                                <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html"> &nbsp;
-                                        &nbsp;
+                                <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html">  
                                         CCNA1</a></li>
                             </ul>
                         </div>
@@ -240,12 +248,12 @@
                         <label for="file1">Windows</label>
                         <input type="checkbox" id="file1" />
                         <div class="content">
-                            <ul>
+                            <ul  class="el">
                                 <li id="file"><a class="name" href="#"
-                                        data-src="Windows/GPO/p1gtqu87qq1gvsc641smakj2vr24-html.html"> &nbsp; &nbsp;
-                                        GPO</a></li>
-                                <li><a class="name" href="#" data-src="Windows/Routage WINS/wins.html"> &nbsp; &nbsp;
-                                        Routage WINS</a></li>
+                                        data-src="Windows/GPO/p1gtqu87qq1gvsc641smakj2vr24-html.html">GPO</a>
+                                </li>
+                                <li><a class="name" href="#" data-src="Windows/Routage WINS/wins.html">Routage WINS</a>
+                            </li>
                             </ul>
 
                         </div>
@@ -254,20 +262,19 @@
                         <label for="file2">Linux</label>
                         <input type="checkbox" id="file2" />
                         <div class="content">
-                            <ul>
-                                <li><a class="name" href="#" data-src="Linux/sambaAD.html"> &nbsp; &nbsp;
+                            <ul  class="el">
+                                <li><a class="name" href="#" data-src="linux/sambaAD.html">
                                         AD DS Samba </a></li>
-                                <li><a class="name" href="#" data-src="Linux/Dhcp.html"> &nbsp; &nbsp;
+                                <li><a class="name" href="#" data-src="linux/dhcp.html">
                                         DHCP Server</a></li>
-                                <li><a class="name" href="#" data-src="Linux/GLPI - CMS.html"> &nbsp; &nbsp;
+                                <li><a class="name" href="#" data-src="linux/GLPI - CMS.html">
                                         GLPI - CMS</a></li>
-                                <li><a class="name" href="#" data-src="Linux/GLPI - FusionIventory.html"> &nbsp; &nbsp;
+                                <li><a class="name" href="#" data-src="linux/GLPI - FusionIventory.html">
                                         GLPI - FusionIventory</a></li>
                                 <li><a class="name" href="#"
                                         data-src="https://www.it-connect.fr/installation-de-wordpress-sous-linux/?utm_content=cmp-true">
-                                        &nbsp; &nbsp;
-                                        it-connect</a></li>
-                                <li><a class="name" href="#" data-src="Linux/wrdpress/wordpress.html"> &nbsp; &nbsp;
+                                        CMS - Wordpress</a></li>
+                                <li><a class="name" href="#" data-src="linux/Wordpress/Wordpress.html">
                                         Wordpress</a></li>
 
 
@@ -278,10 +285,9 @@
                         <label for="file3">MDT</label>
                         <input type="checkbox" id="file3" />
                         <div class="content">
-                            <ul>
+                            <ul class="el">
                                 <li id="file"><a class="name" href="#" data-type="pdf"
                                         data-src="https://www.gdidees.eu/userfiles/file/docs/Guide%20de%20deploiement%20Windows10.pdf">
-                                        &nbsp; &nbsp;
                                         WINDOWS 10</a></li>
                             </ul>
                         </div>
