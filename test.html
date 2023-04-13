@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TreeView interactif avec des fichiers HTML</title>
+    <style>
+        #row {
+            display: flex;
+            flex-direction: row;
+            height: 90vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        #col1 {
+
+            margin: 0;
+            padding: 0;
+            width: 20%;
+
+        }
+
+
+        .treeview {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .treeview ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .treeview li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .treeview label {
+            cursor: pointer;
+            display: block;
+            padding: 0.5rem;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .treeview input[type="checkbox"] {
+            display: none;
+        }
+
+        .treeview input[type="checkbox"]+.content {
+            display: none;
+        }
+
+        .body {
+            height: 100vh;
+        }
+
+
+
+        .treeview input[type="checkbox"]:checked+.content {
+            display: block;
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        #col2 {
+            flex-grow: 3;
+            margin: 0;
+            padding-left: 60px;
+            height: 100%;
+        }
+
+        .frame {
+            flex-grow: 3;
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        li {
+            padding: 5px 10px;
+            color: #ffffff;
+            width: auto;
+            list-style-type: none;
+
+        }
+
+        .cont {
+            display: flex;
+        }
+
+        .name {
+            text-decoration: none;
+            color: white;
+        }
+
+        .sousEl {
+            padding: 5px 10px;
+            color: #ffffff;
+            width: auto;
+            list-style-type: none;
+
+        }
+
+        .notactive {
+            text-decoration: none;
+            color: white;
+        }
+
+        .active {
+            text-decoration: none;
+            font-weight: bold;
+            color: #3ac7cc;
+        }
+
+
+        #ul1 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #4b4b4b;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            background-color: #4b4b4b;
+        }
+
+        a {
+            font-size: 18px;
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        p {
+            display: inline;
+        }
+
+        .titre {
+            flex: 6;
+            box-sizing: border-box;
+        }
+
+        .chapitre {
+            flex: 4;
+            width: 70%;
+        }
+
+        .cont {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="row">
+        <div id="col1">
+            <div class="treeview">
+                <ul id="ul1">
+                    <li>
+                        <label for="fil">Réseaux</label>
+                        <input type="checkbox" id="fil" />
+                        <div class="content">
+                            <ul>
+                                <li id="file">
+                                    <label for="sis1"> &nbsp; Cisco docs list</label>
+                                    <input type="checkbox" id="sis1" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/1/RS_instructorPPT_Chapter1.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 1</a></div>
+                                                    <div class="titre">
+                                                        <p>présentation des réseaux commutés 1</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/2/RS_instructorPPT_Chapter2.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 2</a></div>
+                                                    <div class="titre">
+                                                        <p>présentation des réseaux commutés 2</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/3/RS_instructorPPT_Chapter3.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 3</a></div>
+                                                    <div class="titre">
+                                                        <p>implémentation de la sécurité VLAN</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/4/RS_instructorPPT_Chapter4.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 4</a></div>
+                                                    <div class="titre">
+                                                        <p>concepts du routage</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/5/RS_instructorPPT_Chapter5.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 5</a></div>
+                                                    <div class="titre">
+                                                        <p>Chapitre 5 : routage inter-VLAN</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/6/RS_instructorPPT_Chapter6.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 6</a></div>
+                                                    <div class="titre">
+                                                        <p>routage statique</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/7/RS_instructorPPT_Chapter7.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 7</a></div>
+                                                    <div class="titre">
+                                                        <p>routage dynamique</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/8/RS_instructorPPT_Chapter8.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 8</a></div>
+                                                    <div class="titre">
+                                                        <p>OSPF à zone unique</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/9/RS_instructorPPT_Chapter9.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 9</a></div>
+                                                    <div class="titre">
+                                                        <p>listes de contrôle d'accès</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/10/RS_instructorPPT_Chapter10.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter10</a></div>
+                                                    <div class="titre">
+                                                        <p>DHCPN</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <div class="cont">
+                                                    <div class="chapitre"><a class="name" href="#"
+                                                            data-src="Réseaux/CISCO/11/RS_instructorPPT_Chapter11.html">
+                                                            &nbsp; &nbsp; &nbsp;
+                                                            &nbsp;
+                                                            Chapter 11</a></div>
+                                                    <div class="titre">
+                                                        <p>traduction d'adresse réseau pour IPv4</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                </li>
+                                <li id="file"><a class="name" href="#" data-type="pdf"  data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf"> &nbsp; &nbsp;
+                                        Routage</a></li>
+                                <li id="file"><a class="name" href="#" data-src="Réseaux/VLAN-VTP.html"> &nbsp;
+                                        &nbsp;
+                                        VLAN - VTP</a></li>
+                                <li id="file"><a class="name" href="#" data-src="Réseaux/Config router basic.html">
+                                        &nbsp; &nbsp;
+                                        Routeur</a></li>
+                                <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html"> &nbsp;
+                                        &nbsp;
+                                        CCNA1</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="file1">Windows</label>
+                        <input type="checkbox" id="file1" />
+                        <div class="content">
+                            <ul>
+                                <li id="file"><a class="name" href="#"
+                                        data-src="Windows/GPO/p1gtqu87qq1gvsc641smakj2vr24-html.html"> &nbsp; &nbsp;
+                                        GPO</a></li>
+                                <li><a class="name" href="#" data-src="Windows/Routage WINS/wins.html"> &nbsp; &nbsp;
+                                        Routage WINS</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <label for="file2">Linux</label>
+                        <input type="checkbox" id="file2" />
+                        <div class="content">
+                            <ul>
+                                <li><a class="name" href="#" data-src="linux/sambaAD.html"> &nbsp; &nbsp;
+                                        AD DS Samba </a></li>
+                                <li><a class="name" href="#" data-src="linux/dhcp.html"> &nbsp; &nbsp;
+                                        DHCP Server</a></li>
+                                <li><a class="name" href="#" data-src="linux/GLPI - CMS.html"> &nbsp; &nbsp;
+                                        GLPI - CMS</a></li>
+                                <li><a class="name" href="#" data-src="linux/GLPI - FusionIventory.html"> &nbsp; &nbsp;
+                                        GLPI - FusionIventory</a></li>
+                                <li><a class="name" href="#"
+                                        data-src="https://www.it-connect.fr/installation-de-wordpress-sous-linux/?utm_content=cmp-true">
+                                        &nbsp; &nbsp;
+                                        CMS - Wordpress</a></li>
+                                <li><a class="name" href="#" data-src="linux/Wordpress/Wordpress.html"> &nbsp; &nbsp;
+                                        Wordpress</a></li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="file3">MDT</label>
+                        <input type="checkbox" id="file3" />
+                        <div class="content">
+                            <ul>
+                                <li id="file"><a class="name" href="#" data-type="pdf"
+                                        data-src="https://www.gdidees.eu/userfiles/file/docs/Guide%20de%20deploiement%20Windows10.pdf">
+                                        &nbsp; &nbsp;
+                                        WINDOWS 10</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="col2">
+
+            <iframe class="frame" id="frame"></iframe>
+
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const frames = document.querySelectorAll('.frame');
+            const subitems = document.querySelectorAll('.treeview ul li ul li a');
+
+            for (let i = 0; i < subitems.length; i++) {
+                subitems[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const src = this.getAttribute('data-src');
+                    const type = this.getAttribute('data-type');
+
+                    if (type === 'pdf') {
+                        const googleDocsViewer = 'https://docs.google.com/viewer?url=';
+                        const encodedSrc = encodeURIComponent(src);
+                        const viewerUrl = googleDocsViewer + encodedSrc + '&embedded=true';
+                        frames[0].setAttribute('src', viewerUrl);
+                    } else {
+                        frames[0].setAttribute('src', src);
+                    }
+
+                    for (let j = 0; j < subitems.length; j++) {
+                        subitems[j].classList.remove('active');
+                        subitems[j].classList.add('notactive');
+                    }
+
+                    this.classList.add('active');
+                });
+            }
+        });
+
+
+
+
+    </script>

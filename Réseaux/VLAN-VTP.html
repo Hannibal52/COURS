@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>conf router basic cli</title>
+  </head>
+  <body style="margin-left: 30px;"><br>
+    <b>Creation d'un vlan </b><br>
+    NAN-SW-01(config)# vlan "idvlan" <br>
+    <br>
+    <b>Attriber un nom sur un vlan </b><br>
+    NAN-SW-01(config-vlan)# name Gestion_IT<br>
+    <br>
+    <b>Creation d'un vlan </b><br>
+    NAN-SW-01(config)# vlan 11 <br>
+    Attriber un nom sur un vlan <br>
+    NAN-SW-01(config-vlan)# name R_et_D <br>
+    <br>
+    <b>Rentrer en mode de configuration d'interface de l'int F0/18</b><br>
+    NAN-SW-01(config)# interface f0/18 <br>
+    <br>
+    <b>Description de l'interface </b><br>
+    NAN-SW-01(config-if)# description "Imprimante des IT" <br>
+    <br>
+    <br>
+    <b>rentrer en mode de conf d'interface des interface F0/1 à F0/24</b><br>
+    NAN-SW-01(config)# interface range F0/1-24 <br>
+    Mise en place du port en mode access <br>
+    NAN-SW-01(config-if-range)# switchport mode access <br>
+    Liaison du port au vlan <br>
+    NAN-SW-01(config-if-range)# switchport access vlan 9 <br>
+    <br>
+    <b>Affiche le vlan Gestion_IT</b><br>
+    sh vlan name Gestion_IT <br>
+    <br>
+    <br>
+    NAN-SW-01(config)# interface fastEthernet 0/1 <br>
+    NAN-SW-01(config-if)# switchport mode access <br>
+    NAN-SW-01(config-if)# switchport access vlan 9 <br>
+    % Access VLAN does not exist. Creating vlan 9 <br>
+    <br>
+    <br>
+    NAN-SW-01(config)# interface range F0/1-2 <br>
+    <b>Retirer port du vlan 9</b><br>
+    NAN-SW-01(config-if-range)# no switchport access vlan 9 <br>
+    <br>
+    <br>
+    NAN-SW-01(config)# interface F0/3 <br>
+    NAN-SW-01(config-if)# no switchport access vlan 2 <br>
+    NAN-SW-01(config-if)# exit <br>
+    <b>Suppresion Vlan </b><br>
+    NAN-SW-01(config)# no vlan 2 <br>
+    <br>
+    NAN-SW-01(config)# interface f0/1 <br>
+    NAN-SW-01(config-if)# description "Vers NAN-SW-02 (Trunk)"<br>
+    Passage du port en mode trunk (laison switch ou router) <br>
+    NAN-SW-01(config-if)# switchport mode trunk <br>
+    <br>
+    Utilisation l'encapsulation Dot1Q <br>
+    Switch(config-if)# switchport trunk encapsulation dot1q<br>
+    changement du Vlan natif <br>
+    NAN-SW-01(config-if)# switchport trunk native vlan 9&nbsp; <br>
+    autorisation des Vlan 1 à 7 et 9<br>
+    NAN-SW-01(config-if)# switchport trunk allowed vlan 1-7,9 <br>
+    <br>
+    DESACTIVER DTP, auto negociation <br>
+    NAN-SW-01(config-if)# switchport nonegotiate <br>
+    <br>
+    NAN-SW-01(config-if)# switchport mode trunk <br>
+    NAN-SW-01(config-if)# switchport trunk native vlan "IDVLAN"<br>
+    NAN-SW-01(config-if)# switchport trunk allowed vlan "IDVLAN" <br>
+    <br>
+    NAN-SW-01(config)# interface range F0/1-24 <br>
+    DESACTIVER toutes les interface 0 à 24<br>
+    NAN-SW-01(config-if-range)# shutdown <br>
+    <br>
+    <br>
+    <strong><b><br>
+        VTP </b></strong><br>
+    <br>
+    <br>
+    SERVER<br>
+    &nbsp;<br>
+    SW0(config)#vtp domain "tssr" <br>
+    &nbsp;<br>
+    SW0(config)#vtp password P@ssw0rd <br>
+    Setting device VLAN database password to P@ssw0rd <br>
+    SW0(config)#vtp version 2 <br>
+    SW0(config)#vtp mode server <br>
+    Device mode already VTP SERVER. <br>
+    SW0(config)#end <br>
+    SW0# <br>
+    <br>
+    SW-01(config)# vtp domain "tssr"<br>
+    SW-01(config)# vtp password P@ssw0rd<br>
+    SW-01(config)# vtp version 2<br>
+    SW-01(config)#vtp mode client <br>
+    <br>
+    SW-02(config)# vtp domain "tssr"<br>
+    SW-02(config)# vtp password P@ssw0rd<br>
+    SW-02(config)# vtp version 2<br>
+    SW-02(config)#vtp mode transparent <br>
+    <br>
+    (config)#interface G0/1<br>
+    (config-if)#switchport mode access<br>
+    (config-if)#switchport port-security<br>
+    <br>
+    (config-if)#switchport port-security mac-address aaaaaaaaa<br>
+    <br>
+    (config-if)#switchport port-security violation {protect | restrict |
+    shutdown}<br>
+    <br>
+    <br>
+    <br>
+    Router&gt;EN <br>
+    Router#configure <br>
+    Configuring from terminal, memory, or network [terminal]? <br>
+    Enter configuration commands, one per line.&nbsp; End with CNTL/Z.<br>
+    <br>
+    Router(config)#interface gigabitEthernet 0/1<br>
+    Router(config-if)#no sh<br>
+    <br>
+    Router(config-if)#<br>
+    %LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up<br>
+    <br>
+    Router(config-if)#interface gigabitEthernet 0/1<br>
+    <br>
+    Activer l'interface GigabitEthernet0/0<br>
+    <br>
+    Router(config-if)#interface gigabitEthernet 0/0<br>
+    Router(config-if)#no sh<br>
+    Creation de la sous interface pour le vlan 10<br>
+    Router(config)#interface gigabitEthernet 0/0.10<br>
+    Router(config-subif)#<br>
+    Voir vos interface deja crée <br>
+    Router(config-subif)#do sh ip int br<br>
+    Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    IP-Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OK? Method
+    Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Protocol <br>
+    GigabitEthernet0/0&nbsp;&nbsp;&nbsp;&nbsp;
+    unassigned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES unset&nbsp;
+    up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    up <br>
+    GigabitEthernet0/0.10&nbsp; unassigned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES
+    unset&nbsp;
+    up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    up <br>
+    GigabitEthernet0/1&nbsp;&nbsp;&nbsp;&nbsp;
+    unassigned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES unset&nbsp;
+    up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    down <br>
+    GigabitEthernet0/2&nbsp;&nbsp;&nbsp;&nbsp;
+    unassigned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES unset&nbsp; administratively
+    down down <br>
+    Vlan1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    unassigned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YES unset&nbsp; administratively
+    down down<br>
+    <br>
+    Router(config-subif)#no sh<br>
+    Selection du vlan pour cette sous interface<br>
+    &nbsp;<br>
+    Router(config-subif)#encapsulation dot1q 10<br>
+    <br>
+    Router(config-subif)#ip address 192.168.1.254 255.255.255.0
+  </body>
+</html>

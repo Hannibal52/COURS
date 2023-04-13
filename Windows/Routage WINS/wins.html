@@ -1,0 +1,286 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="generator" content="Aspose.Words for .NET 23.3.0">
+    <title>Mise en place du routage sous Windows Serveur - RDR-IT</title>
+    <style type="text/css">body { font-family:Calibri; font-size:11pt }h1, h2, h3, h4, h5, h6, p { margin:0pt }
+      li { margin-top:0pt; margin-bottom:0pt }
+      h1 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000 }
+      h2 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000 }h3 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000 }h4 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; font-style:normal; color:#000000 }h5 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000 }h6 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000 }.Heading7 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; font-style:normal; color:#000000; -aw-style-name:heading7 }.Heading8 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; color:#000000; -aw-style-name:heading8 }.Heading9 { page-break-inside:auto; page-break-after:auto; font-family:Calibri; font-size:11pt; font-weight:normal; font-style:normal; color:#000000; -aw-style-name:heading9 }</style>
+  </head>
+  <body>
+    <div><span style="font-family:Lato; color:#222222">Mise en place du routage
+        sous Windows Serveur
+        <h1 style="line-height:190%; font-size:11pt; -aw-import:spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </h1>
+        <p style="margin-top:28pt; margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">Dans
+            ce tutoriel, je vais vous expliquer comment mettre en place le
+            routage avec Windows Server. J’utilise régulièrement <br>
+            ce rôle dans les différents lab que je mets en place sous Hyper-V.
+            J’isole la plateforme de test avec un commutateur privé <br>
+          </span></p>
+        <p style="margin-top: 28pt; margin-bottom: 20pt; font-size: 10pt; height: 1px;"><span
+            style="font-family:Lato; color:#222222">et j’utilise une machine
+            virtuelle avec deux interfaces réseau. Une carte est connectée sur
+            le commutateur privé (LAN)</span></p>
+        <p style="margin-top:28pt; margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">
+            et la seconde sur le réseau qui fait aussi d’internet (WAN).</span></p>
+        <p><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.008.jpeg"></p>
+        <p style="margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">Prérequis</span><span
+            style="font-family:Lato; color:#222222">&nbsp;</span><span style="font-family:Lato; color:#222222">:</span></p>
+        <p style="margin-left:31.65pt; text-indent:-18pt; font-size:10pt; -aw-import:list-item; -aw-list-level-number:0; -aw-list-number-format:'●'; -aw-list-number-styles:'bullet'; -aw-list-padding-sml:11.36pt"><span
+            style="-aw-import:ignore"><span style="font-size:11pt">●</span><span
+              style="width:11.36pt; font:7pt 'Times New Roman'; display:inline-block; -aw-import:spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span></span><span style="font-family:Lato; color:#222222">Un
+            serveur avec au minimum deux cartes réseaux.</span></p>
+        <p style="margin-left:31.65pt; text-indent:-18pt; font-size:10pt; -aw-import:list-item; -aw-list-level-number:0; -aw-list-number-format:'●'; -aw-list-number-styles:'bullet'; -aw-list-padding-sml:11.36pt"><span
+            style="-aw-import:ignore"><span style="font-size:11pt">●</span><span
+              style="width:11.36pt; font:7pt 'Times New Roman'; display:inline-block; -aw-import:spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span></span><span style="font-family:Lato; color:#222222">Identifier
+            les cartes réseaux</span></p>
+        <p style="margin-left:31.65pt; margin-bottom:21pt; text-indent:-18pt; font-size:10pt; -aw-import:list-item; -aw-list-level-number:0; -aw-list-number-format:'●'; -aw-list-number-styles:'bullet'; -aw-list-padding-sml:11.36pt"><span
+            style="-aw-import:ignore"><span style="font-size:11pt">●</span><span
+              style="width:11.36pt; font:7pt 'Times New Roman'; display:inline-block; -aw-import:spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span></span><span style="font-family:Lato; color:#222222">Notion
+            de routage</span></p>
+        <p style="line-height:140%; font-size:15pt"><span style="font-family:Lato; font-weight:bold; color:#222222">Sommaire</span></p>
+        <ol style="margin:0pt; padding-left:0pt" type="1">
+          <li style="margin-left:18.7pt; padding-left:4.65pt"><a href="https://rdr-it.com/mise-en-place-routage-windows-serveur/#installation-du-rle-accs-distant"
+              style="text-decoration:none"><span style="font-family:Lato; font-size:10pt; text-decoration:underline; color:#54595f">Installation
+                du rôle Accès distant</span></a></li>
+          <li style="margin-left:18.7pt; padding-left:4.65pt"><a href="https://rdr-it.com/mise-en-place-routage-windows-serveur/#configuration-du-routage"
+              style="text-decoration:none"><span style="font-family:Lato; font-size:10pt; text-decoration:underline; color:#54595f">Configuration
+                du routage</span></a></li>
+          <li style="margin-left:18.7pt; padding-left:4.65pt"><a href="https://rdr-it.com/mise-en-place-routage-windows-serveur/#configuration-du-transfert-de-port"
+              style="text-decoration:none"><span style="font-family:Lato; font-size:10pt; text-decoration:underline; color:#54595f">Configuration
+                du transfert de port</span></a></li>
+          <li style="margin-left:18.7pt; padding-left:4.65pt"><a href="https://rdr-it.com/mise-en-place-routage-windows-serveur/#suivre-les-connexions"
+              style="text-decoration:none"><span style="font-family:Lato; font-size:10pt; text-decoration:underline; color:#54595f">Suivre
+                les connexions</span></a></li>
+          <li style="margin-left:18.7pt; padding-left:4.65pt"><a href="https://rdr-it.com/mise-en-place-routage-windows-serveur/#filtrage-des-connexions-sortantes"
+              style="text-decoration:none"><span style="font-family:Lato; font-size:10pt; text-decoration:underline; color:#54595f">Filtrage
+                des connexions sortantes</span></a><a name="installation-du-rle-accs-distant"></a></li>
+        </ol>
+        <h2 style="margin-bottom:39pt; line-height:170%; font-size:21pt"><span style="font-family:Lato; color:#222222">Installation
+            du rôle Accès distant</span></h2>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">1.
+            Depuis le Gestionnaire de serveur, cliquer sur Ajouter des rôles et
+            des fonctionnalités</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.009.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="555"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">2.
+            Passer la première fenêtre de l’assistant en cliquant sur Suivant</span><span>
+          </span><span style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.010.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="566"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">3.
+            Choisir Installation basée sur un rôle ou une fonctionnalité</span><span>
+          </span><span style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">puis cliquer
+            sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.011.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="565"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">4.
+            Sélectionner le serveur où le rôle doit être installé</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">et cliquer
+            sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.012.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="565"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">5.
+            Cocher le rôle Accès distant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">et cliquer
+            sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.013.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="560"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">6.
+            Passer les fonctionnalités en cliquant sur Suivant</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.014.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="566"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">7.
+            Cliquer sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">pour passer
+            le résumé du rôle Accès distant.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.015.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="568"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">8.</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222"> Cocher le
+            service Routage</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.016.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="565"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">9.
+            Cliquer sur Ajouter des fonctionnalités</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">pour
+            confirmer l’ajout des dépendances.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.017.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="396"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">10.
+            Cliquer sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.018.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="562"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">11.
+            Passer le résumé du rôle IIS en cliquant sur Suivant</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.019.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="561"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">12.
+            Valider les services IIS en cliquant sur Suivant</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.020.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="563"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">13.
+            Cliquer sur le bouton Installer</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.021.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="562"></p>
+        <p style="margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">14.
+            Patienter pendant l’installation des rôles …</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">15.
+            L’installation terminée, quitter l’assistant en cliquant sur
+            Terminer</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.022.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="559"></p>
+        <p style="margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">Maintenant
+            les rôles et services sont installés, nous allons voir comment
+            configurer le routag</span></p>
+        <p><br>
+        </p>
+        <a name="configuration-du-routage"></a>
+        <h2 style="margin-bottom:39pt; line-height:170%; font-size:21pt"><span style="font-family:Lato; color:#222222">Configuration
+            du routage</span></h2>
+        <p style="margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">1.
+            Ouvrir la console Routage et accès distant.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.026.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="41" width="250"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">2.
+            Faire un clic droit sur le serveur</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">et cliquer
+            sur Configurer et activer le routage et l’accès à distance</span><span>
+          </span><span style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.027.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="560"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">3.
+            Au lancement de l’assistant cliquer sur Suivant</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.028.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="474"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">4.
+            Choisir NAT (Network address translation)</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">puis cliquer
+            sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.029.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="474"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">5.
+            Sélectionner l’interface WAN</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">et cliquer
+            sur Suivant</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.030.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="474"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">6.
+            La configuration est terminée, quitter l’assistant en cliquant sur
+            Terminer</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.031.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="477"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">7.
+            Facultatif</span><span style="font-family:Lato; font-size:10pt; color:#222222">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">: si le
+            message suivant s’affiche, cliquer sur OK</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.032.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="234" width="477"></p>
+        <p style="margin-bottom:20pt; font-size:10pt"><span style="font-family:Lato; color:#222222">8.
+            Patienter pendant le démarrage des services …</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.033.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="131" width="325"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">9.
+            Le service est activé sur le serveur</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">,
+            celui-ci est passé vert.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.034.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="567"></p>
+        <p style="margin-bottom:20pt; text-align:center"><span style="font-family:Lato; font-size:10pt; color:#222222">10.
+            Aller sur IPv4</span><span> </span><span style="-aw-import:spaces">&nbsp;&nbsp;
+            </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">1</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="-aw-import:spaces">&nbsp;</span><span
+            style="font-family:Lato; font-size:10pt; color:#222222">/ Général</span><span>
+          </span><span style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">2</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.
+            Si les postes de votre réseau sont correctement configurés, les
+            valeurs Octets Entrant / Sortant devraient augmenter</span><span> </span><span
+            style="-aw-import:spaces">&nbsp;&nbsp; </span><span style="font-family:Lato; font-size:8pt; font-weight:bold">3</span><span
+            style="-aw-import:spaces">&nbsp; </span><span style="font-family:Lato; font-size:10pt; color:#222222">.</span></p>
+        <p style="margin-bottom:20pt; text-align:center"><img src="images/Aspose.Words.a56d673c-66a6-407f-9d5d-66cd57d9d8cb.035.jpeg"
+            alt="" style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline"
+            height="400" width="564"></p>
+      </span></div>
+  </body>
+</html>
