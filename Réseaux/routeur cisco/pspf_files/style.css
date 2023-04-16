@@ -1,0 +1,401 @@
+/*general*/
+
+body {
+background-color:white;
+font-size: 100%;
+font-family: Helvetica, Arial, sans-serif;
+margin:0;
+padding:0;
+}
+
+h1 {
+ text-align: center;
+ margin-top: 0;
+ }
+
+h2 {text-indent: -0.5em ;}
+
+img#switch {
+display: block;
+width:auto;
+margin-left:auto; 
+margin-right: auto; 
+margin-top: 70px;
+margin-bottom: 70px;
+}
+
+img.format {
+display: block;
+width:auto;
+margin-left:auto;
+margin-right: auto;
+margin-top: 35px;
+margin-bottom: 35px;
+}
+
+.conteneur {
+width: 1024px;
+padding-top:0;
+margin-left: auto;
+margin-right: auto;
+}
+
+@media all and (max-width: 980px) {
+.conteneur {
+width: auto;
+}
+}
+
+.menuhaut {
+	background-color: #2e2e5a;
+	padding: 15px 15px;
+}
+
+@media all and (max-width: 980px) {
+.menuhaut {
+	padding: 0;
+}
+} 
+
+@media all and (max-width: 480px) {
+.sup {
+	display: none;
+}
+}  
+
+/*affichage des sous-menus haut*/
+div.smenu {
+margin-left: auto;
+margin-right: auto;
+width: 1024px;
+background-color: #2e2e5a;
+padding: 5px 0 5px 0;
+}
+
+@media all and (max-width: 980px) {
+.smenu {
+padding: 0;
+margin: 0;
+width: auto;
+}
+} 
+
+/*Concerne le menu en tete*/
+
+.menu2 {
+	padding-top: 30px;
+	color: #14147a;
+}
+
+@media all and (max-width: 980px) {
+.menu2 {
+background-image: none;
+height: auto;
+}
+} 
+
+div.smenu2 {
+       display: none;
+}
+
+@media all and (max-width: 980px) {
+div.smenu2 {
+	display: block;
+	background-color: #2e2e5a; 
+	padding 10px 0;
+
+}
+}
+
+div.smenu2 ul ul {
+	display: none;
+	position: relative; top: 100%;
+	}
+
+div.smenu2 ul ul li {
+		float: none;
+		}
+
+div.smenu2 ul li:hover > ul {
+		display: block;
+	}
+	
+div.smenu2 ul {
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	
+}
+
+div.smenu2 ul:after {
+		content: ""; clear: both; display: block;
+	}
+
+div.smenu2 ul li {
+	float: left;
+	text-align: left;
+}
+
+div.smenu2 ul li:hover a {
+			background-color: #2e2e5a;
+			color: white;
+			}
+
+div.smenu2 ul li:hover a:hover {
+			background-color: #afafd2;
+			}
+		
+div.smenu2 ul li a {
+		display: block;
+		padding: 10px 0px;
+      text-decoration: none;
+	}
+
+div.smenu3 {
+padding: 5px 0px;
+color: white;
+}
+
+
+/*style des liens*/
+a:link {text-decoration: underline; color: #14147a; }
+a.menu {color: white; text-decoration: none;}
+a.menu:visited {color: white; text-decoration: none;}
+a.menu:active {color: #14147a ;text-decoration: none;}
+a.menu:focus {color: white; text-decoration: underline;}
+a.menu:hover {color: white; text-decoration: none; background-color: #afafd2; padding: 15px 0 15px 0;}
+
+@media all and (max-width: 980px) {
+a.menu:hover {
+	padding: 0;
+}
+}
+
+li.col a.menu {color: #14147a; text-decoration: none;}
+li.col a.menu:hover {color: #14147a; padding: 0;}
+
+li.col_sel a.menu {color: #14147a ;text-decoration: none; padding: 0;}
+
+/*liste affichee en ligne*/
+ul.ligne {
+margin:0;
+padding-left: 1.5%;
+text-align: center; 
+padding-right: 1.5%
+}
+
+@media all and (max-width: 980px) {
+ul.ligne {
+	padding: 0;
+	text-align: left;
+}
+}
+
+li.ligne {
+display: inline; 
+padding: 0 1em 0 1em ; 
+}
+
+@media all and (max-width: 980px) {
+li.ligne {
+padding: 0 0.5em 0 0.5em; 
+}
+}
+
+.logo {
+	float:left;
+	padding: 15px 1em 0 1em ; 
+}
+
+@media all and (max-width: 480px) {
+.logo {
+display: none;
+}
+} 
+
+/*style de la ligne du menu courant*/
+li.ligne_sel {
+display: inline;
+padding: 15px 1em 15px 1em ; 
+background-color: #afafd2;
+}
+
+@media all and (max-width: 980px) {
+li.ligne_sel {
+padding: 0;
+}
+} 
+
+li.ligne_pasel {
+display: inline;
+padding: 0 1em 0 1em ;
+}
+
+ /*style du menu affiche a droite: contact*/
+li.lignedroit {
+display: inline;
+padding: 0 1em 0 1em ;
+text-align: right;
+}
+
+li.lignedroit_sel {
+ display: inline;
+ float: right;
+ padding: 0 1em 0 1em ;
+ text-align: center;
+ background-color: #bdd0d7 ;
+}
+
+li.col {list-style-type: none; margin-left: -2em ;}
+
+li.col_sel { 
+list-style-type: none; 
+margin-left: -2em ;
+background-color: #afafd2;
+}
+
+/*Menu de gauche*/
+div.mgauche {
+position:float;
+float:left;
+width: 20% ;
+padding-top: 35px;
+font-size: .85em
+}
+
+@media all and (max-width: 980px) {
+div.mgauche {
+display: none;
+}
+}
+
+/*menu de droite*/
+div.droite {
+position: float;
+float: right; 
+width: 15%;
+padding-top: 35px;
+padding: 0 ;
+text-align: center;
+}
+
+@media all and (max-width: 980px) {
+div.droite {
+display: none;
+}
+}
+
+/*le corps de la page - */
+div.corps {
+margin-left:20%;
+margin-right:15%;
+margin-top: 40px;
+line-height: 1.5em;
+padding-right: 5px;
+padding-left: 5px ;
+}
+
+@media all and (max-width: 980px) {
+div.corps {
+margin: auto;
+padding: auto;
+}
+}
+
+div.corps-boutique { 
+ margin-right: auto;
+ margin-left: auto;
+}
+
+div.corps_pad {
+padding-left: 3.5%; 
+padding-right: 2%; 
+/*border-left: groove 7px #afafd2 ;*/
+/*border-right: groove 7px #afafd2;*/
+padding-bottom: 10px; }
+
+@media all and (max-width: 980px) {
+div.corps_pad {
+margin:  20px auto;
+padding: auto;
+border: none;
+}
+}
+
+/*les affichages style console*/
+div.console { 
+width: 95%;
+padding: 7px 7px 14px 7px ;
+margin: 14px 0px 35px 0px; 
+background-color: #bdd0d7;
+border: solid 1px #14147a ; 
+line-height: 1em;
+overflow: auto;
+}
+
+div.console_ret {
+width: 95%; 
+padding: 7px 7px 14px 2.5em;
+margin: 14px 0px 35px 0px;
+text-indent: -1.5em; 
+background-color: #bdd0d7; 
+border: solid 1px #14147a ;
+line-height: 1em;
+overflow: auto;
+}
+
+/*the pied style*/
+div#piedgauche {float: left; text-align: left; width: 30%; padding-top: 30px;font-size: .85em; text-decoration: none;}
+div#piedcentre {float:left; left: 33%; text-align: center; padding-top: 30px;font-size: .85em; width: 40%; text-decoration: none; }
+div#pieddroit {float: right; text-align: right; width: 30%; padding-top: 30px;font-size: .85em; text-decoration: none;}
+img.pied {text-decoration: none; border: none;}
+
+/*le div sur pied*/
+div.ppied { margin-top: 180px; }
+
+div.conteneur-pied {
+	clear: both;
+	background-color: #2e2e5a;
+	color: white;
+	padding-top: 5px;
+}
+
+div.spied {
+font-size: .85em; 
+margin: 20px 0 0 40%; 
+}
+
+@media all and (max-width: 980px) {
+div.spied {
+	margin: 80px 0 0 10%;
+}
+} 
+
+a.afpied {text-decoration: none;}
+a.afpied:hover {text-decoration: underline;}
+
+a.lpied {color: white; text-decoration: none;}
+a.lpied:visited {color: white; text-decoration: none;}
+a.lpied:hover {color: white; text-decoration: none;background-color: #afafd2;}
+	
+ 
+div.pied {
+width: 100%; 
+text-align: center;
+color: white; 
+font-size: .75em; 
+padding: 50px 0px 0px 0px ;
+line-height: 1em;
+margin: 0px;
+}
+
+div.pied a {color: white;}
+div.pied a:hover {color: white;}
+div.pied a:visited {color: white;}
+
+
+
+/*zone contact*/
+label {display: block; margin-top: 40px; }
+
+		
