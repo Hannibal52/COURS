@@ -16,7 +16,8 @@ var mediabox_settings={"auto_detect":true,"ns":"box","tt_img":true,"sel_g":"#doc
 /* ]]> */</script>
     <!-- insert_head_css -->
     <link rel="stylesheet" href="./rip_files/lity.css" type="text/css" media="all">
-    <link rel="stylesheet" href="./rip_files/lity.mediabox.css" type="text/css"
+    <link rel="stylesheet" href="./rip_files/lity.mediabox.css" type="text/css"
+
       media="all">
     <link rel="stylesheet" href="./rip_files/lity%281%29.css" type="text/css" media="all">
     <link rel="stylesheet" type="text/css" media="all" href="./rip_files/barre_outils.css">
@@ -24,7 +25,8 @@ var mediabox_settings={"auto_detect":true,"ns":"box","tt_img":true,"sel_g":"#doc
     <script src="./rip_files/jquery.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
     <script src="./rip_files/jquery.form.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
     <script src="./rip_files/jquery.autosave.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/jquery.placeholder-label.js.t%C3%A9l%C3%A9chargement"
+    <script src="./rip_files/jquery.placeholder-label.js.t%C3%A9l%C3%A9chargement"
+
 type="text/javascript"></script>
     <script src="./rip_files/ajaxCallback.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
     <script src="./rip_files/js.cookie.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
@@ -36,7 +38,8 @@ type="text/javascript"></script>
     <script type="text/javascript" src="./rip_files/jquery.markitup_pour_spip.js.t%C3%A9l%C3%A9chargement"></script>
     <script type="text/javascript" src="./rip_files/jquery.previsu_spip.js.t%C3%A9l%C3%A9chargement"></script>
     <script type="text/javascript" src="./rip_files/jsdyn-javascript_porte_plume_start_js-ef9d7c09.js.t%C3%A9l%C3%A9chargement"></script>
-    <link rel="stylesheet" href="./rip_files/cibc_en_bas_fond_blanc.css" type="text/css"
+    <link rel="stylesheet" href="./rip_files/cibc_en_bas_fond_blanc.css" type="text/css"
+
       media="all">
     <script type="text/javascript"><!-- 
                 var cibcXiti=cibcGetCookie("cibcOptOutXITI");var paramUrlXiti=cibcGetUrlParam("cibcOptOutXITI");if(paramUrlXiti){if(paramUrlXiti=="oui"||paramUrlXiti=="non"){cibcXiti=paramUrlXiti;cibcSetCookie("cibcOptOutXITI",paramUrlXiti)}}var cibcIdga=cibcGetCookie("cibcOptOutGA");var paramUrlIdga=cibcGetUrlParam("cibcIDGA");if(paramUrlIdga){if(paramUrlIdga=="non"){cibcIdga=paramUrlIdga;cibcSetCookie("cibcOptOutGA",paramUrlIdga)}else{testidga=paramUrlIdga.replace("ua-","");testidga=testidga.replace("UA-","");testidga=testidga.replace("-","");if(isNaN(testidga)===false){cibcIdga=paramUrlIdga;cibcSetCookie("cibcOptOutGA",paramUrlIdga)}}}if(cibcIdga && cibcIdga!="non"){var gaProperty=cibcIdga;var disableStr="ga-disable-"+gaProperty;window[disableStr]=true} function cibcPath(){var cipath=window.location.pathname;cipath=cipath.substring(0,cipath.lastIndexOf("/"));if(cipath===-1)cipath="/";else cipath=cipath+"/";return cipath}function cibcHref(){return window.location.protocol+"//"+window.location.host+cibcPath()}function cibcHrefSansParam() {var cihref = document.location.href; var n = cihref.indexOf("&cibcOptOut"); if (n > 1){cihref = cihref.substring(0,n);} n = cihref.indexOf("&cibcIDGA"); if (n > 1){cihref = cihref.substring(0,n);} return cihref;}function cibcGetExpireDate(){var cookieTimeout=34128000000;var date=new Date();date.setTime(date.getTime()+cookieTimeout);var expires="expires="+date.toGMTString();return expires}function cibcSetCookie(nom,valeur){document.cookie=nom+"="+valeur+";"+cibcGetExpireDate()+"; path="+cibcPath()}function cibcSetCookieConsentOui(){document.cookie="cibcConsent=oui;"+cibcGetExpireDate()+" ; path="+cibcPath()}function cibcSetCookieConsentNon(){document.cookie="cibcConsent=non;"+cibcGetExpireDate()+" ; path="+cibcPath()}function cibcGetCookie(NomDuCookie){if(document.cookie.length>0){begin=document.cookie.indexOf(NomDuCookie+"=");if(begin!=-1){begin+=NomDuCookie.length+1;end=document.cookie.indexOf(";",begin);if(end==-1)end=document.cookie.length;return unescape(document.cookie.substring(begin,end))}}return ""}function cibcGetCookieConsent(){consentCookie=cibcGetCookie("cibcConsent");if(!consentCookie){if(document.referrer && (document.referrer.split("/")[2] == document.location.hostname) && cibcGetCookie("cibcInit")){cibcSetCookieConsentOui();consentCookie="oui"}}return consentCookie}function cibcGetUrlParam(name){name=name.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var regex=new RegExp("[\?&]"+name+"=([^&#]*)");var results=regex.exec(window.location.search);if(results==null)return "";else return results[1]}function cibcFade(element){var op=1;var ua=navigator.userAgent.toLowerCase();var isIE=false;if(ua.indexOf("msie")!=-1){isIE=true}var timer=setInterval(function(){if(op<=0.1){clearInterval(timer);element.parentNode.removeChild(element)}else{element.style.opacity=op;if(isIE===true){element.style.filter="alpha(opacity="+op*100+")"}op-=op*0.1}},50)}function cibcDemander(){if(cibcGetCookie("spip_session")&&3==2){cibcSetCookieConsentOui()}else{var bodytag=document.getElementsByTagName("body")[0];var div=document.createElement("div");div.setAttribute("id","banniere-cookie");div.innerHTML=decodeURIComponent("%3Ca%20class%3D%22cicb_fermer%22%20href%3D%22javascript%3Avoid%280%29%3B%22%20onclick%3D%22cibcRemoveMe%28%29%3B%22%3E%3Cspan%3EX%3C%2Fspan%3E%3C%2Fa%3E%3Cdiv%20class%3D%22cicb_texte%22%3EEn%20poursuivant%20votre%20navigation%20sur%20ce%20site%2C%20vous%20acceptez%20l%26%238217%3Butilisation%20de%20cookies%20pour%20r%C3%A9aliser%20des%20statistiques%20de%20visites.%3C%2Fdiv%3E%3Cdiv%20class%3D%22cicb_boutons%22%3E%3Ca%20class%3D%22bouton%20accepte%22%20href%3D%22javascript%3AcibcAccepte%28%29%22%3EAccepter%3C%2Fa%3E%3Ca%20class%3D%22bouton%20refus%22%20href%3D%22javascript%3AcibcRefuse%28%29%22%3ERefuser%3C%2Fa%3E%3C%2Fdiv%3E");bodytag.insertBefore(div,bodytag.firstChild);cibcSetCookie("cibcInit","oui");}}function cibcRefuse(){cibcSetCookieConsentNon();var element = document.getElementById("banniere-cookie"); element.parentNode.removeChild(element);}function cibcAccepte(){cibcSetCookieConsentOui();var element=document.getElementById("banniere-cookie");element.parentNode.removeChild(element)}function cibcRemoveMe(){cibcSetCookieConsentOui();var element=document.getElementById("banniere-cookie");cibcFade(element)}function cibcRetour(){divRetour = document.getElementById("cibcRetour");if(divRetour!=null){if(divRetour.firstChild.className=="cibcRetour"){divRetour.firstChild.href = document.referrer;}}}function cibcOptOutExterne(){if(1==2){var cibcLiens=document.getElementsByTagName("a");for(var i=0;i<cibcLiens.length;i++){if(cibcLiens[i].className.substring(0,10)=="cibcOptOut"){cibcLiens[i].id="cibc"+i;cibcLiens[i].setAttribute("onclick","cibcCreerImg(this.id); return false;");cibcTableauOptOutExterne["cibc"+i]=cibcLiens[i].href;cibcLiens[i].href=""}}}}function cibcCreerImg(i){if(cibcTableauOptOutExterne[i]!==undefined&&cibcTableauOptOutExterne[i]){var element=document.getElementById(i);var img=document.createElement("img");img.setAttribute("src",cibcTableauOptOutExterne[i]);element.insertBefore(img,element.firstChild);cibcTableauOptOutExterne[i]=""}return false}function cibcAfficheLien(valeur_param,valeur_cookie){if(1==2){divOptout=document.getElementById("cibcOptOut"+valeur_param);if(divOptout!=null){divOptout.firstChild.className="spip_in";if(valeur_cookie&&valeur_cookie!="non"){divOptout.style.display="none"}else{divOptout.style.display="inline"}}divOptin=document.getElementById("cibcOptIn"+valeur_param);if(divOptin!=null){divOptin.firstChild.className="spip_in";if(valeur_cookie&&valeur_cookie!="non"){divOptin.style.display="inline"}else{divOptin.style.display="none"}}}}function cibcOptOut(){consentCookie=cibcGetCookieConsent();if(consentCookie=="oui")return"non";else if(consentCookie=="non")return"oui";else return ""}function cibcOptOutXITI(){return cibcXiti}function cibcOptOutGA(){return cibcIdga}function cibcLoad(){var consentCookie=cibcGetCookieConsent();var cibcParams=[];var cibcCookies=[];cibcParams[0]="CIBC";cibcCookies[0]="";cibcParams[1]="GA";cibcParams[2]="XITI";cibcCookies[1]=cibcGetCookie("cibcOptOutGA");cibcCookies[2]=cibcGetCookie("cibcOptOutXITI");cibcOptOutExterne();cibcRetour();var paramUrl=cibcGetUrlParam("cibcOptOut");if(paramUrl=="oui"){cibcSetCookieConsentNon();consentCookie="non";for(var i=1;i<cibcCookies.length;i++){if(cibcCookies[i]){cibcSetCookie("cibcOptOut"+cibcParams[i],"oui")};cibcCookies[i]="oui";}}if(paramUrl=="non"){cibcSetCookieConsentOui();consentCookie="oui";for(var i=1;i<cibcCookies.length;i++){if(cibcCookies[i]){cibcSetCookie("cibcOptOut"+cibcParams[i],"non")};cibcCookies[i]="non";}}if(!consentCookie){if(document.referrer && (document.referrer.split("/")[2] == document.location.hostname) && cibcGetCookie("cibcInit")){cibcSetCookieConsentOui();consentCookie="oui"}else{cibcDemander()}}var divOptout="";var divOptin="";if(consentCookie=="oui")cibcCookies[0]="non";else if(consentCookie=="non")cibcCookies[0]="oui";for(var i=0;i<cibcParams.length;i++){cibcAfficheLien(cibcParams[i],cibcCookies[i]);}}var cibcTableauOptOutExterne=[];if(window.jQuery){jQuery(document).ready(function($){cibcLoad()})}else{window.onload=function(){cibcLoad()}}
@@ -80,7 +83,7 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
 	color:#000000;
 	text-decoration: none;
 	text-align:left;}
-
+      p {text-decoration: none; color:#000000;}
 </style> </head>
   <body>
     <div id="wrap">
@@ -202,7 +205,8 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
               grâce aux informations reçues.</p>
             <p>Une route ressemble à l’exemple ci-dessous&nbsp;:</p>
             <div class="spip_document_1454 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_001.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_001.png"
+
                   alt="" height="32" width="412"> </figure>
             </div>
             <p><i>La première ligne est une route créée automatiquement par le
@@ -227,7 +231,8 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
               répertorie toutes les routes que celui-ci connait. Une table de
               routage ressemble à l’exemple ci-dessous&nbsp;:</p>
             <div class="spip_document_1455 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_002.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_002.png"
+
                   alt="" height="331" width="560"> </figure>
             </div>
             <p><i>On retrouve dans un premier temps la commande que l’on doit
@@ -293,7 +298,8 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
               de routage RIP ne peut donc pas excéder 15 sauts de routage. C’est
               l’une des raisons qui limite RIP à de petit réseaux.</p>
             <div class="spip_document_1456 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_003.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_003.png"
+
                   alt="" height="331" width="560"> </figure>
             </div>
             <p><i>La métrique est la valeur encadrée en rouge.</i></p>
@@ -310,14 +316,16 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
               chercher la valeur la plus faible. Chaque protocole a une valeur
               par défaut comme nous le montre l’image ci-dessous&nbsp;:</p>
             <div class="spip_document_1457 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_004.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_004.png"
+
                   alt="" height="425" width="692"> </figure>
             </div>
             <p><i>La distance administrative est la valeur encadrée en rouge.</i></p>
             <p>Voici un tableau regroupant les différentes valeurs de distance
               administrative&nbsp;:</p>
             <div class="spip_document_1458 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_005.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_005.png"
+
                   alt="" height="331" width="560"> </figure>
             </div>
             <p>Prenons l’exemple d’une route A présente plusieurs fois dans la
@@ -354,9 +362,12 @@ h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
             <p>Voici le schéma réseau (ci-dessous), il comprend 5 routeurs avec
               RIPv2 activé, 9 réseaux et deux ordinateurs&nbsp;:</p>
             <div class="spip_document_1459 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_006.png"
-                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
-                  data-box-type="image"> <img src="./rip_files/article_213_006.png"
+              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_006.png"
+
+                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
+
+                  data-box-type="image"> <img src="./rip_files/article_213_006.png"
+
                     alt="" height="528" width="920"></a> </figure>
             </div>
             <balise id="chap42">
@@ -532,8 +543,10 @@ R5#wr</code></pre>
             <p>Cliquez ci-dessous pour télécharger le fichier Packet Tracert,
               comprenant une démonstration du réseau&nbsp;:</p>
             <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_routage_rip.pkt"
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_routage_rip.pkt"
+
+                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+
                     height="100" width="100"></a> </figure>
             </div>
             <balise id="chap43">
@@ -545,7 +558,8 @@ R5#wr</code></pre>
                 ip route</strong></p>
             <p>Nous obtenons le résultat suivant&nbsp;:</p>
             <div class="spip_document_1460 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_007.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_007.png"
+
                   alt="" height="331" width="560"> </figure>
             </div>
             <p>Si nous regardons plus en détails, nous pouvons voir que pour
@@ -567,9 +581,12 @@ R5#wr</code></pre>
               Pour mieux comprendre ce que je viens de dire voici le schéma d’un
               réseau ayant un problème de discontinuité&nbsp;:</p>
             <div class="spip_document_1461 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_008.png"
-                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
-                  data-box-type="image"> <img src="./rip_files/article_213_008.png"
+              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_008.png"
+
+                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
+
+                  data-box-type="image"> <img src="./rip_files/article_213_008.png"
+
                     alt="" height="382" width="817"></a> </figure>
             </div>
             <p>Comme on peut le voir, à gauche du schéma R1 connait deux
@@ -585,21 +602,25 @@ R5#wr</code></pre>
               comprenant une démonstration d’un réseau discontinu avec
               RIPv1&nbsp;:</p>
             <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv1.pkt"
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv1.pkt"
+
+                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+
                     height="100" width="100"></a> </figure>
             </div>
             <p>Voici la table de routage des trois routeurs&nbsp;:</p>
             <h6>R1&nbsp;:</h6>
             <div class="spip_document_1462 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_009.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_009.png"
+
                   alt="" height="242" width="556"> </figure>
             </div>
             <p>Observer que R1 ne connait pas les sous-réseaux 172.16.30.0,
               172.16.40.0 et 172.16.50.0.</p>
             <h6>R2&nbsp;:</h6>
             <div class="spip_document_1463 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_010.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_010.png"
+
                   alt="" height="227" width="556"> </figure>
             </div>
             <p>Observer que R2 ne connait aucun sous-réseaux, il utilise
@@ -607,7 +628,8 @@ R5#wr</code></pre>
               chemins pour y accéder.</p>
             <h6>R3&nbsp;:</h6>
             <div class="spip_document_1464 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_011.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_011.png"
+
                   alt="" height="256" width="558"> </figure>
             </div>
             <p>Observer que R3 ne connait pas les sous-réseaux 172.16.10.0 et
@@ -618,15 +640,18 @@ R5#wr</code></pre>
               comprenant une démonstration d’une réseau discontinu avec
               RIPv2&nbsp;:</p>
             <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2.pkt"
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2.pkt"
+
+                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+
                     height="100" width="100"></a> </figure>
             </div>
             <p>Si nous étudions de nouveau les tables de routages des routeurs
               nous obtenons ceci&nbsp;:</p>
             <h6>R1&nbsp;:</h6>
             <div class="spip_document_1465 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_012.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_012.png"
+
                   alt="" height="257" width="559"> </figure>
             </div>
             <p>La ligne&nbsp;: <strong>R 172.16.0.0/16 [120/2] via 10.0.0.1,
@@ -635,13 +660,15 @@ R5#wr</code></pre>
               172.16.10.0 et 172.16.20.0.</p>
             <h6>R2&nbsp;:</h6>
             <div class="spip_document_1466 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_013.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_013.png"
+
                   alt="" height="224" width="559"> </figure>
             </div>
             <p>Aucun changement visible sur R2.</p>
             <h6>R3&nbsp;:</h6>
             <div class="spip_document_1467 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_014.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_014.png"
+
                   alt="" height="270" width="558"> </figure>
             </div>
             <p>De même pour R3, la ligne&nbsp;: <strong>R 172.16.0.0/16 [120/2]
@@ -655,7 +682,8 @@ R5#wr</code></pre>
             </div>
             <p>Cette commande vous donnera toutes les informations sur RIP.</p>
             <div class="spip_document_1468 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_015.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_015.png"
+
                   alt="" height="359" width="429"> </figure>
             </div>
             <p>La commande&nbsp;:</p>
@@ -686,8 +714,10 @@ R5#wr</code></pre>
               comprenant une démonstration d’un réseau discontinu avec RIPv2 et
               avec la désactivation du résumé automatique&nbsp;:</p>
             <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2_autosummary.pkt"
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2_autosummary.pkt"
+
+                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+
                     height="100" width="100"></a> </figure>
             </div>
             <p>Si nous revérifions la table de routage nous pouvons voir
@@ -695,17 +725,20 @@ R5#wr</code></pre>
               pouvons voir tous les sous-réseaux sur les trois routeurs.</p>
             <h6>R1&nbsp;:</h6>
             <div class="spip_document_1469 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_016.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_016.png"
+
                   alt="" height="287" width="562"> </figure>
             </div>
             <h6>R2&nbsp;:</h6>
             <div class="spip_document_1470 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_017.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_017.png"
+
                   alt="" height="314" width="559"> </figure>
             </div>
             <h6>R3&nbsp;:</h6>
             <div class="spip_document_1471 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_018.png"
+              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_018.png"
+
                   alt="" height="284" width="561"> </figure>
             </div>
             <balise id="chapVII">
@@ -734,7 +767,8 @@ R5#wr</code></pre>
         <div class="rubrique-lignevide">&nbsp;</div>
         <div class="rubrique-lignevide">&nbsp;</div>
         <div class="rubrique2-article-date">19 juillet
-          2011&nbsp;&nbsp;--&nbsp;&nbsp;<span class="vcard author"><a class="url fn spip_in"
+          2011&nbsp;&nbsp;--&nbsp;&nbsp;<span class="vcard author"><a class="url fn spip_in"
+
               href="http://idum.fr/spip.php?auteur1">N.Salmon</a></span></div>
         <div class="rubrique-lignevide">&nbsp;</div>
       </div>
@@ -743,7 +777,8 @@ R5#wr</code></pre>
       <div class="rubrique2-titretab2">Commentaires :</div>
       <div class="rubrique2-petit">
         <div class="rubrique2-forum-rep"><a href="http://idum.fr/spip.php?page=forum&amp;id_article=213">Répondre
-            à cet article</a><a href="http://idum.fr/spip.php?article213#forum"
+            à cet article</a><a href="http://idum.fr/spip.php?article213#forum"
+
             name="forum" id="forum"></a></div>
         <div class="rubrique2-article-texte">
           <hr width="100%" align="center">
