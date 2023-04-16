@@ -1,0 +1,78 @@
+
+#banniere-cookie {
+  background:#fff; 
+  width:980px;
+  max-width:100%;
+  padding:10px 0 10px 10px;
+  margin:auto;
+  display: inline-block;
+  text-align: left !important;
+  border-radius:5px 5px 0 0;
+  -moz-border-radius:5px 5px 0 0;
+  -webkit-border-radius:5px 5px 0 0;
+  -o-border-radius:5px 5px 0 0;
+  box-shadow: 0px 0px 20px #A1A1A1;
+  -webkit-box-shadow: 0px 0px 20px #A1A1A1;
+  -moz-box-shadow: 0px 0px 20px #A1A1A1;
+  -o-box-shadow: 0px 0px 20px #A1A1A1; 
+  border: 1px solid #A1A1A1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index:9999;  
+}
+
+#banniere-cookie .cicb_texte { 
+	padding: 0 !important;
+	margin:0 40px 0 0!important;
+	text-align:left !important;
+	font-size:12px !important;
+	line-height: 18px !important;
+	color:#444;
+}
+
+#banniere-cookie a.spip_out {
+    color: #444444;
+    text-decoration: underline;
+}
+
+#banniere-cookie a.spip_out:hover {
+    text-decoration: none;
+}
+
+#banniere-cookie a.cicb_fermer {
+  display:block;
+  float: right;
+  margin-right:15px;
+  width:20px;
+  height:20px;
+  background:url(../_images/fermer.jpg) no-repeat;
+}
+
+#banniere-cookie a.cicb_fermer span {
+  display:none !important;
+}
+
+#banniere-cookie .cicb_boutons {
+}
+
+#banniere-cookie .bouton {
+    display: inline-block;
+    margin: 1em 1em 0 0;
+    padding: 4px 8px;
+    font-size:12px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #DFDFDF;
+    border: 1px solid #DCDCDC;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 0 0 #FFFFFF inset;
+    cursor: pointer;
+    overflow: visible;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #FFFFFF;
+    vertical-align: middle;
+    width: auto;
+}

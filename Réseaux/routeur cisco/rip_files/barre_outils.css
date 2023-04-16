@@ -1,0 +1,395 @@
+.formulaire_spip textarea.markItUpEditor,
+.formulaire_spip li.editer_texte textarea {
+	/*width: 96%;
+	clear: both;*/
+}
+
+.markItUpHeader {
+	text-align: left;
+}
+
+/* fix dir=ltr */
+
+
+/* -------------------------------------------------------------------
+// markItUp! Universal MarkUp Engine, JQuery plugin
+// By Jay Salvat - http://markitup.jaysalvat.com/
+// ------------------------------------------------------------------*/
+
+.markItUp .markItUpHeader a,
+.markItUp .markItUpTabs a,
+.markItUp .markItUpFooter a {
+	color: #000;
+	text-decoration: none;
+}
+
+.markItUp {
+	margin: 5px 0 5px 0;
+	position: relative;
+}
+
+.markItUp .markItUpContainer {
+	margin: 0;
+	padding: 0;
+}
+
+.markItUp .markItUpPreviewFrame {}
+
+
+/* =================
+ * Onglets + boutons
+ * ================= */
+
+.markItUp .markItUpTabs a,
+.markItUp .markItUpHeader a {
+	transition: background 0.2s, color 0.2s;
+}
+
+.markItUp .markItUpTabs a:hover,
+.markItUp .markItUpTabs a:focus,
+.markItUp .markItUpTabs a:active,
+.markItUp .markItUpHeader ul a.active,
+.markItUp .markItUpHeader ul a:focus,
+.markItUp .markItUpHeader ul a:focus-within,
+.markItUp .markItUpHeader ul a:active,
+.markItUp .markItUpHeader ul a:hover {
+	background-color: var(--spip-color-theme-lightest, hsla(0, 0%, 0%, 0.05));
+	outline: none !important;
+}
+
+
+/* =======
+ * Onglets
+ * ======= */
+
+
+.markItUp .markItUpTabs {
+	/* line-height: 18px; */
+	text-align: right;
+	/* overflow: hidden; */
+	position: absolute;
+	right: 10px;
+	clear: right;
+	z-index: 5; /* Un rien plus que .markItUpPreview */
+}
+
+.markItUp .markItUpTabs a {
+	display: block;
+	float: right;
+	padding: 1em 0.5em;
+	position: relative;
+	font-size: 0.9em;
+}
+
+.markItUp .markItUpTabs a.on:after,
+.markItUp .markItUpTabs a:hover:after,
+.markItUp .markItUpTabs a:focus:after,
+.markItUp .markItUpTabs a:active:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -2px;
+	border-bottom: 2px solid var(--spip-color-theme, hsla(0, 0%, 0%, 0.66));
+}
+
+
+/* ======
+ * Entete
+ * ====== */
+
+
+.markItUp .markItUpHeader {
+	display: block;
+	margin: 0;
+	padding: 0;
+	min-height: 3.2em;
+	background: white;
+	border: 1px solid #ddd;
+	border-color: var(--spip-form-border-color, hsla(0, 0%, 0%, 0.15));
+	border-bottom-color: var(--spip-form-border-color, hsla(0, 0%, 0%, 0.15));
+	border-radius: var(--spip-form-border-radius, 6px) var(--spip-form-border-radius, 6px) 0 0;
+
+}
+
+.markItUp .markItUpHeader:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+}
+
+.lte7 .markItUp .markItUpHeader ul {
+	height: 3.2em;
+}
+
+.markItUp .markItUpHeader ul {
+	display: block;
+	margin: 0 !important;
+	padding: 0;
+}
+
+/* Boutons : tous */
+
+.markItUp .markItUpHeader ul li {
+	list-style: none;
+	float: left;
+	position: relative;
+	clear: none;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+}
+
+.markItUp .markItUpHeader ul li:first-child {
+	/* annuler un reglage des forms prive */
+	padding-top: 0;
+}
+
+.markItUp .markItUpHeader ul a {
+	clear: none;
+	display: block;
+	margin: 0;
+	padding: 1.05em 0.5em;
+}
+
+.markItUp .markItUpHeader ul a em {
+	display: block;
+	background-repeat: no-repeat;
+	width: 1rem;
+	height: 1rem;
+	text-indent: -10000px;
+}
+
+.markItUp .markItUpHeader > ul > li:first-child > a {
+	padding-left: 10px; /* idem texarea */
+}
+
+/* Boutons niveau 2 */
+
+/* FIME : indiquer les entrées possédant un menu déroulant */
+.markItUp .markItUpHeader ul .markItUpDropMenu > a {
+	/* background-image: url(img/menu.svg); */
+	/* background-repeat: no-repeat; */
+	/* background-position: right 0.25em center; */
+	/* background-color: inherit; */
+	/* padding-right: 1em; */
+}
+
+.markItUp .markItUpHeader ul .markItUpDropMenu ul {
+	display: none;
+	/* opacity: 0; */
+	/* pointer-events: none; */
+	/* transition: opacity 0.1s; */
+	position: absolute;
+	top: 3.15em;
+	width: 8rem;
+	z-index: 3;
+}
+
+.markItUp .markItUpHeader ul .markItUpDropMenu ul.expanded {
+	display: block;
+	/* opacity: 1; */
+	/* pointer-events: all; */
+	width: 12em; /* = 5 items par ligne */
+}
+
+.markItUp .markItUpHeader ul .markItUpDropMenu ul li {
+	float: left;
+	margin-right: 0;
+	background-color: white;
+}
+
+.markItUp .markItUpHeader ul .markItUpDropMenu ul a {
+	background-color: var(--spip-color-theme-lightest, hsla(0, 0%, 0%, 0.05));
+}
+.markItUp .markItUpHeader ul .markItUpDropMenu ul a:hover,
+.markItUp .markItUpHeader ul .markItUpDropMenu ul a:focus,
+.markItUp .markItUpHeader ul .markItUpDropMenu ul a:active {
+	background-color: var(--spip-color-theme-lighter, hsla(0, 0%, 0%, 0.15));
+}
+
+/* le padding rompt la continuite du hover sous IE7&8 */
+.lte8 .markItUp .markItUpHeader ul .markItUpDropMenu ul {
+	padding-top: 0;
+	border-top: 1px solid #ccc;
+}
+
+/* Boutons niveau 3 */
+
+.markItUp .markItUpHeader ul ul .markItUpDropMenu {
+	background: #F5F5F5 url(img/submenu.png) no-repeat 50% 50%;
+}
+
+.markItUp .markItUpHeader ul .separateur {}
+
+.markItUp .markItUpHeader ul ul .separateur {
+	margin: 0;
+	border: 0;
+}
+
+
+/* =======
+ * Editeur
+ * ======= */
+
+ .markItUp .markItUpEditor {
+	clear: both;
+	display: block;
+	overflow: auto;
+	margin: 0;
+}
+
+/* cas très particulier champs texte de spip */
+.markItUp .markItUpEditor#text_area {
+	height: 300px;
+	border-color: var(--spip-form-border-color, hsla(0, 0%, 0%, 0.15));
+	border-top: 0;
+}
+
+
+/* =======
+ * Prévisu
+ * ======= */
+
+
+ .markItUp .markItUpPreview {
+	clear: both;
+	border: 1px solid #ddd;
+	border-color: var(--spip-form-border-color, hsla(0, 0%, 0%, 0.15));
+	border-top: 0;
+	background: #fff;
+	overflow: auto;
+	padding: 1em;
+}
+
+/* correction des styles spip_formulaires appliques par defaut (grr) */
+.markItUp .preview p {
+	margin-bottom: 1em;
+}
+
+.markItUp .preview ul {
+	margin-bottom: 1em;
+	margin-top: .5em;
+}
+
+.markItUp .preview li {
+	border: none;
+	padding: 1px;
+}
+
+/* coloration code */
+.markItUp .preview .cadre ol,
+.markItUp .preview .cadre ul {
+	padding: .5em;
+}
+
+
+/* ==========
+ * Fullscreen
+ * ========== */
+
+
+.markItUp .markItUpContainer.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #DDD;
+	z-index: 1002; /* par dessus le bandeau nav */
+}
+
+.markItUp .fullscreen .markItUpHeader {
+	position: absolute;
+	top: 0;
+	right: 50%;
+	width: 50%;
+	max-width: 40em;
+	display: block !important;
+}
+
+.markItUp .fullscreen .markItUpEditor,
+.markItUp .fullscreen .markItUpPreview {
+	margin-top: 3.4em;
+	top: 0;
+	width: 50%;
+	max-width: 40em;
+	height: 95% !important;
+	display: block !important;
+	border: 0;
+}
+
+.markItUp .fullscreen .markItUpEditor {
+	position: absolute !important;
+	right: 50%;
+}
+
+.markItUp .fullscreen .markItUpPreview {
+	position: absolute;
+	left: 50%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-left: 1px solid #eee;
+	border-left-color: hsla(0, 0%, 0%, 0.1);
+}
+
+.markItUp .fullscreen .markItUpTabs {
+	position: absolute;
+	left: 50%;
+	width: 50%;
+	max-width: 40em;
+}
+
+.markItUp .fullscreen .markItUpTabs .previsuVoir,
+.markItUp .fullscreen .markItUpTabs .previsuEditer,
+.markItUp .fullscreen .markItUpFooter {
+	display: none;
+}
+
+.markItUp .markItUpTabs .fullscreen {
+	text-indent: -1000em;
+	text-align: left;
+	background-image: url(img/arrow_out.svg) !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 16px;
+}
+
+.markItUp .fullscreen .markItUpTabs .fullscreen {
+	background-image: url(img/arrow_in.svg) !important;
+}
+
+
+/* ====
+ * Pied
+ * ==== */
+
+ .markItUp .markItUpFooter {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+
+/* =======
+ * Poignée
+ * ======= */
+
+.markItUp .markItUpResizeHandle {
+	overflow: hidden;
+	width: 21px;
+	height: 6px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(img/handle.svg);
+	cursor: ns-resize;
+}

@@ -1,0 +1,206 @@
+.box_mediabox {
+	display: block;
+	margin:0;
+	padding:0;
+	width: auto;
+	height: auto;
+	background: none;
+	border:0;
+}
+.box_mediabox:before {
+	content:'';
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #000;
+	opacity:0.9;
+}
+@media(min-width: 500px) {
+	.box_mediabox .lity-container {
+		max-width: 90%;
+		max-height: 90%;
+	}
+}
+@media(max-width: 499.9px) {
+	.box_mediabox .lity-container {
+		max-width: 100% !important;
+		max-height: 100% !important;
+	}
+}
+.box_mediabox.lity-height-set .lity-content {
+	height: 100%;
+	min-height: 0 !important;
+}
+
+/* Box image */
+.box_mediabox.lity-image .lity-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box_mediabox.lity-image .lity-image-figure {
+	display: block;
+	margin: 0;
+}
+.box_mediabox.lity-image .lity-image-figure::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-color: transparent;
+	transition: background-color 0.25s ease-in 0.1s;
+}
+.box_mediabox.lity-image.lity-ready .lity-image-figure::before {
+	background-color: #fff;
+}
+
+/* Caption Repliable */
+.lity-image-caption.min,.lity-image-caption.expanded {
+	cursor: pointer;
+}
+.lity-image-caption.min .lity-image-caption-text {
+	max-height: 4.5rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.lity-image-caption.min .spip_doc_titre,
+.lity-image-caption.min .spip_doc_descriptif,
+.lity-image-caption.min .spip_doc_credits {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.lity-image-caption.min .spip_doc_descriptif:not(:first-child),
+.lity-image-caption.min .spip_doc_credits:not(:first-child) {
+	display: none;
+}
+
+
+/* Box inline + ajax */
+.box_mediabox.lity-inline .lity-content,
+.box_mediabox.lity-ajax .lity-content {
+	background: #fff;
+}
+
+.box_mediabox.lity-inline .lity-content>*,
+.box_mediabox.lity-ajax .lity-content-inner {
+	overflow: auto;
+	padding: 1rem;
+}
+
+/* Box iframe */
+.box_mediabox.lity-iframe .lity-iframe-container iframe {
+	background: #fff;
+}
+.box_mediabox.lity-height-set.lity-iframe .lity-iframe-container {
+	height: 100%;
+	padding: 0;
+	transform: none;
+}
+
+/* antiscroll */
+.lity-active body {
+	height: auto !important;
+	overflow: hidden !important;
+}
+
+/* Loader */
+.box_mediabox.lity-loading .lity-content {
+	background: transparent;
+}
+.box_mediabox.lity-loading .lity-content:after {
+	display: none;
+}
+.lity-loading .box-loading {
+  display: block;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-top: -2.5em;
+	margin-left: -2.5em;
+  width: 5em;
+  height: 5em;
+}
+.lity-loading .box-loading:after {
+	content: " ";
+	display: block;
+	width: 4em;
+	height: 4em;
+	margin: 0.5em;
+	border-radius: 50%;
+	border: 0.375em solid #000;
+	border-color: #000 #fff #000 #fff;
+	opacity: 0.5;
+	animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Progress bar */
+.lity-group-progress-bar {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 0.33em;
+}
+.lity-slideshow .lity-group-progress-bar {
+	display: block;
+}
+.lity-group-progress-bar-status {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	top:0;
+	background: #888;
+}
+
+.lity-no-transition-on-open .lity-content,
+.lity-no-transition .lity-content {
+	transition: none !important;
+}
+.lity-no-transition-on-open-none.lity-loading .lity-content,
+.lity-no-transition.lity-loading .lity-content,
+.lity-no-transition.lity-closed .lity-content {
+	-webkit-transform: none !important;
+	-ms-transform: none !important;
+	-o-transform: none !important;
+	transform: none !important;
+}
+
+.lity-transition-on-open-slide-from-right .lity-content,
+.lity-transition-on-open-slide-from-left .lity-content {
+	-webkit-transform: scale(1) translateX(0);
+	-ms-transform: scale(1) translateX(0);
+	-o-transform: scale(1) translateX(0);
+	transform: scale(1) translateX(0);
+}
+
+.lity-transition-on-open-slide-from-right.lity-loading .lity-content {
+	-webkit-transform: scale(1) translateX(50vw);
+	-ms-transform: scale(1) translateX(50vw);
+	-o-transform: scale(1) translateX(50vw);
+	transform: scale(1) translateX(50vw);
+}
+
+.lity-transition-on-open-slide-from-left.lity-loading .lity-content {
+	-webkit-transform: scale(1) translateX(-50vw);
+	-ms-transform: scale(1) translateX(-50vw);
+	-o-transform: scale(1) translateX(-50vw);
+	transform: scale(1) translateX(-50vw);
+}
