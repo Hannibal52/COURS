@@ -1,0 +1,21 @@
+/*
+* Surchargez ce fichier dans votre thème pour personnaliser le module
+* https://www.phpboost.com/wiki/structure-d-un-theme#paragraph-le-repertoire-modules
+*/
+
+#mini-search-form {
+	margin: 1em 1em 1em 0;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+@media (min-width: 769px) {
+	#mini-search-form {
+		margin: 0.618em 1.618em 0.618em 0;
+	}
+}
+
+#mini-search-form button {
+	margin: 0 0 0.1618em -0.309em;
+	padding: 0.309em 0.618em;
+}

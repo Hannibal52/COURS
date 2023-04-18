@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://routeur.clemanet.com/routage-ospf-cisco.php -->
+<html lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Configuration du routage ospf - routeur Cisco</title>
+    <!--  feuille de style -->
+    <link rel="stylesheet" type="text/css" href="./pspf_files/style.css">
+    <!-- balise meta -->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+    <meta name="keywords" content="routeur, IP, configuration, routage, passerelle, statique, formation, table de routage">
+    <meta name="description" content="Configuration de base d'un routeur Cisco">
+    <meta name="robot" content="index">
+    <link rel="icon" type="image/png" href="https://routeur.clemanet.com/favicon.png">
+    <script src="./pspf_files/f%284%29.txt"></script>
+    <script src="./pspf_files/f%285%29.txt" id="google_shimpl"></script>
+    <script type="text/javascript" async="" src="./pspf_files/ga.js.t%C3%A9l%C3%A9chargement"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21432235-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> <script>(function(){/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+'use strict';var g=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}},l=this||self,m=/^[\w+/_-]+[=]{0,2}$/,p=null,q=function(){},r=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";
+if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},u=function(a,b){function c(){}c.prototype=b.prototype;a.prototype=new c;a.prototype.constructor=a};var v=function(a,b){Object.defineProperty(l,a,{configurable:!1,get:function(){return b},set:q})};var y=function(a,b){this.b=a===w&&b||"";this.a=x},x={},w={};var aa=function(a,b){a.src=b instanceof y&&b.constructor===y&&b.a===x?b.b:"type_error:TrustedResourceUrl";if(null===p)b:{b=l.document;if((b=b.querySelector&&b.querySelector("script[nonce]"))&&(b=b.nonce||b.getAttribute("nonce"))&&m.test(b)){p=b;break b}p=""}b=p;b&&a.setAttribute("nonce",b)};var z=function(){return Math.floor(2147483648*Math.random()).toString(36)+Math.abs(Math.floor(2147483648*Math.random())^+new Date).toString(36)};var A=function(a,b){b=String(b);"application/xhtml+xml"===a.contentType&&(b=b.toLowerCase());return a.createElement(b)},B=function(a){this.a=a||l.document||document};B.prototype.appendChild=function(a,b){a.appendChild(b)};var C=function(a,b,c,d,e,f){try{var k=a.a,h=A(a.a,"SCRIPT");h.async=!0;aa(h,b);k.head.appendChild(h);h.addEventListener("load",function(){e();d&&k.head.removeChild(h)});h.addEventListener("error",function(){0<c?C(a,b,c-1,d,e,f):(d&&k.head.removeChild(h),f())})}catch(n){f()}};var ba=l.atob("aHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vaW1hZ2VzL2ljb25zL21hdGVyaWFsL3N5c3RlbS8xeC93YXJuaW5nX2FtYmVyXzI0ZHAucG5n"),ca=l.atob("WW91IGFyZSBzZWVpbmcgdGhpcyBtZXNzYWdlIGJlY2F1c2UgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlIGlzIGludGVyZmVyaW5nIHdpdGggdGhpcyBwYWdlLg=="),da=l.atob("RGlzYWJsZSBhbnkgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlLCB0aGVuIHJlbG9hZCB0aGlzIHBhZ2Uu"),ea=function(a,b,c){this.b=a;this.f=new B(this.b);this.a=null;this.c=[];this.g=!1;this.i=b;this.h=c},F=function(a){if(a.b.body&&!a.g){var b=
+function(){D(a);l.setTimeout(function(){return E(a,3)},50)};C(a.f,a.i,2,!0,function(){l[a.h]||b()},b);a.g=!0}},D=function(a){for(var b=G(1,5),c=0;c<b;c++){var d=H(a);a.b.body.appendChild(d);a.c.push(d)}b=H(a);b.style.bottom="0";b.style.left="0";b.style.position="fixed";b.style.width=G(100,110).toString()+"%";b.style.zIndex=G(2147483544,2147483644).toString();b.style["background-color"]=I(249,259,242,252,219,229);b.style["box-shadow"]="0 0 12px #888";b.style.color=I(0,10,0,10,0,10);b.style.display=
+"flex";b.style["justify-content"]="center";b.style["font-family"]="Roboto, Arial";c=H(a);c.style.width=G(80,85).toString()+"%";c.style.maxWidth=G(750,775).toString()+"px";c.style.margin="24px";c.style.display="flex";c.style["align-items"]="flex-start";c.style["justify-content"]="center";d=A(a.f.a,"IMG");d.className=z();d.src=ba;d.style.height="24px";d.style.width="24px";d.style["padding-right"]="16px";var e=H(a),f=H(a);f.style["font-weight"]="bold";f.textContent=ca;var k=H(a);k.textContent=da;J(a,
+e,f);J(a,e,k);J(a,c,d);J(a,c,e);J(a,b,c);a.a=b;a.b.body.appendChild(a.a);b=G(1,5);for(c=0;c<b;c++)d=H(a),a.b.body.appendChild(d),a.c.push(d)},J=function(a,b,c){for(var d=G(1,5),e=0;e<d;e++){var f=H(a);b.appendChild(f)}b.appendChild(c);c=G(1,5);for(d=0;d<c;d++)e=H(a),b.appendChild(e)},G=function(a,b){return Math.floor(a+Math.random()*(b-a))},I=function(a,b,c,d,e,f){return"rgb("+G(Math.max(a,0),Math.min(b,255)).toString()+","+G(Math.max(c,0),Math.min(d,255)).toString()+","+G(Math.max(e,0),Math.min(f,
+255)).toString()+")"},H=function(a){a=A(a.f.a,"DIV");a.className=z();return a},E=function(a,b){0>=b||null!=a.a&&0!=a.a.offsetHeight&&0!=a.a.offsetWidth||(fa(a),D(a),l.setTimeout(function(){return E(a,b-1)},50))},fa=function(a){var b=a.c;var c="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];b=c?c.call(b):{next:g(b)};for(c=b.next();!c.done;c=b.next())(c=c.value)&&c.parentNode&&c.parentNode.removeChild(c);a.c=[];(b=a.a)&&b.parentNode&&b.parentNode.removeChild(b);a.a=null};var ia=function(a,b,c,d,e){var f=ha(c),k=function(n){n.appendChild(f);l.setTimeout(function(){f?(0!==f.offsetHeight&&0!==f.offsetWidth?b():a(),f.parentNode&&f.parentNode.removeChild(f)):a()},d)},h=function(n){document.body?k(document.body):0<n?l.setTimeout(function(){h(n-1)},e):b()};h(3)},ha=function(a){var b=document.createElement("div");b.className=a;b.style.width="1px";b.style.height="1px";b.style.position="absolute";b.style.left="-10000px";b.style.top="-10000px";b.style.zIndex="-10000";return b};var K={},L=null;var M=function(){},N="function"==typeof Uint8Array,O=function(a,b){a.b=null;b||(b=[]);a.j=void 0;a.f=-1;a.a=b;a:{if(b=a.a.length){--b;var c=a.a[b];if(!(null===c||"object"!=typeof c||Array.isArray(c)||N&&c instanceof Uint8Array)){a.g=b-a.f;a.c=c;break a}}a.g=Number.MAX_VALUE}a.i={}},P=[],Q=function(a,b){if(b<a.g){b+=a.f;var c=a.a[b];return c===P?a.a[b]=[]:c}if(a.c)return c=a.c[b],c===P?a.c[b]=[]:c},R=function(a,b,c){a.b||(a.b={});if(!a.b[c]){var d=Q(a,c);d&&(a.b[c]=new b(d))}return a.b[c]};
+M.prototype.h=N?function(){var a=Uint8Array.prototype.toJSON;Uint8Array.prototype.toJSON=function(){var b;void 0===b&&(b=0);if(!L){L={};for(var c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split(""),d=["+/=","+/","-_=","-_.","-_"],e=0;5>e;e++){var f=c.concat(d[e].split(""));K[e]=f;for(var k=0;k<f.length;k++){var h=f[k];void 0===L[h]&&(L[h]=k)}}}b=K[b];c=[];for(d=0;d<this.length;d+=3){var n=this[d],t=(e=d+1<this.length)?this[d+1]:0;h=(f=d+2<this.length)?this[d+2]:0;k=n>>2;n=(n&
+3)<<4|t>>4;t=(t&15)<<2|h>>6;h&=63;f||(h=64,e||(t=64));c.push(b[k],b[n],b[t]||"",b[h]||"")}return c.join("")};try{return JSON.stringify(this.a&&this.a,S)}finally{Uint8Array.prototype.toJSON=a}}:function(){return JSON.stringify(this.a&&this.a,S)};var S=function(a,b){return"number"!==typeof b||!isNaN(b)&&Infinity!==b&&-Infinity!==b?b:String(b)};M.prototype.toString=function(){return this.a.toString()};var T=function(a){O(this,a)};u(T,M);var U=function(a){O(this,a)};u(U,M);var ja=function(a,b){this.c=new B(a);var c=R(b,T,5);c=new y(w,Q(c,4)||"");this.b=new ea(a,c,Q(b,4));this.a=b},ka=function(a,b,c,d){b=new T(b?JSON.parse(b):null);b=new y(w,Q(b,4)||"");C(a.c,b,3,!1,c,function(){ia(function(){F(a.b);d(!1)},function(){d(!0)},Q(a.a,2),Q(a.a,3),Q(a.a,1))})};var la=function(a,b){V(a,"internal_api_load_with_sb",function(c,d,e){ka(b,c,d,e)});V(a,"internal_api_sb",function(){F(b.b)})},V=function(a,b,c){a=l.btoa(a+b);v(a,c)},W=function(a,b,c){for(var d=[],e=2;e<arguments.length;++e)d[e-2]=arguments[e];e=l.btoa(a+b);e=l[e];if("function"==r(e))e.apply(null,d);else throw Error("API not exported.");};var X=function(a){O(this,a)};u(X,M);var Y=function(a){this.h=window;this.a=a;this.b=Q(this.a,1);this.f=R(this.a,T,2);this.g=R(this.a,U,3);this.c=!1};Y.prototype.start=function(){ma();var a=new ja(this.h.document,this.g);la(this.b,a);na(this)};
+var ma=function(){var a=function(){if(!l.frames.googlefcPresent)if(document.body){var b=document.createElement("iframe");b.style.display="none";b.style.width="0px";b.style.height="0px";b.style.border="none";b.style.zIndex="-1000";b.style.left="-1000px";b.style.top="-1000px";b.name="googlefcPresent";document.body.appendChild(b)}else l.setTimeout(a,5)};a()},na=function(a){var b=Date.now();W(a.b,"internal_api_load_with_sb",a.f.h(),function(){var c;var d=a.b,e=l[l.btoa(d+"loader_js")];if(e){e=l.atob(e);
+e=parseInt(e,10);d=l.btoa(d+"loader_js").split(".");var f=l;d[0]in f||"undefined"==typeof f.execScript||f.execScript("var "+d[0]);for(;d.length&&(c=d.shift());)d.length?f[c]&&f[c]!==Object.prototype[c]?f=f[c]:f=f[c]={}:f[c]=null;c=Math.abs(b-e);c=1728E5>c?0:c}else c=-1;0!=c&&(W(a.b,"internal_api_sb"),Z(a,Q(a.a,6)))},function(c){Z(a,c?Q(a.a,4):Q(a.a,5))})},Z=function(a,b){a.c||(a.c=!0,a=new l.XMLHttpRequest,a.open("GET",b,!0),a.send())};(function(a,b){l[a]=function(c){for(var d=[],e=0;e<arguments.length;++e)d[e-0]=arguments[e];l[a]=q;b.apply(null,d)}})("__d3lUW8vwsKlB__",function(a){"function"==typeof window.atob&&(a=window.atob(a),a=new X(a?JSON.parse(a):null),(new Y(a)).start())});}).call(this);
+
+window.__d3lUW8vwsKlB__("WyIyN2Y2NTFkZTVkZWNkNzk3IixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2YvQUdTS1d4VWxFb2RPTF81R2F2RkJyUmE2SXI1M0RScmVNUWswaFpDVktsWnpwSWVONkE5MFhET2RVbF9fR3VrS08tWXFtclVGMllMbXAxRXZkeVgzaVpLbTRQb1x1MDAzZCJdCixbMjAsImRpdi1ncHQtYWQiLDEwMCwiTWpkbU5qVXhaR1UxWkdWalpEYzVOd1x1MDAzZFx1MDAzZCIsW251bGwsbnVsbCxudWxsLCJodHRwczovL3d3dy5nc3RhdGljLmNvbS8wZW1uL2YvcC8yN2Y2NTFkZTVkZWNkNzk3LmpzP3VzcXBcdTAwM2RDQXMiXQpdCiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hYZmlUbUlYVDBNMlM0WGd6SkFiY2tNUXlyd3ZaaTQtZ3l6bms2QjhFWmpXYmZtNklUYU9nUFJ4U0t3em9KVnRBZXR6UDhQbWMyNkxxZ0hOUUlTP2FiXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2wvQUdTS1d4VktJQTJ3V19nSmVBMGpObmNiWkpSRWhIdlVUeF9Ucnlhb3RqME9sWkJLc0RfTkpPWE4xRk1BcURTNnFYSzFHZHpjSS1xZEsyRzFxTG5hVnZucD9hYlx1MDAzZDJcdTAwMjZzYmZcdTAwM2QxIiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hWaHQ5RjJpblV5cWVXX0toVDRtRFMtOFZsN2UwaWc0T3ZxVGFaNENDakg1VlNLRDV2dUpyVXlaQWkxbFc1cFFUcHNydnhlVnVYRC1yQUo4aGNJP3NiZlx1MDAzZDIiXQo=");</script>
+    <script async="" src="./pspf_files/AGSKWxUlEodOL_5GavFBrRa6Ir53DRreMQk0hZCVKlZzpIeN6A90XDOdUl__GukKO-YqmrUF2YLmp1EvdyX3iZKm4Po="></script>
+    <meta http-equiv="origin-trial" content="A0VQgOQvA+kwCj319NCwgf8+syUgEQ8/LLpB8RxxlRC3AkJ9xx8IAvVuQ/dcwy0ok7sGKufLLu6WhsXbQR9/UwwAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A6kRo9zXJhOvsR4D/VeZ9CiApPAxnOGzBkW88d8eIt9ex2oOzlX+AoUk/BS50Y9Ysy2jwyHR49Mb7XwP+l9yygIAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A3mbHZoS4VJtJ8j1aE8+Z9vaGf/oMV1eTNIWMrvGqWgNnOmvaxnRGliqKIZU2eiTzCj5Qpz8B1/UTTLuony5bAAAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A0VQgOQvA+kwCj319NCwgf8+syUgEQ8/LLpB8RxxlRC3AkJ9xx8IAvVuQ/dcwy0ok7sGKufLLu6WhsXbQR9/UwwAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A6kRo9zXJhOvsR4D/VeZ9CiApPAxnOGzBkW88d8eIt9ex2oOzlX+AoUk/BS50Y9Ysy2jwyHR49Mb7XwP+l9yygIAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A3mbHZoS4VJtJ8j1aE8+Z9vaGf/oMV1eTNIWMrvGqWgNnOmvaxnRGliqKIZU2eiTzCj5Qpz8B1/UTTLuony5bAAAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <link rel="preload" href="./pspf_files/f%286%29.txt" as="script">
+    <script type="text/javascript" src="./pspf_files/f%286%29.txt"></script>
+    <link rel="preload" href="./pspf_files/f%287%29.txt" as="script">
+    <script type="text/javascript" src="./pspf_files/f%287%29.txt"></script>
+    <script async="" src="./pspf_files/AGSKWxVSyBt6BFpkNyQbpvSw1SEjjBH6Dz4DwyzAE-dgptjWABQwQ7mbA0LrTjuWlp8ctqOi9PappkYZIyZMzvI11xg="></script>
+    <script async="" src="./pspf_files/AGSKWxW2j4Wgv1zl9n6FtlSL38cMXp2O2wbdq_dLpTfCqmz6g3Zr1gkHbHgYW0zCCv5wmzx_2Rym5gIQ9DVJRaxNCSffWBB2-h5_9398s351Vovxs4J6pYreo-zLb9udYH_H_gR9rX0gyw=="></script>
+    <script async="" src="./pspf_files/AGSKWxWb0hsSG1sE_bLB3JhpbLZ6eaNCZf4XyJUFoa0Yf6TAX9CuEfNxFZwj6cK4VInSVIA1kBxPC4lA4Axjy91Te1nlzb1khtgK6BD3tV1mrCXKUChWkDjMSdlgfyA3N3bjXWt7oriJCA=="></script>
+  </head>
+  <body> &lt;/center&gt;<a name="haut"></a>
+    <div class="conteneur" style="height: auto !important;">
+      <div class="smenu2">
+        <ul class="ligne">
+          <li class="ligne">
+            <div class="smenu3"><img src="./pspf_files/bouton-menu.png" alt="www.clemanet.com"></div>
+            <ul>
+              <li><a href="https://routeur.clemanet.com/index.php">Connexion au
+                  routeur</a></li>
+              <li><a href="https://routeur.clemanet.com/enregistrer-configuration.php">Enregistrer
+                  la configuration</a></li>
+              <li><a href="https://routeur.clemanet.com/configuration-base-routeur-cisco.php">Configuration
+                  de base</a></li>
+              <li><a href="https://routeur.clemanet.com/configuration-ssh.php">Configurer
+                  ssh</a></li>
+              <li><a href="https://routeur.clemanet.com/cisco-port-routeur.php">Configuration
+                  des ports</a></li>
+              <li><a href="https://routeur.clemanet.com/mise-a-jour-cisco.php">Mise
+                  à jour</a></li>
+              <li><a href="https://routeur.clemanet.com/syslog-snmp-ntp-routeur-cisco.php">Configuration
+                  des services syslog, snmp, ntp</a></li>
+              <li><a href="https://routeur.clemanet.com/commande-diagnostique-routeur.php">Quelques
+                  commandes de diagnostique</a></li>
+              <li><a href="https://routeur.clemanet.com/routage-statique-cisco.php">Configuration
+                  du routage statique</a></li>
+              <li><a href="https://routeur.clemanet.com/routage-ospf-cisco.php">Configuration
+                  du routage ospf</a></li>
+              <li><a href="https://routeur.clemanet.com/routage-cisco-intervlan.php">Configuration
+                  du routage intervlan</a></li>
+              <li><a href="https://routeur.clemanet.com/acl-cisco.php">Configuration
+                  des ACLs</a></li>
+              <li><a href="https://routeur.clemanet.com/hsrp-cisco.php">Configuration
+                  du protocole HSRP</a></li>
+              <li><a href="https://routeur.clemanet.com/cisco-dhcp.php">Configuration
+                  du protocole DHCP</a></li>
+              <li><a href="https://routeur.clemanet.com/cisco-ipv6.php">Introduction
+                  routage IPv6</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="menu2">
+        <h1>Configuration du routage ospf - routeur Cisco</h1>
+        <center> <iframe src="https://www.youtube.com/embed/P_oAKU78OXY" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen="" height="315" frameborder="0" width="560"></iframe>
+        </center>
+      </div>
+      <div class="mgauche"> <br>
+      </div>
+      <div class="droite"> <br>
+        <br>
+      </div>
+      <a name="haut"></a>
+      <div class="corps" style="height: auto !important;">
+        <div class="corps_pad" style="height: auto !important;"> Comment
+          configurer le protocole OSPF sur un routeur<br>
+          <h3>Configuration IP de l'interface de loopback</h3>
+          <div class="console"><code> R1(config)#interface loopback 0<br>
+              R1(config-if)#ip address 172.16.0.1 255.255.255.0<br>
+            </code></div>
+          <h3>Activation du protocole de routage OSPF et des réseaux participant
+            aux annonces</h3>
+          Le numéro du processus ospf est 100. L'adresse IP de l'interface
+          connectée à un autre routeur est 10.0.3.1/24 et le numéro de l'aire
+          est 0.
+          <div class="console"><code> R1(config)#router ospf 100<br>
+              R1(config-router)#network 10.0.3.0 0.0.0.255 area 0<br>
+              R1(config-router)#network 10.0.0.0 0.0.0.255 area 0<br>
+            </code></div>
+          <h3>Affichage des informations concernant ospf</h3>
+          <div class="console"><code> R1#show ip ospf<br>
+              Routing Process "ospf 100" with ID 172.16.0.1<br>
+              Start time: 00:18:40.612, Time elapsed: 00:08:28.352<br>
+              Supports only single TOS(TOS0) routes<br>
+              Supports opaque LSA<br>
+              Supports Link-local Signaling (LLS)<br>
+              Supports area transit capability<br>
+              Router is not originating router-LSAs with maximum metric<br>
+              Initial SPF schedule delay 5000 msecs<br>
+              Minimum hold time between two consecutive SPFs 10000 msecs<br>
+              Maximum wait time between two consecutive SPFs 10000 msecs<br>
+            </code></div>
+          <h3>Afficher les voisins ospf</h3>
+          <div class="console"><code> R1#show ip ospf neighbor<br>
+              <br>
+              Neighbor ID Pri State Dead Time Address Interface<br>
+              172.16.0.3 1 FULL/BDR 00:00:39 10.0.3.2 FastEthernet2/0<br>
+              172.16.0.2 1 FULL/DR 00:00:39 10.0.0.2 FastEthernet1/0<br>
+              R1#<br>
+              R1#<br>
+              R1#show ip ospf neighbor detail<br>
+              Neighbor 172.16.0.3, interface address 10.0.3.2<br>
+              In the area 0 via interface FastEthernet2/0<br>
+              Neighbor priority is 1, State is FULL, 34 state changes<br>
+              DR is 10.0.3.1 BDR is 10.0.3.2<br>
+              Options is 0x12 in Hello (E-bit, L-bit)<br>
+              Options is 0x52 in DBD (E-bit, L-bit, O-bit)<br>
+              LLS Options is 0x1 (LR)<br>
+              Dead timer due in 00:00:35<br>
+              Neighbor is up for 00:11:57<br>
+            </code></div>
+          <h3>Redistribution de route dans ospf</h3>
+          Redistribution des routes connectées:<br>
+          <div class="console"><code> R2(config)#router ospf 100<br>
+              R2(config-router)#redistribute connected<br>
+            </code></div>
+          <h3>Redistribution d'une route par défaut</h3>
+          Configuration d'une route par défaut puis redistribution dans ospf:<br>
+          <div class="console"><code> R4(config)#ip route 0.0.0.0 0.0.0.0
+              192.168.3.2<br>
+              R1(config)#router ospf 100<br>
+              R1(config-router)#redistribute static<br>
+              R1(config-router)#default-information originate<br>
+            </code></div>
+          <h3>Authentification</h3>
+          <div class="console"><code> R1(config)#router ospf 100<br>
+              R1(config-router)#area 0 authentication message-digest<br>
+              R1(config-router)#exit<br>
+              R1(config)#int fa 1/0<br>
+              R1(config-if)#ip ospf message-digest-key 1 md5 passworD<br>
+              R1(config-if)#int fa 2/0<br>
+              R1(config-if)#ip ospf message-digest-key 1 md5 passworD<br>
+              R1(config-if)#<br>
+            </code></div>
+          <h3>Exemple de configuration OSPF</h3>
+          <img class="format" src="./pspf_files/routage-ospf.png" alt="exemple routage ospf"
+            title="exemple routage ospf">
+          <h4>Extrait du fichier de configuration</h4>
+          Routeur R1<br>
+          <div class="console"><code> R1#sh run<br>
+              Building configuration...<br>
+              <br>
+              interface Loopback0<br>
+              ip address 172.16.0.1 255.255.255.0<br>
+              !<br>
+              interface FastEthernet1/0<br>
+              ip address 10.0.0.1 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              interface FastEthernet1/1<br>
+              ip address 192.168.3.1 255.255.255.0<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              interface FastEthernet2/0<br>
+              ip address 10.0.3.1 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              router ospf 100<br>
+              log-adjacency-changes<br>
+              area 0 authentication message-digest<br>
+              redistribute static<br>
+              network 10.0.0.0 0.0.0.255 area 0<br>
+              network 10.0.3.0 0.0.0.255 area 0<br>
+              default-information originate<br>
+              !<br>
+              ip forward-protocol nd<br>
+              ip route 0.0.0.0 0.0.0.0 192.168.3.2<br>
+            </code></div>
+          Routeur R2<br>
+          <div class="console"><code> R2#sh run<br>
+              Building configuration...<br>
+              <br>
+              interface Loopback0<br>
+              ip address 172.16.0.2 255.255.255.0<br>
+              !<br>
+              interface FastEthernet1/0<br>
+              ip address 192.168.2.1 255.255.255.0<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              interface FastEthernet1/1<br>
+              ip address 10.0.0.2 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              interface FastEthernet2/0<br>
+              ip address 10.0.2.2 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              router ospf 100<br>
+              log-adjacency-changes<br>
+              area 0 authentication message-digest<br>
+              redistribute connected<br>
+              network 10.0.0.0 0.0.0.255 area 0<br>
+              network 10.0.2.0 0.0.0.255 area 0<br>
+              !<br>
+            </code></div>
+          Routeur R3<br>
+          <div class="console"><code> R3#sh run<br>
+              Building configuration...<br>
+              <br>
+              interface Loopback0<br>
+              ip address 172.16.0.3 255.255.255.0<br>
+              !<br>
+              interface FastEthernet1/0<br>
+              ip address 10.0.3.2 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              interface FastEthernet1/1<br>
+              ip address 10.0.2.1 255.255.255.0<br>
+              ip ospf message-digest-key 1 md5 passworD<br>
+              duplex auto<br>
+              speed auto<br>
+              !<br>
+              router ospf 100<br>
+              log-adjacency-changes<br>
+              area 0 authentication message-digest<br>
+              network 10.0.2.0 0.0.0.255 area 0<br>
+              network 10.0.3.0 0.0.0.255 area 0<br>
+            </code></div>
+          <h4>Table de routage des routeurs</h4>
+          Routeur R1<br>
+          <div class="console"><code> R1#sh ip route<br>
+              Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP<br>
+              D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area<br>
+              N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2<br>
+              E1 - OSPF external type 1, E2 - OSPF external type 2<br>
+              i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS
+              level-2<br>
+              ia - IS-IS inter area, * - candidate default, U - per-user static
+              route<br>
+              o - ODR, P - periodic downloaded static route<br>
+              <br>
+              Gateway of last resort is 192.168.3.2 to network 0.0.0.0<br>
+              <br>
+              172.16.0.0/24 is subnetted, 1 subnets<br>
+              C 172.16.0.0 is directly connected, Loopback0<br>
+              10.0.0.0/24 is subnetted, 3 subnets<br>
+              O 10.0.2.0 [110/2] via 10.0.0.2, 00:03:24, FastEthernet1/0<br>
+              C 10.0.3.0 is directly connected, FastEthernet2/0<br>
+              C 10.0.0.0 is directly connected, FastEthernet1/0<br>
+              O E2 192.168.2.0/24 [110/20] via 10.0.0.2, 00:03:24,
+              FastEthernet1/0<br>
+              C 192.168.3.0/24 is directly connected, FastEthernet1/1<br>
+              S* 0.0.0.0/0 [1/0] via 192.168.3.2<br>
+              R1#<br>
+            </code></div>
+          Routeur R2<br>
+          <div class="console"><code> R2#sh ip route<br>
+              Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP<br>
+              D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area<br>
+              N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2<br>
+              E1 - OSPF external type 1, E2 - OSPF external type 2<br>
+              i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS
+              level-2<br>
+              ia - IS-IS inter area, * - candidate default, U - per-user static
+              route<br>
+              o - ODR, P - periodic downloaded static route<br>
+              <br>
+              Gateway of last resort is 10.0.0.1 to network 0.0.0.0<br>
+              <br>
+              172.16.0.0/24 is subnetted, 1 subnets<br>
+              C 172.16.0.0 is directly connected, Loopback0<br>
+              10.0.0.0/24 is subnetted, 3 subnets<br>
+              C 10.0.2.0 is directly connected, FastEthernet2/0<br>
+              O 10.0.3.0 [110/2] via 10.0.2.1, 00:07:29, FastEthernet2/0<br>
+              [110/2] via 10.0.0.1, 00:00:08, FastEthernet1/1<br>
+              C 10.0.0.0 is directly connected, FastEthernet1/1<br>
+              C 192.168.2.0/24 is directly connected, FastEthernet1/0<br>
+              O*E2 0.0.0.0/0 [110/1] via 10.0.0.1, 00:00:57, FastEthernet1/1<br>
+              R2#<br>
+            </code></div>
+          Routeur R3<br>
+          <div class="console"><code> R3#sh ip route<br>
+              Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP<br>
+              D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area<br>
+              N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2<br>
+              E1 - OSPF external type 1, E2 - OSPF external type 2<br>
+              i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS
+              level-2<br>
+              ia - IS-IS inter area, * - candidate default, U - per-user static
+              route<br>
+              o - ODR, P - periodic downloaded static route<br>
+              <br>
+              Gateway of last resort is 10.0.2.2 to network 0.0.0.0<br>
+              <br>
+              172.16.0.0/24 is subnetted, 1 subnets<br>
+              C 172.16.0.0 is directly connected, Loopback0<br>
+              10.0.0.0/24 is subnetted, 3 subnets<br>
+              C 10.0.2.0 is directly connected, FastEthernet1/1<br>
+              C 10.0.3.0 is directly connected, FastEthernet1/0<br>
+              O 10.0.0.0 [110/2] via 10.0.2.2, 00:04:10, FastEthernet1/1<br>
+              O E2 192.168.2.0/24 [110/20] via 10.0.2.2, 00:20:34,
+              FastEthernet1/1<br>
+              O*E2 0.0.0.0/0 [110/1] via 10.0.2.2, 00:01:43, FastEthernet1/1<br>
+              R3#<br>
+            </code></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

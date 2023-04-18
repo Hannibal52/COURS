@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus -->
+<html prefix="og: http://ogp.me/ns#" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>find : rechercher et bien plus .... - Wiki - Wiki</title>
+    <meta name="description" content="
+Introductionfind est un outil de recherche disposant d'un grand nombre d'options. Cette commande peut également enchaîner des...">
+    <meta name="generator" content="PHPBoost">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Linuxtricks.fr">
+    <meta property="og:locale" content="fr">
+    <meta property="og:title" content="find : rechercher et bien plus .... - Wiki">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="
+Introductionfind est un outil de recherche disposant d'un grand nombre d'options. Cette commande peut également enchaîner des...">
+    <link rel="stylesheet" href="./searchcmd_files/default.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/font-awesome.css">
+    <link rel="stylesheet" href="./searchcmd_files/font-awesome-animation.css">
+    <link rel="stylesheet" href="./searchcmd_files/lightcase.css">
+    <link rel="stylesheet" href="./searchcmd_files/design.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./searchcmd_files/content.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/table.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/form.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/global.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/cssmenu.css" type="text/css"
+      media="screen">
+    <link rel="stylesheet" href="./searchcmd_files/connect_mini.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/online.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/poll_mini.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/search_mini.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/bbcode.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/themeswitcher.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/ReCaptcha.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/SocialNetworks.css" type="text/css"
+      media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/user.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/upload.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./searchcmd_files/wiki.css" type="text/css" media="screen, print">
+    <link rel="shortcut icon" href="https://www.linuxtricks.fr/lt-favicon-2015.ico"
+      type="image/vnd.microsoft.icon">
+  </head>
+  <body itemscope="itemscope" itemtype="http://schema.org/WebPage">
+    <h1 itemprop="name">find : rechercher et bien plus ....</h1>
+    <div id="article-wiki-198" class="article-wiki">
+      <div class="elements-container columns-2">
+        <div class="spacer"></div>
+      </div>
+      <div class="wiki-tools-container"> </div>
+      <div class="spacer"></div>
+      <div class="content">
+        <div class="wiki-sticky">
+          <ol class="wiki-list wiki-list-1">
+            <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-introduction">Introduction</a></li>
+            <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-utilisation">Utilisation</a>
+              <ol class="wiki-list wiki-list-2">
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-utilisation-de-base">Utilisation
+                    de base</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-eviter-les-erreurs">Éviter
+                    les erreurs</a></li>
+              </ol>
+            </li>
+            <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-utilisation-avancee">Utilisation
+                avancée</a>
+              <ol class="wiki-list wiki-list-2">
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-recherche-par-type-de-fichier">Recherche
+                    par type de « fichier »</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-recherche-par-taille">Recherche
+                    par taille</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-recherche-par-date-d-acces">Recherche
+                    par date d'accès</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-rechercher-par-utilisateur">Rechercher
+                    par utilisateur </a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-appeler-une-commande">Appeler
+                    une commande</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-lister-les-fichiers-et-dossiers-vides">Lister
+                    les fichiers et dossiers vides</a></li>
+                <li><a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#paragraph-lister-les-dossiers-en-fonction-de-permissions">Lister
+                    les dossiers en fonction de permissions</a></li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+        <div class="spacer"></div>
+        <p style="text-align: center;"><img src="./searchcmd_files/find.png" alt="find"
+            title="find"></p>
+        <br>
+        <br>
+        <h2 class="formatter-title wiki-paragraph-2" id="paragraph-introduction">Introduction</h2>
+        <br>
+        <br>
+        <strong>find</strong> est un outil de recherche disposant d'un grand
+        nombre d'options. Cette commande peut également enchaîner des actions
+        sur le résultat des recherches et utiliser des expressions régulières
+        comme motifs de recherche<br>
+        <br>
+        <h2 class="formatter-title wiki-paragraph-2" id="paragraph-utilisation">Utilisation</h2>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-utilisation-de-base">Utilisation
+          de base</h3>
+        <br>
+        <br>
+        Pour rechercher un fichier, par son nom :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-1"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(1)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-1-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">&lt;</span>emplacement<span
+style="color: #000000; font-weight: bold;">&gt;</span> <span style="color: #660033;">-name</span> <span
+style="color: #ff0000;">"&lt;nom fichier&gt;"</span> <span style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        Exemple :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-2"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(2)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-2-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>usr <span
+style="color: #660033;">-name</span> <span style="color: #ff0000;">"trash.svg"</span> <span
+style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-3" class="copy-code"
+            title="Copier vers le presse-papier" onclick="copy_code_clipboard(3)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-3-content"><code><span
+                style="color: #000000">
+                /usr/share/themes/adriend-light/cinnamon/trash.svg</span> </code></div>
+        </div>
+        <br>
+        <br>
+        Attention, l'option -name est sensible à la casse. Pour pallier à cela,
+        utiliser l'option <strong>-iname</strong> :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-4"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(4)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-4-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>usr <span
+style="color: #660033;">-iname</span> <span style="color: #ff0000;">"TRASH.svg"</span> <span
+style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-5" class="copy-code"
+            title="Copier vers le presse-papier" onclick="copy_code_clipboard(5)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-5-content"><code><span
+                style="color: #000000">
+                /usr/share/themes/adriend-light/cinnamon/trash.svg</span> </code></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        Si on ne connaît pas le nom exact du fichier, on peut donner une partie
+        de son nom. Les jockers <strong>*</strong> (un ou plusieurs caractères)
+        et <strong>?</strong> (un caractère) sont utilisables :<br>
+        <br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-6"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(6)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-6-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>usr <span
+style="color: #660033;">-iname</span> <span style="color: #ff0000;">"tra?h.*"</span> <span
+style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-7" class="copy-code"
+            title="Copier vers le presse-papier" onclick="copy_code_clipboard(7)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-7-content"><code><span
+                style="color: #000000"> /usr/share/gvfs/mounts/trash.mount<br>
+                /usr/share/themes/adriend-light/cinnamon/trash.svg<br>
+                /usr/share/cinnamon-control-center/sounds/trash.oga</span> </code></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-eviter-les-erreurs">Éviter
+          les erreurs</h3>
+        <br>
+        <br>
+        Si on n'a pas les droits root, et qu'on cherche dans une zone où se
+        trouvent des fichiers que nous ne pouvons lire, la console peut se
+        retrouvée inondée de messages "Permission denied" :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-8"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(8)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-8-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> . <span style="color: #660033;">-name</span> <span
+style="color: #ff0000;">"samba"</span> <span style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-9" class="copy-code"
+            title="Copier vers le presse-papier" onclick="copy_code_clipboard(9)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-9-content"><code><span
+                style="color: #000000"> <br>
+                find:&nbsp;‘./audit’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./lightdm/.config’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./lightdm/.cache’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./lightdm/.dbus’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./speech-dispatcher’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./pluto/peer’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./httpd’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./libvirt’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./mariadb’:&nbsp;Permission&nbsp;denied<br>
+                ./samba<br>
+                find:&nbsp;‘./samba’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./sssd’:&nbsp;Permission&nbsp;denied<br>
+                find:&nbsp;‘./ppp’:&nbsp;Permission&nbsp;denied<br>
+              </span> </code></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        Ajouter en fin de commande <strong>2&gt; /dev/null</strong> qui va
+        rediriger la sortie d'erreurs (stderr) sur /dev/null (c'est à dire
+        rien).<br>
+        <br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-10"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(10)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-10-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">adrien<span
+style="color: #000000; font-weight: bold;">@</span>linux: <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log  $ <span style="color: #c20cb9; font-weight: bold;">find</span> . <span
+style="color: #660033;">-name</span> <span style="color: #ff0000;">"samba"</span> <span
+style="color: #660033;">-print</span> <span style="color: #000000;">2</span><span
+style="color: #000000; font-weight: bold;">&gt;</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span
+style="color: #000000; font-weight: bold;">/</span>null</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-11"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(11)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-11-content"><code><span
+                style="color: #000000"> ./samba</span> </code></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2 class="formatter-title wiki-paragraph-2" id="paragraph-utilisation-avancee">Utilisation
+          avancée</h2>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-recherche-par-type-de-fichier">Recherche
+          par type de « fichier »</h3>
+        <br>
+        <br>
+        L'option -type nous permet de chercher par type d'élément : f pour
+        fichier, d pour répertoire.<br>
+        <br>
+        <br>
+        Exemple : chercher les fichiers dont le nom contient <strong>sm</strong><br>
+        <br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-12"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(12)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-12-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span> <span
+style="color: #660033;">-type</span> f <span style="color: #660033;">-name</span> <span
+style="color: #ff0000;">"*sm*"</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-13"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(13)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-13-content"><code><span
+                style="color: #000000"> /var/log/samba/log.smbd<br>
+                /var/log/samba/smbd.log<br>
+                /var/log/samba/old/log.smbd-20140223<br>
+                /var/log/samba/old/smbd.log-20140303<br>
+                /var/log/samba/old/log.smbd-20140316<br>
+                /var/log/samba/old/log.smbd-20140309<br>
+                /var/log/samba/old/log.smbd-20140303<br>
+                /var/log/samba/old/smbd.log-20140309<br>
+                /var/log/samba/old/smbd.log-20140316<br>
+                /var/log/samba/old/smbd.log-20140223</span> </code></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        Exemple : chercher les répertoires dont le nom contient <strong>sm</strong><br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-14"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(14)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-14-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span> <span
+style="color: #660033;">-type</span> d <span style="color: #660033;">-name</span> <span
+style="color: #ff0000;">"*sm*"</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Résultat :<br>
+        <div class="formatter-container formatter-code"><span id="copy-code-15"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(15)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-15-content"><code><span
+                style="color: #000000"> /var/log/samba/cores/smbd</span> </code></div>
+        </div>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-recherche-par-taille">Recherche
+          par taille</h3>
+        <br>
+        <br>
+        L'option -size nous permet de chercher par la taille du fichier.<br>
+        <br>
+        Exemple : chercher les fichiers de plus de 10Mo dans /usr/bin<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-16"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(16)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-16-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>usr<span
+style="color: #000000; font-weight: bold;">/</span>bin <span style="color: #660033;">-size</span> +10M</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        On peut cumuler des options, pour par exemple trouver des fichiers entre
+        20 et 40M :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-17"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(17)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-17-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> ~<span style="color: #000000; font-weight: bold;">/</span>Téléchargements <span
+style="color: #660033;">-size</span> +20M <span style="color: #660033;">-size</span> <span
+style="color: #660033;">-40M</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-recherche-par-date-d-acces">Recherche
+          par date d'accès</h3>
+        <br>
+        <br>
+        L'option -atime nous permet de chercher par la dernière date d'accès du
+        fichier.<br>
+        <br>
+        Exemple : chercher les fichiers dans /var/log/samba qui ont été accédés
+        il y a <strong>moins</strong> de 1 jour (donc aujourd'hui) :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-18"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(18)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-18-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>samba<span
+style="color: #000000; font-weight: bold;">/</span> <span style="color: #660033;">-atime</span> <span
+style="color: #660033;">-1</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Exemple : chercher les fichiers dans /var/log/samba qui ont été accédés
+        il y a <strong>plus</strong> de 90 jours :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-19"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(19)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-19-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"> <span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>samba<span
+style="color: #000000; font-weight: bold;">/</span> <span style="color: #660033;">-atime</span> +<span
+style="color: #000000;">90</span> </pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Exemple : chercher les fichiers dans /var/log/samba qui ont été accédés
+        il y a <strong>exactement</strong> de 30 jours :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-20"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(20)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-20-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>var<span
+style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>samba<span
+style="color: #000000; font-weight: bold;">/</span> <span style="color: #660033;">-atime</span> <span
+style="color: #000000;">30</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <span class="message-helper notice">A noter qu'il existe des arguments
+          de même genre à savoir :<br>
+          <strong>-atime</strong> : date d'accès<br>
+          <strong>-ctime</strong> : date de création<br>
+          <strong>-mtime</strong> : date de modification<br>
+          Ces 3 arguments attendent une valeur numérique correspondant à des
+          jours.<br>
+          <br>
+          Nous avons aussi<br>
+          <strong>-amin<br>
+            -cmin<br>
+            -mmin</strong><br>
+          Qui correspondent respectivement aux dates d'accès, de création et de
+          modifications qui attendent une valeur numérique correspondant à des
+          minutes.</span><br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-rechercher-par-utilisateur">Rechercher
+          par utilisateur </h3>
+        <br>
+        <br>
+        L'option -user permet de chercher un fichier par utilisateur
+        propriétaire :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-21"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(21)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-21-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-user</span> adrien</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Dans le cas où un utilisateur n'existe plus, on a l'option -uid. Elle
+        nous permet de chercher les fichiers de l'utilisateur par son UID.<br>
+        <br>
+        Exemple : chercher les fichiers dans /tmp de l'utilisateur dont l'UID
+        est 1000 :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-22"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(22)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-22-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-uid</span> <span style="color: #000000;">1000</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <span class="message-helper notice">Il existe la même option avec -group
+          pour le nom du groupe ou -gid pour le numéro du groupe (GID)</span><br>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-appeler-une-commande">Appeler
+          une commande</h3>
+        <br>
+        <br>
+        Sur tous les fichiers trouvés par find, je veux appliquer une commande,
+        on va utiliser l'option -exec.<br>
+        <br>
+        Exemple : tous les fichiers dont l'UID de l'utilisateur est 500, je veux
+        effectuer un <strong>chown</strong> pour changer son propriétaire :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-23"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(23)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-23-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span> <span
+style="color: #660033;">-uid</span> <span style="color: #000000;">500</span> <span
+style="color: #660033;">-exec</span> <span style="color: #c20cb9; font-weight: bold;">chown</span> adrien <span
+style="color: #7a0874; font-weight: bold;">{</span><span style="color: #7a0874; font-weight: bold;">}</span> \;</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <span class="message-helper notice">
+          <ul class="formatter-ul">
+            <li class="formatter-li">cette commande <strong><span style="text-decoration: underline;">ne
+                  doit pas</span></strong> être entre guillemets, accolades ou
+              $() ; </li>
+            <li class="formatter-li">le nom du fichier trouvé est identifié par
+              <strong>{}</strong> </li>
+            <li class="formatter-li">la fin de la commande doit être <strong>\;</strong><br>
+            </li>
+          </ul>
+          <br>
+        </span><br>
+        <br>
+        Autre exemple de suppression de fichiers dont l'extension finit par
+        .test dans /tmp :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-24"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(24)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-24-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-type</span> f <span style="color: #660033;">-name</span> <span
+style="color: #ff0000;">"*.test"</span> <span style="color: #660033;">-exec</span> <span
+style="color: #c20cb9; font-weight: bold;">rm</span> <span style="color: #660033;">-i</span> <span
+style="color: #7a0874; font-weight: bold;">{</span><span style="color: #7a0874; font-weight: bold;">}</span> \;</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-lister-les-fichiers-et-dossiers-vides">Lister
+          les fichiers et dossiers vides</h3>
+        <br>
+        <br>
+        On peut lister les fichiers vides :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-25"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(25)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-25-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-type</span> f <span style="color: #660033;">-empty</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Et les dossiers avec :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-26"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(26)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-26-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-type</span> d <span style="color: #660033;">-empty</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h3 class="formatter-title wiki-paragraph-3" id="paragraph-lister-les-dossiers-en-fonction-de-permissions">Lister
+          les dossiers en fonction de permissions</h3>
+        <br>
+        <br>
+        Voici un exemple pour trouver tous les fichiers avec les permissions 777
+        :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-27"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(27)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-27-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> . <span style="color: #660033;">-type</span> f <span
+style="color: #660033;">-perm</span> <span style="color: #000000;">777</span> <span
+style="color: #660033;">-print</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Si on veut inverser le droit on place un point d'exclamation :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-28"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(28)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-28-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> . <span style="color: #660033;">-type</span> f <span
+style="color: #000000; font-weight: bold;">!</span> <span style="color: #660033;">-perm</span> <span
+style="color: #000000;">777</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        On peut lister des droits plus complexes comme le SUID :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-29"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(29)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-29-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>bin <span
+style="color: #660033;">-perm</span> <span style="color: #000000;">4711</span></pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        On peut ne chercher que le SUID par exemple en excluant les autres
+        droits avec cette notation :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-30"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(30)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-30-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>bin <span
+style="color: #660033;">-perm</span> <span style="color: #000000; font-weight: bold;">/</span><span
+style="color: #007800;">u</span>=s</pre></pre>
+          </div>
+        </div>
+        <br>
+        <br>
+        Voici un exemple de commande où les autres "other" peuvent écrire (ici
+        dans /tmp) et lister leurs permissions :<br>
+        <br>
+        <div class="formatter-container formatter-code code-BASH"><span id="copy-code-31"
+            class="copy-code" title="Copier vers le presse-papier" onclick="copy_code_clipboard(31)"><i
+              class="fa fa-clipboard"><span class="copy-code-txt">Copier vers le
+                presse-papier</span></i></span><span class="formatter-title">Code
+            BASH :</span>
+          <div class="formatter-content copy-code-content" id="copy-code-31-content">
+            <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #000000; font-weight: bold;">/</span>tmp <span
+style="color: #660033;">-type</span> d <span style="color: #660033;">-perm</span>  <span
+style="color: #000000; font-weight: bold;">/</span>o+<span style="color: #c20cb9; font-weight: bold;">w</span> <span
+style="color: #660033;">-exec</span> <span style="color: #c20cb9; font-weight: bold;">ls</span> <span
+style="color: #660033;">-ld</span> <span style="color: #7a0874; font-weight: bold;">{</span><span
+style="color: #7a0874; font-weight: bold;">}</span> \;</pre></pre>
+          </div>
+        </div>
+        <br>
+        <div class="spacer"></div>
+        <div id="more-element-sharing-container" class="more-element more-element-sharing">
+          <div class="sharing-button"> <a href="https://www.linuxtricks.fr/wiki/find-rechercher-et-bien-plus#"
+              aria-label="Menu réseaux sociaux" onclick="open_submenu('more-element-sharing-container');return false;"><i
+                class="fa fa-share-alt" aria-hidden="true" title="Menu réseaux sociaux"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer> </footer>
+    <div class="spacer"></div>
+    <footer id="footer"> </footer>
+    <span id="scroll-to-top" class="scroll-to" aria-label="haut de la page"><i class="fa fa-chevron-up"
+        aria-hidden="true" title="haut de la page"></i></span>
+    <script>
+<!--
+//Variables PHPBoost
+var PATH_TO_ROOT = "";
+var TOKEN        = "d48c1d3f1025948f";
+var THEME        = "linuxtricks";
+var LANG         = "french";
+//Variables BBCode
+var L_HIDE_MESSAGE    = 'Ce message est caché, cliquer ici pour afficher son contenu.';
+var L_HIDE_HIDEBLOCK  = 'Cliquer ici pour cacher le message.';
+var L_COPYTOCLIPBOARD = 'Copier vers le presse-papier';
+//Variables CookieBar
+-->
+</script><script src="./searchcmd_files/jquery.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./searchcmd_files/global.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./searchcmd_files/dndfiles.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./searchcmd_files/lightcase.js.t%C3%A9l%C3%A9chargement"></script>
+    <script>
+function check_search_mini_form_post()
+{
+var textSearched = document.getElementById('TxTMiniSearched').value;
+if (textSearched.length > 3)
+{
+textSearched = escape_xmlhttprequest(textSearched);
+return true;
+}
+else
+{
+alert('La chaine recherchée doit faire au moins 4 caractères !');
+return false;
+}
+}
+jQuery(document).ready(function() {
+jQuery('#search-token').val(TOKEN);
+});
+jQuery("#cssmenu-1764").menumaker({ title: "Linuxtricks", format: "multitoggle", breakpoint: 768 }); 
+jQuery("#cssmenu-module-wiki").menumaker({
+title: "Menu d'actions du module Wiki",
+format: "multitoggle",
+actionslinks: true,
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-module-wiki ul").removeClass('hidden');
+});
+jQuery("#cssmenu-wikitools").menumaker({
+title: "Outils",
+format: "multitoggle",
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-wikitools ul").removeClass('hidden');
+});
+/* Push the body and the nav over by the menu div width over */
+var summaryWidth = jQuery('.wiki-sticky').innerWidth();
+var viewportWidth = jQuery(window).width();
+jQuery('.wiki-sticky-title').on('click',function(f) {
+jQuery('.wiki-sticky-title').removeClass('blink');
+jQuery('.wiki-sticky').animate({
+left: "0px",
+'max-width': viewportWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: summaryWidth + 'px'
+}, 200);
+f.stopPropagation();
+});
+/* Then push them back by clicking outside the menu or on an inside link*/
+jQuery(document).on('click',function(f) {
+if (jQuery(f.target).is('.wiki-sticky-title') === false) {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+}
+});
+jQuery('.wiki-sticky a').on('click',function() {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+});
+// smooth scroll when clicking on an inside link
+jQuery('.wiki-sticky a').on('click',function(){
+var the_id = jQuery(this).attr("href");
+jQuery('html, body').animate({
+scrollTop:jQuery(the_id).offset().top
+}, 'slow');
+return false;
+});
+jQuery('[data-confirmation]').each(function() {
+data_confirmation = jQuery(this).attr('data-confirmation');
+if (data_confirmation == 'delete-element')
+var message = 'Voulez-vous vraiment supprimer cet élément ?';
+else
+var message = data_confirmation;
+this.onclick = function () { return confirm(message); }
+});
+jQuery(document).ready(function() {
+jQuery('a[rel^=lightbox]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-lightbox^=formatter]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-rel^=lightcase]').lightcase({
+labels : {
+'errorMessage'    : 'L\'élément que vous demandez n\'existe pas.',
+'sequenceInfo.of' : ' ' + 'sur' + ' ',
+'close'           : 'Fermer',
+'navigator.prev'  : 'Précédent',
+'navigator.next'  : 'Suivant',
+'navigator.play'  : 'Lecture',
+'navigator.pause' : 'Pause'
+},
+maxHeight: window.innerHeight,
+maxWidth: window.innerWidth,
+shrinkFactor: 0.85
+});
+});
+jQuery('#table').basictable();
+jQuery('#table2').basictable();
+jQuery('#table3').basictable();
+jQuery('#table4').basictable();
+jQuery('#table5').basictable();
+jQuery(function() {
+jQuery(".lined textarea").linedtextarea();
+});
+</script>
+  </body>
+</html>
