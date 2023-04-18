@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports -->
+<html prefix="og: http://ogp.me/ns#" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>NFS : Paramétrer les partages avec le fichier exports - Wiki - Wiki</title>
+    <meta name="description" content="
+IntroductionDans cet article, je vais récapituler le paramétrage du fichier /etc/exports qui contient la liste des partages...">
+    <meta name="generator" content="PHPBoost">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Linuxtricks.fr">
+    <meta property="og:locale" content="fr">
+    <meta property="og:title" content="NFS : Paramétrer les partages avec le fichier exports - Wiki">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="
+IntroductionDans cet article, je vais récapituler le paramétrage du fichier /etc/exports qui contient la liste des partages...">
+    <link rel="stylesheet" href="./nfs2_files/default.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/font-awesome.css">
+    <link rel="stylesheet" href="./nfs2_files/font-awesome-animation.css">
+    <link rel="stylesheet" href="./nfs2_files/lightcase.css">
+    <link rel="stylesheet" href="./nfs2_files/design.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs2_files/content.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/table.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/form.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/global.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/cssmenu.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs2_files/connect_mini.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/online.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/poll_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/search_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/bbcode.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/themeswitcher.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/ReCaptcha.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/SocialNetworks.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/user.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/upload.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs2_files/wiki.css" type="text/css" media="screen, print">
+    <link rel="shortcut icon" href="https://www.linuxtricks.fr/lt-favicon-2015.ico"
+
+      type="image/vnd.microsoft.icon">
+  </head>
+  <body itemscope="itemscope" itemtype="http://schema.org/WebPage" style="     left: 0px;">
+    <div id="global">
+      <div id="visit-counter" class="hidden-small-screens">
+        <div class="visit-counter-total"> <span class="text-strong">Visiteurs :
+          </span> 6898012 </div>
+        <div class="visit-counter-today"> <span class="text-strong">Aujourd'hui
+            : </span> 1708 </div>
+      </div>
+      <div id="main" class="" role="main">
+        <div id="main-content" itemprop="mainContentOfPage">
+          <section id="module-wiki">
+            <header>
+              <h1 itemprop="name">NFS : Paramétrer les partages avec le fichier
+                exports</h1>
+            </header>
+            <div id="article-wiki-578" class="article-wiki">
+              <div class="elements-container columns-2">
+                <div class="spacer"></div>
+              </div>
+              <div class="wiki-tools-container"> </div>
+              <div class="spacer"></div>
+              <div class="content">
+                <div class="wiki-sticky" style="left: -200.047px;">
+                  <ol class="wiki-list wiki-list-1">
+                    <li><a href="https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports#paragraph-introduction">Introduction</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports#paragraph-installer-le-serveur">Installer
+                        le serveur</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports#paragraph-le-fichier-exports">Le
+                        fichier exports</a></li>
+                  </ol>
+                </div>
+                <div class="spacer"></div>
+                <p style="text-align: center;"><img src="./nfs2_files/nfs.png" alt="nfs"
+
+                    title="nfs"></p>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-introduction">Introduction</h2>
+                <br>
+                <br>
+                Dans cet article, je vais récapituler le paramétrage du fichier
+                /etc/exports qui contient la liste des partages NFS.<br>
+                Cela s'applique au serveur NFS.<br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-installer-le-serveur">Installer
+                  le serveur</h2>
+                <br>
+                <br>
+                Sur ce site, j'ai déjà rédigé les tutoriels pour installer un
+                serveur NFS :<br>
+                - Sous Gentoo : <a href="https://www.linuxtricks.fr/wiki/gentoo-installer-un-serveur-nfs">https://www.linuxtricks.fr/wiki/gentoo-installer-un-serveur-nfs</a><br>
+                - Sous CentOS 7 : <a href="https://www.linuxtricks.fr/wiki/centos-7-installer-un-serveur-nfs">https://www.linuxtricks.fr/wiki/centos-7-installer-un-serveur-nfs</a><br>
+                - Sous Red Hat 8 et Alma Linux 8 : <a href="https://www.linuxtricks.fr/wiki/red-hat-8-alma-linux-8-installer-et-configurer-un-serveur-nfs">https://www.linuxtricks.fr/wiki/red-hat-8-alma-linux-8-installer-et-configurer-un-serveur-nfs</a><br>
+                - Sous Debian : <a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs">https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs</a><br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-le-fichier-exports">Le
+                  fichier exports</h2>
+                <br>
+                <br>
+                On indique dans le fichier <strong>/etc/exports</strong> quels
+                répertoires on souhaite partager et à qui :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-1" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(1)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-1-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;">vi</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span
+
+style="color: #000000; font-weight: bold;">/</span>exports</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                On peut partager un dossier à une seule machine :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-2" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(2)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-2-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage           192.168.21.200<span
+
+style="color: #7a0874; font-weight: bold;">(</span>rw,<span style="color: #c20cb9; font-weight: bold;">sync</span>,no_root_squash<span
+
+style="color: #7a0874; font-weight: bold;">)</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Ou à un réseau :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-3" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(3)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-3-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage           192.168.21.0<span
+
+style="color: #000000; font-weight: bold;">/</span><span style="color: #000000;">24</span><span
+
+style="color: #7a0874; font-weight: bold;">(</span>rw,<span style="color: #c20cb9; font-weight: bold;">sync</span>,no_root_squash<span
+
+style="color: #7a0874; font-weight: bold;">)</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Ou à plusieurs machines (on répètera les IP des machines avec
+                les options suivies par un espace) :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-4" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(4)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-4-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage           192.168.21.0.100<span
+
+style="color: #7a0874; font-weight: bold;">(</span>rw,<span style="color: #c20cb9; font-weight: bold;">sync</span>,no_root_squash<span
+
+style="color: #7a0874; font-weight: bold;">)</span> 192.168.21.0.101<span style="color: #7a0874; font-weight: bold;">(</span>rw,<span
+
+style="color: #c20cb9; font-weight: bold;">sync</span>,no_root_squash<span style="color: #7a0874; font-weight: bold;">)</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Attention, il ne faut aucun espace entre le réseau et les
+                options!<br>
+                <br>
+                <ul class="formatter-ul">
+                  <li class="formatter-li"><strong>rw</strong>: Cette option
+                    permet d'avoir les droits de lecture et d'écriture sur le
+                    répertoire distant. Pour lecture seule : utiliser <strong>ro</strong>
+                  </li>
+                  <li class="formatter-li"><strong>sync</strong> : vérifie les
+                    données écrites avant d'en écrire de nouvelles (lent). Pour
+                    écrire plus rapidement au prix d'une corruption des données,
+                    utiliser <strong>async</strong> </li>
+                  <li class="formatter-li"><strong>no_root_squash</strong> : ne
+                    force pas le mapping de l'utilisateur root vers un
+                    utilisateur anonyme </li>
+                  <li class="formatter-li"><strong>no_subtree_check</strong> :
+                    On peut aussi ajouter cette option qui, (c'est globalement
+                    complexe à expliquer) ignore la vérification des
+                    sous-dossiers (perte d'un petit peu de sécurité mais peut
+                    améliorer la fiabilité)<br>
+                  </li>
+                </ul>
+                <br>
+                <br>
+                Par défaut, toutes les données écrites dans ce répertoire
+                partagé sont de la propriété de l'utilisateur anonyme (nobody).<br>
+                On peut indique au serveur NFS un UID et/ou un GID de
+                l'utilisateur avec <strong>anonuid</strong> et <strong>anongid</strong>
+                pour éviter d'utiliser nobody. Utiliser au passage l'option <strong>all_squash</strong>
+                :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-5" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(5)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-5-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage  192.168.21.0<span
+
+style="color: #000000; font-weight: bold;">/</span><span style="color: #000000;">24</span><span
+
+style="color: #7a0874; font-weight: bold;">(</span>rw,all_squash,<span style="color: #007800;">anonuid</span>=<span
+
+style="color: #000000;">1001</span>,<span style="color: #007800;">anongid</span>=<span
+
+style="color: #000000;">1001</span>,<span style="color: #c20cb9; font-weight: bold;">sync</span><span
+
+style="color: #7a0874; font-weight: bold;">)</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Pour appliquer les changements :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-6" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(6)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-6-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">exportfs <span
+
+style="color: #660033;">-a</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                Sur les <span style="text-decoration: underline;">clients</span>,
+                pour voir la liste des partages NFS actifs :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-7" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(7)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-7-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">showmount <span
+
+style="color: #660033;">-e</span></pre></pre>
+                  </div>
+                </div>
+                <div class="spacer"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+    
+    <span id="scroll-to-top" class="scroll-to" aria-label="haut de la page" style="display: none;"><i
+
+        class="fa fa-chevron-up" aria-hidden="true" title="haut de la page"></i></span>
+    <script>
+<!--
+//Variables PHPBoost
+var PATH_TO_ROOT = "";
+var TOKEN        = "3502a18101d3ffed";
+var THEME        = "linuxtricks";
+var LANG         = "french";
+//Variables BBCode
+var L_HIDE_MESSAGE    = 'Ce message est caché, cliquer ici pour afficher son contenu.';
+var L_HIDE_HIDEBLOCK  = 'Cliquer ici pour cacher le message.';
+var L_COPYTOCLIPBOARD = 'Copier vers le presse-papier';
+//Variables CookieBar
+-->
+</script><script src="./nfs2_files/jquery.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs2_files/global.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs2_files/dndfiles.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs2_files/lightcase.js.t%C3%A9l%C3%A9chargement"></script>
+    <script>
+function check_search_mini_form_post()
+{
+var textSearched = document.getElementById('TxTMiniSearched').value;
+if (textSearched.length > 3)
+{
+textSearched = escape_xmlhttprequest(textSearched);
+return true;
+}
+else
+{
+alert('La chaine recherchée doit faire au moins 4 caractères !');
+return false;
+}
+}
+jQuery(document).ready(function() {
+jQuery('#search-token').val(TOKEN);
+});
+jQuery("#cssmenu-1764").menumaker({ title: "Linuxtricks", format: "multitoggle", breakpoint: 768 }); 
+jQuery("#cssmenu-module-wiki").menumaker({
+title: "Menu d'actions du module Wiki",
+format: "multitoggle",
+actionslinks: true,
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-module-wiki ul").removeClass('hidden');
+});
+jQuery("#cssmenu-wikitools").menumaker({
+title: "Outils",
+format: "multitoggle",
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-wikitools ul").removeClass('hidden');
+});
+/* Push the body and the nav over by the menu div width over */
+var summaryWidth = jQuery('.wiki-sticky').innerWidth();
+var viewportWidth = jQuery(window).width();
+jQuery('.wiki-sticky-title').on('click',function(f) {
+jQuery('.wiki-sticky-title').removeClass('blink');
+jQuery('.wiki-sticky').animate({
+left: "0px",
+'max-width': viewportWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: summaryWidth + 'px'
+}, 200);
+f.stopPropagation();
+});
+/* Then push them back by clicking outside the menu or on an inside link*/
+jQuery(document).on('click',function(f) {
+if (jQuery(f.target).is('.wiki-sticky-title') === false) {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+}
+});
+jQuery('.wiki-sticky a').on('click',function() {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+});
+// smooth scroll when clicking on an inside link
+jQuery('.wiki-sticky a').on('click',function(){
+var the_id = jQuery(this).attr("href");
+jQuery('html, body').animate({
+scrollTop:jQuery(the_id).offset().top
+}, 'slow');
+return false;
+});
+jQuery('[data-confirmation]').each(function() {
+data_confirmation = jQuery(this).attr('data-confirmation');
+if (data_confirmation == 'delete-element')
+var message = 'Voulez-vous vraiment supprimer cet élément ?';
+else
+var message = data_confirmation;
+this.onclick = function () { return confirm(message); }
+});
+jQuery(document).ready(function() {
+jQuery('a[rel^=lightbox]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-lightbox^=formatter]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-rel^=lightcase]').lightcase({
+labels : {
+'errorMessage'    : 'L\'élément que vous demandez n\'existe pas.',
+'sequenceInfo.of' : ' ' + 'sur' + ' ',
+'close'           : 'Fermer',
+'navigator.prev'  : 'Précédent',
+'navigator.next'  : 'Suivant',
+'navigator.play'  : 'Lecture',
+'navigator.pause' : 'Pause'
+},
+maxHeight: window.innerHeight,
+maxWidth: window.innerWidth,
+shrinkFactor: 0.85
+});
+});
+jQuery('#table').basictable();
+jQuery('#table2').basictable();
+jQuery('#table3').basictable();
+jQuery('#table4').basictable();
+jQuery('#table5').basictable();
+jQuery(function() {
+jQuery(".lined textarea").linedtextarea();
+});
+</script>
+  </body>
+</html>

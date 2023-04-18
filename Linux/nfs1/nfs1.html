@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs -->
+<html prefix="og: http://ogp.me/ns#" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Debian : Installer un serveur NFS - Wiki - Wiki</title>
+    <meta name="description" content="
+IntroductionNFS, pour Network File System (système de fichiers en réseau) est à l'origine un protocole qui permet à un ordinateur...">
+    <meta name="generator" content="PHPBoost">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Linuxtricks.fr">
+    <meta property="og:locale" content="fr">
+    <meta property="og:title" content="Debian : Installer un serveur NFS - Wiki">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="
+IntroductionNFS, pour Network File System (système de fichiers en réseau) est à l'origine un protocole qui permet à un ordinateur...">
+    <link rel="stylesheet" href="./nfs1_files/default.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/font-awesome.css">
+    <link rel="stylesheet" href="./nfs1_files/font-awesome-animation.css">
+    <link rel="stylesheet" href="./nfs1_files/lightcase.css">
+    <link rel="stylesheet" href="./nfs1_files/design.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs1_files/content.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/table.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/form.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/global.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/cssmenu.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs1_files/connect_mini.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/online.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/poll_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/search_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/bbcode.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/themeswitcher.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/ReCaptcha.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/SocialNetworks.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/user.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/upload.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/wiki.css" type="text/css" media="screen, print">
+    <link rel="shortcut icon" href="https://www.linuxtricks.fr/lt-favicon-2015.ico"
+
+      type="image/vnd.microsoft.icon">
+  </head>
+  <body itemscope="itemscope" itemtype="http://schema.org/WebPage" style="       left: 0px;">
+    <div id="global">
+      <div id="visit-counter" class="hidden-small-screens">
+        <div class="visit-counter-total"> <span class="text-strong">Visiteurs :
+          </span> 6898012 </div>
+        <div class="visit-counter-today"> <span class="text-strong">Aujourd'hui
+            : </span> 1708 </div>
+      </div>
+      <div id="main" class="" role="main">
+        <div id="main-content" itemprop="mainContentOfPage">
+          <section id="module-wiki">
+            <header>
+              <div class="cat-actions"> <a href="https://www.linuxtricks.fr/syndication/rss/wiki/7"
+
+                  aria-label="Syndication"><i class="fa fa-syndication" aria-hidden="true"
+
+                    title="Syndication"></i></a> Utiliser Debian et dérivées </div>
+              <h1 itemprop="name">Debian : Installer un serveur NFS</h1>
+            </header>
+            <div id="article-wiki-576" class="article-wiki">
+              <div class="elements-container columns-2">
+                <div class="spacer"></div>
+              </div>
+              <div class="wiki-tools-container"> </div>
+              <div class="spacer"></div>
+              <div class="content">
+                <div class="wiki-sticky" style="left: -305.719px;">
+                  <ol class="wiki-list wiki-list-1">
+                    <li><a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs#paragraph-introduction">Introduction</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs#paragraph-installation">Installation</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs#paragraph-configuration">Configuration</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs#paragraph-partie-client">Partie
+                        client</a></li>
+                    <li><a href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs#paragraph-quelques-options-de-montage-utiles">Quelques
+                        options de montage utiles</a></li>
+                  </ol>
+                </div>
+                <div class="spacer"></div>
+                <p style="text-align: center;"><img src="./nfs1_files/nfs.png" alt="nfs"
+
+                    title="nfs"></p>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-introduction">Introduction</h2>
+                <br>
+                NFS, pour Network File System (système de fichiers en réseau)
+                est à l'origine un protocole qui permet à un ordinateur
+                d'accéder à des fichiers via un réseau. Il permet de partager
+                des données principalement entre systèmes UNIX.<br>
+                <br>
+                Ici, on va détailler l'installation d'un serveur NFS et montrer
+                comment connecter un client à ce partage.<br>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-installation">Installation</h2>
+                <br>
+                <br>
+                L'installation se fait via deux paquets :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-1" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(1)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-1-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">apt <span
+
+style="color: #c20cb9; font-weight: bold;">install</span> nfs-kernel-server</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Si on a un nom de domaine, on peut éditer le fichier idmapd.conf<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-2" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(2)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-2-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;">vi</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span
+
+style="color: #000000; font-weight: bold;">/</span>idmapd.conf</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-3" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(3)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-3-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">Domain = linuxtricks.lan</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Et on active et démarre le service nfs :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-4" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(4)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-4-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">systemctl <span
+
+style="color: #7a0874; font-weight: bold;">enable</span> <span style="color: #660033;">--now</span> nfs-server.service</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-configuration">Configuration</h2>
+                <br>
+                <br>
+                La configuration des partages sur le serveur se fait dans le
+                fichier /etc/exports.<br>
+                <br>
+                Plus d'informations dans cet article dédié : <a href="https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports">https://www.linuxtricks.fr/wiki/nfs-parametrer-les-partages-avec-le-fichier-exports</a><br>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-partie-client">Partie
+                  client</h2>
+                <br>
+                Pour la partie cliente, on installe aussi les paquets adéquats :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-5" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(5)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-5-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">apt <span
+
+style="color: #c20cb9; font-weight: bold;">install</span> nfs-common</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Et pour monter le partage, rien de plus simple :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-6" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(6)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-6-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;">mkdir</span> <span style="color: #660033;">-p</span> <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs
+<span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #660033;">-t</span> nfs 192.168.21.200:<span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Avec la commande df, on peut voir que tout est monté :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-7" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(7)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-7-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;">df</span> <span style="color: #660033;">-h</span>
+Filesystem            Size  Used Avail Use<span style="color: #000000; font-weight: bold;">%</span> Mounted on
+192.168.21.200:<span style="color: #000000; font-weight: bold;">/</span>media<span
+
+style="color: #000000; font-weight: bold;">/</span>partage       20G  985M   18G   <span
+
+style="color: #000000;">5</span><span style="color: #000000; font-weight: bold;">%</span> <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs</pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                On peut aussi monter ça dans le fstab, mais attention, si le
+                serveur NFS n'est pas dispo, le boot peut venir en échec (option
+                nofail utile dans ce cas, mais montage à réaliser manuellement)
+                :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-8" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(8)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-8-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">192.168.21.200:<span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage   <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs   nfs      auto,_netdev,nofail <span
+
+style="color: #000000;">0</span> <span style="color: #000000;">0</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles">Quelques
+                  options de montage utiles</h2>
+                <br>
+                <br>
+                Au travail, j'utilise un partage NFS pour étendre du stockage
+                pour un coût peu élevé.<br>
+                Mais le système se comporte bizarrement lorsque le partage NFS
+                est indisponible (reboot du NAS, perte temporaire de réseau).<br>
+                <br>
+                Pour cela, on peut monter le partage NFS avec les options soft,
+                retrans et timeo. Je choisis 2 retransmissions en cas d'échec et
+                5 dixièmes de secondes (500 ms) de timeout (le NAS et le serveur
+                sont dans le même sous-réseau, sur le même switch)<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #660033;">-t</span> nfs4 192.168.21.200:<span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs <span
+
+style="color: #660033;">-o</span> soft,<span style="color: #007800;">retrans</span>=<span
+
+style="color: #000000;">2</span>,<span style="color: #007800;">timeo</span>=<span
+
+style="color: #000000;">5</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Ou dans /etc/fstab :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-10" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(10)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-10-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;">192.168.21.200:<span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>partage   <span
+
+style="color: #000000; font-weight: bold;">/</span>media<span style="color: #000000; font-weight: bold;">/</span>nfs   nfs      auto,_netdev,nofail,soft,<span
+
+style="color: #007800;">retrans</span>=<span style="color: #000000;">2</span>,<span
+
+style="color: #007800;">timeo</span>=<span style="color: #000000;">5</span> <span
+
+style="color: #000000;">0</span> <span style="color: #000000;">0</span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+    
+     <script>
+<!--
+//Variables PHPBoost
+var PATH_TO_ROOT = "";
+var TOKEN        = "3502a18101d3ffed";
+var THEME        = "linuxtricks";
+var LANG         = "french";
+//Variables BBCode
+var L_HIDE_MESSAGE    = 'Ce message est caché, cliquer ici pour afficher son contenu.';
+var L_HIDE_HIDEBLOCK  = 'Cliquer ici pour cacher le message.';
+var L_COPYTOCLIPBOARD = 'Copier vers le presse-papier';
+//Variables CookieBar
+-->
+</script><script src="./nfs1_files/jquery.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/global.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/dndfiles.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/lightcase.js.t%C3%A9l%C3%A9chargement"></script>
+    <script>
+function check_search_mini_form_post()
+{
+var textSearched = document.getElementById('TxTMiniSearched').value;
+if (textSearched.length > 3)
+{
+textSearched = escape_xmlhttprequest(textSearched);
+return true;
+}
+else
+{
+alert('La chaine recherchée doit faire au moins 4 caractères !');
+return false;
+}
+}
+jQuery(document).ready(function() {
+jQuery('#search-token').val(TOKEN);
+});
+jQuery("#cssmenu-1764").menumaker({ title: "Linuxtricks", format: "multitoggle", breakpoint: 768 }); 
+jQuery("#cssmenu-module-wiki").menumaker({
+title: "Menu d'actions du module Wiki",
+format: "multitoggle",
+actionslinks: true,
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-module-wiki ul").removeClass('hidden');
+});
+jQuery("#cssmenu-wikitools").menumaker({
+title: "Outils",
+format: "multitoggle",
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-wikitools ul").removeClass('hidden');
+});
+/* Push the body and the nav over by the menu div width over */
+var summaryWidth = jQuery('.wiki-sticky').innerWidth();
+var viewportWidth = jQuery(window).width();
+jQuery('.wiki-sticky-title').on('click',function(f) {
+jQuery('.wiki-sticky-title').removeClass('blink');
+jQuery('.wiki-sticky').animate({
+left: "0px",
+'max-width': viewportWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: summaryWidth + 'px'
+}, 200);
+f.stopPropagation();
+});
+/* Then push them back by clicking outside the menu or on an inside link*/
+jQuery(document).on('click',function(f) {
+if (jQuery(f.target).is('.wiki-sticky-title') === false) {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+}
+});
+jQuery('.wiki-sticky a').on('click',function() {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+});
+// smooth scroll when clicking on an inside link
+jQuery('.wiki-sticky a').on('click',function(){
+var the_id = jQuery(this).attr("href");
+jQuery('html, body').animate({
+scrollTop:jQuery(the_id).offset().top
+}, 'slow');
+return false;
+});
+jQuery('[data-confirmation]').each(function() {
+data_confirmation = jQuery(this).attr('data-confirmation');
+if (data_confirmation == 'delete-element')
+var message = 'Voulez-vous vraiment supprimer cet élément ?';
+else
+var message = data_confirmation;
+this.onclick = function () { return confirm(message); }
+});
+jQuery(document).ready(function() {
+jQuery('a[rel^=lightbox]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-lightbox^=formatter]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-rel^=lightcase]').lightcase({
+labels : {
+'errorMessage'    : 'L\'élément que vous demandez n\'existe pas.',
+'sequenceInfo.of' : ' ' + 'sur' + ' ',
+'close'           : 'Fermer',
+'navigator.prev'  : 'Précédent',
+'navigator.next'  : 'Suivant',
+'navigator.play'  : 'Lecture',
+'navigator.pause' : 'Pause'
+},
+maxHeight: window.innerHeight,
+maxWidth: window.innerWidth,
+shrinkFactor: 0.85
+});
+});
+jQuery('#table').basictable();
+jQuery('#table2').basictable();
+jQuery('#table3').basictable();
+jQuery('#table4').basictable();
+jQuery('#table5').basictable();
+jQuery(function() {
+jQuery(".lined textarea").linedtextarea();
+});
+</script>
+  </body>
+</html>
