@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <title>TreeView interactif avec des fichiers HTML</title>
+
+<head>
+    <title>Taha Yassine Jguirim</title>
     <style>
         #row {
             display: flex;
             flex-direction: row;
-            height: 100vh;
+            height: 90vh;
             margin: 0;
             padding: 0;
         }
@@ -135,12 +135,7 @@
             list-style-type: none;
             width: 90%;
             float: right;
-<<<<<<< Updated upstream:M2i.html
              background-color: #535353;
-=======
-           background-color: #535353;
-          
->>>>>>> Stashed changes:test.html
         }
 
         .sousEl {
@@ -164,56 +159,71 @@
             font-size: 18px;
         }
     </style>
-  </head>
-  <body>
+
+</head>
+
+<body>
     <div id="row">
-      <div id="col1">
-        <div class="treeview">
-          <ul id="ul1">
-            <li> <label for="fil">seaRéseaux</label> <input id="fil"
+        <div id="col1">
+            <div class="treeview">
+                <ul id="ul1">
+                    <li>
+                        <label for="fil">Réseaux</label>
+                        <input type="checkbox" id="fil" />
+                        <div class="content">
+                            <ul class="el">
+                                <li id="file">
+                                    <label for="sis1">Cisco docs list</label>
+                                    <input type="checkbox" id="sis1" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/1.html">
+                                                    1 Présentation des réseaux commutés 1</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/2.html">
+                                                    Présentation des réseaux commutés 2 </a>
+                                            </li>
 
-                type="checkbox">
-              <div class="content">
-                <ul class="el">
-                  <li id="file"> <label for="sis1">Cisco docs list</label> <input
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/3.html">
+                                                    Implémentation de la sécurité VLAN</a>
 
-                      id="sis1" type="checkbox">
-                    <div class="content">
-                      <ul class="sousEl">
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/1.html">
-                            1 Présentation des réseaux commutés 1</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/2.html">
-                            Présentation des réseaux commutés 2 </a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/3.html">
-                            Implémentation de la sécurité VLAN</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/4.html">
-                            Concepts du routage</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/5.html">
-                            Routage inter-VLAN</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/6.html">
-                            Routage statique </a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/7.html">
-                            Routage dynamique</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/8.html">
-                            OSPF �&nbsp; zone unique</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/9.html">
-                            Listes de contrôle d'accès</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/10.html">
-                            DHCP</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux/CISCO/11.html">
-                            Traduction d'adresse réseau pour IPv4</a> </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li id="file"><a class="name" href="#" data-type="pdf" data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
-                      Routage</a></li>
-                  <li id="file"><a class="name" href="#" data-src="Réseaux/VLAN-VTP.html">
-                      VLAN - VTP</a></li>
-                  <li id="file"><a class="name" href="#" data-src="Réseaux/Config router basic.html">
-                      Routeur</a> </li>
-                  <li> <label for="rcisco">Routeur cisco</label> <input id="rcisco"
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/4.html">
+                                                    Concepts du routage</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/5.html">
+                                                    Routage inter-VLAN</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/6.html">
+                                                    Routage statique </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/7.html">
+                                                    Routage dynamique</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/8.html">
+                                                    OSPF à zone unique</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/9.html">
+                                                    Listes de contrôle d'accès</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/10.html">
+                                                    DHCP</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux/CISCO/11.html">
+                                                    Traduction d'adresse réseau pour IPv4</a>
+                                            </li>
 
-<<<<<<< Updated upstream:M2i.html
 
                                         </ul>
                                 </li>
@@ -275,6 +285,10 @@
                             <ul class="el">
                                 <li><a class="name" href="#" data-src="Linux/searchcmd/searchcmd.html">
                                         Search Command </a></li>
+                                <li><a class="name" href="#" data-src="Linux/nfs1/nfs1.html">
+                                        NFS 1 </a></li>
+                                <li><a class="name" href="#" data-src="Linux/nfs2/nfs2.html">
+                                        NFS 2 </a></li>
                                 <li><a class="name" href="#" data-src="Linux/sambaAD.html">
                                         AD DS Samba </a></li>
                                 <li><a class="name" href="#" data-src="Linux/Dhcp.html">
@@ -308,71 +322,15 @@
                             </ul>
                         </div>
                     </li>
-=======
-                      type="checkbox">
-                    <div class="content">
-                      <ul class="el">
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux\routeur cisco\password.html">
-                            Password router cisco</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux\routeur cisco\rip.html">
-                            RIP v2</a> </li>
-                        <li id="file"> <a class="name" href="#" data-src="Réseaux\routeur cisco\ospf.html">
-                            OSPF</a> </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html">
-                      CCNA1</a></li>
->>>>>>> Stashed changes:test.html
                 </ul>
-              </div>
-            </li>
-            <li> <label for="file1">Windows</label> <input id="file1" type="checkbox">
-              <div class="content">
-                <ul class="el">
-                  <li id="file"><a class="name" href="#" data-src="Windows/GPO/p1gtqu87qq1gvsc641smakj2vr24-html.html">GPO</a>
-                  </li>
-                  <li><a class="name" href="#" data-src="Windows/Routage WINS/wins.html">Routage
-                      WINS</a> </li>
-                </ul>
-              </div>
-            </li>
-            <li> <label for="file2">Linux</label> <input id="file2" type="checkbox">
-              <div class="content">
-                <ul class="el">
-                  <li><a class="name" href="#" data-src="Linux/searchcmd/searchcmd.html">
-                      Search Command </a></li>
-                  <li><a class="name" href="#" data-src="Linux/sambaAD.html"> AD
-                      DS Samba </a></li>
-                  <li><a class="name" href="#" data-src="Linux/Dhcp.html"> DHCP
-                      Server</a></li>
-                  <li><a class="name" href="#" data-src="Linux/dns/dns.html">
-                      DNS Server</a></li>
-                  <li><a class="name" href="#" data-src="Linux/server FTP.html">
-                      FTP Server </a></li>
-                  <li><a class="name" href="#" data-src="Linux/GLPI - CMS.html">
-                      GLPI - CMS</a></li>
-                  <li><a class="name" href="#" data-src="Linux/GLPI - FusionIventory.html">
-                      GLPI - FusionIventory</a></li>
-                  <li><a class="name" href="#" data-src="https://www.it-connect.fr/installation-de-wordpress-sous-linux/?utm_content=cmp-true">
-                      CMS - Wordpress</a></li>
-                  <li><a class="name" href="#" data-src="Linux/wordpress/wordpress.html">
-                      Wordpress</a></li>
-                </ul>
-              </div>
-            </li>
-            <li> <label for="file3">MDT</label> <input id="file3" type="checkbox">
-              <div class="content">
-                <ul class="el">
-                  <li id="file"><a class="name" href="#" data-type="pdf" data-src="https://www.gdidees.eu/userfiles/file/docs/Guide%20de%20deploiement%20Windows10.pdf">
-                      WINDOWS 10</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+            </div>
         </div>
-      </div>
-      <div id="col2"> <iframe class="frame" id="frame"></iframe> </div>
+
+        <div id="col2">
+
+            <iframe class="frame" id="frame"></iframe>
+
+        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -408,5 +366,6 @@
 
 
     </script>
-  </body>
+ </body>
 </html>
+ 
