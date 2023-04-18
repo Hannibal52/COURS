@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-nfs -->
+<html prefix="og: http://ogp.me/ns#" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Debian : Installer un serveur NFS - Wiki - Wiki</title>
+    <meta name="description" content="
+IntroductionNFS, pour Network File System (système de fichiers en réseau) est à l'origine un protocole qui permet à un ordinateur...">
+    <meta name="generator" content="PHPBoost">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Linuxtricks.fr">
+    <meta property="og:locale" content="fr">
+    <meta property="og:title" content="Debian : Installer un serveur NFS - Wiki">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="
+IntroductionNFS, pour Network File System (système de fichiers en réseau) est à l'origine un protocole qui permet à un ordinateur...">
+    <link rel="stylesheet" href="./nfs1_files/default.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/font-awesome.css">
+    <link rel="stylesheet" href="./nfs1_files/font-awesome-animation.css">
+    <link rel="stylesheet" href="./nfs1_files/lightcase.css">
+    <link rel="stylesheet" href="./nfs1_files/design.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs1_files/content.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/table.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/form.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/global.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/cssmenu.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./nfs1_files/connect_mini.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/online.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/poll_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/search_mini.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/bbcode.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/themeswitcher.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/ReCaptcha.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/SocialNetworks.css" type="text/css"
+
+      media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/user.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/upload.css" type="text/css" media="screen, print">
+    <link rel="stylesheet" href="./nfs1_files/wiki.css" type="text/css" media="screen, print">
+    <link rel="shortcut icon" href="https://www.linuxtricks.fr/lt-favicon-2015.ico"
+
+      type="image/vnd.microsoft.icon">
+    <style>
+      .content{
+      font-family: Inter,sans-serif;
+      font-size: 16px;
+      color: #4d5b7c;
+           
+      }
+      h2{
+       
+      font-size: 26px;
+      }
+      
+    </style>
+  </head>
+  <body itemscope="itemscope" itemtype="http://schema.org/WebPage" style="                                     left: 0px;">
+    <div id="global">
+      <div id="visit-counter" class="hidden-small-screens">
+        <div class="visit-counter-total"> <span class="text-strong">Visiteurs :
+          </span> 6898012 </div>
+        <div class="visit-counter-today"> <span class="text-strong">Aujourd'hui
+            : </span> 1708 </div>
+      </div>
+      <div id="main" class="" role="main">
+        <div id="main-content" itemprop="mainContentOfPage">
+          <section id="module-wiki">
+            <header>
+              <div class="cat-actions"> </div>
+              <h1 itemprop="name">installer Nginx </h1>
+            </header>
+            <div id="article-wiki-576" class="article-wiki">
+              <div class="elements-container columns-2"> </div>
+              <div class="wiki-tools-container"> </div>
+              <div class="content">
+                <div class="wiki-sticky" style="left: -305.719px;"> </div>
+                <p style="text-align: center;"><img src="https://www.nginx.com/wp-content/uploads/2021/08/NGINX-Part-of-F5-horiz-black-type-1.svg"
+
+                    alt="nfs" title="nfs" style="width: 272px; height: 108px;"></p>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-introduction">Introduction</h2>
+                <br>
+                Nginx est l’un des serveurs web les plus populaires au monde et
+                se charge de l’hébergement de certains des sites les plus
+                importants et les plus fréquentés sur Internet. C’est une option
+                légère qui peut être utilisée comme serveur web ou proxy
+                inverse.<br>
+                <br>
+                Dans ce guide, nous verrons comment installer Nginx sur votre
+                serveur Debian, ajuster le pare-feu, gérer le processus Nginx et
+                configurer des blocs de serveur pour héberger plus d’un domaine
+                à partir d’un seul serveur.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-installation">Installation</h2>
+                <br>
+                <br>
+                Étant donné que Nginx est disponible dans les référentiels
+                d’Ubuntu par défaut, il est possible de l’installer à partir de
+                ces référentiels en utilisant le gestionnaire de packages apt.<br>
+                <br>
+                Etant donné qu’il s’agit de notre première interaction avec le
+                gestionnaire de packages apt au cours de cette session, nous
+                mettrons à jour notre index de package local afin d’avoir accès
+                aux listes de packages les plus récentes. Ensuite, nous pouvons
+                installer nginx :</div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-1" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(1)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-1-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #fd0382;">sudo apt</span> update
+<span style="color: #fd0382;">sudo apt install</span> nginx</pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"> <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2">Installation</h2>
+                <br>
+                <br>
+                Avant de tester Nginx, vous devez régler votre logiciel de
+                pare-feu pour autoriser l’accès au service. Lors de
+                l’installation, Nginx s’enregistre en tant que service avec <b>ufw
+                  </b>afin d’en faciliter l’accès.<br>
+                <br>
+                Énumérez les configurations d’application avec lesquelles <b>ufw
+                  </b>sait travailler en saisissant :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-2" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(2)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-2-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; "><span style="color: #444444;"><span style="color: #fd0382;">sudo </span><b>ufw app list</b></span><br></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="content">Vous devriez obtenir une liste des profils de
+                l’application :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-3" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(3)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">&nbsp;</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-3-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><b><span
+
+style="color: #6600cc;">Output</span></b>
+Available applications:
+  Nginx Full
+  Nginx HTTP
+  Nginx HTTPS
+  OpenSSH</pre></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="article-wiki"><br>
+              <div class="content"><br>
+              </div>
+              <div class="content">Comme le montre le résultat, il existe trois
+                profils pour Nginx :<br>
+                <br>
+                <ul>
+                  <li><b>Nginx Full​​​</b> : Ce profil ouvre à la fois le port
+                    80 (trafic web normal, non crypté) et le port 443 (trafic
+                    crypté TLS/SSL).</li>
+                  <li><b>Nginx HTTP</b> : Ce profil n’ouvre que le port 80
+                    (trafic web normal, non crypté).</li>
+                  <li><b>Nginx HTTPS</b> : Ce profil n’ouvre que le port 443
+                    (trafic crypté TLS/SSL).</li>
+                </ul>
+                Nous vous recommandons d’activer le profil le plus restrictif
+                qui autorisera tout de même le trafic que vous avez configuré.
+                Maintenant, nous avons uniquement besoin d’autoriser le trafic
+                sur le port 80.<br>
+                <br>
+                Vous pouvez l’activer en tapant :</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-5" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(5)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-5-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><b><span
+
+style="color: #cc0000;">sudo </span>ufw allow <span style="color: #009900;">'Nginx HTTP</span>'</b></pre></pre>
+                  </div>
+                </div>
+                <br>
+                Vous pouvez vérifier le changement en saisissant :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-6" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(6)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-6-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #c20cb9; font-weight: bold;"><span style="color: #cc0000;">sudo </span><span
+
+style="color: black;">ufw status</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Le résultat indiquera le trafic HTTP autorisé :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-7" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(7)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-8-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><b><span
+
+style="color: #6600cc;">Output</span></b>
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+Nginx HTTP                 ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+Nginx HTTP (v6)            ALLOW       Anywhere (v6)<span style="color: #000000;"></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles">Vérification
+                  de votre serveur Web</h2>
+                <br>
+                <br>
+                À la fin du processus d’installation, Debian démarre Nginx. Le
+                serveur web devrait déjà être opérationnel.<br>
+                <br>
+                Nous pouvons vérifier grâce au système init <b>systemd </b>que
+                le service fonctionne bien en saisissant :<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;">systemctl status nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-10" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(10)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span></div>
+                <div class="formatter-container formatter-code code-BASH"><br>
+                </div>
+                <div class="formatter-container formatter-code code-BASH"><br>
+                </div>
+                <div class="formatter-container formatter-code code-BASH">
+                  <div class="formatter-content copy-code-content" id="copy-code-10-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><b
+
+style="color: #6600cc;">Output</b>
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: <b><span style="color: #009900;">active (running)</span></b> since Fri 2020-04-20 16:08:19 UTC; 3 days ago
+     Docs: man:nginx(8)
+ Main PID: 2369 (nginx)
+    Tasks: 2 (limit: 1153)
+   Memory: 3.5M
+   CGroup: /system.slice/nginx.service
+           ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           └─2380 nginx: worker process<span style="color: #000000;"></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                Comme cela le confirme, le service a bien démarré. Cependant, la
+                meilleure façon de le vérifier sonsiste à demander une page à
+                partir de Nginx.<br>
+                <br>
+                Naviguez sur l’adresse IP de votre serveur pour accéder à la
+                page d’accueil par défaut de Nginx et confirmer que le logiciel
+                fonctionne correctement. Si vous ne connaissez pas l’adresse IP
+                de votre serveur, vous pouvez la trouver en utilisant l’outil
+                icanhazip.com, qui vous donnera votre adresse IP publique (il la
+                recevra à partir d’un autre emplacement sur Internet) :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">curl </span>-4 icanhazip.com</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                Une fois que vous avez l’adresse IP de votre serveur,
+                saisissez-la dans la barre d’adresse de votre navigateur :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">&nbsp;</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;">http://<span style="color: #3da7ff;">your_server_ip</span></span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="content">Vous devriez obtenir la page d’accueil par
+                défaut de Nginx :</div>
+              <div class="content"><br>
+              </div>
+              <div style="text-align: center;"><img src="https://assets.digitalocean.com/articles/nginx_1604/default_page.png"
+
+                  alt="home page" title="ngx" style="width: 507px; height: 186px;"></div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Si vous arrivez sur cette page, cela signifie
+                que votre serveur fonctionne correctement et que vous pouvez
+                désormais le gérer.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles">Gestion
+                  du processus Nginx</h2>
+                &nbsp;</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Maintenant que votre serveur web fonctionne,
+                examinons certaines commandes de base de gestion.<br>
+                <br>
+                Pour arrêter votre serveur Web, tapez :<br>
+                <p><br>
+                </p>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl stop nginx</span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Pour démarrer le serveur web lorsqu’il est
+                arrêté, tapez :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl start nginx</span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Pour arrêter puis redémarrer le service,
+                tapez :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl restart nginx</span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Si vous procédez uniquement à des
+                modifications de configuration, il se peut que Nginx se recharge
+                souvent sans interrompre les connexions. Pour ce faire, tapez :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl reload nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Par défaut, Nginx est configuré pour un
+                lancement automatique au démarrage du serveur. Si ce n’est pas
+                ce que vous souhaitez, vous pouvez désactiver ce comportement en
+                tapant :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemct<span
+
+style="color: #000000;"> disable </span>nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Pour réactiver le service de lancement
+                automatique au démarrage, vous pouvez taper :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl <span
+
+style="color: #cc0000;">enable </span>nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Désormais vous connaissez les commandes de
+                gestion de base et devriez être prêt à configurer le site pour
+                héberger plusieurs domaines.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles">Mise
+                  en place des blocs de serveur (recommandé)</h2>
+                <p><br>
+                </p>
+                <p><br>
+                </p>
+                <p>Avec le serveur Web Nginx, vous pouvez utiliser des blocs de
+                  serveur (similaires aux hôtes virtuels dans Apache) pour
+                  encapsuler les détails de configuration et héberger plusieurs
+                  domaines à partir d’un seul serveur. Nous allons configurer un
+                  domaine appelé<b> your_domain</b>, mais vous devez<b> le
+                    remplacer par le nom propre à votre domaine</b>. <br>
+                  <br>
+                  Nginx sur Ubuntu 20.04 dispose d’un bloc serveur activé par
+                  défaut qui est configuré pour servir des documents à partir
+                  d’un répertoire à <b>/var/www/html</b>. Même si cela
+                  fonctionne bien pour un seul site, cela peut devenir ingérable
+                  si vous hébergez plusieurs sites. Au lieu de modifier <b>/var/www/html</b>,
+                  créons une structure de répertoire au sein de <b>/var/www</b>
+                  pour votre<b> your_domain</b>, en laissant <b>/var/www/html</b>
+                  en place comme répertoire par défaut qui sera utilisé si une
+                  demande du client ne correspond à aucun autre site.<br>
+                  <br>
+                  Créez le répertoire pour <b>votre_domaine</b> comme suit en
+                  utilisant le drapeau <b>-p</b> pour créer tout répertoire
+                  parent nécessaire :</p>
+              </div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo mkdir<span
+
+style="color: black;"> -p /var/www/</span>your_domain<span style="color: black;">/html</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Ensuite, attribuez la propriété du répertoire
+                avec la variable d’environnement <b>$USER</b><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl <span
+
+style="color: #cc0000;">enable </span>nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo chown <span
+
+style="color: black;">-R $USER:$USER /var/www/<span style="color: #cc0000;">your_domain</span>/html</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Les autorisations de la racine de votre site
+                internet devraient être correctes si vous n’avez pas modifié
+                votre valeur umask, qui définit les autorisations de fichier par
+                défaut. Pour vous assurer que vos autorisations sont correctes
+                et permettre au propriétaire de lire, écrire et exécuter les
+                fichiers tout en accordant uniquement des autorisations de
+                lecture et d’exécution aux groupes et aux autres, vous pouvez
+                saisir la commande suivante :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo chmod <span
+
+style="color: black;">-R 755 /var/www/<span style="color: #cc0000;">your_domain</span></span></span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Ensuite, créez une page index.html à l’aide
+                de nano ou de votre éditeur favori :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">nano <span
+
+style="color: black;">/var/www/<span style="color: #cc0000;">your_domain</span>/html/index.html</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+                À l’intérieur, ajoutez l’exemple de HTML suivant :</div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">
+                    /var/www/your_domain/html/index.html</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #339999;"><span style="font-weight: bold;">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;<span style="color: black;">Welcome to your_domain!</span>&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;<span style="color: black;">Success!  The your_domain server block is working!</span>&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Enregistrez et fermez le fichier en tapant
+                CTRL et X puis Y et ENTER une fois que vous avez terminé.<br>
+                <br>
+                Pour que Nginx puisse offrir ce contenu, vous devez créer un
+                bloc serveur en utilisant les directives correctes. Au lieu de
+                directement modifier le fichier de configuration par défaut,
+                créons-en un nouveau dans</div>
+              <div class="content"> <b>/etc/nginx/sites-available/your_domain:</b></div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">/etc/nginx/sites-available/your_domain
+                    :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo nano <span
+
+style="color: black;">/etc/nginx/sites-available/</span>your_domain</span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Collez le bloc de configuration suivant, qui
+                est similaire à celui par défaut, mais mis à jour pour notre
+                nouveau répertoire et notre nom de domaine :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">/etc/nginx/sites-available/your_domain
+                    :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;">server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/<span style="color: #cc0000;">your_domain</span>/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name <span style="color: #cc0000;">your_domain</span> www.<span style="color: #cc0000;">your_domain</span>;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}<br></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Notez que nous avons mis à jour la
+                configuration root de notre nouveau répertoire et le server_name
+                vers notre nom de domaine.<br>
+                <br>
+                Ensuite, activons le fichier en créant un lien depuis celui-ci
+                vers le répertoire sites-enabled, que Nginx lit lors du
+                démarrage :</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo<span
+
+style="color: black;"> ln -s /etc/nginx/sites-available/<span style="color: #cc0000;">your_domain</span> /etc/nginx/sites-enabled/</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Deux blocs serveur sont désormais activés et
+                configurés pour répondre aux demandes en fonction de leurs
+                directives listen et server_name (vous pouvez en savoir plus sur
+                la façon dont Nginx traite ces directives en cliquant ici) :<br>
+                <br>
+                <ul>
+                  <li><b>your_domain</b> : répondra aux demandes de your_domain
+                    et www.your_domain.</li>
+                  <li><b>default</b> : répondra à toutes les demandes provenant
+                    du port 80 qui ne correspondent pas aux deux autres blocs.</li>
+                </ul>
+                <p><br>
+                </p>
+                Pour éviter un éventuel problème de mémoire de compartiment de
+                hachage pouvant résulter de l’ajout de noms de serveur
+                supplémentaires, vous devez configurer une valeur unique dans le
+                fichier <b>/etc/nginx/nginx.conf</b>. Ouvrez le fichier :</div>
+              <div class="content"><br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo nano <span
+
+style="color: black;">/etc/nginx/nginx.conf</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Trouvez la directive
+                server_names_hash_bucket_size et supprimez le symbole # pour
+                décommenter la ligne. Si vous utilisez nano, appuyez sur CTRL et
+                w pour rechercher des mots rapidement dans le fichier.<br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">/etc/nginx/nginx.conf :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: black;"><span>...
+http {
+    ...
+    server_names_hash_bucket_size 64;
+    ...
+}
+...</span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Enregistrez et fermez le fichier lorsque vous
+                avez terminé.<br>
+                <br>
+                Ensuite, procédez à un test pour vous assurer qu’il n’y a aucune
+                erreur de syntaxe dans aucun de vos fichiers Nginx :</div>
+              <div class="content"> <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo <span
+
+style="color: black;">nginx </span>-t</span></span></span></pre></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+                <br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo </span>systemctl <span
+
+style="color: #cc0000;">enable </span>nginx</span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">S’il n’y a pas de problème, redémarrez Nginx
+                pour activer vos modifications :<br>
+                <div class="formatter-container formatter-code code-BASH"><span
+
+                    id="copy-code-9" class="copy-code" title="Copier vers le presse-papier"
+
+                    onclick="copy_code_clipboard(9)"><i class="fa fa-clipboard"><span
+
+                        class="copy-code-txt">Copier vers le presse-papier</span></i></span><span
+
+                    class="formatter-title">Code BASH :</span>
+                  <div class="formatter-content copy-code-content" id="copy-code-9-content">
+                    <pre style="display:inline;"><pre class="bash" style="font-family:monospace;"><span
+
+style="color: #000000;"><span style="font-weight: bold;"><span style="color: #cc0000;">sudo <span
+
+style="color: black;">systemctl restart nginx</span></span></span></span></pre></pre>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Nginx devrait maintenant vous présenter votre
+                nom de domaine. Vous pouvez le vérifer en allant sur
+                http://your_domain, où vous devriez voir quelque chose de
+                similaire à ceci :</div>
+              <div class="content"><br>
+              </div>
+              <div class="content" style="text-align: center;"><img style="border: 2px solid #e3e8f4;
+    border-radius: 16px;" src="https://assets.digitalocean.com/articles/nginx_server_block_1404/first_block.png"
+
+                  alt="ngx" title="ngx"></div>
+              <div class="content" style="text-align: center;"><br>
+              </div>
+              <div class="content" style="text-align: center;"><br>
+              </div>
+              <div class="content" style="text-align: center;"><br>
+              </div>
+              <div class="content" style="text-align: center;"><br>
+              </div>
+              <br>
+              <div class="content" style="text-align: left;">
+                <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles"
+
+                  style="text-align: left;">Se familiariser avec les fichiers et
+                  répertoires Nginx importants</h2>
+              </div>
+              <div class="content" style="text-align: left;"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+              <div class="content">Maintenant que vous savez comment gérer le
+                service Nginx en lui-même, vous devriez prendre quelques minutes
+                pour vous familiariser avec quelques répertoires et fichiers
+                importants.<br>
+                <br>
+                <b>Contenu</b><br>
+                /var/www/html : le contenu web réel (qui par défaut ne consiste
+                qu’en la page Nginx par défaut que vous avez vue précédemment),
+                est présenté à partir du répertoire /var/www/html. Cela peut
+                être modifié en changeant les fichiers de configuration Nginx.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><b>Configuration du serveur</b><br>
+                /etc/nginx : répertoire de configuration Nginx. Tous les
+                fichiers de configuration Nginx se trouvent ici.<br>
+                /etc/nginx/nginx.conf : fichier de configuration principal de
+                Nginx. Celui-ci peut être modifié pour apporter des changements
+                à la configuration globale de Nginx.<br>
+                /etc/nginx/sites-available/: répertoire dans lequel vous pouvez
+                stocker les blocs de serveur par site. Nginx n’utilisera pas les
+                fichiers de configuration trouvés dans ce répertoire à moins
+                qu’ils ne soient liés au répertoire sites-enabled. En règle
+                générale, la configuration de tous les blocs de serveur se fait
+                dans ce répertoire, puis s’active en établissant une liaison
+                avec l’autre répertoire.<br>
+                /etc/nginx/sites-enabled/: répertoire dans lequel les blocs de
+                serveur par site activés sont stockés. En règle générale, ils
+                sont créés en reliant les fichiers de configuration trouvés dans
+                le répertoire sites-available.<br>
+                /etc/nginx/snippets: ce répertoire contient des fragments de
+                configuration qui peuvent être inclus ailleurs dans la
+                configuration Nginx. Les segments de configuration
+                potentiellement reproductibles sont de bons candidats pour la
+                refactorisation en fragments.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><b>Journaux du serveur</b></div>
+              <div class="content"><br>
+              </div>
+              <div class="content">/var/log/nginx/access.log : chaque requête
+                adressée à votre serveur web est enregistrée dans ce fichier
+                journal, sauf si Nginx est configuré pour procéder autrement.<br>
+                /var/log/nginx/error.log : toute erreur Nginx sera enregistrée
+                dans ce journal.</div>
+              <div class="content"><b><br>
+                </b></div>
+              <div class="content"><b>Conclusion</b><br>
+                Maintenant que votre serveur Web est installé, vous disposez de
+                nombreuses options pour le type de contenu que vous voulez
+                présenter et les technologies que vous souhaitez utiliser pour
+                créer une expérience plus riche.</div>
+              <div class="content"><br>
+              </div>
+              <div class="content"><br>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+    <script>
+<!--
+//Variables PHPBoost
+var PATH_TO_ROOT = "";
+var TOKEN        = "3502a18101d3ffed";
+var THEME        = "linuxtricks";
+var LANG         = "french";
+//Variables BBCode
+var L_HIDE_MESSAGE    = 'Ce message est caché, cliquer ici pour afficher son contenu.';
+var L_HIDE_HIDEBLOCK  = 'Cliquer ici pour cacher le message.';
+var L_COPYTOCLIPBOARD = 'Copier vers le presse-papier';
+//Variables CookieBar
+-->
+</script><script src="./nfs1_files/jquery.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/global.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/dndfiles.js.t%C3%A9l%C3%A9chargement"></script>
+    <script src="./nfs1_files/lightcase.js.t%C3%A9l%C3%A9chargement"></script>
+    <script>
+function check_search_mini_form_post()
+{
+var textSearched = document.getElementById('TxTMiniSearched').value;
+if (textSearched.length > 3)
+{
+textSearched = escape_xmlhttprequest(textSearched);
+return true;
+}
+else
+{
+alert('La chaine recherchée doit faire au moins 4 caractères !');
+return false;
+}
+}
+jQuery(document).ready(function() {
+jQuery('#search-token').val(TOKEN);
+});
+jQuery("#cssmenu-1764").menumaker({ title: "Linuxtricks", format: "multitoggle", breakpoint: 768 }); 
+jQuery("#cssmenu-module-wiki").menumaker({
+title: "Menu d'actions du module Wiki",
+format: "multitoggle",
+actionslinks: true,
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-module-wiki ul").removeClass('hidden');
+});
+jQuery("#cssmenu-wikitools").menumaker({
+title: "Outils",
+format: "multitoggle",
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-wikitools ul").removeClass('hidden');
+});
+/* Push the body and the nav over by the menu div width over */
+var summaryWidth = jQuery('.wiki-sticky').innerWidth();
+var viewportWidth = jQuery(window).width();
+jQuery('.wiki-sticky-title').on('click',function(f) {
+jQuery('.wiki-sticky-title').removeClass('blink');
+jQuery('.wiki-sticky').animate({
+left: "0px",
+'max-width': viewportWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: summaryWidth + 'px'
+}, 200);
+f.stopPropagation();
+});
+/* Then push them back by clicking outside the menu or on an inside link*/
+jQuery(document).on('click',function(f) {
+if (jQuery(f.target).is('.wiki-sticky-title') === false) {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+}
+});
+jQuery('.wiki-sticky a').on('click',function() {
+jQuery('.wiki-sticky').animate({
+left: -summaryWidth + 'px'
+}, 200);
+jQuery('body').animate({
+left: "0px"
+}, 200);
+});
+// smooth scroll when clicking on an inside link
+jQuery('.wiki-sticky a').on('click',function(){
+var the_id = jQuery(this).attr("href");
+jQuery('html, body').animate({
+scrollTop:jQuery(the_id).offset().top
+}, 'slow');
+return false;
+});
+jQuery('[data-confirmation]').each(function() {
+data_confirmation = jQuery(this).attr('data-confirmation');
+if (data_confirmation == 'delete-element')
+var message = 'Voulez-vous vraiment supprimer cet élément ?';
+else
+var message = data_confirmation;
+this.onclick = function () { return confirm(message); }
+});
+jQuery(document).ready(function() {
+jQuery('a[rel^=lightbox]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-lightbox^=formatter]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-rel^=lightcase]').lightcase({
+labels : {
+'errorMessage'    : 'L\'élément que vous demandez n\'existe pas.',
+'sequenceInfo.of' : ' ' + 'sur' + ' ',
+'close'           : 'Fermer',
+'navigator.prev'  : 'Précédent',
+'navigator.next'  : 'Suivant',
+'navigator.play'  : 'Lecture',
+'navigator.pause' : 'Pause'
+},
+maxHeight: window.innerHeight,
+maxWidth: window.innerWidth,
+shrinkFactor: 0.85
+});
+});
+jQuery('#table').basictable();
+jQuery('#table2').basictable();
+jQuery('#table3').basictable();
+jQuery('#table4').basictable();
+jQuery('#table5').basictable();
+jQuery(function() {
+jQuery(".lined textarea").linedtextarea();
+});
+</script>
+  </body>
+</html>
