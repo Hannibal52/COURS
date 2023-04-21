@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #tasks {
+      width: 50%;
+      padding-right: 1rem;
+    }
+
+    #tasks ul {
+      list-style-type: none;
+    }
+
+    #timer {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+    }
+
+    .next-task {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="tasks">
+    <h2>Taches</h2>
+    <ul id="task-list">
+      <!-- Les taches seront inserees ici par JavaScript -->
+    </ul>
+  </div>
+  <div id="timer">
+    <h1 id="countdown">00:00:00</h1>
+  </div>
+  <script>
+   const tasks = [
+  { time: "07:00", duration: 45, description: "Trajet en train" },
+  { time: "08:15", duration: 30, description: "Tri et distribution du courrier" },
+  { time: "08:45", duration: 60, description: "Repondre aux e-mails professionnels" },
+  { time: "09:45", duration: 15, description: "Preparation pour la formation professionnelle" },
+  { time: "10:00", duration: 60, description: "Formation professionnelle sur un nouveau logiciel" },
+  { time: "11:00", duration: 10, description: "Pause cafe" },
+  { time: "11:10", duration: 65, description: "Continuer la formation sur le nouveau logiciel" },
+  { time: "12:15", duration: 60, description: "Dejeuner avec son ami Ralph" },
+  { time: "13:15", duration: 60, description: "Traitement des commandes avec l'aide de Peter" },
+  { time: "14:15", duration: 60, description: "Traitement des commandes (suite)" },
+  { time: "15:15", duration: 15, description: "Preparation pour la reunion avec M. Eckert" },
+  { time: "15:30", duration: 60, description: "Reunion avec le responsable d'equipe, M. Eckert, pour discuter de l'offre pour le client J. Seiler SA" },
+  { time: "16:30", duration: 30, description: "Preparation et envoi du courrier" },
+  { time: "17:15", duration: 30, description: "Trajet pour rentrer chez soi" },
+  { time: "19:00", duration: 120, description: "Travailler avec Sabrina et Alex sur la presentation pour le client" },
+];
+
+
+    function getNextTask() {
+      const now = new Date();
+      return tasks.find(task => {
+        const taskDate = new Date(now);
+        const [hours, minutes] = task.time.split(':');
+        taskDate.setHours(hours, minutes, 0);
+        return taskDate > now;
+      });
+    }
+
+    function updateTaskList() {
+      const taskList = document.getElementById('task-list');
+      const nextTask = getNextTask();
+      taskList.innerHTML = tasks.map(task => `<li${task === nextTask ? ' class="next-task"' : ''}>${task.time} - ${task.description}</li>`).join('');
+    }
+
+    function updateTimer() {
+      const nextTask = getNextTask();
+      if (!nextTask) {
+        document.getElementById('countdown').innerHTML = 'Toutes les taches sont terminees';
+        return;
+      }
+
+      const now = new Date();
+      const [hours, minutes] = nextTask.time.split(':');
+      const nextTaskTime = new Date(now);
+      nextTaskTime.setHours(hours, minutes, 0);
+
+      const timeLeft = (nextTaskTime - now) / 1000;
+      const hoursLeft = Math.floor(timeLeft / 3600);
+      const minutesLeft = Math.floor((timeLeft % 3600) / 60);
+      const secondsLeft = Math.floor(timeLeft % 60);
+
+      const formattedTimeLeft = `${hoursLeft.toString().padStart(2, '0')}:${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
+      document.getElementById('countdown').innerHTML = formattedTimeLeft;
+    }
+
+    updateTaskList();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
