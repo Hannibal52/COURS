@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Affichage des taches</title>
+  <title>Affichage des tâches</title>
   <style>
     table {
       width: 100%;
@@ -27,6 +27,14 @@ width: 400px;
 .task-tools {width: 10px;
 }
 
+.next-task {
+      font-weight: bold;
+      color: green;
+  padding: 30px,
+    }
+
+
+
 
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -34,10 +42,11 @@ width: 400px;
 <body>
  
 <body>
-  <h1>Affichage des taches</h1>
+<h1 id="timer">Minuteur</h1>
+ 
   <table id="tasks-table">
     <tr>
-      <th >Heure debut</th>
+      <th >Heure début</th>
       <th>Heure fin</th>
       <th>Description</th>
       <th>Outils</th>
@@ -58,9 +67,59 @@ width: 400px;
       });
     }
 
+    function findNextTask() {
+      const currentTime = new Date();
+      const tasks = [];
+
+      $('#tasks-table tr:not(:first)').each(function () {
+        const start = $(this).find('td:first').text();
+        const startTime = new Date(currentTime.toDateString() + ' ' + start);
+        if (startTime > currentTime) {
+          tasks.push({ startTime, row: this });
+        }
+      });
+
+      tasks.sort((a, b) => a.startTime - b.startTime);
+
+      if (tasks.length > 0) {
+        return tasks[0].row;
+      } else {
+        return null;
+      }
+    }
+
+    function updateNextTaskHighlight() {
+      $('#tasks-table .next-task').removeClass('next-task');
+      const nextTask = findNextTask();
+      if (nextTask) {
+        $(nextTask).addClass('next-task');
+      }
+    }
+
+    function updateTimer() {
+      const nextTask = findNextTask();
+      if (nextTask) {
+        const start = $(nextTask).find('td:first').text();
+        const startTime = new Date(new Date().toDateString() + ' ' + start);
+        const remainingTime = startTime - new Date();
+
+        const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+        
+        $('#timer').text(`Prochaine tâche dans ${minutes} min ${seconds} s`);
+      } else {
+        $('#timer').text('Aucune tâche restante');
+      }
+    }
+
     $(document).ready(function () {
       const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
       displayTasks(tasks);
+      updateNextTaskHighlight();
+      updateTimer();
+      setInterval(() => {
+        updateTimer();
+      }, 1000);
     });
   </script>
 </body>
