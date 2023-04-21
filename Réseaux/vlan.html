@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://cisco.goffinet.org/ccna/vlans/configuration-vlan-cisco-ios/ -->
+<html lang="fr" class="js fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Configuration des VLANs sous Cisco IOS - cisco.goffinet.org</title>
+    <meta name="description"
+        content="Ce chapitre a pour objectif d’exposer les commandes de configuration des VLANs en Cisco IOS, la configuration du protocole DTP (Dynamic Trunking Protocol) et VTP (VLAN Trunking Protocol) ainsi que les bonnes pratiques associées.">
+    <meta name="author" content="François Goffinet">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="cisco.goffinet.org">
+    <meta property="og:title" content="Configuration des VLANs sous Cisco IOS">
+    <meta property="og:url" content="https://cisco.goffinet.org/ccna/vlans/configuration-vlan-cisco-ios/">
+    <meta property="og:description"
+        content="Ce chapitre a pour objectif d’exposer les commandes de configuration des VLANs en Cisco IOS, la configuration du protocole DTP (Dynamic Trunking Protocol) et VTP (VLAN Trunking Protocol) ainsi que les bonnes pratiques associées.">
+    <meta property="og:image"
+        content="https://cisco.goffinet.org/assets/images/cisco-flickr-26184812242_31d338d1df_b.jpg">
+    <meta name="twitter:site" content="@fegoffinet">
+    <meta name="twitter:title" content="Configuration des VLANs sous Cisco IOS">
+    <meta name="twitter:description"
+        content="Ce chapitre a pour objectif d’exposer les commandes de configuration des VLANs en Cisco IOS, la configuration du protocole DTP (Dynamic Trunking Protocol) et VTP (VLAN Trunking Protocol) ainsi que les bonnes pratiques associées.">
+    <meta name="twitter:url" content="https://cisco.goffinet.org/ccna/vlans/configuration-vlan-cisco-ios/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image"
+        content="https://cisco.goffinet.org/assets/images/cisco-flickr-26184812242_31d338d1df_b.jpg">
+    <meta name="twitter:creator" content="@fegoffinet">
+    <meta property="article:published_time" content="2018-01-01T00:00:00+01:00">
+    <meta property="article:modified_time" content="2020-08-10T00:00:00+02:00">
+    <style type="text/css">
+        svg:not(:root).svg-inline--fa {
+            overflow: visible
+        }
+
+        .svg-inline--fa {
+            display: inline-block;
+            font-size: inherit;
+            height: 1em;
+            overflow: visible;
+            vertical-align: -.125em
+        }
+
+        .svg-inline--fa.fa-lg {
+            vertical-align: -.225em
+        }
+
+        .svg-inline--fa.fa-w-1 {
+            width: .0625em
+        }
+
+        .svg-inline--fa.fa-w-2 {
+            width: .125em
+        }
+
+        .svg-inline--fa.fa-w-3 {
+            width: .1875em
+        }
+
+        .svg-inline--fa.fa-w-4 {
+            width: .25em
+        }
+
+        .svg-inline--fa.fa-w-5 {
+            width: .3125em
+        }
+
+        .svg-inline--fa.fa-w-6 {
+            width: .375em
+        }
+
+        .svg-inline--fa.fa-w-7 {
+            width: .4375em
+        }
+
+        .svg-inline--fa.fa-w-8 {
+            width: .5em
+        }
+
+        .svg-inline--fa.fa-w-9 {
+            width: .5625em
+        }
+
+        .svg-inline--fa.fa-w-10 {
+            width: .625em
+        }
+
+        .svg-inline--fa.fa-w-11 {
+            width: .6875em
+        }
+
+        .svg-inline--fa.fa-w-12 {
+            width: .75em
+        }
+
+        .svg-inline--fa.fa-w-13 {
+            width: .8125em
+        }
+
+        .svg-inline--fa.fa-w-14 {
+            width: .875em
+        }
+
+        .svg-inline--fa.fa-w-15 {
+            width: .9375em
+        }
+
+        .svg-inline--fa.fa-w-16 {
+            width: 1em
+        }
+
+        .svg-inline--fa.fa-w-17 {
+            width: 1.0625em
+        }
+
+        .svg-inline--fa.fa-w-18 {
+            width: 1.125em
+        }
+
+        .svg-inline--fa.fa-w-19 {
+            width: 1.1875em
+        }
+
+        .svg-inline--fa.fa-w-20 {
+            width: 1.25em
+        }
+
+        .svg-inline--fa.fa-pull-left {
+            margin-right: .3em;
+            width: auto
+        }
+
+        .svg-inline--fa.fa-pull-right {
+            margin-left: .3em;
+            width: auto
+        }
+
+        .svg-inline--fa.fa-border {
+            height: 1.5em
+        }
+
+        .svg-inline--fa.fa-li {
+            width: 2em
+        }
+
+        .svg-inline--fa.fa-fw {
+            width: 1.25em
+        }
+
+        .fa-layers svg.svg-inline--fa {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .fa-layers {
+            display: inline-block;
+            height: 1em;
+            position: relative;
+            text-align: center;
+            vertical-align: -.125em;
+            width: 1em
+        }
+
+        .fa-layers svg.svg-inline--fa {
+            -webkit-transform-origin: center center;
+            transform-origin: center center
+        }
+
+        .fa-layers-counter,
+        .fa-layers-text {
+            display: inline-block;
+            position: absolute;
+            text-align: center
+        }
+
+        .fa-layers-text {
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-transform-origin: center center;
+            transform-origin: center center
+        }
+
+        .fa-layers-counter {
+            background-color: #ff253a;
+            border-radius: 1em;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #fff;
+            height: 1.5em;
+            line-height: 1;
+            max-width: 5em;
+            min-width: 1.5em;
+            overflow: hidden;
+            padding: .25em;
+            right: 0;
+            text-overflow: ellipsis;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top right;
+            transform-origin: top right
+        }
+
+        .fa-layers-bottom-right {
+            bottom: 0;
+            right: 0;
+            top: auto;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: bottom right;
+            transform-origin: bottom right
+        }
+
+        .fa-layers-bottom-left {
+            bottom: 0;
+            left: 0;
+            right: auto;
+            top: auto;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+
+        .fa-layers-top-right {
+            right: 0;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top right;
+            transform-origin: top right
+        }
+
+        .fa-layers-top-left {
+            left: 0;
+            right: auto;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top left;
+            transform-origin: top left
+        }
+
+        .fa-lg {
+            font-size: 1.33333em;
+            line-height: .75em;
+            vertical-align: -.0667em
+        }
+
+        .fa-xs {
+            font-size: .75em
+        }
+
+        .fa-sm {
+            font-size: .875em
+        }
+
+        .fa-1x {
+            font-size: 1em
+        }
+
+        .fa-2x {
+            font-size: 2em
+        }
+
+        .fa-3x {
+            font-size: 3em
+        }
+
+        .fa-4x {
+            font-size: 4em
+        }
+
+        .fa-5x {
+            font-size: 5em
+        }
+
+        .fa-6x {
+            font-size: 6em
+        }
+
+        .fa-7x {
+            font-size: 7em
+        }
+
+        .fa-8x {
+            font-size: 8em
+        }
+
+        .fa-9x {
+            font-size: 9em
+        }
+
+        .fa-10x {
+            font-size: 10em
+        }
+
+        .fa-fw {
+            text-align: center;
+            width: 1.25em
+        }
+
+        .fa-ul {
+            list-style-type: none;
+            margin-left: 2.5em;
+            padding-left: 0
+        }
+
+        .fa-ul>li {
+            position: relative
+        }
+
+        .fa-li {
+            left: -2em;
+            position: absolute;
+            text-align: center;
+            width: 2em;
+            line-height: inherit
+        }
+
+        .fa-border {
+            border: solid .08em #eee;
+            border-radius: .1em;
+            padding: .2em .25em .15em
+        }
+
+        .fa-pull-left {
+            float: left
+        }
+
+        .fa-pull-right {
+            float: right
+        }
+
+        .fa.fa-pull-left,
+        .fab.fa-pull-left,
+        .fal.fa-pull-left,
+        .far.fa-pull-left,
+        .fas.fa-pull-left {
+            margin-right: .3em
+        }
+
+        .fa.fa-pull-right,
+        .fab.fa-pull-right,
+        .fal.fa-pull-right,
+        .far.fa-pull-right,
+        .fas.fa-pull-right {
+            margin-left: .3em
+        }
+
+        .fa-spin {
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear
+        }
+
+        .fa-pulse {
+            -webkit-animation: fa-spin 1s infinite steps(8);
+            animation: fa-spin 1s infinite steps(8)
+        }
+
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        .fa-rotate-90 {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+        }
+
+        .fa-rotate-180 {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg)
+        }
+
+        .fa-rotate-270 {
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg)
+        }
+
+        .fa-flip-horizontal {
+            -webkit-transform: scale(-1, 1);
+            transform: scale(-1, 1)
+        }
+
+        .fa-flip-vertical {
+            -webkit-transform: scale(1, -1);
+            transform: scale(1, -1)
+        }
+
+        .fa-flip-horizontal.fa-flip-vertical {
+            -webkit-transform: scale(-1, -1);
+            transform: scale(-1, -1)
+        }
+
+        :root .fa-flip-horizontal,
+        :root .fa-flip-vertical,
+        :root .fa-rotate-180,
+        :root .fa-rotate-270,
+        :root .fa-rotate-90 {
+            -webkit-filter: none;
+            filter: none
+        }
+
+        .fa-stack {
+            display: inline-block;
+            height: 2em;
+            position: relative;
+            width: 2em
+        }
+
+        .fa-stack-1x,
+        .fa-stack-2x {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .svg-inline--fa.fa-stack-1x {
+            height: 1em;
+            width: 1em
+        }
+
+        .svg-inline--fa.fa-stack-2x {
+            height: 2em;
+            width: 2em
+        }
+
+        .fa-inverse {
+            color: #fff
+        }
+
+        .sr-only {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px
+        }
+
+        .sr-only-focusable:active,
+        .sr-only-focusable:focus {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto
+        }
+    </style>
+    <link rel="canonical" href="https://cisco.goffinet.org/ccna/vlans/configuration-vlan-cisco-ios/">
+    <script async="" src="./vlan_files/async-ads.js.téléchargement"></script>
+    <script type="text/javascript" async="" src="./vlan_files/f.txt"></script>
+    <script
+        type="application/ld+json"> { "@context": "http://schema.org", "@type": "Organization", "url": "https://cisco.goffinet.org", "logo": "https://cisco.goffinet.org/assets/images/site-logo.png" } </script>
+    <script
+        type="application/ld+json"> { "@context": "http://schema.org", "@type": "Person", "name": "Un Guide de préparation au Cisco CCNA", "url": "https://cisco.goffinet.org", "sameAs": ["https://twitter.com/fegoffinet","https://www.linkedin.com/in/fegoffinet"] } </script>
+    <link href="https://cisco.goffinet.org/feed.xml" type="application/atom+xml" rel="alternate"
+        title="cisco.goffinet.org Feed">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script> document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';</script>
+    <link rel="stylesheet" href="./vlan_files/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cisco.goffinet.org/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cisco.goffinet.org/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cisco.goffinet.org/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="https://cisco.goffinet.org/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="https://cisco.goffinet.org/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff"> <noscript>
+        <style type="text/css">
+            body {
+                display: none;
+            }
+        </style>
+        <h3>Please enable javascript in your browser to view this site!</h3>
+    </noscript>
+    <link rel="stylesheet" href="./vlan_files/cookiebar.min.css">
+    <style id="fit-vids-style">
+        .fluid-width-video-wrapper {
+            width: 100%;
+            position: relative;
+            padding: 0;
+        }
+
+        .fluid-width-video-wrapper iframe,
+        .fluid-width-video-wrapper object,
+        .fluid-width-video-wrapper embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="./vlan_files/cse_element__fr.js.téléchargement" type="text/javascript"></script>
+    <link type="text/css" href="./vlan_files/default+fr.css" rel="stylesheet">
+    <link type="text/css" href="./vlan_files/default.css" rel="stylesheet">
+    <style type="text/css">
+        .gsc-control-cse {
+            font-family: arial, sans-serif
+        }
+
+        .gsc-control-cse .gsc-table-result {
+            font-family: arial, sans-serif
+        }
+
+        .gsc-refinementsGradient {
+            background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+        }
+
+        .gsc-control-cse {
+            border-color: #FFFFFF;
+            background-color: #FFFFFF
+        }
+
+        input.gsc-input,
+        .gsc-input-box,
+        .gsc-input-box-hover,
+        .gsc-input-box-focus {
+            border-color: #D9D9D9
+        }
+
+        .gsc-search-button-v2,
+        .gsc-search-button-v2:hover,
+        .gsc-search-button-v2:focus {
+            border-color: #2F5BB7;
+            background-color: #4D90FE;
+            background-image: none;
+            filter: none
+        }
+
+        .gsc-search-button-v2 svg {
+            fill: #FFFFFF
+        }
+
+        .gsc-tabHeader.gsc-tabhActive,
+        .gsc-refinementHeader.gsc-refinementhActive {
+            color: #CCCCCC;
+            border-color: #CCCCCC;
+            background-color: #FFFFFF
+        }
+
+        .gsc-tabHeader.gsc-tabhInactive,
+        .gsc-refinementHeader.gsc-refinementhInactive {
+            color: #CCCCCC;
+            border-color: #CCCCCC;
+            background-color: #FFFFFF
+        }
+
+        .gsc-webResult.gsc-result,
+        .gsc-results .gsc-imageResult {
+            border-color: #FFFFFF;
+            background-color: #FFFFFF
+        }
+
+        .gsc-webResult.gsc-result:hover {
+            border-color: #FFFFFF;
+            background-color: #FFFFFF
+        }
+
+        .gs-webResult.gs-result a.gs-title:link,
+        .gs-webResult.gs-result a.gs-title:link b,
+        .gs-imageResult a.gs-title:link,
+        .gs-imageResult a.gs-title:link b {
+            color: #1155CC
+        }
+
+        .gs-webResult.gs-result a.gs-title:visited,
+        .gs-webResult.gs-result a.gs-title:visited b,
+        .gs-imageResult a.gs-title:visited,
+        .gs-imageResult a.gs-title:visited b {
+            color: #1155CC
+        }
+
+        .gs-webResult.gs-result a.gs-title:hover,
+        .gs-webResult.gs-result a.gs-title:hover b,
+        .gs-imageResult a.gs-title:hover,
+        .gs-imageResult a.gs-title:hover b {
+            color: #1155CC
+        }
+
+        .gs-webResult.gs-result a.gs-title:active,
+        .gs-webResult.gs-result a.gs-title:active b,
+        .gs-imageResult a.gs-title:active,
+        .gs-imageResult a.gs-title:active b {
+            color: #1155CC
+        }
+
+        .gsc-cursor-page {
+            color: #1155CC
+        }
+
+        a.gsc-trailing-more-results:link {
+            color: #1155CC
+        }
+
+        .gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,
+        .gs-fileFormatType {
+            color: #333333
+        }
+
+        .gs-webResult div.gs-visibleUrl {
+            color: #009933
+        }
+
+        .gs-webResult div.gs-visibleUrl-short {
+            color: #009933
+        }
+
+        .gsc-cursor-box {
+            border-color: #FFFFFF
+        }
+
+        .gsc-results .gsc-cursor-box .gsc-cursor-page {
+            border-color: #CCCCCC;
+            background-color: #FFFFFF;
+            color: #CCCCCC
+        }
+
+        .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+            border-color: #CCCCCC;
+            background-color: #FFFFFF;
+            color: #CCCCCC
+        }
+
+        .gsc-webResult.gsc-result.gsc-promotion {
+            border-color: #F6F6F6;
+            background-color: #F6F6F6
+        }
+
+        .gsc-completion-title {
+            color: #1155CC
+        }
+
+        .gsc-completion-snippet {
+            color: #333333
+        }
+
+        .gs-promotion a.gs-title:link,
+        .gs-promotion a.gs-title:link *,
+        .gs-promotion .gs-snippet a:link {
+            color: #1155CC
+        }
+
+        .gs-promotion a.gs-title:visited,
+        .gs-promotion a.gs-title:visited *,
+        .gs-promotion .gs-snippet a:visited {
+            color: #1155CC
+        }
+
+        .gs-promotion a.gs-title:hover,
+        .gs-promotion a.gs-title:hover *,
+        .gs-promotion .gs-snippet a:hover {
+            color: #1155CC
+        }
+
+        .gs-promotion a.gs-title:active,
+        .gs-promotion a.gs-title:active *,
+        .gs-promotion .gs-snippet a:active {
+            color: #1155CC
+        }
+
+        .gs-promotion .gs-snippet,
+        .gs-promotion .gs-title .gs-promotion-title-right,
+        .gs-promotion .gs-title .gs-promotion-title-right * {
+            color: #333333
+        }
+
+        .gs-promotion .gs-visibleUrl,
+        .gs-promotion .gs-visibleUrl-short {
+            color: #009933
+        }
+
+        .gcsc-find-more-on-google {
+            color: #1155CC
+        }
+
+        .gcsc-find-more-on-google-magnifier {
+            fill: #1155CC
+        }
+    </style>
+    <style type="text/css">
+        .gscb_a {
+            display: inline-block;
+            font: 27px/13px arial, sans-serif
+        }
+
+        .gsst_a .gscb_a {
+            color: #a1b9ed;
+            cursor: pointer
+        }
+
+        .gsst_a:hover .gscb_a,
+        .gsst_a:focus .gscb_a {
+            color: #36c
+        }
+
+        .gsst_a {
+            display: inline-block
+        }
+
+        .gsst_a {
+            cursor: pointer;
+            padding: 0 4px
+        }
+
+        .gsst_a:hover {
+            text-decoration: none !important
+        }
+
+        .gsst_b {
+            font-size: 16px;
+            padding: 0 2px;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            white-space: nowrap
+        }
+
+        .gsst_e {
+            vertical-align: middle;
+            opacity: 0.55;
+        }
+
+        .gsst_a:hover .gsst_e,
+        .gsst_a:focus .gsst_e {
+            opacity: 0.72;
+        }
+
+        .gsst_a:active .gsst_e {
+            opacity: 1;
+        }
+
+        .gsst_f {
+            background: white;
+            text-align: left
+        }
+
+        .gsst_g {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top-color: #d9d9d9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin: -1px -3px;
+            padding: 0 6px
+        }
+
+        .gsst_h {
+            background-color: white;
+            height: 1px;
+            margin-bottom: -1px;
+            position: relative;
+            top: -1px
+        }
+
+        .gsib_a {
+            width: 100%;
+            padding: 4px 6px 0
+        }
+
+        .gsib_a,
+        .gsib_b {
+            vertical-align: top
+        }
+
+        .gssb_c {
+            border: 0;
+            position: absolute;
+            z-index: 989
+        }
+
+        .gssb_e {
+            border: 1px solid #ccc;
+            border-top-color: #d9d9d9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: default
+        }
+
+        .gssb_f {
+            visibility: hidden;
+            white-space: nowrap
+        }
+
+        .gssb_k {
+            border: 0;
+            display: block;
+            position: absolute;
+            top: 0;
+            z-index: 988
+        }
+
+        .gsdd_a {
+            border: none !important
+        }
+
+        .gsq_a {
+            padding: 0
+        }
+
+        .gssb_a {
+            padding: 0 7px
+        }
+
+        .gssb_a,
+        .gssb_a td {
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 22px
+        }
+
+        #gssb_b {
+            font-size: 11px;
+            color: #36c;
+            text-decoration: none
+        }
+
+        #gssb_b:hover {
+            font-size: 11px;
+            color: #36c;
+            text-decoration: underline
+        }
+
+        .gssb_g {
+            text-align: center;
+            padding: 8px 0 7px;
+            position: relative
+        }
+
+        .gssb_h {
+            font-size: 15px;
+            height: 28px;
+            margin: 0.2em;
+            -webkit-appearance: button
+        }
+
+        .gssb_i {
+            background: #eee
+        }
+
+        .gss_ifl {
+            visibility: hidden;
+            padding-left: 5px
+        }
+
+        .gssb_i .gss_ifl {
+            visibility: visible
+        }
+
+        a.gssb_j {
+            font-size: 13px;
+            color: #36c;
+            text-decoration: none;
+            line-height: 100%
+        }
+
+        a.gssb_j:hover {
+            text-decoration: underline
+        }
+
+        .gssb_l {
+            height: 1px;
+            background-color: #e5e5e5
+        }
+
+        .gssb_m {
+            color: #000;
+            background: #fff
+        }
+
+        .gssb_a {
+            padding: 0 9px
+        }
+
+        .gsib_a {
+            padding: 5px 9px 4px 9px
+        }
+
+        .gscb_a {
+            line-height: 27px
+        }
+
+        .gssb_e {
+            border: 0
+        }
+
+        .gssb_l {
+            margin: 5px 0
+        }
+
+        input.gsc-input::-webkit-input-placeholder {
+            font-size: 14px
+        }
+
+        input.gsc-input:-moz-placeholder {
+            font-size: 14px
+        }
+
+        input.gsc-input::-moz-placeholder {
+            font-size: 14px
+        }
+
+        input.gsc-input:-ms-input-placeholder {
+            font-size: 14px
+        }
+
+        input.gsc-input:focus::-webkit-input-placeholder {
+            color: transparent
+        }
+
+        input.gsc-input:focus:-moz-placeholder {
+            color: transparent
+        }
+
+        input.gsc-input:focus::-moz-placeholder {
+            color: transparent
+        }
+
+        input.gsc-input:focus:-ms-input-placeholder {
+            color: transparent
+        }
+
+        .gssb_c .gsc-completion-container {
+            position: static
+        }
+
+        .gssb_c {
+            z-index: 5000
+        }
+
+        .gsc-completion-container table {
+            background: transparent;
+            font-size: inherit;
+            font-family: inherit
+        }
+
+        .gssb_c>tbody>tr,
+        .gssb_c>tbody>tr>td,
+        .gssb_d,
+        .gssb_d>tbody>tr,
+        .gssb_d>tbody>tr>td,
+        .gssb_e,
+        .gssb_e>tbody>tr,
+        .gssb_e>tbody>tr>td {
+            padding: 0;
+            margin: 0;
+            border: 0
+        }
+
+        .gssb_a table,
+        .gssb_a table tr,
+        .gssb_a table tr td {
+            padding: 0;
+            margin: 0;
+            border: 0
+        }
+    </style>
+</head>
+
+<body class="layout--single wide" style="margin-bottom: 221.688px; margin-top: 0px;">
+    <div class="masthead">
+        <div class="masthead__inner-wrap">
+            
+        </div>
+    </div>
+    <div class="initial-content">
+         
+        <div id="main" role="main">
+            
+            <article class="page" itemscope="" itemtype="http://schema.org/CreativeWork">
+                <meta itemprop="headline" content="Configuration des VLANs sous Cisco IOS">
+                <meta itemprop="description"
+                    content="Ce chapitre a pour objectif d’exposer les commandes de configuration des VLANs en Cisco IOS, la configuration du protocole DTP (Dynamic Trunking Protocol) et VTP (VLAN Trunking Protocol) ainsi que les bonnes pratiques associées.">
+                <meta itemprop="datePublished" content="January 01, 2018">
+                <meta itemprop="dateModified" content="August 10, 2020">
+                <div class="page__inner-wrap">
+                    <section class="page__content" itemprop="text">
+                        <aside class="sidebar__right ">
+                            <nav class="toc">
+                                
+                                 
+                            </nav>
+                        </aside>
+                     
+                         
+                        <h1 id="configuration-des-vlans-sous-cisco-ios">Configuration des VLANs sous Cisco IOS®</h1>
+                        <p>Ce chapitre a pour objectif d’exposer les commandes de configuration des VLANs en Cisco IOS,
+                            la configuration du protocole DTP (Dynamic Trunking Protocol) et VTP (VLAN Trunking
+                            Protocol) ainsi que les bonnes pratiques associées.</p>
+                        <h2 id="1-vlan-et-paramètres-switchport-par-défaut">1. VLAN et paramètres switchport par défaut
+                        </h2>
+                        <p>Par défaut, un port physique d’un commutateur Cisco est un “switchport”, un port de
+                            commutation.</p>
+                        <p>Il est configuré par défaut dans le mode “dynamic auto” mais il est en mode opérationnel
+                            “access”. Il est associé au VLAN 1 (default).</p>
+                        <p>S’il devait être monté trunk, le VLAN natif serait le VLAN 1 et l’encapsulation “Trunk”
+                            serait négociée par DTP.</p>
+                        <p>Un port dynamique est un port qui restera un port “access” ou qui se montera en port “trunk”
+                            en fonction des messages Dynamic Trunk Protocol (DTP, protocole propriétaire Cisco) reçus
+                            par l’interface.</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show interfaces Fa0/21 switchport
+Name: Fa0/21
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+...
+</code></pre>
+                            </div>
+                        </div>
+                        <h2 id="2-création-des-vlans-et-des-interfaces-svi">2. Création des VLANs et des interfaces SVI
+                        </h2>
+                        <h3 id="21-création-des-vlans">2.1. Création des VLANs</h3>
+                        <p>Les VLANs doivent d’abord être créés sur chaque commutateur. Par exemple, pour le VLAN 10 et
+                            pour chaque VLAN, en mode de configuration globale :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vlan 10
+(config-vlan)#name TEST
+(config-vlan)#exit
+(config)#
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Vérification</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+10   TEST                             active
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0
+1003 tr    101003     1500  -      -      -        -    -        0      0
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+</code></pre>
+                            </div>
+                        </div>
+                         
+                        <h3 id="22-suppression-dun-vlan">2.2. Suppression d’un VLAN</h3>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#no vlan 10
+(config-vlan)#exit
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="23-linterface-vlanx-de-gestion-svi">2.3. L’interface VLANx de gestion (SVI)</h3>
+                        <p>L’interface VLANx de gestion (SVI) correspond aux interfaces physiques appartenant à ce VLAN
+                            (le numéro 10 dans l’exemple) pour le joindre en IPv4 à des fins de gestion (en Telnet, SSH,
+                            HTTP ou SNMP). Comme tout périphérique joignable sur le réseau, le commutateur doit posséder
+                            une adresse IPv4, un masque et une passerelle.</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#interface vlan 10
+(config-if)#ip address 192.168.10.1 255.255.255.0
+(config-if)#no shutdown
+(config-if)#exit
+(config)#ip default-gateway 192.168.10.254
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Si le VLAN qui correspond à l’interface créée a déjà été instancié (voir juste avant),
+                            l’interface se monte et le commutateur nous le dit avec un message de log :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>%LINK-5-CHANGED: Interface Vlan10, changed state to up
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Vérification :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+...
+Vlan1                  unassigned      YES manual administratively down down
+Vlan10                 192.168.10.1    YES manual up                    down
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Mais la colonne “Protocol” reste “down” ce qui signifie un problème de couche 2 (L2).</p>
+                        <h2 id="3-configuration-et-vérification-des-port-access">3. Configuration et vérification des
+                            port “Access”</h2>
+                        <h3 id="31-configuration-des-ports-access">3.1. Configuration des ports “Access”</h3>
+                        <p>Sous Cisco IOS un port Access est un port qui appartient à un seul VLAN. En option, on peut
+                            activer “spanning-tree portfast” qui fait passer le port directement à l’état STP
+                            “forwarding” vu qu’il connectera des périphériques de terminaison (qui ne créent pas de
+                            boucles).</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#interface range f0/1 - 20
+(config-if-range)#switchport mode access
+(config-if-range)#switchport access vlan 10
+(config-if-range)#spanning-tree portfast
+(config-if-range)#exit
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Dès que des ports sont configurés dans le VLAN 10, l’interface Vlan 10 se monte en “Protocol
+                            up” :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan10, changed state to up
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Vérification :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+...
+Vlan1                  unassigned      YES manual administratively down down
+Vlan10                 192.168.10.1    YES manual up                    up
+</code></pre>
+                            </div>
+                        </div>
+                        
+                        <h3 id="32-vérification-des-ports-access">3.2. Vérification des ports “Access”</h3>
+                        <p>Vérification du VLAN associé à un port “access”</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+10   TEST                             active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+...
+</code></pre>
+                            </div>
+                        </div>
+                        <h2 id="4-configuration-et-vérification-des-ports-trunk">4. Configuration et vérification des
+                            ports “Trunk”</h2>
+                        <h3 id="41-configuration-dun-port-trunk">4.1. Configuration d’un port “Trunk”</h3>
+                        <p>Un port dit “Trunk” est un port qui transporte le trafic appartenant à plusieurs VLANs, tous
+                            par défaut sur du matériel Cisco.</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#int G0/1
+(config-if)#switchport mode trunk
+(config-if)#exit
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="42-vérification-dun-port-trunk">4.2. Vérification d’un port “Trunk”</h3>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show interfaces G0/1 switchport
+Name: Gig0/1
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Voice VLAN: none
+Administrative private-vlan host-association: none
+Administrative private-vlan mapping: none
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk private VLANs: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+Protected: false
+Appliance trust: none
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show interfaces trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Gig0/1      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Gig0/1      1-1005
+
+Port        Vlans allowed and active in management domain
+Gig0/1      1,10
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig0/1      1,10
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Dans cette sortie fournie par la commande <code
+                                class="language-plaintext highlighter-rouge">show interfaces trunk</code>, on prendra
+                            connaissance du mode DTP de l’interface (“on”, “dynamic auto”, “desirable”, “nonegociate”),
+                            du protocole d’encapsulation (“802.1q” ou “isl”), le statut et le numéro du VLAN natif sur
+                            le Trunk.</p>
+                        <h3 id="43-encapsulation-sur-le-port-trunk">4.3. Encapsulation sur le port “trunk”</h3>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#switchport mode trunk
+Command rejected: An interface whose trunk encapsulation is "Auto" can not be configured to "trunk" mode.
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#switchport trunk encapsulation ?
+  dot1q      Interface uses only 802.1q trunking encapsulation when trunking
+  isl        Interface uses only ISL trunking encapsulation when trunking
+  negotiate  Device will negotiate trunking encapsulation with peer on
+             interface
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#switchport trunk encapsulation dot1q
+(config-if)#switchport mode trunk
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#do show interfaces trunk
+
+Port        Mode             Encapsulation  Status        Native vlan
+Gi0/0       on               802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Gi0/0       1-4094
+
+Port        Vlans allowed and active in management domain
+Gi0/0       1
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gi0/0       1
+</code></pre>
+                            </div>
+                        </div>
+                        
+                        <h3 id="44-rétablir-la-négociation-de-lencapsulation-sur-le-trunk">4.4. Rétablir la négociation
+                            de l’encapsulation sur le “trunk”</h3>
+                        <p>Pour rétablir la négociation de l’encapsulation (via DTP) :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#switchport trunk encapsulation negotiate
+Command rejected: A port which is configured to "trunk" mode can not be configured to negotiate the encapsulation.
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#no switchport mode trunk
+(config-if)#switchport trunk encapsulation negotiate
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="45-autoriser-certains-vlans-sur-le-port-trunk">4.5. Autoriser certains VLANs sur le port
+                            “trunk”</h3>
+                        <p>Pour autoriser certains VLANs sur le port “trunk” :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#int G0/1
+(config-if)#switchport trunk allowed vlan 10, 20
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Pour ne pas placer d’étiquette 802.1q sur un VLAN (VLAN natif) :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config-if)#switchport trunk native vlan 100
+(config-if)#exit
+</code></pre>
+                            </div>
+                        </div>
+                        <h2 id="5-routage-inter-vlan">5. Routage Inter-VLAN</h2>
+                        <h3 id="51-configuration-du-trunk-sur-le-routeur-router-on-a-stick">5.1. Configuration du Trunk
+                            sur le routeur (Router-on-A-Stick)</h3>
+                        <p>Pour que différents VLANs communiquent entre eux, le routage est nécessaire. Le routage peut
+                            être assuré par un routeur ou un commutateur de niveau 3. Ici la configuration sur un
+                            routeur (configuration Router-on-A-Stick).</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#interface G0/0
+(config-if)#no ip address
+(config-if)#no shut
+(config-if)#interface G0/0.1
+(config-subif)#encapsulation dot1q 10
+(config-subif)#ip address 192.168.10.254 255.255.255.0
+(config-subif)#exit
+(config)#...
+(config)#interface G0/0.4
+(config-subif)#encapsulation dot1q 100 native
+(config-subif)#exit
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="52-routage-avec-un-commutateur-l3">5.2. Routage avec un commutateur L3</h3>
+                        <p>Vérifier que votre commutateur est capable de remplir des tâches de routage.</p>
+                        <p>Activer le routage IPv4 :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#ip routing
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Créer les VLANs et les ports Trunks vers les commutateurs d’accès.</p>
+                        <p>Pour chaque VLAN à router, création d’une interface VLAN.</p>
+                        <p>Éventuellement, activation d’un protocole de routage</p>
+                        <h2 id="6-dynamic-trunking-protocol-dtp">6. Dynamic Trunking Protocol (DTP)</h2>
+                        <h3 id="61-dynamic-trunking-protocol-dtp">6.1. Dynamic Trunking Protocol (DTP)</h3>
+                        <p>Dynamic Trunking Protocol (DTP) est un protocole propriétaire Cisco (activé par défaut sur
+                            les ports des commutateurs Cisco ) qui négocie aussi bien :</p>
+                        <ul>
+                            <li>le statut des ports “trunk” ou “access”</li>
+                            <li>l’encapsulation des ports “trunk”</li>
+                        </ul>
+                        <p>DTP gère la négociation “trunk” seulement si le port sur l’autre commutateur est configuré
+                            dans un mode trunk supporté par DTP.</p>
+                        <h3 id="62-dtp-mode-dynamic-auto">6.2. DTP mode “dynamic auto”</h3>
+                        <p>Par défaut, tous les ports du commutateur sont configurés en <code
+                                class="language-plaintext highlighter-rouge">switchport mode dynamic auto</code>; le
+                            commutateur local annonce qu’il est capable de se monter en trunk mais ne demande pas à son
+                            correspondant de passer en mode trunk. Après la négociation DTP, le port local termine en
+                            mode trunk uniquement si le port correspondant est “on” (trunk) ou “desirable”. Si le port
+                            correspondant est en “auto” ou “access”, la négociation aboutit localement en mode “access”.
+                        </p>
+                        <h3 id="63-dtp-mode-on">6.3. DTP mode “on”</h3>
+                        <p>Si le port du commutateur est configuré en <code
+                                class="language-plaintext highlighter-rouge">switchport mode trunk</code>, il est en
+                            mode DTP “on”, le port du commutateur envoie régulièrement des messages DTP selon lesquels
+                            il est inconditionnellement en mode “trunk”</p>
+                        <h3 id="64-dtp-mode-auto-desirable">6.4. DTP mode “auto desirable”</h3>
+                        <p>Si le commutateur est configuré en <code
+                                class="language-plaintext highlighter-rouge">switchport dynamic desirable</code>, le
+                            commutateur local annonce qu’il est capable de se monter en trunk et demande à son
+                            correspondant de passer en mode “trunk”. Après la négociation DTP, le port local termine en
+                            mode “trunk” si le port correspondant est “on” (trunk) ou “desirable” ou “auto”. Si le port
+                            correspondant est en “access”, la négociation aboutit localement en mode “access”. Si le
+                            port distant est en mode “non-negociate”, le port local reste en mode “access”.</p>
+                        <hr>
+                        <h3 id="65-dtp-mode-nonegociate">6.5. DTP mode “nonegociate”</h3>
+                        <p>Si le commutateur est en <code
+                                class="language-plaintext highlighter-rouge">switchport nonegotiate</code>, le port
+                            local reste inconditionnellement en mode trunk. Il n’y a aucune négociation. On utilise
+                            cette commande pour intégrer au trunking des commutateurs d’autres constructeurs.</p>
+                        <h2 id="66-désactiver-dtp-sur-un-port">6.6. Désactiver DTP sur un port</h2>
+                        <p>Configurer administrativement un port en <code
+                                class="language-plaintext highlighter-rouge">switchport mode access</code> désactive DTP
+                            sur le port.</p>
+                        <h3 id="67-dtp-tableau-récapitulatif">6.7. DTP tableau récapitulatif</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><code class="language-plaintext highlighter-rouge">-</code></th>
+                                    <th>Dynamic auto</th>
+                                    <th>Dynamic desirable</th>
+                                    <th>Trunk</th>
+                                    <th>Access</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Dynamic auto</td>
+                                    <td>Access</td>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>Access</td>
+                                </tr>
+                                <tr>
+                                    <td>Dynamic desirable</td>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>Access</td>
+                                </tr>
+                                <tr>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>Trunk</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Access</td>
+                                    <td>Access</td>
+                                    <td>Access</td>
+                                    <td>-</td>
+                                    <td>Access</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 id="68-modes-dtp-et-commandes-associées">6.8 Modes DTP et commandes associées</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mode DTP</th>
+                                    <th>Commande <code class="language-plaintext highlighter-rouge">(config-if)#</code>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>On</td>
+                                    <td><code class="language-plaintext highlighter-rouge">switchport mode trunk</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Desirable</td>
+                                    <td><code
+                                            class="language-plaintext highlighter-rouge">switchport mode dynamic desirable</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Auto</td>
+                                    <td><code
+                                            class="language-plaintext highlighter-rouge">switchport mode dynamic auto</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nonegotiate</td>
+                                    <td><code
+                                            class="language-plaintext highlighter-rouge">switchport mode nonegotiate</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Off</td>
+                                    <td> <code
+                                            class="language-plaintext highlighter-rouge">no switchport mode trunk</code>
+                                        ou <code
+                                            class="language-plaintext highlighter-rouge">switchport mode access</code>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="7-virtual-trunking-protocol-vtp">7. Virtual Trunking Protocol (VTP)</h2>
+                        <h3 id="71-virtual-trunking-protocol">7.1. Virtual Trunking Protocol</h3>
+                        <p>VTP (Virtual Trunking Protocol) est un protocole propriétaire Cisco servant à maintenir la
+                            base de données de VLANs sur plusieurs commutateurs de manière cohérente.</p>
+                        <p>Tout au plus VTP va-t-il ajouter, modifier ou supprimer des ID VLAN et leurs noms de manière
+                            cohérente à travers une infrastructure constituée de commutateurs.</p>
+                        <p>VTP ne permettra en aucun cas de configurer les ports de manière centralisée !</p>
+                        <h3 id="72-domaine-et-rôles">7.2. Domaine et rôles</h3>
+                        <p>Deux éléments sont nécessaires au bon fonctionnement de VTP :</p>
+                        <ul>
+                            <li>
+                                <p>Définir un nom de domaine VTP (appelé aussi domaine de gestion). Ne participent à
+                                    cette gestion que les commutateurs qui appartiennent à un même domaine.</p>
+                            </li>
+                            <li>
+                                <p>Définir pour chaque commutateur un rôle :</p>
+                                <ul>
+                                    <li>soit <code class="language-plaintext highlighter-rouge">client</code>,</li>
+                                    <li>soit <code class="language-plaintext highlighter-rouge">transparent</code>,</li>
+                                    <li>soit, pour un seul d’entre eux, <code
+                                            class="language-plaintext highlighter-rouge">server</code>.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p><strong>Il ne peut y avoir qu’un seul commutateur “server” dans un domaine VTP.</strong></p>
+                        <h3 id="73-rôles-vtp">7.3. Rôles VTP</h3>
+                        <figure><img src="./vlan_files/ea91974d-0c75-4a5e-9a84-cf8a942c6771.png">
+                            <figcaption>Rôles VTP</figcaption>
+                        </figure>
+                        <p>Chaque opération à partir du “server” VTP sera répercutée sur les “clients” VTP.</p>
+                        <p>Le mode “transparent” laissera le commutateur indifférent à toutes ces opérations. Mais à
+                            quoi sert-il de ce cas ? Il assure la connectivité VTP du “server” vers les “clients”.</p>
+                        <h3 id="74-messages-vtp-et-numéros-de-révision">7.4. Messages VTP et numéros de révision</h3>
+                        <p>Les messages VTP sont appelés “VTP Advertisements”. Ceux-ci sont identifiés par un numéro de
+                            révision de configuration.</p>
+                        <p>Le numéro de révision le plus élevé sera celui qui modifiera la base de données VLAN.</p>
+                        <p>Ce mécanisme maintient les informations VTP à jour dans un domaine.</p>
+                        <h3 id="75-configuration-de-vtp">7.5. Configuration de VTP</h3>
+                        <p>Configurer le rôle VTP du commutateur :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp mode ?
+  client       Set the device to client mode.
+  off          Set the device to off mode.
+  server       Set the device to server mode.
+  transparent  Set the device to transparent mode.
+
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Définir le domaine VTP :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp domain ?
+  WORD  The ascii name for the VTP administrative domain.
+
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Pour configurer un mot de passe (identique sur tous les commutateurs du domaine) :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp password ?
+  WORD  The ascii password for the VTP administrative domain.
+
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Avant d’intégrer un nouveau commutateur dans un domaine, on prendra garde d’effacer sa base
+                            de données VLAN (<code class="language-plaintext highlighter-rouge">flash:/vlan.dat</code>)
+                            et de le redémarrer en mode client. Manipuler VTP dans un environnement en production est
+                            déconseillé !</p>
+                        <hr>
+                        <h3 id="76-vérification-de-vtp">7.6. Vérification de VTP</h3>
+                        <p>(paramètres par défaut)</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show vtp status
+VTP Version                     : 2
+Configuration Revision          : 9
+Maximum VLANs supported locally : 255
+Number of existing VLANs        : 8
+VTP Operating Mode              : Server
+VTP Domain Name                 :
+VTP Pruning Mode                : Disabled
+VTP V2 Mode                     : Disabled
+VTP Traps Generation            : Disabled
+MD5 digest                      : 0x13 0xBC 0x6D 0xC9 0xF0 0xF1 0x46 0xC3
+Configuration last modified by 0.0.0.0 at 3-1-93 01:03:40
+Local updater ID is 192.168.1.1 on interface Vl30 (lowest numbered VLAN interface found)
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="77-mode-transparent">7.7. Mode transparent</h3>
+                        <p>Configuration en mode “transparent” :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp mode transparent
+Setting device to VTP TRANSPARENT mode.
+</code></pre>
+                            </div>
+                        </div>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp domain mydomain
+Changing VTP domain name from NULL to mydomain
+</code></pre>
+                            </div>
+                        </div>
+                        <p>Vérification :</p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>#show vtp status
+</code></pre>
+                            </div>
+                        </div>
+                        <h3 id="78-désactiver-vtp-sur-un-commutateur-cisco">7.8. Désactiver VTP sur un commutateur Cisco
+                        </h3>
+                        <p>On désactive globalement VTP avec la commande <code
+                                class="language-plaintext highlighter-rouge">vtp mode off</code></p>
+                        <div class="language-plaintext highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>(config)#vtp mode off
+</code></pre>
+                            </div>
+                        </div>
+                        <h2 id="8-bonnes-pratiques">8. Bonnes pratiques</h2>
+                        <ul>
+                            <li>Faire tomber tous les ports inutilisés.</li>
+                            <li>Déplacer tous les ports du VLAN 1 dans un autre VLAN.</li>
+                            <li>Séparer le trafic de gestion de celui des utilisateurs.</li>
+                            <li>Changer l’ID du VLAN de gestion dans un autre VLAN que le VLAN 1.</li>
+                            <li>Changer l’ID du VLAN natif dans un autre VLAN que le VLAN 1.</li>
+                            <li>S’assurer que seuls les périphériques du VLAN de gestion peuvent se connecter aux
+                                commutateurs.</li>
+                            <li>Connexion distante au commutateur uniquement en SSH.</li>
+                            <li>Désactiver l’autonégociation sur les ports Trunk.</li>
+                            <li>Ne pas utiliser les modes DTP “dynamic desirable” ou “dynamic auto” sur les ports.</li>
+                            <li>Désactiver VTP et CDP</li>
+                        </ul>
+                    </section>
+                     
+                   
+                    <nav class="pagination"> <a href="https://cisco.goffinet.org/ccna/vlans/concepts-vlan-cisco/"
+                            class="pagination--pager" title="Concepts VLAN (Cisco IOS) ">Précédent</a> <a
+                            href="https://cisco.goffinet.org/ccna/vlans/lab-vlan-base-cisco-ios/"
+                            class="pagination--pager" title="Lab VLAN de base ">Suivant</a></nav>
+                </div>
+            </article>
+             
+        </div>
+    </div>
+    <div class="search-content">
+        <div class="search-content__inner-wrap">
+            <form onsubmit="return executeQuery();" id="cse-search-box-form-id"> <input type="text"
+                    id="cse-search-input-box-id" class="search-input" tabindex="-1"
+                    placeholder="Entrez ici votre terme de recherche..."> </form>
+            <div id="results" class="results">
+                <div id="___gcse_0">
+                    <div class="gsc-control-cse gsc-control-cse-fr">
+                        <div class="gsc-control-wrapper-cse" dir="ltr" style="visibility: hidden;">
+                            <form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"
+                                style="display: none;">
+                                <table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box">
+                                    <tbody>
+                                        <tr>
+                                            <td class="gsc-input">
+                                                <div class="gsc-input-box" id="gsc-iw-id1">
+                                                    <table cellspacing="0" cellpadding="0" role="presentation"
+                                                        id="gs_id50" class="gstl_50 gsc-input"
+                                                        style="width: 100%; padding: 0px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="gs_tti50" class="gsib_a"><input
+                                                                        autocomplete="off" type="text" size="10"
+                                                                        class="gsc-input" name="search"
+                                                                        title="rechercher" aria-label="rechercher"
+                                                                        id="gsc-i-id1" dir="ltr" spellcheck="false"
+                                                                        style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/fr/branding.png&quot;) left center no-repeat rgb(255, 255, 255); outline: none;">
+                                                                </td>
+                                                                <td class="gsib_b">
+                                                                    <div class="gsst_b" id="gs_st50" dir="ltr"><a
+                                                                            class="gsst_a" href="javascript:void(0)"
+                                                                            title="Effacer le contenu du champ de recherche"
+                                                                            role="button" style="display: none;"><span
+                                                                                class="gscb_a" id="gs_cb50"
+                                                                                aria-hidden="true">×</span></a></div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td class="gsc-search-button"><button
+                                                    class="gsc-search-button gsc-search-button-v2"><svg width="13"
+                                                        height="13" viewBox="0 0 13 13">
+                                                        <title>rechercher</title>
+                                                        <path
+                                                            d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z">
+                                                        </path>
+                                                    </svg></button></td>
+                                            <td class="gsc-clear-button">
+                                                <div class="gsc-clear-button" title="effacer les résultats">&nbsp;</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="gsc-results-wrapper-nooverlay">
+                                <div class="gsc-positioningWrapper">
+                                    <div class="gsc-tabsAreaInvisible">
+                                        <div aria-label="refinement" role="tab"
+                                            class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Web</div><span
+                                            class="gs-spacer"> </span>
+                                        <div tabindex="0" aria-label="refinement" role="tab"
+                                            class="gsc-tabHeader gsc-tabhInactive gsc-inline-block">Image</div><span
+                                            class="gs-spacer"> </span>
+                                    </div>
+                                </div>
+                                <div class="gsc-positioningWrapper">
+                                    <div class="gsc-refinementsAreaInvisible"></div>
+                                </div>
+                                <div class="gsc-above-wrapper-area-invisible">
+                                    <div class="gsc-above-wrapper-area-backfill-container"></div>
+                                    <table cellspacing="0" cellpadding="0" role="presentation"
+                                        class="gsc-above-wrapper-area-container">
+                                        <tbody>
+                                            <tr>
+                                                <td class="gsc-result-info-container">
+                                                    <div class="gsc-result-info-invisible"></div>
+                                                </td>
+                                                <td class="gsc-orderby-container">
+                                                    <div class="gsc-orderby-invisible">
+                                                        <div class="gsc-orderby-label gsc-inline-block">Trier par&nbsp;:
+                                                        </div>
+                                                        <div class="gsc-option-menu-container gsc-inline-block">
+                                                            <div class="gsc-selected-option-container gsc-inline-block">
+                                                                <div class="gsc-selected-option">Relevance</div>
+                                                                <div class="gsc-option-selector"></div>
+                                                            </div>
+                                                            <div class="gsc-option-menu-invisible">
+                                                                <div
+                                                                    class="gsc-option-menu-item gsc-option-menu-item-highlighted">
+                                                                    <div class="gsc-option">Relevance</div>
+                                                                </div>
+                                                                <div class="gsc-option-menu-item">
+                                                                    <div class="gsc-option">Date</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="gsc-adBlockInvisible"></div>
+                                <div class="gsc-wrapper">
+                                    <div class="gsc-adBlockInvisible"></div>
+                                    <div class="gsc-resultsbox-invisible">
+                                        <div class="gsc-resultsRoot gsc-tabData gsc-tabdActive">
+                                            <div>
+                                                <div class="gsc-expansionArea"></div>
+                                            </div>
+                                        </div>
+                                        <div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive">
+                                            <div>
+                                                <div class="gsc-expansionArea"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page__footer">
+        
+    </div>
+    <script src="./vlan_files/main.min.js.téléchargement"></script>
+    <script src="./vlan_files/all.js.téléchargement"></script>
+    <script> (function () { var cx = '015943037165610997728:sxym9ic0zxa'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = 'https://cse.google.com/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })(); function googleCustomSearchExecute() { var input = document.getElementById('cse-search-input-box-id'); var element = google.search.cse.element.getElement('searchresults-only0'); if (input.value == '') { element.clearAllResults(); } else { element.execute(input.value); } return false; } $(document).ready(function () { $('input#cse-search-input-box-id').on('keyup', function () { googleCustomSearchExecute(); }); });</script>
+    <script async="" src="./vlan_files/js"></script>
+    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-E1ZGNQ0ZCJ', { 'anonymize_ip': false });</script>
+    <script type="text/javascript" src="./vlan_files/cookiebar-latest.min.js.téléchargement"></script>
+    <div>
+        <div id="cookie-bar-prompt" style="display: none; opacity: 0;">
+            <div id="cookie-bar-prompt-content">
+                <a rel="nofollow noopener noreferrer" id="cookie-bar-prompt-logo"
+                    href="https://cookie-bar.eu/"><span>cookie bar</span></a>
+                <a rel="nofollow noopener noreferrer" id="cookie-bar-prompt-close"><span>fermer</span></a>
+
+                <div class="clear"></div>
+                <p>Ce site utilise des cookies pour améliorer l'expérience de navigation et fournir des fonctionnalités
+                    supplémentaires. Ces données ne seront pas utilisées pour vous identifier ou vous contacter.<br>
+
+                    <i id="cookie-bar-thirdparty" style="display: block;">
+                        <br>Ce site utilise des cookies de tiers. Vous pouvez en savoir plus dans la politique de
+                        confidentialité.<br>
+                    </i>
+
+                    <i id="cookie-bar-tracking" style="display: block;">
+                        <br>Ce site utilise des cookies de pistage. Vous pouvez en savoir plus dans la politique de
+                        confidentialité.<br>
+                    </i>
+
+                    <i id="cookie-bar-customize-block" style="display: none;">
+                        <br>
+                        Si vous préférez, vous pouvez sélectionner les types de cookies que vous jugez acceptables:<br>
+                        <input type="checkbox" id="cookiebar-technical" checked="" disabled="">
+                        <label for="cookiebar-technical">Cookies techniques (obligatoires)</label><br>
+
+                        <span id="cookiebar-third-party-input" style="display: block;">
+                            <input type="checkbox" id="cookiebar-third-party" value="1">
+                            <label for="cookiebar-third-party">Cookies tiers</label><br>
+                        </span>
+
+                        <span id="cookiebar-tracking-input" style="display: block;">
+                            <input type="checkbox" id="cookiebar-tracking" value="1">
+                            <label for="cookiebar-tracking">Cookies de suivi</label><br>
+                        </span>
+
+                        <button id="cookiebar-save-customized">Enregistrer mes préférences</button>
+                        <br>
+                    </i>
+
+                    <i id="cookie-bar-privacy-page" style="display: inline-block;">
+                        <br>Pour savoir comment ce site utilise les cookies ou la technologie du localStorage, lisez
+                        notre <a rel="nofollow noopener noreferrer" id="cookie-bar-privacy-link"
+                            href="https://cisco.goffinet.org/confidentialite/">Politique de
+                            confidentialité</a>.<br><br></i>
+
+                    <br>En cliquant sur le bouton <span>Autoriser les cookies</span>, <span id="cookie-bar-scrolling"
+                        style="display: inline-block;">ou en faisant défiler la page,</span> vous consentez à ce que ce
+                    site sauvegarde quelques petits blocs de données sur votre ordinateur.
+                    <i id="cookie-bar-no-consent">
+                        <br>
+                        <br>En cliquant sur le bouton <span>Ne pas autoriser les cookies</span> vous refusez votre
+                        consentement, éliminant tous les cookies et les données localStorage déjà présents (certaines
+                        parties du site peuvent cesser de fonctionner correctement).</i><br>
+
+                    <br>Pour en savoir plus sur les cookies et le localStorage, visitez le site de la <a
+                        rel="nofollow noopener noreferrer" target="_blank"
+                        href="https://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/">Commission
+                        Nationale de l'Informatique et des Libertés</a>.
+                </p>
+                <hr>
+                Pour désactiver tous les cookies dans votre navigateur, cliquez sur l'icône correspondante et suivez les
+                instructions :
+                <br>
+                <br>
+                <div id="cookie-bar-browsers">
+                    <!-- Thanks Peequi for the icons http://ampeross.deviantart.com/art/Peequi-part-1-290622606 -->
+                    <a rel="nofollow noopener noreferrer" class="chrome" target="_blank"
+                        href="https://support.google.com/accounts/answer/61416?hl=fr"><span>Chrome</span></a>
+                    <a rel="nofollow noopener noreferrer" class="firefox" target="_blank"
+                        href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies"><span>Firefox</span></a>
+                    <a rel="nofollow noopener noreferrer" class="ie" target="_blank"
+                        href="http://windows.microsoft.com/fr-fr/internet-explorer/delete-manage-cookies"><span>Internet
+                            Explorer</span></a>
+                    <a rel="nofollow noopener noreferrer" class="opera" target="_blank"
+                        href="https://help.opera.com/en/latest/web-preferences/#cookies"><span>Opera</span></a>
+                    <a rel="nofollow noopener noreferrer" class="safari" target="_blank"
+                        href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac"><span>Safari</span></a>
+                </div>
+                <br>
+                <p></p>
+            </div>
+        </div>
+
+       
+    </div>
+    <table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c"
+        style="width: 2px; display: none; top: 3px; position: absolute; left: -1px;">
+        <tbody>
+            <tr>
+                <td class="gssb_f"></td>
+                <td class="gssb_e" style="width: 100%;"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
