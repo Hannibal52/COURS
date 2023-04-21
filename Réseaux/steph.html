@@ -78,7 +78,7 @@ font-weight: bold;
     function updateTaskList() {
       const taskList = document.getElementById('task-list');
       const nextTask = getNextTask();
-      taskList.innerHTML = tasks.map(task => `<li${task === nextTask ? ' class="next-task"' : ''}>${task.time} - ${task.description}</li>`).join('');
+      taskList.innerHTML = tasks.map(task => `<li${task === nextTask ? ' class="next-task"'color: green; padding: 20px; font-weight: bold; ''}>${task.time} - ${task.description}</li>`).join('');
     }
 
     function updateTimer() {
