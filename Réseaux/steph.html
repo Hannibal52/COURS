@@ -30,14 +30,16 @@
 
     .next-task {
       color: green;
+padding: 20px;
+font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div id="tasks">
-    <h2>Taches</h2>
+    <h2>Tâches</h2>
     <ul id="task-list">
-      <!-- Les taches seront inserees ici par JavaScript -->
+      <!-- Les tâches seront insérées ici par JavaScript -->
     </ul>
   </div>
   <div id="timer">
@@ -47,19 +49,19 @@
    const tasks = [
   { time: "07:00", duration: 45, description: "Trajet en train" },
   { time: "08:15", duration: 30, description: "Tri et distribution du courrier" },
-  { time: "08:45", duration: 60, description: "Repondre aux e-mails professionnels" },
-  { time: "09:45", duration: 15, description: "Preparation pour la formation professionnelle" },
+  { time: "08:45", duration: 60, description: "Répondre aux e-mails professionnels" },
+  { time: "09:45", duration: 15, description: "Préparation pour la formation professionnelle" },
   { time: "10:00", duration: 60, description: "Formation professionnelle sur un nouveau logiciel" },
-  { time: "11:00", duration: 10, description: "Pause cafe" },
+  { time: "11:00", duration: 10, description: "Pause café" },
   { time: "11:10", duration: 65, description: "Continuer la formation sur le nouveau logiciel" },
-  { time: "12:15", duration: 60, description: "Dejeuner avec son ami Ralph" },
+  { time: "12:15", duration: 60, description: "Déjeuner avec son ami Ralph" },
   { time: "13:15", duration: 60, description: "Traitement des commandes avec l'aide de Peter" },
   { time: "14:15", duration: 60, description: "Traitement des commandes (suite)" },
-  { time: "15:15", duration: 15, description: "Preparation pour la reunion avec M. Eckert" },
-  { time: "15:30", duration: 60, description: "Reunion avec le responsable d'equipe, M. Eckert, pour discuter de l'offre pour le client J. Seiler SA" },
-  { time: "16:30", duration: 30, description: "Preparation et envoi du courrier" },
+  { time: "15:15", duration: 15, description: "Préparation pour la réunion avec M. Eckert" },
+  { time: "15:30", duration: 60, description: "Réunion avec le responsable d'équipe, M. Eckert, pour discuter de l'offre pour le client J. Seiler SA" },
+  { time: "16:30", duration: 30, description: "Préparation et envoi du courrier" },
   { time: "17:15", duration: 30, description: "Trajet pour rentrer chez soi" },
-  { time: "19:00", duration: 120, description: "Travailler avec Sabrina et Alex sur la presentation pour le client" },
+  { time: "19:00", duration: 120, description: "Travailler avec Sabrina et Alex sur la présentation pour le client" },
 ];
 
 
@@ -82,7 +84,7 @@
     function updateTimer() {
       const nextTask = getNextTask();
       if (!nextTask) {
-        document.getElementById('countdown').innerHTML = 'Toutes les taches sont terminees';
+        document.getElementById('countdown').innerHTML = 'Toutes les tâches sont terminées';
         return;
       }
 
