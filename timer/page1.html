@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Saisie des taches</title>
+  <style>
+    .task-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    label {
+      margin-right: 5px;
+    }
+    .task-start,
+    .task-end {
+      width: 70px;
+    }
+    .task-description {
+      width: 500px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Saisie des taches</h1>
+  <form id="task-form">
+    <!-- Le code pour les 22 lignes de saisie sera insere ici -->
+    <button type="submit">Enregistrer les taches</button>
+    <button type="button" id="reset-button">Reinitialiser les champs</button>
+  </form>
+
+  <script>
+    function createTaskRow(index) {
+      return `
+        <div class="task-row" data-index="${index}">
+          <label>Heure debut: <input type="text" class="task-start" /></label>
+          <label>Heure fin: <input type="text" class="task-end" /></label>
+          <label>Description: <input type="text" class="task-description" /></label>
+          <label>Outils: <input type="text" class="task-tools" /></label>
+        </div>
+      `;
+    }
+
+    $(document).ready(function () {
+      for (let i = 0; i < 22; i++) {
+        $('#task-form').prepend(createTaskRow(i));
+      }
+
+      const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+      tasks.forEach(task => {
+        const row = $(`.task-row[data-index="${task.index}"]`);
+        row.find('.task-start').val(task.start);
+        row.find('.task-end').val(task.end);
+        row.find('.task-description').val(task.description);
+        row.find('.task-tools').val(task.tools);
+      });
+
+      $('#task-form').submit(function (event) {
+        event.preventDefault();
+
+        const tasks = [];
+        $('.task-row').each(function () {
+          const index = $(this).data('index');
+          const start = $(this).find('.task-start').val();
+          const end = $(this).find('.task-end').val();
+          const description = $(this).find('.task-description').val();
+          const tools = $(this).find('.task-tools').val();
+
+          tasks.push({ index, start, end, description, tools });
+        });
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        alert('Les taches ont ete enregistrees.');
+      });
+
+      $('#reset-button').click(function () {
+        $('.task-row input').val('');
+      });
+    });
+  </script>
+</body>
+</html>

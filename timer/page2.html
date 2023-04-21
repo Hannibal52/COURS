@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Affichage des taches</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+.task-start {
+width: 40px;
+}
+
+.task-end {
+width: 40px;
+}
+
+.task-desc {
+width: 400px;
+}
+.task-tools {width: 10px;
+}
+
+
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+ 
+<body>
+  <h1>Affichage des taches</h1>
+  <table id="tasks-table">
+    <tr>
+      <th >Heure debut</th>
+      <th>Heure fin</th>
+      <th>Description</th>
+      <th>Outils</th>
+    </tr>
+  </table>
+  <script>
+    function displayTasks(tasks) {
+      $('#tasks-table').find('tr:not(:first)').remove();
+      tasks.forEach(task => {
+        $('#tasks-table').append(`
+          <tr>
+            <td  class="task-start" >${task.start}</td>
+            <td class="task-end">${task.end}</td>
+            <td class="task-desc">${task.description}</td>
+            <td class="task-tools">${task.tools}</td>
+          </tr>
+        `);
+      });
+    }
+
+    $(document).ready(function () {
+      const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+      displayTasks(tasks);
+    });
+  </script>
+</body>
+</html>
