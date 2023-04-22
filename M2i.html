@@ -4,8 +4,6 @@
 <head>
     <title>Taha Yassine Jguirim</title>
     <style>
-      
-
         #row {
             display: flex;
             flex-direction: row;
@@ -15,7 +13,7 @@
         }
 
         #col1 {
-
+            flex: 1;
             margin: 0;
             padding: 0;
             width: 20%;
@@ -42,8 +40,8 @@
         .treeview li {
             margin: 0;
             padding: 0;
-            padding-bottom: 20px;
-            padding-top: 20px;
+            padding-bottom: 10px;
+            padding-top: 10px;
         }
 
         .treeview label {
@@ -77,13 +75,13 @@
             flex-grow: 3;
             margin: 0;
             padding-left: 60px;
-            height: 100%;
+            height: auto;
         }
 
         .frame {
             flex-grow: 3;
             border: none;
-            height: 100%;
+            height: auto;
             width: 100%;
         }
 
@@ -138,7 +136,7 @@
             list-style-type: none;
             width: 90%;
             float: right;
-             background-color: #535353;
+            background-color: #535353;
         }
 
         .sousEl {
@@ -160,19 +158,74 @@
 
         label {
             font-size: 18px;
+            padding: 10px;
+
         }
 
         * {
-  margin-top: 0px;
-  padding-top: 0px;
-}
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+
+        .frame {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .treeview a:hover {
+            background-color: #9aa8a8;
+        }
+
+        label:hover {
+            background-color: #3d928b;
+        }
+
+        .treeview a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+
+
+        .toggle-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            background-color: #3ac7cc;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        #col1 {
+            flex: 1;
+
+            padding: 20px;
+            overflow: auto;
+            transition: all 0.3s;
+        }
+
+        #col1.collapsed {
+            flex: 0;
+            padding: 0;
+        }
     </style>
 
 </head>
 
 <body>
     <div id="row">
-        <div id="col1">
+        <div id="col1" class="tree">
             <div class="treeview">
                 <ul id="ul1">
                     <li>
@@ -180,9 +233,10 @@
                         <input type="checkbox" id="fil" />
                         <div class="content">
                             <ul class="el">
-                                <li id="file"><a class="name" href="#" data-src="https://www.sebastienadam.be/ipcalculator/">
+                                <li id="file"><a class="name" href="#"
+                                        data-src="https://www.sebastienadam.be/ipcalculator/">
                                         Calculatrice rapide</a>
-                               </li>
+                                </li>
                                 <li id="file">
                                     <label for="sis1">Cisco docs list</label>
                                     <input type="checkbox" id="sis1" />
@@ -236,60 +290,66 @@
                                             </li>
                                         </ul>
                                 </li>
-                                
-                                <li>
-                                      <label for="vlanvtp">Vlan VTP</label>
-                                      <input type="checkbox" id="vlanvtp" />
-                                      <div class="content">
-                                          <ul class="sousEl">
-                                              
-                                              <li id="file">
-                                                     <a class="name" href="#" data-src="https://prezi.com/p/c4aqg88ekxrb/packet-tracer/?present=1">
-                                                     Vlan Prezi</a>
-                                              </li>
-                                              
-                                               <li id="file">
-                                                     <a class="name" href="#" data-src="https://prezi.com/view/dm92j3WjMaYCjETbffmm/">
-                                                     VTP Prezi</a>
-                                              </li>
-                                              
-                                               <li id="file"><a class="name" href="#" data-src="https://www.it-connect.fr/mise-en-place-de-vlans-et-de-routage-inter-vlans/">
-                                                   IT connect </a>
-                                               </li>
-                                           </ul>
-                                       </div>    
-                                </li>          
-                                <li>
-                                     <label for="rcisco">Routeur cisco</label>
-                                      <input type="checkbox" id="rcisco" />
-                                      <div class="content">
-                                          <ul class="sousEl">
-                                                <li id="file">
-                                                     <a class="name" href="#" data-src="Réseaux\routeur cisco\password.html">
-                                                     Password router cisco</a>
-                                                 </li>
-                                              
-                                                 <li id="file">
-                                                     <a class="name" href="#" data-src="Réseaux\routeur cisco\rip.html">
-                                                     RIP v2</a>
-                                                 </li>
-                                              
-                                                 <li id="file">
-                                                     <a class="name" href="#"  data-src="Réseaux\routeur cisco\ospf.html">
-                                                     OSPF</a>
-                                                 </li>
-                                                 <li id="file">
-                                                     <a class="name" href="#" data-type="pdf" data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
-                                                     Routage PDF</a>
-                                                 </li>
-                                                 <li id="file"><a class="name" href="#" data-src="Réseaux/Config router basic.html">
-                                                     Conf Routeur</a>
-                                                 </li>
-                                             </ul>
-                                       </div>
 
-                                
-                                              
+                                <li>
+                                    <label for="vlanvtp">Vlan VTP</label>
+                                    <input type="checkbox" id="vlanvtp" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+
+                                            <li id="file">
+                                                <a
+                                                    onclick="window.open('https://prezi.com/p/c4aqg88ekxrb/packet-tracer/?present=1', '_blank', 'width=500,height=500')">
+
+                                                    Vlan Prezi</a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://prezi.com/view/dm92j3WjMaYCjETbffmm/">
+                                                    VTP Prezi</a>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.it-connect.fr/mise-en-place-de-vlans-et-de-routage-inter-vlans/">
+                                                    IT connect </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label for="rcisco">Routeur cisco</label>
+                                    <input type="checkbox" id="rcisco" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\password.html">
+                                                    Password router cisco</a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\rip.html">
+                                                    RIP v2</a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\ospf.html">
+                                                    OSPF</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-type="pdf"
+                                                    data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
+                                                    Routage PDF</a>
+                                            </li>
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="Réseaux/Config router basic.html">
+                                                    Conf Routeur</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+
                                 <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html">
                                         CCNA1</a></li>
                             </ul>
@@ -304,12 +364,15 @@
                                 <li id="file"><a class="name" href="#"
                                         data-src="https://www.it-connect.fr/chapitres/comment-creer-sa-premiere-gpo/">GPO</a>
 
-                    
-                                <li id="file"><a class="name" href="#" data-src="https://www.it-connect.fr/installer-et-configurer-un-serveur-dhcp-sous-windows-server-2019/">DHCP</a>
+
+                                <li id="file"><a class="name" href="#"
+                                        data-src="https://www.it-connect.fr/installer-et-configurer-un-serveur-dhcp-sous-windows-server-2019/">DHCP</a>
                                 </li>
-                                <li id="file"><a class="name" href="#" data-src="https://goopensource.fr/dns-sous-windows-server-2019/">DNS</a>
+                                <li id="file"><a class="name" href="#"
+                                        data-src="https://goopensource.fr/dns-sous-windows-server-2019/">DNS</a>
                                 </li>
-                                <li id="file"><a class="name" href="#" data-src="https://www.it-connect.fr/acceder-partage-nfs-sous-windows-server-2012-r2/">NFS</a>
+                                <li id="file"><a class="name" href="#"
+                                        data-src="https://www.it-connect.fr/acceder-partage-nfs-sous-windows-server-2012-r2/">NFS</a>
                                 </li>
                                 <li id="file"><a class="name" href="#" data-src="Windows/gpo.html">GPO</a>
 
@@ -325,72 +388,72 @@
                         <input type="checkbox" id="file2" />
                         <div class="content">
                             <ul class="el">
-                                  
-                                
+
+
                                 <li id="file">
                                     <label for="cli"> Commandes utiles </label>
                                     <input type="checkbox" id="cli" />
                                     <div class="content">
                                         <ul class="sousEl">
                                             <li><a class="name" href="#" data-src="Linux/searchcmd/step1.html">
-                                                  Démarrer</a></li>
+                                                    Démarrer</a></li>
                                             <li><a class="name" href="#" data-src="Linux/40commandes.html">
-                                                   Alinux et les 40 commandes</a></li>
+                                                    Alinux et les 40 commandes</a></li>
                                             <li><a class="name" href="#" data-src="Linux/searchcmd/searchcmd.html">
-                                                   Commandes de recherches</a></li>
-                                            
+                                                    Commandes de recherches</a></li>
+
                                         </ul>
                                     </div>
-                                 </li>
-                                
-                                
-                                 <li id="file">
+                                </li>
+
+
+                                <li id="file">
                                     <label for="server">AD / DNS / DHCP </label>
                                     <input type="checkbox" id="server" />
                                     <div class="content">
                                         <ul class="sousEl">
                                             <li><a class="name" href="#" data-src="Linux/sambaAD.html">
-                                                   AD DS Samba </a></li>
+                                                    AD DS Samba </a></li>
                                             <li><a class="name" href="#" data-src="Linux/Dhcp.html">
-                                                  DHCP Server</a></li>
+                                                    DHCP Server</a></li>
                                             <li><a class="name" href="#" data-src="Linux/dns/dns.html">
-                                                  DNS Server</a></li>
+                                                    DNS Server</a></li>
                                         </ul>
                                     </div>
-                                 </li>
-                                 <li id="file">
+                                </li>
+                                <li id="file">
                                     <label for="serverAD"> Partage & FTP </label>
                                     <input type="checkbox" id="serverAD" />
                                     <div class="content">
                                         <ul class="sousEl">
                                             <li><a class="name" href="#" data-src="Linux/smb.html">
-                                                  Samba Share </a></li>
+                                                    Samba Share </a></li>
                                             <li><a class="name" href="#" data-src="Linux/nfs1/nfs1.html">
-                                                  NFS Part 1 </a></li>
+                                                    NFS Part 1 </a></li>
                                             <li><a class="name" href="#" data-src="Linux/nfs2/nfs2.html">
-                                                  NFS Part 2 </a></li>
+                                                    NFS Part 2 </a></li>
                                             <li><a class="name" href="#" data-src="Linux/server FTP.html">
-                                                  FTP Server </a></li>
+                                                    FTP Server </a></li>
                                         </ul>
                                     </div>
-                                  </li>
-                                  <li id="file">
+                                </li>
+                                <li id="file">
                                     <label for="serverweb"> Web Srv </label>
                                     <input type="checkbox" id="serverweb" />
                                     <div class="content">
                                         <ul class="sousEl">
-                                         <li><a class="name" href="#" data-src="Linux/GLPI - CMS.html">
-                                                 Apache </a></li>
-                                         <li><a class="name" href="#" data-src="Linux/GLPI - FusionIventory.html">
-                                                 GLPI - FusionIventory</a></li>
-                                         <li><a class="name" href="#" data-src="Linux/wordpress/wordpress.html">
-                                                 Wordpress</a></li> 
-                                         <li><a class="name" href="#" data-src="Linux/ngx/install/nfs1.html">
-                                                 Nginx</a></li>
+                                            <li><a class="name" href="#" data-src="Linux/GLPI - CMS.html">
+                                                    Apache </a></li>
+                                            <li><a class="name" href="#" data-src="Linux/GLPI - FusionIventory.html">
+                                                    GLPI - FusionIventory</a></li>
+                                            <li><a class="name" href="#" data-src="Linux/wordpress/wordpress.html">
+                                                    Wordpress</a></li>
+                                            <li><a class="name" href="#" data-src="Linux/ngx/install/nfs1.html">
+                                                    Nginx</a></li>
                                         </ul>
                                     </div>
                                 </li>
-                            
+
                             </ul>
                         </div>
                     </li>
@@ -410,7 +473,7 @@
         </div>
 
         <div id="col2">
-
+            <button class="toggle-btn" id="toggle-btn">Afficher/Cacher</button>
             <iframe class="frame" id="frame"></iframe>
 
         </div>
@@ -419,12 +482,34 @@
         document.addEventListener('DOMContentLoaded', function () {
             const frames = document.querySelectorAll('.frame');
             const subitems = document.querySelectorAll('.treeview ul li ul li a');
+            const container = document.getElementById('row'); // Remplacez par la classe ou l'ID de votre conteneur
+            const col2 = document.getElementById('col2')
+
+            const toggleBtn = document.getElementById('toggle-btn');
+            const treeview = document.getElementById('col1');
+            toggleBtn.addEventListener('click', () => {
+                treeview.classList.toggle('collapsed');
+            });
 
             for (let i = 0; i < subitems.length; i++) {
                 subitems[i].addEventListener('click', function (event) {
                     event.preventDefault();
                     const src = this.getAttribute('data-src');
                     const type = this.getAttribute('data-type');
+
+
+                    frames[0].addEventListener('load', function () {
+                        const iframeDoc = frames[0].contentDocument || frames[0].contentWindow.document;
+                        const iframeBody = iframeDoc.body;
+                        const height = iframeBody.scrollHeight;
+
+                        frames[0].style.height = height + 'px';
+                        container.style.height = height + 'px';
+                        col2.style.height = height + 'px';
+                    });
+
+
+
 
                     if (type === 'pdf') {
                         const googleDocsViewer = 'https://docs.google.com/viewer?url=';
@@ -434,15 +519,15 @@
                     } else {
                         frames[0].setAttribute('src', src);
                     }
-     
-                     // Fermer toutes les autres listes
-      const otherLists = document.querySelectorAll('.treeview ul');
-      for (let j = 0; j < otherLists.length; j++) {
-        if (!this.closest('ul').contains(otherLists[j])) {
-          otherLists[j].classList.remove('treeview-expanded');
-          otherLists[j].classList.add('treeview-collapsed');
-        }
-      }
+
+                    // Fermer toutes les autres listes
+                    const otherLists = document.querySelectorAll('.treeview ul');
+                    for (let j = 0; j < otherLists.length; j++) {
+                        if (!this.closest('ul').contains(otherLists[j])) {
+                            otherLists[j].classList.remove('treeview-expanded');
+                            otherLists[j].classList.add('treeview-collapsed');
+                        }
+                    }
                     for (let j = 0; j < subitems.length; j++) {
                         subitems[j].classList.remove('active');
                         subitems[j].classList.add('notactive');
@@ -451,12 +536,15 @@
                     this.classList.add('active');
                 });
             }
+
+
+
         });
 
 
 
 
     </script>
- </body>
+</body>
+
 </html>
- 
