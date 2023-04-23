@@ -78,7 +78,7 @@
             transition: all 0.3s ease;
             height: calc(100vh - 4rem);
             position: -webkit-sticky;
-             
+
             top: 8rem;
         }
 
@@ -126,13 +126,13 @@
             color: azure;
             display: block;
             padding: 0.5rem 0;
-            
+
             cursor: pointer;
-           
+
             transition: all 0.3s ease;
         }
 
-        #ul1 label{
+        #ul1 label {
             padding-top: 20px;
             padding-bottom: 20px;
 
@@ -188,27 +188,224 @@
         <div id="col1" class="tree">
             <div class="treeview">
                 <ul id="ul1">
-<li>
-                    <a> . </a>
- </li>
 
+                    <!-- ----  caché par le bouton  ---- -->
+                    <li>
+                        <a> . </a>
+                    </li>
+
+
+                    <!-- ----  caché par le bouton  ---- -->
+                    <li>  
+                        <label for="links">Liens utiles</label>
+                        <input type="checkbox" id="links" />
+                        <div class="content">
+
+                        <ul class="el">
+                            
+                            <li id="file">
+                                <a
+                                    onclick="window.open('https://products.groupdocs.app/editor/word', '_blank', 'width=900,height=900')">
+
+                                    Opérations document</a>
+                            </li>
+
+                            <li id="file">
+                                <a
+                                    onclick="window.open('https://unsplash.com/fr/s/photos/wallpaper-desktop', '_blank', 'width=900,height=900')">
+
+                                    Wallpapers</a>
+                            </li>
+
+                            <li id="file">
+                                <a
+                                    onclick="window.open('https://pdfsam.org/downloads/', '_blank', 'width=900,height=900')">
+
+                                    PDFS</a>
+                            </li>
+
+
+
+                            
+
+
+
+                            
+                            
+                        </ul>
+                    </li>
+
+
+                    <!-- Réseau -->
                     <li>
                         <label for="fil">Réseaux</label>
                         <input type="checkbox" id="fil" />
                         <div class="content">
+
                             <ul class="el">
-                                <li id="file"><a class="name" href="#"
-                                        data-src="https://www.sebastienadam.be/ipcalculator/">
+                                <!-- Calculatrice -->
+                                <li id="file">
+                                    <a class="name" href="#" data-src="https://www.sebastienadam.be/ipcalculator/">
                                         Calculatrice rapide</a>
                                 </li>
-                                <li id="file">
-                                    <label for="sis1">Cisco docs list</label>
-                                    <input type="checkbox" id="sis1" />
+
+                                <!-- Switchs -->
+                                <li>
+                                    <label for="vlanvtp">Switchs</label>
+                                    <input type="checkbox" id="vlanvtp" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+
+                                            <li id="file">
+                                                <a
+                                                    onclick="window.open('https://prezi.com/p/c4aqg88ekxrb/packet-tracer/?present=1', '_blank', 'width=500,height=500')">
+
+                                                    Vlan Prezi</a>
+                                            </li>
+                                            <li id="file">
+                                                <a
+                                                    onclick="window.open('https://prezi.com/view/dm92j3WjMaYCjETbffmm/', '_blank', 'width=500,height=500')">
+
+                                                    VTP Prezi</a>
+                                            </li>
+
+
+                                            <li>
+                                                <p> ____________ </p>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/switch-cisco.php">
+                                                    1ere première connexion </a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/enregistrer-configuration.php">
+                                                    Startup-config et Running-config
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/configuration-base-switch.php">
+                                                    Configuration de base
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/activation-ssh.php">
+                                                    Configuration du protocole SSH
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/cisco-port-switch.php">
+                                                    sh running-config interface"
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/switch-vlan-cisco.php">
+                                                    Configuration des VLAN
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/cisco-qos-voip.php">
+                                                    Configuration de la QoS pour la VoIP
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/spanning-tree.php">
+                                                    Configuration du Spanning Tree
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/syslog-snmp-ntp-switch-cisco.php">
+                                                    Confign du Syslog, SNMP et NTP
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/mise-a-jour-cisco.php">
+                                                    Mise à jour de l'IOS sur le switch
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/stack-switch.php">
+                                                    Empilage de switchs 9200|3750|2960
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/commande-diagnostique.php">
+                                                    Diagnostic sur le switch
+                                                </a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.clemanet.com/interlan-switch.php">
+                                                    Routage inter-VLAN
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Routeur cisco  -->
+                                <li>
+                                    <label for="rcisco">Routeurs</label>
+                                    <input type="checkbox" id="rcisco" />
                                     <div class="content">
                                         <ul class="sousEl">
                                             <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\password.html">
+                                                    Password router cisco</a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\rip.html">
+                                                    RIP v2</a>
+                                            </li>
+
+                                            <li id="file">
+                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\ospf.html">
+                                                    OSPF</a>
+                                            </li>
+                                            <li id="file">
+                                                <a class="name" href="#" data-type="pdf"
+                                                    data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
+                                                    Routage PDF</a>
+                                            </li>
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="Réseaux/Config router basic.html">
+                                                    Conf Routeur</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Cisco doc -->
+                                <li id="file">
+                                    <label for="sis1">Docs</label>
+                                    <input type="checkbox" id="sis1" />
+                                    <div class="content">
+                                        <ul class="sousEl">
+                                            <!-- CCNA -->
+                                            <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html">
+                                                    CCNA1</a>
+                                            </li>
+
+                                            <li>
+                                                <p>-------- </p>
+                                            <li>
+
+                                            <li id="file">
                                                 <a class="name" href="#" data-src="Réseaux/CISCO/1.html">
-                                                    1 Présentation des réseaux commutés 1</a>
+                                                    Présentation des réseaux commutés 1</a>
                                             </li>
                                             <li id="file">
                                                 <a class="name" href="#" data-src="Réseaux/CISCO/2.html">
@@ -255,71 +452,12 @@
                                         </ul>
                                 </li>
 
-                                <li>
-                                    <label for="vlanvtp">Vlan VTP</label>
-                                    <input type="checkbox" id="vlanvtp" />
-                                    <div class="content">
-                                        <ul class="sousEl">
-
-                                            <li id="file">
-                                                <a
-                                                    onclick="window.open('https://prezi.com/p/c4aqg88ekxrb/packet-tracer/?present=1', '_blank', 'width=500,height=500')">
-
-                                                    Vlan Prezi</a>
-                                            </li>
-                                            <li id="file">
-                                                <a
-                                                    onclick="window.open('https://prezi.com/view/dm92j3WjMaYCjETbffmm/', '_blank', 'width=500,height=500')">
-
-                                                    VTP Prezi</a>
-                                            </li>
-
-
-                                            <li id="file"><a class="name" href="#"
-                                                    data-src="https://www.it-connect.fr/mise-en-place-de-vlans-et-de-routage-inter-vlans/">
-                                                    IT connect </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <label for="rcisco">Routeur cisco</label>
-                                    <input type="checkbox" id="rcisco" />
-                                    <div class="content">
-                                        <ul class="sousEl">
-                                            <li id="file">
-                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\password.html">
-                                                    Password router cisco</a>
-                                            </li>
-
-                                            <li id="file">
-                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\rip.html">
-                                                    RIP v2</a>
-                                            </li>
-
-                                            <li id="file">
-                                                <a class="name" href="#" data-src="Réseaux\routeur cisco\ospf.html">
-                                                    OSPF</a>
-                                            </li>
-                                            <li id="file">
-                                                <a class="name" href="#" data-type="pdf"
-                                                    data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
-                                                    Routage PDF</a>
-                                            </li>
-                                            <li id="file"><a class="name" href="#"
-                                                    data-src="Réseaux/Config router basic.html">
-                                                    Conf Routeur</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-
-
-                                <li id="file"><a class="name" href="#" data-src="Réseaux/CCNA1.html">
-                                        CCNA1</a></li>
                             </ul>
                         </div>
                     </li>
+
+
+                    <!-- Windows -->
                     <li>
                         <label for="file1">Windows</label>
                         <input type="checkbox" id="file1" />
@@ -348,6 +486,9 @@
 
                         </div>
                     </li>
+
+
+                    <!-- Linux -->
                     <li>
                         <label for="file2">Linux</label>
                         <input type="checkbox" id="file2" />
@@ -422,6 +563,9 @@
                             </ul>
                         </div>
                     </li>
+
+
+                    <!-- MDT -->
                     <li>
                         <label for="file3">MDT</label>
                         <input type="checkbox" id="file3" />
@@ -433,13 +577,14 @@
                             </ul>
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
 
         <div id="col2">
 
-            <iframe class="frame" id="frame"></iframe>
+            <iframe class="frame" id="frame" src="main.html"></iframe>
 
         </div>
     </div>

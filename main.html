@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemple d'animation avec points et lignes colorés</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+       let camera, scene, renderer, stars, lines, textMesh;
+
+      init();
+      animate();
+
+      function init() {
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
+        camera.position.z = 1000;
+        scene = new THREE.Scene();
+
+        const numParticles = 1200;
+        const vertices = new Float32Array(numParticles * 3);
+        const colors = new Float32Array(numParticles * 3);
+
+        for (let i = 0; i < vertices.length; i += 3) {
+          vertices[i] = (Math.random() * 2 - 1) * 1000;
+          vertices[i + 1] = (Math.random() * 2 - 1) * 1000;
+          vertices[i + 2] = (Math.random() * 2 - 1) * 1000;
+
+          colors[i] = Math.random();
+          colors[i + 1] = Math.random();
+          colors[i + 2] = Math.random();
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({ size: 4, vertexColors: true });
+        particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+		
+		
+		
+		
+		 
+		 
+		
+		
+		
+		
+		const loader = new THREE.FontLoader();
+        loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+          const textGeometry = new THREE.TextGeometry('Taha Yassine Jguirim', {
+            font: font,
+            size: 50,
+            height: 5,
+          });
+
+          const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+          textMesh = new THREE.Mesh(textGeometry, textMaterial);
+          textGeometry.computeBoundingBox();
+          textGeometry.translate(-0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x), 0, 0);
+          scene.add(textMesh);
+        });
+		
+		
+		
+
+        lines = new THREE.Group();
+        for (let i = 0; i < vertices.length; i += 3) {
+          const start = new THREE.Vector3(vertices[i], vertices[i + 1], vertices[i + 2]);
+          const endVertices = [];
+
+          for (let j = 0; j < vertices.length; j += 3) {
+            const end = new THREE.Vector3(vertices[j], vertices[j + 1], vertices[j + 2]);
+
+            if (i !== j && start.distanceTo(end) < 200) {
+              endVertices.push(end);
+            }
+          }
+
+          endVertices.slice(0, 7).forEach((end) => {
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+            const line = new THREE.Line(lineGeometry, lineMaterial);
+            lines.add(line);
+          });
+        }
+
+        scene.add(lines);
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', onWindowResize, false);
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        render();
+      }
+
+      function render() {
+        const time = Date.now() * 0.001;
+        particles.rotation.x = time * 0.015;
+        particles.rotation.y = time * 0.025;
+        particles.rotation.z = time * 0.03;
+		
+		 
+        lines.rotation.x = time * 0.015;
+        lines.rotation.y = time * 0.025;
+        lines.rotation.z = time * 0.03;
+        renderer.render(scene, camera);
+      }
+    </script>
+  </body>
+</html>
