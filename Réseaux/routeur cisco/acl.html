@@ -68,6 +68,7 @@
 		p {
 			margin-top: 5px;
 			margin-left: 20px;
+			
 			font-size: 16px;
 			color: #555;
 		}
@@ -78,6 +79,7 @@
 			margin-top: 20px;
 			max-width: 50%;
 		}
+		 
 
 		@media (max-width: 600px) {
 			h1 {
@@ -93,6 +95,7 @@
 			}
 
 			li::before {
+			
 				width: 16px;
 				height: 16px;
 				line-height: 16px;
@@ -137,6 +140,16 @@
 
 		<li>Bloque les messages de connexion pour les clients ne figurant pas sur la liste d'accès standard "adminacl" :</li>
 			<p><code>login quiet-mode access-class adminacl</code></p>
+			
+			
+		<li>Gestion des privilèges :</li>
+			<ul>
+				<li>Définit un mot de passe secret et un niveau d'accès :</li>
+					<p><code>lenable secret level X ciscoX</code></p>
+
+				<li>Définit les privilèges de niveau d'accès pour les utilisateurs :</li>
+					<p><code>lprivilege exec,configure,interface level X</code></p>
+			</ul>
 	</ol>
 </div>
 </body>
