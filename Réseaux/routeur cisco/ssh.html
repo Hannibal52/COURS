@@ -28,6 +28,13 @@
     <h2>Configurer SSH sur un routeur Cisco</h2>
     <pre>
 configure terminal
+
+interface f0/0
+#ip address w.x.y.z  w.x.y.z 
+#no shutdown 
+#do wr
+#exit
+<hr>
 ip domain-name votre-domaine.com
 crypto key generate rsa general-keys modulus 2048
 ip ssh version 2
@@ -42,7 +49,7 @@ write memory
     <h2>Configurer l'adresse de Loopback</h2>
     <pre>
 configure terminal
-interface Loopback0
+interface Loopback 0
 ip address x.x.x.x y.y.y.y
 exit
 write memory
