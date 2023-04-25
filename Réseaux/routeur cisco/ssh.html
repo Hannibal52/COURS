@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tutoriel Configuration Routeur Cisco</h1>
+    <h2>Configurer SSH sur un routeur Cisco</h2>
+    <pre>
+configure terminal
+ip domain-name votre-domaine.com
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+username votre_utilisateur privilege 15 secret votre_mot_de_passe
+line vty 0 15
+login local
+transport input ssh
+exit
+write memory
+    </pre>
+
+    <h2>Configurer l'adresse de Loopback</h2>
+    <pre>
+configure terminal
+interface Loopback0
+ip address x.x.x.x y.y.y.y
+exit
+write memory
+    </pre>
+
+    <h2>Se connecter au routeur via SSH</h2>
+    <pre>
+ssh noro@x.x.x.x
+    </pre>
+</body>
+
+</html>
+
+
