@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tutoriel Cisco</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
+		h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		ol {
+			font-size: 18px;
+			margin-left: 20px;
+			margin-top: 20px;
+			padding-left: 0;
+			list-style: none;
+			counter-reset: list;
+		}
+
+		li {
+			margin-bottom: 10px;
+			color: #555;
+			position: relative;
+			padding-left: 30px;
+			counter-increment: list;
+		}
+
+		li::before {
+			content: counter(list);
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: #333;
+			color: #fff;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			border-radius: 50%;
+			text-align: center;
+		}
+
+		p {
+			margin-top: 5px;
+			margin-left: 20px;
+			font-size: 16px;
+			color: #555;
+		}
+
+		img {
+			display: block;
+			margin: auto;
+			margin-top: 20px;
+			max-width: 50%;
+		}
+
+		@media (max-width: 600px) {
+			h1 {
+				font-size: 24px;
+			}
+
+			.container {
+				padding: 10px;
+			}
+
+			ol {
+				font-size: 16px;
+			}
+
+			li::before {
+				width: 16px;
+				height: 16px;
+				line-height: 16px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1> ACL Routeur cisco</h1>
+	</header>
+
+	<div class="container">
+		<ol>
+			<li>Définit le temps d'inactivité avant que la session ne se termine :</li>
+				<p><code>R1(config-line)#exec-timeout 0 60</code></p>
+
+			<li>Affiche les sessions en cours SSH :</li>
+				<p><code>sh ssh</code></p>
+
+			<li>Définit le nombre de tentatives autorisées pour une connexion SSH :</li>
+				<p><code>ip ssh authentication-retries ?</code></p>
+
+			<li>Définit le temps d'attente pour négocier une clé de session et une méthode de chiffrement avec un client SSH :</li>
+<p><code>ip ssh time-out 60</code></p>
+
+ 
+		<li>Affiche la configuration SSH :</li>
+			<p><code>Show ip ssh</code></p>
+
+		<li>Modifie les clés SSH :</li>
+			<p><code>crypto key ?</code></p>
+
+		<li>Force une longueur minimale pour les mots de passe :</li>
+			<p><code>security passwords min-length 10</code></p>
+
+		<li>Bloque les connexions pendant 10 secondes si 3 tentatives de connexion échouent dans les 30 secondes :</li>
+			<p><code>login block-for 10 attempts 3 within 30</code></p>
+
+		<li>Affiche les paramètres de connexion :</li>
+			<p><code>show login</code></p>
+
+		<li>Bloque les messages de connexion pour les clients ne figurant pas sur la liste d'accès standard "adminacl" :</li>
+			<p><code>login quiet-mode access-class adminacl</code></p>
+	</ol>
+</div>
+</body>
+</html>

@@ -6,25 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutoriel Configuration Routeur Cisco</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
 
-        h1 {
-            color: darkblue;
-        }
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
 
         pre {
             background-color: #f4f4f4;
             border: 1px solid #ddd;
             padding: 10px;
+			font-size: 1.3em;
         }
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
     </style>
 </head>
 
 <body>
-    <h1>Tutoriel Configuration Routeur Cisco</h1>
+
+<header>
+		<h1>Tutoriel Configuration Routeur Cisco</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
     <h2>Configurer SSH sur un routeur Cisco</h2>
     <pre>
 configure terminal
@@ -90,7 +120,7 @@ ssh noro@x.x.x.x
 	show run | include ssh
 	 </pre>
 	
-
+</div>
 	
 </body>
 
