@@ -48,7 +48,7 @@
       geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-      const material = new THREE.PointsMaterial({ size: 4, vertexColors: true });
+      const material = new THREE.PointsMaterial({ size: 6, vertexColors: true });
       particles = new THREE.Points(geometry, material);
       scene.add(particles);
 
@@ -86,14 +86,14 @@
         for (let j = 0; j < vertices.length; j += 3) {
           const end = new THREE.Vector3(vertices[j], vertices[j + 1], vertices[j + 2]);
 
-          if (i !== j && start.distanceTo(end) < 200) {
+          if (i !== j && start.distanceTo(end) < 230) {
             endVertices.push(end);
           }
         }
 
         endVertices.slice(0, 7).forEach((end) => {
           const lineGeometry = new THREE.BufferGeometry().setFromPoints([start, end]);
-          const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+          const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.25 });
           const line = new THREE.Line(lineGeometry, lineMaterial);
           lines.add(line);
         });
@@ -102,8 +102,8 @@
       scene.add(lines);
 	  
 	  
-	  lines.position.z = 200;
-	  particles.position.z = 200;
+	  lines.position.z = 100;
+	  particles.position.z = 100;
 	  
 	  
 
@@ -132,8 +132,8 @@
       particles.rotation.z = time * 0.03;
 
 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      cube.rotation.x -= 0.0051;
+      cube.rotation.y -= 0.0051;
 
 
       lines.rotation.x = time * 0.015;
