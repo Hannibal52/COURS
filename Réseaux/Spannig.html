@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 2rem;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1rem auto;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</h1>
+
+    <img src="chemin_vers_votre_image/topologie.png" alt="Topologie">
+
+    <h2>Étape 1 : Création des VLAN 10 et 20 sur chaque switch</h2>
+    <p>Switch1, Switch2, Switch3 :</p>
+    <pre>
+enable
+configure terminal
+vlan 10
+name VLAN10
+exit
+vlan 20
+name VLAN20
+exit
+    </pre>
+
+    <h2>Étape 2 : Attribution des ports aux VLAN</h2>
+    <p>Switch1, Switch2 et Switch3 :</p>
+    <pre>
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+exit
+    </pre>
+
+    <h2>Étape 3 : Configuration des liens trunk</h2>
+    <p>Switch1, Switch2, Switch3 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+    </pre>
+
+    <h2>Étape 4 : Configuration du Spanning Tree Protocol (STP)</h2>
+    <p>Switch1 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 4096
+    </pre>
+    <p>Switch2 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 8192
+    </pre>
+    <p>Switch3 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 12288
+    </pre>
+
+    <h2>Étape 5 : Configuration des EtherChannels</h2>
+    <p>Switch1 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 1 mode on
+exit
+    </pre>
+    <p>Switch2 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 2 mode on
+exit
+    </pre>
+    <p>Switch3 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 3 mode on
+exit
+    </pre>
+
+    <h
+VLANs on Three Switches.
+
+Model: GPT-4
+
+jguirim.taha-yassine@orange.fr
+Je suis sur paket tracer,
+
+J'ai ajouté 3 Switch en relié en boucle, chaque liaison et en double cables j'utilise à chaque switch les interfaces f0/0 et f0/1
+
+
+Je veux ajouter vlan 10 et 20 pour chaque switch
+
+Chaque vlan contien 1 pc en total j'ai 6 pc ( j'espère que tu as compris)
+
+Fais moi tout les confirmations sur les 3 switch pour :
+
+L'ajout des vlan, les lien trunk, spannig tree et etherchannels
+
+À toi de choisir l'ordre des conf les nom de switch etc...
+
+Pour configurer les VLAN, les liens trunk, le Spanning Tree et les EtherChannels sur les 3 switches, vous pouvez suivre les étapes suivantes. Dans cet exemple, je vais utiliser les noms de Switch1, Switch2 et Switch3 pour les trois switches :
+
+Création des VLAN 10 et 20 sur chaque switch :
+Switch1, Switch2, Switch3 :
+
+bash
+Copy code
+enable
+configure terminal
+vlan 10
+name VLAN10
+exit
+vlan 20
+name VLAN20
+exit
+Attribution des ports aux VLAN :
+Switch1 :
+
+kotlin
+Copy code
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+exit
+Switch2 :
+
+kotlin
+Copy code
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+exit
+Switch3 :
+
+kotlin
+Copy code
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+exit
+Configuration des liens trunk :
+Switch1, Switch2, Switch3 :
+
+go
+Copy code
+interface range FastEthernet0/0 - 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+Configuration du Spanning Tree Protocol (STP) :
+Switch1 :
+
+yaml
+Copy code
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 4096
+Switch2 :
+
+yaml
+Copy code
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 8192
+Switch3 :
+
+Copy code
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 12288
+Configuration des EtherChannels :
+Switch1 :
+
+vbnet
+Copy code
+interface range FastEthernet0/0 - 1
+channel-group 1 mode on
+exit
+Switch2 :
+
+vbnet
+Copy code
+interface range FastEthernet0/0 - 1
+channel-group 2 mode on
+exit
+Switch3 :
+
+vbnet
+Copy code
+interface range FastEthernet0/0 - 1
+channel-group 3 mode on
+exit
+Vérification des configurations :
+Pour vérifier les VLAN :
+sql
+Copy code
+show vlan brief
+Pour vérifier les liens trunk :
+sql
+Copy code
+show interfaces trunk
+Pour vérifier le Spanning Tree Protocol :
+sql
+Copy code
+show spanning-tree
+Pour vérifier les EtherChannels :
+css
+Copy code
+show etherchannel summary
+Une fois que vous avez terminé ces étapes, les switches devraient être configurés avec les VLAN, les liens trunk, le Spanning Tree et les EtherChannels. Vous pouvez alors connecter les PCs aux ports d'accès des VLAN correspondants.
+
+
+
+
+
+jguirim.taha-yassine@orange.fr
+Ta réponse est excellente, je dirais même que c'est un tuto ,
+
+Fais moi ce tuto en page HTML et garde moi un endroit pour mettre l'image de la topologie que j'ajouterai manuellement,
+
+Aller je compte sur ta créativité !
+
+Voici un modèle de page HTML pour le tutoriel que vous avez demandé. Vous pourrez ajouter l'image de la topologie à l'emplacement indiqué dans le code :
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 2rem;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1rem auto;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</h1>
+
+    <img src="chemin_vers_votre_image/topologie.png" alt="Topologie">
+
+    <h2>Étape 1 : Création des VLAN 10 et 20 sur chaque switch</h2>
+    <p>Switch1, Switch2, Switch3 :</p>
+    <pre>
+enable
+configure terminal
+vlan 10
+name VLAN10
+exit
+vlan 20
+name VLAN20
+exit
+    </pre>
+
+    <h2>Étape 2 : Attribution des ports aux VLAN</h2>
+    <p>Switch1, Switch2 et Switch3 :</p>
+    <pre>
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+exit
+    </pre>
+
+    <h2>Étape 3 : Configuration des liens trunk</h2>
+    <p>Switch1, Switch2, Switch3 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+    </pre>
+
+    <h2>Étape 4 : Configuration du Spanning Tree Protocol (STP)</h2>
+    <p>Switch1 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 4096
+    </pre>
+    <p>Switch2 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 8192
+    </pre>
+    <p>Switch3 :</p>
+    <pre>
+spanning-tree mode pvst
+spanning-tree vlan 10,20 priority 12288
+    </pre>
+
+    <h2>Étape 5 : Configuration des EtherChannels</h2>
+    <p>Switch1 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 1 mode on
+exit
+    </pre>
+    <p>Switch2 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 2 mode on
+exit
+    </pre>
+    <p>Switch3 :</p>
+    <pre>
+interface range FastEthernet0/0 - 1
+channel-group 3 mode on
+exit
+    </pre>
+
+    <H2>Vérification des configurations</h2>
+<p>Pour vérifier les différentes configurations, utilisez les commandes suivantes :</p>
+
+<h3>Vérification des VLAN :</h3>
+<pre>
+show vlan brief
+</pre>
+
+
+<h3>Vérification des liens trunk :</h3>
+<pre>
+show interfaces trunk
+</pre>
+
+
+<h3>Vérification du Spanning Tree Protocol :</h3>
+<pre>
+show spanning-tree
+</pre>
+
+
+<h3>Vérification des EtherChannels :</h3>
+<pre>
+show etherchannel summary
+</pre>
+
+<p>Après avoir terminé ces étapes, les switches devraient être configurés avec les VLAN, les liens trunk, le Spanning Tree et les EtherChannels. Vous pouvez alors connecter les PCs aux ports d'accès des VLAN correspondants.</p>
+</body>
+</html>
