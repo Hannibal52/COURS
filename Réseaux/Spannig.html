@@ -12,13 +12,6 @@
 		 
         }
 		 
-		 .content {
-    margin-left: 200px; /* Ajustez cette valeur en fonction de la taille de l'image */
-}
-
-.container {
-    display: flex;
-}
 
 
 
@@ -28,14 +21,7 @@
         h2 {
             margin-top: 2rem;
         }
-        img {
-    position: fixed;
-	left: 10px;
-    z-index: 1000;
-    max-width: 100%;
-    height: auto;
-    margin: 1rem;
-}
+ 
         pre {
             background-color: #f0f0f0;
             padding: 1rem;
@@ -48,10 +34,10 @@
 
  
    
-<div class="container">
-    <img src="https://4.bp.blogspot.com/-rbXjr3-LF9s/VcD8fZ-tFeI/AAAAAAAAW3k/hk0u2s_0Gns/s1600/2.png" alt="Topologie">
  
-	 <div class="content">
+    <img src="spannig.png" alt="Topologie">
+ 
+ 
 	
 	 <h1>Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</h1>
 
@@ -71,46 +57,47 @@ exit
     <h2>Étape 2 : Attribution des ports aux VLAN</h2>
     <p>Switch1, Switch2 et Switch3 :</p>
     <pre>
-interface FastEthernet0/4
+interface FastEthernet0/10
 switchport mode access
 switchport access vlan 10
 exit
-interface FastEthernet0/5
+interface FastEthernet0/10
 switchport mode access
 switchport access vlan 20
 exit
     </pre>
+    
 
     <h2>Étape 3 : Configuration des liens trunk</h2>
     <p>Switch1 :</p>
     <pre>
-interface range FastEthernet0/0 - 1
+interface range FastEthernet0/3 - 4
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
-interface range FastEthernet0/2 - 3
+interface range FastEthernet0/5 - 6
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
     </pre>
     <p>Switch2 :</p>
     <pre>
-interface range FastEthernet0/0 - 1
+interface range FastEthernet0/3 - 4
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
-interface range FastEthernet0/2 - 3
+interface range FastEthernet0/1 - 2
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
     </pre>
     <p>Switch3 :</p>
     <pre>
-interface range FastEthernet0/0 - 1
+interface range FastEthernet0/1 - 2
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
-interface range FastEthernet0/2 - 3
+interface range FastEthernet0/5 - 6
 switchport mode trunk
 switchport trunk allowed vlan 10,20
 exit
@@ -119,49 +106,45 @@ exit
     <h2>Étape 4 : Configuration du Spanning Tree Protocol (STP)</h2>
     <p>Switch1 :</p>
     <pre>
-spanning-tree mode pvst
-spanning-tree vlan 10,20 priority 4096
+        spanning-tree vlan 10 root primary 
     </pre>
     <p>Switch2 :</p>
     <pre>
-spanning-tree mode pvst
-spanning-tree vlan 10,20 priority 8192
+        spanning-tree vlan 20 root primary 
     </pre>
-    <p>Switch3 :</p>
-    <pre>
-spanning-tree mode pvst
-spanning-tree vlan 10,20 priority 12288
-</pre>
+
 
 
 
 <h2>Étape 5 : Configuration des EtherChannels</h2>
 <p>Switch1 :</p>
 <pre>
-interface range FastEthernet0/0 - 1
-channel-group 1 mode on
-exit
-interface range FastEthernet0/2 - 3
-channel-group 2 mode on
-exit
+    interface port-channel 2
+    switchport mode trunk
+    exit
+    interface port-channel 3
+    switchport mode trunk
+    exit
+
+    
 </pre>
 <p>Switch2 :</p>
 <pre>
-interface range FastEthernet0/0 - 1
-channel-group 1 mode on
-exit
-interface range FastEthernet0/2 - 3
-channel-group 2 mode on
-exit
+    interface port-channel 1
+    switchport mode trunk
+    exit
+    interface port-channel 2
+    switchport mode trunk
+    exit
 </pre>
 <p>Switch3 :</p>
 <pre>
-interface range FastEthernet0/0 - 1
-channel-group 1 mode on
-exit
-interface range FastEthernet0/2 - 3
-channel-group 2 mode on
-exit
+    interface port-channel 1
+    switchport mode trunk
+    exit
+    interface port-channel 3
+    switchport mode trunk
+    exit
 </pre>
 
 
@@ -207,8 +190,7 @@ Après avoir effectué toutes les configurations et connecté les PCs, il est im
 Utilisez la commande "ping" pour vérifier la connectivité entre les PCs. Assurez-vous que les PCs aient des adresses IP appropriées et qu'ils appartiennent au même sous-réseau pour chaque VLAN. Par exemple, pour le VLAN 10, vous pouvez attribuer des adresses IP telles que 10.0.10.2/24 et 10.0.10.3/24, et pour le VLAN 20, vous pouvez attribuer des adresses IP telles que 10.0.20.2/24 et 10.0.20.3/24.
 </pre>
 
- </div>
- </div>
+ 
  
  
 </body>
