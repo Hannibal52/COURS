@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Sauvegarde dans une archive tarball compressée</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>voici un exemple de script Bash pour sauvegarder les fichiers d'un répertoire spécifique dans une archive tarball compressée et la déplacer vers un répertoire de sauvegarde.</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+  #!/bin/bash
+
+# Paramètres de configuration
+SOURCE_DIR="/chemin/vers/le/repertoire/source"
+BACKUP_DIR="/chemin/vers/le/repertoire/backup"
+FILE_PREFIX="backup_"
+
+# Récupérer la date actuelle
+DATE=$(date +%Y%m%d_%H%M%S)
+
+# Créer un nom de fichier pour l'archive de sauvegarde
+BACKUP_FILE="${BACKUP_DIR}/${FILE_PREFIX}${DATE}.tar.gz"
+
+# Créer l'archive tarball compressée
+echo "Création de la sauvegarde : ${BACKUP_FILE}"
+tar -czf "${BACKUP_FILE}" -C "${SOURCE_DIR}" .
+
+# Vérifier si la création de l'archive a réussi
+if [ $? -eq 0 ]; then
+  echo "Sauvegarde créée avec succès : ${BACKUP_FILE}"
+else
+  echo "Échec de la création de la sauvegarde. Veuillez vérifier les erreurs ci-dessus."
+fi
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+Assurez-vous de remplacer les valeurs des variables SOURCE_DIR et BACKUP_DIR par les chemins appropriés de vos répertoires source et de sauvegarde. Le script crée ensuite une archive tarball compressée des fichiers du répertoire source et la déplace vers le répertoire de sauvegarde avec un nom de fichier basé sur la date et l'heure actuelles.
+
+Vous pouvez exécuter ce script manuellement ou le planifier avec cron pour effectuer des sauvegardes régulières de vos fichiers.
+
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

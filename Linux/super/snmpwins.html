@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+    
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+		
+		.bash{
+		 background-color: #808080 ;
+		 color: #fff;
+          
+			font-size: 1.3em; 
+			}
+			
+			.res{
+		 background-color: #808080 ;
+		 color: #fff;
+           
+			}
+			
+			.comment{
+		 background-color: #ADD8E6  ;
+		 color: #00000;
+          
+            padding: 10px;
+			font-size: 1.3em; 
+		}
+	
+		
+			.comred{
+		 background-color: #FFA07A  ;
+		 color: #00000;
+          
+            padding: 10px;
+			font-size: 1.3em; 
+		}
+		
+		
+		
+
+		
+    </style>
+</head>
+ 
+<body>
+<header>
+		<h1>WINS : Install&Conf Service SNMP</h1>
+	</header>
+	<div class="container">
+	
+	<h2>Installation en PowerShell</h2>
+	
+	<code class="bash">
+	Install-WindowsFeature SNMP-Service -IncludeManagementTools
+	</code>
+	
+	<p> Résultat : </p>
+		
+		
+			<code class="com"> 
+Success Restart Needed Exit Code      Feature Result<br>
+------- -------------- ---------      --------------<br>
+True    No             Success        {Outils d'administration de fonctionnalité...<br>
+	</code>
+	
+	<h2>Configuration du service SNMP</h2>
+	
+	<div class="comment"> On va maintenant passer à la configuration du service, pour cela nous allons ajouter une communauté au service SNMP pour permettre son interrogation.
+	</div>
+		
+	
+	
+	<ol>
+		<li>
+		<p>Ouvrir une fenêtre exécuter, dans la zone de saisie entrer services .msc (1) et cliquer sur OK (2). </p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/11-fenetre-executer.jpg.webp">
+		</li>
+		
+		
+		<li>
+		<p>Dans la liste des services chercher Service SNMP (1), faite un clique droit dessus et aller sur Propriétés (2).</p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/12-console-service-600x348.jpg.webp">
+		</li>
+		
+		
+		<li>
+		<p>. Dans la nouvelle fenêtre, aller sur le l’onglet Sécurité (1) et cliquer sur le bouton Ajouter … (2) au niveau  de la liste des communautés.</p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/13-parametres-snmp-310x400.jpg.webp">
+		</li>
+		
+		
+		<li>
+		<p>Sélectionner le doit de la communauté (1), entrer son nom (2) et cliquer sur le bouton Ajouter (3)</p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/14-param-snmp-communaute.jpg.webp">
+		</li>
+		
+		<li>
+		<p>Sélectionner Accepter les paquets SNMP provenant de n’importe quel hôte (1), Appliquer les modifications (2) et cliquer sur OK (3) pour fermer la fenêtre.</p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/15-param-snmp-for-all-313x400.jpg.webp">
+		</li>
+		
+		<div class="comred">En production préférer indiquer les adresses IP autorisées à interroger le serveur.</div>
+		
+		<li>
+		<p>Redémarrer le service (1) pour une prise en compte des modifications.</p>
+		<img src="https://rdr-it.com/wp-content/uploads/kb/windows-server-snmp/16-restart-service-600x344.jpg.webp">
+		</li>
+	
+	
+	<hr>
+	
+	<div class="comment">Pour tester le fonctionnement du service, vous pouvez utiliser le logiciel SNMP Tester de Paessler.</div>
+	</ol>
+	
+		
+ 
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<div class="container">
+	
+	
+	</div>
+	</body>
+	</html>

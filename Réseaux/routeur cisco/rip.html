@@ -1,411 +1,269 @@
 <!DOCTYPE html>
-<!-- saved from url=(0034)http://idum.fr/spip.php?article213 -->
-<html class="ltr fr no-js" lang="fr">
-  <!--<![endif]-->
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Idum</title>
-    <meta name="description" content="Idum a pour but de partager et regrouper les connaissances. Les articles expliquent comment configurer des systèmes Windows, Debian, ToIP Cisco, ainsi que des équipements réseaux Cisco, Alcatel ou HP.">
-    <meta name="generator" content="SPIP 4.2.2">
-    <link rel="icon" type="image/png" href="http://idum.fr/favicon.png">
-    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
-    <link rel="stylesheet" href="./rip_files/styles.css" type="text/css" media="projection, screen, tv">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript">/* <![CDATA[ */
-var mediabox_settings={"auto_detect":true,"ns":"box","tt_img":true,"sel_g":"#documents_portfolio a[type='image\/jpeg'],#documents_portfolio a[type='image\/png'],#documents_portfolio a[type='image\/gif']","sel_c":".mediabox","str_ssStart":"Diaporama","str_ssStop":"Arr\u00eater","str_cur":"{current}\/{total}","str_prev":"Pr\u00e9c\u00e9dent","str_next":"Suivant","str_close":"Fermer","str_loading":"Chargement\u2026","str_petc":"Taper \u2019Echap\u2019 pour fermer","str_dialTitDef":"Boite de dialogue","str_dialTitMed":"Affichage d\u2019un media","splash_url":"","lity":{"skin":"_simple-dark","maxWidth":"90%","maxHeight":"90%","minWidth":"400px","minHeight":"","slideshow_speed":"2500","opacite":"0.9","defaultCaptionState":"expanded"}};
-/* ]]> */</script>
-    <!-- insert_head_css -->
-    <link rel="stylesheet" href="./rip_files/lity.css" type="text/css" media="all">
-    <link rel="stylesheet" href="./rip_files/lity.mediabox.css" type="text/css"
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel RIPv2</title>
+    <style>
+  	body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
 
-      media="all">
-    <link rel="stylesheet" href="./rip_files/lity%281%29.css" type="text/css" media="all">
-    <link rel="stylesheet" type="text/css" media="all" href="./rip_files/barre_outils.css">
-    <link rel="stylesheet" type="text/css" media="all" href="./rip_files/cssdyn-css_barre_outils_icones_css-add9db34.css">
-    <script src="./rip_files/jquery.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/jquery.form.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/jquery.autosave.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/jquery.placeholder-label.js.t%C3%A9l%C3%A9chargement"
+		header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+			.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		
+		
+		
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 10px;
+    }
 
-type="text/javascript"></script>
-    <script src="./rip_files/ajaxCallback.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/js.cookie.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <!-- insert_head -->
-    <script src="./rip_files/lity.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script src="./rip_files/lity.mediabox.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <style type="text/css">.box_mediabox .lity-container{max-width:90vw;max-height:90vh;}.box_mediabox .lity-content{min-width:400px;}.box_mediabox:before{opacity:0.9}</style>
-    <script src="./rip_files/spip.mediabox.js.t%C3%A9l%C3%A9chargement" type="text/javascript"></script>
-    <script type="text/javascript" src="./rip_files/jquery.markitup_pour_spip.js.t%C3%A9l%C3%A9chargement"></script>
-    <script type="text/javascript" src="./rip_files/jquery.previsu_spip.js.t%C3%A9l%C3%A9chargement"></script>
-    <script type="text/javascript" src="./rip_files/jsdyn-javascript_porte_plume_start_js-ef9d7c09.js.t%C3%A9l%C3%A9chargement"></script>
-    <link rel="stylesheet" href="./rip_files/cibc_en_bas_fond_blanc.css" type="text/css"
+    ul {
+        padding-left: 20px;
+    }
 
-      media="all">
-    <script type="text/javascript"><!-- 
-                var cibcXiti=cibcGetCookie("cibcOptOutXITI");var paramUrlXiti=cibcGetUrlParam("cibcOptOutXITI");if(paramUrlXiti){if(paramUrlXiti=="oui"||paramUrlXiti=="non"){cibcXiti=paramUrlXiti;cibcSetCookie("cibcOptOutXITI",paramUrlXiti)}}var cibcIdga=cibcGetCookie("cibcOptOutGA");var paramUrlIdga=cibcGetUrlParam("cibcIDGA");if(paramUrlIdga){if(paramUrlIdga=="non"){cibcIdga=paramUrlIdga;cibcSetCookie("cibcOptOutGA",paramUrlIdga)}else{testidga=paramUrlIdga.replace("ua-","");testidga=testidga.replace("UA-","");testidga=testidga.replace("-","");if(isNaN(testidga)===false){cibcIdga=paramUrlIdga;cibcSetCookie("cibcOptOutGA",paramUrlIdga)}}}if(cibcIdga && cibcIdga!="non"){var gaProperty=cibcIdga;var disableStr="ga-disable-"+gaProperty;window[disableStr]=true} function cibcPath(){var cipath=window.location.pathname;cipath=cipath.substring(0,cipath.lastIndexOf("/"));if(cipath===-1)cipath="/";else cipath=cipath+"/";return cipath}function cibcHref(){return window.location.protocol+"//"+window.location.host+cibcPath()}function cibcHrefSansParam() {var cihref = document.location.href; var n = cihref.indexOf("&cibcOptOut"); if (n > 1){cihref = cihref.substring(0,n);} n = cihref.indexOf("&cibcIDGA"); if (n > 1){cihref = cihref.substring(0,n);} return cihref;}function cibcGetExpireDate(){var cookieTimeout=34128000000;var date=new Date();date.setTime(date.getTime()+cookieTimeout);var expires="expires="+date.toGMTString();return expires}function cibcSetCookie(nom,valeur){document.cookie=nom+"="+valeur+";"+cibcGetExpireDate()+"; path="+cibcPath()}function cibcSetCookieConsentOui(){document.cookie="cibcConsent=oui;"+cibcGetExpireDate()+" ; path="+cibcPath()}function cibcSetCookieConsentNon(){document.cookie="cibcConsent=non;"+cibcGetExpireDate()+" ; path="+cibcPath()}function cibcGetCookie(NomDuCookie){if(document.cookie.length>0){begin=document.cookie.indexOf(NomDuCookie+"=");if(begin!=-1){begin+=NomDuCookie.length+1;end=document.cookie.indexOf(";",begin);if(end==-1)end=document.cookie.length;return unescape(document.cookie.substring(begin,end))}}return ""}function cibcGetCookieConsent(){consentCookie=cibcGetCookie("cibcConsent");if(!consentCookie){if(document.referrer && (document.referrer.split("/")[2] == document.location.hostname) && cibcGetCookie("cibcInit")){cibcSetCookieConsentOui();consentCookie="oui"}}return consentCookie}function cibcGetUrlParam(name){name=name.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var regex=new RegExp("[\?&]"+name+"=([^&#]*)");var results=regex.exec(window.location.search);if(results==null)return "";else return results[1]}function cibcFade(element){var op=1;var ua=navigator.userAgent.toLowerCase();var isIE=false;if(ua.indexOf("msie")!=-1){isIE=true}var timer=setInterval(function(){if(op<=0.1){clearInterval(timer);element.parentNode.removeChild(element)}else{element.style.opacity=op;if(isIE===true){element.style.filter="alpha(opacity="+op*100+")"}op-=op*0.1}},50)}function cibcDemander(){if(cibcGetCookie("spip_session")&&3==2){cibcSetCookieConsentOui()}else{var bodytag=document.getElementsByTagName("body")[0];var div=document.createElement("div");div.setAttribute("id","banniere-cookie");div.innerHTML=decodeURIComponent("%3Ca%20class%3D%22cicb_fermer%22%20href%3D%22javascript%3Avoid%280%29%3B%22%20onclick%3D%22cibcRemoveMe%28%29%3B%22%3E%3Cspan%3EX%3C%2Fspan%3E%3C%2Fa%3E%3Cdiv%20class%3D%22cicb_texte%22%3EEn%20poursuivant%20votre%20navigation%20sur%20ce%20site%2C%20vous%20acceptez%20l%26%238217%3Butilisation%20de%20cookies%20pour%20r%C3%A9aliser%20des%20statistiques%20de%20visites.%3C%2Fdiv%3E%3Cdiv%20class%3D%22cicb_boutons%22%3E%3Ca%20class%3D%22bouton%20accepte%22%20href%3D%22javascript%3AcibcAccepte%28%29%22%3EAccepter%3C%2Fa%3E%3Ca%20class%3D%22bouton%20refus%22%20href%3D%22javascript%3AcibcRefuse%28%29%22%3ERefuser%3C%2Fa%3E%3C%2Fdiv%3E");bodytag.insertBefore(div,bodytag.firstChild);cibcSetCookie("cibcInit","oui");}}function cibcRefuse(){cibcSetCookieConsentNon();var element = document.getElementById("banniere-cookie"); element.parentNode.removeChild(element);}function cibcAccepte(){cibcSetCookieConsentOui();var element=document.getElementById("banniere-cookie");element.parentNode.removeChild(element)}function cibcRemoveMe(){cibcSetCookieConsentOui();var element=document.getElementById("banniere-cookie");cibcFade(element)}function cibcRetour(){divRetour = document.getElementById("cibcRetour");if(divRetour!=null){if(divRetour.firstChild.className=="cibcRetour"){divRetour.firstChild.href = document.referrer;}}}function cibcOptOutExterne(){if(1==2){var cibcLiens=document.getElementsByTagName("a");for(var i=0;i<cibcLiens.length;i++){if(cibcLiens[i].className.substring(0,10)=="cibcOptOut"){cibcLiens[i].id="cibc"+i;cibcLiens[i].setAttribute("onclick","cibcCreerImg(this.id); return false;");cibcTableauOptOutExterne["cibc"+i]=cibcLiens[i].href;cibcLiens[i].href=""}}}}function cibcCreerImg(i){if(cibcTableauOptOutExterne[i]!==undefined&&cibcTableauOptOutExterne[i]){var element=document.getElementById(i);var img=document.createElement("img");img.setAttribute("src",cibcTableauOptOutExterne[i]);element.insertBefore(img,element.firstChild);cibcTableauOptOutExterne[i]=""}return false}function cibcAfficheLien(valeur_param,valeur_cookie){if(1==2){divOptout=document.getElementById("cibcOptOut"+valeur_param);if(divOptout!=null){divOptout.firstChild.className="spip_in";if(valeur_cookie&&valeur_cookie!="non"){divOptout.style.display="none"}else{divOptout.style.display="inline"}}divOptin=document.getElementById("cibcOptIn"+valeur_param);if(divOptin!=null){divOptin.firstChild.className="spip_in";if(valeur_cookie&&valeur_cookie!="non"){divOptin.style.display="inline"}else{divOptin.style.display="none"}}}}function cibcOptOut(){consentCookie=cibcGetCookieConsent();if(consentCookie=="oui")return"non";else if(consentCookie=="non")return"oui";else return ""}function cibcOptOutXITI(){return cibcXiti}function cibcOptOutGA(){return cibcIdga}function cibcLoad(){var consentCookie=cibcGetCookieConsent();var cibcParams=[];var cibcCookies=[];cibcParams[0]="CIBC";cibcCookies[0]="";cibcParams[1]="GA";cibcParams[2]="XITI";cibcCookies[1]=cibcGetCookie("cibcOptOutGA");cibcCookies[2]=cibcGetCookie("cibcOptOutXITI");cibcOptOutExterne();cibcRetour();var paramUrl=cibcGetUrlParam("cibcOptOut");if(paramUrl=="oui"){cibcSetCookieConsentNon();consentCookie="non";for(var i=1;i<cibcCookies.length;i++){if(cibcCookies[i]){cibcSetCookie("cibcOptOut"+cibcParams[i],"oui")};cibcCookies[i]="oui";}}if(paramUrl=="non"){cibcSetCookieConsentOui();consentCookie="oui";for(var i=1;i<cibcCookies.length;i++){if(cibcCookies[i]){cibcSetCookie("cibcOptOut"+cibcParams[i],"non")};cibcCookies[i]="non";}}if(!consentCookie){if(document.referrer && (document.referrer.split("/")[2] == document.location.hostname) && cibcGetCookie("cibcInit")){cibcSetCookieConsentOui();consentCookie="oui"}else{cibcDemander()}}var divOptout="";var divOptin="";if(consentCookie=="oui")cibcCookies[0]="non";else if(consentCookie=="non")cibcCookies[0]="oui";for(var i=0;i<cibcParams.length;i++){cibcAfficheLien(cibcParams[i],cibcCookies[i]);}}var cibcTableauOptOutExterne=[];if(window.jQuery){jQuery(document).ready(function($){cibcLoad()})}else{window.onload=function(){cibcLoad()}}
-                 -->
-                </script>
-    <style type="text/css">
+    pre {
+        	color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+    }
+</style>
+</head>
+<body>
 
-h1, h1 a:visited, h1 a:hover, h1 a, h1 a:link, a.h1, a.h1:link, a.h1:visited  {
-	font-size: 1.9em;
-	color:#000000;
-	text-decoration: none;
-	text-align:left;
-	line-height: 1.0;
-	margin-bottom: 0.3em;}
-h2, h2 a:visited, h2 a:hover, h2 a, h2 a:link, a.h2, a.h2:link, a.h2:visited {
-	font-size: 1.7em;
-	color:#000000;
-	text-decoration: none;
-	text-align:left;
-	line-height: 1.0;
-	margin-bottom: 0.3em;}
-h3, h3 a:visited, h3 a:hover, h3 a, h3 a:link, a.h3, a.h3:link, a.h3:visited {
-	font-size: 1.5em;
-	color:#000000;
-	text-decoration: none;
-	text-align:center;
-	line-height: 1.0;
-	margin-bottom: 0.3em;}
-h4, h4 a:visited, h4 a:hover, h4 a, h4 a:link, a.h4, a.h4:link, a.h4:visited {
-	font-size: 1.9em;
-	margin-bottom: 0.3em;
-	color:#000000;
-	text-decoration: none;
-	text-align:left;}
-h5, h5 a:visited, h5 a:hover, h5 a, h5 a:link, a.h5, a.h5:link, a.h5:visited {
-	font-size: 1.2em;
-	color:#000000;
-	text-decoration: none;
-	text-align:left;}
-h6, h6 a:visited, h6 a:hover, h6 a, h6 a:link, a.h6, a.h6:link, a.h6:visited {
-	color:#000000;
-	text-decoration: none;
-	text-align:left;}
-      p {text-decoration: none; color:#000000;}
-</style> </head>
-  <body>
-    <div id="wrap">
-      <div id="header">
-        <div class="rubrique2-article-description">
-          <hr><span style="word-wrap:break-word;">
-            <p>Cet article vous explique dans un premier temps le principe de
-              fonctionnement du routage RIP, ainsi que les différences entre
-              RIPv1 et RIPv2. Dans un deuxième temps il vous apprend à
-              configurer un réseau qui utilise RIP. Pour terminer il permet de
-              savoir comment vérifier le bon fonctionnement du routage.</p>
-            <p>Dans cet article vous retrouverez aussi les principales commandes
-              permettant le paramétrage du routage RIP et j’y joins des fichiers
-              Packet Tracert pour que vous ayez une démonstration.</p>
-            <p><br>
-            </p>
-            <h1>
-              Sommaire :
-          </h1> 
-          <br>
-              <p>I) Définitions<br>
-              1) Le routeur<br>
-              2) Le routage<br>
-              3) Le routage dynamique<br>
-              4) Protocole de routage RIP<br>
-              II) RIPv1 et RIPv2<br>
-              III) Fonctionnement de RIP<br>
-              1) Fonctionnement<br>
-              2) Table de routage<br>
-              3) Temporisation<br>
-              4) RIP et la métrique<br>
-              5) RIP et la Distance Administrative<br>
-              6) Horizon coupé<br>
-              7) Poison reverse<br>
-              IV) Manipulation de RIP<br>
-              1) Schéma du réseau<br>
-              2) Configurations du réseau<br>
-              3) Vérifications<br>
-              V) Sous-réseaux et réseaux discontinus<br>
-              VI) RIP et le résumé automatique<br>
-              VII) Récapitulatif des commandes RIP</p>
-          </span> </div>
-        <div class="rubrique2-article-texte">
-          <div style="word-wrap:break-word;">
-            <p><balise id="Sommaire"></balise></p>
-            <hr class="spip"><balise id="chapI">
-              <h1>I) Définitions</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <p>Avant de parler de routage RIP, il faut que j’explique qu’est ce
-              qu’un routeur et quel est son but.</p>
-            <balise id="chap11">
-              <h2>1) Le routeur</h2>
-            </balise>
-            <p>Le routeur, est un équipement réseau permettant d’acheminer les
-              données d’un réseau à un autre. Le routeur possède une table
-              contenant les chemins que doivent emprunter les données pour
-              arriver à destination. Représenter vous un routeur comme un bureau
-              de poste où le courrier représente les données. Vous déposez une
-              enveloppe dans la boite aux lettres, le bureau de poste regarde la
-              destination et détermine comment acheminer le courrier à
-              destination puis à un autre bureau de poste. Un routeur réalise la
-              même chose mais avec des données informatiques. Il reçoit une
-              donnée, regarde la destination, il étudie sa table de routage pour
-              chercher le meilleur chemin, et transmet les données à un autre
-              routeur.</p>
-            <balise id="chap12">
-              <h2>2) Le routage</h2>
-            </balise>
-            <p>Cela consiste à transmettre les données d’un réseau à un autre en
-              prenant le bon chemin.</p>
-            <balise id="chap13">
-              <h2>3) Le routage dynamique</h2>
-            </balise>
-            <p>Deux types de routage existent, le routage statique et le routage
-              dynamique&nbsp;: <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Le routage
-              statique est un routage où chaque route a été saisie manuellement
-              par l’administrateur. Il est utilisé dans les tous petits réseaux.
-              Il est facile à gérer lorsque le nombre de routes reste limité.
-              Lorsqu’une route est en panne, l’intervention de l’administrateur
-              est obligatoire pour saisir une route de secours. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Le routage
-              dynamique est un routage où les routes sont calculées et saisies
-              grâce à un protocole de routage. Il est utilisé dans les plus gros
-              réseaux. Il est plus difficile à mettre en place, mais plus facile
-              à maintenir. Lorsqu’une route est en panne, il recalcule
-              automatiquement un autre chemin.</p>
-            <balise id="chap14">
-              <h2>4) Protocole de routage RIP</h2>
-            </balise>
-            <p>RIP est un protocole de routage IP de type <strong>vecteur
-                distance</strong> basé sur l’algorithme de routage décentralisé
-              Bellman-Ford. Il permet à chaque routeur de communiquer aux autres
-              routeurs la métrique, c’est-à-dire la distance qui les sépare du
-              réseau IP (le nombre de sauts qui les sépare, ou
-              «&nbsp;hops&nbsp;» en anglais). Ainsi, lorsqu’un routeur reçoit un
-              de ces messages, il incrémente cette distance de 1 et communique
-              le message aux routeurs directement accessibles.</p>
-            <p>Les routeurs peuvent donc conserver de cette façon la route
-              optimale d’un message en stockant l’adresse du routeur suivant
-              dans la table de routage de telle façon que le nombre de sauts
-              pour atteindre un réseau soit minimal.</p>
-            <balise id="chapII">
-              <h1>II) RIPv1 et RIPv2</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <p>Il existe deux versions de RIP, la deuxième étant une
-              amélioration de la première.</p>
-            <p>RIPv2 apporte les modifications suivantes à RIPv1&nbsp;: <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Le support du
-              routage classless. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;La diffusion du
-              masque réseau dans les mises à jour de routage. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Le support de
-              V.L.S.M. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;La diffusion des
-              mises à jour de routage s’effectue par multicast avec l’adresse de
-              classe D 224.0.0.9. (Avec RIPv1 les mises à jour s’effectuent en
-              broadcast) <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;L’authentification
-              de la source de la mise à jour de routage par un texte en clair
-              (actif par défaut), ou un texte crypté suivant l’algorithme M.D5
-              (Message-Digest 5). <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;L’utilisation
-              d’indicateurs de route externe (route tag) afin de pouvoir
-              différencier les routes apprises par d’autres protocoles de
-              routage et redistribuées dans RIP</p>
-            <p>Maintenant que j’ai présenté le routage, la notion de dynamique,
-              RIP et la notion de RIPv1 et v2&nbsp;; je continuerai cet article
-              en n’utilisant que RIPv2.</p>
-            <balise id="chapIII">
-              <h1>III) Fonctionnement de RIP</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <balise id="chap31">
-              <h2>1) Fonctionnement</h2>
-            </balise>
-            <p>Le protocole RIP s’appuie sur l’échange d’information entre les
-              routeurs adjacents. Chaque routeur connait le coût de ses propres
-              liaisons, et diffuse ses informations aux autres routeurs qu’il
-              connait. Ensuite les routeurs recalculent les meilleures routes,
-              grâce aux informations reçues.</p>
-            <p>Une route ressemble à l’exemple ci-dessous&nbsp;:</p>
-            <div class="spip_document_1454 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_001.png"
+	<header>
+		<h1> RIPv2</h1>
+	</header>
 
-                  alt="" height="32" width="412"> </figure>
-            </div>
-            <p><i>La première ligne est une route créée automatiquement par le
-                routeur, lors de la configuration et la connexion de l’une de
-                ces interfaces. D’où le <strong>C</strong> en début de ligne
-                signifiant <strong>directly connected</strong>. En fin de ligne
-                nous retrouvons le nom de l’interface concernée.</i></p>
-            <i> </i>
-            <p><i>La deuxième ligne est aussi une route, mais celle-ci a été
-                ajoutée avec le protocole de routage RIP d’où le <strong>R</strong>.
-                Nous trouvons ensuite l’adresse du réseau. Puis l’information <strong>[120/1]</strong>
-                que nous expliquerons plupart. Ensuite nous avons <strong>via
-                  10.0.0.2</strong>, cela veut dire que pour accéder au réseau <strong>30.0.0.0/8</strong>
-                nous allons passer par le routeur ayant l’adresse IP <strong>10.0.0.2</strong>.
-                Le compteur <strong>00:00:02</strong> correspond au timer du
-                dernier message RIP reçu. Et pour finir nous avons le nom de
-                l’interface concerné.</i></p>
-            <balise id="chap32">
-              <h2>2) Table de routage</h2>
-            </balise>
-            <p>La table de routage est une sorte de tableau dans le routeur qui
-              répertorie toutes les routes que celui-ci connait. Une table de
-              routage ressemble à l’exemple ci-dessous&nbsp;:</p>
-            <div class="spip_document_1455 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_002.png"
+	<div class="container">
+	
+ 
+    <p>Route Information Protocol version 2 (RIPv2) est un protocole de routage à vecteur de distance utilisé pour échanger des informations de routage entre les routeurs sur un réseau. Ce tutoriel vous montre comment configurer et utiliser RIPv2.</p>
+ 
+<h2>1. Présentation de RIPv2</h2>
+<p>Les principales caractéristiques de RIPv2 sont les suivantes:</p>
+<ul>
+    <li>Support des masques de sous-réseau variable (VLSM)</li>
+    <li>Utilisation de multicast pour les mises à jour de routage (adresse 224.0.0.9)</li>
+    <li>Métrique basée sur le nombre de sauts (hop count), avec une limite maximale de 15 sauts</li>
+    <li>Utilisation d'algorithmes de prévention de bouclage, tels que le split horizon et le poison reverse</li>
+    <li>Authentification des mises à jour de routage (en option)</li>
+</ul>
 
-                  alt="" height="331" width="560"> </figure>
-            </div>
-            <p><i>On retrouve dans un premier temps la commande que l’on doit
-                taper pour obtenir la table de routage. Nous avons ensuite la
-                légende des codes que l’on trouve en début de ligne dans la
-                table. Pour finir nous avons la table de routage.</i></p>
-            <p>Lorsqu’un routeur reçoit une route, il compare la route avec les
-              informations de sa propre table de routage&nbsp;:</p>
-            <p><span class="spip-puce ltr"><b>–</b></span>&nbsp;Si la
-              destination n’existe pas, et que la métrique n’est pas infinie
-              alors la route est ajoutée. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Si la destination
-              reçue existe, et que la métrique obtenue est meilleure alors la
-              table de routage est mise à jour. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Si la destination
-              reçue existe, et que le routeur qui a envoyé la table est le
-              routeur adjacent déjà connu, et que la métrique obtenue est
-              différente, alors on met à jour la table de routage. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;Sinon on ne
-              change rien.</p>
-            <balise id="chap33">
-              <h2>3) Temporisations</h2>
-            </balise>
-            <p>Un routeur en régime stable diffuse un message RIP toutes les <strong>30
-                secondes +- 5 secondes</strong>, pour avertir que sa table de
-              routage est toujours opérationnelle.</p>
-            <p>Lorsqu’une modification de la table de routage intervient, le
-              routeur envoi un message RIP à <strong>+- 0 à 5 secondes</strong>.
-              Cela permet une prise en compte des modifications beaucoup plus
-              rapidement.</p>
-            <p>Le protocole utilise trois temporisations&nbsp;:</p>
-            <p><span class="spip-puce ltr"><b>–</b></span>&nbsp;Temporisation
-              appelé&nbsp;: <strong>Invalid timer</strong>. Si le routeur ne
-              reçoit aucune mise à jour d’une route dans les <strong>180
-                secondes</strong>, alors la route est marqué non valide
-              (métrique = 16). Néanmoins la route est sauvegardé jusqu’à la fin
-              de la temporisation d’annulation (Flush timer).</p>
-            <p><span class="spip-puce ltr"><b>–</b></span>&nbsp;Annulation
-              appelé&nbsp;: <strong>Flush timer</strong>. Si le routeur ne
-              reçoit pas dans les <strong>240 secondes</strong> une mise à jour
-              pour cette route, la route est supprimée de la table de routage.</p>
-            <p><span class="spip-puce ltr"><b>–</b></span>&nbsp;Mise hors
-              service appelé&nbsp;: <strong>Holdown timer</strong>. Cette
-              temporisation permet d’éviter les boucles de routages au moment de
-              la convergence de la topologie sur la base de nouvelles
-              informations. Lorsqu’une route devient inaccessible, elle doit le
-              rester assez longtemps pour que tous les routeurs découvrent que
-              le réseau est inaccessible par cette route.</p>
-            <p><strong> <i>Attention&nbsp;: Les valeurs des temporisations que
-                  j’indique sont les valeurs utilisées par les équipements
-                  Cisco, si vous vérifiez les valeurs sur les sites des groupes
-                  de normalisation les valeurs peuvent être différentes.</i> </strong></p>
-            <balise id="chap34">
-              <h2>4) RIP et la métrique</h2>
-            </balise>
-            <p>La métrique de RIP est simple comparer à d’autre protocole de
-              routage. La métrique est calculée en fonction du nombre de saut
-              pour atteindre la destination. Un saut représente le nombre de
-              routeur que doit traverser la donnée avant d’arriver à
-              destination.</p>
-            <p>Pour éviter des boucles de routage la <strong>métrique maximum
-                est 16</strong>, on l’appelle aussi métrique infini. Un domaine
-              de routage RIP ne peut donc pas excéder 15 sauts de routage. C’est
-              l’une des raisons qui limite RIP à de petit réseaux.</p>
-            <div class="spip_document_1456 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_003.png"
+<h2>2. Configuration de RIPv2</h2>
+<p>Pour configurer RIPv2 sur un routeur Cisco, suivez les étapes suivantes:</p>
+<pre>
+Router> enable
+Router# configure terminal
+Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 192.168.1.0
+Router(config-router)# network 192.168.2.0
+</pre>
+<p>(Optionnel) Pour configurer l'authentification:</p>
+<pre>
+Router(config)# interface FastEthernet0/0
+Router(config-if)# ip rip authentication key-chain MY_KEY_CHAIN
+Router(config-if)# ip rip authentication mode md5
+</pre>
+ 
+<h2>3. Vérification de la configuration RIPv2</h2>
+<p>Pour vérifier que RIPv2 fonctionne correctement, utilisez les commandes suivantes:</p>
+<ul>
+    <li>Afficher la table de routage: <code>show ip route</code></li>
+    <li>Afficher les informations sur le processus RIPv2: <code>show ip protocols</code></li>
+    <li>Afficher les voisins RIPv2 et les routes apprises: <code>show ip rip database</code></li>
+</ul>
 
-                  alt="" height="331" width="560"> </figure>
-            </div>
-            <p><i>La métrique est la valeur encadrée en rouge.</i></p>
-            <balise id="chap35">
-              <h2>5) RIP et la Distance Administrative</h2>
-            </balise>
-            <p>La distance Administrative est une valeur qui représente le
-              protocole. Dans un réseau utilisant que du routage RIP cette
-              valeur est inutile. Mais dans un réseau utilisant le protocole RIP
-              ainsi que d’autres protocoles comme OSPF, IS-IS, etc. dans ce cas
-              la valeur de la Distance administrative est plus importante que la
-              métrique. Lorsqu’une même route existe dans plusieurs protocoles,
-              le routage analyse la valeur de la distance administrative pour
-              chercher la valeur la plus faible. Chaque protocole a une valeur
-              par défaut comme nous le montre l’image ci-dessous&nbsp;:</p>
-            <div class="spip_document_1457 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_004.png"
+<h2>4. Dépannage de RIPv2</h2>
+<p>En cas de problèmes avec RIPv2, vérifiez les éléments suivants:</p>
+<ul>
+<li>Assurez-vous que RIPv2 est activé sur toutes les interfaces concernées</li>
+<li>Vérifiez que les versions de RIP correspondent sur tous les routeurs voisins</li>
+<li>Vérifiez que les masques de sous-réseau sont corrects et que les réseaux sont annoncés correctement</li>
+<li>Vérifiez l'authentification, si elle est utilisée</li>
+<li>Assurez-vous que les mises à jour de routage ne sont pas bloquées par des listes de contrôle d'accès (ACL) ou des pare-feu</li>
+</ul>
 
-                  alt="" height="425" width="692"> </figure>
-            </div>
-            <p><i>La distance administrative est la valeur encadrée en rouge.</i></p>
-            <p>Voici un tableau regroupant les différentes valeurs de distance
-              administrative&nbsp;:</p>
-            <div class="spip_document_1458 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_005.png"
+<h2>5. Configurer la route par défaut (Default Route)</h2>
+<p>La route par défaut est une route utilisée pour acheminer le trafic vers des réseaux inconnus ou non présents dans la table de routage du routeur. Voici comment configurer une route par défaut:</p>
+<pre>
 
-                  alt="" height="331" width="560"> </figure>
-            </div>
-            <p>Prenons l’exemple d’une route A présente plusieurs fois dans la
-              table de routage. Route A apprise via le protocole RIP et Route A
-              apprise via le protocole OSPF. Le routeur, avant d’envoyer des
-              données, va comparer les deux distances administratives. Le
-              protocole RIP avec la valeur 120 et le protocole OSPF avec la
-              valeur 110. Le routeur utilisera donc la route A apprise avec le
-              protocole OSPF car sa distance administrative est inférieure.</p>
-            <balise id="chap36">
-              <h2>6) Horizon coupé</h2>
-            </balise>
-            <p>Horizon coupé est appelé aussi <strong>Split horizon</strong>.</p>
-            <p>Cette technique est utilisée pour accélérer la convergence. Le
-              principe est simple, on interdit à un routeur d’envoyer une route
-              à un routeur adjacent quand cette route passe par ce routeur
-              adjacent.</p>
-            <balise id="chap37">
-              <h2>7) Poison reverse</h2>
-            </balise>
-            <p>Un routeur diffuse les destinations qui deviennent inaccessibles
-              (time out = 180s et métrique = infini). Un routeur qui reçoit une
-              route marquée inaccessible l’intègre en tant que telle dans sa
-              table. Et si au bout de 240 secondes, aucune nouvelle entrée n’est
-              venue modifier la métrique alors elle est effacée de la table.</p>
-            <balise id="chapIV">
-              <h1>IV) Manipulation de RIP</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <balise id="chap41">
-              <h2>1) Schéma du réseau</h2>
-            </balise>
-            <p>Voici le schéma réseau (ci-dessous), il comprend 5 routeurs avec
-              RIPv2 activé, 9 réseaux et deux ordinateurs&nbsp;:</p>
-            <div class="spip_document_1459 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_006.png"
 
-                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
+Router> enable
+Router# configure terminal
+Router(config)# ip route 0.0.0.0 0.0.0.0 [Adresse_IP_de_l'interface_connectée_au_ISP]
+Router(config)# router rip
+Router(config-router)# default-information originate
+</pre>
+<p>Maintenant, les autres routeurs du réseau devraient apprendre la route par défaut via RIPv2 et être en mesure de router le trafic vers Internet.</p>
 
-                  data-box-type="image"> <img src="./rip_files/article_213_006.png"
 
-                    alt="" height="528" width="920"></a> </figure>
-            </div>
-            <balise id="chap42">
-              <h2>2) Configurations du réseau</h2>
-            </balise>
-            <p>Nous allons maintenant configurer les 5 routeurs. Nous
-              commencerons par configurer les adresses IP des interfaces. Pour
-              ensuite configurer le routage RIP.</p>
-            <h3>a) Routeur 1</h3>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>Router#configure terminal
+
+  <h2>6. Configuration d'un routeur avec un nom d'hôte et plusieurs interfaces</h2>
+    <p>Voici un exemple de configuration d'un routeur avec un nom d'hôte et plusieurs interfaces, en utilisant RIPv2:</p>
+    <pre>
+Router#configure terminal
+Router(config)#no ip domain-lookup
+Router(config)#hostname R5
+
+R5(config)#interface fastEthernet 0/0
+R5(config-if)#no shutdown
+R5(config-if)#ip address 60.0.0.1 255.0.0.0
+R5(config-if)#exit
+
+R5(config)#interface fastEthernet 0/1
+R5(config-if)#ip address 192.168.2.254 255.255.255.0
+R5(config-if)#no shutdown
+R5(config-if)#exit
+
+R5(config)#interface serial 0/1
+R5(config-if)#no shutdown
+R5(config-if)#clock rate 128000
+R5(config-if)#ip address 70.0.0.1 255.0.0.0
+R5(config-if)#exit
+
+R5(config)#router rip
+R5(config-router)#version 2
+R5(config-router)#network 192.168.2.0
+R5(config-router)#network 60.0.0.0
+R5(config-router)#network 70.0.0.0
+R5(config-router)#end
+    </pre>
+
+    <p>Cette configuration montre comment définir un nom d'hôte pour le routeur, désactiver la recherche de noms de domaine, configurer des adresses IP pour plusieurs interfaces et activer RIPv2 sur ces interfaces.</p>
+
+
+ <h2>7. RIP et la Distance Administrative</h2>
+    <p>La distance administrative (AD) est une valeur utilisée pour déterminer la fiabilité d'une source d'information de routage. Les protocoles de routage ont des valeurs AD par défaut pour éviter les boucles de routage et les conflits entre les protocoles. Pour RIP, la distance administrative par défaut est de 120.</p>
+    <p>Si vous avez plusieurs protocoles de routage configurés sur le même routeur, la distance administrative permet de choisir la meilleure route. Plus la valeur de l'AD est faible, plus la source d'information est considérée comme fiable.</p>
+	<br>
+	
+	
+	
+	<centre><img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_004.png"> </centre>
+
+<br>
+    <h2>8. RIP et la métrique</h2>
+    <p>RIP utilise le nombre de sauts (hop count) comme métrique pour déterminer le meilleur chemin vers une destination. Le nombre de sauts est égal au nombre de routeurs traversés pour atteindre une destination spécifique. La métrique maximale autorisée pour RIP est de 15 sauts, et toute destination à plus de 15 sauts est considérée comme inatteignable.</p>
+    
+	<centre><img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_003.png"> </centre>
+
+	
+	
+	
+	<br>
+	<hr>
+	<br>
+	<br>
+	<br>
+	
+	
+	  <h2>Optionnel</h2>
+	
+	<p>Pour mettre à jour la métrique RIP, vous pouvez utiliser la commande <code>metric-offset</code> dans le mode de configuration du protocole RIP :</p>
+    <pre>
+Router(config)# router rip
+Router(config-router)# metric-offset 1
+    </pre>
+    <p>Cette commande ajoute un décalage de 1 à la métrique RIP pour toutes les routes apprises par le routeur.</p>
+
+    <h3> - Temporisations</h3>
+    <p>RIP utilise plusieurs temporisateurs pour gérer la mise à jour et la suppression des routes dans la table de routage :</p>
+    <ul>
+        <li><strong>Temporisateur de mise à jour :</strong> Les routeurs envoient des mises à jour de routage périodiques (toutes les 30 secondes par défaut).</li>
+        <li><strong>Temporisateur d'invalidation :</strong> Si une route n'est pas mise à jour pendant une certaine période (180 secondes par défaut), elle est considérée comme invalide.</li>
+        <li><strong>Temporisateur de suppression :</strong> Une fois qu'une route est considérée
+
+
+
+ 
+comme invalide, le temporisateur de suppression commence à compter (240 secondes par défaut). Après expiration de ce délai, la route est supprimée de la table de routage.</li>
+<li><strong>Temporisateur de rétention :</strong> Ce temporisateur (180 secondes par défaut) empêche les mises à jour de routage d'entrer en conflit avec les routes récemment supprimées.</li>
+</ul>
+<p>Vous pouvez ajuster ces temporisateurs selon les besoins de votre réseau. Voici comment modifier les temporisateurs pour RIP :</p>
+<pre>
+Router(config)# router rip
+Router(config-router)# timers basic [mise à jour] [invalidation] [suppression] [rétention]
+</pre>
+<p>Par exemple, pour modifier les temporisateurs de mise à jour à 45 secondes, d'invalidation à 270 secondes, de suppression à 360 secondes et de rétention à 270 secondes :</p>
+<pre>
+Router(config)# router rip
+Router(config-router)# timers basic 45 270 360 270
+</pre>
+
+
+
+<p>N'oubliez pas de sauvegarder la configuration du routeur pour conserver les modifications après un redémarrage avec la commande <code>write memory</code> ou <code>copy running-config startup-config</code>.</p>
+
+
+
+
+<br>
+	
+		
+<br>
+		
+		
+		<h2> Sous-réseaux et réseaux discontinus </h2> 
+ 
+<p>Comme je l’ai cité dans les différences entre RIPv1 et RIPv2, RIPv1 ne prend pas en charge le masque de sous-réseau dans les mises à jour de la table de routage. Par conséquence RIP ne peut pas prendre en charge des réseaux discontinus, des réseaux VLSM (réseau ayant un masque à valeur variable), ou encore un super-réseau de routage inter-domaine et sans classe.
+Pour mieux comprendre ce que je viens de dire voici le schéma d’un réseau ayant un problème de discontinuité : </p>
+		
+		<img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_008.png">
+		
+ <p>Comme on peut le voir, à gauche du schéma R1 connait deux sous-réseaux (172.16.10.0\24 et 172.16.20.0\24).
+Et on peut voir aussi qu’à droite du schéma R3 connait trois sous-réseaux (172.16.30.0\24, 172.16.40.0\24 et 172.16.50.0\24).
+
+Avec RIPv1, lorsque R1 et R3 enverront leur table de routage à R2, l’information fournie par les deux routeurs sera 172.16.0.0. RIPv1 fonctionnant avec le système de classe réseau et ne prenant pas en charge les masques de sous-réseaux. Celui-ci va voir 5 adresses réseaux identiques.</p>
+		
+<br>
+	
+		
+<br>
+		
+		
+		
+<h1> TP </h1>
+
+ <p>Voici le schéma réseau (ci-dessous), il comprend 5 routeurs avec RIPv2 activé, 9 réseaux et deux ordinateurs : </p>
+ 
+ <br>
+		
+		
+		
+		
+	<img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_006.png">
+
+	 <br>
+	 
+	 
+	 
+	  <h2> Configurations du réseau </h2>
+	  <p>Nous allons maintenant configurer les 5 routeurs. Nous commencerons par configurer les adresses IP des interfaces. Pour ensuite configurer le routage RIP.</p>
+
+	  <h3>Routeur 1 </h2>
+<pre>
+Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
 Router(config)#hostname R1
@@ -433,11 +291,20 @@ R1(config-router)#network 10.0.0.0
 R1(config-router)#network 20.0.0.0
 R1(config-router)#end
 
-R1#wr</code></pre>
-            </div>
-            <h3>b) Routeur 2</h3>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>Router#configure terminal
+R1#wr
+
+</pre>
+
+
+<br>
+
+<h3> Routeur 2 : </h3>
+
+<br>
+
+
+<pre>
+Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
 Router(config)#hostname R2
@@ -465,11 +332,16 @@ R2(config-router)#network 30.0.0.0
 R2(config-router)#network 40.0.0.0
 R2(config-router)#end
 
-R2#wr</code></pre>
-            </div>
-            <h3>c) Routeur 3</h3>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>Router#configure terminal
+R2#wr
+</pre>
+
+ <br>
+
+<h3> Routeur 3</h3>
+
+<br>
+<pre>
+Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
 Router(config)#hostname R3
@@ -502,11 +374,16 @@ R3(config-router)#network 50.0.0.0
 R3(config-router)#network 70.0.0.0
 R3(config-router)#end
 
-R3#wr</code></pre>
-            </div>
-            <h3>d) Routeur 4</h3>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>Router#configure terminal
+R3#wr
+
+</pre>
+<br>
+ 
+<h3> Routeur 4 </h3>
+
+<br>
+<pre>
+Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
 Router(config)#hostname R4
@@ -533,11 +410,15 @@ R4(config-router)#network 50.0.0.0
 R4(config-router)#network 60.0.0.0
 R4(config-router)#end
 
-R4#wr</code></pre>
-            </div>
-            <h3>e) Routeur 5</h3>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>Router#configure terminal
+R4#wr
+</pre>
+
+<br>
+<h3> Routeur 5 </h3>
+
+<br>
+<pre>
+Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
 Router(config)#hostname R5
@@ -565,244 +446,26 @@ R5(config-router)#network 60.0.0.0
 R5(config-router)#network 70.0.0.0
 R5(config-router)#end
 
-R5#wr</code></pre>
-            </div>
-            <p>Cliquez ci-dessous pour télécharger le fichier Packet Tracert,
-              comprenant une démonstration du réseau&nbsp;:</p>
-            <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_routage_rip.pkt"
 
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+</pre>
 
-                    height="100" width="100"></a> </figure>
-            </div>
-            <balise id="chap43">
-              <h2>3) Vérifications</h2>
-            </balise>
-            <p>Après avoir attendu quelques minutes, nous affichons la table de
-              routage.</p>
-            <p>Nous tapons pour cela la commande suivante&nbsp;: <strong>show
-                ip route</strong></p>
-            <p>Nous obtenons le résultat suivant&nbsp;:</p>
-            <div class="spip_document_1460 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_007.png"
 
-                  alt="" height="331" width="560"> </figure>
-            </div>
-            <p>Si nous regardons plus en détails, nous pouvons voir que pour
-              aller de PC1 à PC2 le routeur R1 va envoyer les données au routeur
-              R3 à son interface 10.0.0.2. Que la métrique pour accéder à PC2
-              est de "2". Et que les données sortiront par l’interface
-              Serial0/0.</p>
-            <balise id="chapV">
-              <h1>V) Sous-réseaux et réseaux discontinus</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <p>Comme je l’ai cité dans les différences entre RIPv1 et RIPv2,
-              RIPv1 ne prend pas en charge le masque de sous-réseau dans les
-              mises à jour de la table de routage. Par conséquence RIP ne peut
-              pas prendre en charge des réseaux discontinus, des réseaux VLSM
-              (réseau ayant un masque à valeur variable), ou encore un
-              super-réseau de routage inter-domaine et sans classe.<br class="autobr">
-              Pour mieux comprendre ce que je viens de dire voici le schéma d’un
-              réseau ayant un problème de discontinuité&nbsp;:</p>
-            <div class="spip_document_1461 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="./rip_files/article_213_008.png"
 
-                  class="spip_doc_lien mediabox lity-enabled hasbox" type="image/png"
+<br>
 
-                  data-box-type="image"> <img src="./rip_files/article_213_008.png"
 
-                    alt="" height="382" width="817"></a> </figure>
-            </div>
-            <p>Comme on peut le voir, à gauche du schéma R1 connait deux
-              sous-réseaux (172.16.10.0\24 et 172.16.20.0\24).<br class="autobr">
-              Et on peut voir aussi qu’à droite du schéma R3 connait trois
-              sous-réseaux (172.16.30.0\24, 172.16.40.0\24 et 172.16.50.0\24).</p>
-            <p>Avec RIPv1, lorsque R1 et R3 enverront leur table de routage à
-              R2, l’information fournie par les deux routeurs sera 172.16.0.0.
-              RIPv1 fonctionnant avec le système de classe réseau et ne prenant
-              pas en charge les masques de sous-réseaux. Celui-ci va voir 5
-              adresses réseaux identiques.</p>
-            <p>Cliquez ci-dessous pour télécharger le fichier Packet Tracert,
-              comprenant une démonstration d’un réseau discontinu avec
-              RIPv1&nbsp;:</p>
-            <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv1.pkt"
+<p>RIPv2 est un protocole de routage sans classe, on a donc tendance à penser que les sous-réseaux devraient s’afficher individuellement dans la table de routage. Et c’est faux ! Comme nous le montre les tables de routage ci-dessus.
 
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
+On peut voir que les sous réseaux sont résumés avec les deux mêmes chemins à coût égal. Les routeurs R1 n’inclus toujours pas les sous-réseaux de R3 et inversement R3 n’inclus pas les sous-réseaux de R1.
 
-                    height="100" width="100"></a> </figure>
-            </div>
-            <p>Voici la table de routage des trois routeurs&nbsp;:</p>
-            <h6>R1&nbsp;:</h6>
-            <div class="spip_document_1462 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_009.png"
+La solution existe bien, elle consiste à désactiver le résumé automatique avec la commande suivante :</p>
 
-                  alt="" height="242" width="556"> </figure>
-            </div>
-            <p>Observer que R1 ne connait pas les sous-réseaux 172.16.30.0,
-              172.16.40.0 et 172.16.50.0.</p>
-            <h6>R2&nbsp;:</h6>
-            <div class="spip_document_1463 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_010.png"
+<pre>no auto-summary</pre>
+ 
 
-                  alt="" height="227" width="556"> </figure>
-            </div>
-            <p>Observer que R2 ne connait aucun sous-réseaux, il utilise
-              directement l’adresse réseau 172.16.0.0 et se retrouve avec deux
-              chemins pour y accéder.</p>
-            <h6>R3&nbsp;:</h6>
-            <div class="spip_document_1464 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_011.png"
 
-                  alt="" height="256" width="558"> </figure>
-            </div>
-            <p>Observer que R3 ne connait pas les sous-réseaux 172.16.10.0 et
-              172.16.20.0.</p>
-            <p>La solution au problème consiste à configurer les routeurs en
-              version 2, qui prend en charge les masques de sous-réseaux.</p>
-            <p>Cliquez ci-dessous pour télécharger le fichier Packet Tracert,
-              comprenant une démonstration d’une réseau discontinu avec
-              RIPv2&nbsp;:</p>
-            <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2.pkt"
+</div>
 
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
-
-                    height="100" width="100"></a> </figure>
-            </div>
-            <p>Si nous étudions de nouveau les tables de routages des routeurs
-              nous obtenons ceci&nbsp;:</p>
-            <h6>R1&nbsp;:</h6>
-            <div class="spip_document_1465 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_012.png"
-
-                  alt="" height="257" width="559"> </figure>
-            </div>
-            <p>La ligne&nbsp;: <strong>R 172.16.0.0/16 [120/2] via 10.0.0.1,
-                00:00:49, Serial0/0</strong> est apparue et permet d’envoyer les
-              données vers 10.0.0.1 si elle ne correspond pas aux sous-réseaux
-              172.16.10.0 et 172.16.20.0.</p>
-            <h6>R2&nbsp;:</h6>
-            <div class="spip_document_1466 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_013.png"
-
-                  alt="" height="224" width="559"> </figure>
-            </div>
-            <p>Aucun changement visible sur R2.</p>
-            <h6>R3&nbsp;:</h6>
-            <div class="spip_document_1467 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_014.png"
-
-                  alt="" height="270" width="558"> </figure>
-            </div>
-            <p>De même pour R3, la ligne&nbsp;: <strong>R 172.16.0.0/16 [120/2]
-                via 20.0.0.1, 00:02:25, Serial0/1</strong> est apparue et permet
-              d’envoyer les données vers R2 si elle ne correspond pas aux
-              sous-réseaux qu’elle connait.</p>
-            <p>Pour vérifier que votre routeur utilise bien la version 2 de RIP,
-              taper la commande suivante&nbsp;:</p>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>show ip protocols</code></pre>
-            </div>
-            <p>Cette commande vous donnera toutes les informations sur RIP.</p>
-            <div class="spip_document_1468 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_015.png"
-
-                  alt="" height="359" width="429"> </figure>
-            </div>
-            <p>La commande&nbsp;:</p>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>show run</code></pre>
-            </div>
-            <p>Vous permet aussi de vérifier la version de RIP.</p>
-            <balise id="chapVI">
-              <h1>VI) RIP et le résumé automatique</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <p>Reprenons le schéma précédent.</p>
-            <p>RIPv2 est un protocole de routage sans classe, on a donc tendance
-              à penser que les sous-réseaux devraient s’afficher
-              individuellement dans la table de routage. Et c’est faux&nbsp;!
-              Comme nous le montre les tables de routage ci-dessus.</p>
-            <p>On peut voir que les sous réseaux sont résumés avec les deux
-              mêmes chemins à coût égal. Les routeurs R1 n’inclus toujours pas
-              les sous-réseaux de R3 et inversement R3 n’inclus pas les
-              sous-réseaux de R1.</p>
-            <p>La solution existe bien, elle consiste à désactiver le résumé
-              automatique avec la commande suivante&nbsp;:</p>
-            <div class="precode">
-              <pre class="spip_code spip_code_block" dir="ltr" style="text-align: left;"><code>no auto-summary</code></pre>
-            </div>
-            <p>Cliquez ci-dessous pour télécharger le fichier Packet Tracert,
-              comprenant une démonstration d’un réseau discontinu avec RIPv2 et
-              avec la désactivation du résumé automatique&nbsp;:</p>
-            <div class="spip_document_286 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <a href="http://idum.fr/Telechargements/Fichiers_packet_tracert/article213/article213_sr_ripv2_autosummary.pkt"
-
-                  class="spip_doc_lien"> <img src="./rip_files/logo.png" alt=""
-
-                    height="100" width="100"></a> </figure>
-            </div>
-            <p>Si nous revérifions la table de routage nous pouvons voir
-              maintenant que les sous-réseaux ne sont plus résumés et donc nous
-              pouvons voir tous les sous-réseaux sur les trois routeurs.</p>
-            <h6>R1&nbsp;:</h6>
-            <div class="spip_document_1469 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_016.png"
-
-                  alt="" height="287" width="562"> </figure>
-            </div>
-            <h6>R2&nbsp;:</h6>
-            <div class="spip_document_1470 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_017.png"
-
-                  alt="" height="314" width="559"> </figure>
-            </div>
-            <h6>R3&nbsp;:</h6>
-            <div class="spip_document_1471 spip_document spip_documents spip_document_image spip_documents_center spip_document_center">
-              <figure class="spip_doc_inner"> <img src="./rip_files/article_213_018.png"
-
-                  alt="" height="284" width="561"> </figure>
-            </div>
-            <balise id="chapVII">
-              <h1>VII) Récapitulatif des commandes RIP</h1>
-            </balise>
-            <p align="right"><a href="http://idum.fr/spip.php?article213#Sommaire">Haut
-                de page</a></p>
-            <p><span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>router
-                rip</strong>&nbsp;: Active le routage RIP. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>version2</strong>&nbsp;:
-              Active la version 2 de RIP. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>network
-                xxx.xxx.xxx.xxx</strong>&nbsp;: Déclare un réseau dans RIP. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>no
-                auto-summary</strong>&nbsp;: Désactive le résumé automatique des
-              routes dans les tables de routages. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>show ip
-                route</strong>&nbsp;: Affiche la table de routage. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>show ip
-                protocols</strong>&nbsp;: Affiche les informations sur le ou les
-              protocoles de routages actif. <br>
-              <span class="spip-puce ltr"><b>–</b></span>&nbsp;<strong>show run</strong>&nbsp;:
-              Affiche toute la configuration active du routeur.</p>
-          </div>
-        </div>
-        <div class="rubrique-lignevide">&nbsp;</div>
-        <div class="rubrique-lignevide">&nbsp;</div>
-        <div class="rubrique2-article-date">19 juillet
-          2011&nbsp;&nbsp;--&nbsp;&nbsp;<span class="vcard author"><a class="url fn spip_in"
-
-              href="http://idum.fr/spip.php?auteur1">N.Salmon</a></span></div>
-        <div class="rubrique-lignevide">&nbsp;</div>
-      </div>
-      <div class="rubrique-lignevide">&nbsp;</div>
-      <div class="rubrique-lignevide">&nbsp;</div>
-      
-      </div>
-    </div>
-  </body>
+</body>
 </html>
+

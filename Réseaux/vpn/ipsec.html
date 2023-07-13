@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutoriel IPSec</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 36px;
+			margin: 0;
+		}
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+		section {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			padding: 20px;
+		}
+		h2 {
+			font-size: 24px;
+			margin: 0 0 10px;
+		}
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin: 0 0 10px;
+		}
+		ol {
+			margin: 0 0 10px;
+			padding-left: 20px;
+		}
+		li {
+			margin: 0 0 10px;
+		}
+		
+		
+		.shema{
+		
+        display: block;
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        color: #2c3e50;
+        border-radius: 4px;
+        border: 1px solid #bdc3c7;
+        white-space: pre-wrap; /* pour conserver la mise en forme du texte */
+ 
+ }
+ 
+ 
+
+     
+	 
+	 
+	</style>
+</head>
+<body>
+	<header>
+		<h1>IPSec</h1>
+	</header>
+	
+	
+	<main>
+	
+	<img src="vpn.png">
+	
+	<code class="shema">		
+ On va onfigurer IPSec sur deux routeurs Cisco, permettant d'établir un tunnel IPSec sécurisé entre les deux réseaux locaux. Ce tutoriel suppose que vous disposez de deux routeurs Cisco configurés avec des adresses IP statiques et une connectivité réseau fonctionnelle. Les commandes et les étapes peuvent varier en fonction de la version et de la configuration de votre routeur.
+</code>
+
+<img src="ipsec.png">
+
+
+
+		<section>
+			<h2>Configurer la politique ISAKMP</h2>
+			<ol>
+				<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+				<li>Entrez les commandes suivantes :</li>
+				<ul>
+					<li><code>crypto isakmp policy 10</code></li>
+					<li><code>encryption aes 256</code></li>
+					<li><code>hash sha</code></li>
+					<li><code>authentication pre-share</code></li>
+					<li><code>group 5</code></li>
+					<li><code>lifetime 86400</code></li>
+				</ul>
+			</ol>
+		</section>
+		<section>
+			<h2>Définir la clé de pré-partage pour l'authentification</h2>
+			<ol>
+				<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+				<li>Entrez la commande suivante :</li>
+				<ul>
+					<li><code>crypto isakmp key [clef_partagée] address [IP_destination_Router2]</code></li>
+				</ul>
+				<li>Remplacez [clef_partagée] par une clé alphanumérique partagée entre les deux routeurs, et [IP_destination_Router2] par l'adresse IP publique du deuxième routeur.</li>
+			</ol>
+		</section>
+		<section>
+			<h2>Configurer les paramètres IPSec</h2>
+			<ol>
+				<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+				<li>Entrez la commande suivante :</li>
+				<ul>
+					<li><code>crypto ipsec transform-set [nom_transform_set] esp-aes 256 esp-sha-hmac</code></li>
+				</ul>
+							<li>Remplacez [nom_transform_set] par un nom d'ensemble de transformations.</li>
+		</ol>
+	</section>
+	<section>
+		<h2>Configurer les ACLs</h2>
+		<ol>
+			<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+			<li>Entrez la commande suivante :</li>
+			<ul>
+				<li><code>access-list [numéro_liste_d'accès] permit gre host [IP_tunnel_Router1] host [IP_tunnel_Router2]</code></li>
+			</ul>
+			<li>Remplacez [numéro_liste_d'accès] par un numéro de liste d'accès, [IP_tunnel_Router1] par l'adresse IP du premier routeur et [IP_tunnel_Router2] par l'adresse IP du deuxième routeur.</li>
+		</ol>
+	</section>
+	<section>
+		<h2>Créer une carte de cryptage</h2>
+		<ol>
+			<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+			<li>Entrez les commandes suivantes :</li>
+			<ul>
+				<li><code>crypto map [nom_crypto_map] 10 ipsec-isakmp</code></li>
+				<li><code>set peer [IP_destination_Router2]</code></li>
+				<li><code>set transform-set [nom_transform_set]</code></li>
+				<li><code>match address [numéro_liste_d'accès]</code></li>
+			</ul>
+			<li>Remplacez [nom_crypto_map] par un nom de carte de cryptage et [IP_destination_Router2] par l'adresse IP publique du deuxième routeur.</li>
+		</ol>
+	</section>
+	<section>
+		<h2>Appliquer la carte de cryptage à l'interface source</h2>
+		<ol>
+			<li>Connectez-vous à l'interface CLI du routeur Cisco.</li>
+			<li>Entrez les commandes suivantes :</li>
+			<ul>
+				<li><code>interface [interface_source_Router1]</code></li>
+				<li><code>crypto map [nom_crypto_map]</code></li>
+			</ul>
+			<li>Remplacez [interface_source_Router1] par le nom de l'interface source de votre routeur.</li>
+		</ol>
+	</section>
+</main>
+</body>
+</html>
+				

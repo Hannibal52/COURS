@@ -20,10 +20,11 @@
 		}
 
         pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
+           	color : lime;
+            background-color: #000000;
             padding: 10px;
-			font-size: 1.3em;
+            border-radius: 5px;
+            font-size: 14px;
         }
 		.container {
 			max-width: 800px;
@@ -39,6 +40,20 @@
 			padding: 20px;
 			margin-bottom: 20px;
 		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
 		
     </style>
 </head>
@@ -120,7 +135,72 @@ ssh noro@x.x.x.x
 	show run | include ssh
 	 </pre>
 	
+<br>
+<hr>
+<br>
+ 
+	 
+	    <h1>Configuration Cisco</h1>
+    <table>
+        <tr>
+            <th>Commande</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>R1(config-line)#exec-timeout 0 60</td>
+            <td>Définit le temps d'inactivité avant que la session ne se termine</td>
+        </tr>
+        <tr>
+            <td>sh ssh</td>
+            <td>Affiche les sessions en cours SSH</td>
+        </tr>
+        <tr>
+            <td>ip ssh authentication-retries ?</td>
+            <td>Définit le nombre de tentatives autorisées pour une connexion SSH</td>
+        </tr>
+        <tr>
+            <td>ip ssh time-out 60</td>
+            <td>Définit le temps d'attente pour négocier une clé de session et une méthode de chiffrement avec un client SSH</td>
+        </tr>
+        <tr>
+            <td>Show ip ssh</td>
+            <td>Affiche la configuration SSH</td>
+        </tr>
+        <tr>
+            <td>crypto key ?</td>
+            <td>Modifie les clés SSH</td>
+        </tr>
+        <tr>
+            <td>security passwords min-length 10</td>
+            <td>Force une longueur minimale pour les mots de passe</td>
+        </tr>
+        <tr>
+            <td>login block-for 10 attempts 3 within 30</td>
+            <td>Bloque les connexions pendant 10 secondes si 3 tentatives de connexion échouent dans les 30 secondes</td>
+        </tr>
+        <tr>
+            <td>show login</td>
+            <td>Affiche les paramètres de connexion</td>
+        </tr>
+        <tr>
+            <td>login quiet-mode access-class adminacl</td>
+            <td>Bloque les messages de connexion pour les clients ne figurant pas sur la liste d'accès standard "adminacl"</td>
+        </tr>
+        <tr>
+            <td>enable secret level X ciscoX</td>
+            <td>Définit un mot de passe secret et un niveau d'accès</td>
+        </tr>
+        <tr>
+            <td>privilege exec,configure,interface level X</td>
+            <td>Définit les privilèges de niveau d'accès pour les utilisateurs</td>
+        </tr>
+    </table>
+	
+	 
+	 
+	 
 </div>
+ 
 	
 </body>
 

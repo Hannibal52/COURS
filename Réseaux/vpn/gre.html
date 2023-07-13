@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel sur la configuration de GRE</title>
+    <style>
+      body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 36px;
+			margin: 0;
+		}
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+		section {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			padding: 20px;
+		}
+		.titre {
+			 color: #FFFFcc;
+			font-size: 24px;
+			margin: 0 0 10px;
+		} 
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+           color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+		 text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+	<header>
+	
+    <h1>Configuration de GRE </h1>
+	<h2 class="titre"> (Generic Routing Encapsulation) </h2>
+	
+		</header>
+			<main>
+				<img src="gre.png">
+			
+    <p>Le GRE (Generic Routing Encapsulation) est un protocole de tunneling qui permet d'encapsuler une grande variété de protocoles réseau dans des paquets IP. Ce tutoriel vous guidera étape par étape dans la configuration d'un tunnel GRE entre deux routeurs.</p>
+    <h2>Prérequis :</h2>
+    <ul>
+        <li>Deux routeurs compatibles avec le protocole GRE.</li>
+        <li>Connaissance de base en administration de réseau et configuration de routeurs.</li>
+        <li>Accès en mode administrateur aux routeurs.</li>
+    </ul>
+
+    <h2>Étape 1 : Planification du réseau</h2>
+    <p>Avant de commencer, planifiez l'adresse IP de chaque extrémité du tunnel GRE. Par exemple :</p>
+    <ul>
+        <li>Routeur A : Adresse IP publique - 192.0.2.1 ; Adresse IP du tunnel - 10.0.0.1/30</li>
+        <li>Routeur B : Adresse IP publique - 198.51.100.1 ; Adresse IP du tunnel - 10.0.0.2/30</li>
+    </ul>
+
+    <h2>Étape 2 : Configuration du routeur A</h2>
+    <ol>
+        <li>Connectez-vous au routeur A en tant qu'administrateur et accédez au mode de configuration global en tapant :
+            <pre>
+enable
+configure terminal
+            </pre>
+        </li>
+        <li>Créez l'interface de tunnel GRE et attribuez-lui une adresse IP :
+            <pre>
+interface Tunnel0
+ip address 10.0.0.1 255.255.255.252
+            </pre>
+        </li>
+        <li>Configurez les paramètres du tunnel GRE :
+            <pre>
+tunnel source 192.0.2.1
+tunnel destination 198.51.100.1
+tunnel mode gre ip
+            </pre>
+        </li>
+        <li>Quittez le mode de configuration de l'interface et enregistrez les modifications :
+            <pre>
+exit
+write
+            </pre>
+        </li>
+    </ol>
+
+    <h2>Étape 3 : Configuration du routeur B</h2>
+    <ol>
+            <li>Connectez-vous au routeur B en tant qu'administrateur et accédez au mode de configuration global en tapant :
+        <pre>
+enable
+configure terminal
+</pre>
+</li>
+<li>Créez l'interface de tunnel GRE et attribuez-lui une adresse IP :
+<pre>
+interface Tunnel0
+ip address 10.0.0.2 255.255.255.252
+</pre>
+</li>
+<li>Configurez les paramètres du tunnel GRE :
+<pre>
+tunnel source 198.51.100.1
+tunnel destination 192.0.2.1
+tunnel mode gre ip
+</pre>
+</li>
+<li>Quittez le mode de configuration de l'interface et enregistrez les modifications :
+<pre>
+exit
+write
+</pre>
+</li>
+</ol>
+
+ <h2>Étape 4 : Vérification de la connectivité</h2>
+<ol>
+    <li>Depuis le routeur A, vérifiez la connectivité avec le routeur B en utilisant la commande `ping` :
+        <pre>
+ping 10.0.0.2
+</pre>
+</li>
+<li>Depuis le routeur B, vérifiez la connectivité avec le routeur A en utilisant la commande ping :
+<pre>
+ping 10.0.0.1
+</pre>
+</li>
+</ol>
+<p>Si les pings réussissent, le tunnel GRE est correctement configuré et opérationnel. Vous pouvez maintenant configurer des routes statiques ou utiliser des protocoles de routage dynamique pour transmettre le trafic à travers le tunnel GRE.</p>
+<h2>Étape 5 : Configuration des routes statiques</h2>
+<p>Supposons que les réseaux locaux soient les suivants :</p>
+<ul>
+    <li>Réseau local derrière le routeur A : 192.168.1.0/24</li>
+    <li>Réseau local derrière le routeur B : 192.168.2.0/24</li>
+</ul>
+<ol>
+    <li>Sur le routeur A, configurez une route statique pour le réseau derrière le routeur B :
+        <pre>
+ip route 192.168.2.0 255.255.255.0 Tunnel0
+</pre>
+</li>
+<li>Sur le routeur B, configurez une route statique pour le réseau derrière le routeur A :
+<pre>
+ip route 192.168.1.0 255.255.255.0 Tunnel0
+</pre>
+</li>
+</ol>
+<p>Maintenant, les routeurs savent comment acheminer le trafic entre les réseaux locaux 192.168.1.0/24 et 192.168.2.0/24 à travers le tunnel GRE. Vous pouvez vérifier la connectivité entre ces réseaux en effectuant des tests de ping depuis des hôtes situés derrière les routeurs.</p>
+<p>Si vous préférez utiliser des protocoles de routage dynamique tels que OSPF, EIGRP ou RIP, vous pouvez les configurer sur les interfaces Tunnel0 des routeurs A et B pour propager automatiquement     les routes à travers le tunnel GRE.</p>
+
+<h2>Conclusion</h2>
+<p>Vous avez maintenant configuré un tunnel GRE entre deux routeurs et ajouté des routes statiques pour acheminer le trafic entre les réseaux locaux situés derrière les routeurs. Cette configuration de base peut être étendue pour inclure d'autres routeurs et réseaux selon les besoins de votre infrastructure réseau.</p>
+<p>N'oubliez pas que les tunnels GRE peuvent être utilisés en conjonction avec des protocoles de routage dynamique, des mécanismes de sécurité tels que les VPNs IPsec, et d'autres technologies pour créer des réseaux complexes et sécurisés.</p>
+</main>
+
+</body>
+</html>

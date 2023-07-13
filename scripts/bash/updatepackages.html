@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Mettre à jour automatiquement les paquets installés sur un serveur</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>voici un exemple de script Bash pour vérifier l'état des services systèmes et redémarrer ceux qui sont en échec.</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+  #!/bin/bash
+
+# Liste des services à surveiller (séparés par des espaces)
+SERVICES="nginx sshd mysql"
+
+# Vérifier l'état de chaque service et redémarrer si nécessaire
+for service in $SERVICES; do
+  systemctl is-active --quiet "${service}"
+
+  if [ $? -ne 0 ]; then
+    echo "Le service ${service} est en échec. Redémarrage en cours..."
+    sudo systemctl restart "${service}"
+
+    # Vérifier si le redémarrage a réussi
+    systemctl is-active --quiet "${service}"
+    if [ $? -eq 0 ]; then
+      echo "Le service ${service} a été redémarré avec succès."
+    else
+      echo "Échec du redémarrage du service ${service}. Veuillez vérifier les journaux du système."
+    fi
+  else
+    echo "Le service ${service} fonctionne correctement."
+  fi
+done
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+Dans ce script, nous avons défini une liste de services à surveiller (par exemple, nginx, sshd, et mysql). Vous pouvez personnaliser cette liste en ajoutant ou en supprimant des noms de services selon vos besoins. Le script vérifie ensuite l'état de chaque service et tente de le redémarrer s'il est en échec.
+
+Assurez-vous d'avoir les privilèges administratifs.
+
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

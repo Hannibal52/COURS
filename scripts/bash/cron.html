@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>cron</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    <p> cron est un planificateur de tâches sous Unix/Linux qui permet d'exécuter automatiquement des commandes ou des scripts à des intervalles réguliers. Voici un guide pour vous aider à configurer et utiliser cron : </p>
+    
+	
+	<h3>
+	Structure d'une entrée cron :
+	</h3>
+	 
+	<p>Chaque entrée cron est composée de six champs : </p>
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+* * * * * /commande/à/exécuter
+- - - - -
+| | | | |
+| | | | ----- Jour de la semaine (0-7) (dimanche est 0 ou 7)
+| | | ------- Mois (1-12)
+| | --------- Jour du mois (1-31)
+| ----------- Heure (0-23)
+------------- Minute (0-59)
+</code></pre>
+
+
+<h3>
+	Ouvrez l'éditeur crontab :
+	</h3>
+	 
+	<p>
+Tapez la commande suivante dans votre terminal pour ouvrir l'éditeur crontab pour l'utilisateur actuel :
+	</p>
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+crontab -e
+
+</code></pre>
+
+<p>
+Ceci ouvrira le fichier crontab pour l'utilisateur actuel dans l'éditeur de texte par défaut (généralement nano, vim ou vi).
+</p>
+
+
+
+
+
+<h3>
+	Ajouter une entrée cron :
+	</h3>
+	 
+	<p>
+Ajoutez une entrée à la fin du fichier en respectant la structure d'une entrée cron. Par exemple, pour exécuter un script /chemin/vers/mon_script.sh tous les jours à 3h30, ajoutez l'entrée suivante :
+	</p>
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+30 3 * * * /chemin/vers/mon_script.sh
+
+</code></pre>
+
+<p>
+Pour exécuter une commande toutes les 10 minutes, vous pouvez utiliser une entrée comme celle-ci :
+</p>
+
+
+*/10 * * * * /chemin/vers/ma_commande
+
+<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+*/10 * * * * /chemin/vers/ma_commande
+</code></pre>
+
+<h3>
+Enregistrer et quitter l'éditeur :
+</h3>
+
+
+
+
+<h3>Lister les entrées crontab existantes :</h3>
+
+<p>Vous pouvez vérifier les entrées crontab existantes pour l'utilisateur actuel en utilisant la commande suivante :</p>
+
+
+<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+crontab -l
+</code></pre>
+<h3>Supprimer une entrée crontab :</h3>
+
+<p>Pour supprimer une entrée crontab, ouvrez l'éditeur crontab à l'aide de crontab -e, supprimez la ligne correspondant à l'entrée que vous souhaitez supprimer, puis enregistrez et quittez l'éditeur.
+
+<h3>Supprimer toutes les entrées crontab :</h3>
+
+<p>Pour supprimer toutes les entrées crontab pour l'utilisateur actuel, exécutez la commande suivante :
+
+<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+crontab -r
+</code></pre>
+
+ 
+ 
+ <h3>Utilisation des répertoires cron :</h3>
+
+<p>Sur certaines distributions Linux, vous trouverez des répertoires spécifiques pour planifier des tâches :
+
+<ul>
+
+<li>/etc/cron.hourly</li>
+<li>/etc/cron.daily </li>
+<li>/etc/cron.weekly</li>
+<li>/etc/cron.monthly</li>
+
+</ul>
+
+Vous pouvez placer vos scripts dans ces répertoires en fonction de la fréquence d'exécution souhaitée. Les scripts seront exécutés automatiquement selon la fréquence correspondante.
+
+</p>
+
+
+
+<h3>Bonnes pratiques :</h3>
+<ul> 
+
+<li>Assurez-vous que les scripts exécutés par cron sont compatibles avec l'environnement non interactif de cron. Par exemple, vous devriez éviter d'utiliser des commandes qui nécessitent une interaction utilisateur ou qui dépendent de variables d'environnement spécifiques à une session utilisateur.
+</li>
+<li>
+Redirigez la sortie et les erreurs des scripts vers un fichier journal pour faciliter le dépannage en cas de problèmes. Par exemple :
+
+
+<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+30 3 * * * /chemin/vers/mon_script.sh &lt;&lt; /chemin/vers/mon_journal.log 2&gt;&1
+</code></pre>
+
+Ceci enregistre la sortie standard et les erreurs du script dans le fichier /chemin/vers/mon_journal.log. 
+
+</li>
+<li>
+Si vous souhaitez que cron envoie des notifications par e-mail pour les tâches planifiées, assurez-vous que votre système est configuré pour envoyer des e-mails et définissez la variable MAILTO dans votre fichier crontab. Par exemple :
+makefile
+
+<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+MAILTO="votre@email.com"
+</code></pre>
+
+Ceci enverra un e-mail à l'adresse spécifiée avec la sortie et les erreurs de chaque tâche planifiée.
+En suivant ces conseils et en utilisant les fonctionnalités avancées de cron, vous pouvez optimiser la planification et la gestion des tâches sur votre système Linux.
+ </li>
+
+</ul>
+
+
+<p>
+En suivant ces conseils et en utilisant les fonctionnalités avancées de cron, vous pouvez optimiser la planification et la gestion des tâches sur votre système Linux.
+</p>
+
+
+
+
+
+
+
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

@@ -1,0 +1,4310 @@
+{
+    "AA": {
+        "description": "Anti-Aliasing (Anticrénelage)",
+        "link": "https://fr.m.wikipedia.org/wiki/AA"
+    },
+    "AAA": {
+        "description": "Authentication Authorization Accounting",
+        "link": "https://fr.m.wikipedia.org/wiki/AAA"
+    },
+    "AAC": {
+        "description": "Advanced Audio Coding",
+        "link": "https://fr.m.wikipedia.org/wiki/AAC"
+    },
+    "AAD": {
+        "description": "Analogique-Analogique-Digital",
+        "link": "https://fr.m.wikipedia.org/wiki/AAD"
+    },
+    "AAL": {
+        "description": "ATM Adaptation Layer",
+        "link": "https://fr.m.wikipedia.org/wiki/Asynchronous_Transfer_Mode#Couches_AAL_.28ATM_Adaptation_Layer.29"
+    },
+    "ABAP": {
+        "description": "Allgemeiner Berichtsaufbereitungsprozessor, (en anglais : Advanced Business Application Programming) Langage dans SAP",
+        "link": "https://fr.m.wikipedia.org/wiki/ABAP"
+    },
+    "ACK": {
+        "description": "Acknowledge character (Acquittement (logique))",
+        "link": "https://fr.m.wikipedia.org/wiki/ACK"
+    },
+    "AC97": {
+        "description": "Audio Codec '97 (Audio Codec 1997)",
+        "link": "https://fr.m.wikipedia.org/wiki/AC97"
+    },
+    "AC": {
+        "description": "Alternating current",
+        "link": null
+    },
+    "ACL": {
+        "description": "Access Control List",
+        "link": "https://fr.m.wikipedia.org/wiki/Access_Control_List"
+    },
+    "ACPI": {
+        "description": "advanced configuration and power interface",
+        "link": "https://fr.m.wikipedia.org/wiki/ACPI"
+    },
+    "ACRONYM (acronyme)": {
+        "description": "Abbreviated Coded Rendition Of Name Yielding Meaning",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=ACRONYM&action=edit&redlink=1"
+    },
+    "ADMX": {
+        "description": "ADMinistrative XML template file (Stratégies de groupe)",
+        "link": "https://fr.m.wikipedia.org/wiki/ADMX"
+    },
+    "ADO": {
+        "description": "ActiveX Data Object de Windows",
+        "link": "https://fr.m.wikipedia.org/wiki/ActiveX_Data_Object"
+    },
+    "ADPCM": {
+        "description": "Adaptive Differential Pulse Code Modulation, algorithme et format de donnée",
+        "link": "https://fr.m.wikipedia.org/wiki/ADPCM"
+    },
+    "ADSI": {
+        "description": "Active Directory Service Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/ADSI"
+    },
+    "ADSL": {
+        "description": "ligne d'abonné numérique à débit asymétrique (asymmetric digital subscriber line)",
+        "link": "https://fr.m.wikipedia.org/wiki/ADSL"
+    },
+    "AES": {
+        "description": "Advanced Encryption Standard (Standard de chiffrement avancé)",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Encryption_Standard"
+    },
+    "AFAIK": {
+        "description": "As Far As I Know (pour autant que je sache, Argot internet)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=AFAIK&action=edit&redlink=1"
+    },
+    "AFD": {
+        "description": "Ancillary Function Driver",
+        "link": "https://fr.m.wikipedia.org/wiki/Ancillary_Function_Driver"
+    },
+    "AFNIC": {
+        "description": "association française pour le nommage Internet en coopération",
+        "link": "https://fr.m.wikipedia.org/wiki/AFNIC"
+    },
+    "AFK": {
+        "description": "Away From Keyboard, (loin du clavier, voir argot internet),",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Away_From_Keyboard&action=edit&redlink=1"
+    },
+    "AFS": {
+        "description": "Andrew File System",
+        "link": "https://fr.m.wikipedia.org/wiki/Andrew_File_System"
+    },
+    "AFP": {
+        "description": "Apple Filing Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/AFP"
+    },
+    "AGL": {
+        "description": "Atelier de génie logiciel",
+        "link": "https://fr.m.wikipedia.org/wiki/Atelier_de_g%C3%A9nie_logiciel"
+    },
+    "AGP": {
+        "description": "Acceleration Graphics Port",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Acceleration_Graphics_Port&action=edit&redlink=1"
+    },
+    "AGPgart": {
+        "description": "AGP GART (Graphics Address Remapping Table) (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/AGPgart"
+    },
+    "AI": {
+        "description": "intelligence artificielle (Artificial Intelligence)",
+        "link": "https://fr.m.wikipedia.org/wiki/Intelligence_artificielle"
+    },
+    "AIML": {
+        "description": "Artificial Intelligence Meta Language",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Artificial_Intelligence_Meta_Language&action=edit&redlink=1"
+    },
+    "AJAX": {
+        "description": "Asynchronous JavaScript and XML",
+        "link": "https://fr.m.wikipedia.org/wiki/AJAX"
+    },
+    "ALG": {
+        "description": "Application Layer Gateway",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Application_Layer_Gateway&action=edit&redlink=1"
+    },
+    "ALSA": {
+        "description": "Advanced Linux Sound Architecture",
+        "link": "https://fr.m.wikipedia.org/wiki/ALSA"
+    },
+    "AMD": {
+        "description": "Advanced Micro Devices",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Micro_Devices"
+    },
+    "AMHA": {
+        "description": "à mon humble avis (argot internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_internet"
+    },
+    "AMI": {
+        "description": "Alternate Mark Inversion\nAmerican Megatrends Inc.",
+        "link": "https://fr.m.wikipedia.org/wiki/Alternate_Mark_Inversion"
+    },
+    "ANSI": {
+        "description": "American National Standards Institute",
+        "link": "https://fr.m.wikipedia.org/wiki/ANSI"
+    },
+    "AOL": {
+        "description": "America Online",
+        "link": "https://fr.m.wikipedia.org/wiki/America_Online"
+    },
+    "AP": {
+        "description": "Access Point (voir WEP)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Access_Point&action=edit&redlink=1"
+    },
+    "API": {
+        "description": "Application Programming Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Application_Programming_Interface"
+    },
+    "APIPA": {
+        "description": "Automatic Private Internet Protocol Addressing",
+        "link": "https://fr.m.wikipedia.org/wiki/APIPA"
+    },
+    "APL": {
+        "description": "A Programming Language",
+        "link": "https://fr.m.wikipedia.org/wiki/A_Programming_Language"
+    },
+    "APM": {
+        "description": "Advanced Power Management, prédécesseur de ACPI\nAPMD : APM daemon",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Power_Management"
+    },
+    "APNG": {
+        "description": "Animated Portable Network Graphics",
+        "link": "https://fr.m.wikipedia.org/wiki/APNG"
+    },
+    "APT": {
+        "description": "Advanced Packaging Tool (sous Linux)",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Packaging_Tool"
+    },
+    "ARAP": {
+        "description": "AppleTalk Remote Access Protocol",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=ARAP&action=edit&redlink=1"
+    },
+    "ARC": {
+        "description": "Advanced RISC Computing, voir NTLDR",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Advanced_RISC_Computing&action=edit&redlink=1"
+    },
+    "ARP": {
+        "description": "Address Resolution Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Address_Resolution_Protocol"
+    },
+    "ASA": {
+        "description": "Adaptive Security Appliance, Cisco Cisco PIX",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Adaptive_Security_Appliance&action=edit&redlink=1"
+    },
+    "ASAP": {
+        "description": "As Soon As Possible (aussi vite que possible, Argot internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/As_Soon_As_Possible"
+    },
+    "ASCII": {
+        "description": "American Standard Code for Information Interchange",
+        "link": "https://fr.m.wikipedia.org/wiki/ASCII"
+    },
+    "ASD": {
+        "description": "Adaptive software development",
+        "link": "https://fr.m.wikipedia.org/wiki/Adaptive_software_development"
+    },
+    "ASL": {
+        "description": "Adobe Source Libraries",
+        "link": "https://fr.m.wikipedia.org/wiki/Adobe_Source_Libraries"
+    },
+    "ASP": {
+        "description": "Application Service Provider\nActive Server Pages",
+        "link": "https://fr.m.wikipedia.org/wiki/Application_Service_Provider"
+    },
+    "ASPI": {
+        "description": "Advanced SCSI Programming Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_SCSI_Programming_Interface"
+    },
+    "ASV": {
+        "description": "Âge, sexe, ville (utilisé en chat)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=%C3%82ge,_sexe,_ville&action=edit&redlink=1"
+    },
+    "ASX": {
+        "description": "Advanced Stream Redirector (Windows Media)",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Stream_Redirector"
+    },
+    "AT": {
+        "description": "Advanced technology",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Advanced_technology&action=edit&redlink=1"
+    },
+    "ATA": {
+        "description": "Advanced Technology Attachment",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Technology_Attachment"
+    },
+    "ATAPI": {
+        "description": "ATA with Packet Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/ATAPI"
+    },
+    "ATK": {
+        "description": "Accessibility Toolkit, pour les handicapés ;",
+        "link": "https://fr.m.wikipedia.org/wiki/Accessibility_Toolkit"
+    },
+    "ATM": {
+        "description": "Asynchronous transfer mode (mode de transfert asynchrone),\nat the moment (en ce moment : voir Argot internet)\nAutomatic Teller Machines : distributeur de billets ou Guichet Automatique Bancaire (GAB)\nAdobe Type Manager, un logiciel de gestion de polices de caractères,",
+        "link": "https://fr.m.wikipedia.org/wiki/Asynchronous_transfer_mode"
+    },
+    "AT&T": {
+        "description": "American Telephone & Telegraph : opérateur et constructeur américain de télécommunications qui a joué un rôle important dans l'histoire de l'informatique",
+        "link": "https://fr.m.wikipedia.org/wiki/AT%26T"
+    },
+    "ATX": {
+        "description": "Advanced Technology Extended",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Technology_Extended"
+    },
+    "AUTOCHK": {
+        "description": "AUTOCHecK de Microsoft, Voir Session Manager Subsystem",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=AUTOCHK&action=edit&redlink=1"
+    },
+    "AUD": {
+        "description": "Automatic UpDate (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Automatic_UpDate"
+    },
+    "AVL": {
+        "description": "Andelson-Velsii and Landis, voir arbre AVL",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Andelson-Velsii_and_Landis&action=edit&redlink=1"
+    },
+    "AVI": {
+        "description": "Audio Video Interleave",
+        "link": "https://fr.m.wikipedia.org/wiki/Audio_Video_Interleave"
+    },
+    "AWE": {
+        "description": "Address Windowing Extension,",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Address_Windowing_Extension&action=edit&redlink=1"
+    },
+    "AWT": {
+        "description": "Abstract Window Toolkit (bibliothèque graphique pour Java)",
+        "link": "https://fr.m.wikipedia.org/wiki/Abstract_Window_Toolkit"
+    },
+    "ARM": {
+        "description": "Advanced RISC Machines",
+        "link": "https://fr.m.wikipedia.org/wiki/Architecture_ARM"
+    },
+    "BACP": {
+        "description": "Bandwidth Allocation Control Protocol (en) (RFC 2125[1]), voir Protocole point à point",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BACP&action=edit&redlink=1"
+    },
+    "BAP": {
+        "description": "Bandwidth Allocation Protocol (en) (RFC 2125[1]), voir Protocole point à point",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Bandwidth_Allocation_Protocol&action=edit&redlink=1"
+    },
+    "BAL": {
+        "description": "boîte aux lettres (courrier électronique)",
+        "link": null
+    },
+    "BASIC": {
+        "description": "Beginner's All Purpose Symbolic Instruction Code (langage)",
+        "link": "https://fr.m.wikipedia.org/wiki/BASIC"
+    },
+    "BBL": {
+        "description": "(I'll) be back later : (Je serai) de retour plus tard (argot Internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_Internet"
+    },
+    "BBS": {
+        "description": "Bulletin board system",
+        "link": "https://fr.m.wikipedia.org/wiki/Bulletin_board_system"
+    },
+    "BCD": {
+        "description": "Binary coded decimal\nBoot Configuration Data (pour Vista), voir boot.ini",
+        "link": "https://fr.m.wikipedia.org/wiki/Wikip%C3%A9dia:Liste_de_sigles_de_trois_lettres"
+    },
+    "BCFN": {
+        "description": "Boyce-Codd forme normale (voir Formes normales)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BCFN&action=edit&redlink=1"
+    },
+    "BD": {
+        "description": "Blu-ray ou Base de données.",
+        "link": "https://fr.m.wikipedia.org/wiki/Disque_Blu-ray"
+    },
+    "BDD": {
+        "description": "Binary Decision Diagram\nBase de données",
+        "link": "https://fr.m.wikipedia.org/wiki/Wikip%C3%A9dia:Liste_de_sigles_de_trois_lettres"
+    },
+    "BDF": {
+        "description": "Bitmap Distribution Format",
+        "link": "https://fr.m.wikipedia.org/wiki/Bitmap_Distribution_Format"
+    },
+    "BEA": {
+        "description": "Bill Coleman, Edward Scott et Alfred Chuang, société en informatique",
+        "link": "https://fr.m.wikipedia.org/wiki/BEA_Systems"
+    },
+    "BEEP": {
+        "description": "Blocks Extensible Exchange Protocol (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BEEP&action=edit&redlink=1"
+    },
+    "BER": {
+        "description": "Bit error ratio",
+        "link": "https://fr.m.wikipedia.org/wiki/Taux_d%27erreur"
+    },
+    "BFD": {
+        "description": "Binary File Descriptor (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BFD_(informatique)&action=edit&redlink=1"
+    },
+    "BFS": {
+        "description": "Breadth First Search (algorithme de parcours en largeur)",
+        "link": "https://fr.m.wikipedia.org/wiki/Breadth_First_Search"
+    },
+    "BHT": {
+        "description": "Branch History Table",
+        "link": "https://fr.m.wikipedia.org/wiki/Branch_History_Table"
+    },
+    "BI": {
+        "description": "Business Intelligence (informatique décisionnelle)",
+        "link": "https://fr.m.wikipedia.org/wiki/Business_Intelligence"
+    },
+    "BiDi": {
+        "description": "Bi-directional text (Texte bi-directionnel)",
+        "link": "https://fr.m.wikipedia.org/wiki/Texte_bidirectionnel"
+    },
+    "BIND": {
+        "description": "Berkeley Internet Name Domain",
+        "link": "https://fr.m.wikipedia.org/wiki/BIND"
+    },
+    "BINL": {
+        "description": "Boot Information Negotiation Layer (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BINL&action=edit&redlink=1"
+    },
+    "BIOS": {
+        "description": "Basic Input Output System",
+        "link": "https://fr.m.wikipedia.org/wiki/Basic_Input_Output_System"
+    },
+    "BIT": {
+        "description": "Binary digit (unité binaire d'information)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Binary_digit&action=edit&redlink=1"
+    },
+    "Blog": {
+        "description": "weB LOG",
+        "link": "https://fr.m.wikipedia.org/wiki/Blog"
+    },
+    "BLR": {
+        "description": "Boucle locale radio",
+        "link": "https://fr.m.wikipedia.org/wiki/Boucle_Locale_Radio"
+    },
+    "BMP": {
+        "description": "BitMaP,",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_bitmap"
+    },
+    "BNC": {
+        "description": "(Bayonet Neill-Concelman)",
+        "link": "https://fr.m.wikipedia.org/wiki/Connecteur_BNC"
+    },
+    "BOINC": {
+        "description": "(Berkeley Open Infrastructure for Network Computing)",
+        "link": "https://fr.m.wikipedia.org/wiki/Berkeley_Open_Infrastructure_for_Network_Computing"
+    },
+    "BOM": {
+        "description": "Byte Order Mark (Marque d'ordre des octets)",
+        "link": "https://fr.m.wikipedia.org/wiki/Marque_d%27ordre_des_octets"
+    },
+    "BOOTP": {
+        "description": "Bootstrap Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Bootstrap_Protocol"
+    },
+    "BPB": {
+        "description": "BIOS parameter block",
+        "link": "https://fr.m.wikipedia.org/wiki/BIOS_parameter_block"
+    },
+    "BPEL4WS": {
+        "description": "Business Process Execution Language For Web Services, voir Architecture orientée services#Les protocoles et les normes",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BPEL4WS&action=edit&redlink=1"
+    },
+    "BPL": {
+        "description": "Broadband over Power Lines en français : CPL (Courants porteurs en ligne)",
+        "link": "https://fr.m.wikipedia.org/wiki/BPL"
+    },
+    "bps": {
+        "description": "bits par seconde,",
+        "link": "https://fr.m.wikipedia.org/wiki/D%C3%A9bit_binaire"
+    },
+    "BPSK": {
+        "description": "Binary Phase Shift Keying",
+        "link": "https://fr.m.wikipedia.org/wiki/Phase-shift_keying"
+    },
+    "BRB": {
+        "description": "be right back (je reviens tout de suite en argot Internet)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Be_right_back&action=edit&redlink=1"
+    },
+    "BSA": {
+        "description": "Business Software Alliance",
+        "link": "https://fr.m.wikipedia.org/wiki/Business_Software_Alliance"
+    },
+    "BRLTTY": {
+        "description": "Braille TTY, voir Oralux, lecteur d'écran et plage braille",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=BRLTTY&action=edit&redlink=1"
+    },
+    "BSD": {
+        "description": "Berkeley software distribution",
+        "link": "https://fr.m.wikipedia.org/wiki/Berkeley_Software_Distribution"
+    },
+    "BSOD": {
+        "description": "Blue Screen Of Death",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89cran_bleu_de_la_mort"
+    },
+    "BTX": {
+        "description": "Balanced Technology Extended\nBooTX (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/Liste_de_sigles_de_deux_lettres"
+    },
+    "BTW": {
+        "description": "by the way (au fait en argot internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_internet"
+    },
+    "BW": {
+        "description": "Bandwidth (largeur de bande), voir Bande passante",
+        "link": "https://fr.m.wikipedia.org/wiki/Bande_passante"
+    },
+    "CA": {
+        "description": "certificate authority",
+        "link": "https://fr.m.wikipedia.org/wiki/Autorit%C3%A9_de_certification"
+    },
+    "CAB": {
+        "description": "Change Advisory Board (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "CAD": {
+        "description": "Computer Aided Design (Conception assistée par ordinateur) ou humoristiquement, Computer Aided Disaster",
+        "link": "https://fr.m.wikipedia.org/wiki/Conception_assist%C3%A9e_par_ordinateur"
+    },
+    "CAE": {
+        "description": "Computer-aided engineering (Ingénierie Assistée par Ordinateur)",
+        "link": "https://fr.m.wikipedia.org/wiki/Ing%C3%A9nierie_Assist%C3%A9e_par_Ordinateur"
+    },
+    "CAM": {
+        "description": "Computer-aided manufacturing (Fabrication assistée par ordinateur)",
+        "link": "https://fr.m.wikipedia.org/wiki/Fabrication_assist%C3%A9e_par_ordinateur"
+    },
+    "CAO": {
+        "description": "Conception assistée par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/Conception_assist%C3%A9e_par_ordinateur"
+    },
+    "CAPTCHA": {
+        "description": "Completely Automated Public Turing test to Tell Computers and Humans Apart (en français : test public de Turing complètement automatique pour différencier les humains des ordinateurs)",
+        "link": "https://fr.m.wikipedia.org/wiki/Captcha"
+    },
+    "CAS": {
+        "description": "Central Authentication Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Central_Authentication_Service"
+    },
+    "CASE": {
+        "description": "Computer-aided software engineering",
+        "link": "https://fr.m.wikipedia.org/wiki/Computer-aided_software_engineering"
+    },
+    "CBFR1252": {
+        "description": "Code Braille FRançais Windows-1252, voir plage braille",
+        "link": "https://fr.m.wikipedia.org/wiki/Braille"
+    },
+    "CBISF": {
+        "description": "Code braille informatique standard français, voir plage braille",
+        "link": "https://fr.m.wikipedia.org/wiki/Plage_braille"
+    },
+    "CBR": {
+        "description": "Constant bit rate",
+        "link": "https://fr.m.wikipedia.org/wiki/Constant_bit_rate"
+    },
+    "CC\nC Compiler": {
+        "description": "compilateur C d'Unix.\nCopie carbone\nCreative Commons",
+        "link": "https://fr.m.wikipedia.org/wiki/Compilateur"
+    },
+    "CCTA": {
+        "description": "Central Computer and Telecommunications Agency, remplacé par OGC (voir ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "CCIE": {
+        "description": "en français : Cisco Career Certifications",
+        "link": "https://fr.m.wikipedia.org/wiki/Cisco_Career_Certifications"
+    },
+    "CD\ndisque compact (compact disc)\ncarrier detect FR": {
+        "description": "Détection de porteuse",
+        "link": "https://fr.m.wikipedia.org/wiki/Disque_compact"
+    },
+    "CDC": {
+        "description": "Cult of the Dead Cow, groupe de hackers, (voir Back orifice)",
+        "link": "https://fr.m.wikipedia.org/wiki/Cult_of_the_Dead_Cow"
+    },
+    "CDE": {
+        "description": "Common Desktop Environment",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_Desktop_Environment"
+    },
+    "CD-G": {
+        "description": "CD-G (compact disc + graphics)",
+        "link": "https://fr.m.wikipedia.org/wiki/CD-G"
+    },
+    "CDMA": {
+        "description": "Code division multiple access",
+        "link": "https://fr.m.wikipedia.org/wiki/Code_division_multiple_access"
+    },
+    "CDP": {
+        "description": "Continuous data protection\nCisco Discovery Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Continuous_data_protection"
+    },
+    "CD-R": {
+        "description": "disque compact enregistrable (compact disc recordable)",
+        "link": "https://fr.m.wikipedia.org/wiki/Disque_compact_enregistrable"
+    },
+    "CD-ROM": {
+        "description": "Compact Disc/Read-Only Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/CD-ROM"
+    },
+    "CD-RW": {
+        "description": "disque compact réinscriptible (compact disc rewritable)",
+        "link": "https://fr.m.wikipedia.org/wiki/Disque_compact_r%C3%A9inscriptible"
+    },
+    "CERT": {
+        "description": "Computer Emergency Response Team",
+        "link": "https://fr.m.wikipedia.org/wiki/Computer_Emergency_Response_Team"
+    },
+    "CF": {
+        "description": "CompactFlash, voir CompactFlash",
+        "link": "https://fr.m.wikipedia.org/wiki/CompactFlash"
+    },
+    "CFG\n.cfg": {
+        "description": "ConFiG : extension de nom de fichier pour fichiers de configuration\nContext-free grammar, voir Grammaire hors-contexte",
+        "link": "https://fr.m.wikipedia.org/wiki/Extension_de_nom_de_fichier"
+    },
+    "CFM": {
+        "description": "Cold Fusion Markup",
+        "link": "https://fr.m.wikipedia.org/wiki/ColdFusion"
+    },
+    "CFT": {
+        "description": "Cross File Transfer",
+        "link": "https://fr.m.wikipedia.org/wiki/Cross_File_Transfer"
+    },
+    "CG": {
+        "description": "Computer graphics, voir Synthèse d'image",
+        "link": "https://fr.m.wikipedia.org/wiki/Synth%C3%A8se_d%27image"
+    },
+    "CGA": {
+        "description": "Color Graphics Adapter",
+        "link": "https://fr.m.wikipedia.org/wiki/Color_Graphics_Adapter"
+    },
+    "CGI": {
+        "description": "Common gateway interface\nComputer-generated imagery, voir Image de synthèse",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_gateway_interface"
+    },
+    "CHAP": {
+        "description": "Challenge Handshake Authentification Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Challenge-handshake_authentication_protocol"
+    },
+    "CHAT": {
+        "description": "Conversational Hypertext Access Technology, voir Messagerie instantanée",
+        "link": "https://fr.m.wikipedia.org/wiki/Messagerie_instantan%C3%A9e"
+    },
+    "CHS": {
+        "description": "Cylinder-head-sector (Cylindre/Tête/Secteur en français), une méthode d'adressage des secteurs d'un disque dur ou d'une disquette",
+        "link": "https://fr.m.wikipedia.org/wiki/Cylindre/T%C3%AAte/Secteur"
+    },
+    "CI\nCircuits Intégrés\nConfiguration Item": {
+        "description": "élément de configuration (voir CMDB)",
+        "link": "https://fr.m.wikipedia.org/wiki/Circuit_int%C3%A9gr%C3%A9"
+    },
+    "CICS": {
+        "description": "Customer Information Control System",
+        "link": "https://fr.m.wikipedia.org/wiki/Customer_Information_Control_System"
+    },
+    "CIDR": {
+        "description": "Classless Inter-Domain Routing, voir CIDR",
+        "link": "https://fr.m.wikipedia.org/wiki/Adresse_IP#Agr%C3%A9gation_des_adresses"
+    },
+    "CIFS": {
+        "description": "Common Internet File System",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_Internet_File_System"
+    },
+    "CIM": {
+        "description": "Common Information Model",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_Information_Model"
+    },
+    "CISC": {
+        "description": "Complex Instruction Set Computer",
+        "link": "https://fr.m.wikipedia.org/wiki/Complex_instruction_set_computer"
+    },
+    "CLI": {
+        "description": "command-line interface (Interpréteur de commandes)",
+        "link": "https://fr.m.wikipedia.org/wiki/Interpr%C3%A9teur_de_commandes"
+    },
+    "CLOS": {
+        "description": "Common LISP Object System",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_lisp_object_system"
+    },
+    "CLR": {
+        "description": "Common Language Runtime;",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_Language_Runtime"
+    },
+    "CLSID": {
+        "description": "CLasS IDentifier (Microsoft) ; pour désigner le GUID d'un objet OLE.",
+        "link": "https://fr.m.wikipedia.org/wiki/Globally_Unique_Identifier"
+    },
+    "CLUF": {
+        "description": "Contrat de Licence Utilisateur Final",
+        "link": null
+    },
+    "CMDB": {
+        "description": "Configuration Management Database",
+        "link": "https://fr.m.wikipedia.org/wiki/CMDB"
+    },
+    "CMOS": {
+        "description": "Complementary-symmetry/metal-oxide semiconductor",
+        "link": "https://fr.m.wikipedia.org/wiki/Complementary_metal_oxide_semi-conductor"
+    },
+    "CMS": {
+        "description": "content management system (système de gestion de contenu)\nCross Memory Service -\nConversational Monitor System, voir CMS",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu"
+    },
+    "CMYB": {
+        "description": "Cyan, Magenta, Yellow And Black",
+        "link": null
+    },
+    "CN": {
+        "description": "Common Name, voir LDAP",
+        "link": "https://fr.m.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol"
+    },
+    "CNAME": {
+        "description": "Canonical NAME, voir Principaux enregistrements DNS",
+        "link": "https://fr.m.wikipedia.org/wiki/Domain_Name_System#Principaux_enregistrements_DNS"
+    },
+    "CNLP": {
+        "description": "Connectionless Network Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Connectionless_Network_Protocol"
+    },
+    "CNR": {
+        "description": "Communications and networking riser (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Communications_and_networking_riser&action=edit&redlink=1"
+    },
+    "COBOL": {
+        "description": "COmmon Business-Oriented Language",
+        "link": "https://fr.m.wikipedia.org/wiki/COBOL"
+    },
+    "codec": {
+        "description": "Compressor-Decompressor, ou Coder-Decoder, ou Compression/Decompression algorithm",
+        "link": "https://fr.m.wikipedia.org/wiki/Codec"
+    },
+    "COM": {
+        "description": "Component object model",
+        "link": "https://fr.m.wikipedia.org/wiki/Component_Object_Model"
+    },
+    "CORBA": {
+        "description": "Common Object Request Broker Architecture",
+        "link": "https://fr.m.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture"
+    },
+    "CORIG": {
+        "description": "COnception et Réalisation en Informatique de Gestion",
+        "link": null
+    },
+    "COW": {
+        "description": "Copy-On-Write",
+        "link": "https://fr.m.wikipedia.org/wiki/Copy-On-Write"
+    },
+    "CPAN": {
+        "description": "comprehensive Perl archive network",
+        "link": "https://fr.m.wikipedia.org/wiki/Comprehensive_Perl_archive_network"
+    },
+    "CPC": {
+        "description": "color personal computer",
+        "link": "https://fr.m.wikipedia.org/wiki/Color_personal_computer"
+    },
+    "CP/M": {
+        "description": "Control Program/Microcomputer",
+        "link": "https://fr.m.wikipedia.org/wiki/CP/M"
+    },
+    "CPU": {
+        "description": "central processing unit (Processeur)",
+        "link": "https://fr.m.wikipedia.org/wiki/Processeur"
+    },
+    "CR": {
+        "description": "carriage return, (retour chariot)",
+        "link": "https://fr.m.wikipedia.org/wiki/Retour_chariot"
+    },
+    "CRC": {
+        "description": "Cyclical Redundancy Checksum ou Cyclic Redundancy Check, (Contrôle de redondance cyclique)",
+        "link": "https://fr.m.wikipedia.org/wiki/Contr%C3%B4le_de_redondance_cyclique"
+    },
+    "CRM": {
+        "description": "Customer relationship management",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_de_la_relation_client"
+    },
+    "CRT": {
+        "description": "Cathode Ray Tube, moniteur à tube cathodique, voir Écran à tube cathodique",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89cran_%C3%A0_tube_cathodique"
+    },
+    "CRUD": {
+        "description": "Create, Read, Update et Delete.",
+        "link": "https://fr.m.wikipedia.org/wiki/CRUD"
+    },
+    "CS": {
+        "description": "informatique (computer science)",
+        "link": "https://fr.m.wikipedia.org/wiki/Informatique"
+    },
+    "CSMA": {
+        "description": "Carrier Sense Multiple Access",
+        "link": "https://fr.m.wikipedia.org/wiki/CSMA"
+    },
+    "CSP": {
+        "description": "cryptographic service provider, fournisseur de services cryptographiques\nCredential Service Provider (en)\nConstraint Satisfaction Problem (Programmation par contraintes)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Credential_Service_Provider&action=edit&redlink=1"
+    },
+    "CSRSS": {
+        "description": "Client/Server Run-time SubSystem (lancé par Session Manager Subsystem)",
+        "link": "https://fr.m.wikipedia.org/wiki/Session_Manager_Subsystem"
+    },
+    "CSS": {
+        "description": "Content Scrambling System\ncascading style sheets (Feuilles de style en cascade)",
+        "link": "https://fr.m.wikipedia.org/wiki/Content_Scrambling_System"
+    },
+    "CSV": {
+        "description": "valeurs séparées par des virgules (comma-separated values)",
+        "link": "https://fr.m.wikipedia.org/wiki/Comma-separated_values"
+    },
+    "CTAN": {
+        "description": "Comprehensive TeX Archive Network",
+        "link": "https://fr.m.wikipedia.org/wiki/Comprehensive_TeX_Archive_Network"
+    },
+    "CTFMON": {
+        "description": "Common Trace Facility Monitor, il fait partie de Office, il fournit le alternate user TIP (Text Input Processor)",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft_Office"
+    },
+    "CVS": {
+        "description": "Concurrent versions system",
+        "link": "https://fr.m.wikipedia.org/wiki/Concurrent_versions_system"
+    },
+    "DAC (et DACL)": {
+        "description": "Discretionary Access Control List (voir aussi Access Control List)",
+        "link": "https://fr.m.wikipedia.org/wiki/Contr%C3%B4le_d%27acc%C3%A8s_discr%C3%A9tionnaire"
+    },
+    "DADS (et DADS-U)": {
+        "description": "Déclaration Automatisée des Données Sociales Unifiée (France)[1]",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DADS-U&action=edit&redlink=1"
+    },
+    "DAG": {
+        "description": "Directed Acyclic Graph",
+        "link": "https://fr.m.wikipedia.org/wiki/Graphe_acyclique_orient%C3%A9"
+    },
+    "DADVSI": {
+        "description": "Droit d’Auteur et Droits Voisins dans la Société de l’Information (droit français)",
+        "link": "https://fr.m.wikipedia.org/wiki/Droit_d%27auteur_et_droits_voisins_dans_la_soci%C3%A9t%C3%A9_de_l%27information"
+    },
+    "DAI": {
+        "description": "Digital Access Index",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_Access_Index"
+    },
+    "DAISY": {
+        "description": "Digital accessible information system",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_accessible_information_system"
+    },
+    "DAL": {
+        "description": "Data Access Layer (couche d'accès aux données)\nDossier d'Architecture Logicielle",
+        "link": null
+    },
+    "DAO": {
+        "description": "Dessin assisté par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/Dessin_assist%C3%A9_par_ordinateur"
+    },
+    "DAP": {
+        "description": "Directory Access Protocol (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Directory_Access_Protocol&action=edit&redlink=1"
+    },
+    "DARPA": {
+        "description": "Defense Advanced Research Projects Agency",
+        "link": "https://fr.m.wikipedia.org/wiki/Defense_Advanced_Research_Projects_Agency"
+    },
+    "DAT": {
+        "description": "Digital Audio Tape\nDossier d'Architecture Technique",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_Audio_Tape"
+    },
+    "DAV": {
+        "description": "Distributed Authoring and Versioning, RFC 2518[2], voir WebDAV",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Distributed_Authoring_and_Versioning&action=edit&redlink=1"
+    },
+    "DB": {
+        "description": "Base de données (DataBase)\nDBA : Data Base Administrator, voir Administrateur de bases de données\nDB2 Data Base 2 (SGBD d'IBM)",
+        "link": "https://fr.m.wikipedia.org/wiki/Database"
+    },
+    "DBMS": {
+        "description": "Système de gestion de base de données (Database Management System)",
+        "link": "https://fr.m.wikipedia.org/wiki/DBMS"
+    },
+    "DC": {
+        "description": "Domain Component dans un annuaire (voir LDAP)\nDomain Controller, chez Microsoft, voir (en) Domain controller (en)\nDirect current",
+        "link": "https://fr.m.wikipedia.org/wiki/Domaine_(informatique)#Domaine_dans_un_annuaire_(X500_ou_LDAP)"
+    },
+    "DCC": {
+        "description": "Data Communications Channel ou Direct Client Connection, voir Direct Client-to-Client",
+        "link": "https://fr.m.wikipedia.org/wiki/DCC"
+    },
+    "DCD": {
+        "description": "Data Carrier Detect, un terme utilisé avec les modems\nDocument Content Definition (XML)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Data_Carrier_Detect&action=edit&redlink=1"
+    },
+    "DCE": {
+        "description": "Data Communications Equipment, en français Équipement terminal de circuit de données",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89quipement_terminal_de_circuit_de_donn%C3%A9es"
+    },
+    "DCL": {
+        "description": "Digital Command Language, (shell utilisateur sur VMS)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Digital_Command_Language&action=edit&redlink=1"
+    },
+    "DCOM": {
+        "description": "Distributed Component Object Model",
+        "link": "https://fr.m.wikipedia.org/wiki/Distributed_Component_Object_Model"
+    },
+    "DD": {
+        "description": "dd Utilitaire unix pour copier et convertir un fichier\nDeployment Descriptor, un composant de J2EE, voir (en) Deployment Descriptor (en)\nDesign Document (document de conception), voir (en) Design document (en)\nDisque dur\nDistributed database, base de données distribuées\nDouble density, pour les disquettes, voir (en) Double density (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/Dd_(Unix)"
+    },
+    "DDC": {
+        "description": "Display Data Channel (vidéo)",
+        "link": "https://fr.m.wikipedia.org/wiki/Display_Data_Channel"
+    },
+    "DDE": {
+        "description": "Dynamic Data Exchange",
+        "link": "https://fr.m.wikipedia.org/wiki/Dynamic_Data_Exchange"
+    },
+    "DDF": {
+        "description": "Data Decryption Field (EFS)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DDF&action=edit&redlink=1"
+    },
+    "DDOS": {
+        "description": "Distributed Denial Of Service, voir Déni de service",
+        "link": "https://fr.m.wikipedia.org/wiki/DDOS"
+    },
+    "DDR-SDRAM": {
+        "description": "Mémoire RAM : Double Data Rate SDRAM\nSur la liste de diffusion des traducteurs francophones de Debian, signifie « demande de relecture ». Cette abréviation est utilisée dans le sujet des courriers et est souvent entourée de crochets.",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_vive"
+    },
+    "DDS": {
+        "description": "Data Distribution Service\nDigital Data Storage, voir (en) Digital Data Storage",
+        "link": "https://fr.m.wikipedia.org/wiki/Data_Distribution_Service"
+    },
+    "DE": {
+        "description": "Desktop environment",
+        "link": "https://fr.m.wikipedia.org/wiki/Environnement_de_bureau"
+    },
+    "DES": {
+        "description": "Data encryption standard\nDESX : Data encryption standard Xored (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Data_encryption_standard"
+    },
+    "DEV": {
+        "description": "device, voir device file et devfs",
+        "link": "https://fr.m.wikipedia.org/wiki/Device"
+    },
+    "DF": {
+        "description": "Don't Fragment, bit de l'en-tête IPv4",
+        "link": "https://fr.m.wikipedia.org/wiki/Fragmentation_(informatique)"
+    },
+    "dhclient": {
+        "description": "DHCp cLIENT, voir DHCP",
+        "link": "https://fr.m.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol"
+    },
+    "DHCDBD": {
+        "description": "DHCP D-bus daemon",
+        "link": "https://fr.m.wikipedia.org/wiki/DHCP"
+    },
+    "DHCP": {
+        "description": "Dynamic host configuration protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/DHCP"
+    },
+    "DHS": {
+        "description": "Definitive Hardware Store (ITIL)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Definitive_Hardware_Store&action=edit&redlink=1"
+    },
+    "DHT": {
+        "description": "Distributed hash table (Table de hachage distribuée)",
+        "link": "https://fr.m.wikipedia.org/wiki/Distributed_hash_table"
+    },
+    "DHTML": {
+        "description": "Dynamic HTML",
+        "link": "https://fr.m.wikipedia.org/wiki/DHTML"
+    },
+    "DIF": {
+        "description": "Document Interchange Format",
+        "link": null
+    },
+    "DIMM": {
+        "description": "Dual Inline Memory Module",
+        "link": "https://fr.m.wikipedia.org/wiki/DIMM"
+    },
+    "DIN": {
+        "description": "Deutsches Institut für Normung",
+        "link": "https://fr.m.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Normung"
+    },
+    "DIP": {
+        "description": "Dual Inline Package",
+        "link": "https://fr.m.wikipedia.org/wiki/Dual_Inline_Package"
+    },
+    "DIVX": {
+        "description": "Digital video express",
+        "link": "https://fr.m.wikipedia.org/wiki/DIVX"
+    },
+    "D/L": {
+        "description": "DownLoad (Téléchargement)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=D/L&action=edit&redlink=1"
+    },
+    "DLL": {
+        "description": "Dynamic Link Library",
+        "link": "https://fr.m.wikipedia.org/wiki/Dynamic_Link_Library"
+    },
+    "DLM": {
+        "description": "Dynamic Line Management",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Dynamic_Line_Management&action=edit&redlink=1"
+    },
+    "DLT": {
+        "description": "Digital Linear Tape",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_Linear_Tape"
+    },
+    "DLFP": {
+        "description": "Da Linux French Page, site français d'information sur GNU-Linux http://www.linuxfr.org",
+        "link": "https://fr.m.wikipedia.org/wiki/DLFP"
+    },
+    "DMA": {
+        "description": "Direct Memory Access",
+        "link": "https://fr.m.wikipedia.org/wiki/Direct_Memory_Access"
+    },
+    "DMEX": {
+        "description": "Documentation de mise en exploitation",
+        "link": null
+    },
+    "DN": {
+        "description": "Distinguished Name (LDAP)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Distinguished_Name&action=edit&redlink=1"
+    },
+    "DnD": {
+        "description": "Drag and Drop (glisser-déposer)",
+        "link": "https://fr.m.wikipedia.org/wiki/DnD"
+    },
+    "DNS": {
+        "description": "Domain Name Server/System\nDNSSEC : DNS Security, RFC 4033[3]",
+        "link": "https://fr.m.wikipedia.org/wiki/Domain_Name_System"
+    },
+    "DOI": {
+        "description": "Digital Object Identifier",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_Object_Identifier"
+    },
+    "DOS": {
+        "description": "Disk Operation System (voir système d'exploitation et MS-DOS)\nDenial of service",
+        "link": "https://fr.m.wikipedia.org/wiki/DOS"
+    },
+    "DOM": {
+        "description": "Document Object Model",
+        "link": "https://fr.m.wikipedia.org/wiki/Document_Object_Model"
+    },
+    "DPC": {
+        "description": "Deferred Procedure Call\nDevice-Driver Performance Considerations (Site Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Deferred_Procedure_Call"
+    },
+    "DPD": {
+        "description": "Dead Peer Detection",
+        "link": "https://fr.m.wikipedia.org/wiki/Dead_peer_detection"
+    },
+    "DPI": {
+        "description": "Deep Packet Inspection (Inspection des Paquets en Profondeur)",
+        "link": "https://fr.m.wikipedia.org/wiki/Deep_Packet_Inspection"
+    },
+    "DPMI": {
+        "description": "DOS Protected Mode Interface, voir DOS Protected Mode Interface (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DPMI&action=edit&redlink=1"
+    },
+    "DPMS": {
+        "description": "Display Power Management Signaling pour VESA, voir (en) VESA Display Power Management Signaling (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DPMS&action=edit&redlink=1"
+    },
+    "DRAM": {
+        "description": "Dynamic random access memory",
+        "link": "https://fr.m.wikipedia.org/wiki/Dynamic_random_access_memory"
+    },
+    "DRI": {
+        "description": "Direct Rendering Infrastructure",
+        "link": "https://fr.m.wikipedia.org/wiki/Direct_Rendering_Infrastructure"
+    },
+    "DS": {
+        "description": "Data set",
+        "link": "https://fr.m.wikipedia.org/wiki/Data_set"
+    },
+    "DSDM": {
+        "description": "Dynamic systems development method",
+        "link": "https://fr.m.wikipedia.org/wiki/DSDM"
+    },
+    "DSI": {
+        "description": "Directeur du Service Informatique",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Directeur_du_Service_Informatique&action=edit&redlink=1"
+    },
+    "DSL": {
+        "description": "Definitive Software Library (ITIL)\nDigital subscriber line, voir xDSL",
+        "link": "https://fr.m.wikipedia.org/wiki/Definitive_Software_Library"
+    },
+    "DSN": {
+        "description": "Database Source Name (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Database_Source_Name&action=edit&redlink=1"
+    },
+    "DSO": {
+        "description": "Dynamically Shared Objects de Apache HTTP Server",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Dynamically_Shared_Objects&action=edit&redlink=1"
+    },
+    "DSP": {
+        "description": "Digital signal processor",
+        "link": "https://fr.m.wikipedia.org/wiki/Processeur_de_signal_num%C3%A9rique"
+    },
+    "DSS": {
+        "description": "Decision Support System (informatique décisionnelle)",
+        "link": "https://fr.m.wikipedia.org/wiki/Decision_Support_System"
+    },
+    "DSSS": {
+        "description": "Direct Sequence Spread Spectrum (Direct Sequence Spread Spectrum)",
+        "link": "https://fr.m.wikipedia.org/wiki/DSSS"
+    },
+    "DTB": {
+        "description": "Digital Talking Book, voir Digital accessible information system (livre électronique)",
+        "link": "https://fr.m.wikipedia.org/wiki/DTB"
+    },
+    "DTD": {
+        "description": "Définition de type de document (Document Type Definition)",
+        "link": "https://fr.m.wikipedia.org/wiki/DTD"
+    },
+    "DTE": {
+        "description": "Data Terminal Equipment, en français Équipement terminal de traitement de données",
+        "link": "https://fr.m.wikipedia.org/wiki/DTE"
+    },
+    "DTR": {
+        "description": "Data Terminal Ready (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/DTR"
+    },
+    "DUAL": {
+        "description": "Diffusing update algorithm, voir (en) Diffusing update algorithm (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Diffusing_update_algorithm&action=edit&redlink=1"
+    },
+    "DUMA": {
+        "description": "Detect Unintended Memory Access, outil de débugage.",
+        "link": "https://fr.m.wikipedia.org/wiki/DUMA"
+    },
+    "DVD": {
+        "description": "Digital Versatil/Video Disc",
+        "link": "https://fr.m.wikipedia.org/wiki/DVD"
+    },
+    "DVD5": {
+        "description": "DVD, comportant une seule couche de 4,7 Go",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DVD5&action=edit&redlink=1"
+    },
+    "DVD9": {
+        "description": "DVD, comportant deux couches de 4,7 Go chacune soit 9,4 Go (d'où DVD9)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=DVD9&action=edit&redlink=1"
+    },
+    "DVD+/-R": {
+        "description": "DVD Recordable",
+        "link": "https://fr.m.wikipedia.org/wiki/DVD%2B/-R"
+    },
+    "DVD+/-RW": {
+        "description": "DVD ReWritable",
+        "link": "https://fr.m.wikipedia.org/wiki/DVD%2B/-RW"
+    },
+    "DVI": {
+        "description": "Digital Visual Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Digital_Visual_Interface"
+    },
+    "DWH": {
+        "description": "Data Warehouse",
+        "link": "https://fr.m.wikipedia.org/wiki/Data_Warehouse"
+    },
+    "DWIM": {
+        "description": "Do What I Mean",
+        "link": "https://fr.m.wikipedia.org/wiki/DWIM"
+    },
+    "DWORD": {
+        "description": "Double WORD",
+        "link": "https://fr.m.wikipedia.org/wiki/DWORD"
+    },
+    "EAI": {
+        "description": "Enterprise Application Integration",
+        "link": "https://fr.m.wikipedia.org/wiki/Int%C3%A9gration_d%27applications_d%27entreprise"
+    },
+    "EAP": {
+        "description": "Extensible Authentication Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Extensible_Authentication_Protocol"
+    },
+    "EAR": {
+        "description": "Entreprise ARchive (J2EE)",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_2_Enterprise_Edition"
+    },
+    "EARL": {
+        "description": "Evaluation And Report Language",
+        "link": null
+    },
+    "EBCDIC": {
+        "description": "Extended binary coded decimal interchange code",
+        "link": "https://fr.m.wikipedia.org/wiki/Extended_binary_coded_decimal_interchange_code"
+    },
+    "EBML": {
+        "description": "Extensible Binary Meta Langage",
+        "link": null
+    },
+    "ECC": {
+        "description": "Error Checking and Correcting (type de mémoire)",
+        "link": "https://fr.m.wikipedia.org/wiki/Code_correcteur"
+    },
+    "ECM": {
+        "description": "Enterprise Content Management",
+        "link": null
+    },
+    "EIM": {
+        "description": "Enterprise Information Management",
+        "link": null
+    },
+    "EDA": {
+        "description": "Exploratory Data Analysis",
+        "link": null
+    },
+    "EDI": {
+        "description": "Échange de données informatisées (Electronic Data Interchange)\nEnvironnement de développement intégré",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89change_de_donn%C3%A9es_informatis%C3%A9es"
+    },
+    "EDID": {
+        "description": "Extended Display Identification Data",
+        "link": "https://fr.m.wikipedia.org/wiki/Extended_Display_Identification_Data"
+    },
+    "EDIFACT": {
+        "description": "Electronic data interchange for administration, commerce and transport. (ISO 9735)",
+        "link": "https://fr.m.wikipedia.org/wiki/EDIFACT"
+    },
+    "Edit (voir forum Internet)": {
+        "description": "signale que le message posté a été édité (signalement d'un ajout, d'une suppression, d'une modification)",
+        "link": "https://fr.m.wikipedia.org/wiki/Forum_Internet"
+    },
+    "EDO RAM": {
+        "description": "Extended Data Out Random Access Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/EDO"
+    },
+    "EEPROM": {
+        "description": "Electrically Erasable Programmable Read-Only Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/Electrically-erasable_programmable_read-only_memory"
+    },
+    "EFS": {
+        "description": "Encrypting File System",
+        "link": "https://fr.m.wikipedia.org/wiki/Encrypting_File_System"
+    },
+    "EGA": {
+        "description": "Enhanced Graphics Adapter, résolution de 640x350",
+        "link": "https://fr.m.wikipedia.org/wiki/Enhanced_Graphics_Adapter"
+    },
+    "EHCI": {
+        "description": "Enhanced HCI (Host Controller Interface), c'est-à-dire la version 2.0 d'USB",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_Serial_Bus"
+    },
+    "EIAH": {
+        "description": "Environnements informatiques pour l'apprentissage humain",
+        "link": "https://fr.m.wikipedia.org/wiki/Environnements_informatiques_pour_l%27apprentissage_humain"
+    },
+    "EIDE": {
+        "description": "enhanced IDE",
+        "link": "https://fr.m.wikipedia.org/wiki/Integrated_Drive_Electronics"
+    },
+    "EIGRP": {
+        "description": "Enhanced IGRP",
+        "link": "https://fr.m.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol"
+    },
+    "EISA": {
+        "description": "Extended Industry Standard Architecture",
+        "link": "https://fr.m.wikipedia.org/wiki/Extended_Industry_Standard_Architecture"
+    },
+    "EJB": {
+        "description": "Enterprise JavaBeans",
+        "link": "https://fr.m.wikipedia.org/wiki/Enterprise_JavaBeans"
+    },
+    "EMA": {
+        "description": "Entreprise Memory Architecture",
+        "link": null
+    },
+    "EM64T": {
+        "description": "Extended Memory 64-bit Technology",
+        "link": "https://fr.m.wikipedia.org/wiki/Intel_64"
+    },
+    "EOD": {
+        "description": "End Of Data",
+        "link": null
+    },
+    "EOF": {
+        "description": "End Of File",
+        "link": "https://fr.m.wikipedia.org/wiki/End-of-file"
+    },
+    "EOT": {
+        "description": "End Of Transmission",
+        "link": null
+    },
+    "EPIC": {
+        "description": "Explicitly Parallel Instruction Computing",
+        "link": "https://fr.m.wikipedia.org/wiki/EPIC_(informatique)"
+    },
+    "EPN": {
+        "description": "Espace public numérique",
+        "link": "https://fr.m.wikipedia.org/wiki/Espace_public_num%C3%A9rique"
+    },
+    "EPROM": {
+        "description": "Erasable Programmable Read-Only Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_morte"
+    },
+    "EPS": {
+        "description": "Encapsulated PostScript",
+        "link": "https://fr.m.wikipedia.org/wiki/Encapsulated_PostScript"
+    },
+    "ERP": {
+        "description": "Enterprise resource planning (Progiciel de gestion intégré)",
+        "link": "https://fr.m.wikipedia.org/wiki/Progiciel_de_gestion_int%C3%A9gr%C3%A9"
+    },
+    "E/S": {
+        "description": "Entrée / Sortie",
+        "link": null
+    },
+    "ESB": {
+        "description": "Enterprise Service Bus",
+        "link": "https://fr.m.wikipedia.org/wiki/Enterprise_Service_Bus"
+    },
+    "ESP": {
+        "description": "Encapsulating Security Payload, un mode d'en-tête d'IPsec",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Protocol_Security"
+    },
+    "ESR": {
+        "description": "Eric Steven Raymond, un célèbre hacker",
+        "link": "https://fr.m.wikipedia.org/wiki/Eric_Raymond"
+    },
+    "ESDI": {
+        "description": "Enhanced Small Device Interface",
+        "link": null
+    },
+    "eth, eth0, eth1, etc.": {
+        "description": "ethernet",
+        "link": "https://fr.m.wikipedia.org/wiki/Ethernet"
+    },
+    "ETL": {
+        "description": "Extract, Transform, and Load",
+        "link": null
+    },
+    "ETP": {
+        "description": "Équivalent Temps Plein",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89quivalent_temps_plein"
+    },
+    "ETSI": {
+        "description": "European Telecommunications Standards Institute",
+        "link": "https://fr.m.wikipedia.org/wiki/European_Telecommunications_Standards_Institute"
+    },
+    "EULA": {
+        "description": "CLUF (End User's License Agreement)",
+        "link": "https://fr.m.wikipedia.org/wiki/CLUF"
+    },
+    "FAI": {
+        "description": "fournisseur d'accès à Internet",
+        "link": "https://fr.m.wikipedia.org/wiki/Fournisseur_d%27acc%C3%A8s_%C3%A0_Internet"
+    },
+    "FAM": {
+        "description": "File Alteration Monitor (linux)",
+        "link": "https://fr.m.wikipedia.org/wiki/File_Alteration_Monitor"
+    },
+    "FAO": {
+        "description": "Fabrication assistée par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/Fabrication_assist%C3%A9e_par_ordinateur"
+    },
+    "FAQ": {
+        "description": "foire aux questions (Frequently Asked Questions)",
+        "link": "https://fr.m.wikipedia.org/wiki/Foire_aux_questions"
+    },
+    "FAT": {
+        "description": "File Allocation Table",
+        "link": "https://fr.m.wikipedia.org/wiki/File_Allocation_Table"
+    },
+    "FDD": {
+        "description": "Flexible/Floppy Disc Drive",
+        "link": null
+    },
+    "FDDI": {
+        "description": "Fiber Distributed Data Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Fiber_Distributed_Data_Interface"
+    },
+    "FDL": {
+        "description": "(GNU) Free Documentation License (licence de documentation libre)",
+        "link": "https://fr.m.wikipedia.org/wiki/GNU_FDL"
+    },
+    "FHS": {
+        "description": "Filesystem Hierarchy Standard (Unix)",
+        "link": "https://fr.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard"
+    },
+    "FEC": {
+        "description": "Fast Ethernet Channel",
+        "link": null
+    },
+    "FF": {
+        "description": "FireFox",
+        "link": null
+    },
+    "FIFO": {
+        "description": "First In First Out (premier rentré, premier sorti)",
+        "link": "https://fr.m.wikipedia.org/wiki/First_In_First_Out"
+    },
+    "FLEX": {
+        "description": "File EXchange System",
+        "link": null
+    },
+    "FLOPS": {
+        "description": "Floating Point Operations Per Second",
+        "link": "https://fr.m.wikipedia.org/wiki/Floating-point_operations_per_second"
+    },
+    "Fortran": {
+        "description": "FORmula TRANslation",
+        "link": "https://fr.m.wikipedia.org/wiki/Fortran"
+    },
+    "FP": {
+        "description": "Floating Point",
+        "link": null
+    },
+    "FPC": {
+        "description": "Free Pascal Compiler",
+        "link": "https://fr.m.wikipedia.org/wiki/Free_Pascal"
+    },
+    "FPK": {
+        "description": "Fast Packet Keying, voir Réseau sans fil",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_sans_fil"
+    },
+    "FPU": {
+        "description": "Floating Point Unit (coprocesseur arithmétique pour calcul en virgule flottante)",
+        "link": "https://fr.m.wikipedia.org/wiki/Unit%C3%A9_de_calcul_en_virgule_flottante"
+    },
+    "FQDN": {
+        "description": "Fully Qualified Domain Name",
+        "link": "https://fr.m.wikipedia.org/wiki/Fully_Qualified_Domain_Name"
+    },
+    "FS": {
+        "description": "File System, (système de fichiers)\nFlight Simulator",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers"
+    },
+    "FSB": {
+        "description": "File System Block, Front side bus",
+        "link": "https://fr.m.wikipedia.org/wiki/Front_side_bus"
+    },
+    "fsck": {
+        "description": "File System ChecK",
+        "link": null
+    },
+    "FSF": {
+        "description": "Free Software Foundation",
+        "link": "https://fr.m.wikipedia.org/wiki/Free_Software_Foundation"
+    },
+    "FSG": {
+        "description": "Free Standards Group (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Free_Standards_Group&action=edit&redlink=1"
+    },
+    "FSH": {
+        "description": "Finishing SuperHeater",
+        "link": null
+    },
+    "FSMO": {
+        "description": "Flexible Single Master Operation, voir Maître d'opérations d'Active Directory",
+        "link": "https://fr.m.wikipedia.org/wiki/Ma%C3%AEtre_d%27op%C3%A9rations"
+    },
+    "FSSTND": {
+        "description": "FileSystem STaNDard (unix), voir FHS",
+        "link": null
+    },
+    "FUD": {
+        "description": "peur, inexactitude et doute (Fear, Uncertainty and Doubt)",
+        "link": "https://fr.m.wikipedia.org/wiki/Fear,_uncertainty_and_doubt"
+    },
+    "FWIW": {
+        "description": "Pour ce que ça vaut / ça vaut ce que ça vaut (For What It's Worth)",
+        "link": null
+    },
+    "FYI": {
+        "description": "Pour information (For Your Information)",
+        "link": null
+    },
+    "G": {
+        "description": "giga",
+        "link": "https://fr.m.wikipedia.org/wiki/G_(lettre)"
+    },
+    "GAC": {
+        "description": "Global Assembly Cache (Microsoft .NET)",
+        "link": "https://fr.m.wikipedia.org/wiki/Global_Assembly_Cache"
+    },
+    "GAMOT": {
+        "description": "Guichet d'Accueil Maintenance Opérateur Tiers (France Telecom)",
+        "link": "https://fr.m.wikipedia.org/wiki/France_Telecom"
+    },
+    "Gandi": {
+        "description": "Gestion et Attribution des Noms de Domaine sur Internet.",
+        "link": "https://fr.m.wikipedia.org/wiki/Gandi_(entreprise)"
+    },
+    "GAP": {
+        "description": "Générateur automatique de programmes (IBM)",
+        "link": "https://fr.m.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_automatique_de_programmes"
+    },
+    "Gbit/s": {
+        "description": "gigabit par seconde",
+        "link": "https://fr.m.wikipedia.org/wiki/Gigabit"
+    },
+    "GC": {
+        "description": "Garbage Collector\nGameCube",
+        "link": "https://fr.m.wikipedia.org/wiki/Ramasse-miettes_(informatique)"
+    },
+    "GCC": {
+        "description": "GNU Compiler Collection",
+        "link": "https://fr.m.wikipedia.org/wiki/GNU_Compiler_Collection"
+    },
+    "GCJ": {
+        "description": "GNU Compiler for Java",
+        "link": "https://fr.m.wikipedia.org/wiki/GCJ"
+    },
+    "GCS": {
+        "description": "Google Code Search Google Code Search\nGroup Communication System",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Google_Code_Search&action=edit&redlink=1"
+    },
+    "GDB": {
+        "description": "GNU Debugger",
+        "link": "https://fr.m.wikipedia.org/wiki/GNU_Debugger"
+    },
+    "GDI": {
+        "description": "Graphics Device Interface (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Graphics_Device_Interface"
+    },
+    "GDES": {
+        "description": "Generalized DES scheme",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=GDES&action=edit&redlink=1"
+    },
+    "GDM": {
+        "description": "GNOME Display Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/GNOME_Display_Manager"
+    },
+    "GED": {
+        "description": "Gestion Électronique de Documents",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_%C3%A9lectronique_des_documents"
+    },
+    "GFDL": {
+        "description": "Gnu Free Documentation License",
+        "link": "https://fr.m.wikipedia.org/wiki/GFDL"
+    },
+    "GGP": {
+        "description": "Gateway-Gateway Protocol",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Gateway-Gateway_Protocol&action=edit&redlink=1"
+    },
+    "GHC": {
+        "description": "Glasgow Haskell Compiler",
+        "link": "https://fr.m.wikipedia.org/wiki/Haskell"
+    },
+    "GHz": {
+        "description": "gigahertz",
+        "link": "https://fr.m.wikipedia.org/wiki/GHz"
+    },
+    "GIF": {
+        "description": "graphics interchange format",
+        "link": "https://fr.m.wikipedia.org/wiki/Graphics_interchange_format"
+    },
+    "GIJ": {
+        "description": "GNU Interpreter for Java",
+        "link": "https://fr.m.wikipedia.org/wiki/GIJ"
+    },
+    "GINA": {
+        "description": "Graphical identification and authentication (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Graphical_identification_and_authentication"
+    },
+    "GIMP": {
+        "description": "GNU Image Manipulation Program",
+        "link": "https://fr.m.wikipedia.org/wiki/GIMP"
+    },
+    "GMAO": {
+        "description": "Gestion de Maintenance Assistée par Ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/GMAO"
+    },
+    "GML": {
+        "description": "Generalized Markup Language, prédécesseur du SGML\nGeography Markup Language\nGraph Modelling Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Generalized_Markup_Language"
+    },
+    "GNAT": {
+        "description": "Gnu Nyu Ada Translator",
+        "link": "https://fr.m.wikipedia.org/wiki/GNAT"
+    },
+    "GND": {
+        "description": "Ground = Mise à la masse, à la terre",
+        "link": "https://fr.m.wikipedia.org/wiki/Ground"
+    },
+    "GNOME": {
+        "description": "GNU Network Object Model Environment",
+        "link": "https://fr.m.wikipedia.org/wiki/GNOME"
+    },
+    "GNU (« GNU's Not Unix ») (acronyme récursif)\nGnuCash": {
+        "description": "GNU Cash\nGNUFDL : GNU Free Documentation License\nGnuLinEx : GNU LINux Extremadura\nGnuPg : GNU Privacy Guard",
+        "link": "https://fr.m.wikipedia.org/wiki/GNU"
+    },
+    "Go": {
+        "description": "gigaoctet",
+        "link": "https://fr.m.wikipedia.org/wiki/Gigaoctet"
+    },
+    "GPAO": {
+        "description": "Gestion de la production assistée par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/GPAO"
+    },
+    "GP": {
+        "description": "Group Policy (Stratégie de Microsoft, dans Active Directory), voir Stratégies de groupe\nGPCO : Global Policy Creator Owners\nGPO : Global Policy Object\nGPMC : Group Policy Management Console",
+        "link": "https://fr.m.wikipedia.org/wiki/Active_Directory"
+    },
+    "GPL": {
+        "description": "licence publique générale (general public license).",
+        "link": "https://fr.m.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU"
+    },
+    "GPR": {
+        "description": "General Purpose Registers",
+        "link": "https://fr.m.wikipedia.org/wiki/Registre_(informatique)"
+    },
+    "GPT": {
+        "description": "GUID Partition Table, l'équivalent du MBR sur le micrologiciel Extensible Firmware Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/GUID_Partition_Table"
+    },
+    "GPU": {
+        "description": "Graphics Processing Unit",
+        "link": "https://fr.m.wikipedia.org/wiki/Processeur_graphique"
+    },
+    "GRC": {
+        "description": "Gestion de la relation client",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_de_la_relation_client"
+    },
+    "GRE": {
+        "description": "Generic Routing Encapsulation",
+        "link": "https://fr.m.wikipedia.org/wiki/Generic_Routing_Encapsulation"
+    },
+    "GSHDSL": {
+        "description": "Single-pair High-speed Digital Subscriber Line",
+        "link": "https://fr.m.wikipedia.org/wiki/G.SHDSL"
+    },
+    "GT": {
+        "description": "Google Talk",
+        "link": "https://fr.m.wikipedia.org/wiki/Google_Talk"
+    },
+    "GTI": {
+        "description": "Génie des technologies de l'information",
+        "link": "https://fr.m.wikipedia.org/wiki/G%C3%A9nie_des_technologies_de_l%27information"
+    },
+    "GTK et GTK+": {
+        "description": "GIMP Tool Kit",
+        "link": "https://fr.m.wikipedia.org/wiki/GTK%2B"
+    },
+    "GUI": {
+        "description": "graphical user interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Graphical_user_interface"
+    },
+    "GUID": {
+        "description": "Globally Unique Identifier",
+        "link": "https://fr.m.wikipedia.org/wiki/GUID"
+    },
+    "GUL": {
+        "description": "Groupe d'utilisateurs Linux",
+        "link": "https://fr.m.wikipedia.org/wiki/Groupe_d%27utilisateurs_Linux"
+    },
+    "GUS": {
+        "description": "Gravis Ultrasound (Carte son)",
+        "link": "https://fr.m.wikipedia.org/wiki/Gravis_Ultrasound"
+    },
+    "gzip": {
+        "description": "GNU Zip, logiciel libre de compression de données",
+        "link": "https://fr.m.wikipedia.org/wiki/Gzip"
+    },
+    "HAL": {
+        "description": "Hardware Abstraction Layer",
+        "link": "https://fr.m.wikipedia.org/wiki/Hardware_abstraction_layer"
+    },
+    "HD": {
+        "description": "disque dur (Hard Disk)",
+        "link": "https://fr.m.wikipedia.org/wiki/Disque_dur"
+    },
+    "HDD": {
+        "description": "Hard disk drive, disque dur magnétique",
+        "link": "https://fr.m.wikipedia.org/wiki/Hard_disk_drive"
+    },
+    "Header": {
+        "description": "Petit connecteur",
+        "link": null
+    },
+    "Heatsink": {
+        "description": "Dissipateur thermique",
+        "link": null
+    },
+    "HFS": {
+        "description": "Hierarchical File System, système de fichiers des Macintosh",
+        "link": "https://fr.m.wikipedia.org/wiki/Hierarchical_File_System"
+    },
+    "HID": {
+        "description": "Human Interface Device",
+        "link": null
+    },
+    "HMI": {
+        "description": "Human Machine Interface",
+        "link": null
+    },
+    "Hole": {
+        "description": "Perçage, trou",
+        "link": null
+    },
+    "HP": {
+        "description": "Hewlett Packard",
+        "link": "https://fr.m.wikipedia.org/wiki/Hewlett_Packard"
+    },
+    "HPB": {
+        "description": "High Ping Bastard",
+        "link": null
+    },
+    "HPL": {
+        "description": "High-level Programming Language",
+        "link": null
+    },
+    "HTML": {
+        "description": "HyperText Markup Language",
+        "link": "https://fr.m.wikipedia.org/wiki/HyperText_Markup_Language"
+    },
+    "HTTP": {
+        "description": "hypertext transfer protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Hypertext_transfer_protocol"
+    },
+    "HTTPS": {
+        "description": "hypertext transfer protocol secure",
+        "link": "https://fr.m.wikipedia.org/wiki/Hypertext_transfer_protocol"
+    },
+    "i18n": {
+        "description": "internationalisation (de logiciel)",
+        "link": "https://fr.m.wikipedia.org/wiki/Internationalisation_de_logiciel"
+    },
+    "x86": {
+        "description": "Intel Corporation Architecture x86 microprocessor Familly",
+        "link": "https://fr.m.wikipedia.org/wiki/X86"
+    },
+    "IA-32": {
+        "description": "Intel Corporation Architecture 32-bit microprocessor",
+        "link": "https://fr.m.wikipedia.org/wiki/IA-32"
+    },
+    "IA-64": {
+        "description": "Intel Corporation Architecture 64-bit microprocessor",
+        "link": "https://fr.m.wikipedia.org/wiki/IA-64"
+    },
+    "IANA": {
+        "description": "Internet Assigned Numbers Authority",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority"
+    },
+    "IBM": {
+        "description": "International Business Machines",
+        "link": "https://fr.m.wikipedia.org/wiki/International_Business_Machines_Corporation"
+    },
+    "ICA": {
+        "description": "Independent Computing Architecture de Citrix Presentation Server",
+        "link": "https://fr.m.wikipedia.org/wiki/Independent_Computing_Architecture"
+    },
+    "ICF": {
+        "description": "Internet Connection Firewall",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Firewall"
+    },
+    "ICANN": {
+        "description": "Internet Corporation for Assigned Names and Numbers",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Corporation_for_Assigned_Names_and_Numbers"
+    },
+    "ICMP": {
+        "description": "Internet Control Message Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Control_Message_Protocol"
+    },
+    "ICSA": {
+        "description": "International Computer Security Association (anciennement NCSA)",
+        "link": "https://fr.m.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications"
+    },
+    "ICT": {
+        "description": "Information and Communications Technology",
+        "link": "https://fr.m.wikipedia.org/wiki/Technologies_de_l%27information_et_de_la_communication"
+    },
+    "IDA": {
+        "description": "Interactive DisAssembler",
+        "link": "https://fr.m.wikipedia.org/wiki/IDA_(logiciel)"
+    },
+    "IDL": {
+        "description": "Interface Description Langage",
+        "link": "https://fr.m.wikipedia.org/wiki/Interface_description_language"
+    },
+    "IDS": {
+        "description": "Intrus Logic-ion Détection System",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_de_d%C3%A9tection_d%27intrusion"
+    },
+    "IDP": {
+        "description": "Internet Datagram Protocol",
+        "link": null
+    },
+    "IDRP": {
+        "description": "Inter-Domain Routing Protocol",
+        "link": null
+    },
+    "IE": {
+        "description": "Internet Explorer",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Explorer"
+    },
+    "IEEE": {
+        "description": "Institute of Electrical and Electronics Engineers",
+        "link": "https://fr.m.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers"
+    },
+    "IETF": {
+        "description": "Internet Engineering Task Force",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Engineering_Task_Force"
+    },
+    "IFD": {
+        "description": "InterFace Device, Smartcard",
+        "link": "https://fr.m.wikipedia.org/wiki/Smartcard"
+    },
+    "IFS\nInternal Field Separator\nInstallable File System": {
+        "description": "Sur les premières versions de Windows NT",
+        "link": "https://fr.m.wikipedia.org/wiki/Internal_Field_Separator"
+    },
+    "IGMP": {
+        "description": "Interior Gateway Routing Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Interior_Gateway_Routing_Protocol"
+    },
+    "IGP": {
+        "description": "Interior gateway protocol",
+        "link": null
+    },
+    "IIS": {
+        "description": "Internet Information Services",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Information_Services"
+    },
+    "IM": {
+        "description": "Instant Messenger",
+        "link": "https://fr.m.wikipedia.org/wiki/Messagerie_instantan%C3%A9e"
+    },
+    "IMAP": {
+        "description": "internet Message Access Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Message_Access_Protocol"
+    },
+    "IMO/IMHO": {
+        "description": "In My (Humble) Opinion, à mon humble avis",
+        "link": null
+    },
+    "IMS": {
+        "description": "Information Management System",
+        "link": "https://fr.m.wikipedia.org/wiki/IMS_(base_de_donn%C3%A9es)"
+    },
+    "IMUSE": {
+        "description": "Interactive Music Streaming Engine",
+        "link": "https://fr.m.wikipedia.org/wiki/Interactive_Music_Streaming_Engine"
+    },
+    "initrd": {
+        "description": "INIT RamDisk",
+        "link": "https://fr.m.wikipedia.org/wiki/Init"
+    },
+    "inode": {
+        "description": "Index Node",
+        "link": "https://fr.m.wikipedia.org/wiki/Inode"
+    },
+    "I/O": {
+        "description": "Input/Output (Entrée/Sortie), voir aussi E/S",
+        "link": "https://fr.m.wikipedia.org/wiki/Abr%C3%A9viations_en_informatique_E"
+    },
+    "IOAT": {
+        "description": "Intel I/O Acceleration Technology",
+        "link": null
+    },
+    "IOCTL": {
+        "description": "I/O ConTroL, voir Ioctl",
+        "link": "https://fr.m.wikipedia.org/wiki/Ioctl"
+    },
+    "IOS": {
+        "description": "Internetwork Operating System",
+        "link": "https://fr.m.wikipedia.org/wiki/Cisco_IOS"
+    },
+    "IP": {
+        "description": "Internet Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Protocol"
+    },
+    "IPC": {
+        "description": "Inter-Process Communication",
+        "link": "https://fr.m.wikipedia.org/wiki/Communication_inter-processus"
+    },
+    "IPCOMP": {
+        "description": "IP Payload COMpression Protocol",
+        "link": null
+    },
+    "IPENCAP": {
+        "description": "IP ENCapsulated in IP",
+        "link": null
+    },
+    "IPL": {
+        "description": "Initial Program Load",
+        "link": null
+    },
+    "IPP": {
+        "description": "Internet Printing Protocol",
+        "link": null
+    },
+    "IPsec": {
+        "description": "Internet Protocol Security",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Protocol_Security"
+    },
+    "IPX": {
+        "description": "Internetwork packet exchange",
+        "link": "https://fr.m.wikipedia.org/wiki/Internetwork_packet_exchange"
+    },
+    "IR": {
+        "description": "InfraRed",
+        "link": null
+    },
+    "IrDA": {
+        "description": "Infrared Data Association",
+        "link": "https://fr.m.wikipedia.org/wiki/IrDA"
+    },
+    "IRC": {
+        "description": "Internet Relay Chat",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_Relay_Chat"
+    },
+    "IRP": {
+        "description": "I/O Request Packet",
+        "link": "https://fr.m.wikipedia.org/wiki/IRP"
+    },
+    "IRQ": {
+        "description": "Interrupt ReQuest\nIRQL : IRQ Level",
+        "link": "https://fr.m.wikipedia.org/wiki/Interruption_mat%C3%A9rielle"
+    },
+    "ISAKMP": {
+        "description": "Internet Security Associations and Key Management Protocol",
+        "link": null
+    },
+    "ISDN": {
+        "description": "Integrated Services Digital Network",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_num%C3%A9rique_%C3%A0_int%C3%A9gration_de_services"
+    },
+    "IS-IS": {
+        "description": "Intermediate system to intermediate system",
+        "link": "https://fr.m.wikipedia.org/wiki/IS-IS"
+    },
+    "ISP": {
+        "description": "Internet Service Provider (Fournisseur d'accès à Internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Fournisseur_d%27acc%C3%A8s_%C3%A0_Internet"
+    },
+    "ISR": {
+        "description": "Interrupt Service Routine, In-Sync Replicas",
+        "link": null
+    },
+    "ISV": {
+        "description": "Independent Software Vendor, voir Éditeur de logiciel",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89diteur_de_logiciel"
+    },
+    "IT": {
+        "description": "Information Technology, Informatique",
+        "link": "https://fr.m.wikipedia.org/wiki/Informatique"
+    },
+    "ITIL": {
+        "description": "Information Technology Infrastructure Library",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "ITK": {
+        "description": "Insight ToolKit",
+        "link": "https://fr.m.wikipedia.org/wiki/Insight_ToolKit"
+    },
+    "J2EE": {
+        "description": "Java 2 Enterprise Edition",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_2_Enterprise_Edition"
+    },
+    "J2ME": {
+        "description": "Java 2 Micro Edition",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_2_Micro_Edition"
+    },
+    "J2SE": {
+        "description": "Java 2 Standard Edition",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_2_Standard_Edition"
+    },
+    "JAAS": {
+        "description": "Java Authentication and Authorization Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service"
+    },
+    "JAR": {
+        "description": "Java ARchive",
+        "link": "https://fr.m.wikipedia.org/wiki/JAR_(format_de_fichier)"
+    },
+    "JCE": {
+        "description": "Java Cryptography Extension",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_(langage)"
+    },
+    "JDBC": {
+        "description": "java database connectivity",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_database_connectivity"
+    },
+    "JCL": {
+        "description": "Job Control Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Job_Control_Language"
+    },
+    "JDK": {
+        "description": "Java Development Kit",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_Development_Kit"
+    },
+    "JFC": {
+        "description": "Java Foundation Classes",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_Foundation_Classes"
+    },
+    "JID": {
+        "description": "Jabber ID",
+        "link": "https://fr.m.wikipedia.org/wiki/Jabber_ID"
+    },
+    "JIDEC": {
+        "description": "Joint Electron Device Engineering",
+        "link": null
+    },
+    "JMS": {
+        "description": "Java messaging service",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_messaging_service"
+    },
+    "JNI": {
+        "description": "Java Native Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_Native_Interface"
+    },
+    "JPEG": {
+        "description": "Joint Photographic Experts Group",
+        "link": "https://fr.m.wikipedia.org/wiki/Joint_Photographic_Experts_Group"
+    },
+    "JRE": {
+        "description": "Java Runtime Environment",
+        "link": "https://fr.m.wikipedia.org/wiki/Environnement_d%27ex%C3%A9cution_Java"
+    },
+    "JS": {
+        "description": "JavaScript",
+        "link": "https://fr.m.wikipedia.org/wiki/JavaScript"
+    },
+    "JSDK": {
+        "description": "Java Servlet Development Kit, voir SDK[1]\nJavaScript Developer Kit[2]",
+        "link": "https://fr.m.wikipedia.org/wiki/Kit_de_d%C3%A9veloppement"
+    },
+    "JSP": {
+        "description": "JavaServer Pages",
+        "link": "https://fr.m.wikipedia.org/wiki/JavaServer_Pages"
+    },
+    "JSSE": {
+        "description": "Java Secure Socket Extension",
+        "link": "https://fr.m.wikipedia.org/wiki/Java_Secure_Socket_Extension"
+    },
+    "JVM": {
+        "description": "Java Virtual Machine",
+        "link": "https://fr.m.wikipedia.org/wiki/Machine_virtuelle_Java"
+    },
+    "JXTA": {
+        "description": "JuXTApose",
+        "link": "https://fr.m.wikipedia.org/wiki/JXTA"
+    },
+    "k3b": {
+        "description": "KDE Burn Baby, Burn !\" (En français, Kde grave, bébé grave !)",
+        "link": "https://fr.m.wikipedia.org/wiki/K3b"
+    },
+    "KBD": {
+        "description": "KeyBoarD (clavier)",
+        "link": "https://fr.m.wikipedia.org/wiki/Clavier_d%27ordinateur"
+    },
+    "kbit/s": {
+        "description": "kilobit par seconde",
+        "link": "https://fr.m.wikipedia.org/wiki/Kilobit"
+    },
+    "KCC": {
+        "description": "Knowledge Consistency Checker, voir Active Directory",
+        "link": "https://fr.m.wikipedia.org/wiki/Active_Directory"
+    },
+    "K(D)B": {
+        "description": "Knowledge (Data)Base (K (programming language) (en))",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=K_(langage)&action=edit&redlink=1"
+    },
+    "KDE": {
+        "description": "K Desktop Environment",
+        "link": "https://fr.m.wikipedia.org/wiki/KDE"
+    },
+    "KD": {
+        "description": "Kernel Debbugger pour Windows",
+        "link": "https://fr.m.wikipedia.org/wiki/Noyau_windows_NT"
+    },
+    "KDM": {
+        "description": "KDE Display Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/KDM"
+    },
+    "Klogd": {
+        "description": "Kernel LOG Daemon (voir syslog)",
+        "link": "https://fr.m.wikipedia.org/wiki/Syslog"
+    },
+    "Kludge": {
+        "description": "Klumsy, Lame, Ugly, Dumb, but Good Enough",
+        "link": "https://fr.m.wikipedia.org/wiki/Kludge"
+    },
+    "kHz": {
+        "description": "kilohertz",
+        "link": "https://fr.m.wikipedia.org/wiki/Kilohertz"
+    },
+    "ko": {
+        "description": "kilooctet",
+        "link": "https://fr.m.wikipedia.org/wiki/Kilooctet"
+    },
+    "KPI": {
+        "description": "Key Performance Indicator, indicateur clé de performance (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/Indicateur_cl%C3%A9_de_performance"
+    },
+    "KSF": {
+        "description": "Key Success Factor, facteur clé de succès (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/Facteur_cl%C3%A9_de_succ%C3%A8s"
+    },
+    "KVM": {
+        "description": "Keyboard, Video, Mouse (clavier-écran-souris), voir commutateur KVM\nKernel-based Virtual Machine",
+        "link": "https://fr.m.wikipedia.org/wiki/Commutateur_KVM"
+    },
+    "l10n": {
+        "description": "Localisation, voir Internationalisation de logiciel",
+        "link": "https://fr.m.wikipedia.org/wiki/Internationalisation_de_logiciel"
+    },
+    "L2F": {
+        "description": "Layer 2 Forwarding (transfert de couche 2)",
+        "link": "https://fr.m.wikipedia.org/wiki/Layer_2_Forwarding"
+    },
+    "L2TP": {
+        "description": "Layer 2 Tunneling Protocol, RFC 3931[1]",
+        "link": "https://fr.m.wikipedia.org/wiki/Layer_2_Tunneling_Protocol"
+    },
+    "LAD": {
+        "description": "Lecture automatique de documents",
+        "link": "https://fr.m.wikipedia.org/wiki/Lecture_automatique_de_document"
+    },
+    "LAME": {
+        "description": "LAME Ain't an MP3 Encoder, acronyme récursif (LAME n'est pas un encodeur MP3)",
+        "link": "https://fr.m.wikipedia.org/wiki/LAME"
+    },
+    "LAMP": {
+        "description": "Linux + Apache + MySQL + PHP",
+        "link": "https://fr.m.wikipedia.org/wiki/LAMP"
+    },
+    "LAN": {
+        "description": "réseau local (Local Area Network)",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_local"
+    },
+    "LAPP": {
+        "description": "Linux Apache Postgresql Php",
+        "link": "https://fr.m.wikipedia.org/wiki/LAPP"
+    },
+    "LBA": {
+        "description": "Logical block addressing, méthode pour adresser un emplacement d'un support disque (disque dur, CD-ROM, etc.) en remplacement de l'adresse CHS.",
+        "link": "https://fr.m.wikipedia.org/wiki/Logical_block_addressing"
+    },
+    "LCD": {
+        "description": "liquid crystal display (Écran à cristaux liquides)",
+        "link": "https://fr.m.wikipedia.org/wiki/%C3%89cran_%C3%A0_cristaux_liquides"
+    },
+    "LCP": {
+        "description": "Link Control Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Link_Control_Protocol"
+    },
+    "LDAP": {
+        "description": "Lightweight Directory Access Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol"
+    },
+    "LDD": {
+        "description": "List Dynamic Dependencies (Unix)",
+        "link": null
+    },
+    "LDIF": {
+        "description": "LDAP Data Interchange Format",
+        "link": "https://fr.m.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol"
+    },
+    "LDM": {
+        "description": "Logical Disk Manager, voir (en) LDM (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Logical_Disk_Manager&action=edit&redlink=1"
+    },
+    "LE": {
+        "description": "Logical Extent (LVM)",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_par_volumes_logiques"
+    },
+    "LF": {
+        "description": "Line Feed",
+        "link": null
+    },
+    "LHS": {
+        "description": "Left-Hand Side",
+        "link": "https://fr.m.wikipedia.org/wiki/LHS"
+    },
+    "LIFO": {
+        "description": "Last In, First Out",
+        "link": "https://fr.m.wikipedia.org/wiki/LIFO"
+    },
+    "LIPKEY": {
+        "description": "Lower Infrastructure Public KEY mechanism, voir RFC 2847[2]",
+        "link": "https://fr.m.wikipedia.org#cite_note-RFC-2847-2"
+    },
+    "LISP": {
+        "description": "LISt Processing programming language, ou humoristiquement Lots of Infuriating & Silly Parentheses",
+        "link": "https://fr.m.wikipedia.org/wiki/Lisp_(langage)"
+    },
+    "LKM": {
+        "description": "Loadable Kernel Module (Linux)",
+        "link": "https://fr.m.wikipedia.org/wiki/Loadable_Kernel_Module"
+    },
+    "LMD": {
+        "description": "Langage de manipulation de données\nLocally Mounted Disk",
+        "link": "https://fr.m.wikipedia.org/wiki/Langage_de_manipulation_de_donn%C3%A9es"
+    },
+    "LMFAO": {
+        "description": "Laughing My Fucking Ass Off (argot internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_internet"
+    },
+    "LOL": {
+        "description": "Mort de rire (laughing out loud)",
+        "link": "https://fr.m.wikipedia.org/wiki/Langage_SMS#La_s%C3%A9mantique_de_lol"
+    },
+    "LP": {
+        "description": "Line Printer",
+        "link": null
+    },
+    "LPB": {
+        "description": "Low Ping Bastard, voir Lexique du jeu vidéo",
+        "link": "https://fr.m.wikipedia.org/wiki/Lexique_du_jeu_vid%C3%A9o"
+    },
+    "LPF": {
+        "description": "Linux Packet Filter, utilisé par DHCP de linux",
+        "link": null
+    },
+    "LPI": {
+        "description": "Lines Per Inch, voir (en) Lines per inch (en)\nLinux Professional Institute",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Lines_per_inch&action=edit&redlink=1"
+    },
+    "LRU": {
+        "description": "Least Recently Used, voir Mémoire virtuelle",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_virtuelle#Allocation_%C3%A0_la_demande"
+    },
+    "LSA\nLink-State Advertisement, voir OSPF\nLSA": {
+        "description": "Local Security Authority (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/OSPF"
+    },
+    "LSB": {
+        "description": "Least Significant BIT\nLinux Standard Base",
+        "link": "https://fr.m.wikipedia.org/wiki/Bit_de_poids_faible"
+    },
+    "LSPI": {
+        "description": "Local Service Provider Identification",
+        "link": null
+    },
+    "LUFS": {
+        "description": "Linux Userspace File System",
+        "link": null
+    },
+    "LUG": {
+        "description": "Linux Users Group",
+        "link": "https://fr.m.wikipedia.org/wiki/Linux_Users_Group"
+    },
+    "LV": {
+        "description": "Logical Volume (LVM)",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_par_volumes_logiques"
+    },
+    "LVDM": {
+        "description": "Low Voltage Differential Signaling (voir SCSI)",
+        "link": "https://fr.m.wikipedia.org/wiki/Small_Computer_System_Interface"
+    },
+    "LVM": {
+        "description": "Logical Volume Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_par_volumes_logiques"
+    },
+    "MAC": {
+        "description": "Medium access control",
+        "link": "https://fr.m.wikipedia.org/wiki/Medium_access_control"
+    },
+    "MAC\nMedia Access Control, voir adresse MAC\nMac": {
+        "description": "familier Macintosh (à ne pas confondre avec Mac OS)",
+        "link": "https://fr.m.wikipedia.org/wiki/Adresse_MAC"
+    },
+    "MACAO": {
+        "description": "Méthode d'analyse et de conception d'applications orientées objet",
+        "link": null
+    },
+    "MAN": {
+        "description": "Metropolitan Area Network",
+        "link": null
+    },
+    "MAO": {
+        "description": "Musique assistée par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/Musique_assist%C3%A9e_par_ordinateur"
+    },
+    "MAPI": {
+        "description": "Messaging Application Programming Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/MAPI_(logiciel)"
+    },
+    "Mb": {
+        "description": "mégabit",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9gabit"
+    },
+    "Mbit": {
+        "description": "mégabit",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9gabit"
+    },
+    "Mbit/s": {
+        "description": "mégabit par seconde",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9gabit"
+    },
+    "MBR": {
+        "description": "Master boot record",
+        "link": "https://fr.m.wikipedia.org/wiki/Master_boot_record"
+    },
+    "MBSA": {
+        "description": "Microsoft Baseline Security Analyzer",
+        "link": null
+    },
+    "MCD": {
+        "description": "Modèle Conceptuel de Données, voir méthode MERISE",
+        "link": "https://fr.m.wikipedia.org/wiki/Merise_(informatique)"
+    },
+    "MCGA": {
+        "description": "Multicolor Graphics Array",
+        "link": "https://fr.m.wikipedia.org/wiki/Multicolor_Graphics_Array"
+    },
+    "MCH": {
+        "description": "Memory Controller Hub",
+        "link": "https://fr.m.wikipedia.org/wiki/Memory_Controller_Hub"
+    },
+    "MCI": {
+        "description": "Multimedia Command Interface",
+        "link": null
+    },
+    "MCP\nMaître contrôle principal": {
+        "description": "(Master Control Program en anglais), programme malfaisant dans le film Tron.\nMicrosoft Certified Professional",
+        "link": "https://fr.m.wikipedia.org/wiki/Tron"
+    },
+    "MCSE": {
+        "description": "Microsoft Certified Systems Engineer",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft_Certified_Systems_Engineer"
+    },
+    "MCT": {
+        "description": "Microsoft Certified Trainer",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft_Certified_Trainer"
+    },
+    "MD4": {
+        "description": "Message Digest 4",
+        "link": "https://fr.m.wikipedia.org/wiki/MD4"
+    },
+    "MD5": {
+        "description": "Message Digest Version 5",
+        "link": "https://fr.m.wikipedia.org/wiki/MD5"
+    },
+    "MDF": {
+        "description": "Meta Data Framework (Cisco)",
+        "link": null
+    },
+    "mdk": {
+        "description": "Mandrakelinux",
+        "link": "https://fr.m.wikipedia.org/wiki/Mandrakelinux"
+    },
+    "MDI": {
+        "description": "Multiple Document Interface",
+        "link": null
+    },
+    "MDR": {
+        "description": "Mort De Rire",
+        "link": null
+    },
+    "MEP": {
+        "description": "Mise En Production",
+        "link": null
+    },
+    "MFLOPS": {
+        "description": "Million Floating Point Operations Per Second",
+        "link": null
+    },
+    "MFM": {
+        "description": "Modified Frequency Modulation",
+        "link": null
+    },
+    "MH": {
+        "description": "Mail Handler",
+        "link": null
+    },
+    "MHz": {
+        "description": "mégahertz",
+        "link": "https://fr.m.wikipedia.org/wiki/Hertz"
+    },
+    "MI": {
+        "description": "messagerie instantanée",
+        "link": "https://fr.m.wikipedia.org/wiki/Messagerie_instantan%C3%A9e"
+    },
+    "MIC": {
+        "description": "Media Interface Connector",
+        "link": null
+    },
+    "MICR": {
+        "description": "Magnetic Ink Character Recognition",
+        "link": null
+    },
+    "MIDI": {
+        "description": "Musical Instrument Digital Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Musical_Instrument_Digital_Interface"
+    },
+    "MIME": {
+        "description": "Multipurpose Internet Mail Extensions",
+        "link": "https://fr.m.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions"
+    },
+    "MIMO": {
+        "description": "Multiple-input multiple-output",
+        "link": "https://fr.m.wikipedia.org/wiki/MIMO_(t%C3%A9l%C3%A9communications)"
+    },
+    "MIPS": {
+        "description": "Million d'Instructions par Seconde (voir processeur) ou humoristiquement: Meaningless Indication of Process Speed",
+        "link": "https://fr.m.wikipedia.org/wiki/Processeur"
+    },
+    "ML": {
+        "description": "Machine learning",
+        "link": null
+    },
+    "MLPP": {
+        "description": "Multilevel precedence and preemption, voir MLPP (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=MLPP&action=edit&redlink=1"
+    },
+    "MM": {
+        "description": "Memory Management, voir Allocation de mémoire ; pour Windows, voir Gestionnaire de session",
+        "link": "https://fr.m.wikipedia.org/wiki/Allocation_de_m%C3%A9moire"
+    },
+    "MMORPG": {
+        "description": "Jeu en ligne massivement multijoueur (Massive Multiplayer On-line Role Playing Game)",
+        "link": "https://fr.m.wikipedia.org/wiki/Jeu_en_ligne_massivement_multijoueur"
+    },
+    "MMU": {
+        "description": "Memory Management Unit",
+        "link": null
+    },
+    "MMX": {
+        "description": "Multi Media eXtensions",
+        "link": null
+    },
+    "MNG": {
+        "description": "Multiple-image Network Graphics",
+        "link": "https://fr.m.wikipedia.org/wiki/Multiple-image_Network_Graphics"
+    },
+    "Mo": {
+        "description": "mégaoctet ou Magneto-Optical (type de disque)",
+        "link": "https://fr.m.wikipedia.org/wiki/Octet"
+    },
+    "MOA": {
+        "description": "Maîtrise d'ouvrage ou Maître d'ouvrage",
+        "link": "https://fr.m.wikipedia.org/wiki/Ma%C3%AEtrise_d%27ouvrage"
+    },
+    "MOAD": {
+        "description": "Maître d'Ouvrage Délégué (voir Fonctions dans la maîtrise d'ouvrage)",
+        "link": "https://fr.m.wikipedia.org/wiki/Fonctions_dans_la_ma%C3%AEtrise_d%27ouvrage"
+    },
+    "MODEM": {
+        "description": "MOdulator-DEModulator",
+        "link": null
+    },
+    "MOE": {
+        "description": "Maîtrise d'œuvre ou Maître d'œuvre",
+        "link": "https://fr.m.wikipedia.org/wiki/Ma%C3%AEtrise_d%27%C5%93uvre"
+    },
+    "MOF": {
+        "description": "Microsoft Operation Framework",
+        "link": null
+    },
+    "MOP": {
+        "description": "Maintenance Operation Protocol (voir Decnet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Decnet"
+    },
+    "MOTD": {
+        "description": "Message Of The Day",
+        "link": null
+    },
+    "MP3": {
+        "description": "MPEG-1 couche (layer) 3, format de compression audio",
+        "link": "https://fr.m.wikipedia.org/wiki/MPEG-1/2_Audio_Layer_3"
+    },
+    "MPEG": {
+        "description": "Moving Picture Experts Group, groupe de travail de l'ISO ayant produit différents formats de compressions vidéo et audio",
+        "link": "https://fr.m.wikipedia.org/wiki/Moving_Picture_Experts_Group"
+    },
+    "MPP": {
+        "description": "Massive Parallel Processing",
+        "link": null
+    },
+    "MPPC": {
+        "description": "Microsoft PPp Compression, voir PPP\nMPPE : Microsoft PPp Encryption, voir MPPE",
+        "link": "https://fr.m.wikipedia.org/wiki/Point-to-Point_Protocol"
+    },
+    "MR": {
+        "description": "Tête Magnétorésistive",
+        "link": "https://fr.m.wikipedia.org/wiki/T%C3%AAte_MR"
+    },
+    "MRU": {
+        "description": "Most Recently Used",
+        "link": null
+    },
+    "ms": {
+        "description": "milliseconde",
+        "link": "https://fr.m.wikipedia.org/wiki/Milliseconde"
+    },
+    "MS": {
+        "description": "Microsoft\nMS-CHAP : Microsoft CHAP\nMS-DOS : MicroSoft Disk Operating System\nMSF : Microsoft Solution Framework\nMSI: Microsoft Installer\nMSN : MSN\nMSRC : Microsoft Security Response Center",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft"
+    },
+    "msb": {
+        "description": "Most Significant Bit",
+        "link": null
+    },
+    "MSB": {
+        "description": "Most Significant Byte",
+        "link": null
+    },
+    "MSS": {
+        "description": "Maximum Segment Size",
+        "link": "https://fr.m.wikipedia.org/wiki/Maximum_Segment_Size"
+    },
+    "MTA": {
+        "description": "Mail Transfer Agent",
+        "link": "https://fr.m.wikipedia.org/wiki/Mail_Transfer_Agent"
+    },
+    "MTBF": {
+        "description": "Mean time between failures, Temps moyen entre pannes",
+        "link": "https://fr.m.wikipedia.org/wiki/Temps_moyen_entre_pannes"
+    },
+    "MTRR": {
+        "description": "Memory Type Range Register (en), à partir des processeurs Intel P6",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Memory_Type_Range_Register&action=edit&redlink=1"
+    },
+    "MTU": {
+        "description": "Maximum transmission unit",
+        "link": "https://fr.m.wikipedia.org/wiki/Maximum_transmission_unit"
+    },
+    "MUA": {
+        "description": "Mail User Agent",
+        "link": null
+    },
+    "MUD": {
+        "description": "Multi-User Dungeon",
+        "link": null
+    },
+    "Mutex": {
+        "description": "MUTual EXclusion = Exclusion mutuelle, sorte de sémaphore",
+        "link": "https://fr.m.wikipedia.org/wiki/Exclusion_mutuelle"
+    },
+    "MVC": {
+        "description": "Modèle-vue-contrôleur",
+        "link": "https://fr.m.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur"
+    },
+    "MX": {
+        "description": "Mail eXchanger",
+        "link": "https://fr.m.wikipedia.org/wiki/Mail_eXchanger"
+    },
+    "NAB": {
+        "description": "Not A Bug",
+        "link": null
+    },
+    "NAD": {
+        "description": "Network Access Device",
+        "link": null
+    },
+    "NaN": {
+        "description": "Not a Number",
+        "link": "https://fr.m.wikipedia.org/wiki/NaN"
+    },
+    "NAND": {
+        "description": "Not AND, porte ET négative",
+        "link": "https://fr.m.wikipedia.org/wiki/Fonction_NON-ET"
+    },
+    "NAS": {
+        "description": "Network Attached Storage",
+        "link": "https://fr.m.wikipedia.org/wiki/Serveur_de_stockage_en_r%C3%A9seau"
+    },
+    "NAT": {
+        "description": "Network address translation",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_address_translation"
+    },
+    "NCSA": {
+        "description": "National Center for Supercomputing Applications",
+        "link": "https://fr.m.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications"
+    },
+    "NCP": {
+        "description": "L'ancêtre de TCP\nNetwork Control Protocol, un composant de PPP\nNetwork Control Program (IBM), un composant du SNA d'IBM",
+        "link": "https://fr.m.wikipedia.org/wiki/Transmission_Control_Protocol"
+    },
+    "NCQ": {
+        "description": "Native Command Queuing pour les disques durs",
+        "link": "https://fr.m.wikipedia.org/wiki/Native_Command_Queuing"
+    },
+    "NDIS": {
+        "description": "Network Driver Interface Specification",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_Driver_Interface_Specification"
+    },
+    "NDP": {
+        "description": "Neighbor Discovery Protocol : protocole de couche 2 pour IPv6",
+        "link": "https://fr.m.wikipedia.org/wiki/Neighbor_Discovery_Protocol"
+    },
+    "NDS": {
+        "description": "Novell Directory Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Annuaire"
+    },
+    "Netbeui": {
+        "description": "NetBIOS Extended User Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/NetBIOS"
+    },
+    "NFS": {
+        "description": "Network File System\nnfsd : NFS Daemon",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_File_System"
+    },
+    "NGC": {
+        "description": "Nintendo GameCube",
+        "link": "https://fr.m.wikipedia.org/wiki/Nintendo"
+    },
+    "NGSCB": {
+        "description": "Next-generation secure computing base",
+        "link": "https://fr.m.wikipedia.org/wiki/Next-generation_secure_computing_base"
+    },
+    "NIC": {
+        "description": "Network information center\nNetwork Interface Card (carte d'interface réseau)",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_information_center"
+    },
+    "NIDL": {
+        "description": "Network Interface Definition Language",
+        "link": null
+    },
+    "NIS": {
+        "description": "Network Information Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_Information_Service"
+    },
+    "NLS": {
+        "description": "Native Language Support",
+        "link": "https://fr.m.wikipedia.org/wiki/Internationalisation_(informatique)"
+    },
+    "NOR": {
+        "description": "Not OR, porte OU négative",
+        "link": "https://fr.m.wikipedia.org/wiki/Fonction_NON-OU"
+    },
+    "NOS": {
+        "description": "Network Operating System",
+        "link": null
+    },
+    "NS": {
+        "description": "Netscape",
+        "link": "https://fr.m.wikipedia.org/wiki/Netscape_Navigator"
+    },
+    "NSPI": {
+        "description": "Name Service Provider Interface",
+        "link": null
+    },
+    "NT": {
+        "description": "New Technology (dans Windows NT)\nNTBTLOG : NT BooT LOG, voir boot.ini\nNTDS : NT Directory Service, voir Active Directory\nNTFS : New Technology File System\nNTLM : NT Lan Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_NT"
+    },
+    "NTIC": {
+        "description": "Nouvelles Technologies de l'Information et des Communications",
+        "link": "https://fr.m.wikipedia.org/wiki/NTIC"
+    },
+    "NTP": {
+        "description": "Network Time Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Network_Time_Protocol"
+    },
+    "NTSD": {
+        "description": "NT Symbolic Debugger de Microsoft",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft"
+    },
+    "NuBus": {
+        "description": "MacIntosh-II internal bus",
+        "link": "https://fr.m.wikipedia.org/wiki/NuBus"
+    },
+    "NUMA": {
+        "description": "Non Uniform Memory Access ou Non Uniform Memory Architecture",
+        "link": "https://fr.m.wikipedia.org/wiki/Non_Uniform_Memory_Access"
+    },
+    "NVM": {
+        "description": "Non Volatile Memory (NVM Express)",
+        "link": "https://fr.m.wikipedia.org/wiki/NVM_Express"
+    },
+    "NVRAM": {
+        "description": "mémoire RAM non volatile, une sorte de batterie",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_RAM_non_volatile"
+    },
+    "NX": {
+        "description": "Never eXecute",
+        "link": "https://fr.m.wikipedia.org/wiki/NX_Bit"
+    },
+    "OASIS": {
+        "description": "Organization for the Advancement of Structured Information Standards",
+        "link": "https://fr.m.wikipedia.org/wiki/Organization_for_the_Advancement_of_Structured_Information_Standards"
+    },
+    "OAW": {
+        "description": "Office Activation Wizard (voir Microsoft Office)",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft_Office"
+    },
+    "OCL": {
+        "description": "Object Constraint Language (UML)",
+        "link": "https://fr.m.wikipedia.org/wiki/Unified_Modeling_Language"
+    },
+    "OCR": {
+        "description": "Optical Character Recognition (Reconnaissance optique de caractères)",
+        "link": "https://fr.m.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res"
+    },
+    "OCX": {
+        "description": "OLE Control Extension",
+        "link": "https://fr.m.wikipedia.org/wiki/OCX"
+    },
+    "ODBC": {
+        "description": "Open database connectivity",
+        "link": "https://fr.m.wikipedia.org/wiki/Open_database_connectivity"
+    },
+    "OEM": {
+        "description": "Original Equipment Manufacturer",
+        "link": "https://fr.m.wikipedia.org/wiki/Original_Equipment_Manufacturer"
+    },
+    "ODP": {
+        "description": "ODP : OpenDocument Presentation\nODP : Open directory project",
+        "link": "https://fr.m.wikipedia.org/wiki/OpenDocument"
+    },
+    "ODT": {
+        "description": "OpenDocument Text",
+        "link": "https://fr.m.wikipedia.org/wiki/OpenDocument"
+    },
+    "OFDM": {
+        "description": "Orthogonal Frequency Division Multiplexing (Orthogonal Frequency Division Multiplexing)",
+        "link": "https://fr.m.wikipedia.org/wiki/Orthogonal_Frequency_Division_Multiplexing"
+    },
+    "OGC": {
+        "description": "Office for Government and Commerce (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "OGM": {
+        "description": "OGg Media",
+        "link": "https://fr.m.wikipedia.org/wiki/Ogg_Media"
+    },
+    "OHCI": {
+        "description": "Open Host Controller Interface, voir (en) Open Host Controller Interface (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Open_Host_Controller_Interface&action=edit&redlink=1"
+    },
+    "OLA": {
+        "description": "Operational Level Agreement, accord de niveau d'exploitation, voir ITIL",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "OLAP": {
+        "description": "On-Line Analytical Processing",
+        "link": "https://fr.m.wikipedia.org/wiki/OLAP"
+    },
+    "OLE": {
+        "description": "Object Linking and Embedding",
+        "link": "https://fr.m.wikipedia.org/wiki/Object_Linking_and_Embedding"
+    },
+    "OLEDB": {
+        "description": "OLE DataBase",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=OLE_DB&action=edit&redlink=1"
+    },
+    "OLPC": {
+        "description": "One Laptop per Child",
+        "link": "https://fr.m.wikipedia.org/wiki/One_Laptop_per_Child"
+    },
+    "OLTP": {
+        "description": "On-Line Transactional Processing, voir (en) Traitement transactionnel en ligne",
+        "link": "https://fr.m.wikipedia.org/wiki/Traitement_transactionnel_en_ligne"
+    },
+    "OS": {
+        "description": "système d'exploitation (Operating System)",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation"
+    },
+    "OSCAR": {
+        "description": "Online SCanning And Retrieval, voir (en) OSCAR",
+        "link": "https://fr.m.wikipedia.org/wiki/OSCAR"
+    },
+    "OSDN": {
+        "description": "Open Source Development Network",
+        "link": "https://fr.m.wikipedia.org/wiki/Open_Source_Development_Network"
+    },
+    "OSF": {
+        "description": "Open Software Foundation",
+        "link": "https://fr.m.wikipedia.org/wiki/Open_Software_Foundation"
+    },
+    "OSI": {
+        "description": "Modèle OSI (Open Systems Interconnection)",
+        "link": "https://fr.m.wikipedia.org/wiki/Mod%C3%A8le_OSI"
+    },
+    "OSQL": {
+        "description": "Object-oriented Structured Query Language",
+        "link": null
+    },
+    "OT": {
+        "description": "Off-Topic. Equivalent francophone HS, voir (en) On-topic (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=On-topic&action=edit&redlink=1"
+    },
+    "OTRS": {
+        "description": "Open-source Ticket Request System",
+        "link": "https://fr.m.wikipedia.org/wiki/OTRS"
+    },
+    "OTS": {
+        "description": "Off The Shelf. Equivalent francophone : prêt à porter (produit de masse). Littéralement : Disponible sur l'étagère",
+        "link": null
+    },
+    "OWA": {
+        "description": "Outlook Web Access",
+        "link": "https://fr.m.wikipedia.org/wiki/Outlook_Web_Access"
+    },
+    "OWL": {
+        "description": "Web Ontology Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Web_Ontology_Language"
+    },
+    "P2P": {
+        "description": "Peer to Peer (Pair à pair)",
+        "link": "https://fr.m.wikipedia.org/wiki/Pair_%C3%A0_pair"
+    },
+    "P3P": {
+        "description": "Platform for Privacy Preferences",
+        "link": "https://fr.m.wikipedia.org/wiki/P3P"
+    },
+    "PABX": {
+        "description": "Private Automatic Branch eXchange",
+        "link": "https://fr.m.wikipedia.org/wiki/Private_Automatic_Branch_eXchange"
+    },
+    "PAC, PAC700, PACBASE": {
+        "description": "Programmation Automatique Corig",
+        "link": "https://fr.m.wikipedia.org/wiki/PACBASE"
+    },
+    "PAM": {
+        "description": "Pluggable authentication module",
+        "link": "https://fr.m.wikipedia.org/wiki/Pluggable_authentication_module"
+    },
+    "PAO": {
+        "description": "Publication assistée par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/Publication_assist%C3%A9e_par_ordinateur"
+    },
+    "PAP": {
+        "description": "Password Authentication Protocol\napple Printer Access Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Password_Authentication_Protocol"
+    },
+    "ParPort": {
+        "description": "Parallel port",
+        "link": "https://fr.m.wikipedia.org/wiki/Port_mat%C3%A9riel"
+    },
+    "PAT": {
+        "description": "Port Address Translation (traduction d'adresse port); c'est une spécification de la traduction d'adresse réseau.",
+        "link": "https://fr.m.wikipedia.org/wiki/Port_Address_Translation"
+    },
+    "P-ATA": {
+        "description": "Parallel ATA",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Technology_Attachment"
+    },
+    "PC": {
+        "description": "Personal Computer (Ordinateur personnel)",
+        "link": "https://fr.m.wikipedia.org/wiki/Ordinateur_personnel"
+    },
+    "PCA": {
+        "description": "Plan de continuité d'activité",
+        "link": "https://fr.m.wikipedia.org/wiki/Plan_de_continuit%C3%A9_d%27activit%C3%A9_(informatique)"
+    },
+    "PCB": {
+        "description": "Printed Circuit Board, voir Circuit imprimé",
+        "link": "https://fr.m.wikipedia.org/wiki/Circuit_imprim%C3%A9"
+    },
+    "PCI": {
+        "description": "Peripheral component interconnect",
+        "link": "https://fr.m.wikipedia.org/wiki/Peripheral_component_interconnect"
+    },
+    "PCF": {
+        "description": "Portable Compiled Font",
+        "link": "https://fr.m.wikipedia.org/wiki/Portable_Compiled_Font"
+    },
+    "PCL": {
+        "description": "Printer Command Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Printer_Command_Language"
+    },
+    "PCMCIA": {
+        "description": "Personal Computer Memory Card International Association ou, humoristiquement: People Can't Memorize Computer Industry Acronyms",
+        "link": "https://fr.m.wikipedia.org/wiki/PCMCIA"
+    },
+    "PCT": {
+        "description": "Private Communications Technology, voir (en) PCT (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Private_Communications_Technology&action=edit&redlink=1"
+    },
+    "PCTS": {
+        "description": "POSIX Conformance Test Suite, Suite de tests pour la conformité POSIX). Voir (en) Single UNIX Specification",
+        "link": "https://fr.m.wikipedia.org/wiki/POSIX"
+    },
+    "PCX": {
+        "description": "format d'image de ZSoft Corporation PC Paintbrush",
+        "link": "https://fr.m.wikipedia.org/wiki/PCX"
+    },
+    "PDA": {
+        "description": "Assistant personnel (Personal Digital Assistant)",
+        "link": "https://fr.m.wikipedia.org/wiki/Assistant_personnel"
+    },
+    "PDB": {
+        "description": "python debugger",
+        "link": "https://fr.m.wikipedia.org/wiki/Python_(langage)"
+    },
+    "PDC": {
+        "description": "Primary Domain Controller",
+        "link": "https://fr.m.wikipedia.org/wiki/Domaine_(informatique)#Le_concept_de_Domaine_chez_Microsoft"
+    },
+    "PDF": {
+        "description": "Portable document format",
+        "link": "https://fr.m.wikipedia.org/wiki/Portable_document_format"
+    },
+    "Pdksh": {
+        "description": "public domain version of the Korn shell",
+        "link": "https://fr.m.wikipedia.org/wiki/Pdksh"
+    },
+    "PEAP": {
+        "description": "Protected Extensible Authentication Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/PEAP"
+    },
+    "PEBCAK (en)": {
+        "description": "Problem Exists Between Chair and Keyboard (Problème d'Interface Chaise/Clavier), signifie humoristiquement que le problème est lié à l'utilisateur, entre le clavier et la chaise donc",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=PEBCAK&action=edit&redlink=1"
+    },
+    "Perl": {
+        "description": "Practical Extracting and Report Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Perl_(langage)"
+    },
+    "PERT": {
+        "description": "Program Evaluation and Review Technique",
+        "link": "https://fr.m.wikipedia.org/wiki/PERT"
+    },
+    "PGA": {
+        "description": "Professional Graphics Adapter",
+        "link": null
+    },
+    "PGP": {
+        "description": "Pretty Good Privacy",
+        "link": "https://fr.m.wikipedia.org/wiki/Pretty_Good_Privacy"
+    },
+    "PGI": {
+        "description": "Progiciel de gestion intégré",
+        "link": "https://fr.m.wikipedia.org/wiki/Progiciel_de_gestion_int%C3%A9gr%C3%A9"
+    },
+    "PHP": {
+        "description": "PHP: Hypertext Preprocessor (ou ancien nom : Personal Home Page)",
+        "link": "https://fr.m.wikipedia.org/wiki/PHP:_Hypertext_Preprocessor"
+    },
+    "PIDGEN": {
+        "description": "Product IDentifier GENerator (Microsoft)",
+        "link": null
+    },
+    "PII": {
+        "description": "Pentium II",
+        "link": "https://fr.m.wikipedia.org/wiki/Pentium_II"
+    },
+    "PIIX": {
+        "description": "PCI ISA IDE Accelerator (chipset Intel)",
+        "link": "https://fr.m.wikipedia.org/wiki/Peripheral_Component_Interconnect"
+    },
+    "PIM": {
+        "description": "Personal Information Management (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Personal_Information_Management&action=edit&redlink=1"
+    },
+    "PIN": {
+        "description": "Personal Identification Number",
+        "link": null
+    },
+    "PIR": {
+        "description": "Post-Implementation Review (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "PIU": {
+        "description": "Peripheral Interface Unit",
+        "link": null
+    },
+    "PIX": {
+        "description": "Private Internet EXchange de Cisco Systems",
+        "link": "https://fr.m.wikipedia.org/wiki/Cisco_PIX"
+    },
+    "PKCS": {
+        "description": "Public Key Cryptography Standards",
+        "link": "https://fr.m.wikipedia.org/wiki/PKCS"
+    },
+    "PKI": {
+        "description": "Public key infrastructure (Infrastructure à clés publiques)",
+        "link": "https://fr.m.wikipedia.org/wiki/Infrastructure_%C3%A0_cl%C3%A9s_publiques"
+    },
+    "PL/I": {
+        "description": "Programming Language I",
+        "link": "https://fr.m.wikipedia.org/wiki/PL/I"
+    },
+    "PLC": {
+        "description": "Programmable Logic Controller, voir Automate programmable industriel",
+        "link": "https://fr.m.wikipedia.org/wiki/Automate_programmable_industriel"
+    },
+    "PLM": {
+        "description": "Product lifecycle management",
+        "link": "https://fr.m.wikipedia.org/wiki/Product_Lifecycle_Management"
+    },
+    "PMD": {
+        "description": "Physical layer Medium Dependent, voir Fiber Distributed Data Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Fiber_Distributed_Data_Interface"
+    },
+    "PNG": {
+        "description": "Portable network graphics",
+        "link": "https://fr.m.wikipedia.org/wiki/Portable_network_graphics"
+    },
+    "PnP": {
+        "description": "Plug and Play",
+        "link": "https://fr.m.wikipedia.org/wiki/PnP"
+    },
+    "POC": {
+        "description": "Proove of Concept",
+        "link": "https://fr.m.wikipedia.org/wiki/Preuve_de_concept"
+    },
+    "PoE": {
+        "description": "Power over Ethernet",
+        "link": "https://fr.m.wikipedia.org/wiki/Power_over_Ethernet"
+    },
+    "POO": {
+        "description": "Programmation orientée objet",
+        "link": "https://fr.m.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet"
+    },
+    "POP": {
+        "description": "Point of Presence\nPost Office Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Point_of_Presence"
+    },
+    "POP3": {
+        "description": "Post Office Protocol version 3",
+        "link": "https://fr.m.wikipedia.org/wiki/Post_Office_Protocol"
+    },
+    "POSIX": {
+        "description": "Portable Operating System Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/POSIX"
+    },
+    "POST": {
+        "description": "Power-On Self Test, voir BIOS, POST",
+        "link": "https://fr.m.wikipedia.org/wiki/Basic_Input_Output_System"
+    },
+    "PPD": {
+        "description": "PostScript Printer Description",
+        "link": "https://fr.m.wikipedia.org/wiki/PostScript_Printer_Description"
+    },
+    "PPID": {
+        "description": "Parent Process IDentifier",
+        "link": "https://fr.m.wikipedia.org/wiki/Identifiant_de_processus"
+    },
+    "PPP": {
+        "description": "Point-to-Point Protocol RFC 1661[1]pppd : PPP Daemon\nPPPoA : Point to Point Protocol over ATM RFC 2364[2]\nPPPoE : PPP over Ethernet, RFC 2516[3]\nPPPoX : Encapsulation PPP",
+        "link": "https://fr.m.wikipedia.org/wiki/Point-to-Point_Protocol"
+    },
+    "PPTP": {
+        "description": "Point-to-point tunneling protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Point-to-point_tunneling_protocol"
+    },
+    "PRI": {
+        "description": "Primary Rate Interface (ISDN)",
+        "link": "https://fr.m.wikipedia.org/wiki/ISDN"
+    },
+    "PRINCE": {
+        "description": "PRojects IN Controlled Environments (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "printcap": {
+        "description": "printer capability (unix)",
+        "link": "https://fr.m.wikipedia.org/wiki/Imprimante"
+    },
+    "PS": {
+        "description": "PlayStation\nPostScript",
+        "link": "https://fr.m.wikipedia.org/wiki/PlayStation"
+    },
+    "PS2": {
+        "description": "Personal System/2\nPlayStation 2",
+        "link": "https://fr.m.wikipedia.org/wiki/PlayStation_2"
+    },
+    "PSP": {
+        "description": "PlayStation Portable",
+        "link": "https://fr.m.wikipedia.org/wiki/PlayStation_Portable"
+    },
+    "PSTN": {
+        "description": "Public Switched Telephone Network",
+        "link": "https://fr.m.wikipedia.org/wiki/Public_Switched_Telephone_Network"
+    },
+    "PTDR": {
+        "description": "Pété de rire (argot internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_internet"
+    },
+    "PTE": {
+        "description": "Page Table Entries (Microsoft)",
+        "link": null
+    },
+    "PTY": {
+        "description": "Pseudo TeletYpe, pseudo-terminal",
+        "link": "https://fr.m.wikipedia.org/wiki/Terminal_informatique"
+    },
+    "PWD\nPassWorD\npwd (print Workink Directory)": {
+        "description": "commande unix",
+        "link": "https://fr.m.wikipedia.org/wiki/Mot_de_passe"
+    },
+    "PXE": {
+        "description": "Preboot Execution Environment",
+        "link": "https://fr.m.wikipedia.org/wiki/Preboot_Execution_Environment"
+    },
+    "PNR": {
+        "description": "Passenger Name Record",
+        "link": null
+    },
+    "PaaS": {
+        "description": "Platform as a service",
+        "link": "https://fr.m.wikipedia.org/wiki/Platform_as_a_service"
+    },
+    "QAM": {
+        "description": "Quadrature Amplitude Modulation (Modulation d'amplitude en quadrature)",
+        "link": "https://fr.m.wikipedia.org/wiki/Modulation_d%27amplitude_en_quadrature"
+    },
+    "QBE": {
+        "description": "Query by Example",
+        "link": "https://fr.m.wikipedia.org/wiki/Query_by_Example"
+    },
+    "QIC": {
+        "description": "Quarter Inch Cartridge, format de bande magnétique",
+        "link": "https://fr.m.wikipedia.org/wiki/QIC"
+    },
+    "QoS": {
+        "description": "Quality Of Service",
+        "link": "https://fr.m.wikipedia.org/wiki/QoS"
+    },
+    "QPSK": {
+        "description": "Quadrature Phase Shift Keying (Phase-shift keying)",
+        "link": "https://fr.m.wikipedia.org/wiki/Phase-shift_keying"
+    },
+    "QOTD": {
+        "description": "Quote Of The Day, protocole, RFC 865[1]",
+        "link": "https://fr.m.wikipedia.org/wiki/Quote_Of_The_Day"
+    },
+    "QT\nQuickTime, pour regarder des films\nQt": {
+        "description": "« Boîte à outils » par la compagnie Trolltech.",
+        "link": "https://fr.m.wikipedia.org/wiki/QuickTime"
+    },
+    "QVGA": {
+        "description": "Quarter Video Graphics Array",
+        "link": "https://fr.m.wikipedia.org/wiki/QVGA"
+    },
+    "RACF": {
+        "description": "Resource Access Control Facility",
+        "link": "https://fr.m.wikipedia.org/wiki/Resource_Access_Control_Facility"
+    },
+    "RAD": {
+        "description": "Rapid Application Design/Development",
+        "link": "https://fr.m.wikipedia.org/wiki/Rapid_Application_Development"
+    },
+    "RADSL": {
+        "description": "Rate-Adaptive DSL",
+        "link": "https://fr.m.wikipedia.org/wiki/Rate-Adaptive_Digital_Subscriber_Line"
+    },
+    "RAID": {
+        "description": "Redundant Array of Inexpensive Disks",
+        "link": "https://fr.m.wikipedia.org/wiki/RAID_(informatique)"
+    },
+    "RAM": {
+        "description": "Random Access Memory, Mémoire vive",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_vive"
+    },
+    "RAR": {
+        "description": "Roshal ARchive",
+        "link": "https://fr.m.wikipedia.org/wiki/RAR_(format_de_fichier)"
+    },
+    "RAS": {
+        "description": "Remote Access Service (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Remote_Access_Service&action=edit&redlink=1"
+    },
+    "RASDD": {
+        "description": "RASter Device Driver (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Rast%C3%A9risation"
+    },
+    "RC": {
+        "description": "Release Candidate (Microsoft)",
+        "link": null
+    },
+    "RC2, RC6": {
+        "description": "Ron's Code ou Rivest Cipher",
+        "link": "https://fr.m.wikipedia.org/wiki/RC2"
+    },
+    "RCA": {
+        "description": "Root Cause Analysis, voir Analyse de cause racine(fr) / RCA (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/Analyse_de_cause_racine"
+    },
+    "RCP": {
+        "description": "Reality Co-Processor, voir (en) RCP (chip) (en)\nRich Client Plaform",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=RCP_(chip)&action=edit&redlink=1"
+    },
+    "RDB": {
+        "description": "Relational Data Base",
+        "link": "https://fr.m.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle"
+    },
+    "RDBMS": {
+        "description": "RDB Management System",
+        "link": "https://fr.m.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle"
+    },
+    "RDD": {
+        "description": "Resilient Distributed Datasets",
+        "link": null
+    },
+    "RDMA": {
+        "description": "Remote Direct Memory Access (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Remote_Direct_Memory_Access&action=edit&redlink=1"
+    },
+    "RDRAM": {
+        "description": "Rambus DRAM",
+        "link": "https://fr.m.wikipedia.org/wiki/Dynamic_random_access_memory"
+    },
+    "RDF": {
+        "description": "Resource Description Framework",
+        "link": "https://fr.m.wikipedia.org/wiki/Resource_Description_Framework"
+    },
+    "RDN": {
+        "description": "Relative Distinguished Name dans LDAP",
+        "link": "https://fr.m.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol"
+    },
+    "Regex": {
+        "description": "REGular EXPression expression régulière ou rationnelle (le choix entre ces 2 adjectifs est sujet à controverses)",
+        "link": "https://fr.m.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re"
+    },
+    "REST": {
+        "description": "REpresentational State Transfer",
+        "link": "https://fr.m.wikipedia.org/wiki/REST"
+    },
+    "RGB": {
+        "description": "Rouge, vert, bleu (Red Green Blue)",
+        "link": "https://fr.m.wikipedia.org/wiki/Red_Green_Blue"
+    },
+    "RHCE": {
+        "description": "Red Hat Certified Engineer",
+        "link": "https://fr.m.wikipedia.org/wiki/Red_Hat"
+    },
+    "RHS": {
+        "description": "Right-Hand Side",
+        "link": "https://fr.m.wikipedia.org/wiki/RHS"
+    },
+    "RIA": {
+        "description": "Rich Internet Application",
+        "link": null
+    },
+    "RIM": {
+        "description": "Réseau et Informatique Mobiles",
+        "link": null
+    },
+    "RIP": {
+        "description": "Raw and In-Process\nRouting information protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Routing_information_protocol"
+    },
+    "RIS": {
+        "description": "Remote Installation Services, Services d'installation à distance",
+        "link": "https://fr.m.wikipedia.org/wiki/Services_d%27installation_%C3%A0_distance"
+    },
+    "RISC": {
+        "description": "Reduced instruction set computer",
+        "link": "https://fr.m.wikipedia.org/wiki/Reduced_instruction_set_computer"
+    },
+    "RLL": {
+        "description": "Run Length Limited (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Run_Length_Limited&action=edit&redlink=1"
+    },
+    "RMI": {
+        "description": "Remote Method Invocation",
+        "link": "https://fr.m.wikipedia.org/wiki/Remote_method_invocation_(Java)"
+    },
+    "RMS": {
+        "description": "Richard M. Stallman",
+        "link": "https://fr.m.wikipedia.org/wiki/Richard_Stallman"
+    },
+    "RO": {
+        "description": "Read-only",
+        "link": null
+    },
+    "ROFL (ou ROTFL)": {
+        "description": "Rolling On (The) Floor Laughing (écroulé de rire), en français : MdR (Mort de Rire)",
+        "link": null
+    },
+    "R-OLAP": {
+        "description": "Relational OLAP",
+        "link": "https://fr.m.wikipedia.org/wiki/Online_Analytical_Processing"
+    },
+    "ROM": {
+        "description": "Read Only Memory, Mémoire morte",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_morte"
+    },
+    "RPC": {
+        "description": "Remote procedure call",
+        "link": "https://fr.m.wikipedia.org/wiki/Remote_procedure_call"
+    },
+    "RPM": {
+        "description": "Red Hat Package Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/Red_Hat_Package_Manager"
+    },
+    "RNIS": {
+        "description": "Réseau numérique à intégration de services",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_num%C3%A9rique_%C3%A0_int%C3%A9gration_de_services"
+    },
+    "RRAS": {
+        "description": "Routing and Remote Acces Server, voir Remote Access Service (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Remote_Access_Service&action=edit&redlink=1"
+    },
+    "RSA": {
+        "description": "Rivest Shamir Adleman",
+        "link": "https://fr.m.wikipedia.org/wiki/Rivest_Shamir_Adleman"
+    },
+    "RSOP": {
+        "description": "Resultant Set of Policy (ensemble résultant d'une application de plusieurs stratégies)",
+        "link": null
+    },
+    "RSS": {
+        "description": "Rich Site Summary (RSS 0.91)\nRDF Site Summary (RSS 0.90 et 1.0)\nReally Simple Syndication (RSS 2.0)",
+        "link": "https://fr.m.wikipedia.org/wiki/RSS_(format)"
+    },
+    "RSSI": {
+        "description": "Responsable de la sécurité des systèmes d'information",
+        "link": "https://fr.m.wikipedia.org/wiki/Responsable_de_la_s%C3%A9curit%C3%A9_des_syst%C3%A8mes_d%27information"
+    },
+    "RSVP": {
+        "description": "Resource ReSerVation Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Resource_Reservation_Protocol"
+    },
+    "RT": {
+        "description": "Real Time, voir Système temps réel",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_temps_r%C3%A9el"
+    },
+    "RTF": {
+        "description": "Rich Text Format",
+        "link": "https://fr.m.wikipedia.org/wiki/Rich_Text_Format"
+    },
+    "RTFM": {
+        "description": "Read The Fucking Manual : Veuillez lire ce p**** de manuel (ou, pour garder l'acronyme, Reluque Ton Fichu Manuel).",
+        "link": null
+    },
+    "RTFS": {
+        "description": "Read The Fucking Screen : Veuillez lire ce p**** d'écran (ou, pour garder l'acronyme, Reluque Ton Fichu Ecran).",
+        "link": null
+    },
+    "RUP": {
+        "description": "Rational Unified Process",
+        "link": "https://fr.m.wikipedia.org/wiki/Rational_Unified_Process"
+    },
+    "RV": {
+        "description": "Réalité virtuelle",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9alit%C3%A9_virtuelle"
+    },
+    "RW": {
+        "description": "Read/Write",
+        "link": null
+    },
+    "SaaS": {
+        "description": "Software as a Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Logiciel_en_tant_que_service"
+    },
+    "SAM": {
+        "description": "Secure Access Module\nchez Microsoft, cette abréviation peut avoir plusieurs significations :\nSAMple : extensions de fichier pour les fichiers d'exemple : hosts.sam, lmhosts.sam…\nSecurity Account Manager\nSoftware Asset Manager (logiciel d'inventaire)",
+        "link": "https://fr.m.wikipedia.org/wiki/Sample"
+    },
+    "SaMBa": {
+        "description": "mot dérivé de SMB",
+        "link": "https://fr.m.wikipedia.org/wiki/Samba_(informatique)"
+    },
+    "SAMPA": {
+        "description": "Speech Assessment Methods Phonetic Alphabet",
+        "link": "https://fr.m.wikipedia.org/wiki/Speech_Assessment_Methods_Phonetic_Alphabet"
+    },
+    "SAN": {
+        "description": "Storage Area Network",
+        "link": "https://fr.m.wikipedia.org/wiki/Storage_Area_Network"
+    },
+    "SANE": {
+        "description": "Scanner Access Now Easy",
+        "link": "https://fr.m.wikipedia.org/wiki/SANE"
+    },
+    "SATA": {
+        "description": "Serial ATA",
+        "link": "https://fr.m.wikipedia.org/wiki/Serial_ATA"
+    },
+    "SATAN (en)": {
+        "description": "Security Administrators Tool for Analyzing Networks",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Security_Administrator_Tool_for_Analyzing_Networks&action=edit&redlink=1"
+    },
+    "SAX": {
+        "description": "Simple API for XML\nSUSE Automated X",
+        "link": "https://fr.m.wikipedia.org/wiki/Simple_API_for_XML"
+    },
+    "SBP2": {
+        "description": "Serial Bus Protocol, module pour IEEE1394 (FireWire) sur linux",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SBP2&action=edit&redlink=1"
+    },
+    "SCCM": {
+        "description": "System Center Configuration Manager (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/System_Center_Configuration_Manager"
+    },
+    "SCCP": {
+        "description": "Skinny Client Control Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Skinny_Client_Control_Protocol"
+    },
+    "SCM": {
+        "description": "Service Control Manager (Microsoft) : services.exe, arrête et relance les différents services systèmes avec Service Host\nSoftware configuration management (Gestion de configuration logicielle)\nSupply chain management (Gestion de la chaîne logistique)",
+        "link": "https://fr.m.wikipedia.org/wiki/Service_Control_Manager"
+    },
+    "SCO": {
+        "description": "Santa Cruz Operation (Unix)",
+        "link": "https://fr.m.wikipedia.org/wiki/Santa_Cruz_Operation"
+    },
+    "SCP": {
+        "description": "Secure copy",
+        "link": "https://fr.m.wikipedia.org/wiki/Secure_copy"
+    },
+    "SCSI": {
+        "description": "Small computer system Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Small_Computer_System_Interface"
+    },
+    "SCTP": {
+        "description": "Stream Control Transmission Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Stream_Control_Transmission_Protocol"
+    },
+    "SCUMM": {
+        "description": "Script Creation Utility for Maniac Mansion",
+        "link": "https://fr.m.wikipedia.org/wiki/Script_Creation_Utility_for_Maniac_Mansion"
+    },
+    "SD": {
+        "description": "Secure Digital",
+        "link": "https://fr.m.wikipedia.org/wiki/Carte_SD"
+    },
+    "SDAT": {
+        "description": "Stationary-head DAT",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Stationary-head_DAT&action=edit&redlink=1"
+    },
+    "SDDL": {
+        "description": "Security Descriptor Definition Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Security_Descriptor_Definition_Language"
+    },
+    "SDH": {
+        "description": "Synchronous digital hierarchy (Hiérarchie numérique synchrone)",
+        "link": "https://fr.m.wikipedia.org/wiki/Hi%C3%A9rarchie_num%C3%A9rique_synchrone"
+    },
+    "SDI": {
+        "description": "Simple Document Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Single_document_interface"
+    },
+    "SDK": {
+        "description": "Software Developers Kit (Kit de développement",
+        "link": "https://fr.m.wikipedia.org/wiki/Kit_de_d%C3%A9veloppement"
+    },
+    "SDL": {
+        "description": "Simple Declarative Language, voir (en) SDL (en)\nSimple DirectMedia Layer\nSpecification and Description Language",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Simple_Declarative_Language&action=edit&redlink=1"
+    },
+    "SDLC": {
+        "description": "Synchronous Data Link Control",
+        "link": "https://fr.m.wikipedia.org/wiki/Synchronous_Data_Link_Control"
+    },
+    "SDR": {
+        "description": "Single data rate",
+        "link": "https://fr.m.wikipedia.org/wiki/Single_data_rate"
+    },
+    "SDRAM": {
+        "description": "Synchronous Dynamic Random Access Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/SDRAM"
+    },
+    "SDSL": {
+        "description": "Ligne d'abonné numérique à débit symétrique (Symmetric Digital Subscriber Line)",
+        "link": "https://fr.m.wikipedia.org/wiki/SDSL"
+    },
+    "SE": {
+        "description": "système d'exploitation",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation"
+    },
+    "SED": {
+        "description": "Stream EDitor",
+        "link": "https://fr.m.wikipedia.org/wiki/Stream_Editor"
+    },
+    "SELinux": {
+        "description": "Security-Enhanced Linux : module de sécurité pour linux",
+        "link": "https://fr.m.wikipedia.org/wiki/SELinux"
+    },
+    "SEND": {
+        "description": "SEcure Neighbor Discovery protocole IPv6, version sécurisée de NDP",
+        "link": "https://fr.m.wikipedia.org/wiki/Secure_Neighbor_Discovery_Protocol"
+    },
+    "SFC": {
+        "description": "Sequential function chart\nSystem File Checker, vérificateur du système de fichier, voir (en) System File Checker (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/Sequential_function_chart"
+    },
+    "SFTP": {
+        "description": "Secure FTP, le protocole FTP sécurisé par SSH\nShielded and foiled Twisted pairs (Paire SFTP), voir paire torsadée\nSimple File Transfer Protocol, voir (en) Simple File Transfer Protocol (en)\nSSH file transfer protocol, le protocole de transfert de fichier SSH",
+        "link": "https://fr.m.wikipedia.org/wiki/Secure_FTP"
+    },
+    "SGBD": {
+        "description": "Système de gestion de base de données",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es"
+    },
+    "SGBD/R": {
+        "description": "Système de Gestion de Base de Données Relationnelle",
+        "link": "https://fr.m.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle"
+    },
+    "SGDT": {
+        "description": "Store Global Descriptor Table",
+        "link": "https://fr.m.wikipedia.org/wiki/SGDT"
+    },
+    "SGI": {
+        "description": "Silicon Graphics Incorporated\nSGI est aussi un sigle utilisé par File Alteration Monitor sur linux",
+        "link": "https://fr.m.wikipedia.org/wiki/Silicon_Graphics"
+    },
+    "SGML": {
+        "description": "Standard Generalized Markup Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Standard_Generalized_Markup_Language"
+    },
+    "SH": {
+        "description": "Shell",
+        "link": "https://fr.m.wikipedia.org/wiki/Shell_(informatique)"
+    },
+    "SHA-1": {
+        "description": "Secure Hash Algorithm",
+        "link": "https://fr.m.wikipedia.org/wiki/SHA-1"
+    },
+    "SI": {
+        "description": "Système d'information",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_d%27information"
+    },
+    "SID": {
+        "description": "Windows Security Identifier",
+        "link": "https://fr.m.wikipedia.org/wiki/Security_Identifier"
+    },
+    "SIG": {
+        "description": "Système d'information géographique",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique"
+    },
+    "SLDT": {
+        "description": "Store Local Descriptor Table, voir Store Local Descriptor Table",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SLDT&action=edit&redlink=1"
+    },
+    "SIDT": {
+        "description": "Store Interrupt Descriptor Table, voir SGDT/SIDT",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SIDT&action=edit&redlink=1"
+    },
+    "SIMD": {
+        "description": "Single Instruction Multiple Data",
+        "link": "https://fr.m.wikipedia.org/wiki/Single_Instruction_Multiple_Data"
+    },
+    "SIMM": {
+        "description": "Single Inline Memory Module",
+        "link": "https://fr.m.wikipedia.org/wiki/Single_Inline_Memory_Module"
+    },
+    "SIP": {
+        "description": "Service Improvement Program (ITIL)\nSession Initiation Protocol\nSingle Inline Package",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Service_Improvement_Program&action=edit&redlink=1"
+    },
+    "SLA": {
+        "description": "Service Level Agreement, accord de niveau de service, dans ITIL.\nSubnet Local Aggregator, pour les informations de localisation dans IPv6, voir (en) RFC 3587[1] ; cet acronyme est parfois aussi retranscrit sous la forme Site-Level Aggregator",
+        "link": "https://fr.m.wikipedia.org/wiki/Service_Level_Agreement"
+    },
+    "slapd": {
+        "description": "Stand alone LdAP Daemon",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Slapd&action=edit&redlink=1"
+    },
+    "SLIP": {
+        "description": "Serial Line Internet Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Serial_Line_Internet_Protocol"
+    },
+    "SLM": {
+        "description": "Service Level Management (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/Service-level_management"
+    },
+    "slurpd": {
+        "description": "Stand alone Ldap Update Replication Daemon",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Slurpd&action=edit&redlink=1"
+    },
+    "SMAP": {
+        "description": "Simple Mail Access Protocol (en) (messagerie)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Simple_Mail_Access_Protocol&action=edit&redlink=1"
+    },
+    "SMART": {
+        "description": "Self-Monitoring, Analysis and Reporting Technology",
+        "link": "https://fr.m.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology"
+    },
+    "SMB": {
+        "description": "Server message block",
+        "link": "https://fr.m.wikipedia.org/wiki/Server_Message_Block"
+    },
+    "SMBus": {
+        "description": "System Management Bus",
+        "link": "https://fr.m.wikipedia.org/wiki/System_Management_Bus"
+    },
+    "SMIL": {
+        "description": "Synchronized Multimedia Integration Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Synchronized_Multimedia_Integration_Language"
+    },
+    "SMIME": {
+        "description": "Secure MIME",
+        "link": "https://fr.m.wikipedia.org/wiki/SMIME"
+    },
+    "SMP": {
+        "description": "Symmetric multiprocessing",
+        "link": "https://fr.m.wikipedia.org/wiki/Symmetric_multiprocessing"
+    },
+    "SMS": {
+        "description": "Short message service, le service de messages courts des téléphones portables\nSystems Management Server (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Short_message_service"
+    },
+    "SMSS": {
+        "description": "Session Manager Subsystem (Gestionnaire de session) (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Session_Manager_Subsystem"
+    },
+    "SMTP": {
+        "description": "Simple Mail Transfer Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol"
+    },
+    "SNMP": {
+        "description": "Simple Network Management Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Simple_Network_Management_Protocol"
+    },
+    "SNUSP": {
+        "description": "SNUSP's Not Unix, but Structured PATH",
+        "link": "https://fr.m.wikipedia.org/wiki/SNUSP"
+    },
+    "SO": {
+        "description": "Shared Object",
+        "link": "https://fr.m.wikipedia.org/wiki/Shared_Object"
+    },
+    "SOA": {
+        "description": "Service Oriented Architecture (Architecture orientée services)\nStart Of Authority de DNS",
+        "link": "https://fr.m.wikipedia.org/wiki/Architecture_orient%C3%A9e_services"
+    },
+    "SOAP": {
+        "description": "Simple object access protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/SOAP"
+    },
+    "SoC": {
+        "description": "System on Chip, système sur une puce",
+        "link": "https://fr.m.wikipedia.org/wiki/SoC"
+    },
+    "SOM": {
+        "description": "Schéma Object Model (XML), modèle objet du schéma d'annuaire",
+        "link": "https://fr.m.wikipedia.org/wiki/Sch%C3%A9ma_(informatique)#Sch%C3%A9ma_dans_les_logiciels_d'annuaires"
+    },
+    "SP": {
+        "description": "Service Provider (Fournisseur d'accès)\nService Pack\nSupport Pack\nStream processor, ou processeur de flux.",
+        "link": "https://fr.m.wikipedia.org/wiki/Fournisseur_d%27acc%C3%A8s"
+    },
+    "SPAM": {
+        "description": "Send Phenomenal Amounts of Mail (apocryphe)",
+        "link": "https://fr.m.wikipedia.org/wiki/Spam"
+    },
+    "SPAP": {
+        "description": "Shiva PAP",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SPAP&action=edit&redlink=1"
+    },
+    "SPARC": {
+        "description": "Scalable Processor ARChitecture",
+        "link": "https://fr.m.wikipedia.org/wiki/Architecture_SPARC"
+    },
+    "SPDIP": {
+        "description": "Shrink Plastic Dual Inline Package",
+        "link": "https://fr.m.wikipedia.org/wiki/Shrink_Plastic_Dual_Inline_Package"
+    },
+    "SPF": {
+        "description": "Sender Policy Framework",
+        "link": "https://fr.m.wikipedia.org/wiki/Sender_Policy_Framework"
+    },
+    "SPM": {
+        "description": "Smart Package Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/Smart_Package_Manager"
+    },
+    "SPOC": {
+        "description": "Single Point Of Contact Point de Contact Unique (ITIL)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Point_de_Contact_Unique&action=edit&redlink=1"
+    },
+    "SPOF": {
+        "description": "Single point of failure (ITIL)",
+        "link": "https://fr.m.wikipedia.org/wiki/Single_point_of_failure"
+    },
+    "SPKM": {
+        "description": "Simple Public-Key Mechanism, voir (en) RFC 2025[2]",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SPKM&action=edit&redlink=1"
+    },
+    "SPS": {
+        "description": "Service Provider System",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Service_Provider_System&action=edit&redlink=1"
+    },
+    "SPT": {
+        "description": "System Page Table",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=System_Page_Table&action=edit&redlink=1"
+    },
+    "SPX": {
+        "description": "Sequenced Packet Exchange de Novell",
+        "link": "https://fr.m.wikipedia.org/wiki/Sequenced_Packet_Exchange"
+    },
+    "SQL": {
+        "description": "Structured query language",
+        "link": "https://fr.m.wikipedia.org/wiki/Structured_Query_Language"
+    },
+    "SRAM": {
+        "description": "Shadow Random Access Memory\nStatic Random Access Memory",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_vive"
+    },
+    "SRP": {
+        "description": "Security Rollup Package (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Security_Rollup_Package&action=edit&redlink=1"
+    },
+    "SSA": {
+        "description": "Serial Storage Architecture",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Serial_Storage_Architecture&action=edit&redlink=1"
+    },
+    "SSDL": {
+        "description": "SOAP Service Description Language",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=SSDL&action=edit&redlink=1"
+    },
+    "SSDP": {
+        "description": "Simple Service Discovery Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Simple_Service_Discovery_Protocol"
+    },
+    "SSDT": {
+        "description": "System Service Dispatch Table (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/System_Service_Dispatch_Table"
+    },
+    "SSH": {
+        "description": "Secure Shell",
+        "link": "https://fr.m.wikipedia.org/wiki/Secure_Shell"
+    },
+    "SSL": {
+        "description": "Secure socket layer",
+        "link": "https://fr.m.wikipedia.org/wiki/Transport_Layer_Security"
+    },
+    "SSO": {
+        "description": "Single Sign-On (« authentification unique » en français)",
+        "link": "https://fr.m.wikipedia.org/wiki/Authentification_unique"
+    },
+    "SSP": {
+        "description": "Storage service provider = Storage service provider (en)\nSecurity Support Provider (Windows) = fournisseur de sécurité sous Windows",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Soci%C3%A9t%C3%A9_fournisseur_de_stockage&action=edit&redlink=1"
+    },
+    "SSPI": {
+        "description": "Security Support Provider Interface = API pour Security Support Provider (Windows)",
+        "link": "https://fr.m.wikipedia.org/wiki/Security_Support_Provider_Interface"
+    },
+    "SSTIC": {
+        "description": "Symposium sur la sécurité des technologies de l'information et des communications",
+        "link": "https://fr.m.wikipedia.org/wiki/Symposium_sur_la_s%C3%A9curit%C3%A9_des_technologies_de_l%27information_et_des_communications"
+    },
+    "STCP": {
+        "description": "Scalable TCP (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Scalable_TCP&action=edit&redlink=1"
+    },
+    "STIC": {
+        "description": "Sciences et technologies de l'information et de la communication",
+        "link": "https://fr.m.wikipedia.org/wiki/Sciences_de_l%27information_et_de_la_communication"
+    },
+    "STFU": {
+        "description": "Façon vulgaire de demander le silence (Shut The Fucking Up, traduisible par \"Ferme ta putain de gueule\") Argot internet",
+        "link": "https://fr.m.wikipedia.org/wiki/STFU"
+    },
+    "STFW": {
+        "description": "Recherche sur ce putain de Web (Search The Fucking Web) Argot internet",
+        "link": "https://fr.m.wikipedia.org/wiki/Argot_internet"
+    },
+    "STP": {
+        "description": "Shielded Twisted Pair (Paire torsadée)",
+        "link": "https://fr.m.wikipedia.org/wiki/Paire_torsad%C3%A9e"
+    },
+    "SUID": {
+        "description": "Set User IDentifier (Unix)",
+        "link": "https://fr.m.wikipedia.org/wiki/User_identifier"
+    },
+    "SUS": {
+        "description": "Software Update Services (service de mises à jour logicielles) Microsoft\nSingle UNIX Specification",
+        "link": "https://fr.m.wikipedia.org/wiki/Software_Update_Services"
+    },
+    "SuSE": {
+        "description": "Software- und SystemEntwicklung, distribution linux d'origine allemande",
+        "link": "https://fr.m.wikipedia.org/wiki/SuSE"
+    },
+    "SVCHOST": {
+        "description": "SerViCe HOST (Microsoft)",
+        "link": "https://fr.m.wikipedia.org/wiki/Service_Host"
+    },
+    "SVG": {
+        "description": "Scalable vector graphics",
+        "link": "https://fr.m.wikipedia.org/wiki/Scalable_Vector_Graphics"
+    },
+    "SVGA": {
+        "description": "Super Video Graphics Array",
+        "link": "https://fr.m.wikipedia.org/wiki/SVGA"
+    },
+    "SWF": {
+        "description": "ShockWave File",
+        "link": "https://fr.m.wikipedia.org/wiki/Adobe_Shockwave"
+    },
+    "SWT": {
+        "description": "Standard Widget Toolkit",
+        "link": "https://fr.m.wikipedia.org/wiki/Standard_Widget_Toolkit"
+    },
+    "T1": {
+        "description": "Ligne louée dont le taux de transfert atteint 1,45 Mb/s",
+        "link": "https://fr.m.wikipedia.org/wiki/T-carrier#T1"
+    },
+    "T3": {
+        "description": "Ligne louée dont le taux de transfert atteint 45 Mb/s",
+        "link": "https://fr.m.wikipedia.org/wiki/T-carrier"
+    },
+    "TCL": {
+        "description": "Tool Command Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Tool_Command_Language"
+    },
+    "TCP": {
+        "description": "Transmission control protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Transmission_control_protocol"
+    },
+    "TCPA": {
+        "description": "Trusted Computing Platform Alliance (actuel Trusted Computing Group)",
+        "link": "https://fr.m.wikipedia.org/wiki/Trusted_Computing_Group"
+    },
+    "TCP/IP": {
+        "description": "Transmission Protocol/Internet Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Suite_des_protocoles_internet"
+    },
+    "TCQ": {
+        "description": "Tagged Command Queuing",
+        "link": null
+    },
+    "TDS": {
+        "description": "(en) Tabular Data Stream (en) est le nom d'un protocole utilisé entre des serveurs de base de données\nTDS : en France, Traitement de Données Sociales, de 1986 à 2005 ; depuis début 2006, ce terme a été remplacé par DADS-U (Déclaration Automatisée des Données Sociales Unifiées)\nTDS : Transaction Driven Subsystem est un système transactionnel sur GCOS 7 de Bull",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Tabular_Data_Stream&action=edit&redlink=1"
+    },
+    "TIC": {
+        "description": "Technologies de l'information et de la communication",
+        "link": "https://fr.m.wikipedia.org/wiki/Technologies_de_l%27information_et_de_la_communication"
+    },
+    "TIFF": {
+        "description": "Tagged Image File Format est un format d'image",
+        "link": "https://fr.m.wikipedia.org/wiki/Tagged_Image_File_Format"
+    },
+    "TF": {
+        "description": "TuxFamily",
+        "link": "https://fr.m.wikipedia.org/wiki/TuxFamily"
+    },
+    "TFT": {
+        "description": "Thin-film transistor, une des technologies d'écran à cristaux liquides (LCD)",
+        "link": "https://fr.m.wikipedia.org/wiki/Thin-film_transistor"
+    },
+    "TIGA": {
+        "description": "Texas Instrument Graphics Architecture, voir (en) TIGA (en)",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Texas_Instruments_Graphics_Architecture&action=edit&redlink=1"
+    },
+    "TIP": {
+        "description": "alternate user Test Input Processor, voir Microsoft Office",
+        "link": "https://fr.m.wikipedia.org/wiki/Microsoft_Office"
+    },
+    "TMA": {
+        "description": "Tierce maintenance applicative",
+        "link": "https://fr.m.wikipedia.org/wiki/Tierce_maintenance_applicative"
+    },
+    "TMPROXY": {
+        "description": "Trend Micro PROXY, voir (en) PC-cillin (en) de Trend Micro",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=PC-cillin&action=edit&redlink=1"
+    },
+    "TPC": {
+        "description": "Transparent Processing Performance Council",
+        "link": "https://fr.m.wikipedia.orghttp://www.tpc.org"
+    },
+    "TR": {
+        "description": "Temps réel",
+        "link": "https://fr.m.wikipedia.org/wiki/Syst%C3%A8me_temps_r%C3%A9el"
+    },
+    "TSD": {
+        "description": "Thread-Specific Data (voir Thread Local Storage).",
+        "link": "https://fr.m.wikipedia.org/wiki/TSD"
+    },
+    "TSO": {
+        "description": "Time Sharing Option - Interface utilisateur du système d'exploitation z/OS ou/et MVS",
+        "link": "https://fr.m.wikipedia.org/wiki/Time_Sharing_Option"
+    },
+    "TSR (programme)": {
+        "description": "Terminate and Stay Resident (programme résident)",
+        "link": null
+    },
+    "TSS": {
+        "description": "Time Sharing System - Système interactif sur système GCOS",
+        "link": "https://fr.m.wikipedia.org/wiki/General_Comprehensive_Operating_System"
+    },
+    "TTL": {
+        "description": "Time-To-Live",
+        "link": "https://fr.m.wikipedia.org/wiki/Time-To-Live"
+    },
+    "TTW": {
+        "description": "Through The Web (au moyen du Web)",
+        "link": "https://fr.m.wikipedia.org/wiki/Web"
+    },
+    "TTY": {
+        "description": "Text TeletYpe (terminal ou console)",
+        "link": "https://fr.m.wikipedia.org/wiki/T%C3%A9l%C3%A9type"
+    },
+    "TWAIN": {
+        "description": "API contrôle de scanner de documents ou appareil photo numérique",
+        "link": "https://fr.m.wikipedia.org/wiki/TWAIN"
+    },
+    "UAL": {
+        "description": "Unité Arithmétique et Logique",
+        "link": "https://fr.m.wikipedia.org/wiki/Unit%C3%A9_arithm%C3%A9tique_et_logique"
+    },
+    "UC\nUnité Centrale\nUnderpinning Contract": {
+        "description": "dans la terminologie ITIL, il s'agit des contrats avec les sous-traitants",
+        "link": "https://fr.m.wikipedia.org/wiki/ITIL"
+    },
+    "UDF": {
+        "description": "Universal Disk Format",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_Disk_Format"
+    },
+    "UDMA": {
+        "description": "Ultra Direct Memory Access, voir Advanced Technology Attachment",
+        "link": "https://fr.m.wikipedia.org/wiki/Advanced_Technology_Attachment"
+    },
+    "UDP": {
+        "description": "User datagram protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/User_datagram_protocol"
+    },
+    "UEFI": {
+        "description": "Unified Extensible Firmware Interface",
+        "link": "https://fr.m.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface"
+    },
+    "UEM": {
+        "description": "Gestion unifiée des terminaux (Unified Endpoint Management) (en lien avec l'Internet des objets)",
+        "link": "https://fr.m.wikipedia.org/wiki/Internet_des_objets"
+    },
+    "UHCI": {
+        "description": "Universal HCI (Host Controller Interface), la version 1.x d'USB",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_Serial_Bus"
+    },
+    "UMB": {
+        "description": "Upper Memory Block (bloc de mémoire supérieure)",
+        "link": null
+    },
+    "UML": {
+        "description": "Unified modeling language",
+        "link": "https://fr.m.wikipedia.org/wiki/Unified_modeling_language"
+    },
+    "UMTS": {
+        "description": "Universal mobile telecommunications system",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_mobile_telecommunications_system"
+    },
+    "UO": {
+        "description": "Unité organisationnelle (dans Active Directory)",
+        "link": "https://fr.m.wikipedia.org/wiki/Unit%C3%A9_organisationnelle"
+    },
+    "UP": {
+        "description": "Unified process",
+        "link": null
+    },
+    "UPN": {
+        "description": "User Principal Name dans LDAP",
+        "link": "https://fr.m.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol"
+    },
+    "UPNP": {
+        "description": "Universal Plug and Play",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_Plug_and_Play"
+    },
+    "URANDOM": {
+        "description": "Unlimited Random",
+        "link": null
+    },
+    "URI": {
+        "description": "Identifiant uniformisé de ressource (Uniform Resource Identifier)",
+        "link": "https://fr.m.wikipedia.org/wiki/Identifiant_uniformis%C3%A9_de_ressource"
+    },
+    "URL": {
+        "description": "Repère uniforme de ressource (Uniform Resource Locator)",
+        "link": "https://fr.m.wikipedia.org/wiki/Rep%C3%A8re_uniforme_de_ressource"
+    },
+    "URN": {
+        "description": "Nom uniformisé de ressource (Uniform Resource Name)",
+        "link": "https://fr.m.wikipedia.org/wiki/Nom_uniformis%C3%A9_de_ressource"
+    },
+    "UPS": {
+        "description": "Uninterruptible Power Supply",
+        "link": "https://fr.m.wikipedia.org/wiki/Alimentation_sans_interruption"
+    },
+    "USB": {
+        "description": "Universal serial bus",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_serial_bus"
+    },
+    "UTF-8": {
+        "description": "Unicode Transformation Format 8 bits",
+        "link": "https://fr.m.wikipedia.org/wiki/UTF-8"
+    },
+    "UTF-16": {
+        "description": "Unicode Transformation Format 16 bits",
+        "link": "https://fr.m.wikipedia.org/wiki/UTF-16"
+    },
+    "UTF-32": {
+        "description": "Unicode Transformation Format 32 bits",
+        "link": "https://fr.m.wikipedia.org/wiki/UTF-32"
+    },
+    "UTP": {
+        "description": "Paire torsadée (Unshielded Twisted Pair)",
+        "link": "https://fr.m.wikipedia.org/wiki/Paire_torsad%C3%A9e"
+    },
+    "UUCP": {
+        "description": "Unix-to-Unix file Copy Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Unix_to_Unix_Copy_Protocol"
+    },
+    "UUID": {
+        "description": "Universal Unique Identifier",
+        "link": "https://fr.m.wikipedia.org/wiki/Universal_Unique_Identifier"
+    },
+    "VABF": {
+        "description": "validation (ou vérification) d'aptitude au bon fonctionnement (recette)",
+        "link": "https://fr.m.wikipedia.org/wiki/Recette_(informatique)"
+    },
+    "VAD": {
+        "description": "Virtual Address Description (Microsoft)\nVirtual Auxiliary Device",
+        "link": null
+    },
+    "VAO": {
+        "description": "Vigilance Assistée par Ordinateur (lutte contre le blanchiment)",
+        "link": "https://fr.m.wikipedia.org/wiki/Blanchiment_d%27argent"
+    },
+    "VAX": {
+        "description": "Virtual Address eXtension, voir Adressage mémoire",
+        "link": "https://fr.m.wikipedia.org/wiki/Adressage_m%C3%A9moire"
+    },
+    "VAR": {
+        "description": "Value Added Reseller\nVARiable",
+        "link": "https://fr.m.wikipedia.org/wiki/Variable_(informatique)"
+    },
+    "VB": {
+        "description": "Visual Basic",
+        "link": "https://fr.m.wikipedia.org/wiki/Visual_Basic"
+    },
+    "VDD": {
+        "description": "Voisin Du Dessus (Dans les forums)",
+        "link": null
+    },
+    "VESA": {
+        "description": "Video Electronics Standards Association",
+        "link": "https://fr.m.wikipedia.org/wiki/Video_Electronics_Standards_Association"
+    },
+    "VG": {
+        "description": "Volume Group (Gestion par volumes logiques)",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_par_volumes_logiques"
+    },
+    "VGA": {
+        "description": "Video graphics array",
+        "link": "https://fr.m.wikipedia.org/wiki/Video_graphics_array"
+    },
+    "VGDA": {
+        "description": "Volume Group Descriptor Area (Gestion par volumes logiques)",
+        "link": "https://fr.m.wikipedia.org/wiki/Gestion_par_volumes_logiques"
+    },
+    "VLAN": {
+        "description": "Virtual LAN",
+        "link": "https://fr.m.wikipedia.org/wiki/VLAN"
+    },
+    "VLC": {
+        "description": "Video Lan Client (voir VLC media player)",
+        "link": "https://fr.m.wikipedia.org/wiki/VLC_media_player"
+    },
+    "VLIW": {
+        "description": "Very Long Instruction Word",
+        "link": "https://fr.m.wikipedia.org/wiki/VLIW"
+    },
+    "VLSM": {
+        "description": "Variable Length Subnet Mask, voir CIDR",
+        "link": "https://fr.m.wikipedia.org/wiki/Adresse_IP#Agr%C3%A9gation_des_adresses"
+    },
+    "VM": {
+        "description": "Virtual Machine (Machine virtuelle)",
+        "link": "https://fr.m.wikipedia.org/wiki/Machine_virtuelle"
+    },
+    "VM86": {
+        "description": "Virtual Mode 8086 (Mode virtuel 8086)",
+        "link": "https://fr.m.wikipedia.org/wiki/Mode_virtuel_8086"
+    },
+    "VMM": {
+        "description": "Virtual Memory Management, voir Mémoire virtuelle",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_virtuelle"
+    },
+    "VoD": {
+        "description": "Video on Demand (vidéo à la demande)",
+        "link": "https://fr.m.wikipedia.org/wiki/Vid%C3%A9o_%C3%A0_la_demande"
+    },
+    "VoIP": {
+        "description": "Voice over IP",
+        "link": "https://fr.m.wikipedia.org/wiki/Voix_sur_r%C3%A9seau_IP"
+    },
+    "VPB": {
+        "description": "Volume Parameter Block (voir NTFS)",
+        "link": "https://fr.m.wikipedia.org/wiki/New_Technology_File_System"
+    },
+    "VPC": {
+        "description": "Virtual Private Cloud (voir Nuage Privé Virtuel)",
+        "link": "https://fr.m.wikipedia.org/wiki/Nuage_Priv%C3%A9_Virtuel"
+    },
+    "VPN": {
+        "description": "Virtual Private Network, Réseau privé virtuel",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel"
+    },
+    "VR": {
+        "description": "Virtual Reality (Réalité virtuelle)",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9alit%C3%A9_virtuelle"
+    },
+    "VRAM": {
+        "description": "Video RAM",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_vid%C3%A9o"
+    },
+    "VRML": {
+        "description": "Virtual Reality Markup Language ou Virtual Reality Modeling Language",
+        "link": "https://fr.m.wikipedia.org/wiki/VRML"
+    },
+    "VTAM": {
+        "description": "Virtual Telecommunications Access Method",
+        "link": "https://fr.m.wikipedia.org/wiki/Virtual_Terminal_Access_Method"
+    },
+    "W3": {
+        "description": "World Wide Web",
+        "link": "https://fr.m.wikipedia.org/wiki/World_Wide_Web"
+    },
+    "W3C": {
+        "description": "World Wide Web Consortium",
+        "link": "https://fr.m.wikipedia.org/wiki/World_Wide_Web_Consortium"
+    },
+    "WAF": {
+        "description": "Web Application Firewall",
+        "link": "https://fr.m.wikipedia.org/w/index.php?title=Pare-feu_d%27applications_Web&action=edit&redlink=1"
+    },
+    "W3m": {
+        "description": "WWW-to-miru, navigateur web en mode texte",
+        "link": "https://fr.m.wikipedia.org/wiki/W3m"
+    },
+    "WAMP": {
+        "description": "Windows Apache MySQL, P (pour PHP ou Perl ou Python)",
+        "link": "https://fr.m.wikipedia.org/wiki/WAMP"
+    },
+    "WAN": {
+        "description": "Wide area network",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_%C3%A9tendu"
+    },
+    "WAP": {
+        "description": "Wireless application protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Wireless_application_protocol"
+    },
+    "WASP": {
+        "description": "Wireless Application Service Provider",
+        "link": "https://fr.m.wikipedia.org/wiki/R%C3%A9seau_sans_fil"
+    },
+    "WAV": {
+        "description": "Waveform Audio File Format",
+        "link": "https://fr.m.wikipedia.org/wiki/Waveform_Audio_File_Format"
+    },
+    "WBEM": {
+        "description": "Web Base Enterprise Management (Microsoft)",
+        "link": null
+    },
+    "WBMP": {
+        "description": "Wap BitMaP, format d'image pour les téléphones portables",
+        "link": "https://fr.m.wikipedia.org/wiki/Wireless_Application_Protocol_Bitmap_Format"
+    },
+    "WCF": {
+        "description": "Windows Communication Foundation de .NET 3.0",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Communication_Foundation"
+    },
+    "WDM": {
+        "description": "Windows Driver Model",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Driver_Model"
+    },
+    "WDS": {
+        "description": "Wireless Distribution System",
+        "link": "https://fr.m.wikipedia.org/wiki/Wireless_Distribution_System"
+    },
+    "WEP": {
+        "description": "Wired Equivalent Privacy",
+        "link": "https://fr.m.wikipedia.org/wiki/Wired_Equivalent_Privacy"
+    },
+    "WFP de Microsoft": {
+        "description": "Windows File Protection, sur Windows 2003 et XP, le prédécesseur du WRP de Windows Vista\nWindows Feedback Platform ou Windows Feedback Panel",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Vista"
+    },
+    "WHQL": {
+        "description": "Windows Hardware Quality Labs",
+        "link": "https://fr.m.wikipedia.org/wiki/WHQL"
+    },
+    "Wi-Fi": {
+        "description": "Norme de communication sans fil (WIreless FIdelity)",
+        "link": "https://fr.m.wikipedia.org/wiki/Wi-Fi"
+    },
+    "WinHEC": {
+        "description": "Windows Hardware Engineering Conference",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Hardware_Engineering_Conference"
+    },
+    "WLM": {
+        "description": "Windows Live Messenger (anciennement MSN Messenger) ou Windows Live Hotmail",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Live_Messenger"
+    },
+    "WINS": {
+        "description": "Windows Internet Naming Service",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Internet_Naming_Service"
+    },
+    "WMA": {
+        "description": "Windows Media Audio, format de compression audio propriétaire développé par Microsoft",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Media_Audio"
+    },
+    "WMF": {
+        "description": "Windows Metafile",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Metafile"
+    },
+    "WMI": {
+        "description": "Microsoft : Windows Management Instrumentation, voir WMI\nPour X Window System : Window Manager Improved, un Window manager allégé, datant de 1993, voir (en) WMI (en)",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Management_Instrumentation"
+    },
+    "WMV": {
+        "description": "Windows Media Video",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Media_Video"
+    },
+    "WORM": {
+        "description": "Write Once Read Many",
+        "link": null
+    },
+    "WP\nWrite Protect (bit)": {
+        "description": "Programmation sur processeur\nWrite Protected : sur une disquette ou une bande ou un disque",
+        "link": null
+    },
+    "WPA\nWindows Product Administration\nWPA": {
+        "description": "Wi-Fi Protected Access",
+        "link": "https://fr.m.wikipedia.org/wiki/Wi-Fi_Protected_Access"
+    },
+    "WRP": {
+        "description": "Windows Resource Protection : voir Windows Vista#Nouveautés secondaires",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Vista#Nouveaut%C3%A9s_secondaires"
+    },
+    "WSCI": {
+        "description": "Web Services Choregraphy Interface (voir orchestration dans Architecture orientée services#Les protocoles et les normes",
+        "link": "https://fr.m.wikipedia.org/wiki/Architecture_orient%C3%A9e_services#Les_protocoles_et_les_normes"
+    },
+    "WSFL": {
+        "description": "Web Services Flow Language d'IBM : voir orchestration dans Architecture orientée services#Les protocoles et les normes",
+        "link": "https://fr.m.wikipedia.org/wiki/International_Business_Machines"
+    },
+    "WSOA": {
+        "description": "WebService Oriented Architecture (une implémentation de l'Architecture orientée services)",
+        "link": "https://fr.m.wikipedia.org/wiki/Architecture_orient%C3%A9e_services"
+    },
+    "WSUS": {
+        "description": "Windows Server Update Services (Microsoft), voir SUS de Microsoft, Software Update Services",
+        "link": "https://fr.m.wikipedia.org/wiki/Software_Update_Services"
+    },
+    "WWF": {
+        "description": "Windows Workflow Foundation",
+        "link": "https://fr.m.wikipedia.org/wiki/Windows_Workflow_Foundation"
+    },
+    "WWW": {
+        "description": "World Wide Web (voir Internet)",
+        "link": "https://fr.m.wikipedia.org/wiki/World_Wide_Web"
+    },
+    "WYSIWYG": {
+        "description": "What you see is what you get",
+        "link": "https://fr.m.wikipedia.org/wiki/What_you_see_is_what_you_get"
+    },
+    "WYSIWYM": {
+        "description": "What you see is what you mean",
+        "link": "https://fr.m.wikipedia.org/wiki/What_you_see_is_what_you_mean"
+    },
+    "X": {
+        "description": "X Window System",
+        "link": "https://fr.m.wikipedia.org/wiki/X_Window_System"
+    },
+    "X11": {
+        "description": "X Window System version 11",
+        "link": "https://fr.m.wikipedia.org/wiki/X_Window_System"
+    },
+    "X11R6": {
+        "description": "X Window System version 11 release 6",
+        "link": "https://fr.m.wikipedia.org/wiki/X_Window_System"
+    },
+    "XAML": {
+        "description": "eXtensible Application Markup Language",
+        "link": "https://fr.m.wikipedia.org/wiki/XAML"
+    },
+    "XAMPP": {
+        "description": "X Apache MySQL Perl PHP",
+        "link": "https://fr.m.wikipedia.org/wiki/XAMPP"
+    },
+    "XAO": {
+        "description": "X Assisté par ordinateur",
+        "link": "https://fr.m.wikipedia.org/wiki/XAO"
+    },
+    "XBL": {
+        "description": "eXtensible Bindings Language ou XML Bindings Language",
+        "link": "https://fr.m.wikipedia.org/wiki/XBL"
+    },
+    "XBM": {
+        "description": "X BitMap",
+        "link": "https://fr.m.wikipedia.org/wiki/X_BitMap"
+    },
+    "XBMC": {
+        "description": "Xbox Media Center",
+        "link": "https://fr.m.wikipedia.org/wiki/Xbox_Media_Center"
+    },
+    "XCB": {
+        "description": "X C Binding",
+        "link": "https://fr.m.wikipedia.org/wiki/XCB"
+    },
+    "XCF": {
+        "description": "eXperimental Computing Facility de GIMP",
+        "link": "https://fr.m.wikipedia.org/wiki/XCF"
+    },
+    "XCL": {
+        "description": "Xlib Compatibility Layer",
+        "link": "https://fr.m.wikipedia.org/wiki/Xlib_Compatibility_Layer"
+    },
+    "XD": {
+        "description": "eXploser de Rire",
+        "link": null
+    },
+    "XDCC": {
+        "description": "XDCC (Xabi DCC or eXtended DCC",
+        "link": "https://fr.m.wikipedia.org/wiki/XDCC"
+    },
+    "XDM": {
+        "description": "X Window Display Manager",
+        "link": "https://fr.m.wikipedia.org/wiki/XDM"
+    },
+    "xdpyinfo": {
+        "description": "X11 DisPlaY INFO",
+        "link": null
+    },
+    "XDMCP": {
+        "description": "X Display Manager Control Protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/X_Display_Manager_Control_Protocol"
+    },
+    "XFS": {
+        "description": "X File System",
+        "link": "https://fr.m.wikipedia.org/wiki/XFS"
+    },
+    "XGA": {
+        "description": "Extended Graphics Array",
+        "link": "https://fr.m.wikipedia.org/wiki/Extended_Graphics_Array"
+    },
+    "XHTML": {
+        "description": "Extensible HyperText Markup Language",
+        "link": "https://fr.m.wikipedia.org/wiki/Extensible_HyperText_Markup_Language"
+    },
+    "XML": {
+        "description": "Extensible markup language",
+        "link": "https://fr.m.wikipedia.org/wiki/Extensible_markup_language"
+    },
+    "XMS": {
+        "description": "Extended Memory Specification, voir mémoire étendue",
+        "link": "https://fr.m.wikipedia.org/wiki/M%C3%A9moire_%C3%A9tendue"
+    },
+    "XMPP": {
+        "description": "Extensible messaging and presence protocol",
+        "link": "https://fr.m.wikipedia.org/wiki/Extensible_messaging_and_presence_protocol"
+    },
+    "XOR": {
+        "description": "OU exclusif",
+        "link": "https://fr.m.wikipedia.org/wiki/OU_exclusif"
+    },
+    "XP": {
+        "description": "Extreme programming",
+        "link": "https://fr.m.wikipedia.org/wiki/Extreme_programming"
+    },
+    "XSD": {
+        "description": "XML Schema Definition, définition du schéma d'annuaire au format XML",
+        "link": "https://fr.m.wikipedia.org/wiki/Sch%C3%A9ma_(informatique)#Sch%C3%A9ma_dans_les_logiciels_d'annuaires"
+    },
+    "XSLT": {
+        "description": "Extended stylesheet language transformations",
+        "link": "https://fr.m.wikipedia.org/wiki/Extended_stylesheet_language_transformations"
+    },
+    "XT": {
+        "description": "X Toolkit",
+        "link": "https://fr.m.wikipedia.org/wiki/Intrinsics"
+    },
+    "XTM": {
+        "description": "XML Topic Maps",
+        "link": "https://fr.m.wikipedia.org/wiki/XML_Topic_Maps"
+    },
+    "XUL": {
+        "description": "XML-based user interface language",
+        "link": "https://fr.m.wikipedia.org/wiki/XML-based_user_interface_language"
+    },
+    "Y2K": {
+        "description": "année 2000, fait référence au bogue de l'an 2000",
+        "link": "https://fr.m.wikipedia.org/wiki/2000"
+    },
+    "Z": {
+        "description": "Notation Z (Langage de spécifications)",
+        "link": "https://fr.m.wikipedia.org/wiki/Notation_Z"
+    },
+    "ZIF": {
+        "description": "Zero insertion force (pour les circuits électroniques)",
+        "link": "https://fr.m.wikipedia.org/wiki/Zero_insertion_force"
+    },
+    "ZIP": {
+        "description": "format de fichier",
+        "link": "https://fr.m.wikipedia.org/wiki/ZIP_(format_de_fichier)"
+    }
+}

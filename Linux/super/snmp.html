@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+    
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+		
+		code{
+		 background-color: #808080 ;
+		 color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			}
+ 
+
+		
+    </style>
+</head>
+ 
+<body>
+<header>
+		<h1>Install&Conf  SNMP  serveur Zabbix & client Debian</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+<h1>Installation et configuration de SNMP sur un serveur Zabbix et un client Debian 11</h1>
+<h2>Étape 1: Installation de SNMP sur le serveur Zabbix et le client Debian 11</h2>
+<p>Commencez par mettre à jour les paquets sur les deux machines:</p>
+<code class="bash">sudo apt-get update</code>
+<p>Installez ensuite SNMP et les outils SNMP sur le serveur Zabbix et le client Debian 11:</p>
+<code class="bash">sudo apt-get install snmp snmpd snmp-mibs-downloader libsnmp-dev</code>
+<h2>Étape 2.1: Configuration de SNMP sur le serveur Zabbix</h2>
+<p>Éditez le fichier de configuration de SNMP :</p>
+<code class="bash">sudo nano /etc/snmp/snmp.conf</code>
+
+<p>Commentez la ligne "mibs :" en ajoutant un "#" au début de la ligne :</p>
+<code class="bash">#mibs :</code>
+
+<p>Enregistrez les modifications et quittez l'éditeur.</p>
+
+<h2>Étape 2.2: Configuration de SNMP sur le serveur Zabbix et le client Debian 11</h2>
+<p>Modifiez le fichier de configuration SNMP sur les deux machines:</p>
+<code class="bash">sudo nano /etc/snmp/snmpd.conf</code>
+<p>Sur le serveur Zabbix et le client Debian 11, remplacez la ligne "agentAddress" par la suivante pour écouter sur toutes les interfaces:</p>
+<code class="bash">
+agentAddress udp:161,udp6:[::1]:161</code>
+<p>Ajoutez également la ligne suivante pour permettre au serveur Zabbix de se connecter au client Debian 11:</p>
+<code class="bash">rocommunity &lt;COMMUNITY_NAME&gt; &lt;ZABBIX_SERVER_IP&gt;</code>
+<p>Remplacez &lt;COMMUNITY_NAME&gt; par un nom de communauté de votre choix (par exemple, "public") et &lt;ZABBIX_SERVER_IP&gt; par l'adresse IP de votre serveur Zabbix.</p>
+<p>Enregistrez les modifications et quittez l'éditeur.</p>
+<h2>Étape 3: Redémarrage du service SNMP</h2>
+<p>Redémarrez le service SNMP sur le serveur Zabbix et le client Debian 11 pour appliquer les modifications:</p>
+<code class="bash">sudo systemctl restart snmpd</code>
+<p>Vérifiez que le service SNMP est actif et fonctionne correctement:</p>
+<code class="bash">sudo systemctl status snmpd</code>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<p>Exécutez la commande suivante sur le serveur Zabbix pour vérifier si les informations SNMP sont correctement récupérées depuis le client Debian 11:
+</p>
+<code class="bash">
+snmpwalk -v 2c -c COMMUNITY_NAME CLIENT_IP
+</code>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+
+<h2>Étape 4: Configuration de Zabbix pour surveiller le client Debian 11 via SNMP</h2>
+<p>Connectez-vous à l'interface web de Zabbix avec votre compte Admin Zabbix.</p>
+<ol>
+    <li>Accédez à l'onglet "Configuration" puis cliquez sur "Hôtes".</li>
+    <li>Cliquez sur "Créer un hôte" en haut à droite.</li>
+
+
+
+
+
+<li>Remplissez les informations de l'hôte comme suit:
+    <ul>
+        <li>Nom d'hôte: Entrez un nom pour votre client Debian 11.</li>
+        <li>Nom visible: Entrez un nom visible pour l'hôte (facultatif).</li>
+        <li>Groupe d'hôtes: Sélectionnez un groupe d'hôtes existant ou créez-en un nouveau.</li>
+        <li>Agent d'interface: Entrez l'adresse IP de votre client Debian 11.</li>
+    </ul>
+</li>
+<li>Cliquez sur l'onglet "Macros" et ajoutez une nouvelle macro avec le nom "{$SNMP_COMMUNITY}" et la valeur de votre communauté SNMP (par exemple, "public").</li>
+<li>Cliquez sur "Ajouter" pour ajouter l'hôte.</li>
+<li>Après avoir ajouté l'hôte, retournez à la liste des hôtes et cliquez sur l'icône "Lier de nouveaux modèles" à côté de votre hôte ajouté.</li>
+<li>Filtrez les modèles en cherchant "SNMP" et liez les modèles appropriés à votre hôte (par exemple, "Template OS Linux SNMPv2").</li>
+<li>Cliquez sur "Mettre à jour" pour appliquer les modèles liés à l'hôte.</li>
+</ol>
+<h2>Étape 5: Vérification de la surveillance SNMP</h2>
+<p>Après avoir configuré Zabbix pour surveiller le client Debian 11 via SNMP, vous devriez commencer à voir des données collectées pour cet hôte.</p>
+<ol>
+    <li>Accédez à l'onglet "Monitoring" puis cliquez sur "Dernières données".</li>
+    <li>Sélectionnez votre hôte client Debian 11 dans la liste déroulante "Hôte".</li>
+    <li>Vous devriez maintenant voir les données collectées via SNMP pour votre hôte.</li>
+</ol>
+<p>Si vous ne voyez pas de données, vérifiez les éléments suivants:</p>
+<ul>
+    <li>Les paramètres SNMP sont correctement configurés sur le client Debian 11 et le serveur Zabbix.</li>
+    <li>Les modèles liés à l'hôte sont appropriés et correctement configurés.</li>
+    <li>Le service SNMP est actif et en cours d'exécution sur le client Debian 11 et le serveur Zabbix.</li>
+    <li>Les pare-feu sur le client Debian 11 et le serveur Zabbix autorisent le trafic SNMP (UDP port 161).</li>
+</ul>
+<p>Voilà ! Vous avez maintenant installé et configuré SNMP sur un serveur Zabbix et un poste client Debian 11. Zabbix surveille désormais votre client Debian 11 via SNMP, et vous pouvez continuer à ajouter d'autres hôtes et modèles pour étendre la surveillance de votre infrastructure.</p>
+
+
+</div>
+</body>
+</html>

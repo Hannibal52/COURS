@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configurer le Self-Service Password Reset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            background-color: #1E90FF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #1E90FF;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .step {
+            margin-bottom: 15px;
+        }
+        .sub-step {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1> DP 365 </h1>
+    <div class="container">
+        <div class="step">
+            <h2>1. Activez la réinitialisation du mot de passe en libre-service (SSPR):</h2>
+            <ul>
+                <li>Connectez-vous au portail Azure à l'adresse https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/NamedLocations?Microsoft_AAD_IAM_legacyAADRedirect=true  en utilisant un compte avec des droits d'administrateur globale.</li>
+                <li>Dans le menu de gauche, sélectionnez "Azure Active Directory", puis "Password reset".</li>
+                <li>Dans la fenêtre principale, sélectionnez "All" pour activer la SSPR pour tous les utilisateurs, puis cliquez sur "Save".</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h2>2. Configurez les méthodes d'authentification pour la SSPR:</h2>
+            <ul>
+                <li>Toujours dans les paramètres de "Password reset", sélectionnez "Authentication methods".</li>
+                <li>Choisissez le nombre de méthodes à utiliser pour réinitialiser le mot de passe et les méthodes spécifiques que les utilisateurs peuvent utiliser (par exemple, adresse e-mail, téléphone, question de sécurité).</li>
+                <li>Cliquez sur "Save" pour enregistrer vos modifications.</li>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				 <li> il faut que le windows serveur soit allumé pour pouvoir SAVE le ALL  </li>
+				 <br>
+				<br>
+				<br>
+				<br>
+				<img src="10.png" style="width: 75%;">
+				<img src="1.png" style="width: 75%;">
+            </ul>
+			
+        </div>
+        <div class="step">
+            <h2>3. Activez la réécriture de mot de passe pour synchroniser les mots de passe réinitialisés avec votre Active Directory local:</h2>
+            <ul>
+                <li>Sur votre serveur Active Directory, ouvrez Azure AD Connect.</li>
+                <li>Sélectionnez "Configure" à côté de "Customize Synchronization Options" et cliquez sur "Next".</li>
+                <li>Connectez-vous à votre Azure AD en utilisant des informations d'identification d'administrateur.</li>
+                <li>Sur la page "Optional Features", cochez la case "Password writeback" et cliquez sur "Next".</li>
+                <li>Cliquez sur "Configure" et une fois la configuration terminée, cliquez sur "Exit".</li>
+				<img src="2.png" style="width: 75%;">
+				<img src="3.png" style="width: 75%;">
+				
+            </ul>
+        </div>
+        <div class="step">
+            <h2>4. Vérifiez que la réécriture de mot de passe est activée:</h2>
+            <ul>
+                <li>Retournez au portail Azure et dans Azure Active Directory, sélectionnez "Azure AD Connect".</li>
+                <li>Vérifiez que "Password writeback" est indiqué comme "Enabled".</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h2>Note:</h2>
+            <p>Assurez-vous que vos utilisateurs ont enregistré au moins une méthode d'authentification pour SSPR, sinon ils ne pourront pas réinitialiser leur mot de passe.</p>
+            <p>Pour plus d'informations sur ces fonctionnalités, consultez la <a href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/tutorial-enable-sspr">documentation officielle de Microsoft</a>.</p>
+        </div>
+		
+		
+		
+		<div class="step">
+            <h2>Accès conditionnel : Il est interdit de se connecter en dehors de la France.</h2>
+            <ul>
+                
+                <li>Dans le menu de gauche, sélectionnez "Azure Active Directory", puis "Security", et enfin "Conditional Access".</li>
+                <li>Cliquez sur "+ New policy" pour créer une nouvelle politique.</li>
+                <li>Donnez un nom à votre politique, par exemple "Seulement en France".</li>
+                <li>Dans l'onglet "Users and groups", sélectionnez "All users" ou spécifiez les utilisateurs et groupes auxquels cette politique doit s'appliquer.</li>
+                <li>Dans l'onglet "Cloud apps or actions", sélectionnez "All cloud apps" ou spécifiez les applications pour lesquelles cette politique doit s'appliquer.</li>
+                <li>Dans l'onglet "Conditions", sélectionnez "Locations". Sous "Include", sélectionnez "Any location". Sous "Exclude", sélectionnez "Selected locations" et ajoutez la France.</li>
+                <li>Dans l'onglet "Access controls", sélectionnez "Block access".</li>
+                <li>Enfin, dans l'onglet "Enable policy", sélectionnez "On" et cliquez sur "Create" pour créer la politique.</li>
+				<img src="4.png" style="width: 75%;">
+            </ul>
+        </div>
+		
+		
+		<div class="step">
+            <h2>Configurer une solution Just In Time :</h2>
+            <p>Les techniciens de l’entreprise doivent demander une élévation de privilèges pour obtenir le droit Admin Users avec une validation par un Administrateur général.</p>
+            <ul>
+                <li>Dans le menu de gauche, sélectionnez "Azure Active Directory", puis "Privileged Identity Management".</li>
+                <li>Sous "Manage", sélectionnez "Azure AD roles".</li>
+                <li>Sélectionnez "Role settings" et cliquez sur "+ New settings".</li>
+                <li>Configurez les paramètres selon vos besoins. Vous pouvez définir la durée de l'activation du rôle, l'approbation requise pour l'activation, les notifications, etc.</li>
+                <li>Cliquez sur "Create" pour créer les paramètres.</li>
+                <li>Revenez à "Azure AD roles" et sélectionnez "+ Add assignments".</li>
+                <li>Sélectionnez le rôle que vous souhaitez gérer avec PIM (dans votre cas, il s'agirait probablement du rôle "User administrator").</li>
+                <li>Sélectionnez les membres que vous souhaitez ajouter à ce rôle et cliquez sur "Next".</li>
+                <li>Sélectionnez les paramètres que vous avez créés précédemment et cliquez sur "Next".</li>
+                <li>Vérifiez les informations et cliquez sur "Assign" pour attribuer le rôle.</li>
+				<img src="6.png" style="width: 75%;">
+				<img src="5.png" style="width: 75%;">
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<li>Ou  tout simplement aller dans portal azure , recherche PIM , trouver le role puis le modifier selon besoin</li>
+				<br>
+				<br>
+				<br>
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<img src="7-1.png" style="width: 75%;">
+				<br>
+				<br>
+				<br>
+				<br>
+				<img src="7-2.png" style="width: 75%;">
+				<br>
+				<br>
+				<br>
+				<br>
+				<img src="7-3.png" style="width: 75%;">
+				<br>
+				<br>
+				<br>
+				<br>
+				<li> ensuite créer le groupe de tech et lui affecter le rôle </li>
+				<li>( ne pas oublier de cocher "oui" pour "Vous pouvez assigner des rôles Azure AD au group" car une fois que le groupe est créer cette case sera grisée) </li>
+				<br>
+				<br>
+				<br>
+				<br>
+				<img src="9.png" style="width: 75%;">
+				<br>
+				<br>
+			
+				<br>
+				<br>
+				<img src="7.png" style="width: 75%;">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			
+				<img src="8.png" style="width: 75%;">
+            </ul>
+        </div>
+		
+		
+		
+    </div>
+</body>
+</html>

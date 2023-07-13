@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+	    <h1>Installation de Zabbix sur Debian 11</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+
+    <p>Pour installer Zabbix sur Debian 11 en utilisant l'interface de ligne de commande, suivez ces étapes :</p>
+<h2>Étape 1 : Mettez à jour les paquets</h2>
+<p>Exécutez la commande suivante pour mettre à jour les paquets existants sur votre système Debian :</p>
+<pre><code class="language-bash">sudo apt update && sudo apt upgrade</code></pre>
+
+<h2>Étape 2 : Installez les paquets nécessaires</h2>
+<p>Installez les paquets nécessaires pour Zabbix en exécutant la commande suivante :</p>
+<pre><code class="language-bash">sudo apt install -y wget gnupg2 lsb-release</code></pre>
+
+<h2>Étape 3 : Ajoutez le dépôt Zabbix</h2>
+<p>Ajoutez le dépôt Zabbix à la liste des sources de votre système Debian en utilisant ces commandes :</p>
+<pre><code class="language-bash">
+
+wget https://repo.zabbix.com/zabbix/5.4/debian/pool/main/z/zabbix-release/zabbix-release_5.4-1+debian11_all.deb
+sudo dpkg -i zabbix-release_5.4-1+debian11_all.deb
+sudo apt update
+</code></pre>
+
+<h2>Étape 4 : Installez Zabbix Server, Agent, et Frontend</h2>
+<p>Exécutez la commande suivante pour installer les paquets Zabbix Server, Agent, et Frontend :</p>
+<pre><code class="language-bash">sudo apt install -y zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent</code></pre>
+
+<h2>Étape 5 : Installez et configurez MariaDB</h2>
+<p>Installez MariaDB en utilisant la commande suivante :</p>
+<pre><code class="language-bash">sudo apt install -y mariadb-server</code></pre>
+<p>Sécurisez l'installation de MariaDB en exécutant la commande suivante et en suivant les instructions à l'écran :</p>
+<pre><code class="language-bash">sudo mysql_secure_installation</code></pre>
+
+<h2>Étape 6 : Créez la base de données Zabbix</h2>
+<p>Connectez-vous à MariaDB et créez la base de données Zabbix en utilisant les commandes suivantes :</p>
+<pre><code class="language-bash">
+
+
+sudo mysql -u root -p
+create database zabbix character set utf8 collate utf8_bin;
+grant all privileges on zabbix.* to zabbix@localhost identified by 'your_zabbix_password';
+flush privileges;
+exit;
+</code></pre>
+<p>N'oubliez pas de remplacer 'your_zabbix_password' par un mot de passe sécurisé.</p>
+<h2>Étape 7 : Importez le schéma de la base de données Zabbix</h2>
+  <p>Importez le schéma de la base de données Zabbix en utilisant la commande suivante :</p>
+    <pre><code class="language-bash">zcat /usr/share/doc/zabbix-sql-scripts/mysql/create.sql.gz | mysql -u zabbix -p zabbix</code></pre>
+<h2>Étape 8 : Configurez Zabbix Server</h2>
+<p>Ouvrez le fichier de configuration de Zabbix Server avec un éditeur de texte, par exemple nano :</p>
+<pre><code class="language-bash">sudo nano /etc/zabbix/zabbix_server.conf</code></pre>
+
+<pre><code class="language-bash">
+
+
+DBPassword=your_zabbix_password
+Enregistrez et quittez le fichier de configuration.
+
+Étape 9 : Configurez PHP pour Zabbix Frontend
+Ouvrez le fichier de configuration PHP pour Zabbix Frontend :
+
+
+sudo nano /etc/zabbix/nginx.conf
+Recherchez la ligne suivante :
+
+
+# listen 80;
+Décommentez cette ligne en supprimant le "#" au début de la ligne, pour qu''elle ressemble à ceci :
+
+
+listen 80;
+server-name ip-du-server; 
+
+Enregistrez et quittez le fichier de configuration.
+
+
+
+Étape 11 : Redémarrez et activez les services
+Redémarrez et activez les services Zabbix Server, Nginx, PHP-FPM et Zabbix Agent :
+
+
+sudo systemctl restart zabbix-server zabbix-agent nginx php7.4-fpm
+sudo systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
+
+
+
+Étape 12 : Terminez l''installation via le navigateur Web
+Accédez à l''interface web de Zabbix en ouvrant votre navigateur et en visitant l''URL suivante :
+
+
+http://your_server_ip_or_domain
+Suivez les étapes de l''assistant d''installation pour configurer votre serveur Zabbix. Vous devrez entrer les informations relatives à la base de données et à l''utilisateur que vous avez créé précédemment.
+
+Une fois l''installation terminée, vous pourrez vous connecter à l''interface web de Zabbix avec les identifiants par défaut :
+
+Nom d''utilisateur : Admin
+Mot de passe : zabbix
+N''oubliez pas de changer le mot de passe par défaut après votre première connexion.
+
+Félicitations ! Vous avez maintenant installé et configuré Zabbix sur Debian 11 en utilisant l''interface de ligne de commande.
+
+</code></pre>
+</div>
+  </body>
+</html>

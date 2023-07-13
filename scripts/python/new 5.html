@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+    
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+ 
+
+		
+    </style>
+	
+	 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.0/components/prism-powershell.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+<header>
+		<h1> Script Création VM en boucle (PowerShell/Azure)</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	 
+	<ol>
+
+ 
+<p>Voici une description de l'infrastructure créée par le script PowerShell:</p>
+
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Resource Group</td>
+    <td>rg-Tahaa</td>
+    <td>Conteneur contenant toutes les ressources pour la solution Azure.</td>
+  </tr>
+  <tr>
+    <td>Virtual Network (VNET)</td>
+    <td>vnet-Taha</td>
+    <td>Réseau virtuel avec la plage d'adresses IP 172.16.0.0/23.</td>
+  </tr>
+  <tr>
+    <td>Subnet</td>
+    <td>snet-be-Taha (Backend)</td>
+    <td>Sous-réseau du VNET destiné aux ressources backend.</td>
+  </tr>
+  <tr>
+    <td>Subnet</td>
+    <td>snet-fe-Taha (Frontend)</td>
+    <td>Sous-réseau du VNET destiné aux ressources frontend.</td>
+  </tr>
+  <tr>
+    <td>Network Security Group (NSG)</td>
+    <td>nsg-be-Tahaa</td>
+    <td>Groupe de sécurité avec une règle permettant le trafic SSH entrant.</td>
+  </tr>
+  <tr>
+    <td>Virtual Machines (VMs)</td>
+    <td>Debian1, Debian2, Debian3, Debian4</td>
+    <td>VMs dans le sous-réseau backend, créées avec l'image Debian 11 et permettant l'authentification SSH avec une clé publique.</td>
+  </tr>
+</table>
+		<li>
+		<h4>Script : 
+		</h4>
+	<pre><code class="language-powershell">
+Install-Module -Name Az -AllowClobber -Force
+# Se connecter au portal Azure depuis powershell
+Connect-AzAccount
+# Pour lister les abonnements de notre tenant Azure
+Get-AzSubscription
+# Pour changer le context de travail (L'abonnement)
+Set-AzSubscription -SubscriptionName "***********"
+
+# Variables
+$ResourceGroupName = "rg-Tahaa"
+$Location = "westus"
+$VNetName = "vnet-Taha"
+$SubnetBEName = "snet-be-Taha"
+$SubnetFEName = "snet-fe-Taha"
+$NSGName = "nsg-be-Tahaa"
+$SubnetBEAddressPrefix = "172.16.1.0/24"
+$SubnetFEAddressPrefix = "172.16.0.0/24"
+$VNetAddressPrefix = "172.16.0.0/23"
+$VMNumber = 2
+$VMSize = "Standard_B2s"
+$ImagePublisher = "Debian"
+$ImageOffer = "debian-11"
+$ImageSku = "11"
+$Username = "taha52"
+$sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9uoJ3TIS9ZSYwgx+YAee+iEnSrEaMMJ65usRuy8EeC2dLRYHOTgMjmqQu827DZ8ZZKo3FZ09UvHdENCTf4cmF/5JTsurVljKX9hZSNZ+VeZno/MmrhcyKN36QYJOPwHwUSI6NKvnRsvXwpaW39+WSTzmjatRbn1eqhTbCI3ZQThO4mnk6K39sEdo9P3qmLnkW+XhT7hH9tx5RfJ4fsUhLw+50dKf0fhNGVHvef9ZC3h/uoCqCp/GTKAYiGtMGQ18DK/BjV4hq9K/xWcTq2uee9b0mbvlVrSKpCRHMQxx0cVRxUm5h9eNCs2rQ3i5v+2hD87DMmFHayVHEv+wD71s7 administrateur@GERVLYA
+" 
+
+
+# Create a resource group
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+
+# Create the VNET and associate the subnets
+$vnet = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location -Name $VNetName -AddressPrefix $VNetAddressPrefix
+
+# Create the two subnets
+$subnetConfigBE = Add-AzVirtualNetworkSubnetConfig -Name $SubnetBEName -AddressPrefix $SubnetBEAddressPrefix -VirtualNetwork $vnet
+$subnetConfigFE = Add-AzVirtualNetworkSubnetConfig -Name $SubnetFEName -AddressPrefix $SubnetFEAddressPrefix -VirtualNetwork $vnet
+
+# Apply changes to VNET
+$vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+# Create the SSH rule
+$nsgRuleSSH = New-AzNetworkSecurityRuleConfig -Name "SSH" -Protocol "Tcp" -Direction "Inbound" -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 22 -Access "Allow"
+
+# Create the NSG and associate the SSH rule
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location -Name $NSGName -SecurityRules $nsgRuleSSH
+
+# Retrieve the backend subnet configuration
+$subnetConfigBE = Get-AzVirtualNetworkSubnetConfig -Name $SubnetBEName -VirtualNetwork $vnet
+
+# Associate the NSG to the backend subnet
+Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetBEName -AddressPrefix $SubnetBEAddressPrefix -NetworkSecurityGroup $nsg
+
+# Apply changes to VNET
+$vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+
+
+# Create a PSCredential object
+$secpasswd = ConvertTo-SecureString "0010015252Formation@" -AsPlainText -Force
+$mycreds = New-Object System.Management.Automation.PSCredential ("taha52", $secpasswd)
+
+# Create VMs
+for ($i=1; $i -le $VMNumber; $i++) {
+    $VMName = "Debian$i"
+
+    $publicIp = New-AzPublicIpAddress -Name "ip$VMName" -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Static -Sku Basic
+    $nic = New-AzNetworkInterface -Name "nic$VMName" -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $subnetConfigBE.Id -PublicIpAddressId $publicIp.Id
+
+    $vmConfig = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+    $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Linux -ComputerName $VMName -Credential $mycreds -DisablePasswordAuthentication
+    $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $ImagePublisher -Offer $ImageOffer -Skus $ImageSku -Version "latest"
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+    $vmConfig = Add-AzVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/taha52/.ssh/authorized_keys"
+
+    New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vmConfig
+    Write-Host "VM $VMName created"
+}
+
+
+
+
+	</code></pre>
+		</li>
+	
+ 
+ <br>
+	</div>
+ 
+
+</body>
+
+</html>

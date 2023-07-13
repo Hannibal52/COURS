@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)https://www.provya.net/?d=2016/10/02/07/48/16-pfsense-configurer-un-cluster-de-2-pfsense-redondants-failover -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>[pfSense] Configurer un cluster de 2 pfSense redondants (failover) - Provya - Tutoriaux pfSense</title>
+	<meta name="generator" content="BlogoText">
+	<meta name="robots" content="all">
+	<meta name="author" content="Guillaume">
+	<meta name="viewport" content="width=device-width, user-scalable=yes">
+	<meta name="keywords" content="failover, haute disponibilité, HA, pfSense, XMLRPC, pfsync">
+	<meta name="description" content="Provya.net regroupe des tutoriaux complets sur pfSense et OPNsense. Retrouvez nos articles et nos partages de liens et d&#39;actualités !">
+	<meta prefix="og: http://ogp.me/ns#" property="og:title" content="[pfSense] Configurer un cluster de 2 pfSense redondants (failover) - Provya">
+	<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Tutoriel sur la configuration d&#39;un cluster de serveurs pfSense (failover)">
+	<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://provya.net/img/pfsense_logo_small.png">
+	<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://www.provya.net/?d=2016/10/02/07/48/16-pfsense-configurer-un-cluster-de-2-pfsense-redondants-failover">
+	<link rel="icon" type="image/png" href="https://www.provya.net/img/favicon-provya.png">
+	<link rel="stylesheet" href="./pfSense_files/style.css">
+	<link type="application/rss+xml" rel="alternate" title="RSS - Articles" href="https://www.provya.net/rss.php">
+	<link rel="alternate" type="application/rss+xml" title="RSS - Les liens" href="https://www.provya.net/rss.php?mode=links">
+	<link rel="alternate" type="application/atom+xml" title="ATOM - Le blog" href="https://www.provya.net/atom.php">
+	<link rel="alternate" type="application/atom+xml" title="ATOM - Les liens" href="https://www.provya.net/atom.php?mode=links">
+
+	<!-- Matomo -->
+	<script type="text/javascript" async="" defer="" src="./pfSense_files/matoprovya.js.téléchargement"></script><script type="text/javascript">
+	  var _paq = _paq || [];
+	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="//stat.provya.net/";
+	    _paq.push(['setTrackerUrl', u+'matoprovya.php']);
+	    _paq.push(['setSiteId', '1']);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matoprovya.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="https://stat.provya.net/matoprovya.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Matomo Code -->
+</head>
+<body>
+
+ 
+<main>
+	<div id="scroll-bar" style="width: 40.5682%;">
+		<div id="scroll-bar-inner"></div>
+	</div>
+ 
+	<section id="contenu">
+		<article class="news news-alone">
+	<header class="titre">
+		<h1><a href="https://www.provya.net/?d=2016/10/02/07/48/16-pfsense-configurer-un-cluster-de-2-pfsense-redondants-failover" title="Tutoriel sur la configuration d&#39;un cluster de serveurs pfSense (failover)">[pfSense] Configurer un cluster de 2 pfSense redondants (failover)</a></h1>
+		<h3 class="date"><img   src="./pfSense_files/icon_date.png" alt="icon" width="16" height="17"> 02/10/2019</h3>
+	</header>
+	<!--<p class="chapo">Tutoriel sur la configuration d'un cluster de serveurs pfSense (failover)</p>-->
+	<div class="contenu">
+		<em>English version</em>: <a href="https://www.provya.com/blog/pfsense-configuring-high-availability/">[pfSense] Configuring High Availability</a>.<br>
+<br>
+Dans cet article, nous allons voir comment configurer deux serveurs pfSense en mode cluster afin d'assurer un service en haute-disponibilité.<br>
+<br>
+Il est à noter que pfSense est l'une des rares solutions open-source offrant des techniques de haute-disponibilité permettant de garantir que le firewall ne puisse pas être un <a href="https://fr.wikipedia.org/wiki/Point_individuel_de_d%C3%A9faillance">point individuel de défaillance (SPOF)</a>.<br>
+<br>
+Dans cet article, nous nous baserons sur l'architecture suivante pour réaliser nos configurations&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/reseau-HA-pfSense-23.png" alt="Schéma réseau pfSense redondants" width="442" height="587"></div><br>
+<pre>pfSenseA - WAN : 172.25.46.101
+pfSenseB - WAN : 172.25.46.102
+@IP virtuelle - WAN : 172.25.46.100
+
+pfSenseA - LAN : 192.168.0.11
+pfSenseB - LAN : 192.168.0.12
+@IP virtuelle LAN : 192.168.0.10
+</pre>
+<br>
+<br>
+<br>
+<h2>Principe de fonctionnement</h2><br>
+pfSense communique sur les réseaux LAN &amp; WAN avec ses adresses IP virtuelles ; il n'utilise jamais l'adresse IP assignée à son interface.<br>
+En cas de défaillance de pfSenseA (pfSense primaire), pfSenseB (pfSense secondaire) prend le relais sans aucune interruption de service. La bascule de pfSenseA vers pfSenseB est totalement transparente.<br>
+<br>
+Afin d'assurer la réplication du serveur pfSenseA vers le serveur pfSenseB, 3 éléments doivent être configurés&nbsp;: CARP, pfsync et XML-RPC.<br>
+<br>
+<br>
+<h3>CARP</h3><br>
+CARP (<em>Common Address Redundancy Protocol</em>) est un protocole permettant à plusieurs hôtes présents sur un même réseau de partager une adresse IP.<br>
+<br>
+Ici, nous utilisons CARP afin de partager une adresse IP WAN et une adresse IP LAN sur nos serveurs pfSense.<br>
+C'est cette adresse IP <em>virtuelle</em> que pfSense va utiliser pour sa communication sur le réseau. Ainsi, en cas de défaillance du pfSense primaire (pfSenseA), le pfSense secondaire (pfSenseB) prendra le relais de manière transparente au niveau réseau (reprise de l'adresse IP virtuelle).<br>
+<br>
+<br>
+<h3>pfsync</h3><br>
+pfsync est un protocole permettant de synchroniser entre deux serveurs pfSense l'état des connexions en cours (et de manière plus large entre deux serveurs exécutant le firewall Packet Filter). Ainsi, en cas de défaillance du serveur primaire, l'état des connexions en cours est maintenu sur le serveur secondaire. Il n'y a donc pas de coupure liée à la bascule des services du pfSenseA vers le pfSenseB.<br>
+<br>
+Il est recommandé d'effectuer cette synchronisation sur un lien dédié entre les deux serveurs pfSense. À défaut, le lien LAN peut être utilisé.<br>
+La réplication peut se faire d'un serveur primaire vers un ou plusieurs autres serveur(s).<br>
+<br>
+<br>
+<h3>XML-RPC</h3><br>
+XML-RPC est un protocole permettant la réplication de données d'un serveur vers un autre. Il est utilisé dans pfSense afin de répliquer la configuration du serveur primaire vers le serveur secondaire.<br>
+Pour garantir son bon fonctionnement, il est important qu'il utilise la même interface que celle utilisée par le protocole pfsync.<br>
+<br>
+<br>
+<br>
+<h2>1. Configurer les adresses IP virtuelles</h2><br>
+Afin de fonctionner, chaque serveur pfSense doit disposer d'une adresse IP sur son interface, ainsi qu'une adresse IP virtuelle qui sera partagée entre les deux serveurs pfSense. De ce fait, nous utilisons 3 adresses IP par réseau.<br>
+<br>
+Pour configurer l'adresse IP virtuelle, se rendre dans "Firewall" &gt; "Virtual IPs"&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/Adresses_VIP-pfSense-23.png" alt="menu Firewall Virtual IPs sous pfSense - Provya" width="255" height="230"></div><br>
+<br>
+Cliquer sur l'icône "+ Add" pour ajouter une adresse IP virtuelle.<br>
+Les éléments à configurer sont les suivants&nbsp;:<br>
+<ul>
+<li> <span style="font-size:10pt;"><strong><u>Type</u></strong></span>&nbsp;: ici, nous avons quatre possibilités&nbsp;:</li></ul>
+<ol>
+<li> <strong>IP Alias</strong></li>
+<li> <strong>CARP</strong></li>
+<li> <strong>Proxy ARP</strong></li>
+<li> <strong>Other</strong></li></ol>
+ Nous choisissons "CARP". Nous ne rentrons pas ici dans le détail de l'usage de chaque option. Pour plus d'informations, nous vous invitons à lire l'article <a href="https://doc.pfsense.org/index.php/What_are_Virtual_IP_Addresses">What are Virtual IP Addresses - EN</a>.<br>
+<ul>
+<li> <strong><u>Interface</u></strong>&nbsp;: l'interface sur laquelle la VIP doit être configurée. Nous configurons la première sur l'interface WAN, puis la seconde sur l'interface LAN.</li>
+<li> <strong><u>Address(es)</u></strong>&nbsp;: l'adresse VIP et le masque du subnet de l'interface. Dans notre exemple&nbsp;: 172.25.46.100 et /24</li>
+<li> <strong><u>Virtual IP Password</u></strong>&nbsp;: mot de passe permettant de sécuriser les échanges au sein du groupe d'hôtes se partageant la VIP. Ce mot de passe devra être re-saisi sur le pfSense secondaire.</li>
+<li> <strong><u>VHID Group</u></strong>&nbsp;: Virtual Host Identifier. Un serveur peut faire parti de plusieurs groupes de VIP. Afin d'identifier chaque groupe, un ID unique lui est assigné. Nous laissons la valeur par défaut.</li>
+<li> <strong><u>Advertising Frequency</u></strong>&nbsp;: la valeur du champ "Skew" à 0 désigne le master (pfSense primaire). Une valeur plus élevée désignera l'esclave (pfSense de secours). La valeur de "Base" correspond au timeout en seconde au bout duquel l'hôte sera considéré comme inaccessible. Nous recommandons de laisser la valeur par défaut&nbsp;: 1.</li></ul>
+<br>
+Exemple de résultat obtenu&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/configuration-VIP-master-pfSense-23.png" alt="Configuration adresse IP virtuelle CARP pfSense" width="870" height="496"></div><br>
+<br>
+Nous procédons à la même configuration sur l'interface LAN.<br>
+Enfin, nous réalisons les mêmes configurations sur les interfaces WAN et LAN du serveur de secours (pfSenseB), en pensant bien à passer la valeur du champ "Skew" à 1.<br>
+<br>
+Nous pouvons vérifier l'état de nos adresses IP virtuelles depuis le menu "Status"&gt; "CARP (failover)"&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/menu-VIP-status-CARP-pfsense-23.png" alt="menu Status &gt; CARP (failover) - pfSense" width="270" height="132"></div><br>
+<br>
+<br>
+Dans le cas présent, les deux adresses VIP créées ont bien le statut "master" sur le pfSenseA&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/VIP-status-carp-pfSense-23.png" alt="Statut des adresses VIP pfSense" width="870" height="234"></div><br>
+<br>
+<br>
+<br>
+<h2>2. Forcer l'utilisation des adresses IP virtuelles</h2><br>
+Les adresses VIP sont déclarées, mais non-utilisées. Il reste à configurer pfSense pour qu'il utilise les adresses VIP plutôt que les adresses IP attribuées à ses interfaces logiques.<br>
+Pour cela, nous devons configurer pfSense pour qu'il utilise l'adresse VIP WAN sur le trafic sortant, l'adresse VIP LAN pour le trafic entrant et configurer les différents services pour qu'ils travaillent avec l'adresse VIP LAN comme adresse par défaut (pour les configuration OpenVPN ou DHCP, par exemple).<br>
+<br>
+<br>
+<h3>Configuration du NAT</h3><br>
+Nous allons dans le menu Firewall &gt; NAT. Dans l'onglet Outbound, nous cochons la case "Hybrid Outbound NAT rule generation. (Automatic Outbound NAT + rules below)".<br>
+Nous modifions les règles ou en ajoutons une afin que le trafic sortant utilise l'adresse VIP. Les champs à configurer sont les suivants&nbsp;:<br>
+<ol>
+<li> <strong>Disabled</strong>&nbsp;: cocher cette case pour désactiver la règle sans devoir la supprimer.</li>
+<li> <strong>Do not NAT</strong>&nbsp;: cocher cette case permet de désactiver le NAT pour le trafic correspondant à cette règle. Il est très rare de devoir cocher cette case.</li>
+<li> <strong>Interface</strong>&nbsp;: l'interface logique sur laquelle nous souhaitons définir notre règle de NAT. Dans notre cas, nous choisissons "WAN".</li>
+<li> <strong>Protocol</strong>&nbsp;: les protocoles concernés par cette règle de NAT. Nous choisissons "any"</li>
+<li> <strong>Source</strong>&nbsp;: le réseau source. Dans notre cas, il s'agit du réseau local, nous saisissons donc "192.168.0.0" et "/24" pour le masque.</li>
+<li> <strong>Destination</strong>&nbsp;: le réseau de destination. Dans notre cas, nous choisissons "any".</li>
+<li> <strong>Address</strong>&nbsp;: l'adresse à utiliser lors du NAT. Nous choisissons l'adresse VIP créée précédemment, soit "172.25.46.100 (VIP WAN)".</li>
+<li> <strong>Port</strong>&nbsp;: nous laissons ce champ vide.</li>
+<li> <strong>No XMLRPC Sync</strong>&nbsp;: cocher cette case pour ne pas copier la règle sur le pfSense secondaire. Nous laissons cette case non-cochée.</li>
+<li> <strong>Description</strong>&nbsp;: un champ informatif</li></ol>
+<br>
+Exemple de résultat obtenu&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/NAT-outbound-VIP-pfsense-23.png" alt="Configuration règle de NAT sortant" width="870" height="642"></div><br>
+<br>
+Cette configuration n'est à faire que sur le pfSense primaire. La configuration sera dupliquée automatiquement sur le pfSense secondaire.<br>
+<br>
+<br>
+<h3>Configuration du service DHCP</h3><br>
+Si pfSense fait office de serveur DHCP, nous allons dans le menu "Services" &gt; "DHCP Server". Nous modifions le champ "Gateway" pour y préciser l'adresse VIP (192.168.0.10). Autrement, le serveur DHCP de pfSense va continuer à indiquer aux clients du service DHCP l'adresse IP de l'interface LAN du pfSense.<br>
+Nous pouvons également compléter le champ "Failover peer IP" en renseignant l'adresse IP de l'interface LAN du pfSense secondaire (192.168.0.12). Cette configuration optionnelle permet de partager les leases DHCP entre le pfSense primaire et le pfSense secondaire.<br>
+Attention, si ce champ est renseigner, il est nécessaire de modifier la valeur du "skew" du pfSense secondaire pour le passer à un nombre supérieur à 20.<br>
+<br>
+Davantage d'informations sur la configuration du service DHCP&nbsp;: <a href="https://www.provya.net/index.php?d=2014/08/24/12/09/58-pfsense-configurer-son-serveur-dhcp">[pfSense] Configurer son serveur DHCP</a>.<br>
+<br>
+<br>
+<h3>Configuration du service OpenVPN server</h3><br>
+Si un serveur OpenVPN est configuré sur le pfSense, il est nécessaire de modifier l'interface d'écoute du service (normalement "WAN") pour la remplacer par l'adresse VIP (172.25.46.100).<br>
+Cette modification s'opère dans "VPN" &gt; "Servers".<br>
+<br>
+Davantage d'informations sur la configuration du service OpenVPN&nbsp;: <a href="https://www.provya.net/index.php?d=2014/06/15/15/20/04-pfsense-monter-un-acces-openvpn-site-a-site">[pfSense] Monter un accès OpenVPN site-à-site</a>.<br>
+<br>
+<br>
+<h3>Configuration du service VPN IPsec</h3><br>
+Si un tunnel IPsec est configuré sur le pfSense, il est nécessaire de modifier l'interface d'écoute du VPN IPsec (normalement "WAN") pour la remplacer par l'adresse VIP (172.25.46.100).<br>
+Cette modification s'opère dans "VPN" &gt; "IPsec". La modification s'effectue sur la phase 1.<br>
+<br>
+Davantage d'informations sur la configuration du service VPN IPsec&nbsp;: <a href="https://www.provya.net/?d=2020/02/11/08/22/01-pfsense-configurer-un-vpn-ipsec-site-a-site">[pfSense] Configurer un VPN IPsec site à site</a>.<br>
+<br>
+<br>
+<br>
+<h2>3. Configurer la haute-disponibilité</h2><br>
+Il nous reste à configurer la haute-disponibilité. Pour cela, se rendre dans "System" &gt; "High Avail. Sync"&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/haute-dispo-pfsense-23.png" alt="menu System &gt; High Avail. Sync - pfSense" width="208" height="178"></div><br>
+<br>
+Depuis cette page, il y a 2 éléments à configurer&nbsp;: la partie pfsync (pour la synchronisation d'état) et XMLRPC Sync (pour la synchronisation de la configuration).<br>
+<br>
+<br>
+<h3>State Synchronization Settings (pfsync)</h3><br>
+Les éléments à configurer sont les suivants&nbsp;:<br>
+<ul>
+<li> <strong><u>Synchronize States</u></strong>&nbsp;: cocher cette case pour activer pfsync (cette configuration est à faire sur le pfSense primaire <strong>et</strong> sur le pfSense secondaire)</li>
+<li> <strong><u>Synchronize Interface</u></strong>&nbsp;: l'interface de synchronisation. Si nous disposons d'une interface dédiée à la synchronisation, nous la choisissons ; autrement, nous choisissons "LAN".</li>
+<li> <strong><u>pfsync Synchronize Peer IP</u></strong>&nbsp;: sur le pfSense primaire, saisir l'adresse IP du serveur pfSense de secours (192.168.0.12). Si pour le choix de l'interface (ci-dessus) nous avons choisi "LAN", nous indiquons l'adresse IP de l'interface LAN du pfSense secondaire (192.168.0.12) ; si nous avons choisi une interface dédiée alors nous indiquons l'adresse IP de l'interface dédiée du pfSense secondaire. Par défaut, si aucune adresse IP n'est saisie, pfSense diffusera en multicast sur l'interface choisie préalablement. Sur le pfSense secondaire, on indique l'adresse IP du pfSense primaire (192.168.0.11)</li></ul>
+<br>
+<br>
+<h3>Configuration Synchronization Settings (XMLRPC Sync)</h3><br>
+<ul>
+<li> <strong><u>Synchronize Config to IP</u></strong>&nbsp;: sur le serveur <strong>pfSense primaire</strong>, saisir l'adresse IP du serveur pfSense secondaire (comme précédemment, il faut saisir l'adresse IP de l'interface choisie). <strong>Ce doit être la même adresse IP que celle renseignée dans le champ "pfsync Synchronize Peer IP"</strong>. Ce champ doit être laissé vide sur le serveur <strong>pfSense secondaire</strong>.</li>
+<li> <strong><u>Remote System Username</u></strong>&nbsp;: sur le serveur <strong>pfSense primaire</strong>, saisir le nom d'utilisateur utilisé pour se connecter sur le WebGUI du pfSense de secours ("admin" par défaut). Ce champ doit être laissé vide sur le serveur <strong>pfSense de secours</strong>.</li>
+<li> <strong><u>Remote System Password</u></strong>&nbsp;: sur le serveur <strong>pfSense primaire</strong>, saisir le mot de passe du compte utilisateur saisi ci-dessus. Ce champ doit être laissé vide sur le serveur <strong>pfSense de secours</strong>.</li></ul>
+<br>
+Puis, nous choisissons les services que nous souhaitons synchroniser en cochant les cases appropriées. Par défaut, nous recommandons de tout cocher (<em>Toggle All</em>).<br>
+<br>
+Exemple de résultat obtenu&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/configuration-pfsync-XMLRPC-pfsense-23.png" alt="Configuration de la haute-disponibilité sous pfSense" width="870" height="990"></div><br>
+<br>
+<br>
+<h3>Autoriser les flux de réplication au niveau des règles du firewall</h3><br>
+Il nous reste à autoriser les flux de réplications sur les firewall. La configuration se passe dans "Firewall" &gt; "Rules".<br>
+Si la réplication se fait via l'interface LAN, les règles de firewall sont à appliquer sur cette interface ; si nous utilisons une interface dédiée, les règles seront à appliquer sur celle-ci.<br>
+<br>
+Il y a deux flux réseau à autoriser&nbsp;:<br>
+<ul>
+<li> le flux pour la synchronisation XML-RPC qui s'effectue via le port 443</li>
+<li> le flux pour la synchronisation du protocole pfsync</li></ul>
+<br>
+Sur le firewall primaire, nous créons donc une première règle de firewall (en cliquant sur le bouton "Add") avec les paramètres suivants&nbsp;:<br>
+<ul>
+<li> <strong><u>Action</u></strong>&nbsp;: nous choisissons "Pass"</li>
+<li> <strong><u>Interface</u></strong>&nbsp;: nous choisissons l'interface dédiée à la réplication si le pfSense en possède une. Autrement, nous choisissons "LAN"</li>
+<li> <strong><u>Address Family</u></strong>&nbsp;: nous laissons "IPv4"</li>
+<li> <strong><u>Protocol</u></strong>&nbsp;: nous choisissons "TCP"</li>
+<li> <strong><u>Source</u></strong>&nbsp;: nous indiquons un alias qui contiendra les adresses IP des interfaces de synchronisation de chaque pfSense (dans notre cas, cet alias contiendra les adresses IP "192.168.0.11" et "192.168.0.12"). Si cette notion d'alias n'est pas claire pour vous, vous pouvez consulter notre article dédié <a href="https://www.provya.net/?d=2019/11/05/10/02/58-pfsense-tout-comprendre-aux-alias">[pfSense] Tout comprendre aux alias</a>, ou vous pouvez choisir l'ensemble du réseau rattaché à l'interface de synchronisation (dans notre cas, ce serait "LAN net")</li>
+<li> <strong><u>Destination</u></strong>&nbsp;: nous choisissons "This firewall (self)"</li>
+<li> <strong><u>Destination port range</u></strong>&nbsp;: choisir "HTTPS (443)"</li></ul>
+<br>
+Exemple de résultat obtenu&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/config-firewall-ha-replication-pfsense-23.png" alt="Règle de firewall autorisant la réplication" width="870" height="797"></div><br>
+<br>
+Sur le firewall primaire toujours, nous créons une seconde règle de firewall avec les paramètres suivants&nbsp;:<br>
+<ul>
+<li> <strong><u>Action</u></strong>&nbsp;: nous choisissons "Pass"</li>
+<li> <strong><u>Interface</u></strong>&nbsp;: nous choisissons l'interface dédiée à la réplication si le pfSense en possède une. Autrement, nous choisissons "LAN"</li>
+<li> <strong><u>Address Family</u></strong>&nbsp;: nous laissons "IPv4"</li>
+<li> <strong><u>Protocol</u></strong>&nbsp;: nous choisissons "PFSYNC"</li>
+<li> <strong><u>Source</u></strong>&nbsp;: nous indiquons un alias qui contiendra les adresses IP des interfaces de synchronisation de chaque pfSense (dans notre cas, cet alias contiendra les adresses IP "192.168.0.11" et "192.168.0.12"). Si cette notion d'alias n'est pas claire pour vous, vous pouvez choisir l'ensemble du réseau rattaché à l'interface de synchronisation (dans notre cas, ce serait "LAN net")</li>
+<li> <strong><u>Destination</u></strong>&nbsp;: nous choisissons "This firewall (self)"</li></ul>
+<br>
+Exemple de résultat obtenu&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/config-firewall-ha-pfsync-replication-pfsense-23.png" alt="Règle de firewall autorisant le protocole pfsync" width="870" height="687"></div><br>
+<br>
+Ces deux règles de firewall ont été répliquées automatiquement sur le pfSense secondaire.<br>
+<br>
+<br>
+<br>
+<h2>4. Vérifier le bon fonctionnement de la haute-disponibilité</h2><br>
+L'ensemble doit, à ce stade, être opérationnel. Vérifions&nbsp;!<br>
+<br>
+<br>
+<h3>Vérifier le statut du CARP (adresse VIP)</h3><br>
+Nous pouvons vérifier l'état de nos adresses IP virtuelles depuis le menu "Status"&gt; "CARP (failover)"&nbsp;:<br>
+<br>
+<div style="text-align:center;"><img   src="./pfSense_files/menu-VIP-status-CARP-pfsense-23.png" alt="menu Status &gt; CARP (failover)" width="270" height="132"></div><br>
+<br>
+Les adresses VIP doivent avoir le statut "MASTER" sur le pfSense primaire et "BACKUP" sur le pfSense secondaire.<br>
+<br>
+<br>
+<h3>Vérifier la réplication</h3><br>
+Nous pouvons naviguer dans le menu "Firewall" &gt; "Rules" et "Firewall" &gt; "NAT" et vérifier que les règles créées sur le pfSense primaire sont bien présentes également sur le pfSense secondaire.<br>
+<br>
+<br>
+<h3>Faire des tests&nbsp;!</h3><br>
+Avant toute chose, à ce stade, il est important de faire une sauvegarde de vos serveurs pfSense ("Diagnostics" &gt; "Backup &amp; Restore").<br>
+<br>
+Ensuite, pour tester le bon fonctionnement de la haute-disponibilité, plusieurs tests peuvent être réalisés. En voici quelques exemples&nbsp;:<br>
+<ul>
+<li> arrêter le pfSense primaire</li>
+<li> débrancher le câble réseau de l'interface LAN ou WAN du pfSense primaire</li>
+<li> désactiver le service CARP sur le pfSense primaire ("Status" &gt; "CARP (failover)")</li>
+<li> télécharger un fichier ou lancer des requêtes ping lors de la bascule du primaire vers le secondaire</li></ul>
+<br>
+<br>
+<br>
+<h3>Pour aller plus loin</h3><br>
+<a href="https://www.provya.net/index.php?d=2015/01/13/13/31/57-pfsense-comprendre-la-gestion-des-interfaces-reseaux">[pfSense] Comprendre la gestion des interfaces réseaux</a><br>
+<a href="https://www.provya.net/index.php?d=2014/08/24/12/09/58-pfsense-configurer-son-serveur-dhcp">[pfSense] Configurer son serveur DHCP</a><br>
+<a href="https://www.provya.net/?d=2019/11/05/10/02/58-pfsense-tout-comprendre-aux-alias">[pfSense] Tout comprendre aux alias</a><br>
+<a href="https://www.provya.net/index.php?d=2014/09/04/14/45/52-pfsense-mettre-a-jour-son-serveur-pfsense">[pfSense] Mettre à jour son serveur pfSense</a><br>
+<a href="https://www.provya.net/index.php?d=2014/06/15/15/20/04-pfsense-monter-un-acces-openvpn-site-a-site">[pfSense] Monter un accès OpenVPN site-à-site</a><br>
+<a href="https://www.provya.net/?d=2017/11/24/11/31/31-pfsense-configurer-un-dual-wan-plusieurs-connexions-internet">[pfSense] Configurer un dual-WAN (plusieurs connexions Internet)</a><br>
+<a href="https://www.provya.net/index.php?liste">Tous nos articles classés par thème</a><br>
+<a href="https://www.provya.net/index.php?random">Voir un article au hasard</a><br>
+<br>
+<br>
+ 
+<script>
+/* Tag script found at : http://www.siteduzero.com/tutoriel-3-34703-insertion-de-balises-dans-une-zone-de-texte.html */
+function insertTag(startTag, endTag, tag, tagType) {
+	var field = document.getElementById(tag);
+	var scroll = field.scrollTop;
+	field.focus();
+
+	if (window.ActiveXObject) { // C'est IE
+		var textRange = document.selection.createRange();            
+		var currentSelection = textRange.text;
+
+		textRange.text = startTag + currentSelection + endTag;
+		textRange.moveStart("character", -endTag.length - currentSelection.length);
+		textRange.moveEnd("character", -endTag.length);
+		textRange.select();     
+	} else { // c'est pas IE.
+		var startSelection   = field.value.substring(0, field.selectionStart);
+		var currentSelection = field.value.substring(field.selectionStart, field.selectionEnd);
+		var endSelection     = field.value.substring(field.selectionEnd);
+		if (currentSelection == "") { currentSelection = "TEXTE"; }
+		field.value = startSelection + startTag + currentSelection + endTag + endSelection;
+		field.focus();
+		field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);
+	}
+	field.scrollTop = scroll;
+}
+
+function reply(code) {
+	var field = document.getElementById('form-commentaire').getElementsByTagName('textarea')[0];
+	field.focus();
+	if (field.value !== '') {
+		field.value += '\n\n';
+	}
+	field.value += code;
+	field.scrollTop = 10000;
+	field.focus();
+}
+
+function resize(id, dht) {
+	var elem = document.getElementById(id);
+	var ht = elem.offsetHeight;
+	size = Number(ht)+Number(dht);
+	elem.style.height = size+"px";
+	return false;
+}
+
+
+/* Script provenant d'ici : http://www.tiger-222.fr/?d=2016/10/18/14/00/25-scrollbar-horizontale */
+/* Calcul de votre progression sur la page
+   et modification de la longueur de la scroll bar */
+function scroll_bar() {
+    'use strict';
+    var t = document.querySelector('#scroll-bar'),
+        a = document.body.clientHeight,
+        n = window.innerHeight,
+        g = window.pageYOffset,
+        o = g / (a - n) * 100;
+
+    t.style.width = o + '%';
+}
+
+// Appel de la fonction lorsque la page est chargée
+window.addEventListener('load', scroll_bar);
+
+/* Appel de la fonction lors d'un mouvement sur la page
+   (scroll, mollette de la souris, flèches de direction, etc.) */
+window.addEventListener('scroll', scroll_bar);
+</script>
+
+
+
+ </body></html>

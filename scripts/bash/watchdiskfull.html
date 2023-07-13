@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Surveiller l'utilisation du disque d'un serveur</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>
+	Voici un exemple de script Bash pour surveiller l'utilisation du disque d'un serveur Linux et envoyer une alerte par courriel si l'utilisation dépasse un certain seuil.
+	</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+#!/bin/bash
+
+# Paramètres de configuration
+EMAIL_ALERT="votre@email.com"
+SEUIL_ALERT=80
+
+# Fonction pour vérifier l'utilisation du disque
+check_disk_usage() {
+  local partition=$1
+  local disk_usage=$(df -h "${partition}" | awk 'NR==2 { print $5 }' | sed 's/%//g')
+
+  if [ ${disk_usage} -ge ${SEUIL_ALERT} ]; then
+    echo "Alerte : L'utilisation du disque sur la partition ${partition} est de ${disk_usage}%."
+    DISQUES_DEPASSES+="${partition} - ${disk_usage}%\n"
+  else
+    echo "L'utilisation du disque sur la partition ${partition} est de ${disk_usage}%."
+  fi
+}
+
+# Vérifier l'utilisation du disque pour chaque partition montée
+DISQUES_DEPASSES=""
+while read -r partition; do
+  check_disk_usage "${partition}"
+done < <(df -h | awk 'NR>1 { print $1 }')
+
+# Envoyer un courriel d'alerte si l'utilisation du disque dépasse le seuil
+if [ -n "${DISQUES_DEPASSES}" ]; then
+  echo -e "Subject: [ALERT] Utilisation du disque élevée sur $(hostname)\n\nL'utilisation du disque sur les partitions suivantes dépasse ${SEUIL_ALERT}% :\n\n${DISQUES_DEPASSES}" | sendmail -t "${EMAIL_ALERT}"
+  echo "Alerte : L'utilisation du disque est élevée sur certaines partitions. Un courriel a été envoyé à ${EMAIL_ALERT}."
+fi
+
+
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+Assurez-vous de remplacer "votre@email.com" par l'adresse e-mail où vous souhaitez recevoir les notifications et de définir SEUIL_ALERT sur la valeur souhaitée (en pourcentage). Vous devrez peut-être installer et configurer sendmail ou un autre agent de transfert de courrier (MTA) sur votre serveur pour envoyer des courriels. 
+ </p>
+
+<br>
+ 
+ <p>
+ 
+ Ce script vérifie l'utilisation du disque pour chaque partition montée sur le système et envoie un e-mail d'alerte si l'utilisation du disque dépasse le seuil défini. Vous pouvez l'exécuter manuellement ou le planifier avec cron pour une surveillance régulière de l'utilisation du disque.
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

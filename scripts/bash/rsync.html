@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>rsync</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+ 
+ rsync est un outil de synchronisation de fichiers rapide et flexible pour Unix/Linux. Il peut être utilisé pour copier des fichiers localement ou entre des machines distantes via SSH. Voici un guide pour vous aider à configurer et utiliser rsync :
+
+	<ol>	
+        <li>
+			<h3>Installer rsync :</h3>
+            
+            Sur la plupart des distributions Linux, rsync est déjà installé par défaut. Si ce n'est pas le cas, vous pouvez l'installer avec les commandes suivantes :
+            
+            <ul>
+			
+			<li>
+			Pour Ubuntu/Debian :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+sudo apt-get update
+sudo apt-get install rsync
+            </code></pre>
+            
+         	</li>
+			<li>
+            Pour CentOS/RHEL/Fedora :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+sudo yum install rsync
+            </code></pre>
+			
+			</li>
+			</ul>
+        </li>  
+		<li>	
+            <h3>Syntaxe de base de rsync :</h3>
+            
+            La syntaxe de base pour utiliser rsync est la suivante :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync [options] [source] [destination]
+            </code></pre>
+            
+			<ul>
+            <li>options : Les options que vous souhaitez utiliser avec rsync.
+            <li>source : Le répertoire ou le fichier source que vous souhaitez synchroniser.
+            <li>destination : Le répertoire de destination où vous souhaitez que les fichiers soient copiés.
+            </ul>
+		</li>  
+		<li>	
+			<h3> Copier des fichiers localement :</h3>
+            
+            Pour copier des fichiers localement d'un répertoire à un autre, utilisez la commande suivante :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av /chemin/vers/source /chemin/vers/destination
+            </code></pre>
+            
+            Les options utilisées ici sont :
+            <ul>
+            <li>-a : mode "archive" qui préserve les attributs de fichier tels que les permissions, les propriétaires et les horodatages.
+            </li>
+			<li>-v : mode "verbose" qui affiche des informations détaillées sur le processus de copie.
+			</li>
+			</ul>	
+		</li>	
+		<li>
+			<h3>Copier des fichiers vers une machine distante :</h3>
+            
+            Pour copier des fichiers vers une machine distante via SSH, utilisez la commande suivante :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av /chemin/vers/source utilisateur@machine_distante:/chemin/vers/destination
+            </code></pre>
+            
+        </li>
+		<li>	
+           <h3> Copier des fichiers depuis une machine distante :</h3>
+            
+            Pour copier des fichiers depuis une machine distante vers la machine locale, inversez l'ordre de la source et de la destination :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av utilisateur@machine_distante:/chemin/vers/source /chemin/vers/destination
+            </code></pre>
+            
+        </li>
+		<li>
+			<h3>Options utiles de rsync :</h3>
+            
+				Voici quelques options utiles pour personnaliser le comportement de rsync :
+				
+			<ul>
+				<li>--delete : Supprime les fichiers de la destination qui n'existent pas dans la source.
+				</li>
+				<li>--exclude : Exclut les fichiers ou répertoires spécifiques de la synchronisation. Par exemple :
+				
+				
+				<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av --exclude 'fichier_a_exclure' /chemin/vers/source /chemin/vers/destination
+				</code></pre>
+				</li>
+				<li>--include : Inclut uniquement les fichiers ou répertoires spécifiques dans la synchronisation. Par exemple :
+				
+				
+				<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av --include 'fichier_a_inclure' /chemin/vers/source /chemin/vers/destination
+				</code></pre>
+				
+				</li>
+				<li>--dry-run : Affiche les résultats de la synchronisation sans réellement transférer de fichiers.
+				</li>
+				<li>-z : Compresse les données pendant le transfert pour réduire la bande passante utilisée.
+				</li>
+				<li>-P : Combinaison des options --partial et --progress. --partial permet de conserver les fichiers partiellement transférés en cas d'interruption, et --progress affiche la progression du transfert de fichiers.
+				</li>
+				<li>-h : Affiche les tailles de fichiers en format lisible par l'homme (K, M, G).
+				</li>
+				<li>--bwlimit : Limite la bande passante utilisée par rsync. Par exemple, pour limiter la bande passante à 100 Ko/s :
+				
+				<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av --bwlimit=100 /chemin/vers/source /chemin/vers/destination
+				</code></pre>
+				</li>
+				<li>-e : Spécifie un autre programme pour la communication entre les machines distantes (par défaut : ssh). Par exemple, pour utiliser une clé SSH spécifique :
+				
+				<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+rsync -av -e "ssh -i /chemin/vers/ma_cle_ssh" /chemin/vers/source utilisateur@machine_distante:/chemin/vers/destination
+				</code></pre>
+			</li>
+			</ul>
+				
+			
+		</li>
+		<li>
+		
+			<h3>Planifier des synchronisations avec cron :</h3>
+            
+            Vous pouvez planifier des synchronisations régulières en utilisant cron. Par exemple, pour synchroniser un répertoire toutes les nuits à minuit, ajoutez la ligne suivante à votre fichier crontab :
+            
+            <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+0 0 * * * rsync -av /chemin/vers/source /chemin/vers/destination
+            </code></pre>
+            
+            
+            N'oubliez pas de remplacer /chemin/vers/source et /chemin/vers/destination par les chemins appropriés.
+		</li>
+		<br>
+		<hr>
+En suivant ce guide, vous devriez être en mesure de configurer et d'utiliser rsync pour synchroniser des fichiers localement et entre des machines distantes. Les nombreuses options disponibles permettent de personnaliser le comportement de rsync en fonction de vos besoins spécifiques.
+
+
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>

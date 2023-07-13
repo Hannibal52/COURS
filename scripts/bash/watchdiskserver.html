@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Utilisation de l'espace disque sur un serveur Linux</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>voici un exemple de script Bash simple qu'un ingénieur DevOps pourrait créer pour surveiller l'utilisation de l'espace disque sur un serveur Linux et envoyer une alerte par courriel si l'espace disque est trop faible.
+	</h2>
+	
+	<p>
+	</p>
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+    # Votre code Bash ici
+
+#!/bin/bash
+
+# Paramètres de configuration
+SEUIL_ALERT=80
+EMAIL_ALERT="votre@email.com"
+
+# Vérifier l'espace disque
+ESPACE_UTILISE=$(df -h / | grep -vE '^Filesystem|tmpfs|udev' | awk '{print $5}' | sed 's/%//g')
+
+if [ "$ESPACE_UTILISE" -gt "$SEUIL_ALERT" ]; then
+  # Générer un rapport
+  RAPPORT=$(df -h)
+  
+  # Envoyer un courriel d'alerte
+  echo -e "Subject: [ALERT] Espace disque faible sur $(hostname)\n\n${RAPPORT}" | sendmail -t "${EMAIL_ALERT}"
+  
+  # Afficher un message d'alerte dans le terminal
+  echo "Alerte : L'espace disque est faible sur $(hostname). Un courriel a été envoyé à ${EMAIL_ALERT}."
+fi
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+ Assurez-vous de remplacer "votre@email.com" par l'adresse e-mail où vous souhaitez recevoir les notifications. De plus, vous devrez peut-être installer et configurer sendmail ou un autre agent de transfert de courrier (MTA) sur votre serveur pour envoyer des courriels.
+
+Ce script vérifie l'utilisation de l'espace disque pour le système de fichiers racine (/), génère un rapport et envoie un e-mail si l'utilisation de l'espace disque dépasse le seuil d'alerte défini (80 % dans cet exemple). Vous pouvez l'exécuter manuellement ou le planifier à l'aide d'un outil comme cron pour une surveillance régulière.
+
+</p>
+ 
+ <p>
+ Si vous souhaitez personnaliser l'adresse e-mail de l'expéditeur, vous pouvez ajouter l'option -f à la commande sendmail dans le script. Par exemple, pour définir l'adresse de l'expéditeur sur "noreply@yourdomain.com", modifiez la commande sendmail comme suit:
+ </p>
+ 
+ <pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+ echo -e "Subject: [ALERT] Espace disque faible sur $(hostname)\n\n${RAPPORT}" | sendmail -f "noreply@yourdomain.com" -t "${EMAIL_ALERT}"
+</code></pre>
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

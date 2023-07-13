@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel GRE over IPsec sur Routeurs Cisco</title>
+	
+	<style>
+      body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 36px;
+			margin: 0;
+		}
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			text-align: left;
+			
+			}
+		section {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			padding: 20px;
+		}
+		.titre {
+			 color: #FFFFcc;
+			font-size: 24px;
+			margin: 0 0 10px;
+		} 
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+			color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+		 text-align: left;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+<header>
+	
+    <h1>GRE over IPsec </h1>
+	 
+	
+		</header>
+ 
+	<main>
+	
+	
+	
+   
+    
+    <p>Ce tutoriel explique comment configurer un tunnel GRE over IPsec entre deux routeurs Cisco pour sécuriser la communication entre les sites distants.</p>
+	
+	<center><img src="greoveripsec.png"></center>
+	
+	<h2>Configuration du NAT</h2>
+<p>Si vous avez besoin de configurer le NAT sur vos routeurs, suivez ces étapes :</p>
+<ol>
+    <li>Créez une liste d'accès pour exclure le trafic du tunnel GRE du NAT. Remplacez <code>[réseau_local]</code>, <code>[masque_de_sous-réseau_local]</code>, <code>[réseau_distant]</code> et <code>[masque_de_sous-réseau_distant]</code> par les valeurs appropriées pour vos réseaux.
+        <pre>Router(config)# ip route 0.0.0.0 0.0.0.0 [interface_extérieure]
+Router(config)# access-list 110 deny ip [réseau_local] [masque_de_sous-réseau_local] [réseau_distant] [masque_de_sous-réseau_distant]</pre>
+    </li>
+    <li>Ajoutez une règle pour autoriser le reste du trafic à être traduit.
+        <pre>Router(config)# access-list 110 permit ip [réseau_local] [masque_de_sous-réseau_local] any</pre>
+    </li>
+    <li>Configurez le NAT avec la liste d'accès créée. Remplacez <code>[interface_extérieure]</code> par l'interface connectée à Internet ou au réseau externe.
+        <pre>Router(config)# interface [interface_extérieure]
+Router(config-if)# ip nat outside
+
+Router(config)# interface [interface_source]
+Router(config-if)# ip nat inside
+
+Router(config)# ip nat inside source list 110 interface [interface_extérieure] overload</pre>
+    </li>
+</ol>
+<p>Répétez ces étapes sur l'autre routeur distant pour configurer le NAT.</p>
+<p>Notez que si vos routeurs sont directement connectés par des interfaces dédiées pour le tunnel GRE, ou si vous utilisez des adresses IP publiques pour vos réseaux locaux, vous n'aurez peut-être pas besoin de configurer le NAT. La nécessité de configurer le NAT dépend de vos exigences spécifiques et de la topologie de votre réseau.</p>
+
+
+<br>
+<br>
+<p>Commençons... </p>
+    <h2>Configuration du tunnel GRE</h2>
+    <ol>
+        <li>Connectez-vous au routeur et entrez en mode de configuration global.
+            <pre>Router> enable
+Router# configure terminal</pre>
+        </li>
+        <li>Créez un tunnel GRE sur chaque routeur.
+            <pre>Router(config)# interface tunnel [num_tunnel]
+Router(config-if)# ip address [adresse_IP_tunnel] [masque_de_sous-réseau_tunnel]
+Router(config-if)# tunnel source [interface_source]
+Router(config-if)# tunnel destination [adresse_IP_destination]</pre>
+        </li>
+    </ol>
+
+    <h2>Configuration d'IPsec</h2>
+    <ol>
+        <li>Configurez une politique de sécurité IKE (ISAKMP).
+            <pre>
+Router(config)# crypto isakmp policy [priorité]                  (10)
+Router(config-isakmp)# encryption [algorithme_chiffrement]       (aes 256)
+Router(config-isakmp)# hash [algorithme_hachage]                 (sha256)
+Router(config-isakmp)# authentication [méthode_authentification] (pre-share)
+Router(config-isakmp)# group [groupe_DH]                         (14)
+Router(config-isakmp)# lifetime [durée_vie]                      (3600)
+</pre>
+        </li>
+        <li>Configurez une clé pré-partagée pour l'authentification.
+            <pre>Router(config)# crypto isakmp key [clé_pré-partagée] address [adresse_IP_routeur_distant]</pre>
+        </li>
+        <li>Créez une liste d'accès pour spécifier le trafic à protéger avec IPsec.
+            <pre>Router(config)# access-list [num_liste] permit gre host [adresse_IP_tunnel_local] host [adresse_IP_tunnel_distant]</pre>
+        </li>
+        <li>Créez une proposition d'IPsec pour spécifier les paramètres de chiffrement et d'authentification.
+            <pre>Router(config)# crypto ipsec transform-set [nom_transform-set] [mode_chiffrement] [mode_authentification]</pre>
+        </li>
+        <li>Configurez une crypto map pour associer la liste d'accès et la proposition IPsec.
+            <pre>Router(config)# crypto map [nom_crypto_map] [num_séquence] ipsec-isakmp
+Router(config-crypto-map)# set peer [adresse_IP_routeur_distant]      
+Router(config-crypto-map)# set transform-set [nom_transform-set]
+Router(config-crypto-map)# match address [num_liste]</pre>
+        </li>
+        <li>Appliquez la crypto map à l'interface source du tunnel GRE.
+		<pre style="color:#FFA500;"> Attention [interface_source] c'est l'interface physique qu'on a utilisé au debut avec GRE, 
+ si tu utilise l'interface virtuelle ça va être IPsec Over GRE  (l'inverse)  </pre>
+
+            <pre>Router(config)# interface [interface_source] 
+Router(config-if)# crypto map [nom_crypto_map]</pre>
+    </li>
+</ol>
+
+<p>Répétez les étapes 1 à 2 pour la configuration du tunnel GRE et les étapes 1 à 6 pour la configuration d'IPsec sur l'autre routeur distant. Une fois la configuration terminée, les routeurs établiront un tunnel GRE sécurisé avec IPsec pour acheminer le trafic entre les sites distants.</p>
+
+<h2>Configuration du routage</h2>
+<p>Pour acheminer le trafic entre les réseaux locaux sur les deux côtés du tunnel, vous devez configurer le routage sur les routeurs. Vous pouvez utiliser un protocole de routage dynamique (comme OSPF ou EIGRP) ou configurer des routes statiques pour diriger le trafic vers le tunnel GRE.</p>
+
+<h3>Exemple de configuration de routage statique</h3>
+<pre>Router(config)# ip route [réseau_distant] [masque_de_sous-réseau_distant] tunnel [num_tunnel]</pre>
+
+<h3>Exemple de configuration OSPF</h3>
+<ol>
+    <li>Activez OSPF sur les routeurs.
+        <pre>Router(config)# router ospf [process_id]
+Router(config-router)# network [adresse_reseau_tunnel] [wildcard_mask_tunnel] area [area_id_tunnel]
+Router(config-router)# network [adresse_reseau_local] [wildcard_mask_local] area [area_id_local]</pre>
+</li>
+<li>Configurez l'interface du tunnel pour qu'elle participe au processus OSPF.
+<pre>Router(config)# interface tunnel [num_tunnel]
+Router(config-if)# ip ospf [process_id] area [area_id_tunnel]</pre>
+</li>
+</ol>
+<p>Après avoir configuré le routage, les routeurs devraient être en mesure d'acheminer le trafic entre les réseaux locaux sur les deux côtés du tunnel GRE sécurisé avec IPsec.</p>
+</main>
+
+
+</body>
+</html>

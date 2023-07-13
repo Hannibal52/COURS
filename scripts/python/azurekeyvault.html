@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+    
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1> Azure key Vault</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	<p>
+	Azure Key Vault est un service qui vous permet de stocker et de gérer en toute sécurité des secrets, tels que des mots de passe, des clés d'API et des certificats. Pour récupérer un mot de passe stocké dans Azure Key Vault, vous pouvez utiliser le SDK Azure pour Python. Voici comment le faire :
+	 </p>
+	
+	<ol>
+		<li>
+		<h4>Installez le SDK Azure pour Python, si ce n'est pas déjà fait :</h4>
+	<pre><code class="language-python">
+pip install azure-keyvault-secrets azure-identity
+	</code></pre>
+		</li>
+		
+		<li>
+		<h4>Installez le SDK Azure pour Python, si ce n'est pas déjà fait :</h4>
+	<pre><code class="language-python">
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+
+	</code></pre>
+		</li>
+		
+		
+		<li>
+		Configurez les informations d'identification d'Azure. Vous pouvez le faire en configurant les variables d'environnement AZURE_TENANT_ID, AZURE_CLIENT_ID et AZURE_CLIENT_SECRET avec les informations d'identification appropriées pour votre compte Azure.
+		</li>
+		
+		<li> 
+		<h4>Utilisez le code suivant pour récupérer un mot de passe stocké dans Azure Key Vault :</h4>
+	<pre><code class="language-python">
+def get_password_from_key_vault(vault_url, secret_name):
+    # Créez un objet DefaultAzureCredential
+    credential = DefaultAzureCredential()
+    
+    # Créez un objet SecretClient en utilisant l'URL du coffre-fort et les informations d'identification
+    secret_client = SecretClient(vault_url=vault_url, credential=credential)
+    
+    # Récupérez le mot de passe du coffre-fort en utilisant le nom du secret
+    secret = secret_client.get_secret(secret_name)
+    
+    return secret.value
+
+# Utilisation de la fonction pour récupérer un mot de passe
+vault_url = "https://your-key-vault-name.vault.azure.net/"
+secret_name = "your-secret-name"
+password = get_password_from_key_vault(vault_url, secret_name)
+print(f"Le mot de passe récupéré est : {password}")	
+	</code></pre>
+		</li>	
+	</ol>
+	
+ 
+ 
+ <br>
+
+ <hr>
+ <p> 
+Assurez-vous de remplacer your-key-vault-name par le nom de votre coffre-fort Azure Key Vault et your-secret-name par le nom du secret contenant le mot de passe que vous souhaitez récupérer. 
+ </p> 
+ 
+ <hr>
+ 
+ <br>
+	</div>
+ 
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+
+</body>
+
+</html>

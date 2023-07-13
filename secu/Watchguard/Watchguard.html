@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="fit-vids-style" id="fit-vids-style" style="display: none;">­<style>.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></div><script type="text/javascript" async="" src="./watchgrd_files/recaptcha__fr.js.téléchargement" crossorigin="anonymous" integrity="sha384-J3/bKHxa83wDdKeElYsYWou9gE2Yh5dj6hsuNqmdqDjc2XdLOE0mMPPDPcx0VJm/"></script><script async="" src="./watchgrd_files/v2omzqCOr1wzGtDaGo0QZakPPmUoeLHMW1sKX-OYzFzsGy6BCS4aNZlQJz1InLUeegmkU0ZY7qCpYZ4I6eGfzuOBhU0bsXf6EmYIeVRp9VKMt23K-ZC9LMNJqvJF5"></script>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.gabinhocity.eu/xmlrpc.php">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+	<!-- This site is optimized with the Yoast SEO plugin v19.9 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Watchguard : configurer un tunnel VPN SSL - Gabinhocity</title>
+	<link rel="canonical" href="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/">
+	<meta property="og:locale" content="fr_FR">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Watchguard : configurer un tunnel VPN SSL - Gabinhocity">
+	<meta property="og:description" content="Chez moi je dispose d’un WatchGuard XTM 26 qui est connecté derrière la box de mon fournisseur internet (SFR). Je vais vous montrer comment comment configurer une liaison VPN pour accéder à votre réseau depuis l’extérieur. Voici un schéma rapide qui vous montre comment est organisé le réseau chez moi J’ai deux réseaux : Un premier […]">
+	<meta property="og:url" content="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/">
+	<meta property="og:site_name" content="Gabinhocity">
+	<meta property="article:published_time" content="2017-11-29T14:20:09+00:00">
+	<meta property="og:image" content="https://www.gabinhocity.eu/wp-content/uploads/2017/11/wgrd_logo_clr.gif">
+	<meta property="og:image:width" content="530">
+	<meta property="og:image:height" content="152">
+	<meta property="og:image:type" content="image/gif">
+	<meta name="author" content="Yves Gabin Nguele">
+	<meta name="twitter:label1" content="Écrit par">
+	<meta name="twitter:data1" content="Yves Gabin Nguele">
+	<meta name="twitter:label2" content="Durée de lecture estimée">
+	<meta name="twitter:data2" content="3 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/","url":"https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/","name":"Watchguard : configurer un tunnel VPN SSL - Gabinhocity","isPartOf":{"@id":"https://www.gabinhocity.eu/#website"},"primaryImageOfPage":{"@id":"https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#primaryimage"},"image":{"@id":"https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#primaryimage"},"thumbnailUrl":"https://www.gabinhocity.eu/wp-content/uploads/2017/11/wgrd_logo_clr.gif","datePublished":"2017-11-29T14:20:09+00:00","dateModified":"2017-11-29T14:20:09+00:00","author":{"@id":"https://www.gabinhocity.eu/#/schema/person/8acd8195025195514aea38d4f7f7c754"},"inLanguage":"fr-FR","potentialAction":[{"@type":"ReadAction","target":["https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/"]}]},{"@type":"ImageObject","inLanguage":"fr-FR","@id":"https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#primaryimage","url":"https://www.gabinhocity.eu/wp-content/uploads/2017/11/wgrd_logo_clr.gif","contentUrl":"https://www.gabinhocity.eu/wp-content/uploads/2017/11/wgrd_logo_clr.gif","width":530,"height":152},{"@type":"WebSite","@id":"https://www.gabinhocity.eu/#website","url":"https://www.gabinhocity.eu/","name":"Gabinhocity","description":"l’informatique simplement","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.gabinhocity.eu/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"fr-FR"},{"@type":"Person","@id":"https://www.gabinhocity.eu/#/schema/person/8acd8195025195514aea38d4f7f7c754","name":"Yves Gabin Nguele"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+<link rel="dns-prefetch" href="https://www.google.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com/">
+<link rel="alternate" type="application/rss+xml" title="Gabinhocity » Flux" href="https://www.gabinhocity.eu/feed/">
+<link rel="alternate" type="application/rss+xml" title="Gabinhocity » Flux des commentaires" href="https://www.gabinhocity.eu/comments/feed/">
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.gabinhocity.eu\/wp-includes\/js\/wp-emoji-release.min.js?ver=e598981f0e8053888ac2e719a9edcf06"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script><script src="./watchgrd_files/wp-emoji-release.min.js.téléchargement" type="text/javascript" defer=""></script>
+<!-- gabinhocity.eu is managing ads with Advanced Ads – https://wpadvancedads.com/ --><script data-wpfc-render="false" id="gabin-ready">
+			window.advanced_ads_ready=function(e,a){a=a||"complete";var d=function(e){return"interactive"===a?"loading"!==e:"complete"===e};d(document.readyState)?e():document.addEventListener("readystatechange",(function(a){d(a.target.readyState)&&e()}),{once:"interactive"===a})},window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[];		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./watchgrd_files/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./watchgrd_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdm-font-awesome-css" href="./watchgrd_files/all.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdm-front-bootstrap-css" href="./watchgrd_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdm-front-css" href="./watchgrd_files/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="cmplz-general-css" href="./watchgrd_files/cookieblocker.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="Lucienne-style-css" href="./watchgrd_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="Lucienne-fonts-css" href="./watchgrd_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="Lucienne-fontawesome-css" href="./watchgrd_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="an_style-css" href="./watchgrd_files/tQbhQlxqsSup.css" type="text/css" media="all">
+<link rel="stylesheet" id="__EPYT__style-css" href="./watchgrd_files/ytprefs.min.css" type="text/css" media="all">
+<style id="__EPYT__style-inline-css" type="text/css">
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<script>!(function(o,n,t){t=o.createElement(n),o=o.getElementsByTagName(n)[0],t.async=1,t.src="https://steadfastsystem.com/v2omzqCOr1wzGtDaGo0QZakPPmUoeLHMW1sKX-OYzFzsGy6BCS4aNZlQJz1InLUeegmkU0ZY7qCpYZ4I6eGfzuOBhU0bsXf6EmYIeVRp9VKMt23K-ZC9LMNJqvJF5",o.parentNode.insertBefore(t,o)})(document,"script"),(function(o,n){function t(){(t.q=t.q||[]).push(arguments)}t.v=1,o.admiral=o.admiral||t})(window);!(function(o,t,n,c){function e(n){(function(){try{return(localStorage.getItem("v4ac1eiZr0")||"").split(",")[4]>0}catch(o){}return!1})()&&(n=o[t].pubads())&&n.setTargeting("admiral-engaged","true")}(c=o[t]=o[t]||{}).cmd=c.cmd||[],typeof c.pubads===n?e():typeof c.cmd.unshift===n?c.cmd.unshift(e):c.cmd.push(e)})(window,"googletag","function");</script><script type="text/javascript" src="./watchgrd_files/jquery.min.js.téléchargement" id="jquery-core-js"></script>
+<script type="text/javascript" src="./watchgrd_files/jquery-migrate.min.js.téléchargement" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./watchgrd_files/popper.min.js.téléchargement" id="wpdm-poper-js"></script>
+<script type="text/javascript" src="./watchgrd_files/bootstrap.min.js.téléchargement" id="wpdm-front-bootstrap-js"></script>
+<script type="text/javascript" id="wpdm-frontjs-js-extra">
+/* <![CDATA[ */
+var wpdm_url = {"home":"https:\/\/www.gabinhocity.eu\/","site":"https:\/\/www.gabinhocity.eu\/","ajax":"https:\/\/www.gabinhocity.eu\/wp-admin\/admin-ajax.php"};
+var wpdm_js = {"spinner":"<i class=\"fas fa-sun fa-spin\"><\/i>"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./watchgrd_files/front.js.téléchargement" id="wpdm-frontjs-js"></script>
+
+<!-- Extrait Google Analytics ajouté par Site Kit -->
+
+<script type="text/javascript" id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["www.gabinhocity.eu"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-86629503-1", {"anonymize_ip":true});
+</script>
+
+<!-- Arrêter l&#039;extrait Google Analytics ajouté par Site Kit -->
+
+<script type="text/javascript" src="./watchgrd_files/ytprefs.min.js.téléchargement" id="__ytprefs__-js"></script>
+<link rel="https://api.w.org/" href="https://www.gabinhocity.eu/wp-json/"><link rel="alternate" type="application/json" href="https://www.gabinhocity.eu/wp-json/wp/v2/posts/54131"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.gabinhocity.eu/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.gabinhocity.eu/wp-includes/wlwmanifest.xml"> 
+
+<link rel="shortlink" href="https://www.gabinhocity.eu/?p=54131">
+<link rel="alternate" type="application/json+oembed" href="https://www.gabinhocity.eu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.gabinhocity.eu%2Fwatchguard-configurer-un-tunnel-vpn-ssl%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.gabinhocity.eu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.gabinhocity.eu%2Fwatchguard-configurer-un-tunnel-vpn-ssl%2F&amp;format=xml">
+<meta name="generator" content="Site Kit by Google 1.86.0"><style>.cmplz-hidden{display:none!important;}</style><meta name="google-site-verification" content="th9wj4f8Dr-rJdP4mJXdcbluP_JEviKqej6HOWfNK6k">
+<!-- Extrait Google AdSense ajouté par Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- Arrêter l&#039;extrait Google AdSense ajouté par Site Kit -->
+
+<!-- Extrait Google AdSense ajouté par Site Kit -->
+
+
+<!-- Arrêter l&#039;extrait Google AdSense ajouté par Site Kit -->
+<link rel="preload" as="style" href="./watchgrd_files/prettify.css"><meta name="generator" content="WordPress Download Manager 3.2.58">
+                <link href="./watchgrd_files/css(1)" rel="stylesheet">
+        <style>
+            .w3eden .fetfont,
+            .w3eden .btn,
+            .w3eden .btn.wpdm-front h3.title,
+            .w3eden .wpdm-social-lock-box .IN-widget a span:last-child,
+            .w3eden #xfilelist .panel-heading,
+            .w3eden .wpdm-frontend-tabs a,
+            .w3eden .alert:before,
+            .w3eden .panel .panel-heading,
+            .w3eden .discount-msg,
+            .w3eden .panel.dashboard-panel h3,
+            .w3eden #wpdm-dashboard-sidebar .list-group-item,
+            .w3eden #package-description .wp-switch-editor,
+            .w3eden .w3eden.author-dashbboard .nav.nav-tabs li a,
+            .w3eden .wpdm_cart thead th,
+            .w3eden #csp .list-group-item,
+            .w3eden .modal-title {
+                font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+            .w3eden #csp .list-group-item {
+                text-transform: unset;
+            }
+
+
+        </style>
+            <style>
+        /* WPDM Link Template Styles */        </style>
+                <style>
+
+            :root {
+                --color-primary: #4a8eff;
+                --color-primary-rgb: 74, 142, 255;
+                --color-primary-hover: #4a8eff;
+                --color-primary-active: #4a8eff;
+                --color-secondary: #4a8eff;
+                --color-secondary-rgb: 74, 142, 255;
+                --color-secondary-hover: #4a8eff;
+                --color-secondary-active: #4a8eff;
+                --color-success: #18ce0f;
+                --color-success-rgb: 24, 206, 15;
+                --color-success-hover: #4a8eff;
+                --color-success-active: #4a8eff;
+                --color-info: #2CA8FF;
+                --color-info-rgb: 44, 168, 255;
+                --color-info-hover: #2CA8FF;
+                --color-info-active: #2CA8FF;
+                --color-warning: #f29e0f;
+                --color-warning-rgb: 242, 158, 15;
+                --color-warning-hover: orange;
+                --color-warning-active: orange;
+                --color-danger: #ff5062;
+                --color-danger-rgb: 255, 80, 98;
+                --color-danger-hover: #ff5062;
+                --color-danger-active: #ff5062;
+                --color-green: #30b570;
+                --color-blue: #0073ff;
+                --color-purple: #8557D3;
+                --color-red: #ff5062;
+                --color-muted: rgba(69, 89, 122, 0.6);
+                --wpdm-font: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            }
+
+            .wpdm-download-link.btn.btn-primary {
+                border-radius: 4px;
+            }
+
+
+        </style>
+        	
+	
+<link rel="stylesheet" type="text/css" href="./watchgrd_files/prettify.css"><link href="./watchgrd_files/banner-1-optin.css" type="text/css" rel="stylesheet"><script src="./watchgrd_files/f.txt"></script><script>
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"https:\/\/www.gabinhocity.eu\/wp-admin\/admin-ajax.php","security":"10b96976a6","gallery_scrolloffset":"20","eppathtoscripts":"https:\/\/www.gabinhocity.eu\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","eppath":"https:\/\/www.gabinhocity.eu\/wp-content\/plugins\/youtube-embed-plus\/","epresponsiveselector":"[\"iframe.__youtube_prefs_widget__\"]","epdovol":"1","version":"14.1.4","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","ytapi_load":"light","pause_others":"","stopMobileBuffer":"1","facade_mode":"","not_live_on_channel":"","vi_active":"","vi_js_posttypes":[]};
+/* ]]> */
+
+cmplzScriptLoaded();</script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/f.txt"></script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/f(1).txt"></script><script src="./watchgrd_files/js"></script><script src="./watchgrd_files/js(1)"></script></head>
+
+<body data-cmplz="1" class="post-template-default single single-post postid-54131 single-format-standard aa-prefix-gabin- cmplz-marketing cmplz-statistics cmplz-preferences cmplz-functional cmplz-eu cmplz-optin cmplz-status-marketing cmplz-status-statistics"><div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner banner-1 optin cmplz-bottom-right cmplz-categories-type-view-preferences cc-window cmplz-dismissed" aria-modal="true" data-nosnippet="true" role="dialog" aria-live="polite" aria-labelledby="cmplz-header-1-optin" aria-describedby="cmplz-message-1-optin">
+	<div class="cmplz-header">
+		<div class="cmplz-logo"></div>
+		<div class="cmplz-title" id="cmplz-header-1-optin">Gérer le consentement aux cookies</div>
+		<div class="cmplz-close" tabindex="0" role="button" aria-label="close-dialog">
+			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+		</div>
+	</div>
+
+		<div class="cmplz-divider cmplz-divider-header"></div>
+		<div class="cmplz-body">
+			<div class="cmplz-message cc-message" id="cmplz-message-1-optin">Nous utilisons des cookies pour optimiser notre site web et notre service.</div>
+			<!-- categories start -->
+			<div class="cmplz-categories">
+				<details class="cmplz-category cmplz-functional">
+					<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Fonctionnel</span>
+							<span class="cmplz-always-active">
+								<span class="cmplz-banner-checkbox">
+									<input type="checkbox" id="cmplz-functional-optin" data-category="cmplz_functional" class="cmplz-consent-checkbox cmplz-functional" size="40" value="1">
+									<label class="cmplz-label" for="cmplz-functional-optin" tabindex="0"><span>Fonctionnel</span></label>
+								</span>
+								Toujours activé							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18"><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"></path></svg>
+							</span>
+						</span>
+					</summary>
+					<div class="cmplz-description">
+						<span class="cmplz-description-functional">Le stockage ou l’accès technique est strictement nécessaire dans la finalité d’intérêt légitime de permettre l’utilisation d’un service spécifique explicitement demandé par l’abonné ou l’utilisateur, ou dans le seul but d’effectuer la transmission d’une communication sur un réseau de communications électroniques.</span>
+					</div>
+				</details>
+
+				<details class="cmplz-category cmplz-preferences">
+					<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Préférences</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox" id="cmplz-preferences-optin" data-category="cmplz_preferences" class="cmplz-consent-checkbox cmplz-preferences" size="40" value="1">
+								<label class="cmplz-label" for="cmplz-preferences-optin" tabindex="0"><span>Préférences</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18"><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"></path></svg>
+							</span>
+						</span>
+					</summary>
+					<div class="cmplz-description">
+						<span class="cmplz-description-preferences">Le stockage ou l’accès technique est nécessaire dans la finalité d’intérêt légitime de stocker des préférences qui ne sont pas demandées par l’abonné ou l’utilisateur.</span>
+					</div>
+				</details>
+
+				<details class="cmplz-category cmplz-statistics">
+					<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Statistiques</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox" id="cmplz-statistics-optin" data-category="cmplz_statistics" class="cmplz-consent-checkbox cmplz-statistics" size="40" value="1">
+								<label class="cmplz-label" for="cmplz-statistics-optin" tabindex="0"><span>Statistiques</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18"><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"></path></svg>
+							</span>
+						</span>
+					</summary>
+					<div class="cmplz-description">
+						<span class="cmplz-description-statistics">Le stockage ou l’accès technique qui est utilisé exclusivement à des fins statistiques.</span>
+						<span class="cmplz-description-statistics-anonymous">Le stockage ou l’accès technique qui est utilisé exclusivement dans des finalités statistiques anonymes. En l’absence d’une assignation à comparaître, d’une conformité volontaire de la part de votre fournisseur d’accès à internet ou d’enregistrements supplémentaires provenant d’une tierce partie, les informations stockées ou extraites à cette seule fin ne peuvent généralement pas être utilisées pour vous identifier.</span>
+					</div>
+				</details>
+				<details class="cmplz-category cmplz-marketing">
+					<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Marketing</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox" id="cmplz-marketing-optin" data-category="cmplz_marketing" class="cmplz-consent-checkbox cmplz-marketing" size="40" value="1">
+								<label class="cmplz-label" for="cmplz-marketing-optin" tabindex="0"><span>Marketing</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18"><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"></path></svg>
+							</span>
+						</span>
+					</summary>
+					<div class="cmplz-description">
+						<span class="cmplz-description-marketing">Le stockage ou l’accès technique est nécessaire pour créer des profils d’utilisateurs afin d’envoyer des publicités, ou pour suivre l’utilisateur sur un site web ou sur plusieurs sites web ayant des finalités marketing similaires.</span>
+					</div>
+				</details>
+			</div><!-- categories end -->
+					</div>
+
+		<div class="cmplz-links cmplz-information">
+			<a class="cmplz-link cmplz-manage-options cookie-statement" href="https://www.gabinhocity.eu/politique-de-cookies-ue/#cmplz-manage-consent-container" data-relative_url="#cmplz-manage-consent-container">Gérer les options</a>
+			<a class="cmplz-link cmplz-manage-third-parties cookie-statement" href="https://www.gabinhocity.eu/politique-de-cookies-ue/#cmplz-cookies-overview" data-relative_url="#cmplz-cookies-overview">Gérer les services</a>
+			<a class="cmplz-link cmplz-manage-vendors tcf cookie-statement" href="https://www.gabinhocity.eu/politique-de-cookies-ue/#cmplz-tcf-wrapper" data-relative_url="#cmplz-tcf-wrapper">Gérer les fournisseurs</a>
+			<a class="cmplz-link cmplz-external cmplz-read-more-purposes tcf" target="_blank" rel="noopener noreferrer nofollow" href="https://cookiedatabase.org/tcf/purposes/">En savoir plus sur ces finalités</a>
+					</div>
+
+	<div class="cmplz-divider cmplz-footer"></div>
+
+	<div class="cmplz-buttons">
+		<button class="cmplz-btn cmplz-accept cc-allow cc-btn">Accepter les cookies</button>
+		<button class="cmplz-btn cmplz-deny cc-dismiss cc-btn">Refuser</button>
+		<button class="cmplz-btn cmplz-view-preferences cc-btn cc-show-settings">Voir les préférences</button>
+		<button class="cmplz-btn cmplz-save-preferences cc-btn cc-save">Enregistrer les préférences</button>
+		<a class="cmplz-btn cmplz-manage-options tcf cookie-statement cc-btn" href="https://www.gabinhocity.eu/politique-de-cookies-ue/#cmplz-manage-consent-container" data-relative_url="#cmplz-manage-consent-container">Voir les préférences</a>
+			</div>
+
+	<div class="cmplz-links cmplz-documents">
+		<a class="cmplz-link cookie-statement" href="https://www.gabinhocity.eu/politique-de-cookies-ue/" data-relative_url="">Politique de cookies </a>
+		<a class="cmplz-link privacy-statement" href="https://www.gabinhocity.eu/politique-de-confidentialite/" data-relative_url="">Politique de Confidentialité</a>
+		<a class="cmplz-link impressum cmplz-hidden" href="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#" data-relative_url="">{title}</a>
+			</div>
+
+</div>
+
+
+</div>
+ <nav class="clear socialmenu" role="navigation">
+ </nav>
+
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#content">Aller au contenu</a>
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+								<h1 class="site-title"><a href="https://www.gabinhocity.eu/" rel="home">Gabinhocity</a></h1>
+			<h2 class="site-description">l’informatique simplement</h2>
+		</div><!-- .site-branding -->
+        
+        <nav id="site-navigation" class="main-navigation clear" role="navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+			<div class="menu-menu-1-container"><ul id="primary-menu" class="menu nav-menu" aria-expanded="false"><li id="menu-item-27450" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-27450"><a href="http://www.gabinhocity.eu/">Les Tutos</a></li>
+<li id="menu-item-162180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162180" aria-haspopup="true"><a href="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/#">Programmation</a>
+<ul class="sub-menu">
+	<li id="menu-item-85898" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85898"><a href="https://www.gabinhocity.eu/logiciels/backuptools/">Backuptools</a></li>
+	<li id="menu-item-162182" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-162182"><a href="https://www.gabinhocity.eu/script-global-prepa/">Script global prépa</a></li>
+</ul>
+</li>
+<li id="menu-item-158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-158"><a href="https://www.gabinhocity.eu/contact/">Contact</a></li>
+</ul></div>
+			
+		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+	<div class="wrap clear">
+
+<div id="primary" class="content-area">
+  <main id="main" class="site-main" role="main">
+        
+<article id="post-54131" class="post-54131 post type-post status-publish format-standard has-post-thumbnail hentry category-securite category-watchguard tag-securite tag-ssl tag-vpn tag-watchguard">  
+		<div class="featured-header-image">
+				<img width="530" height="152" src="./watchgrd_files/wgrd_logo_clr.gif" class="attachment-Lucienne-home size-Lucienne-home wp-post-image" alt="">		</div><!-- .featured-header-image -->
+	
+	<header class="entry-header">
+		<h1 class="entry-title">Watchguard : configurer un tunnel VPN SSL</h1>         <hr class="entry-border">
+        <div class="entry-cat">
+		<a href="https://www.gabinhocity.eu/category/securite/" rel="category tag">Sécurité</a>, <a href="https://www.gabinhocity.eu/category/securite/watchguard/" rel="category tag">Watchguard</a> / mercredi, novembre 29th, 2017		</div><!-- .entry-cat -->
+                	</header><!-- .entry-header -->
+    
+  
+
+	<div class="entry-content">
+		<div class="gabin-debut-article" id="gabin-863614953"><ins class="adsbygoogle" style="display:block;" data-ad-client="ca-pub-6386296685628140" data-ad-slot="7824157319" data-ad-format="auto"><iframe id="aswift_0" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./watchgrd_files/saved_resource(1).html"><iframe id="google_ads_frame0" src="./watchgrd_files/saved_resource(2).html"></iframe></iframe></ins>
+<script> 
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+</script>
+</div><p><a href="./watchgrd_files/XTM-2-side.jpg"><img loading="lazy" class="aligncenter size-full wp-image-54142" src="./watchgrd_files/XTM-2-side.jpg" alt="" width="500" height="146" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/XTM-2-side.jpg 500w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/XTM-2-side-300x88.jpg 300w" sizes="(max-width: 500px) 100vw, 500px"></a></p>
+<p>Chez moi je dispose d’un&nbsp;WatchGuard XTM 26 qui est connecté derrière la box de mon fournisseur internet (SFR).</p>
+<p>Je vais vous montrer comment comment configurer une liaison VPN pour accéder à votre réseau depuis l’extérieur.</p>
+<p>Voici un schéma rapide qui vous montre comment est organisé le réseau chez moi</p>
+<p><a href="./watchgrd_files/reseau-maison-1.png"><img loading="lazy" class="aligncenter size-full wp-image-54151" src="./watchgrd_files/reseau-maison-1.png" alt="" width="857" height="1019" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/reseau-maison-1.png 857w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/reseau-maison-1-252x300.png 252w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/reseau-maison-1-768x913.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/reseau-maison-1-177x210.png 177w" sizes="(max-width: 857px) 100vw, 857px"></a></p>
+<p>J’ai deux réseaux :</p>
+<ul>
+<li>Un premier réseau local configuré sur le modem de mon fournisseur internet afin de connecter les différents équipements ( Ordinateurs, Imprimantes, tablettes) à internet</li>
+<li>Un second réseau derrière mon watchguard qui est connecté à mon serveur DELL T420 sur lequel j’ai installé un Esxi pour mes VM</li>
+</ul>
+<p>Avant de parametre le VPN sur Watchguard il existe trois type de VPN : VPN IPSec, VPN Basique (PPTP, L2TP)&nbsp; et le VPN&nbsp; mobile avec SSL</p>
+<p>Voici un schéma que j’ai pris sur le site de <a href="https://www.watchguard.com/">watchguard</a> qui explique la différence entre les 3 types de VPN</p>
+<p><a href="./watchgrd_files/difference-des-VPN.png"><img loading="lazy" class="aligncenter size-full wp-image-54160" src="./watchgrd_files/difference-des-VPN.png" alt="" width="1255" height="414" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/difference-des-VPN.png 1255w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/difference-des-VPN-300x99.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/difference-des-VPN-768x253.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/difference-des-VPN-1024x338.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/difference-des-VPN-565x186.png 565w" sizes="(max-width: 1255px) 100vw, 1255px"></a></p>
+<p>Maintenant nous pouvons commencer notre configuration. Il faut se connecter à votre watchguard grâce à l’application Watchguard System Manager</p>
+<p><a href="./watchgrd_files/w1.png"><img loading="lazy" class="aligncenter size-full wp-image-54162" src="./watchgrd_files/w1.png" alt="" width="1424" height="739" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w1.png 1424w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w1-300x156.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w1-768x399.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w1-1024x531.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w1-405x210.png 405w" sizes="(max-width: 1424px) 100vw, 1424px"></a></p>
+<p>Cliquer sur l’icone de la Policy Manager</p>
+<p><a href="./watchgrd_files/w2.png"><img loading="lazy" class="aligncenter size-full wp-image-54163" src="./watchgrd_files/w2.png" alt="" width="575" height="378" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w2.png 575w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w2-300x197.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w2-319x210.png 319w" sizes="(max-width: 575px) 100vw, 575px"></a></p>
+<p><a href="./watchgrd_files/w3.png"><img loading="lazy" class="aligncenter size-full wp-image-54164" src="./watchgrd_files/w3.png" alt="" width="982" height="741" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w3.png 982w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w3-300x226.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w3-768x580.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w3-278x210.png 278w" sizes="(max-width: 982px) 100vw, 982px"></a></p>
+<p>Cliquer sur<strong> VPN &gt; Mobile VPN &gt; SSL</strong></p>
+<p><a href="./watchgrd_files/w4.png"><img loading="lazy" class="aligncenter size-full wp-image-54165" src="./watchgrd_files/w4.png" alt="" width="982" height="741" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w4.png 982w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w4-300x226.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w4-768x580.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w4-278x210.png 278w" sizes="(max-width: 982px) 100vw, 982px"></a></p>
+<p>Une nouvelle interface de configuration du VPN s’ouvre</p>
+<p><a href="./watchgrd_files/w5.png"><img loading="lazy" class="aligncenter size-full wp-image-54166" src="./watchgrd_files/w5.png" alt="" width="887" height="936" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w5.png 887w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w5-284x300.png 284w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w5-768x810.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w5-199x210.png 199w" sizes="(max-width: 887px) 100vw, 887px"></a></p>
+<p>Il faut cocher la case <strong>“Activer Mobile VPN with SSL”</strong></p>
+<p>Dans la partie <strong>Adresses IP Firebox</strong> remplacer l’IP Principale 95.152.23 par l’adresse IP public de votre box internet que vous pouvez obtenir rapidement en allant sur le site&nbsp;<a href="http://whatismyipaddress.com/fr/mon-ip" target="_blank" rel="noopener">whatismyipaddress.com</a></p>
+<p>Dans la rubrique <strong>“Pool d’adresse IP virtuelles”&nbsp;</strong>il s’agit de la plage IP qui sera fournit aux utilisateurs qui vont se connecter par VPN. Vous pouvez la modifier si vous ne voulez pas utiliser cette plage mais ne rentrez surtout pas une plage qui est déjà utilisée dans votre réseau.</p>
+<p><a href="./watchgrd_files/w6.png"><img loading="lazy" class="aligncenter size-full wp-image-54167" src="./watchgrd_files/w6.png" alt="" width="887" height="936" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w6.png 887w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w6-284x300.png 284w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w6-768x810.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w6-199x210.png 199w" sizes="(max-width: 887px) 100vw, 887px"></a></p>
+<p>Avant d’enregistrer nos modifications on va aller sur l’onglet Avancé</p>
+<p><a href="./watchgrd_files/w7.png"><img loading="lazy" class="aligncenter size-full wp-image-54168" src="./watchgrd_files/w7.png" alt="" width="887" height="936" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w7.png 887w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w7-284x300.png 284w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w7-768x810.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w7-199x210.png 199w" sizes="(max-width: 887px) 100vw, 887px"></a></p>
+<p>Par défaut le<strong> canal de données</strong> est sur le port 443, on va le modifier et le mettre sur le port 1024 par exemple.</p>
+<p>Si vous avez un domaine et un serveur DNS vous pouvez les renseigner dans la partie <strong>Serveur DNS et WINS</strong></p>
+<p><a href="./watchgrd_files/w8.png"><img loading="lazy" class="aligncenter size-full wp-image-54169" src="./watchgrd_files/w8.png" alt="" width="887" height="936" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w8.png 887w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w8-284x300.png 284w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w8-768x810.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w8-199x210.png 199w" sizes="(max-width: 887px) 100vw, 887px"></a></p>
+<p>Vous valider vos modifications sur la touche <strong>OK&nbsp;</strong>et si vous avez le message suivant cliquez sur <strong>Oui</strong></p>
+<p><a href="./watchgrd_files/w9.png"><img loading="lazy" class="aligncenter size-full wp-image-54170" src="./watchgrd_files/w9.png" alt="" width="821" height="149" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w9.png 821w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w9-300x54.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w9-768x139.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w9-565x103.png 565w" sizes="(max-width: 821px) 100vw, 821px"></a></p>
+<p>On constate la création d’une nouvelle stratégie <strong>Allow SSL VPN-Users&nbsp;</strong>pour autoriser les utilisateurs du VPN à se connecter à toutes les ressources du réseau</p>
+<p><a href="./watchgrd_files/w10.png"><img loading="lazy" class="aligncenter size-full wp-image-54178" src="./watchgrd_files/w10.png" alt="" width="982" height="741" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w10.png 982w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w10-300x226.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w10-768x580.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w10-278x210.png 278w" sizes="(max-width: 982px) 100vw, 982px"></a></p>
+<p>Pour ajouter les utilisateurs qui vont se connecter au VPN il faut aller dans <strong>Configuration &gt; Authentification &gt; Serveurs d’authentification&nbsp;</strong><a href="./watchgrd_files/w11.png"><img loading="lazy" class="aligncenter size-full wp-image-54179" src="./watchgrd_files/w11.png" alt="" width="982" height="741" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w11.png 982w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w11-300x226.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w11-768x580.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w11-278x210.png 278w" sizes="(max-width: 982px) 100vw, 982px"></a></p>
+<p>Il existe 5 types d’authentifications : nous allons commencer par voir comment configurer le système&nbsp; l’authentification de la Firebox.</p>
+<p>Cliquer sur <strong>Ajouter</strong> dans la rubrique <strong>Utilisateurs</strong></p>
+<p><a href="./watchgrd_files/w12.png"><img loading="lazy" class="aligncenter size-full wp-image-54180" src="./watchgrd_files/w12.png" alt="" width="719" height="724" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w12.png 719w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w12-150x150.png 150w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w12-298x300.png 298w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w12-209x210.png 209w" sizes="(max-width: 719px) 100vw, 719px"></a></p>
+<p>Renseigner les informations de connexion</p>
+<p>&nbsp;</p>
+<p><a href="./watchgrd_files/w13.png"><img loading="lazy" class="aligncenter size-full wp-image-54181" src="./watchgrd_files/w13.png" alt="" width="951" height="735" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w13.png 951w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w13-300x232.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w13-768x594.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w13-272x210.png 272w" sizes="(max-width: 951px) 100vw, 951px"></a></p>
+<p>&nbsp;</p>
+<p>Dans la partie<strong> groupes d’authentification Firebox</strong> ajouter votre nouvel utilisateur comme membre et&nbsp;Cliquer sur <strong>OK</strong> pour valider la création de votre utilisateur</p>
+<p><a href="./watchgrd_files/w14.png"><img loading="lazy" class="aligncenter size-full wp-image-54182" src="./watchgrd_files/w14.png" alt="" width="951" height="735" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w14.png 951w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w14-300x232.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w14-768x594.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w14-272x210.png 272w" sizes="(max-width: 951px) 100vw, 951px"></a></p>
+<p>Maintenant vous pouvez enregistrer vos modifications sur le Watchguard.</p>
+<p>Lorsque vous êtes connecté à un autre réseau ( vous pouvez mettre votre téléphone en modem et vous connecter en WIFI), ouvrez le navigateur de votre choix et saisir l’adresse suivant https://93.2101540198:1024 ( <span style="color: #ff0000;">remplacer cette IP et le port par l’adresse IP public&nbsp; et le port que vous avez renseigné sur votre watchguard lors de la configuration du VPN SSL</span>)</p>
+<p>Ajouter l’exception car le certificat de votre watchguard est auto signé</p>
+<p><a href="./watchgrd_files/w16.png"><img loading="lazy" class="aligncenter size-full wp-image-54184" src="./watchgrd_files/w16.png" alt="" width="1709" height="1020" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w16.png 1709w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w16-300x179.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w16-768x458.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w16-1024x611.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w16-352x210.png 352w" sizes="(max-width: 1709px) 100vw, 1709px"></a></p>
+<p>Se connecter à l’aide de de l’identifiant et du mot de passe de l’utilisateur que vous avez créé</p>
+<p><a href="./watchgrd_files/w17.png"><img loading="lazy" class="aligncenter size-full wp-image-54185" src="./watchgrd_files/w17.png" alt="" width="1409" height="621" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w17.png 1409w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w17-300x132.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w17-768x338.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w17-1024x451.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w17-476x210.png 476w" sizes="(max-width: 1409px) 100vw, 1409px"></a></p>
+<p>On télécharge l’application Windows ou Mac</p>
+<p><a href="./watchgrd_files/w18.png"><img loading="lazy" class="aligncenter size-full wp-image-54186" src="./watchgrd_files/w18.png" alt="" width="1331" height="770" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w18.png 1331w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w18-300x174.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w18-768x444.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w18-1024x592.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w18-363x210.png 363w" sizes="(max-width: 1331px) 100vw, 1331px"></a></p>
+<p>Installez l’application et lancez la connexion grâce à l’icone</p>
+<p><a href="./watchgrd_files/w20.png"><img loading="lazy" class="aligncenter size-full wp-image-54188" src="./watchgrd_files/w20.png" alt="" width="1920" height="1080" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w20.png 1920w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w20-300x169.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w20-768x432.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w20-1024x576.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w20-373x210.png 373w" sizes="(max-width: 1920px) 100vw, 1920px"></a></p>
+<p>Rentrez les informations de connexion et cliquer sur connecter</p>
+<p><a href="./watchgrd_files/w21.png"><img loading="lazy" class="aligncenter size-full wp-image-54189" src="./watchgrd_files/w21.png" alt="" width="493" height="362" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w21.png 493w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w21-300x220.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w21-286x210.png 286w" sizes="(max-width: 493px) 100vw, 493px"></a></p>
+<p>Pour vérifier si vous êtes bien connecté l’icone du watchguard doit être passé au vert</p>
+<p><a href="./watchgrd_files/w22.png"><img loading="lazy" class="aligncenter size-full wp-image-54190" src="./watchgrd_files/w22.png" alt="" width="1920" height="1080" srcset="https://www.gabinhocity.eu/wp-content/uploads/2017/11/w22.png 1920w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w22-300x169.png 300w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w22-768x432.png 768w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w22-1024x576.png 1024w, https://www.gabinhocity.eu/wp-content/uploads/2017/11/w22-373x210.png 373w" sizes="(max-width: 1920px) 100vw, 1920px"></a></p>
+<div class="gabin-fin-article" id="gabin-1783543139"><ins class="adsbygoogle" style="display:block;" data-ad-client="ca-pub-6386296685628140" data-ad-slot="7824157319" data-ad-format="auto"><iframe id="aswift_1" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./watchgrd_files/saved_resource(3).html"><iframe id="google_ads_frame1" src="./watchgrd_files/saved_resource(4).html"></iframe></iframe></ins>
+<script> 
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+</script>
+</div>			</div><!-- .entry-content -->
+
+	<footer class="entry-footer clear">
+		<div class="entry-footer-wrapper"><span class="posted-on"><a href="https://www.gabinhocity.eu/watchguard-configurer-un-tunnel-vpn-ssl/" rel="bookmark"><time class="entry-date published updated" datetime="2017-11-29T15:20:09+01:00">29 novembre 2017</time></a></span><span class="byline"> <span class="author vcard"><a class="url fn n" href="https://www.gabinhocity.eu/author/yves-gabin-nguele/">Yves Gabin Nguele</a></span></span><span class="cat-links"><a href="https://www.gabinhocity.eu/category/securite/" rel="category tag">Sécurité</a>, <a href="https://www.gabinhocity.eu/category/securite/watchguard/" rel="category tag">Watchguard</a></span><span class="tags-links"><a href="https://www.gabinhocity.eu/tag/securite/" rel="tag">securité</a>, <a href="https://www.gabinhocity.eu/tag/ssl/" rel="tag">SSL</a>, <a href="https://www.gabinhocity.eu/tag/vpn/" rel="tag">VPN</a>, <a href="https://www.gabinhocity.eu/tag/watchguard/" rel="tag">watchguard</a></span></div><!--.entry-footer-wrapper-->	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+        
+	<nav class="navigation post-navigation" aria-label="Publications">
+		<h2 class="screen-reader-text">Navigation de l’article</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.gabinhocity.eu/installation-configuration-et-utilisation-exchange-2016-partie-2/" rel="prev"><span class="meta-nav">Publication précédente</span> Installation, configuration et utilisation Exchange 2016 (Partie 2)</a></div><div class="nav-next"><a href="https://www.gabinhocity.eu/configurer-office365-pour-une-entreprise/" rel="next"><span class="meta-nav">Publication suivante</span> Configurer Office365 pour une entreprise</a></div></div>
+	</nav>      </main>
+  <!-- #main --> 
+</div>
+<!-- #primary -->
+
+
+<div id="secondary" class="widget-area sidebar" role="complementary">
+  <aside id="search-4" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.gabinhocity.eu/">
+				<label>
+					<span class="screen-reader-text">Rechercher&nbsp;:</span>
+					<input type="search" class="search-field" placeholder="Rechercher…" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Rechercher">
+			</form></aside><aside class="widget gabin-widget"><ins class="adsbygoogle" style="display:block;" data-ad-client="ca-pub-6386296685628140" data-ad-slot="7824157319" data-ad-format="auto"><iframe id="aswift_2" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./watchgrd_files/saved_resource(5).html"><iframe id="google_ads_frame2" src="./watchgrd_files/saved_resource(6).html"></iframe></iframe></ins>
+<script> 
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+</script>
+</aside>
+		<aside id="recent-posts-4" class="widget widget_recent_entries">
+		<h1 class="widget-title">Articles récents</h1><hr class="widget-border">
+		<ul>
+											<li>
+					<a href="https://www.gabinhocity.eu/netwoks-it-nouveau-site-web/">Networks-it : Nouveau site web</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/installer-apache-php7-3-mysql-et-phpmyadmin-sur-debian-10-buster/">Installer Apache, php7.3, Mysql et phpmyadmin sur debian 10 buster</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/auto-hebergement-seafile-une-alternative-serieuse-pour-monter-son-espace-cloud-personnel/">Auto-hébergement : Seafile une alternative sérieuse pour monter son espace cloud personnel</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/importer-des-pst-vers-office-365/">Importer des PST vers Office 365</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/tuto-veeam-backup-pour-microsoft-office-365-2-0/">Tuto Veeam Backup pour Microsoft Office 365 2.0</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/installation-dexchange-2019-partie-1/">Installation d’Exchange 2019</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/script-global-prepa/">Script global prépa</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/windows-server-2012-et-2016-installation-et-configuration-du-role-rds/">Windows Server 2012 et 2016 : Installation et configuration du rôle RDS (Terminal Services)</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/dfs-repliquer-partage-deux-serveurs-de-fichiers/">DFSR : Comment répliquer un partage sur deux serveurs de fichiers</a>
+									</li>
+											<li>
+					<a href="https://www.gabinhocity.eu/watchguard-configurer-serveur-dimension/">WATCHGUARD : Configurer un serveur Dimension</a>
+									</li>
+					</ul>
+
+		</aside><aside id="categories-4" class="widget widget_categories"><h1 class="widget-title">Catégories</h1><hr class="widget-border">
+			<ul>
+					<li class="cat-item cat-item-45"><a href="https://www.gabinhocity.eu/category/linux/centos/">Centos</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.gabinhocity.eu/category/linux/debian/">Debian</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="https://www.gabinhocity.eu/category/dell/">DELL</a>
+</li>
+	<li class="cat-item cat-item-51"><a href="https://www.gabinhocity.eu/category/exchange/">Exchange</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://www.gabinhocity.eu/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.gabinhocity.eu/category/non-classe/">Non classé</a>
+</li>
+	<li class="cat-item cat-item-91"><a href="https://www.gabinhocity.eu/category/office365/">Office365</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="https://www.gabinhocity.eu/category/sauvegarde/">Sauvegarde</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="https://www.gabinhocity.eu/category/sccm/">SCCM</a>
+</li>
+	<li class="cat-item cat-item-90"><a href="https://www.gabinhocity.eu/category/securite/">Sécurité</a>
+</li>
+	<li class="cat-item cat-item-116"><a href="https://www.gabinhocity.eu/category/windows/serveur-2003/">Serveur 2003</a>
+</li>
+	<li class="cat-item cat-item-73"><a href="https://www.gabinhocity.eu/category/windows/serveur-2008-r2/">Serveur 2008 R2</a>
+</li>
+	<li class="cat-item cat-item-74"><a href="https://www.gabinhocity.eu/category/windows/serveur-2012-r2/">Serveur 2012 R2</a>
+</li>
+	<li class="cat-item cat-item-100"><a href="https://www.gabinhocity.eu/category/windows/serveur-2016/">Serveur 2016</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="https://www.gabinhocity.eu/category/windows/serveur-2019/">Serveur 2019</a>
+</li>
+	<li class="cat-item cat-item-65"><a href="https://www.gabinhocity.eu/category/linux/ubuntu/">Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-89"><a href="https://www.gabinhocity.eu/category/sauvegarde/veeam-backup/">Veeam Backup</a>
+</li>
+	<li class="cat-item cat-item-75"><a href="https://www.gabinhocity.eu/category/vmware/">VmWare</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://www.gabinhocity.eu/category/vps/">VPS</a>
+</li>
+	<li class="cat-item cat-item-85"><a href="https://www.gabinhocity.eu/category/securite/watchguard/">Watchguard</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://www.gabinhocity.eu/category/windows/">Windows</a>
+</li>
+	<li class="cat-item cat-item-82"><a href="https://www.gabinhocity.eu/category/wsus/">WSUS</a>
+</li>
+			</ul>
+
+			</aside><aside id="tag_cloud-4" class="widget widget_tag_cloud"><h1 class="widget-title">Étiquettes</h1><hr class="widget-border"><div class="tagcloud"><a href="https://www.gabinhocity.eu/tag/ad/" class="tag-cloud-link tag-link-114 tag-link-position-1" style="font-size: 12px;">AD</a>
+<a href="https://www.gabinhocity.eu/tag/apache/" class="tag-cloud-link tag-link-27 tag-link-position-2" style="font-size: 12px;">apache</a>
+<a href="https://www.gabinhocity.eu/tag/debian/" class="tag-cloud-link tag-link-37 tag-link-position-3" style="font-size: 12px;">Debian</a>
+<a href="https://www.gabinhocity.eu/tag/debian-8/" class="tag-cloud-link tag-link-26 tag-link-position-4" style="font-size: 12px;">debian 8</a>
+<a href="https://www.gabinhocity.eu/tag/exchange-2016/" class="tag-cloud-link tag-link-81 tag-link-position-5" style="font-size: 12px;">Exchange 2016</a>
+<a href="https://www.gabinhocity.eu/tag/linux/" class="tag-cloud-link tag-link-11 tag-link-position-6" style="font-size: 12px;">Linux</a>
+<a href="https://www.gabinhocity.eu/tag/messagerie/" class="tag-cloud-link tag-link-49 tag-link-position-7" style="font-size: 12px;">messagerie</a>
+<a href="https://www.gabinhocity.eu/tag/mysql/" class="tag-cloud-link tag-link-24 tag-link-position-8" style="font-size: 12px;">mysql</a>
+<a href="https://www.gabinhocity.eu/tag/office365/" class="tag-cloud-link tag-link-41 tag-link-position-9" style="font-size: 12px;">Office365</a>
+<a href="https://www.gabinhocity.eu/tag/sauvegarde/" class="tag-cloud-link tag-link-8 tag-link-position-10" style="font-size: 12px;">Sauvegarde</a>
+<a href="https://www.gabinhocity.eu/tag/sccm/" class="tag-cloud-link tag-link-40 tag-link-position-11" style="font-size: 12px;">SCCM</a>
+<a href="https://www.gabinhocity.eu/tag/securite/" class="tag-cloud-link tag-link-34 tag-link-position-12" style="font-size: 12px;">securité</a>
+<a href="https://www.gabinhocity.eu/tag/vmware/" class="tag-cloud-link tag-link-78 tag-link-position-13" style="font-size: 12px;">vmware</a>
+<a href="https://www.gabinhocity.eu/tag/vps/" class="tag-cloud-link tag-link-22 tag-link-position-14" style="font-size: 12px;">vps</a>
+<a href="https://www.gabinhocity.eu/tag/windows/" class="tag-cloud-link tag-link-38 tag-link-position-15" style="font-size: 12px;">Windows</a>
+<a href="https://www.gabinhocity.eu/tag/windows-2012-r2/" class="tag-cloud-link tag-link-42 tag-link-position-16" style="font-size: 12px;">Windows 2012 R2</a>
+<a href="https://www.gabinhocity.eu/tag/windows-2016/" class="tag-cloud-link tag-link-101 tag-link-position-17" style="font-size: 12px;">Windows 2016</a>
+<a href="https://www.gabinhocity.eu/tag/windows-serveur/" class="tag-cloud-link tag-link-118 tag-link-position-18" style="font-size: 12px;">Windows Serveur</a></div>
+</aside><aside id="archives-2" class="widget widget_archive"><h1 class="widget-title">Archives</h1><hr class="widget-border">
+			<ul>
+					<li><a href="https://www.gabinhocity.eu/2020/05/">mai 2020</a></li>
+	<li><a href="https://www.gabinhocity.eu/2019/12/">décembre 2019</a></li>
+	<li><a href="https://www.gabinhocity.eu/2019/05/">mai 2019</a></li>
+	<li><a href="https://www.gabinhocity.eu/2019/03/">mars 2019</a></li>
+	<li><a href="https://www.gabinhocity.eu/2019/01/">janvier 2019</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/12/">décembre 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/07/">juillet 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/05/">mai 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/04/">avril 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/02/">février 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2018/01/">janvier 2018</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/12/">décembre 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/11/">novembre 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/10/">octobre 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/09/">septembre 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/08/">août 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2017/07/">juillet 2017</a></li>
+	<li><a href="https://www.gabinhocity.eu/2016/10/">octobre 2016</a></li>
+	<li><a href="https://www.gabinhocity.eu/2016/09/">septembre 2016</a></li>
+	<li><a href="https://www.gabinhocity.eu/2016/03/">mars 2016</a></li>
+	<li><a href="https://www.gabinhocity.eu/2016/01/">janvier 2016</a></li>
+	<li><a href="https://www.gabinhocity.eu/2015/10/">octobre 2015</a></li>
+	<li><a href="https://www.gabinhocity.eu/2015/09/">septembre 2015</a></li>
+	<li><a href="https://www.gabinhocity.eu/2014/04/">avril 2014</a></li>
+	<li><a href="https://www.gabinhocity.eu/2014/02/">février 2014</a></li>
+			</ul>
+
+			</aside><aside class="widget gabin-widget"><ins class="adsbygoogle" style="display:block;" data-ad-client="ca-pub-6386296685628140" data-ad-slot="7824157319" data-ad-format="auto"><iframe id="aswift_3" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./watchgrd_files/saved_resource(7).html"><iframe id="google_ads_frame3" src="./watchgrd_files/saved_resource(8).html"></iframe></iframe></ins>
+<script> 
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+</script>
+</aside></div>
+<!-- #secondary --></div>
+<!-- #content -->
+</div>
+<!-- .wrap  -->
+
+<div id="footer">
+  <footer id="colophon" class="site-footer" role="contentinfo">
+      </footer>
+  
+  <div class="site-info"><a href="http://www.gabinhocity.eu/">Copyright  Gabinhocity ©</a> <span class="sep"> </span>  </div>
+  <!-- .site-info --> 
+  
+  <!-- #colophon --> 
+</div>
+<!-- #page -->
+</div>
+<!-- #footer -->
+
+<div id="mjrszwgOIBHt" class="LftiHlsgkRTi" style="background:#dddddd;z-index:9999999; "></div>   <script type="text/javascript">/* <![CDATA[ */var anOptions ={"anOptionChoice":"2","anOptionStats":"1","anOptionAdsSelectors":"","anOptionCookie":"1","anOptionCookieLife":"30","anPageRedirect":"","anPermalink":"undefined","anOptionModalEffect":"fadeAndPop","anOptionModalspeed":"350","anOptionModalclose":true,"anOptionModalOverlay":"rgba( 0,0,0,0.8 )","anAlternativeActivation":true,"anAlternativeElement":"","anAlternativeText":"<p><strong>AdBlock d\u00e9tect\u00e9 !<\/strong><\/p>\n<p>Merci d'ajouter <a title=\"https:\/\/getadmiral.com?utm_medium=plugin&amp;utm_campaign=abn&amp;utm_source=abnlinks\" href=\"https:\/\/www.gabinhocity.eu\/\" target=\"_blank\" rel=\"noopener\">https:\/\/www.gabinhocity.eu\/<\/a> \u00e0 votre liste d\u2019exceptions dans Adblock ou de d\u00e9sactiver ce logiciel.<\/p>\n","anAlternativeClone":"2","anAlternativeProperties":"","anOptionModalShowAfter":0,"anPageMD5":"","anSiteID":0,"modalHTML":"<div class=\"LftiHlsgkRTi-default\">\n\t<h1 style=\"\">Adblock d\u00e9tect\u00e9 ! Merci de lire ce message.<\/h1>\n\t<div class=\"FFpbKc\"><\/div>\n<h2 id=\"c7\" class=\"oBOnKe\"><span style=\"font-size: 16px;\">Nous avons d\u00e9tect\u00e9 que vous utilisez AdBlock Plus ou un autre logiciel de blocage des publicit\u00e9s qui emp\u00eache la page de se charger compl\u00e8tement.<\/span><\/h2>\n<p>Nous n'avons pas de banni\u00e8re Flash, de pubs anim\u00e9es, de pubs audio ou de popup intrusive, nous ne souhaitons pas afficher ce genre de pubs ici.<\/p>\n<p>Nous avons besoin de financements pour garder notre site en vie et ils proviennent presque exclusivement de la publicit\u00e9.<\/p>\n<p><strong>Merci d'ajouter <a title=\"Gabinhocity\" href=\"https:\/\/www.gabinhocity.eu\" target=\"_blank\" rel=\"noopener\">www.gabinhocity.eu<\/a> \u00e0 votre liste d\u2019exceptions dans Adblock ou de d\u00e9sactiver ce logiciel.<\/strong><\/p>\n<\/div>\n<a class=\"close-modal close-LftiHlsgkRTi\">&#215;<\/a>"}/* ]]> */</script><div id="adsense" class="an-sponsored" style="position:absolute; z-index:-1; height:1px; width:1px; visibility: hidden; top: -1px; left: 0;"><img class="an-advert-banner" alt="sponsored" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></div>            <script>
+                jQuery(function($){
+
+                    
+                });
+            </script>
+            <div id="fb-root"></div>
+            
+<!-- Consent Management powered by Complianz | GDPR/CCPA Cookie Consent https://wordpress.org/plugins/complianz-gdpr -->
+
+					<div id="cmplz-manage-consent" data-nosnippet="true"><button class="cmplz-btn cmplz-manage-consent manage-consent-1 cc-btn cc-revoke cmplz-show">Gérer le consentement</button>
+
+</div><script type="text/javascript" id="code-prettify-js-before">
+var codePrettifyLoaderBaseUrl = "https:\/\/www.gabinhocity.eu\/wp-content\/plugins\/code-prettify\/prettify";
+</script>
+
+<script type="text/javascript" src="./watchgrd_files/index.js.téléchargement" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/www.gabinhocity.eu\/wp-json\/","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./watchgrd_files/index.js(1).téléchargement" id="contact-form-7-js"></script>
+<script type="text/javascript" src="./watchgrd_files/regenerator-runtime.min.js.téléchargement" id="regenerator-runtime-js"></script>
+<script type="text/javascript" src="./watchgrd_files/wp-polyfill.min.js.téléchargement" id="wp-polyfill-js"></script>
+<script type="text/javascript" src="./watchgrd_files/hooks.min.js.téléchargement" id="wp-hooks-js"></script>
+<script type="text/javascript" src="./watchgrd_files/i18n.min.js.téléchargement" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type="text/javascript" src="./watchgrd_files/jquery.form.min.js.téléchargement" id="jquery-form-js"></script>
+<script type="text/javascript" src="./watchgrd_files/navigation.js.téléchargement" id="Lucienne-navigation-js"></script>
+<script type="text/javascript" src="./watchgrd_files/skip-link-focus-fix.js.téléchargement" id="Lucienne-skip-link-focus-fix-js"></script>
+<script type="text/javascript" src="./watchgrd_files/owl.carousel.js.téléchargement" id="Lucienne-owl.carousel-js"></script>
+<script type="text/javascript" src="./watchgrd_files/effects.js.téléchargement" id="Lucienne-effects-js"></script>
+<script type="text/javascript" src="./watchgrd_files/api.js.téléchargement" id="google-recaptcha-js"></script>
+<script type="text/javascript" id="wpcf7-recaptcha-js-extra">
+/* <![CDATA[ */
+var wpcf7_recaptcha = {"sitekey":"6Lfwh4YUAAAAAGBwAOQGk5YZ8FIeJH0AxMFYMivz","actions":{"homepage":"homepage","contactform":"contactform"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./watchgrd_files/index.js(2).téléchargement" id="wpcf7-recaptcha-js"></script>
+<script type="text/javascript" id="an_scripts-js-extra">
+/* <![CDATA[ */
+var ajax_object = {"nonce":"fffa8d8fba","ajaxurl":"https:\/\/www.gabinhocity.eu\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./watchgrd_files/RNpQJmLNnzLF.js.téléchargement" id="an_scripts-js"></script>
+<script type="text/javascript" src="./watchgrd_files/fitvids.min.js.téléchargement" id="__ytprefsfitvids__-js"></script>
+<script type="text/javascript" id="cmplz-cookiebanner-js-extra">
+/* <![CDATA[ */
+var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"15","version":"6.3.4","store_consent":"","do_not_track":"","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https:\/\/www.gabinhocity.eu\/wp-json\/complianz\/v1\/","locale":"lang=fr&locale=fr_FR","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"13","cookie_path":"\/","categories":{"statistics":"statistiques","marketing":"marketing"},"tcf_active":"","placeholdertext":"Cliquez pour accepter les cookies {category} et activer ce contenu","css_file":"https:\/\/www.gabinhocity.eu\/wp-content\/uploads\/complianz\/css\/banner-{banner_id}-{type}.css?v=15","page_links":{"eu":{"cookie-statement":{"title":"Politique de cookies ","url":"https:\/\/www.gabinhocity.eu\/politique-de-cookies-ue\/"},"privacy-statement":{"title":"Politique de Confidentialit\u00e9","url":"https:\/\/www.gabinhocity.eu\/politique-de-confidentialite\/"}}},"tm_categories":"","forceEnableStats":"","preview":"","clean_cookies":""};
+/* ]]> */
+</script>
+<script defer="" type="text/javascript" src="./watchgrd_files/complianz.min.js.téléchargement" id="cmplz-cookiebanner-js"></script>
+<script type="text/javascript" src="./watchgrd_files/migrate.min.js.téléchargement" id="cmplz-migrate-js"></script>
+				<script data-wpfc-render="false">!function(){window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[],advanced_ads_ready_queue.push=window.advanced_ads_ready;for(var d=0,a=advanced_ads_ready_queue.length;d<a;d++)advanced_ads_ready(advanced_ads_ready_queue[d])}();</script><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./watchgrd_files/anchor.html" width="256" height="60" role="presentation" name="a-3l0yd8bonkwt" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./watchgrd_files/saved_resource(9).html"></iframe></div></body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutoriel : Configuration d'un tunnel VPN GRE point à point avec OSPF</title>
+    <style>
+        
+		
+		
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 36px;
+			margin: 0;
+		}
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+		section {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			padding: 20px;
+		}
+		h2 {
+			font-size: 24px;
+			margin: 0 0 10px;
+		}
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin: 0 0 10px;
+		}
+		ol {
+			margin: 0 0 10px;
+			padding-left: 20px;
+		}
+		li {
+			margin: 0 0 10px;
+		}
+		
+ 
+ 
+ 
+        h3 {
+            font-size: 1.3em;
+        }
+        h4 {
+            font-size: 1.1em;
+        }
+		
+		
+			pre{
+		
+       color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+		 text-align: left;
+ }
+ 
+ 
+    </style>
+</head>
+<body>
+
+	<header>
+		 <h1>Configuration d'un tunnel VPN GRE point à point avec OSPF</h1>
+	</header>
+	<main>
+	
+     	<center><img src="sitetosite.png"></center>
+    <p>Dans ce tutoriel, nous allons configurer un tunnel VPN GRE point à point entre deux routeurs en utilisant le protocole OSPF (Open Shortest Path First) pour le routage dynamique.</p>
+	<h2>Prérequis</h2>
+<ul>
+    <li>Deux routeurs compatibles avec le protocole GRE</li>
+    <li>Connaissances de base en administration de réseau et configuration de routeurs</li>
+    <li>Accès en mode administrateur aux routeurs</li>
+</ul>
+
+<h2>Topologie et adresses IP</h2>
+<p>Supposons que nous ayons les adresses IP publiques, les adresses IP du tunnel et les réseaux locaux suivants pour nos routeurs :</p>
+<ul>
+    <li>Routeur A : Adresse IP publique - 192.0.2.1 ; Adresse IP du tunnel - 10.0.0.1/30 ; Réseau local - 192.168.1.0/24</li>
+    <li>Routeur B : Adresse IP publique - 198.51.100.1 ; Adresse IP du tunnel - 10.0.0.2/30 ; Réseau local - 192.168.2.0/24</li>
+</ul>
+
+<h2>Étape 1 : Configuration du routeur A</h2>
+<pre>
+
+enable
+configure terminal
+
+! Créer l'interface de tunnel GRE et attribuer une adresse IP
+interface Tunnel0
+ip address 10.0.0.1 255.255.255.252
+
+! Configurer les paramètres du tunnel GRE
+tunnel source 192.0.2.1
+tunnel destination 198.51.100.1
+tunnel mode gre ip
+
+! Configurer OSPF
+router ospf 1
+router-id 1.1.1.1
+network 10.0.0.0 0.0.0.3 area 0
+network 192.168.1.0 0.0.0.255 area 0
+
+! Configurer l'interface LAN
+interface FastEthernet0/1
+ip address 192.168.1.1 255.255.255.0
+
+exit
+write
+</pre>
+<h2>Étape 2 : Configuration du routeur B</h2>
+<pre>
+
+enable
+configure terminal
+
+! Créer l'interface de tunnel GRE et attribuer une adresse IP
+interface Tunnel0
+ip address 10.0.0.2 255.255.255.252
+
+! Configurer les paramètres du tunnel GRE
+tunnel source 198.51.100.1
+tunnel destination 192.0.2.1
+tunnel mode gre ip
+
+! Configurer OSPF
+router ospf 1
+router-id 2.2.2.2
+network 10.0.0.0 0.0.0.3 area 0
+network 192.168.2.0 0.0.0.255 area 0
+
+! Configurer l'interface LAN
+interface FastEthernet0/1
+ip address 192.168.2.1 255.255.255.0
+
+exit
+write
+</pre>
+
+<h2>Étape 3 : Vérification de la connectivité et de l'état d'OSPF</h2>
+<p>1. Depuis le routeur A, vérifiez la connectivité avec le routeur B en utilisant la commande <code>ping</code> :</p>
+<pre>
+
+ping 10.0.0.2
+</pre>
+<p>2. Depuis le routeur B, vérifiez la connectivité avec le routeur A en utilisant la commande <code>ping</code> :</p>
+<pre>
+ping 10.0.0.1
+</pre>
+<p>3. Sur les routeurs A et B, vérifiez l'état d'OSPF en utilisant la commande <code>show ip ospf neighbor</code>.</p>
+<pre>
+show ip ospf neighbor
+</pre>
+<p>Si les pings réussissent et que les voisins OSPF sont bien établis, le tunnel VPN GRE point à point avec OSPF est correctement configuré et opérationnel. Vous devriez également être en mesure d'atteindre les réseaux locaux derrière les routeurs A et B depuis les réseaux locaux respectifs.</p>
+<p>Pour une sécurité accrue, vous pouvez également ajouter une configuration IPsec pour chiffrer le trafic qui passe à travers le tunnel GRE.</p>
+</main>
+</body>
+</html>
+
+

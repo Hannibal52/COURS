@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Sauvegarder une base de données MySQL ou MariaDB</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>
+	
+	Voici un exemple de script Bash pour sauvegarder une base de données MySQL ou MariaDB sur un serveur Linux et compresser la sauvegarde dans un fichier gzippé.
+	</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+
+#!/bin/bash
+
+# Paramètres de configuration
+DB_NAME="nom_de_la_base_de_donnees"
+DB_USER="utilisateur_de_la_base_de_donnees"
+DB_PASSWORD="mot_de_passe_de_la_base_de_donnees"
+BACKUP_DIR="/chemin/vers/le/repertoire/backup"
+FILE_PREFIX="backup_db_"
+
+# Récupérer la date actuelle
+DATE=$(date +%Y%m%d_%H%M%S)
+
+# Créer un nom de fichier pour la sauvegarde
+BACKUP_FILE="${BACKUP_DIR}/${FILE_PREFIX}${DATE}.sql.gz"
+
+# Sauvegarder la base de données et compresser le fichier de sauvegarde
+echo "Création de la sauvegarde : ${BACKUP_FILE}"
+mysqldump --user="${DB_USER}" --password="${DB_PASSWORD}" "${DB_NAME}" | gzip > "${BACKUP_FILE}"
+
+# Vérifier si la création de la sauvegarde a réussi
+if [ $? -eq 0 ]; then
+  echo "Sauvegarde créée avec succès : ${BACKUP_FILE}"
+else
+  echo "Échec de la création de la sauvegarde. Veuillez vérifier les erreurs ci-dessus."
+fi
+
+
+
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+ Assurez-vous de remplacer les valeurs des variables DB_NAME, DB_USER, DB_PASSWORD et BACKUP_DIR par les informations appropriées pour votre base de données et le répertoire de sauvegarde. Le script crée ensuite une sauvegarde de la base de données à l'aide de mysqldump et compresse la sauvegarde dans un fichier gzippé avec un nom de fichier basé sur la date et l'heure actuelles.
+ </p>
+
+<br>
+ 
+ <p>
+ 
+ Vous pouvez exécuter ce script manuellement ou le planifier avec cron pour effectuer des sauvegardes régulières de votre base de données.
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

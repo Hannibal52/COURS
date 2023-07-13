@@ -24,6 +24,10 @@
 			font-size: 36px;
 			margin-top: 0;
 			margin-bottom: 20px;
+			
+			color: #FFFFFF;
+			
+			
 		}
 
 		.container {
@@ -33,6 +37,27 @@
 			background-color: #fff;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
+		
+ 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+    h2 {
+            color: #333;
+        }
+        pre {
+            color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+ 
+	
+	
+	
 
 		ol {
 			font-size: 18px;
@@ -109,48 +134,74 @@
 	</header>
 
 	<div class="container">
-		<ol>
-			<li>Définit le temps d'inactivité avant que la session ne se termine :</li>
-				<p><code>R1(config-line)#exec-timeout 0 60</code></p>
-
-			<li>Affiche les sessions en cours SSH :</li>
-				<p><code>sh ssh</code></p>
-
-			<li>Définit le nombre de tentatives autorisées pour une connexion SSH :</li>
-				<p><code>ip ssh authentication-retries ?</code></p>
-
-			<li>Définit le temps d'attente pour négocier une clé de session et une méthode de chiffrement avec un client SSH :</li>
-<p><code>ip ssh time-out 60</code></p>
-
  
-		<li>Affiche la configuration SSH :</li>
-			<p><code>Show ip ssh</code></p>
+ 
+  
+    <p>Dans ce tutoriel, vous apprendrez à configurer les listes de contrôle d'accès (ACL) sur les routeurs Cisco à l'aide des commandes appropriées. Les ACL sont utilisées pour filtrer le trafic réseau et appliquer des règles de sécurité spécifiques.</p>
+	<h2>Étape 1: Accédez au mode de configuration global</h2>
+<p>Pour commencer, connectez-vous au routeur Cisco et accédez au mode de configuration global en utilisant les commandes suivantes:</p>
+<pre>
+enable
+configure terminal
+</pre>
 
-		<li>Modifie les clés SSH :</li>
-			<p><code>crypto key ?</code></p>
+<h2>Étape 2: Créez l'ACL</h2>
+<p>Ensuite, créez une ACL standard ou étendue en utilisant les commandes suivantes. Remplacez "ACL_NUM" par le numéro de l'ACL que vous souhaitez créer (1-99 pour les ACL standard et 100-199 pour les ACL étendues).</p>
+<pre>
+access-list ACL_NUM [remark DESCRIPTION]
+</pre>
+<p>Exemple :</p>
+<pre>
+access-list 101 remark "Blocage du trafic HTTP"
+</pre>
 
-		<li>Force une longueur minimale pour les mots de passe :</li>
-			<p><code>security passwords min-length 10</code></p>
+<h2>Étape 3: Ajoutez des règles à l'ACL</h2>
+<p>Ajoutez des règles à l'ACL pour permettre ou refuser le trafic en fonction de l'adresse IP source, de l'adresse IP de destination, du protocole et d'autres critères. Remplacez "ACTION" par "permit" ou "deny", et "CONDITION" par les critères de filtrage appropriés.</p>
+<pre>
+access-list ACL_NUM ACTION CONDITION
+</pre>
+<p>Exemple :</p>
+<pre>
+access-list 101 deny tcp any host 192.168.1.10 eq 80
+access-list 101 permit ip any any
+</pre>
 
-		<li>Bloque les connexions pendant 10 secondes si 3 tentatives de connexion échouent dans les 30 secondes :</li>
-			<p><code>login block-for 10 attempts 3 within 30</code></p>
+<h2>Étape 4: Appliquez l'ACL à une interface</h2>
+<p>Appliquez l'ACL à une interface spécifique pour filtrer le trafic entrant ou sortant. Remplacez "INTERFACE" par le nom de l'interface (par exemple, "FastEthernet0/0") et "DIRECTION" par "in" ou "out".</p>
+<pre>
+interface INTERFACE
+ip access-group ACL_NUM DIRECTION
+exit
+</pre>
+<p>Exemple :</p>
+<pre>
+interface FastEthernet0/0
+ip access-group 101 in
+exit
+</pre>
 
-		<li>Affiche les paramètres de connexion :</li>
-			<p><code>show login</code></p>
+<h2>Étape 5: Vérifiez la configuration</h2>
+<p>Vérifiez la configuration de l'ACL en utilisant les commandes suivantes :</p>
+<pre>
+show access-lists
+show ip interface INTERFACE
+</pre>
+<p>Exemple :</p>
+<pre>
+show access-lists
+show ip interface FastEthernet0/0
+</pre>
 
-		<li>Bloque les messages de connexion pour les clients ne figurant pas sur la liste d'accès standard "adminacl" :</li>
-			<p><code>login quiet-mode access-class adminacl</code></p>
-			
-			
-		<li>Gestion des privilèges :</li>
-			<ul>
-				<li>Définit un mot de passe secret et un niveau d'accès :</li>
-					<p><code>lenable secret level X ciscoX</code></p>
+<h2>Étape 6: Sauvegardez la configuration</h2>
+<p>Pour sauvegarder la configuration actuelle du routeur, utilisez la commande suivante :</p>
+<pre>
+write memory
+</pre>
 
-				<li>Définit les privilèges de niveau d'accès pour les utilisateurs :</li>
-					<p><code>lprivilege exec,configure,interface level X</code></p>
-			</ul>
-	</ol>
+<p>Voilà ! Vous avez maintenant créé et appliqué une ACL sur un routeur Cisco en utilisant les commandes appropriées. N'hésitez pas à ajuster les règles de l'ACL en fonction de vos besoins spécifiques.</p>
+
+
 </div>
+
 </body>
 </html>

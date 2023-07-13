@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutoriel de configuration de sécurité de port Cisco</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f5f5f5;
+			color: #333;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 36px;
+			margin: 0;
+			line-height: 1.2;
+		}
+
+		h2 {
+			font-size: 24px;
+			margin: 0;
+			line-height: 1.2;
+			padding-top: 20px;
+		}
+
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		ol {
+			margin-left: 40px;
+			font-size: 18px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		pre {
+			color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+		}
+		
+		code {
+		color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+			}
+
+		section {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			padding: 20px;
+			margin: 20px 0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Tutoriel de configuration de sécurité de port Cisco</h1>
+	</header>
+	<main>
+		<section id="introduction">
+			<h2>Introduction</h2>
+			<p>Dans ce tutoriel, nous allons apprendre comment configurer la sécurité de port sur un switch Cisco en utilisant la ligne de commande.</p>
+		</section>
+		<section id="configuration-de-port">
+			<h2>Configuration de port</h2>
+			<ol>
+				<li><code>interface &lt;interface-name&gt;</code></li>
+				<li><code>switchport mode access</code></li>
+				<li><code>switchport port-security</code></li>
+				<li><code>switchport port-security maximum &lt;max-count&gt;</code></li>
+				<li><code>switchport port-security mac-address &lt;mac-address&gt;</code></li>
+				<li><code>switchport port-security mac-address sticky</code></li>
+				<li><code>switchport port-security violation &lt;violation-mode&gt;</code></li>
+				<li><code>copy running-config startup-config</code></li>
+			</ol>
+			<p>Assurez-vous de remplacer &lt;interface-name&gt;, &lt;max-count&gt;, &lt;mac-address&gt; et &lt;violation-mode&gt; par les valeurs appropriées pour votre configuration.</p>
+<h3>Violations de port</h3>
+	<ul>
+		<li>Shutdown : met le port en état de shutdown si une violation se produit. Cette option désactive le port et envoie une notification SNMP pour signaler la violation.</li>
+		<li>Protect : permet uniquement les adresses MAC autorisées sur le port et enregistre les tentatives de connexion non autorisées dans les journaux. Cette option envoie également des alertes SNMP pour signaler les tentatives de connexion non autorisées.</li>
+		<li>Restrict : permet uniquement les adresses MAC autorisées sur le port et envoie des alertes SNMP pour les tentatives de connexion non autorisées. Cette option ne déclenche pas de violation de port et ne désactive pas le port.</li>
+	</ul>			
+			
+			
+		
+		</section>
+		<section id="exemple">
+			<h2>Exemple</h2>
+			<pre>
+interface FastEthernet0/1
+switchport mode access
+switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address AAAA.BBBB.CCCC
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+</pre>
+<p>Cet exemple montre une configuration de port complète pour la sécurité de port, y compris une adresse MAC statique et une violation de port en mode shutdown.</p>
+</section>
+</main>
+
+</body>
+</html>

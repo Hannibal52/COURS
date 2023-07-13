@@ -1,289 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 7.4.3.2 (Linux)"/>
-	<meta name="author" content="Khalis Charef"/>
-	<meta name="created" content="2023-04-07T13:06:00"/>
-	<meta name="changedby" content="Taha Yassine JGUIRIM"/>
-	<meta name="changed" content="2023-04-07T18:09:14.190761900"/>
-	<meta name="AppVersion" content="16.0000"/>
-	<style type="text/css">
-		@page { size: 8.27in 11.69in; margin: 0.98in }
-		p { line-height: 115%; text-align: left; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
-	</style>
+    <title>Serveur FTP sur Debian 11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+            border: 1px solid #808080;
+            background-color: #f7f7f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        code {
+            color: #1E90FF;
+            background-color: #f7f7f9;
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+		
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+    </style>
 </head>
-<body lang="fr-FR" link="#000080" vlink="#800000" dir="ltr"><p align="center" style="line-height: 108%; margin-bottom: 0.11in">
-<u><b>Serveur FTP DEBIAN 11&nbsp;: </b></u>
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>On installe le
-paquet proftpd via APT.</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Apt install
-proftpd openssl</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+<body>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Créer le
-groupe et user ftp&nbsp;:</b></p>
-<ul>
-	<li><p style="line-height: 108%; margin-bottom: 0.11in"><b>Groupe&nbsp;:
-	</b><i>sudo addgroup ftpgroup</i></p>
-	<li><p style="line-height: 108%; margin-bottom: 0.11in"><b>User&nbsp;:
-	</b><i>adduser khalis -shell /bin/false -home /ftpshare</i></p>
-</ul>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b># </b><i><b>-</b></i><i>shell
-/bin/false</i> ne donne pas accès au shell, si l’user doit pouvoir
-se connecter en SSH alors ne pas utiliser se paramètre.</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+<header>
+	<center> <h1 style="color: #FFFFFF ;">Installer et Configurer un serveur FTP avec ProFTPD sur Debian 11</h1></center>
+	</header>
+	
+	
+    <div class="container">
+       
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"># <i>-home
-/ftpshare </i>attribue le dossier ftp par défaut.</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 1: Installer le paquet ProFTPD via APT</h2>
+        <pre><code>sudo apt install proftpd openssl</code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Ajouter l’user
-au groupe ftpgroup&nbsp;:</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Adduser khalis
-ftpgroup</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Appliquer les
-permission sur dossier /ftpshare&nbsp;: </b>
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Sudo chmod -R
-1777 /ftpshare/</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 2: Creer le groupe et l'utilisateur FTP</h2>
+        <pre><code>
+sudo addgroup ftpgroup
+sudo adduser yassine --shell /bin/false --home /ftpshare
+sudo adduser yassine ftpgroup
+sudo chmod -R 1777 /ftpshare
+        </code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><u><b>Configurer
-le serveur FTP Proftpd&nbsp;:</b></u></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 3: Configurer ProFTPD</h2>
+        <p>Creer le fichier « personnalises.conf » :</p>
+        <pre><code>sudo nano /etc/proftpd/conf.d/personnalises.conf</code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Créer le
-fichier «&nbsp;personnalises.conf&nbsp;»&nbsp;:</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Nano
-/etc/proftpd/conf.d/personnalises.conf</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Utiliser le
-contenu suivant à modifier au besoin&nbsp;: </b>
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ServerName    
-                 &quot;Debian&quot; #la bannière qui apparaît à la
-connexion</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <!-- Utilisez du contenu preformate (pre) pour conserver la mise en forme du texte -->
+        <pre><code>
+ServerName "Debian"
+UseIPv6 off
+RootLogin off
+RequireValidShell off
+Port 21
+DefaultRoot ~
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>UseIPv6 off #
-Pas de connexion IPv6</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>RootLogin     
- off # Interdire le login en root</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>RequireValidShell
-off # Pas besoin d'un shell valide (pour /bin/false)</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+&lt;Limit LOGIN&gt;
+DenyGroup !ftpgroup
+&lt;/Limit&gt;
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i># Le port 21
-est le port FTP standard.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Port          
-                 21</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+&lt;IfModule mod_ctrls.c&gt;
+ControlsEngine off
+ControlsMaxClients 2
+ControlsLog /var/log/proftpd/controls.log
+ControlsInterval 5
+ControlsSocket /var/run/proftpd/proftpd.sock
+&lt;/IfModule&gt;
+        </code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i># pour
-restreindre l'accès des utilisateurs à leurs dossiers de départ
-uniquement</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>DefaultRoot  ~</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 4: Configurer ProFTPD TLS</h2>
+        <pre><code>
+sudo mkdir /etc/proftpd/ssl
+openssl req -new -x509 -keyout /etc/proftpd/ssl/proftpd.key.pem -days 365 -nodes -out /etc/proftpd/ssl/proftpd.cert.pem
+sudo chmod 600 /etc/proftpd/ssl/proftpd.*
+sudo nano /etc/proftpd/conf.d/tls.conf
+        </code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i># interdire
-les connexions hors du groupe ftpgroup ... si vous devez autoriser
-par exemple www-data, ne pas mettre ou ajoutez ce dernier dans le
-groupe FTP.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;Limit
-LOGIN&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in">    <i>DenyGroup
-!ftpgroup</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;/Limit&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <pre><code>
+&lt;IfModule mod_tls.c&gt;
+TLSEngine on
+TLSLog /var/log/proftpd/tls.log
+TLSProtocol SSLv23
+TLSOptions NoCertRequest AllowClientRenegotiations
+TLSRSACertificateFile /etc/proftpd/ssl/proftpd.cert.pem
+TLSRSACertificateKeyFile /etc/proftpd/ssl.proftpd.key.pem
+TLSVerifyClient off
+TLSRequired on
+RequireValidShell no
+TLSOptions NoSessionReuseRequired
+&lt;/IfModule&gt;
+        </code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>#definition du
-nombre de connexions max par clients, etc.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;IfModule
-mod_ctrls.c&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ControlsEngine
-       off</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ControlsMaxClients
-   2</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ControlsLog   
-       /var/log/proftpd/controls.log</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ControlsInterval
-     5</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>ControlsSocket
-       /var/run/proftpd/proftpd.sock</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;/IfModule&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 5: Redemarrer ProFTPD</h2>
+        <pre><code>sudo service proftpd restart</code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><u><b>Configurer
-ProFTPD TLS&nbsp;: </b></u>
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in">Pour configurer
-TLS, il faut d’abord générer un certificat. 
-</p>
-<ol>
-	<li><p style="line-height: 108%; margin-bottom: 0.11in"><i>Sudo
-	mkdir /etc/proftpd/ssl</i></p>
-</ol>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
+        <h2>Etape 6: Verifier que le serveur FTP est en ecoute sur le port 21</h2>
+        <pre><code>sudo netstat -lpn | grep proftpd</code></pre>
+        <p>Une reponse comme celle-ci devrait s’afficher :</p>
+        <pre><code>tcp6 0 0 :::21 :::* LISTEN 24557/proftpd:</code></pre>
 
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Générer
-certificat auto-signé en éxecutant la commande suivante (penser a
-renseigné les informations)&nbsp;: </b>
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>openssl req
--new -x509 -keyout /etc/proftpd/ssl/proftpd.key.pem -days 365 -nodes
--out /etc/proftpd/ssl/proftpd.cert.pem</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Generating a
-RSA private key</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>...........................................................+++++</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>......................................+++++</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>writing new
-private key to '/etc/proftpd/ssl/proftpd.key.pem'</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>-----</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>You are about
-to be asked to enter information that will be incorporated</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>into your
-certificate request.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>What you are
-about to enter is what is called a Distinguished Name or a DN.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>There are
-quite a few fields but you can leave some blank</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>For some
-fields there will be a default value,</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>If you enter
-'.', the field will be left blank.</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>-----</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Country Name
-(2 letter code) [AU]:FR</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>State or
-Province Name (full name) [Some-State]:FRANCE</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Locality Name
-(eg, city) []:Lyon</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Organization
-Name (eg, company) [Internet Widgits Pty Ltd]:mdnrecrutement</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Organizational
-Unit Name (eg, section) []:Khalis</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Common Name
-(e.g. server FQDN or YOUR name) []:srvftp</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Email Address
-[]:khalis.charef@labom2iformation.fr</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Attribuer les
-permissions au fichiers clés (le fichier «&nbsp;proftpd.key&nbsp;»
-doit être lisible par root uniquement)</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Pour secure
-l’environnement executer la commande suivante&nbsp;:</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Chmod 600
-/etc/proftpd/ssl/proftpd.*</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Puis ajouter
-le fichier&nbsp;</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>nano
-/etc/proftpd/conf.d/tls.conf</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Copier-coller
-le contenu suivant dans le fichier «&nbsp;tls.conf&nbsp;»</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;IfModule
-mod_tls.c&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>[::]</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSEngine     
-            on</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSLog        
-            /var/log/proftpd/tls.log</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSProtocol   
-            SSLv23</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSOptions    
-            NoCertRequest AllowClientRenegotiations</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSRSACertificateFile
-     /etc/proftpd/ssl/proftpd.cert.pem</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSRSACertificateKeyFile
-  /etc/proftpd/ssl/proftpd.key.pem</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSVerifyClient
-           off</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSRequired   
-            on</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>RequireValidShell
-         no</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>TLSOptions    
-            NoSessionReuseRequired</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>&lt;/IfModule&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><u><b>TLSRequired
-peut générer des problèmes de connexion :</b></u></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"># Le paramètre
-«on» active les exigences SSL / TLS sur les canaux de contrôle et
-de données; “off” désactive les exigences sur les deux canaux.
-Utilisez “ctrl” et “data” pour exiger SSL / TLS sur l’un ou
-l’autre des canaux individuellement.</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"># Le paramètre
-“auth” nécessite que SSL / TLS soit utilisé sur le canal de
-contrôle, mais uniquement pour l’authentification. Pour utiliser
-ce paramètre et exiger SSL / TLS pour les transferts de données,
-utilisez le paramètre «auth + data».</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Restart
-ProFTPFD</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Sudo service
-proftpd restart</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Vérifier que
-le srv ftp est bien en écoute sur le port 21</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Sudo netstat
--lpn | grep proftpd</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>une réponse
-comme celle-ci devrait s’afficher&nbsp;:</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in">tcp6       0     
-0 :::21     :::*        LISTEN      24557/proftpd:</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><b>Se connecter
-au serveur ftp ProFTPD&nbsp;avec client ncftp ou FileZilla :</b></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><i>Ncftp -u
-&lt;user&gt; &lt;adresse srv&gt;</i></p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
-<p style="line-height: 108%; margin-bottom: 0.11in"><br/>
-<br/>
-
-</p>
+        <h2>Etape 7: Se connecter au serveur FTP ProFTPD avec un client tel que ncftp ou FileZilla</h2>
+        <pre><code>ncftp -u &lt;user&gt; &lt;adresse_srv&gt;</code></pre>
+        <p>Remplacez &&lt;adresse_srv&gt; par l'adresse de votre serveur.</p>
+    </div>
 </body>
 </html>
+

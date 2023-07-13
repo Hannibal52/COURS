@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Surveille les connexions SSH</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>
+	Voici un script Bash qui surveille les connexions SSH, recherche les tentatives de connexion échouées et stocke les adresses IP des sources malveillantes dans un fichier. Ce script analyse le fichier journal d'authentification pour les tentatives de connexion échouées et extrait les adresses IP associées.
+	
+	</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+#!/bin/bash
+
+# Paramètres de configuration
+AUTH_LOG="/var/log/auth.log"
+MALICIOUS_IP_FILE="/chemin/vers/le/fichier/malicious_ips.txt"
+MAX_FAILED_ATTEMPTS=5
+
+# Vérifier les tentatives de connexion échouées
+declare -A failed_attempts
+
+while read -r line; do
+  ip=$(echo "${line}" | awk '{print $NF}')
+  ((failed_attempts["${ip}"]++))
+done  &lt;&lt; (grep "Failed password" "${AUTH_LOG}" | grep "sshd")
+
+# Stocker les adresses IP malveillantes dans un fichier
+mkdir -p "$(dirname "${MALICIOUS_IP_FILE}")"
+touch "${MALICIOUS_IP_FILE}"
+
+for ip in "${!failed_attempts[@]}"; do
+  count="${failed_attempts["${ip}"]}"
+  if [ ${count} -ge ${MAX_FAILED_ATTEMPTS} ]; then
+    echo "${ip} - ${count} tentatives échouées" &gt;&gt; "${MALICIOUS_IP_FILE}"
+  fi
+done
+
+echo "Les adresses IP des sources malveillantes ont été stockées dans ${MALICIOUS_IP_FILE}."
+
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+
+Assurez-vous de remplacer /chemin/vers/le/fichier/malicious_ips.txt par le chemin d'accès approprié pour le fichier où vous souhaitez stocker les adresses IP malveillantes. Vous pouvez également ajuster la valeur de MAX_FAILED_ATTEMPTS en fonction de votre seuil souhaité pour déterminer si une adresse IP doit être considérée comme malveillante.</p>
+
+<br>
+ 
+ <p>
+ Ce script peut être exécuté manuellement ou planifié avec cron pour une surveillance régulière des tentatives de connexion SSH échouées.
+ </p>
+ 
+ <br>
+  <p>
+Notez que l'emplacement du fichier de journal d'authentification (AUTH_LOG) peut varier en fonction de votre distribution Linux. Sur certaines distributions, vous devrez peut-être remplacer /var/log/auth.log par /var/log/secure.
+</p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

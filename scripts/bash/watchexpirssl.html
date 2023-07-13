@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Vérifier l'expiration des certificats SSL</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>
+	Voici un exemple de script Bash pour vérifier l'expiration des certificats SSL pour une liste de domaines et envoyer une alerte par courriel si l'un des certificats expire bientôt.
+	
+	</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+#!/bin/bash
+
+# Liste des domaines à surveiller (séparés par des espaces)
+DOMAINES="example1.com example2.com"
+
+# Paramètres de configuration
+EMAIL_ALERT="votre@email.com"
+JOURS_AVANT_EXPIRATION=30
+
+# Fonction pour vérifier l'expiration d'un certificat SSL
+check_cert() {
+  local domaine=$1
+  local expiration_date=$(echo | openssl s_client -servername "${domaine}" -connect "${domaine}:443" 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d "=" -f 2)
+  local expiration_timestamp=$(date -d "${expiration_date}" +%s)
+  local jours_restants=$(( (expiration_timestamp - $(date +%s)) / 86400 ))
+
+  if [ $jours_restants -le $JOURS_AVANT_EXPIRATION ]; then
+    echo "Le certificat SSL pour ${domaine} expire dans ${jours_restants} jours."
+    CERTIFICATS_EXPIRANT+="${domaine} - ${jours_restants} jours restants\n"
+  else
+    echo "Le certificat SSL pour ${domaine} est valide pour ${jours_restants} jours supplémentaires."
+  fi
+}
+
+# Vérifier l'expiration des certificats SSL pour chaque domaine
+CERTIFICATS_EXPIRANT=""
+for domaine in $DOMAINES; do
+  check_cert "${domaine}"
+done
+
+# Envoyer un courriel d'alerte si des certificats expirent bientôt
+if [ -n "$CERTIFICATS_EXPIRANT" ]; then
+  echo -e "Subject: [ALERT] Certificats SSL expirant bientôt sur $(hostname)\n\nLes certificats SSL suivants expirent dans moins de ${JOURS_AVANT_EXPIRATION} jours :\n\n${CERTIFICATS_EXPIRANT}" | sendmail -t "${EMAIL_ALERT}"
+  echo "Alerte : Certains certificats SSL expirent bientôt. Un courriel a été envoyé à ${EMAIL_ALERT}."
+fi
+
+
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ Assurez-vous de remplacer la liste de DOMAINES par les noms de domaine que vous souhaitez surveiller et "votre@email.com" par l'adresse e-mail où vous souhaitez recevoir les notifications. Vous devrez peut-être installer et configurer sendmail ou un autre agent de transfert de courrier (MTA) sur votre serveur pour envoyer des courriels.
+ </p>
+
+<br>
+ 
+ <p>
+ Ce script vérifie l'expiration des certificats SSL pour chaque domaine de la liste et envoie un e-mail si l'un des certificats expire dans moins de JOURS_AVANT_EXPIRATION jours (30 jours dans cet exemple). Vous pouvez l'exécuter manuellement ou le planifier à l'aide d'un outil comme cron pour une surveillance régulière.
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+

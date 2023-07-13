@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+    
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Surveiller et gérer plusieurs aspects d'un réseau avec Azure key Vault</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	<p>
+	Voici un exemple de script complexe qu'un administrateur système et réseau pourrait utiliser pour surveiller et gérer plusieurs aspects d'un réseau. Ce script est écrit en Python et utilise des bibliothèques courantes comme psutil, socket, et os pour effectuer différentes tâches. Le script est conçu pour fonctionner sur un serveur Linux.
+	</p>
+	
+	<pre><code class="language-python">#!/usr/bin/env python3
+import os
+import socket
+import psutil
+import time
+import smtplib
+from email.message import EmailMessage
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+
+def get_password_from_key_vault(vault_url, secret_name):
+    credential = DefaultAzureCredential()
+    secret_client = SecretClient(vault_url=vault_url, credential=credential)
+    secret = secret_client.get_secret(secret_name)
+    return secret.value
+	
+def check_cpu_usage():
+    cpu_percent = psutil.cpu_percent()
+    return cpu_percent &gt; 80
+
+def check_disk_usage():
+    disk_usage = psutil.disk_usage('/')
+    return disk_usage.percent &gt; 80
+
+def check_memory_usage():
+    memory_usage = psutil.virtual_memory()
+    return memory_usage.percent &gt; 80
+
+def check_network_status():
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    response = os.system("ping -c 1 " + ip_address)
+    return response == 0
+
+def send_email(subject, body, email_password):
+    msg = EmailMessage()
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = "admin@example.com"
+    msg['To'] = "sysadmin@example.com"
+
+    server = smtplib.SMTP('smtp.example.com', 587)
+    server.starttls()
+    server.login("admin@example.com", email_password)
+    server.send_message(msg)
+    server.quit()
+
+if __name__ == "__main__":
+    vault_url = "https://your-key-vault-name.vault.azure.net/"
+    secret_name = "your-secret-name"
+    email_password = get_password_from_key_vault(vault_url, secret_name)
+
+    while True:
+        cpu_usage = check_cpu_usage()
+        disk_usage = check_disk_usage()
+        memory_usage = check_memory_usage()
+        network_status = check_network_status()
+
+        if not network_status:
+            send_email("Network Alert", "Network is down. Please investigate.", email_password)
+        if cpu_usage:
+            send_email("CPU Alert", "CPU usage is above 80%. Please investigate.", email_password)
+        if disk_usage:
+            send_email("Disk Alert", "Disk usage is above 80%. Please investigate.", email_password)
+        if memory_usage:
+            send_email("Memory Alert", "Memory usage is above 80%. Please investigate.", email_password)
+        
+        time.sleep(3600)
+		
+</code></pre>
+	
+ 
+ 
+ <br>
+ 
+ <hr>
+
+ <p> 
+ Ce script vérifie régulièrement l'utilisation du CPU, de la mémoire, du disque et l'état du réseau sur un serveur. S'il détecte un problème, il envoie un e-mail à l'administrateur système pour l'informer de la situation. Notez que vous devrez adapter ce script pour qu'il fonctionne avec votre environnement, en particulier les informations d'identification et les paramètres du serveur de messagerie.
+ </p> 
+ <hr>
+ 
+ <p>
+ N'oubliez pas de remplacer your-key-vault-name par le nom de votre Azure Key Vault et your-secret-name par le nom du secret contenant le mot de passe que vous souhaitez récupérer.
+ <p>
+ <hr>
+ 
+	</div>
+ 
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+		
+		li{
+		
+		padding-bottom: 10px;
+		padding-top: 10px;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1> Logiciels linux</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+
+ <ul>
+  <li> <h3>Glances :  </h3> un outil de surveillance des ressources système en temps réel, qui fournit une vue d'ensemble de l'utilisation du processeur, de la mémoire, du réseau et du disque.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y glances
+		
+glances : exécute Glances en mode interactif
+glances -1 : exécute Glances en mode non interactif, en affichant les résultats une seule fois
+glances -f /var/log/syslog : exécute Glances en mode interactif et affiche des informations sur les ressources système en temps réel, ainsi que les entrées du fichier de journalisation syslog.
+</code></pre></li>
+      </ul>
+  </li>
+  <li> <h3>Tmux : </h3> un multiplexeur de terminal qui permet de créer et de gérer plusieurs sessions de terminal à l'intérieur d'une seule fenêtre ou d'une seule session à distance.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y tmux
+
+tmux new-session -s ma_session : crée une nouvelle session Tmux nommée "ma_session"
+tmux attach-session -t ma_session : attache une session Tmux existante nommée "ma_session"
+tmux list-sessions : liste toutes les sessions Tmux existantes		
+		
+		</code></pre></li>
+      </ul>
+  </li>
+  <li> <h3>Midnight Commander (mc) : </h3> un gestionnaire de fichiers en mode texte avec une interface utilisateur en deux panneaux, qui facilite la navigation et la manipulation des fichiers.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y mc
+		
+mc : exécute Midnight Commander avec son interface en deux panneaux
+mc -u : exécute Midnight Commander en mode utilisateur, avec une interface simplifiée
+mc /repertoire : exécute Midnight Commander en ouvrant le répertoire spécifié au lieu du répertoire de travail par défaut
+</code></pre></li>
+		
+		
+		
+      </ul>
+  </li>
+  <li> <h3>Mosh : </h3> un remplaçant de SSH pour les connexions réseau instables, offrant une meilleure réactivité et une reconnexion automatique en cas de déconnexion.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y mosh
+		
+mosh user@serveur : se connecte à un serveur distant en utilisant Mosh
+mosh --server=/usr/local/bin/mosh-server user@serveur : se connecte à un serveur distant en spécifiant l'emplacement du serveur Mosh
+mosh --help : affiche l'aide pour Mosh, qui contient des informations sur les options de la commande</code></pre></li>
+		
+		
+		
+      </ul>
+  </li>
+  <li> <h3>ncdu : </h3> un outil d'analyse de l'utilisation du disque en mode texte, qui fournit une vue interactive pour explorer les répertoires et identifier les fichiers volumineux.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y ncdu
+		
+ncdu : exécute Ncdu avec son interface interactive
+ncdu /repertoire : exécute Ncdu en analysant le répertoire spécifié
+ncdu -x / : exécute Ncdu en analysant le système de fichiers racine, en excluant les répertoires montés
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>iftop : </h3> un outil de surveillance du trafic réseau en temps réel qui affiche les connexions actives et la bande passante utilisée.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y iftop
+
+iftop : exécute Iftop en mode interactif, affichant les connexions actives et la bande passante utilisée en temps réel
+iftop -n : exécute Iftop en mode interactif, en affichant les adresses IP à la place des noms d'hôte
+iftop -i eth0 : exécute Iftop en surveillant le trafic sur l'interface réseau eth0
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>tig : </h3> un navigateur d'historique de commit et de différences pour Git, avec une interface en mode texte.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y tig
+
+tig : exécute Tig avec son interface en mode texte, en affichant l'historique des commits
+tig --all : exécute Tig avec son interface en mode texte, en affichant l'historique de tous les commits, y compris les branches et les tags
+tig /chemin/vers/fichier : exécute Tig en affichant l'historique des commits pour un fichier spécifique
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>GoAccess : </h3> un analyseur de logs web en temps réel, qui génère des rapports interactifs sur les accès aux sites web et les erreurs.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y goaccess
+
+goaccess /var/log/apache2/access.log : analyse le fichier de journalisation Apache access.log et génère un rapport interactif sur les accès au site web
+goaccess -f access.log -o rapport.html : analyse un fichier de journalisation et génère un rapport HTML
+goaccess -a -d /var/www -p /etc/goaccess.conf : analyse les fichiers de journalisation pour le répertoire racine du site web (/var/www) en utilisant une configuration personnalisée spécifiée dans le fichier /etc/goaccess.conf
+goaccess -f /var/log/nginx/access.log -p /etc/goaccess.conf -o rapport.html --real-time-html : analyse le fichier de journalisation Nginx access.log en temps réel et génère un rapport HTML en utilisant la configuration personnalisée spécifiée dans /etc/goaccess.conf.
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>Rclone : </h3> un outil en ligne de commande pour synchroniser des fichiers et des répertoires avec des services de stockage en nuage, tels que Google Drive, Amazon S3, et Dropbox.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y rclone
+		
+rclone copy /chemin/local user@serveur:/chemin/destination : copie un fichier local vers un serveur distant en utilisant Rclone
+rclone sync /chemin/source/ user@serveur:/chemin/destination : synchronise le répertoire local source avec le répertoire distant destination sur le serveur
+rclone mount serveur: /chemin/montage : monte un système de fichiers distant sur le répertoire local /chemin/montage.
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>Watchdog : </h3> un démon qui surveille les fichiers et les répertoires pour détecter les modifications et exécuter des actions spécifiques en réponse à ces événements.
+<ul>
+<li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y watchdog
+
+watchmedo shell-command --command="ls -l" /chemin/a/surveiller : exécute la commande "ls -l" chaque fois qu'un événement est détecté dans le répertoire surveillé
+watchmedo log --pattern="*.py" /chemin/a/surveiller : journalise les événements détectés dans le répertoire surveillé pour les fichiers avec l'extension .py
+watchmedo auto-restart --directory=/chemin/a/surveiller --recursive --pattern="*.py" python script.py : surveille le répertoire /chemin/a/surveiller pour les fichiers avec l'extension .py, et redémarre le script Python script.py chaque fois qu'un changement est détecté.
+</code></pre></li>
+
+
+</ul>
+
+  </li>
+  <li> <h3>Cockpit : </h3> une interface web pour administrer et surveiller les serveurs Linux, qui permet de gérer les services, les journaux, les réseaux et les conteneurs.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y cockpit
+		
+sudo systemctl enable --now cockpit.socket : active et démarre le service Cockpit
+sudo firewall-cmd --permanent --zone=public --add-service=cockpit : autorise le trafic HTTP et HTTPS pour Cockpit à travers le pare-feu
+Accédez à l'interface Cockpit en ouvrant un navigateur et en naviguant vers https://adresse-ip-serveur:9090.
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>Monit : </h3> un outil de surveillance des processus, des fichiers et des services, qui permet d'effectuer des actions automatiques en cas de problèmes détectés.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y monit
+		
+sudo monit status : affiche l'état des services surveillés par Monit
+sudo monit start nom_du_service : démarre un service surveillé par Monit
+sudo monit unmonitor nom_du_service : arrête la surveillance d'un service par Monit.</code></pre></li>
+		
+		
+      </ul>
+  </li>
+  <li> <h3>AutoSSH  </h3>: un outil pour maintenir automatiquement des connexions SSH persistantes, en les relançant lorsqu'elles sont interrompues.
+      <ul>
+        <li>Commande d'installation : <pre style="background-color: #FFFFFF;"><code class="language-bash">
+sudo apt-get install -y autossh
+		
+autossh -M 0 -N -f -R 8080:localhost:80 user@serveur : ouvre une connexion SSH persistante vers un serveur distant et redirige le port 8080 du serveur vers le port 80 de la machine locale
+autossh -M 0 -N -f -L 3306:localhost:3306 user@serveur : ouvre une connexion SSH persistante vers un serveur distant et redirige le port 3306 du serveur vers le port 3306 de la machine locale
+autossh -M 0 -N -f -D 8080 user@serveur : ouvre une connexion SSH persistante vers un serve
+</code></pre></li>
+		
+		
+      </ul>
+  </li>
+</ul>
+
+	 
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ 
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>

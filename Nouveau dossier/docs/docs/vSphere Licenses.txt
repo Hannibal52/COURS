@@ -1,0 +1,2 @@
+CS7-STD-C - VMware vCenter Server 7 Standard for vSphere 7:	5M20M-J9381-K84GE-01AA2-3W545
+VS7-EPL-C VMware vSphere 7 Enterprise Plus :			5040M-JT0E0-689GJ-0DC02-1EE27

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+    <title>Tutoriel Configuration Routeur Cisco</title>
+    <style>
+      body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+     	h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+        pre {
+            background-color: #FFFFFF;
+            border: 1px solid #ddd;
+            padding: 10px;
+			font-size: 1.3em;
+			
+			
+		
+        }
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+			header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		
+		 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+		
+		.language-bash{
+			background-color: #FF0000;
+		}
+ 
+
+		
+    </style>
+</head>
+
+<body>
+
+<header>
+		<h1>Sauvegarde incrémentielle des fichiers</h1>
+	</header>
+	
+	
+
+	<div class="container">
+	
+	
+    
+    <h2>
+	Voici un exemple de script plus complexe qui effectue une sauvegarde incrémentielle des fichiers d'un répertoire spécifié en utilisant rsync et en conservant un historique des sauvegardes. Ce script est utile pour créer des sauvegardes régulières avec un minimum d'utilisation de l'espace disque.
+	</h2>
+	 
+	
+	<pre style="background-color: #FFFFFF;" ><code class="language-bash" >
+#!/bin/bash
+
+# Paramètres de configuration
+SOURCE_DIR="/chemin/vers/le/repertoire/source"
+BACKUP_DIR="/chemin/vers/le/repertoire/backup"
+DATE_FORMAT="%Y%m%d_%H%M%S"
+LINK_DEST_DIR="${BACKUP_DIR}/latest"
+KEEP_DAYS=7
+
+# Créer le répertoire de sauvegarde s'il n'existe pas
+mkdir -p "${BACKUP_DIR}"
+
+# Récupérer la date actuelle
+DATE=$(date +"${DATE_FORMAT}")
+
+# Créer un nom de répertoire pour la sauvegarde
+BACKUP_PATH="${BACKUP_DIR}/backup_${DATE}"
+
+# Effectuer une sauvegarde incrémentielle avec rsync
+rsync -a --delete --link-dest="${LINK_DEST_DIR}" "${SOURCE_DIR}" "${BACKUP_PATH}"
+
+# Vérifier si la création de la sauvegarde a réussi
+if [ $? -eq 0 ]; then
+  echo "Sauvegarde incrémentielle créée avec succès : ${BACKUP_PATH}"
+
+  # Mettre à jour le lien symbolique vers la dernière sauvegarde
+  rm -f "${LINK_DEST_DIR}"
+  ln -s "${BACKUP_PATH}" "${LINK_DEST_DIR}"
+
+  # Supprimer les sauvegardes obsolètes
+  find "${BACKUP_DIR}" -type d -name "backup_*" -mtime +${KEEP_DAYS} -exec rm -rf {} +
+  echo "Les sauvegardes de plus de ${KEEP_DAYS} jours ont été supprimées."
+else
+  echo "Échec de la création de la sauvegarde incrémentielle. Veuillez vérifier les erreurs ci-dessus."
+fi
+
+
+</code></pre>
+	
+	
+  
+<br>
+<hr>
+<br>
+ 
+ <p>
+ Assurez-vous de remplacer les valeurs des variables SOURCE_DIR et BACKUP_DIR par les chemins appropriés pour votre répertoire source et le répertoire de sauvegarde. Le script utilise rsync pour effectuer une sauvegarde incrémentielle, créant des liens vers les fichiers non modifiés pour économiser de l'espace disque. Il met également à jour le lien symbolique latest pour pointer vers la dernière sauvegarde et supprime les sauvegardes de plus de KEEP_DAYS jours (7 jours par défaut).
+  </p>
+
+<br>
+ 
+ <p>
+ Vous pouvez exécuter ce script manuellement ou le planifier avec cron pour effectuer des sauvegardes régulières de votre répertoire source.
+ </p>
+ 
+ 
+ 
+</div>
+ 
+	 
+</body>
+
+</html>
+
+
