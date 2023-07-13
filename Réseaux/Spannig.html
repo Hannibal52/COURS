@@ -22,12 +22,18 @@
             margin-top: 2rem;
         }
  
-        pre {
-            background-color: #f0f0f0;
-            padding: 1rem;
-            overflow-x: auto;
-			 white-space: pre-wrap;
-        }
+        
+
+  
+		
+		pre {
+		color : lime;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+			}
+			
     </style>
 </head>
 <body>
@@ -38,6 +44,8 @@
     <img src="spannig.png" alt="Topologie">
  
  
+	
+	
 	
 	 <h1>Configuration de VLAN, Trunk, Spanning Tree et EtherChannels</h1>
 
@@ -61,7 +69,7 @@ interface FastEthernet0/10
 switchport mode access
 switchport access vlan 10
 exit
-interface FastEthernet0/10
+interface FastEthernet0/20
 switchport mode access
 switchport access vlan 20
 exit
@@ -73,35 +81,38 @@ exit
     <pre>
 interface range FastEthernet0/3 - 4
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 2 mode on
 exit
 interface range FastEthernet0/5 - 6
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 3 mode desirable
 exit
     </pre>
     <p>Switch2 :</p>
     <pre>
 interface range FastEthernet0/3 - 4
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 2 mode on
 exit
 interface range FastEthernet0/1 - 2
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 1 mode active
 exit
     </pre>
     <p>Switch3 :</p>
     <pre>
 interface range FastEthernet0/1 - 2
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 1 mode active
 exit
 interface range FastEthernet0/5 - 6
 switchport mode trunk
-switchport trunk allowed vlan 10,20
+channel-group 3 mode desirable
 exit
     </pre>
+	
+ 
+
 
     <h2>Étape 4 : Configuration du Spanning Tree Protocol (STP)</h2>
     <p>Switch1 :</p>
@@ -177,20 +188,138 @@ show spanning-tree
 <pre>
 show etherchannel summary
 </pre>
-
-
-<h3>Bonnus :</h3>
-<pre>Après avoir terminé ces étapes, les switches devraient être configurés avec les VLAN, les liens trunk, le Spanning Tree et les EtherChannels. Vous pouvez alors connecter les PCs aux ports d'accès des VLAN correspondants.
-
+	
+	
 <hr>
 
-Après avoir effectué toutes les configurations et connecté les PCs, il est important de tester la connectivité entre les PCs au sein des mêmes VLAN et de vérifier qu'il n'y a pas de connectivité entre les PCs de différents VLAN.
-
-<br>
-Utilisez la commande "ping" pour vérifier la connectivité entre les PCs. Assurez-vous que les PCs aient des adresses IP appropriées et qu'ils appartiennent au même sous-réseau pour chaque VLAN. Par exemple, pour le VLAN 10, vous pouvez attribuer des adresses IP telles que 10.0.10.2/24 et 10.0.10.3/24, et pour le VLAN 20, vous pouvez attribuer des adresses IP telles que 10.0.20.2/24 et 10.0.20.3/24.
-</pre>
 
  
+<img src="spannigrouter.png" alt="Topologie">
+
+
+<h2>Étape 7 :  Ajouter un serveur DHCP avec les conf néccéssaires </h2>
+	<br>
+<h2>Étape 8 : Ajout du routeur</h2>
+
+
+<h3>Vérification des VLAN :</h3>
+<pre>
+interface fa0/0
+no ip address
+no sh
+<br>
+interface fa0/0.1
+encapsulation dot1Q 1
+ip address 10.10.1.1 255.255.255.0
+ip helper-address 10.10.1.254
+
+interface fa0/0.10 
+encapsulation dot1Q 10
+ip address 10.10.10.1 255.255.255.0
+ip helper-address 10.10.1.254
+
+interface fa0/0.20
+encapsulation dot1Q 20
+ip address 10.10.20.1 255.255.255.0
+ip helper-address 10.10.1.254
+</pre>
+	
+	
+<h3>trunk entre switch 2 et le routeur:</h3>
+<pre>
+interface fa0/24
+switchport mode trunk
+no sh
+</pre>
+
+<br>
+
+
+	
+	<h2>Etape 9 :Configuration de DHCP Snooping pour sécuriser le réseau</h2>
+	
+ 
+    <ol>
+        <li>
+            <h3>Activer le DHCP Snooping</h3>
+            <p>Activez le DHCP Snooping sur chaque switch en vous connectant à l'interface de gestion et en exécutant les commandes suivantes:</p>
+            <pre>
+configure terminal
+ip dhcp snooping
+            </pre>
+        </li>
+        <li>
+            <h3>Activer le DHCP Snooping pour chaque VLAN</h3>
+            <p>Activez le DHCP Snooping pour les VLANs que vous souhaitez protéger. Par exemple, si vous avez les VLANs 1,10 et 20, exécutez les commandes suivantes:</p>
+            <pre>
+ip dhcp snooping vlan 1,10,20
+            </pre>
+        </li>
+        <li>
+            <h3>Configurer les ports en mode Trusted</h3>
+            <p>Configurez le port sur lequel votre serveur DHCP est connecté en mode Trusted (de confiance). Cela permettra à votre serveur DHCP autorisé de répondre aux requêtes des clients. Les autres serveurs DHCP non autorisés ne pourront pas répondre aux requêtes. Pour configurer le port en mode Trusted, exécutez les commandes suivantes:</p>
+            <pre>
+#sur le switch connecté directement au serveur	: 
+
+interface FastEthernet0/X (remplacez X par le numéro de port où le serveur DHCP est connecté)
+ip dhcp snooping trust
+
+interface FastEthernet0/A-B  (remplacez A  et B par les numéros de port etherchannel)
+ip dhcp snooping trust
+
+interface FastEthernet0/X-Y  (remplacez X et Y par les numéros de port etherchannel)
+ip dhcp snooping trust
+
+
+<br>
+<hr>
+<br>
+#sur les autres switchs : 
+
+interface FastEthernet0/A-B  (remplacez A  et B par les numéros de port etherchannel)
+ip dhcp snooping trust
+
+interface FastEthernet0/X-Y  (remplacez X et Y par les numéros de port etherchannel)
+ip dhcp snooping trust
+
+<br>
+<hr>
+<br>
+
+#sur le switch connecté au routeur :
+
+interface FastEthernet0/24 ( rappelez vous de l'étape 8 : ip helper-address 10.10.1.254 ) 
+ip dhcp snooping trust
+
+
+            </pre>
+        </li>
+        <li>
+            <h3>Configurer les taux de limitation des paquets DHCP (optionnel)</h3>
+            <p>Vous pouvez limiter le taux de paquets DHCP sur les ports non fiables pour prévenir les attaques par déni de service (DoS). Pour configurer un taux de limitation, exécutez les commandes suivantes:</p>
+            <pre>
+interface range  FastEthernet0/8 - Y (remplacez Y par le numéro de port max de la plage  que vous souhaitez limiter)
+ip dhcp snooping limit rate Z (remplacez Z par le nombre de paquets DHCP par seconde que vous souhaitez autoriser)
+            </pre>
+        </li>
+    </ol>
+    <p>Répétez ces étapes pour chaque switch de votre réseau. Une fois la configuration terminée, votre serveur DHCP sera en mode "trusted", empêchant l'ajout de serveurs DHCP non autorisés sur le réseau.</p>
+	
+	
+	
+	</body>
+</html>
+
+	
+<hr>
+ 
+ 
+ 
+ <pre>
+ 
+ Taha Yassine Jguirim
+ 
+ </pre>
  
  
 </body>
