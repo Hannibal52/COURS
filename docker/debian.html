@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoriel : Docker et Kubernetes Sur Linux (debian) </title>
+	
+	   <style>
+     body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+        h1, h2 {
+            color: #446d88;
+        }
+
+      
+
+        h2 {
+            margin-top: 1em;
+        }
+
+        ol {
+            margin: 1em 0;
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        code {
+            color: #bd4147;
+        }
+		
+		section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 20px;
+    background: #333;
+    color: #ffffff;
+    text-align: center;
+}
+ h1 {
+    font-size: 2em;
+	  color: #ffffff;
+}
+
+ .definition {
+            border-left: 5px solid #446d88;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+		
+    </style>
+	
+	
+</head>
+<body>
+ <header>
+        <h1>Tutoriel : Docker et Kubernetes Sur Linux (debian)</h1>
+    </header>
+	
+
+<section>
+
+    
+	<h2>Étape 1: Installer Docker</h2>
+<ol>
+    <li>Mettez à jour votre liste de packages existante :
+        <pre><code>sudo apt-get update</code></pre>
+    </li>
+    <li>Installez les packages nécessaires pour que apt utilise des dépôts sur HTTPS :
+        <pre><code>sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release</code></pre>
+    </li>
+    <li>Ajoutez la clé GPG officielle de Docker :
+        <pre><code>curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</code></pre>
+    </li>
+    <li>Configurez le dépôt stable de Docker :
+        <pre><code>echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null</code></pre>
+    </li>
+    <li>Mettez à jour votre liste de packages à nouveau :
+        <pre><code>sudo apt-get update</code></pre>
+    </li>
+    <li>Installez Docker Engine :
+        <pre><code>sudo apt-get install docker-ce docker-ce-cli containerd.io</code></pre>
+    </li>
+    <li>Vérifiez que Docker est correctement installé en exécutant :
+        <pre><code>sudo docker run hello-world</code></pre>
+    </li>
+</ol>
+    <h2>Étape 2: Installer Kubernetes</h2>
+    <div class="definition">
+        <strong>Minikube :</strong> Minikube est un outil qui permet de lancer Kubernetes localement. Minikube lance un cluster Kubernetes à nœud unique dans une machine virtuelle sur votre ordinateur.
+    </div>
+    <ol>
+        <li>Installez Minikube :
+            <pre><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</code></pre>
+            <pre><code>chmod +x minikube</code></pre>
+            <pre><code>sudo mv minikube /usr/local/bin/</code></pre>
+        </li>
+    </ol>
+    <div class="definition">
+        <strong>Kubectl :</strong> Kubectl est une ligne de commande pour contrôler les clusters Kubernetes. C'est l'outil principal de communication entre l'utilisateur et le cluster.
+    </div>
+    <ol start="2">
+        <li>Installez Kubectl :
+            <pre><code>curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"</code></pre>
+            <pre><code>chmod +x ./kubectl</code></pre>
+            <pre><code>sudo mv ./kubectl /usr/local/bin/kubectl</code></pre>
+        </li>
+        <li>Démarrez Minikube :
+            <pre><code>minikube start --driver=docker</code></pre>
+        </li>
+        <li>Vérifiez que Minikube est correctement installé en exécutant :
+            <pre><code>minikube status</code></pre>
+        </li>
+    </ol>
+
+</body>
+
+<section>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoriel : Docker et Kubernetes sur Windows</title>
+    <style>
+     body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+        h1, h2 {
+            color: #446d88;
+        }
+
+    header {
+    padding: 20px;
+    background: #333;
+    color: #ffffff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+	   color: #ffffff;
+	   
+}
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+        h2 {
+            margin-top: 1em;
+        }
+
+        ol {
+            margin: 1em 0;
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        code {
+            color: #bd4147;
+        }
+
+        .definition {
+            border-left: 5px solid #2b8a3e;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+
+        .remark {
+            border-left: 5px solid #b85d1c;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+
+ <header>
+        <h1>Tutoriel : Docker et Kubernetes sur Windows</h1>
+    </header>
+	    <main>
+	
+	 
+
+    <div class="remark">
+        <strong>Remarque :</strong> Docker et Minikube ont tous deux des exigences système spécifiques. Par exemple, vous devez disposer de la virtualisation activée dans le BIOS et d'une version de Windows 10 64 bits.
+    </div>
+
+    <h2>Étape 1: Installer Docker</h2>
+    <ol>
+        <li>Allez sur le site officiel de Docker à l'adresse <a href="https://www.docker.com/products/docker-desktop" target="_blank">https://www.docker.com/products/docker-desktop</a> et cliquez sur "Get Docker Desktop For Windows".</li>
+        <li>Une fois le fichier d'installation téléchargé, ouvrez-le pour lancer l'installation.</li>
+        <li>Suivez les instructions à l'écran pour terminer l'installation.</li>
+    </ol>
+
+    <h2>Étape 2: Installer Minikube</h2>
+    <ol>
+        <li>Ouvrez PowerShell en mode administrateur.</li>
+        <li>Utilisez la commande suivante pour télécharger Minikube :
+            <pre><code>Invoke-WebRequest -Uri https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe -OutFile minikube.exe</code></pre>
+        </li>
+        <li>Déplacez le fichier minikube.exe dans un répertoire qui est dans votre PATH, par exemple :
+            <pre><code>Move-Item -Path .\minikube.exe -Destination C:\Windows\System32</code></pre>
+        </li>
+    </ol>
+	
+	<h2>Étape 3: Démarrer Minikube</h2>
+    <ol>
+	<div class="remark">
+        <strong>Note :</strong>  Dans la console PowerShell, tapez la commande suivante pour démarrer Minikube avec le runtime de conteneur cri-o :  </div>
+
+
+        <li>
+            <pre><code>minikube start --container-runtime cri.o</code></pre>
+        </li>
+    </ol>
+	    </main>
+	
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoriel : Commandes de base pour Docker et Kubernetes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #446d88;
+        }
+
+        header {
+            padding: 20px;
+            background: #333;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #ffffff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 1em;
+        }
+
+        ol {
+            margin: 1em 0;
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        code {
+            color: #bd4147;
+        }
+
+        .definition {
+            border-left: 5px solid #2b8a3e;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+
+        .remark {
+            border-left: 5px solid #b85d1c;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Commandes de base pour Docker et Kubernetes</h1>
+    </header>
+    
+    <main>
+        <h2>Commandes Docker</h2>
+        <p>Pour lister les images Docker :</p>
+        <pre><code>docker images</code></pre>
+        
+        <p>Pour lister les conteneurs Docker :</p>
+        <pre><code>docker container ls</code></pre>
+
+        <h2>Commandes Minikube</h2>
+        <p>Pour vérifier l'état de Minikube :</p>
+        <pre><code>minikube status</code></pre>
+
+        <p>Pour démarrer Minikube :</p>
+        <pre><code>minikube start</code></pre>
+
+        <h2>Commandes Kubectl</h2>
+        <p>Pour vérifier la version de kubectl :</p>
+        <pre><code>kubectl version</code></pre>
+
+        <p>Pour créer un déploiement avec l'image nginx :</p>
+        <pre><code>kubectl create deployment nginx-app --image=nginx</code></pre>
+
+        <p>Pour obtenir la liste des déploiements, pods, services, tous les objets et ReplicaSet :</p>
+        <pre><code>
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl get all
+kubectl get replicaset</code></pre>
+
+        <p>Pour redimensionner le déploiement :</p>
+        <pre><code>kubectl scale deployment nginx-app --replicas=3</code></pre>
+
+        <p>Pour supprimer tous les déploiements :</p>
+        <pre><code>kubectl delete deployment --all</code></pre>
+		
+		<!-- Le contenu existant de votre fichier HTML va ici -->
+
+<h2>Création et gestion de pods avec Kubernetes</h2>
+
+<p>Pour créer un pod, on peut d'abord écrire un fichier YAML décrivant le pod. Un exemple de base d'un tel fichier, nommé "pod.yml", pourrait ressembler à ceci :</p>
+
+<pre class="definition">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+</pre>
+
+<p>Une fois que vous avez votre fichier pod.yml, vous pouvez le passer à kubectl pour créer le pod :</p>
+<pre><code>kubectl apply -f pod.yml</code></pre>
+
+<p>Pour vérifier le statut de votre pod :</p>
+<pre><code>kubectl get pod</code></pre>
+
+<p>Pour obtenir des informations spécifiques sur le pod nginx :</p>
+<pre><code>kubectl get pod nginx</code></pre>
+
+<p>Pour obtenir des informations sur tous les objets :</p>
+<pre><code>kubectl get all</code></pre>
+
+<p>Pour obtenir des informations détaillées sur le pod nginx :</p>
+<pre><code>kubectl describe pod nginx</code></pre>
+
+<p>Pour obtenir les informations sur le pod en format JSON :</p>
+<pre><code>kubectl get pod -o json</code></pre>
+
+<p>Pour exécuter un shell interactif dans le conteneur nginx :</p>
+<pre><code>kubectl exec -it nginx -- /bin/bash</code></pre>
+
+<p>Par exemple, pour afficher la version du système d'exploitation à l'intérieur du conteneur :</p>
+<pre><code>cat /etc/os-release</code></pre>
+
+<p>Pour tester le service web à l'intérieur du conteneur :</p>
+<pre><code>curl http://localhost</code></pre>
+
+<p>Pour modifier la page d'accueil du service web :</p>
+<pre><code>echo 'hello world from pod in kubernetes' > /usr/share/nginx/html/index.html
+curl http://localhost</code></pre>
+
+<p>Sortir du shell interactif :</p>
+<pre><code>exit</code></pre>
+
+<p>Pour voir les logs du pod nginx :</p>
+<pre><code>kubectl logs nginx</code></pre>
+
+<p>Pour lancer le dashboard de Minikube :</p>
+<pre><code>minikube dashboard --url</code></pre>
+
+<p>Pour supprimer le pod nginx :</p>
+<pre><code>kubectl delete pod nginx</code></pre>
+
+<p>Pour vérifier que le pod a bien été supprimé :</p>
+<pre><code>kubectl get pod</code></pre>
+
+ 
+
+    </main>
+</body>
+</html>
