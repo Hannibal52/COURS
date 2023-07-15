@@ -2,294 +2,324 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
- 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8">
 
-	 
-	  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-	 
- <script src="https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script src="https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"></script>
 
 
-    <title>Tutoriel Configuration Routeur Cisco</title>
-    <style>
- html {
-  width: 100%;
-  height: 100%;
-  
-  background: #11e8bb; /* Old browsers */
-  background: -moz-linear-gradient(top,  #11e8bb 0%, #8200c9 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #11e8bb 0%,#8200c9 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #131921 50%,#131921 50%,#01122c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11e8bb', endColorstr='#8200c9',GradientType=0 ); /* IE6-9 */
-  overflow: hidden;
-}
+  <title>Tutoriel Configuration Routeur Cisco</title>
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
 
-body {
-  margin: 0;
-  padding: 0;
-}
+      background: #11e8bb;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #11e8bb 0%, #8200c9 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #11e8bb 0%, #8200c9 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #131921 50%, #131921 50%, #01122c 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#11e8bb', endColorstr='#8200c9', GradientType=0);
+      /* IE6-9 */
+      overflow: hidden;
+    }
 
- 
- 
-#canvas {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-canvas {
-  position: fixed;
-  top: 0px;
-  left: 0;
-
-}
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
 
- 
 
+    #canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
- 
+    canvas {
+      position: fixed;
+      top: 0px;
+      left: 0;
 
-
- 
-
-
-    </style>
+    }
+  </style>
 </head>
- 
+
 <body>
- 
-
-    
-	  <div id="canvas"></div>
-	  
-	
-
-	
-	<script>
-	
-	
-	var renderer, scene, camera, composer, circle, skelet, particle;
-	 
-
-window.onload = function() {
-   
-  init();
-
-  animate();
-}
-
-function init() {
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-  
-  renderer.autoClear = false;
-  renderer.setClearColor(0x000000, 0.0);
-  document.getElementById('canvas').appendChild(renderer.domElement);
-
-  scene = new THREE.Scene();
 
 
-function isMobileDevice() {
-  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-}
 
-   
-  if (isMobileDevice()) {
-  // Utilisez une configuration adaptée aux appareils mobiles
-  camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
-  // Autres modifications spécifiques aux appareils mobiles
-  renderer.setSize(1000,1790);
-  camera.position.z = 600;
-	camera.position.y = 200; 
-
-	
-  
-} else {
-  // Utilisez une configuration adaptée aux ordinateurs de bureau
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  // Autres modifications spécifiques aux ordinateurs de bureau
-  camera.position.z = 600;
-  renderer.setSize(window.innerWidth, window.innerHeight);
- 
-  
-}
-
-
-  
-  scene.add(camera);
-
-  circle = new THREE.Object3D();
-  skelet = new THREE.Object3D();
-  particle = new THREE.Object3D();
-
-  scene.add(circle);
-  scene.add(skelet);
-  scene.add(particle);
-
-  var geometry = new THREE.TetrahedronGeometry(2, 0);
-  var geom = new THREE.IcosahedronGeometry(7, 1);
-  var geom2 = new THREE.IcosahedronGeometry(15, 1);
-
-  var material = new THREE.MeshPhongMaterial({
-    color: 0xffffff,
-    flatShading: true
-  });
-
-  for (var i = 0; i < 1000; i++) {
-    var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
-    mesh.position.multiplyScalar(90 + (Math.random() * 700));
-    mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
-    particle.add(mesh);
-  }
-  
- 
-  var mat = new THREE.MeshPhongMaterial({
-    color: 0xffffff,
-    flatShading: true
- 
-  });
-
-  var mat2 = new THREE.MeshPhongMaterial({
-    color: 0xF5F5DC,
-    wireframe: true,
-    side: THREE.DoubleSide
-
-  });
-
-  var planet = new THREE.Mesh(geom, mat);
-  planet.scale.x = planet.scale.y = planet.scale.z = 16;
-  circle.add(planet);
-
-  var planet2 = new THREE.Mesh(geom2, mat2);
-  planet2.scale.x = planet2.scale.y = planet2.scale.z = 10;
-  skelet.add(planet2);
-
-  var ambientLight = new THREE.AmbientLight(0x1E90FF );
-  scene.add(ambientLight);
-  
-  var lights = [];
-lights[0] = new THREE.DirectionalLight( 0x01122c, 1 );
-lights[0].position.set( 0, -2, 0 );
-lights[1] = new THREE.DirectionalLight( 0x9a56c8, 1 );
-lights[1].position.set( -2, 1, 0.75 );
-lights[2] = new THREE.DirectionalLight(  0x131921, 1 );
-lights[2].position.set( -0.1, 0.1, -0.1 );
-scene.add( lights[0] );
-scene.add( lights[1] );
-scene.add( lights[2] );
-  
-
-  window.addEventListener('resize', onWindowResize, false);
-  window.addEventListener('orientationchange', onWindowResize);
-
-};
-
-function updateRendererSize() {
-  var pixelRatio = window.devicePixelRatio || 1;
-  var newWidth = window.innerWidth * pixelRatio;
-  var newHeight = window.innerHeight * pixelRatio;
-  
-  renderer.setSize(newWidth, newHeight, false);
-  renderer.domElement.width = newWidth;
-  renderer.domElement.height = newHeight;
-  renderer.domElement.style.width = window.innerWidth + 'px';
-  renderer.domElement.style.height = window.innerHeight + 'px';
-}
+  <div id="canvas"></div>
 
 
 
 
-
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
- 
- 
-  updateRendererSize();
-  
-}
-
-// Chargement de la fonte
-var loader = new THREE.FontLoader();
-
-loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
-
-  // Liste de mots à afficher
-  var words = ['Vmware','Docker', 'Kubernetes', 'minikube' ,'kubectl','Cisco', 'ADDS','RAID','NAS', 'Security', 'SAN', 'RSA' ,'WatchGuard' ,'Sophos' ,'Office 365' ,'stormshield' ,'DFSR', 'Microsoft','OpenVPN' , 'Vcenter', 'Linux', 'Esxi', 'DHCP', 'DNS', 'AWS', 'OSPF' ,'RIP', 'ACL' ,'HSRP' , 'AGDLP' ,'PSO' ,'GPO','Vsphere' ,'WDS', 'MDT'  , 'BitLocker','GRE','Active Directory', 'Trunk','Firewall', 'Proxy', 'VLAN', 'Wi-Fi', 'VPN', 'VLAN', 'WAN', 'LAN', 'IPSec', 'SNMP' , 'Azure', 'SSH', 'SSL', 'GLPI', 'Zabbix', 'pfSense', 'FortiGate', 'VPN', 'LDAP', 'FTP', 'SAMBA', 'NFS', 'RDP', 'TCP/IP'];
+  <script type="module">
+    import { OrbitControls } from 'https://cdn.skypack.dev/@three-ts/orbit-controls';
+    window.OrbitControls = OrbitControls;
 
  
-  // Pour chaque mot, créez un maillage et ajoutez-le à la scène
-  for (var i = 0; i < words.length; i++) {
-    var geometry = new THREE.TextGeometry(words[i], {
-      font: font,
-      size: 7,
-      height: 1,
-      curveSegments: 12,
-      bevelEnabled: true,
-      bevelThickness: 0.15,
-      bevelSize: 0.3,
-      bevelSegments: 5
+    var renderer, scene, camera, composer, circle, skelet, particle, controls ;
+
+    window.onload = function () {
+
+      init();
+
+      animate();
+    }
+
+    function init() {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+
+      renderer.autoClear = false;
+      renderer.setClearColor(0x000000, 0.0);
+      document.getElementById('canvas').appendChild(renderer.domElement);
+
+      scene = new THREE.Scene();
+
+
+      function isMobileDevice() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      }
+
+
+      if (isMobileDevice()) {
+        // Utilisez une configuration adaptée aux appareils mobiles
+        camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // Autres modifications spécifiques aux appareils mobiles
+        renderer.setSize(1000, 1790);
+        camera.position.z = 600;
+        camera.position.y = 200;
+
+
+
+      } else {
+        // Utilisez une configuration adaptée aux ordinateurs de bureau
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // Autres modifications spécifiques aux ordinateurs de bureau
+        camera.position.z = 600;
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+      }
+
+      controls = new OrbitControls(camera, renderer.domElement);
+
+
+
+
+
+
+
+
+      scene.add(camera);
+
+
+
+
+      circle = new THREE.Object3D();
+      skelet = new THREE.Object3D();
+      particle = new THREE.Object3D();
+
+      scene.add(circle);
+      scene.add(skelet);
+      scene.add(particle);
+
+      var geometry = new THREE.TetrahedronGeometry(2, 0);
+      var geom = new THREE.IcosahedronGeometry(7, 1);
+      var geom2 = new THREE.IcosahedronGeometry(15, 1);
+
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        flatShading: true
+      });
+
+      for (var i = 0; i < 1000; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+        mesh.position.multiplyScalar(90 + (Math.random() * 700));
+        mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
+        particle.add(mesh);
+      }
+
+
+      var mat = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        flatShading: true
+
+      });
+
+      var mat2 = new THREE.MeshPhongMaterial({
+        color: 0xF5F5DC,
+        wireframe: true,
+        side: THREE.DoubleSide
+
+      });
+
+      var planet = new THREE.Mesh(geom, mat);
+      planet.scale.x = planet.scale.y = planet.scale.z = 16;
+      circle.add(planet);
+
+      var planet2 = new THREE.Mesh(geom2, mat2);
+      planet2.scale.x = planet2.scale.y = planet2.scale.z = 10;
+      skelet.add(planet2);
+
+      var ambientLight = new THREE.AmbientLight(0x1E90FF);
+      scene.add(ambientLight);
+
+      var lights = [];
+      lights[0] = new THREE.DirectionalLight(0x01122c, 1);
+      lights[0].position.set(0, -2, 0);
+      lights[1] = new THREE.DirectionalLight(0x9a56c8, 1);
+      lights[1].position.set(-2, 1, 0.75);
+      lights[2] = new THREE.DirectionalLight(0x131921, 1);
+      lights[2].position.set(-0.1, 0.1, -0.1);
+      scene.add(lights[0]);
+      scene.add(lights[1]);
+      scene.add(lights[2]);
+
+
+      window.addEventListener('resize', onWindowResize, false);
+      window.addEventListener('orientationchange', onWindowResize);
+
+    };
+
+    function updateRendererSize() {
+      var pixelRatio = window.devicePixelRatio || 1;
+      var newWidth = window.innerWidth * pixelRatio;
+      var newHeight = window.innerHeight * pixelRatio;
+
+      renderer.setSize(newWidth, newHeight, false);
+      renderer.domElement.width = newWidth;
+      renderer.domElement.height = newHeight;
+      renderer.domElement.style.width = window.innerWidth + 'px';
+      renderer.domElement.style.height = window.innerHeight + 'px';
+    }
+
+
+
+
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+
+      updateRendererSize();
+
+    }
+
+    // Chargement de la fonte
+    var loader = new THREE.FontLoader();
+
+    loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+
+      // Liste de mots à afficher
+      var words = ['Vmware', 'Docker', 'Kubernetes', 'minikube', 'kubectl', 'Cisco', 'ADDS', 'RAID', 'NAS', 'Security', 'SAN', 'RSA', 'WatchGuard', 'Sophos', 'Office 365', 'stormshield', 'DFSR', 'Microsoft', 'OpenVPN', 'Vcenter', 'Linux', 'Esxi', 'DHCP', 'DNS', 'AWS', 'OSPF', 'RIP', 'ACL', 'HSRP', 'AGDLP', 'PSO', 'GPO', 'Vsphere', 'WDS', 'MDT', 'BitLocker', 'GRE', 'Active Directory', 'Trunk', 'Firewall', 'Proxy', 'VLAN', 'Wi-Fi', 'VPN', 'VLAN', 'WAN', 'LAN', 'IPSec', 'SNMP', 'Azure', 'SSH', 'SSL', 'GLPI', 'Zabbix', 'pfSense', 'FortiGate', 'VPN', 'LDAP', 'FTP', 'SAMBA', 'NFS', 'RDP', 'TCP/IP'];
+
+
+      // Pour chaque mot, créez un maillage et ajoutez-le à la scène
+      for (var i = 0; i < words.length; i++) {
+        var geometry = new THREE.TextGeometry(words[i], {
+          font: font,
+          size: 7,
+          height: 1,
+          curveSegments: 12,
+          bevelEnabled: true,
+          bevelThickness: 0.15,
+          bevelSize: 0.3,
+          bevelSegments: 5
+        });
+
+        var material = new THREE.MeshPhongMaterial({
+          color: 0xffffff,
+          flatShading: true
+        });
+
+        var mesh = new THREE.Mesh(geometry, material);
+
+        let limitX = 1000 / 2; // largeur de l'écran / 2
+        let limitY = 2200 / 2; // hauteur de l'écran / 2
+        let minDistance = 200; // distance minimale de l'origine
+        let maxDistance = 1000; // distance maximale de l'origine
+
+        // Génère une position aléatoire normalisée
+        mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+
+        // Ajuste la longueur du vecteur de position pour qu'il soit entre minDistance et maxDistance
+        mesh.position.multiplyScalar(minDistance + Math.random() * (maxDistance - minDistance));
+
+        // Assure que le vecteur de position reste dans les limites de l'écran
+        mesh.position.x = Math.min(Math.max(mesh.position.x, -limitX), limitX);
+        mesh.position.y = Math.min(Math.max(mesh.position.y, -limitY), limitY);
+
+        // Pour le positionnement Z, si vous voulez aussi contrôler la position z :
+        let limitZ = Math.min(limitX, limitY); // ou une autre valeur selon votre besoin
+        mesh.position.z = Math.min(Math.max(mesh.position.z, -limitZ), limitZ);
+
+        particle.add(mesh);
+      }
+
+      
+      const textureLoaders = new THREE.TextureLoader();
+      textureLoaders.setCrossOrigin('anonymous');
+      const textures = textureLoaders.load('madara.png');
+
+      // Créer un matériau avec la texture
+      const materiales = new THREE.MeshBasicMaterial({ map: textures });
+
+      // Créer un mesh avec le matériau
+      // Nous utilisons ici un plan de dimensions 1x1, mais vous pouvez ajuster ces valeurs à votre convenance
+      const geometryes = new THREE.PlaneGeometry(900, 900);
+      const meshes = new THREE.Mesh(geometryes, materiales);
+
+
+      scene.add(meshes);
+
+
+
     });
 
-    var material = new THREE.MeshPhongMaterial({
-      color: 0xffffff,
-      flatShading: true
-    });
+    // ...
 
-    var mesh = new THREE.Mesh(geometry, material);
-    
-let limitX = 1000 / 2; // largeur de l'écran / 2
-let limitY = 2200 / 2; // hauteur de l'écran / 2
-let minDistance = 200; // distance minimale de l'origine
-let maxDistance = 1000; // distance maximale de l'origine
+    window.addEventListener('resize', onWindowResize, false);
 
-// Génère une position aléatoire normalisée
-mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
 
-// Ajuste la longueur du vecteur de position pour qu'il soit entre minDistance et maxDistance
-mesh.position.multiplyScalar(minDistance + Math.random() * (maxDistance - minDistance));
-
-// Assure que le vecteur de position reste dans les limites de l'écran
-mesh.position.x = Math.min(Math.max(mesh.position.x, -limitX), limitX);
-mesh.position.y = Math.min(Math.max(mesh.position.y, -limitY), limitY);
-
-// Pour le positionnement Z, si vous voulez aussi contrôler la position z :
-let limitZ = Math.min(limitX, limitY); // ou une autre valeur selon votre besoin
-mesh.position.z = Math.min(Math.max(mesh.position.z, -limitZ), limitZ);
-
-    particle.add(mesh);
-  }
-});
-
-// ...
  
-function animate() {
-  requestAnimationFrame(animate);
-
-  particle.rotation.x += 0.0000;
-  particle.rotation.y -= 0.0010;
-  circle.rotation.x -= 0.0020;
-  circle.rotation.y -= 0.0030;
-  skelet.rotation.x -= 0.0010;
-  skelet.rotation.y += 0.0020;
-  renderer.clear();
-  particle.children.forEach(child => {
-    child.lookAt(camera.position);
-  });
-
-  renderer.render( scene, camera )
-};
 
 
-	</script>
-	</html>
+    function animate() {
+      requestAnimationFrame(animate);
+
+      particle.rotation.x += 0.0000;
+      particle.rotation.y -= 0.0010;
+      circle.rotation.x -= 0.0020;
+      circle.rotation.y -= 0.0030;
+      skelet.rotation.x -= 0.0010;
+      skelet.rotation.y += 0.0020;
+      renderer.clear();
+      particle.children.forEach(child => {
+        child.lookAt(camera.position);
+      });
+      controls.update();
+      renderer.render(scene, camera)
+    };
+
+
+  </script>
+
+</html>
