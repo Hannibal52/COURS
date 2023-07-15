@@ -117,7 +117,7 @@ function isMobileDevice() {
   // Utilisez une configuration adaptée aux ordinateurs de bureau
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   // Autres modifications spécifiques aux ordinateurs de bureau
-  camera.position.z = 400;
+  camera.position.z = 600;
   renderer.setSize(window.innerWidth, window.innerHeight);
  
   
@@ -232,7 +232,7 @@ loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json
   for (var i = 0; i < words.length; i++) {
     var geometry = new THREE.TextGeometry(words[i], {
       font: font,
-      size: 10,
+      size: 7,
       height: 1,
       curveSegments: 12,
       bevelEnabled: true,
