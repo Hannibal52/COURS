@@ -277,14 +277,14 @@
       
       const textureLoaders = new THREE.TextureLoader();
       textureLoaders.setCrossOrigin('anonymous');
-      const textures = textureLoaders.load('madara.png');
+      const textures = textureLoaders.load('me.jpg');
 
       // Créer un matériau avec la texture
       const materiales = new THREE.MeshBasicMaterial({ map: textures });
 
       // Créer un mesh avec le matériau
       // Nous utilisons ici un plan de dimensions 1x1, mais vous pouvez ajuster ces valeurs à votre convenance
-      const geometryes = new THREE.PlaneGeometry(8, 8);
+      const geometryes = new THREE.PlaneGeometry(10, 10);
       const meshes = new THREE.Mesh(geometryes, materiales);
 
 
