@@ -625,11 +625,8 @@
 
 
 
-                                            <li id="file"><a class="name" href="#"
-                                                    data-src="https://www.it-connect.fr/installer-et-configurer-un-serveur-dhcp-sous-windows-server-2019/">DHCP</a>
-                                            </li>
-                                            <li id="file"><a class="name" href="#" data-src="Windows/ha/dhcp.pdf">DHCP
-                                                    HA</a>
+                                            
+                                            <li id="file"><a class="name" href="#" data-src="Windows/ha/dhcp.pdf">DHCP HA</a>
                                             </li>
                                             <li id="file"><a class="name" href="#"
                                                     data-src="Windows/1controleurDns.pdf">DNS 1</a>
@@ -639,9 +636,32 @@
                                                     data-src="Windows/2serviceDns.pdf">DNS 2</a>
                                             </li>
 
+                                            <li id="file"><a class="name" href="#" data-src="Windows/addnsdhcp.pdf">Rep
+                                                    AD DNS DHCP</a>
+                                            </li>
+
                                             <li id="file"><a class="name" href="#"
-                                                data-src="Windows/addnsdhcp.pdf">Rep AD DNS DHCP</a>
+                                                data-src="https://www.it-connect.fr/ipam-installation-et-configuration-sous-windows-server-2022/">IPAM</a>
                                         </li>
+                                            
+
+                                            <a>________________________</a>
+
+
+                                            <li id="file"><a class="name" href="#" id="myLink"
+                                                    data-src="Windows/ad.png">Installer un contrôleur de domaine Windows
+                                                    Server 2012 répliqué dans un domaine existant</a>
+                                            </li>
+
+
+                                            <li id="file"><a class="name" href="#"  
+                                                data-src="Windows/NTDSUTIL.html">NTDSUTIL</a>
+                                        </li>
+
+                                        <a>________________________</a>
+
+
+                                             
 
 
 
@@ -1351,6 +1371,18 @@
                         document.getElementById('frame').style.paddingTop = "0px";
                         document.getElementById('frame').style.paddingLeft = "160px";
                     }
+
+
+                    else if (src === "Windows/ad.png") {
+                        console.log('Ouverture de la nouvelle fenêtre');
+                        window.open('https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/deploy/install-a-replica-windows-server-2012-domain-controller-in-an-existing-domain--level-200-', '_newWindow');
+
+                        frames[0].setAttribute('src', src)
+                    }
+
+
+
+
 
                     else {
                         document.getElementById('frame').style.paddingTop = "0px";

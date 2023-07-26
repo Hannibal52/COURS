@@ -38,14 +38,28 @@
             width: 100%;
             border: 1px solid black;
         }
+        header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
 	
 </style>
 </head>
 <body>
 
+    <header>
+        <center> <h1 style="color: #FFFFFF ;"> Tutoriel sur la commande NTDSUTIL pour Windows Server</h1></h1></center>
+        </header>
+        
+        
+      
 
     <div class="container">
-        <h1>Tutoriel sur la commande NTDSUTIL pour Windows Server</h1>
+       
         <p>
             NTDSUTIL est une commande utilisée dans Windows Server pour gérer les annuaires Active Directory.
         </p>
@@ -84,10 +98,42 @@ quit
 </p>
 
 
-<iframe id="pdf-viewer"   src="http://msaidallah.free.fr/cours/Resolution-des-problemes-Active-Directory.pdf#page=20&zoom=90"></iframe>
+<iframe id="pdf-viewer"  style="color: blueviolet;" src="http://msaidallah.free.fr/cours/Resolution-des-problemes-Active-Directory.pdf#page=20&zoom=90"></iframe>
 
 
+<h2>Transfert des rôles FSMO avec NTDSUTIL</h2>
+<p>
+    Les rôles FSMO (Flexible Single Master Operations) sont des rôles spéciaux dans Active Directory qui sont détenus par certains contrôleurs de domaine. Parfois, il peut être nécessaire de transférer ces rôles d'un contrôleur de domaine à un autre, par exemple lorsqu'un contrôleur de domaine doit être déclassé ou lors de l'échec d'un contrôleur de domaine.
+</p>
+<p>
+    Les rôles FSMO sont les suivants :
+</p>
+<ul>
+    <li>Rôle du maître d'attribution RID (Relative Identifier)</li>
+    <li>Rôle du maître d'infrastructure</li>
+    <li>Rôle du maître d'émulateur PDC (Primary Domain Controller)</li>
+    <li>Rôle du maître de schéma</li>
+    <li>Rôle du maître de nommage de domaine</li>
+</ul>
+<p>
+    Pour transférer ces rôles, vous pouvez utiliser NTDSUTIL. Voici comment transférer le rôle de maître RID, par exemple :
+</p>
+<pre><code>
+ntdsutil
+roles
+connections
+connect to server NOM_DU_NOUVEAU_SERVEUR
+quit
+transfer rid master
+quit
+quit
+</code></pre>
+<p>
+    Cette série de commandes va connecter NTDSUTIL au nouveau contrôleur de domaine et transférer le rôle de maître RID à ce contrôleur. Vous pouvez répéter ce processus pour chaque rôle FSMO que vous devez transférer, en remplaçant "transfer rid master" par la commande appropriée pour le rôle que vous transférez.
+</p>
+<a style="color: blueviolet;" href="https://rdr-it.com/les-roles-fsmo/" target="_blank" >Voir + </a>
 
+<br>
 
 
 <h2>Promotion d'un nouveau contrôleur de domaine à partir de médias d'installation</h2>
@@ -173,6 +219,9 @@ quit
     <h2>Metadata cleanup</h2>
     <p>
         Cette commande est utilisée pour supprimer les métadonnées laissées par les domaines ou les contrôleurs de domaine qui n'existent plus.
+<br>
+<a  href="https://www.manageengine.com/fr/active-directory-audit/kb/how-to/how-to-remove-a-domain-controller-that-no-longer-exists.html" target="_blank">Voir +</a>
+
     </p>
 
    
