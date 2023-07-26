@@ -1,0 +1,121 @@
+    <html>
+    <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+		 border: 1px solid #808080;
+            background-color: #f7f7f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        code {
+            color: #1E90FF;
+            background-color: #f7f7f9;
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+					header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+	  #pdf-viewer {
+            height: 800px;
+            width: 100%;
+            border: 1px solid black;
+        }
+		
+    </style>
+	  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    </head>
+    <body>
+	
+	
+<header>
+	<center> <h1 style="color: #FFFFFF ;">	Tutoriel: Commandes de Windows Server 2019</h1></center>
+	</header>
+	
+	
+    <div class="container">
+	
+
+		<h2>Commande: netdom query fsmo</h2>
+    <dl>
+        <dt>Définition</dt>
+        <dd>La commande 'netdom query fsmo' est utilisée pour afficher les maîtres d'opérations de rôle unique flexible (FSMO) dans un domaine Active Directory.</dd>
+        <dt>Usage</dt>
+        <dd>Ouvrez une invite de commandes en tant qu'administrateur, puis tapez 'netdom query fsmo' et appuyez sur Entrée. Les rôles FSMO actuels seront affichés.</dd>
+    </dl>
+
+    <h2>Commande: ntdsutil</h2>
+    <dl>
+        <dt>Définition</dt>
+        <dd>'ntdsutil' est un utilitaire de ligne de commande qui permet à un administrateur de gérer et de réparer Active Directory. Il peut être utilisé pour effectuer diverses tâches, y compris la gestion des rôles FSMO.</dd>
+        <dt>Usage</dt>
+        <dd>
+            <ul>
+                <li><b>Active Instance NTDS</b>: Utilisé pour définir l'instance Active Directory actuellement active.</li>
+                <li><b>Roles</b>: Permet d'accéder à l'interface de gestion des rôles FSMO.</li>
+                <li><b>Connections</b>: Permet de gérer les connexions à d'autres contrôleurs de domaine.</li>
+                <li><b>Connect to server localhost</b>: Connecte l'utilitaire à un contrôleur de domaine spécifique (dans ce cas, le serveur local).</li>
+                <li><b>Quit FSMO</b>: Quitte le menu de gestion des rôles FSMO.</li>
+                <li><b>Help</b>: Affiche l'aide pour les commandes disponibles.</li>
+                <li><b>Transfer</b>: Transfère un rôle FSMO à un autre contrôleur de domaine sans le supprimer du contrôleur actuel.</li>
+                <li><b>Seize Infrastructure Master</b>: Si le transfert d'un rôle FSMO échoue, cette commande peut être utilisée pour "saisir" le rôle de force.</li>
+                <li><b>FSMO a échoué: le transfert a déjà été effectué</b>: Ce message d'erreur signifie que le rôle FSMO que vous essayez de transférer a déjà été transféré.</li>
+                <li><b>Help Seize Naming Master</b>: Affiche de l'aide pour la commande "Seize Naming Master", qui est utilisée pour saisir le rôle FSMO du maître de schéma si le transfert normal échoue.</li>
+				<br>
+				<br>
+				<li style="font-family: Arial, sans-serif; font-size: 16px;"><b>Scenario avec une seule ligne de commande ntdsutil</b>:</li>
+<li style="font-family: Arial, sans-serif; font-size: 16px;"><pre style="background-color: #f2f2f2; padding: 8px; font-family: Consolas, monospace; font-size: 14px; border: 1px solid #ccc;">ntdsutil "activate instance ntds" "ifm" "create full C:\Backup"</pre>  <p>Cette commande active l'instance ntds, entre dans le menu IFM (pour les médias d'installation de la forêt), puis crée une sauvegarde complète dans le répertoire C:\Backup </p> </li>
+		 
+		 
+		 <li><a>Les rôles FSMO</a>
+		 
+		 <a href="https://rdr-it.com/les-roles-fsmo/" target="_blank">Plus d'info</a><br>
+		 
+		  </li>
+		   <li>
+		 <a>Transfert des rôles FSMO avec NTDSUTIL</a>
+		 		<a href="https://www.it-connect.fr/transfert-des-roles-fsmo-avec-ntdsutil/" target="_blank">Plus d'info</a>
+ </li>
+ 
+ <div class="pdf-container">
+        <object data="yourfile.pdf#page=10" type="Windows/tpf.pdf" width="100%" height="100%">
+            <p>Ce navigateur ne prend pas en charge la visualisation de PDF. Veuillez télécharger le PDF pour le voir : <a href="yourfile.pdf">Télécharger le PDF</a>.</p>
+        </object>
+    </div>
+	 </li>
+	 <li>
+	
+   <iframe id="pdf-viewer" src="Windows/tpf.pdf"></iframe>
+
+	 </li>
+            </ul>
+        </dd>
+    </dl>
+	    </div>
+ 
+       
+	</body>
+</html>
