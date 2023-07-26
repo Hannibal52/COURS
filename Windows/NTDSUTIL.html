@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoriel NTDSUTIL</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+ 
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #2d7ea7;
+    }
+
+    pre {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        overflow: auto;
+    }
+
+    code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    #pdf-viewer {
+            height: 900px;
+            width: 100%;
+            border: 1px solid black;
+        }
+	
+</style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Tutoriel sur la commande NTDSUTIL pour Windows Server</h1>
+        <p>
+            NTDSUTIL est une commande utilisée dans Windows Server pour gérer les annuaires Active Directory.
+        </p>
+ 
+    <h2>Ouverture de NTDSUTIL</h2>
+    <p>
+        Pour ouvrir NTDSUTIL, ouvrez une invite de commandes et tapez simplement "ntdsutil" puis appuyez sur Entrée.
+    </p>
+    <pre><code>ntdsutil</code></pre>
+
+
+    <h2>IFM (Installation from Media)</h2>
+<p>
+    Cette commande vous permet de créer des fichiers d'installation à partir de médias pour la promotion de nouveaux contrôleurs de domaine. 
+</p>
+  <h2>IFM (Installation from Media)</h2>
+    <p>
+        L'option IFM (Install From Media) est une fonctionnalité disponible dans NTDSUTIL qui vous permet de créer des fichiers de données à utiliser pour promouvoir un nouveau contrôleur de domaine. L'utilisation de IFM peut accélérer considérablement la promotion d'un nouveau contrôleur de domaine en réduisant la quantité de données qui doivent être répliquées sur le réseau. Cela peut être particulièrement utile dans les environnements avec de grandes bases de données Active Directory et/ou des connexions réseau lentes.
+    </p>
+ 
+<h2>Création de médias d'installation</h2>
+<p>
+    Pour créer des médias d'installation, vous devez d'abord exécuter NTDSUTIL sur un contrôleur de domaine existant. Voici les étapes à suivre :
+</p>
+<pre><code>
+ntdsutil
+activate instance ntds
+ifm
+create full \chemin_vers_le_repertoire
+quit
+quit
+</code></pre>
+
+<p>
+    Cela créera un ensemble complet de fichiers de données (y compris le système SYSVOL) dans le répertoire spécifié. Vous pouvez ensuite copier ces fichiers sur le serveur qui doit être promu en tant que nouveau contrôleur de domaine.
+</p>
+
+
+<iframe id="pdf-viewer"   src="http://msaidallah.free.fr/cours/Resolution-des-problemes-Active-Directory.pdf#page=20&zoom=90"></iframe>
+
+
+
+
+
+<h2>Promotion d'un nouveau contrôleur de domaine à partir de médias d'installation</h2>
+<p>
+    Une fois que vous avez créé et transféré les médias d'installation sur le nouveau serveur, vous pouvez utiliser ces fichiers pour promouvoir le serveur en tant que contrôleur de domaine. Lors de la promotion, vous aurez la possibilité de spécifier que vous souhaitez utiliser des médias d'installation, et vous pourrez indiquer le chemin vers les fichiers de données.
+</p>
+
+ 
+ 
+
+<pre><code>group membership evaluation</code></pre>
+
+<h2>LDAP policies</h2>
+<p>
+    Cette commande vous permet de voir et de modifier les politiques LDAP sur le contrôleur de domaine.
+</p>
+<pre><code>ldap policies</code></pre>
+
+<h2>Roles</h2>
+<p>
+    Cette commande vous permet de gérer les rôles FSMO (Flexible Single Master Operations) dans Active Directory. Par exemple, vous pouvez utiliser cette commande pour transférer des rôles FSMO d'un contrôleur de domaine à un autre.
+</p>
+<pre><code>roles</code></pre>
+
+<h2>Security account management</h2>
+<p>
+    Cette commande vous permet de gérer les comptes de sécurité dans Active Directory. Par exemple, vous pouvez utiliser cette commande pour réinitialiser le mot de passe d'un compte de sécurité.
+</p>
+<pre><code>security account management</code></pre>
+
+<h2>Semantic database analysis</h2>
+<p>
+    Cette commande est utilisée pour effectuer une analyse sémantique de la base de données Active Directory. Elle peut être utilisée pour détecter et réparer des erreurs de base de données.
+</p>
+<pre><code>semantic database analysis</code></pre>
+
+<h2>Snapshot</h2>
+<p>
+    Cette commande vous permet de créer, monter et démonter des instantanés de la base de données Active Directory.
+</p>
+<pre><code>snapshot</code></pre>
+
+<h2>Conclusion</h2>
+<p>
+    NTDSUTIL est un outil très puissant pour la gestion de l'Active Directory. Cependant, il faut l'utiliser avec prudence, car des erreurs peuvent avoir des conséquences importantes pour l'ensemble de votre environnement Active Directory. Assurez-vous toujours de bien comprendre une commande avant de l'exécuter.
+</p>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+    <h2>Commandes courantes de NTDSUTIL</h2>
+    <p>
+        Voici quelques commandes couramment utilisées dans NTDSUTIL.
+    </p>
+
+    <h2>Active instance</h2>
+    <p>
+        Cette commande est utilisée pour sélectionner l'instance du service d'annuaire à utiliser. Vous pouvez spécifier "ntds" pour l'instance Active Directory Domain Services, ou le nom d'une instance Active Directory Lightweight Directory Services.
+    </p>
+    <pre><code>activate instance ntds</code></pre>
+
+    <h2>Authoritative restore</h2>
+    <p>
+        Cette commande est utilisée pour effectuer une restauration autoritative d'objets ou de conteneurs dans Active Directory après une restauration non autoritative à partir d'une sauvegarde.
+    </p>
+    <pre><code>authoritative restore</code></pre>
+
+    <h2>Files</h2>
+    <p>
+        Cette commande est utilisée pour gérer les fichiers du service d'annuaire.
+    </p>
+
+    <pre><code>files</code></pre>
+    <iframe id="pdf-viewer" src="https://quick-tutoriel.com/wp-content/uploads/pdf/Maintenance%20d'Active%20Directory%20sur%20W2K3.pdf#page=5&zoom=90"></iframe>
+
+
+
+    <h2>Metadata cleanup</h2>
+    <p>
+        Cette commande est utilisée pour supprimer les métadonnées laissées par les domaines ou les contrôleurs de domaine qui n'existent plus.
+    </p>
+
+   
+
+
+    <pre><code>metadata cleanup</code></pre>
+
+    <h2>Quit</h2>
+    <p>
+        Cette commande est utilisée pour quitter NTDSUTIL.
+    </p>
+    <pre><code>quit</code></pre>
+
+    <h2>Conclusion</h2>
+    <p>
+        NTDSUTIL est une commande puissante pour gérer Active Directory dans Windows Server. Assurez-vous de bien comprendre ce que fait chaque commande avant de l'utiliser, car certaines commandes peuvent avoir des effets importants sur votre environnement Active Directory.
+    </p>
+</div>
+</body>
+</html>
