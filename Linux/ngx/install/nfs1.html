@@ -987,6 +987,81 @@ style="color: black;">systemctl restart nginx</span></span></span></span></pre><
               </div>
               <br>
               <div class="content" style="text-align: left;">
+
+
+                <h2>Configuration d'HTTPS avec Let's Encrypt</h2>
+
+<p>Let's Encrypt fournit des certificats SSL gratuits pour sécuriser votre site web avec HTTPS. Nous allons utiliser l'outil Certbot fourni par Let's Encrypt pour obtenir et installer un certificat SSL.</p>
+
+<h3>Installation de Certbot</h3>
+
+<p>Pour installer Certbot, utilisez la commande suivante :</p>
+
+<pre><code>sudo apt install certbot python3-certbot-nginx</code></pre>
+
+<h3>Obtenir un Certificat SSL</h3>
+
+<p>Une fois Certbot installé, vous pouvez demander un certificat SSL en utilisant la commande suivante :</p>
+
+<pre><code>sudo certbot --nginx -d your_domain -d www.your_domain</code></pre>
+
+<p>Ici, <code>-d your_domain -d www.your_domain</code> spécifie les noms de domaine que le certificat SSL doit couvrir. Remplacez <code>your_domain</code> et <code>www.your_domain</code> par votre propre nom de domaine.</p>
+
+<p>Certbot va alors automatiquement configurer Nginx pour servir votre site sur HTTPS. Il le fait en modifiant le fichier de configuration de votre site dans /etc/nginx/sites-available/.</p>
+
+<h3>Configurer le Port 443 dans Nginx</h3>
+
+<p>Ouvrez le fichier de configuration de votre site avec la commande suivante :</p>
+
+<pre><code>sudo nano /etc/nginx/sites-available/your_domain</code></pre>
+
+<p>Vérifiez que la section server de votre fichier de configuration ressemble à ceci :</p>
+
+<pre><code>
+server {
+        listen 80;
+        listen [::]:80;
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+
+        ssl_certificate /etc/letsencrypt/live/your_domain/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/your_domain/privkey.pem;
+
+        root /var/www/your_domain/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name your_domain www.your_domain;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+</code></pre>
+
+<p>Ici, <code>listen 443 ssl http2;</code> et <code>listen [::]:443 ssl http2;</code> configurent Nginx pour écouter les connexions HTTPS sur le port 443. Les directives <code>ssl_certificate</code> et <code>ssl_certificate_key</code> spécifient l'emplacement du certificat SSL et de la clé privée obtenus à partir de Let's Encrypt.</p>
+
+<h3>Configurer le renouvellement automatique</h3>
+
+<p>Les certificats SSL Let's Encrypt sont valables pour 90 jours, mais il est recommandé de les renouveler tous les 60 jours pour éviter toute interruption. Certbot inclut un script de renouvellement automatique qui est installé en même temps que Certbot. Pour tester le script de renouvellement automatique, utilisez la commande suivante :</p>
+
+<pre><code>sudo certbot renew --dry-run</code></pre>
+
+<p>Si le test de renouvellement réussit, vous pouvez être sûr que Certbot renouvellera automatiquement votre certificat SSL avant qu'il n'expire.</p>
+
+<h3>Vérifier la configuration HTTPS</h3>
+
+<p>Une fois le certificat SSL installé et Nginx configuré pour utiliser HTTPS, vous pouvez vérifier que votre site est correctement configuré en accédant à <code>https://your_domain</code> dans votre navigateur. Vous devriez voir un cadenas à côté de l'URL, indiquant que votre site est sécurisé.</p>
+
+
+
+<br>
+<br>
+ 
+<br>
+
+<br>
+
+
                 <h2 class="formatter-title wiki-paragraph-2" id="paragraph-quelques-options-de-montage-utiles"
 
                   style="text-align: left;">Se familiariser avec les fichiers et
