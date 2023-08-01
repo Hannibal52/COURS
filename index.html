@@ -719,15 +719,23 @@
                         </li>
 
                         <!-- Linux -->
-                        <li>
+                        <li >
                             <div style="display: flex;">
                                 <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
                                         style="width: 30px; height: 30px; " src="linux.png"> </div>
                                 <div style="flex: 1;">
-                                    <label for="file2" style=" font-size: 1.5em;">Linux</label>
+                                    <label for="file2"   style="font-size: 1.5em;">Linux</label>
                                     <input type="checkbox" id="file2" />
                                     <div class="content">
                                         <ul class="el">
+										
+										
+                                    <li id="file">
+                              <a  data-src="main.html" onclick="window.open('https://upload.wikimedia.org/wikipedia/commons/a/ad/2023_Linux_Distributions_Timeline.svg', '_blank', 'width=1400,height=900')">
+                                                                DISTRIB</a>
+                                    </li>
+									
+	 
 
 
                                             <li id="file">
@@ -812,7 +820,7 @@
                                                                 SNMP WINS</a></li>
 
 
-                                                        <li><a
+                                                        <li><a onclick="window
                                                                 onclick="window.open('https://www.zabbix.com/documentation/4.0/fr/manual/web_monitoring/example', '_blank', 'width=1600,height=900')">
                                                                 Scénario Web</a></li>
 
@@ -1215,6 +1223,13 @@
                                                 </a>
                                             </li>
 											
+											 <li>
+                                                <a class="name" href="#" data-src="https://aisyassine.github.io/8/anglais.html">
+                                                    Méthode Samir BELLABES
+                                                </a>
+                                            </li>
+											
+											
 											<a>________________________</a>
 											
 
@@ -1258,27 +1273,27 @@
 
                                     <li>
                                         <a class="name" href="#" data-src="acro.html">
-                                            Achronymes
+                                            Acronymes
                                         </a>
                                     </li>
 
 
 
-                                    <a
+                                    <a data-src="main.html"
                                         onclick="window.open('https://products.groupdocs.app/editor/word', '_blank', 'width=1400,height=900')">
 
                                         Opérations document</a>
 
 
                                     <li id="file">
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://unsplash.com/fr/s/photos/wallpaper-desktop', '_blank', 'width=1400,height=900')">
 
                                             Wallpapers</a>
                                     </li>
 
                                     <li id="file">
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://j.top4top.io/f_K0DCQteAD9c2xD4Ezl-RaQ/1689677330/866757sw1.rar', '_blank', 'width=1400,height=900')">
 
                                             Photoshop cs4 portable gratuit</a>
@@ -1291,14 +1306,14 @@
 
 
                                     <li id="file">
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://www.pdf24.org/fr/', '_blank', 'width=1400,height=900')">
 
                                             PDFS</a>
                                     </li>
                                     <li id="file">
 
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://www.trustradius.com/', '_blank', 'width=1400,height=900')">
                                             Technology Reviews You Can Trust</a>
                                     </li>
@@ -1306,18 +1321,18 @@
 
                                     <li id="file">
 
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://www.cert.ssi.gouv.fr/alerte/', '_blank', 'width=1400,height=900')">
                                             ALERTES DE SÉCURITÉ</a>
                                     </li>
 
                                     <li id="file">
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://www.softwaretestinghelp.com/', '_blank', 'width=1400,height=900')">
                                             Software Testing Help</a>
                                     </li>
                                     <li id="file">
-                                        <a
+                                        <a data-src="main.html"
                                             onclick="window.open('https://moakt.com/fr/', '_blank', 'width=1400,height=900')">
                                             E-mail rapide</a>
                                     </li>
@@ -1387,6 +1402,12 @@
                         document.getElementById('frame').style.paddingTop = "0px";
                         document.getElementById('frame').style.paddingLeft = "160px";
                     }
+					
+					
+					  else if (src === "https://aisyassine.github.io/8/anglais.html") {
+                  
+                        document.getElementById('frame').style.paddingLeft = "160px";
+                    }
 
 
                     else if (src === "Windows/ad.png") {
@@ -1395,6 +1416,8 @@
 
                         frames[0].setAttribute('src', src)
                     }
+					
+					
 
 
 

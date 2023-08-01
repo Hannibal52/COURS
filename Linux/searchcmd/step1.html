@@ -152,6 +152,35 @@ sudo nmtui
 Et suivre les étape.
 </pre>
 
+
+
+<h2>Activation et désactivation des interfaces réseau avec ifup et ifdown</h2>
+<p>Les commandes `ifup` et `ifdown` sont utilisées pour activer ou désactiver une interface réseau. Vous pouvez les utiliser de la manière suivante :</p>
+
+<pre>
+sudo ifup nom_interface
+sudo ifdown nom_interface
+</pre>
+
+<p>Remplacez <strong>nom_interface</strong> par le nom de l'interface que vous souhaitez activer ou désactiver. Par exemple, si votre interface réseau est nommée `eth0`, vous pouvez l'activer en utilisant `sudo ifup eth0` et la désactiver en utilisant `sudo ifdown eth0`.</p>
+
+<p>Notez que vous devez avoir des privilèges d'administrateur pour utiliser ces commandes, c'est pourquoi nous utilisons `sudo`.</p>
+
+<p>Par ailleurs, si vous voulez que votre interface réseau se connecte automatiquement au démarrage, vous pouvez ajouter la ligne `auto nom_interface` dans votre fichier `/etc/network/interfaces`. Par exemple :</p>
+
+<pre>
+auto eth0
+iface eth0 inet static
+address &lt;adresse IP&gt;
+netmask &lt;masque de sous-réseau&gt;
+gateway &lt;passerelle par défaut&gt;
+</pre>
+
+<p>Ceci configurera votre interface `eth0` pour utiliser une adresse IP statique et se connectera automatiquement à chaque démarrage.</p>
+
+
+
+
 	
 
 	<h2>Configuration du dépôt</h2>
