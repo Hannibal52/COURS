@@ -1,0 +1,7 @@
+https://www.virtually-limitless.com/certificates/replacing-or-implementing-ssl-certificates-in-vsphere-6/
+
+https://www.youtube.com/watch?v=oRo9V1YWSJM
+
+https://esxsi.com/2017/09/11/vcenter-ca-certs/
+
+https://www.vstellar.com/2017/11/05/refreshregeneratereplace-esxi-6-0-ssl-certificates/
