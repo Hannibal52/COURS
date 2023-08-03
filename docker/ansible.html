@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Tutoriel Ansible</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding-left: 90px;
+            padding-top: 60px;
+            max-width: 900px;
+
+        }
+
+        .command {
+            background-color: #f8f8f8;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li {
+            padding-bottom: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tutoriel Ansible</h1>
+
+    <br>
+    <br>
+
+    <!-- Commande 1 -->
+
+    <ul>
+
+        <li>
+            <p>Installe le paquet software-properties-common en utilisant apt-get.</p>
+
+            <div class="command" id="command1">
+                <p>sudo apt-get install software-properties-common</p>
+
+                <button class="copy-btn" id="bt1" onclick="copyToClipboard('command1', 'bt1')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 2 -->
+            <p>Ajoute le dépôt PPA ansible/ansible à la liste des sources de paquets apt.</p>
+            <div class="command" id="command2">
+                <p>sudo apt-add-repository ppa:ansible/ansible</p>
+
+                <button class="copy-btn" id="bt2" onclick="copyToClipboard('command2', 'bt2')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 3 -->
+            <p>Met à jour la liste des paquets disponibles à partir des référentiels configurés.</p>
+            <div class="command" id="command3">
+                <p>sudo apt-get update</p>
+
+                <button class="copy-btn" id="bt3" onclick="copyToClipboard('command3', 'bt3')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 4 -->
+            <p>Met à jour la liste des paquets disponibles à partir des référentiels configurés (version plus récente de
+                la commande).</p>
+
+            <div class="command" id="command4">
+                <p>sudo apt update</p>
+                <button class="copy-btn" id="bt4" onclick="copyToClipboard('command4', 'bt4')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 5 -->
+            <p>Installe le paquet ansible en utilisant apt.</p>
+
+            <div class="command" id="command5">
+                <p>sudo apt install ansible</p>
+                <button class="copy-btn" id="bt5" onclick="copyToClipboard('command5', 'bt5')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 6 -->
+            <p>Affiche la version d'Ansible installée.</p>
+
+            <div class="command" id="command6">
+                <p>ansible --version</p>
+                <button class="copy-btn" id="bt6" onclick="copyToClipboard('command6', 'bt6')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 7 -->
+            <p>Ouvre le fichier hosts d'Ansible dans l'éditeur de texte nano avec les privilèges administrateur.</p>
+
+            <div class="command" id="command7">
+                <p>sudo nano /etc/ansible/hosts</p>
+                <button class="copy-btn" id="bt7" onclick="copyToClipboard('command7', 'bt7')">Copier</button>
+            </div>
+        </li>
+
+
+        <li>
+            <!-- Commande 7 -->
+            <p>Contenu</p>
+
+            <div class="command" id="commandc">
+                <p>[mygroup]</p> 
+                  <p>managed7.arkhe.cloud ansible_host=169.51.129.42 ansible_user=root</p>
+                <button class="copy-btn" id="btc" onclick="copyToClipboard('commandc', 'btc')">Copier</button>
+            </div>
+        </li>
+
+
+
+
+        
+
+
+
+
+
+        <li>
+            <!-- Commande 8 -->
+            <p>Exécute le module "ping" d'Ansible pour vérifier la connectivité avec tous les hôtes.</p>
+
+            <div class="command" id="command8">
+                <p>ansible all -m ping</p>
+                <button class="copy-btn" id="bt8" onclick="copyToClipboard('command8', 'bt8')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 9 -->
+            <p>Génère une nouvelle paire de clés SSH (publique et privée) pour l'utilisateur courant.</p>
+
+            <div class="command" id="command9">
+                <p>ssh-keygen</p>
+                <button class="copy-btn" id="bt9" onclick="copyToClipboard('command9', 'bt9')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 10 -->
+            <p>Copie la clé publique de l'utilisateur courant sur l'hôte distant spécifié pour permettre une connexion
+                sans mot de passe via SSH.</p>
+
+            <div class="command" id="command10">
+                <p>ssh-copy-id root@10.126.213.170</p>
+                <button class="copy-btn" id="bt10" onclick="copyToClipboard('command10', 'bt10')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 11 -->
+            <p>Établit une connexion SSH en tant qu'utilisateur "root" vers l'hôte distant avec l'adresse IP
+                10.126.213.170.</p>
+
+            <div class="command" id="command11">
+                <p>ssh root@10.126.213.170</p>
+                <button class="copy-btn" id="bt12" onclick="copyToClipboard('command11', 'bt11')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 12 -->
+            <p>Exécute le module "ping" d'Ansible pour vérifier la connectivité avec tous les hôtes du groupe "mygroup".
+            </p>
+
+            <div class="command" id="command12">
+                <p>ansible -m ping mygroup</p>
+                <button class="copy-btn" id="bt12" onclick="copyToClipboard('command12', 'bt12')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 13 -->
+            <p>Exécute la commande "cat /etc/hosts" sur l'hôte managed7.arkhe.cloud en utilisant le module "command"
+                d'Ansible.</p>
+
+            <div class="command" id="command13">
+                <p>ansible managed7.arkhe.cloud -m ansible.builtin.command -a "cat /etc/hosts"</p>
+                <button class="copy-btn" id="bt13" onclick="copyToClipboard('command13', 'bt13')">Copier</button>
+            </div>
+        </li>
+        <li>
+            <!-- Commande 14 -->
+            <p>Vérifie si le fichier /tmp/hosts existe sur l'hôte managed7.arkhe.cloud. Si c'est le cas, le supprime en
+                utilisant le module "file" d'Ansible.</p>
+
+            <div class="command" id="command14">
+                <p>ansible managed7.arkhe.cloud -m ansible.builtin.file -a "path=/tmp/hosts state=absent"</p>
+                <button class="copy-btn" id="bt14" onclick="copyToClipboard('command14', 'bt14')">Copier</button>
+            </div>
+        </li>
+
+        <!-- Commande 19 -->
+        <li>
+
+            <p>Ajoute un utilisateur sur managed7.arkhe.cloud et configure la connexion ssh.</p>
+            <div class="command" id="command19">
+                <p>ansible managed7.arkhe.cloud -m user -a "name=nouveau_utilisateur"</p>
+                <p>ansible managed7.arkhe.cloud -m authorized_key -a "user=nouveau_utilisateur key={{ lookup('file',
+                    '/path/vers/la/clé.pub') }}"</p>
+                <button class="copy-btn" id="bt19" onclick="copyToClipboard('command19', 'bt19')">Copier</button>
+            </div>
+        </li>
+        <li>
+
+ 
+
+            <!-- Commande 20 -->
+            <p>Supprime un utilisateur sur managed7.arkhe.cloud.</p>
+            <div class="command" id="command20">
+                <p>ansible managed7.arkhe.cloud -m user -a "name=nouveau_utilisateur state=absent"</p>
+                <button class="copy-btn" id="bt20" onclick="copyToClipboard('command20', 'bt20')">Copier</button>
+            </div>
+        </li>
+    </ul>
+
+
+
+    </ul>
+    <script>
+        function copyToClipboard(divId, btnId) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(divId).children[0]);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+
+            // Change button color to green
+            document.getElementById(btnId).style.backgroundColor = "white";
+
+            // Change button color back to original after 2 seconds
+            setTimeout(function () {
+                document.getElementById(btnId).style.backgroundColor = "#007BFF";
+            }, 500); // 2000ms = 2s
+        }
+    </script>
+</body>
+
+</html>
