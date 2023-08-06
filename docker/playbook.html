@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tutoriel Ansible Playbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            color: #333;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        p {
+    color: #303030; /* une nuance de gris foncé pour le texte */
+    background-color: #96e6fa; /* une nuance de bleu ciel pour le fond */
+    max-width: 900px; /* fixe une largeur maximale pour le paragraphe */
+    width: 100%; /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
+    padding: 15px; /* ajoute un espace entre le texte et le bord de son conteneur */
+    font-family: 'Helvetica', sans-serif; /* utilise une police plus moderne */
+    line-height: 1.6; /* ajoute de l'espace entre les lignes de texte */
+    border-radius: 10px; /* arrondit les coins du conteneur du paragraphe */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une petite ombre pour donner du relief */
+    font-size:15px;
+}
+.cmd{
+  color: #ffffff; /* une nuance de gris foncé pour le texte */
+    background-color: #1d1d1d; /* une nuance de bleu ciel pour le fond */
+    max-width: 900px; /* fixe une largeur maximale pour le paragraphe */
+    width: 100%; /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
+    padding: 15px; /* ajoute un espace entre le texte et le bord de son conteneur */
+    font-family: 'Helvetica', sans-serif; /* utilise une police plus moderne */
+    line-height: 1.6; /* ajoute de l'espace entre les lignes de texte */
+    border-radius: 10px; /* arrondit les coins du conteneur du paragraphe */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une petite ombre pour donner du relief */
+    font-size:15px;
+
+}
+
+.linux{
+  color: #21e90f;
+  font-weight: bold;
+}
+
+        h1 {
+            color: #5a5a5a;
+        }
+
+        .playbook {
+            white-space: pre-wrap;
+            font-family: monospace;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            font-size:15px;
+
+        }
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+            margin-top: 40px;
+        }
+
+        button:hover {
+            background-color: #51a5ff;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="container">
+        <h1>Tutoriel Ansible Playbook</h1>
+        
+
+        <p class="cmd"><d class="linux">Root@ubuntu <d style="color: white;">:</d> <d style="color: #51a5ff;">~</d><d style="color: white;">$</d> </d> ansible-playbook &nbsp; /path/to/my_playbook.yml</p>
+
+        <button onclick="copyToClipboard('playbook2')">Copier</button>
+        <p>une tâche qui utilise le module debug pour afficher un message</p>
+        <div class="playbook" id="playbook2">
+            ---
+            - hosts: machine
+              tasks:
+                - name: Afficher un message
+                  debug:
+                    msg: "Ceci est un message de test"
+            ...  
+        </div>
+
+
+        <button onclick="copyToClipboard('playbook1')">Copier</button>
+        <p>Ce play contient deux tâches : installer le package 'htop' et copier un fichier.
+
+            Le paramètre become: yes est utilisé pour devenir un utilisateur avec des privilèges d'administrateur, car l'installation de packages et la copie de fichiers dans certains répertoires nécessitent des privilèges d'administrateur.</p>
+        <div class="playbook" id="playbook1">
+            ---
+            - hosts: machine
+              tasks:
+                - name: Assurer que le package 'htop' est installé
+                  apt: 
+                    name: htop
+                    state: present
+                  become: yes
+            
+                - name: Copier un fichier
+                  copy: 
+                    src: /path/to/local/file 
+                    dest: /path/on/remote/machine
+                  become: yes
+            ...
+        </div>
+        
+
+        <button onclick="copyToClipboard('playbook3')">Copier</button>
+        <p>En exécutant ce playbook, un nouvel utilisateur 'guest' sera créé et un fichier 'test.txt' contenant le texte 'Hello, Ansible!' sera créé dans le répertoire personnel de cet utilisateur.</p>
+        <p>Le paramètre become: yes est utilisé pour devenir un utilisateur avec des privilèges d'administrateur</p>
+        <div class="playbook" id="playbook3">
+            ---
+            - hosts: machine
+              vars:
+                user_name: 'guest'
+                file_name: 'test.txt'
+                file_content: 'Hello, Ansible!'
+              tasks:
+                - name: Créer un utilisateur
+                  user:
+                    name: "{{ user_name }}"
+                    state: present
+                  become: yes
+            
+                - name: Créer un fichier avec un contenu spécifique
+                  copy:
+                    content: "{{ file_content }}"
+                    dest: "/home/{{ user_name }}/{{ file_name }}"
+                  become: yes
+            ...  
+        </div>
+
+
+
+        <button onclick="copyToClipboard('playbook4')">Copier</button>
+        <p>Installer Apache2 sur une distribution basée sur Debian (comme Ubuntu)</p>
+        <div class="playbook" id="playbook4" >
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Mise à jour de la liste des paquets
+                  apt:
+                    update_cache: yes
+            
+                - name: Installation de apache2
+                  apt:
+                    name: apache2
+                    state: present
+            ...            
+        </div>
+
+        <button onclick="copyToClipboard('playbook5')">Copier</button>
+        <p>Et pour une distribution basée sur RHEL/CentOS :</p>
+        <div class="playbook" id="playbook5" >
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Installation de NetworkManager
+                  yum:
+                    name: NetworkManager
+                    state: present
+            ...
+        </div>
+        <button onclick="copyToClipboard('playbook6')">Copier</button>
+        <p>Playbook pour installer et configurer le pare-feu UFW :</p>
+        <div class="playbook" id="playbook6">
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Installer UFW
+                  apt:
+                    name: ufw
+                    state: present
+            
+                - name: Activer UFW
+                  ufw:
+                    state: enabled
+            
+                - name: Autoriser le trafic SSH
+                  ufw:
+                    rule: allow
+                    name: OpenSSH
+            ...
+                        
+        </div>
+
+  
+
+        <button onclick="copyToClipboard('playbook8')">Copier</button>
+        <p>Playbook pour mettre à jour tous les packages du système :</p>
+        <div class="playbook" id="playbook8">
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Mettre à jour la liste des packages
+                  apt:
+                    update_cache: yes
+            
+                - name: Mettre à niveau tous les packages
+                  apt:
+                    upgrade: safe
+            ...                       
+        </div>
+
+        <button onclick="copyToClipboard('playbook9')">Copier</button>
+        <p>Playbook pour installer et configurer Fail2Ban (un outil qui protège contre les attaques par force brute) :</p>
+        <div class="playbook" id="playbook9">
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Installer Fail2Ban
+                  apt:
+                    name: fail2ban
+                    state: present
+            
+                - name: Activer et démarrer le service Fail2Ban
+                  service:
+                    name: fail2ban
+                    state: started
+                    enabled: yes
+            ...                       
+        </div>
+
+
+        <button onclick="copyToClipboard('playbook10')">Copier</button>
+       <p>Changer le mot de passe d'un utilisateur spécifique. Ansible utilise le module user pour cela. Le mot de passe doit être fourni sous forme de hachage, que vous pouvez générer avec la commande mkpasswd --method=SHA-512.</p>
+        <div class="playbook" id="playbook10">
+            ---
+            - hosts: machine
+              become: yes
+              vars:
+                username: yourusername
+                password: yourpasswordhash
+              tasks:
+                - name: Changer le mot de passe de l'utilisateur
+                  user:
+                    name: "{{ username }}"
+                    password: "{{ password }}"
+                    update_password: always
+            ...
+                                  
+        </div>
+
+
+        <button onclick="copyToClipboard('playbook11')">Copier</button>
+        <p>Forcer les utilisateurs à changer de mot de passe à la prochaine connexion. Pour cela, vous pouvez utiliser le module command avec la commande chage.</p>
+        <div class="playbook" id="playbook11">
+            ---
+            - hosts: machine
+              become: yes
+              vars:
+                username: yourusername
+              tasks:
+                - name: Forcer l'utilisateur à changer de mot de passe à la prochaine connexion
+                  command: chage -d 0 "{{ username }}"
+            ...
+            
+        </div>
+
+
+        <button onclick="copyToClipboard('playbook9')">Copier</button>
+       <p>Configurer PAM (Pluggable Authentication Modules) pour exiger des mots de passe forts. Cette tâche est plus complexe car elle implique la modification de fichiers de configuration. Assurez-vous de bien comprendre les conséquences de ces modifications.</p>
+        <div class="playbook" id="playbook9">
+            ---
+            - hosts: machine
+              become: yes
+              tasks:
+                - name: Installer libpam-pwquality
+                  apt:
+                    name: libpam-pwquality
+                    state: present
+            
+                - name: Configurer PAM pour exiger des mots de passe forts
+                  blockinfile:
+                    path: /etc/pam.d/common-password
+                    block: |
+                      password requisite pam_pwquality.so retry=3 minlen=8 difok=3
+            ...
+        </div>
+
+
+
+      
+
+
+    </div>
+
+
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(copyText).then(function () {
+                alert('Playbook copié dans le presse-papier');
+            }, function (err) {
+                alert('Erreur lors de la copie dans le presse-papier: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
