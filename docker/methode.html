@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://aisyassine.github.io/8/anglais.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Concept, Technologie, Outils</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+padding-left:180px;
+        }
+
+        select {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.2em;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Concept, Technologie, Outils</h1>
+
+    <select id="concepts">
+        <option selected="" disabled="">Choisir un concept...</option>
+    <option>Bases de données</option><option>Systèmes d'exploitation</option><option>Virtualisation</option><option>Conteneurs</option><option>Infrastructure as Code</option><option>Cloud</option><option>Monitoring</option><option>CI/CD</option><option>Security</option><option>Networking</option><option>Storage</option></select>
+
+    <select id="technologies">
+        <option selected="" disabled="">Choisir une technologie...</option>
+    </select>
+
+    <select id="tools">
+        <option selected="" disabled="">Choisir un outil...</option>
+    </select>
+
+
+<center> <img src="https://t4.ftcdn.net/jpg/00/89/02/67/360_F_89026793_eyw5a7WCQE0y1RHsizu41uhj7YStgvAA.webp"> </center>
+
+    <script>
+        var data = {
+    "Bases de données": {
+        "SQL": ["MySQL", "Oracle", "PostgreSQL", "SQL Server", "SQLite", "MariaDB", "DB2", "SAP HANA"],
+        "NoSQL": ["MongoDB", "Cassandra", "Redis", "CouchDB", "Neo4j", "HBase", "DynamoDB", "Cosmos DB"],
+        "In-Memory": ["Memcached", "Redis", "Hazelcast", "SAP HANA"],
+        "Warehouse": ["Snowflake", "BigQuery", "Redshift", "Teradata"]
+    },
+    "Systèmes d'exploitation": {
+        "Windows": ["Windows Server", "Windows 10", "Windows 11", "PowerShell", "Azure Sphere", "Windows IoT Core"],
+        "Linux": ["Ubuntu", "Debian", "Fedora", "RHEL", "CentOS", "Arch Linux", "Alpine Linux", "Bash"]
+    },
+    "Virtualisation": {
+        "Hyperviseur": ["VMware", "VirtualBox", "Hyper-V", "KVM", "Xen", "Proxmox", "Citrix Hypervisor"],
+        "Conteneurisation": ["Docker", "LXC", "Podman", "OpenVZ", "containerd", "CRI-O", "rkt"]
+    },
+    "Conteneurs": {
+        "Orchestration": ["Kubernetes", "Docker Swarm", "OpenShift", "Rancher", "Nomad", "Mesos", "DC/OS"],
+        "Service Mesh": ["Istio", "Linkerd", "Consul"]
+    },
+    "Infrastructure as Code": {
+        "Configuration Management": ["Ansible", "Puppet", "Chef", "SaltStack", "CFEngine"],
+        "Provisioning": ["Terraform", "Packer", "Vagrant", "CloudFormation", "Azure Resource Manager", "Google Cloud Deployment Manager"],
+        "Server Templating": ["Packer", "Dockerfile", "Vagrantfile"]
+    },
+    "Cloud": {
+        "Public": ["AWS", "Azure", "Google Cloud", "IBM Cloud", "Alibaba Cloud", "Oracle Cloud"],
+        "Private": ["OpenStack", "CloudStack", "VMware vCloud", "Proxmox VE"],
+        "Hybrid": ["Azure Stack", "Google Anthos", "AWS Outposts", "OpenShift"],
+        "Platform as a Service": ["Heroku", "Google App Engine", "AWS Elastic Beanstalk", "IBM Cloud Foundry", "OpenShift"]
+    },
+    "Monitoring": {
+        "Infrastructure": ["Nagios", "Zabbix", "Prometheus", "Grafana", "Datadog", "New Relic", "Sensu"],
+        "Log Management": ["ELK Stack", "Graylog", "Splunk", "Loggly", "Sumo Logic", "Papertrail"]
+    },
+    "CI/CD": {
+        "CI Tools": ["Jenkins", "Travis CI", "CircleCI", "GitLab CI", "GitHub Actions", "Bitbucket Pipelines"],
+        "CD Tools": ["Spinnaker", "Jenkins X", "Argo", "Tekton", "Harness", "Octopus Deploy"]
+    },
+    "Security": {
+        "IDS/IPS": ["Snort", "Suricata", "OSSEC", "Bro"],
+        "Firewall": ["iptables", "Firewalld", "ufw", "pfSense", "Fortinet"],
+        "Security Scanning": ["OpenVAS", "Nessus", "Wireshark", "Qualys", "Rapid7", "Tenable"]
+    },
+    "Networking": {
+        "SDN": ["OpenDaylight", "ONOS", "Cilium", "Cisco ACI"],
+        "Routing": ["BGP", "OSPF", "RIP", "EIGRP", "IS-IS"],
+        "Switching": ["STP", "VLAN", "MPLS", "QoS"],
+        "VPN": ["OpenVPN", "WireGuard", "IPSec", "Cisco AnyConnect", "FortiClient VPN"]
+    },
+    "Storage": {
+        "Block Storage": ["iSCSI", "FC", "NVMe"],
+        "File Systems": ["NFS", "SMB/CIFS", "AFS", "EFS"],
+        "Object Storage": ["S3", "Swift", "Ceph", "MinIO"],
+        "Distributed Storage": ["GlusterFS", "Ceph", "HDFS", "MooseFS"]
+    }
+};
+
+
+        var conceptsEl = document.getElementById('concepts');
+        var technologiesEl = document.getElementById('technologies');
+        var toolsEl = document.getElementById('tools');
+
+        // Remplissage de la première liste
+        for (var concept in data) {
+            var option = document.createElement('option');
+            option.textContent = concept;
+            conceptsEl.appendChild(option);
+        }
+
+        // Lorsqu'un concept est sélectionné, remplissez la deuxième liste
+        conceptsEl.addEventListener('change', function() {
+            var selectedConcept = this.value;
+            technologiesEl.innerHTML = '<option selected disabled>Choisir une technologie...</option>';
+            toolsEl.innerHTML = '<option selected disabled>Choisir un outil...</option>';
+
+            for (var technology in data[selectedConcept]) {
+                var option = document.createElement('option');
+                option.textContent = technology;
+                technologiesEl.appendChild(option);
+            }
+        });
+
+        // Lorsqu'une technologie est sélectionnée, remplissez la troisième liste
+        technologiesEl.addEventListener('change', function() {
+            var selectedConcept = conceptsEl.value;
+            var selectedTechnology = this.value;
+            toolsEl.innerHTML = '<option selected disabled>Choisir un outil...</option>';
+
+            data[selectedConcept][selectedTechnology].forEach(function(tool) {
+                var option = document.createElement('option');
+                option.textContent = tool;
+                toolsEl.appendChild(option);
+            });
+        });
+    </script>
+
+
+</body></html>
