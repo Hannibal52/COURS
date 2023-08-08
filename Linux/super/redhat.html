@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel Red Hat VM gratuite</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f5f7;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 3em auto;
+            background-color: #fff;
+            padding: 30px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #640810;
+            font-size: 2.5em;
+            border-bottom: 2px solid #e5e5e5;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        img.screenshot {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation pour ajouter du dynamisme */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .link-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .link-container a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            background-color: #007BFF;
+            transition: background-color 0.3s ease;
+        }
+
+        .link-container a:hover {
+            background-color: #0056b3;
+        }
+        .mor{
+            max-width: 1000px;
+            margin: 3em auto;
+            background-color: #fff;
+            padding: 30px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+             
+            max-width: 1000px;
+        }
+
+        .product {
+            align-items: center; 
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            height: 220px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            display: block;
+            padding-bottom: 15px;
+        }
+
+        .product-text {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            
+        }
+
+        .product-text a {
+          
+            text-decoration: none;
+            color: #e00b1c;
+           
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>LABs REDHAT RHET sur le cloud</h1>
+        <p>Bonne nouvelle pour les passionnés de Linux ! Il est maintenant possible d'avoir accès à une VM Red Hat
+            gratuitement sur le cloud pour des tuto guidés. Voici comment faire :</p>
+
+        <h2>Étape 1 : Visitez le site de Red Hat</h2>
+        <div class="link-container">
+            <center> <a target="_blank"
+                    href="https://developers.redhat.com/products/rhel/getting-started?success=true&tcWhenSigned=January+1%2C+1970&tcWhenEnds=January+1%2C+1970&tcEndsIn=0&tcDuration=365&tcDownloadFileName=rhel-9.2-x86_64-dvd.iso&tcRedirect=5000&tcSrcLink=https%3A%2F%2Fdevelopers.redhat.com%2Fcontent-gateway%2Fcontent%2Forigin%2Ffiles%2Fsha256%2Fa1%2Fa18bf014e2cb5b6b9cee3ea09ccfd7bc2a84e68e09487bb119a98aa0e3563ac2%2Frhel-9.2-x86_64-dvd.iso&p=Product%3A+Red+Hat+Enterprise+Linux&pv=9.2&tcDownloadURL=https%3A%2F%2Faccess.cdn.redhat.com%2Fcontent%2Forigin%2Ffiles%2Fsha256%2Fa1%2Fa18bf014e2cb5b6b9cee3ea09ccfd7bc2a84e68e09487bb119a98aa0e3563ac2%2Frhel-9.2-x86_64-dvd.iso%3F_auth_%3D1691418812_4543c4817016540a3ad6e6d7924921bf">Link
+                    to Redhat RHET</a>
+            </center>
+        </div>
+
+
+        <h2>Étape 3 : Accédez à la VM</h2>
+        <img src="rhet/1.png" alt="Capture d'écran de la VM Red Hat" class="screenshot">
+
+        <h2>Étape 4 : Lancez vos termina</h2>
+        <img src="rhet\terminal.png" alt="Capture d'écran du terminal Red Hat sur le navigateur" class="screenshot">
+
+        <p>Et voilà ! Vous avez maintenant accès à une VM Red Hat. Profitez-en et explorez toutes ses fonctionnalités !
+        </p>
+        <br>
+        <br>
+        
+       
+       
+
+    </div>
+    <center>
+        <div class="mor">
+            <h2>More...</h2>
+            <hr>
+        <br>
+    <div class="products">
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Migrate%20to%20Red%20Hat%20Enterprise%20Linux%20from%20CentOS.png?itok=iMI5oNtE"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/courses/migrate-red-hat-enterprise-linux-centos">Migrate to Red Hat Enterprise Linux from CentOS</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Quarkus-new.jpeg?itok=Z8LR81Vl"
+                alt="Image produit">
+            <a target="_blank" href="https://developers.redhat.com/courses/using-quarkus-crud-microsoft-sql-server-rhel%3Fintcmp%3D7013a0000034lZbAAI">Using Quarkus CRUD with Microsoft SQL Server on RHEL</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/linux.png?itok=QQJLoffR"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/courses/working-rhel-universal-base-images%3Fsc_cid%3D7013a0000034ZDUAA2">Working with Red Hat Universal Base Images</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/2021_Linux_Topic_image_B.png?itok=P8YOhx5q"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/node/277001?intcmp=7013a0000026UTXAA2">Helpful Linux Commands</a>
+        </div>
+
+
+
+
+
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/intro_podman_2x.png?itok=a_vRYoMw"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/node/277051?intcmp=7013a0000026UTXAA2">Deploy containers using podman</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Creating%20images%20with%20container%20tools.png?itok=ukrTpODs"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/node/277031?intcmp=7013a0000026UTXAA2">Creating images with container tools</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Build%20an%20application%20into%20a%20container%20image.png?itok=A-wr1XHJ"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/node/277041?intcmp=7013a0000026UTXAA2">Build an application into a container image</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Managing%20software.png?itok=P4u5GWCh"
+                alt="Image produit">
+            <a  target="_blank"  href="https://developers.redhat.com/node/277021?intcmp=7013a0000026UTXAA2">Managing software using Application Streams</a>
+        </div>
+
+
+
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/MicrosoftSQLServer_OpenShift.png?itok=0saLAiLd"
+                alt="Image produit">
+            <a   target="_blank" href="https://developers.redhat.com/courses/red-hat-enterprise-linux/sql-server-cstore">Explore SQL Server columnstore</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/SP_CRC_2x.png?itok=EpBLqaMx"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/courses/subsystems/intro">Get started with containers</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Installing%20software.png?itok=CIma9-nJ">
+            <a  target="_blank" href="https://developers.redhat.com/node/269471?intcmp=7013a0000026UTXAA2">Installing software using package managers</a>
+        </div>
+        <div class="product">
+            <img src="https://developers.redhat.com/sites/default/files/styles/large/public/Developer%20Tools-01.png?itok=Q20GGwfg"
+                alt="Image produit">
+            <a  target="_blank" href="https://developers.redhat.com/node/216055?intcmp=7013a0000026UTXAA2">Master OCI compliant tools</a>
+        </div>
+
+
+
+
+
+        <!-- Reproduisez les blocs div ci-dessus pour chaque produit, en changeant le texte du lien et, si nécessaire, le chemin de l'image -->
+
+        <!-- ... -->
+
+    </div>
+</div>
+</center>
+
+</body>
+
+</html>
