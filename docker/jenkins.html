@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel sur l'inventaire Ansible</title>
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2C3E50;
+        }
+
+        code {
+            background-color: #313131;
+            color: #f5f5f5;
+            padding: 5px 5px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+            white-space: pre-wrap;
+
+        }
+
+        span {
+    color: rgb(176, 255, 169); /* Appliquer le style que vous souhaitez */
+    /* Autres propriétés CSS */
+}
+
+        p {
+            border-left: 5px solid #971a11;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+            white-space: pre-wrap;
+            font-size: 0.8em;
+        }
+
+        a {
+            border-left: 5px solid #1e8310;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+            font-size: 0.8em;
+        }
+
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        img {
+
+
+ height: 20%;
+width: 20%;
+        }
+
+  
+
+        section {
+            padding-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <center><img
+            src="https://miro.medium.com/v2/resize:fit:1400/1*LOFbTP2SxXcFpM_qTsUSuw.png" alt="">
+
+    </center>
+
+ <main>
+        <br>        
+       <p>         
+    <strong>Jenkins et Ansible </strong>sont deux outils qui peuvent être utilisés ensemble pour automatiser différents aspects du déploiement, de la gestion et de l'intégration continue (CI) et de la livraison continue (CD) des applications. Voici pourquoi vous pourriez envisager d'installer Jenkins pour travailler avec Ansible en quelques mots:
+
+<strong>Automatisation CI/CD:</strong> Jenkins est l'un des outils d'intégration continue les plus populaires. Il peut déclencher des playbooks Ansible à chaque push de code, garantissant que chaque modification est testée et déployée automatiquement.
+
+<strong>Orchestration:</strong> Alors qu'Ansible est idéal pour configurer et déployer, Jenkins peut orchestrer une séquence complexe d'événements, tels que la construction d'un logiciel, le test, puis le déploiement via Ansible.
+
+<strong>Interface utilisateur:</strong> Jenkins fournit une interface utilisateur graphique pour la planification de tâches, la visualisation des logs, et le déclenchement manuel de builds, ce qui peut rendre plus facile la gestion des tâches automatisées avec Ansible pour certains utilisateurs.
+
+<strong>Plugins:</strong> Il existe des plugins Jenkins spécifiques pour Ansible qui facilitent l'intégration et l'utilisation des deux outils ensemble.
+
+<strong>Traçabilité:</strong> Avec Jenkins, vous pouvez avoir un historique complet des exécutions, y compris quand et où Ansible a été exécuté, et avec quels résultats.
+
+En résumé, l'utilisation de Jenkins avec Ansible permet d'obtenir une solution complète d'intégration et de déploiement continu, où Jenkins s'occupe de l'orchestration et Ansible de l'exécution.
+       </p>
+
+        <br>
+        <h2>Installation Jenkins</h2>
+        <p> ceci est un script pour debian 11</p>
+        
+<code>
+<span class="comment">#!/bin/bash</span>
+
+<span class="comment"># Mise à jour du systèmep</span>
+sudo apt update && sudo apt upgrade -y
+
+<span class="comment"># Installation des prérequis</span>
+sudo apt install -y wget gnupg2
+
+<span class="comment"># Ajout de la clé GPG de Jenkins</span>
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+<span class="comment"># Mise à jour des paquets</span>
+sudo apt update
+
+
+<span class="comment"># Recherche des paquets OpenJDK (ceci affichera une liste, mais n'installera rien)</span>
+apt-cache search openjdk
+
+<span class="comment"># Installation d'OpenJDK 11</span>
+sudo apt-get install -y openjdk-11-jre openjdk-11-jdk
+
+<span class="comment"># Installation d'OpenJDK 8 (si vous voulez vraiment les deux versions)</span>
+sudo apt-get install -y openjdk-8-jre openjdk-8-jdk
+
+<span class="comment"># Vérification de la version de Java</span>
+java -version
+
+<span class="comment"># Ajout du dépôt de Jenkins</span>
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+<span class="comment"># Mise à jour des paquets</span>
+sudo apt update
+
+<span class="comment"># Installation de Jenkins</span>
+sudo apt install -y jenkins
+
+<span class="comment"># Démarrage du service Jenkins</span>
+sudo systemctl start jenkins
+
+<span class="comment"># Affichage du statut de Jenkins</span>
+sudo systemctl status jenkins
+
+<span class="comment"># Affichage du mot de passe initial pour Jenkins</span>
+echo "Voici votre mot de passe initial pour Jenkins:"
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+<span class="comment"># Obtention de l'adresse IP privée</span>
+private_ip=$(hostname -I | awk '{print $1}')
+echo "Visitez http://$private_ip:8080/ pour configurer Jenkins."
+</code>
+<br>
+<a href="">chmod +x install_jenkins.sh</a>
+        <a href="">./install_jenkins.sh</a>
+        <br>
+        <br>
+</main>
+
+</body>
+
+</html>

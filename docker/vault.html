@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel sur l'inventaire Ansible</title>
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2C3E50;
+        }
+
+        code {
+            background-color: #313131;
+            color: #f5f5f5;
+            padding: 5px 5px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+
+        }
+
+        p {
+            border-left: 5px solid #2b8a3e;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+
+        a {
+            border-left: 5px solid #1a71e2;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        img {
+       
+ 
+ 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #2b8a3e;
+        }
+        section{
+            padding-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <center><img src="https://www.oreilly.com/api/v2/epubs/9781787120532/files/assets/5e2f1f6c-e41f-41e2-b20b-883dfb0b29b4.png" alt="">
+   
+    </center>
+     <main>
+        
+            <br>
+            <br>
+            <h1>Tutoriel Ansible Vault</h1>
+       
+            <a>Ansible Vault est un outil intégré à Ansible permettant de chiffrer des données sensibles afin de les stocker de manière sécurisée.</a>
+        <br>
+        <br>
+            <h2>1. Création d'un secret avec Ansible Vault</h2>
+            <code>
+            ansible-vault create secret.yml
+            </code>
+    
+            <p>Cette commande vous demandera de saisir un mot de passe. Ce mot de passe sera utilisé pour chiffrer et déchiffrer le fichier.</p>
+            <br>
+            <h2>2. Éditer un fichier chiffré</h2>
+            <code>
+            ansible-vault edit secret.yml
+            </code>
+            <p>Lors de l'édition, vous serez invité à saisir le mot de passe que vous avez défini lors de la création.</p>
+            <br>
+            <h2>3. Chiffrer un fichier existant</h2>
+            <code>
+            ansible-vault encrypt existingfile.yml
+            </code>
+            <br>
+            <h2>4. Déchiffrer un fichier</h2>
+            <code>
+            ansible-vault decrypt secret.yml
+            </code>
+            <br>
+            <h2>5. Voir le contenu d'un fichier chiffré sans le déchiffrer</h2>
+            <code>
+            ansible-vault view secret.yml
+            </code>
+            <br>
+            <h2>6. Utiliser un fichier chiffré dans un playbook</h2>
+            <p>Pour exécuter un playbook qui utilise des variables chiffrées avec Ansible Vault, utilisez la commande suivante:</p>
+            <code>
+            ansible-playbook --ask-vault-pass playbook.yml
+            </code>
+            <p>Il vous sera demandé d'entrer le mot de passe Vault pour déchiffrer les données pendant l'exécution.</p>
+            <br>
+            <h2>7. Utiliser un mot de passe depuis un fichier</h2>
+            <p>Plutôt que d'utiliser <code>--ask-vault-pass</code> à chaque fois, vous pouvez stocker le mot de passe Vault dans un fichier (assurez-vous que ce fichier est sécurisé!) et référencer ce fichier lors de l'exécution du playbook.</p>
+            <code>
+            ansible-playbook --vault-password-file /chemin/vers/fichier/password.txt playbook.yml
+            </code>
+            <br>
+            <h2>8. Conseils</h2>
+            <ul>
+                <li>Toujours stocker les fichiers chiffrés avec Vault dans un système de contrôle de version (comme Git).</li>
+                <li>Ne jamais stocker le mot de passe Vault dans un système de contrôle de version ou un emplacement accessible publiquement.</li>
+            </ul>
+        </body>
+        </html>
+    </main>
+</body>
+
+</html>
