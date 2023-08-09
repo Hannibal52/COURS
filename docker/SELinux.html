@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELinux & Udica Container Security</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-dracula.min.css" rel="stylesheet"/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            max-width: 1200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+       
+
+        img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        code {
+            background-color: #313131;
+            color: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        pre {
+            border-left: 5px solid #b85d1c;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+            white-space: pre-wrap;
+        }
+        header {
+    padding: 20px;
+    background: #333;
+    color: #ffffff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+	   color: #ffffff;
+	   
+}
+
+
+    
+    </style>
+</head>
+<body>
+
+ 
+
+    
+<div class="content">
+    <header>
+        <h1>SELinux & Udica Container Security (REDHAT REHL)</h1>
+    </header>
+   
+
+
+    <br>
+    <br>
+    <br>
+    <em>Ce lab est traduit du site officiel de red hat</em>
+    <br>
+    <br>
+    <br>
+    
+
+    <h2>Installer les paquets udica et setools-console sur l'hôte du conteneur</h2>
+     <code>dnf install -y udica setools-console</code>
+
+    <h2>Télécharger la dernière image UBI de RHEL9</h2>
+     <code>podman pull registry.access.redhat.com/ubi9/ubi:latest</code>
+
+    <h2>Utiliser podman pour lister les images de conteneurs disponibles</h2>
+     <code>podman images</code>
+    <img src="https://play.instruqt.com/assets/tracks/iasej5fcan4g/eced64a66cf5664e385c2e5d51cc2772/assets/podmanimages.png" alt="Liste des images podman">
+
+    <h2>Ouvrir un nouveau Terminal 2</h2>
+    <img src="https://play.instruqt.com/assets/tracks/iasej5fcan4g/83d87c4e605754f6da10ffc3f67dd3ae/assets/terminal2tab.png" alt="Terminal 2">
+
+    <h2>Créer un runtime de conteneur avec podman</h2>
+    <p>Pour cela, passez les accès in-container à /home au /home de l'hôte en lecture seule, passez les accès in-container à /var/spool au /var/spool de l'hôte en lecture-écriture, et liez le port 80 de l'hôte pour passer le trafic au port 80 du conteneur.</p>
+     <code>CONTAINER=$(podman run -v /home:/home:ro -v /var/spool:/var/spool:rw -d -p 80:80 -it registry.access.redhat.com/ubi9/ubi)</code>
+    <p><strong>Note:</strong> Le répertoire home est monté avec un accès en lecture seule, et le répertoire /var/spool/ est monté avec un accès en lecture-écriture.</p>
+
+    <h2>Revenir au Terminal 1</h2>
+    <p>Vérifiez le statut du conteneur d'application à l'aide de podman et obtenez l'ID du conteneur en cours d'exécution.</p>
+    <code>Container ID</code>
+
+
+   
+<pre>
+ID DU CONTENEUR   IMAGE                                       COMMANDE    CRÉÉ             ÉTAT              PORTS               NOMS
+e47a11d3e2c5      registry.access.redhat.com/ubi9/ubi:latest  /bin/bash   il y a 3 secondes Actif il y a 2 s  0.0.0.0:80->80/tcp  naughty_golick
+</pre>
+
+<p>En utilisant SELinux, les processus du conteneur se voient attribuer un type de conteneur appelé 'container_t'. Dans le Terminal 1, vérifiez le type SELinux attribué au conteneur en cours d'exécution.</p>
+
+<code>ps -eZ | grep container_t</code>
+<pre>
+system_u:system_r:container_t:s0:c182,c1016 25755 pts/0 00:00:00 bash
+</pre>
+
+<p>Sur Red Hat Enterprise Linux, SELinux est activé par défaut et en mode exécutoire. Vous pouvez le confirmer en inspectant la sortie de <code>sestatus</code> sur le système.</p>
+
+<code>sestatus</code>
+<pre>
+État de SELinux:                activé
+Montage SELinuxfs:              /sys/fs/selinux
+Répertoire racine de SELinux:   /etc/selinux
+Nom de la politique chargée:    targeted
+Mode actuel:                    exécutoire
+&lt;&lt; SORTIE ABRÉGÉE &gt;&gt;
+</pre>
+
+<p>Dans l'onglet Terminal 2 de l'interface du labo, utilisez une commande <code>podman exec</code> pour créer un shell interactif à l'intérieur du conteneur en cours d'exécution.</p>
+
+<code>podman exec -t -i $CONTAINER /bin/bash</code>
+<img src="https://play.instruqt.com/assets/tracks/iasej5fcan4g/139ecd8ffec0462b58eae3fc0734ba87/assets/podmanexec.png" alt="Illustration podman exec">
+
+<p>Vérifiez l'accès du conteneur au répertoire /home :</p>
+
+<code>cd /home; ls</code>
+<pre>
+ls: impossible d'ouvrir le répertoire '.': Permission non accordée
+</pre>
+
+<p>Dans l'onglet Terminal 1 de l'interface du labo, interrogez la politique SELinux pour rechercher les règles d'autorisation appliquées pour accéder au répertoire /home :</p>
+
+<code>sesearch -A -s container_t -t home_root_t -c dir -p read</code>
+<pre>
+La recherche ne renvoie aucun résultat. Comme il n'y a pas de règle d'autorisation pour le type container_t pour obtenir un accès en lecture au répertoire /home, l'accès est bloqué par SELinux.
+</pre>
+
+<p>Dans l'onglet Terminal 2 de l'interface du labo, vérifiez l'accès du conteneur au répertoire /var/spool/.</p>
+
+<p>Vérifiez l'accès du conteneur au répertoire /var/spool :</p>
+<code>cd /var/spool/; ls</code>
+<pre>
+ls: impossible d'ouvrir le répertoire '.': Permission non accordée
+</pre>
+<p>SELinux restreint l'accès au répertoire /var/spool.</p>
+
+<p>Dans l'onglet Terminal 2 de l'interface du labo, vérifiez l'accès en écriture du conteneur au répertoire /var/spool/ :</p>
+<code>touch test</code>
+<pre>
+touch: impossible de faire un touch sur 'test': Permission non accordée
+</pre>
+
+<p>Dans l'onglet Terminal 1 de l'interface du labo, interrogez la politique SELinux pour rechercher les règles d'autorisation appliquées pour accéder au répertoire /var/spool :</p>
+<code>sesearch -A -s container_t -t var_spool_t -c dir -p read</code>
+<pre>
+La recherche ne renvoie aucun résultat. Comme il n'y a pas de règle d'autorisation pour le type container_t pour obtenir un accès en lecture au répertoire /var/spool/, l'accès est bloqué par SELinux.
+</pre>
+
+<p>Interrogez la politique SELinux pour l'accès réseau pour les types container_t :</p>
+<code>sesearch -A -s container_t -t port_type -c tcp_socket</code>
+<pre>
+allow container_net_domain port_type:tcp_socket { name_bind name_connect recv_msg send_msg };
+allow corenet_unconfined_type port_type:tcp_socket { name_bind name_connect recv_msg send_msg };
+allow sandbox_net_domain port_type:tcp_socket { name_bind name_connect recv_msg send_msg };
+</pre>
+<p>Sandbox est le type de processus par défaut (domaine) dans SELinux, et container est le domaine utilisé dans le contexte des conteneurs. Le type corenet est généralement utilisé dans le contexte du noyau Linux. La sortie signifie que pour chacun de ces domaines, la liaison, la connexion, l'envoi et la réception de messages sont autorisés sans restrictions de port TCP.</p>
+
+
+<h2>Génération de politiques SELinux pour conteneurs avec Udica</h2>
+
+<p>Pour créer la politique de sécurité SELinux personnalisée, Udica analyse le fichier JSON du conteneur pour découvrir quelles capacités Linux sont requises par le conteneur. Les ports réseau sont dans une situation similaire où Udica utilise les bibliothèques de l'espace utilisateur SELinux pour obtenir le label SELinux correct d'un port utilisé par le conteneur inspecté.</p>
+
+<p>Dans l'onglet Terminal 1 de l'interface du labo, inspectez le conteneur en cours d'exécution avec podman pour générer un fichier d'inspection de conteneur au format JSON :</p>
+<code>podman inspect $CONTAINERID > container.json</code>
+
+<p>Indiquez à Udica de générer la politique de sécurité SELinux personnalisée en utilisant le fichier JSON du conteneur. Dans ce cas, le nom de la politique de sécurité SELinux personnalisée est appelé 'my_container' :</p>
+<code>udica -j container.json my_container</code>
+
+<pre>
+Politique my_container créée !
+
+Veuillez charger ces modules en utilisant :
+\# semodule -i my_container.cil /usr/share/udica/templates/{base_container.cil,net_container.cil,home_container.cil}
+
+Redémarrez le conteneur avec le paramètre : "--security-opt label=type:my_container.process"
+</pre>
+
+<p>Vous venez de créer une politique de sécurité SELinux personnalisée pour le conteneur. Vous pouvez maintenant charger cette politique dans le noyau et l'activer.</p>
+<code>semodule -i my_container.cil /usr/share/udica/templates/{base_container.cil,net_container.cil,home_container.cil}</code>
+
+<p>Dans Terminal 1, arrêtez et relancez le conteneur pour que les politiques prennent effet.</p>
+<code>podman stop $CONTAINERID</code>
+
+<p>Dans Terminal 2, créez un nouveau conteneur à partir de l'image qui utilise la nouvelle politique de conteneur personnalisée :</p>
+<code>CONTAINER=$(podman run --security-opt label=type:my_container.process -v /home:/home:ro -v/var/spool:/var/spool:rw -d -p 80:80 -it registry.access.redhat.com/ubi9/ubi)</code>
+
+<h2>Vérification des politiques SELinux pour conteneurs avec Udica</h2>
+
+<p>Vous pouvez vérifier les politiques générées avec Udica pour le conteneur et renforcées par SELinux.</p>
+
+<p>Interrogez la politique SELinux sur l'hôte du conteneur pour rechercher des règles d'application d'autorisation appliquées pour accéder au répertoire /home.</p>
+
+<h2>Interrogation de la politique SELinux</h2>
+
+<p>Dans le Terminal 1, entrez la commande suivante :</p>
+<code>sesearch -A -s my_container.process -t home_root_t -c dir -p read</code>
+<pre>allow my_container.process home_root_t:dir { getattr ioctl lock open read search };</pre>
+<p>Il existe une règle qui autorise l'accès en lecture au répertoire /home.</p>
+
+<p>Interrogez la politique SELinux sur l'hôte du conteneur pour rechercher des règles d'application permettant d'accéder au répertoire /var/spool/ :</p>
+<code>sesearch -A -s my_container.process -t var_spool_t -c dir -p read</code>
+<pre>allow my_container.process var_spool_t:dir { add_name getattr ioctl lock open read remove_name search write };</pre>
+<p>Il existe une règle qui autorise l'accès en lecture au répertoire var/spool.</p>
+
+<p>Interrogez la politique SELinux sur l'hôte du conteneur pour vérifier l'accès au réseau :</p>
+<code>sesearch -A -s my_container.process -t port_type -c tcp_socket</code>
+<pre>allow my_container.process http_port_t:tcp_socket { name_bind name_connect recv_msg send_msg };</pre>
+<p>Récupérez le type SELinux associé au port TCP 80. Le port TCP 80 est le port auquel Apache se liera :</p>
+<code>semanage port -l | grep -w "80"</code>
+<img src="https://play.instruqt.com/assets/tracks/iasej5fcan4g/9e112d7b8baec5544f4887bfe7758a85/assets/selinuxtype.png" alt="Type SELinux">
+
+<h2>Ré-inspection du conteneur en cours d'exécution</h2>
+
+<p>Dans le Terminal 2, exécutez la commande suivante pour démarrer un shell bash à l'intérieur du conteneur :</p>
+<code>podman exec -t -i $CONTAINER /bin/bash</code>
+<p>Vérifiez si le conteneur a accès au répertoire /home :</p>
+<code>cd /home/; ls</code>
+<pre>bas  gke-930957db5604c7804fbd  gke-f34473de869e40d6894d  mochtar  myee  rhel</pre>
+<p>Ceci est maintenant réussi car il existe une règle qui autorise cette action.</p>
+
+<p>Vérifiez si le conteneur a un accès en lecture au répertoire /var/spool/ :</p>
+<code>cd /var/spool/; ls</code>
+<pre>anacron  cron  lpd  mail  plymouth  rhsm</pre>
+<p>De même, cette action est autorisée.</p>
+
+<p>Vérifiez si le conteneur a un accès en écriture au répertoire /var/spool/ :</p>
+<code>touch test; ls</code>
+<pre>anacron  cron  lpd  mail  plymouth  rhsm  test</pre>
+<p>Installez le paquet netcat (nc) à l'intérieur du conteneur pour tester les liaisons de ports :</p>
+<code>dnf install -y nc</code>
+<p>Dites à nc d'écouter sur le port 80 à l'intérieur du conteneur et de se terminer après 5 secondes :</p>
+<code>timeout 5s nc -lvvp 80</code>
+<pre>
+Ncat: Version 7.70 ( https://nmap.org/ncat )
+Ncat: Listening on :::80
+Ncat: Listening on 0.0.0.0:80
+</pre>
+<p>Comme vous pouvez le voir, netcat a réussi à se connecter et à écouter sur le port 80.</p>
+
+<p>Essayez maintenant d'écouter sur le port 8080 à l'intérieur du conteneur :</p>
+<code>timeout 5s nc -lvvp 8080</code>
+<pre>
+Ncat: Version 7.70 ( https://nmap.org/ncat )
+Ncat: bind to :::8080: Permission denied. QUITTING.
+</pre>
+<p>Netcat n'a PAS pu se connecter et écouter sur le port 8080. Il n'y a pas de règle permettant cette opération, elle a donc été bloquée par SELinux.</p>
+
+
+
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-bash.min.js"></script>
+
+</body>
+</html>
