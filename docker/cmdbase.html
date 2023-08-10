@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Tutoriel : Commandes de base pour Docker et Kubernetes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,6 +67,40 @@
             padding: 10px;
             margin: 1em 0;
         }
+        /* Responsive Styles */
+@media (max-width: 768px) {  /* cible les appareils ayant une largeur de 768px ou moins */
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    main {
+        max-width: 100%;  /* pour utiliser toute la largeur disponible */
+        padding: 10px;   /* un peu d'espace autour du contenu principal */
+    }
+
+    h2 {
+        font-size: 1.4em; /* réduire un peu la taille de la police pour les titres h2 */
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
+    }
+
+    pre {
+        padding: 5px;  /* réduire l'espace autour du contenu preformatted */
+    }
+
+    .definition, .remark {
+        padding: 8px;  /* réduire l'espace autour des blocs de définition et remarque */
+    }
+}
+
     </style>
 </head>
 <body>

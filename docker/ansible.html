@@ -68,6 +68,41 @@
         section{
             padding-left: 60px;
         }
+        /* Styles existants... */
+
+/* Styles adaptatifs pour mobile */
+@media (max-width: 768px) { /* Ceci cible les écrans jusqu'à 768px de largeur, typiquement des tablettes et smartphones */
+    body {
+        padding: 10px;
+    }
+    
+    main {
+        max-width: 100%;
+    }
+
+    header {
+        height: 150px;  /* Réduction de la hauteur pour les écrans mobiles */
+    }
+
+    header h1 {
+        font-size: 1.5em;  /* Ajustement de la taille de la police pour les écrans mobiles */
+    }
+
+    section {
+        padding-left: 10px;  /* Réduction du padding gauche pour les écrans mobiles */
+    }
+    
+    pre {
+        font-size: 0.85em; /* Diminution de la taille de police pour les blocs de code pour une meilleure visibilité */
+        overflow-x: auto; /* Pour permettre le défilement horizontal si le code déborde */
+    }
+    
+    p, a {
+        margin: 0.5em 0;  /* Réduction des marges pour les écrans mobiles */
+        padding: 5px;    /* Réduction du padding pour les écrans mobiles */
+    }
+}
+
     </style>
 </head>
 

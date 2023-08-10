@@ -84,6 +84,54 @@
         span{
             color: rgb(176, 255, 169);
         }
+        @media screen and (max-width: 768px) {  /* Taille standard pour tablettes et mobiles */
+    body {
+        padding: 10px;
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+    code {
+        font-size: 1em;
+        margin-right: 0; 
+    }
+
+    ol, p, a {
+        padding: 5px;
+        margin: 0.5em 0;
+    }
+  
+
+    ol {
+        font-size: 1em;
+    }
+
+    section {
+        padding-left: 2px;
+    }
+
+    ul, ol {
+        padding-left: 20px;
+    }
+    img{
+  
+    
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        max-width: 150%;
+    }
+
+    center img {
+        width: 40%;  /* Réduisez la taille des images pour qu'elles s'adaptent mieux aux petits écrans */
+        height: auto;
+        margin: 10px 0;
+        box-shadow:  none;
+    }
+}
+
+
+
     </style>
 </head>
 
@@ -178,7 +226,7 @@ pipeline{
 <br>
 <br>
 <br>
-                        <img  style=" box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" src="pipeline.PNG" alt="">
+<img  src="pipeline.PNG" alt="">
                         
                         <br>
                         <br>
@@ -264,16 +312,7 @@ Finished: SUCCESS
 
               
             </ol>
-
-
-
-
         </section>
-
-
-
     </main>
-
 </body>
-
 </html>

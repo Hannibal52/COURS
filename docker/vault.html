@@ -64,6 +64,44 @@
         section{
             padding-left: 60px;
         }
+
+         /* Styles pour mobile */
+    @media (max-width: 768px) {
+        body {
+            padding: 10px; /* Réduire l'espacement autour du corps pour de petits écrans */
+        }
+
+        main {
+            max-width: 100%; /* Permet au contenu de prendre toute la largeur de l'écran */
+            padding: 0 10px; /* Ajoute un petit espacement sur les côtés */
+        }
+
+        img {
+            width: 100%; /* Ajuste l'image pour qu'elle prenne la largeur de l'écran */
+            height: auto; /* Conserve les proportions de l'image */
+            box-shadow: none; /* Supprime l'ombre pour un look plus épuré */
+            margin-bottom: 20px; /* Ajoute un peu d'espace sous l'image */
+        }
+
+        h1, h2, p, code, a {
+            margin-left: 0; /* Supprime les marges à gauche pour maximiser l'espace */
+            margin-right: 0;
+        }
+
+        section {
+            padding-left: 0; /* Supprime le padding à gauche pour un look plus centré */
+        }
+
+        /* Ajout d'une mise en forme spéciale pour les liens pour les rendre plus cliquables */
+        a {
+            display: inline-block; 
+            text-decoration: underline;
+            border: none;
+        }
+    }
+
+
+    
     </style>
 </head>
 
@@ -126,8 +164,7 @@
                 <li>Toujours stocker les fichiers chiffrés avec Vault dans un système de contrôle de version (comme Git).</li>
                 <li>Ne jamais stocker le mot de passe Vault dans un système de contrôle de version ou un emplacement accessible publiquement.</li>
             </ul>
-        </body>
-        </html>
+     
     </main>
 </body>
 
