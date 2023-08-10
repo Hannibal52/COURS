@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel sur l'inventaire Ansible</title>
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2C3E50;
+        }
+
+        code {
+            background-color: #313131;
+            color: #f5f5f5;
+            padding: 5px 5px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-size: 1.5em;
+            margin-right: 130px;
+
+        }
+
+        span {
+            color: rgb(176, 255, 169);
+            /* Appliquer le style que vous souhaitez */
+            /* Autres propriétés CSS */
+        }
+
+        ol,
+        p {
+            border-left: 5px solid #b8170c;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+
+
+        }
+
+        ol {
+            
+            font-size: 0.8em;
+            padding-left: 30px;
+        }
+
+        li {
+            padding-top: 5px;
+        }
+
+        a {
+            border-left: 5px solid #e64c41;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+            font-size: 1em;
+        }
+
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+ 
+
+
+        section {
+            padding-left: 60px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+        span{
+            color: rgb(176, 255, 169);
+        }
+    </style>
+</head>
+
+<body>
+    <center><img style="padding-right: 40px; height: 300px; width: 240px;"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jenkins_logo.svg/1200px-Jenkins_logo.svg.png"
+            alt="">
+        <img style="padding-right: 40px; height: 270px; width: 225px;"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/1664px-Ansible_logo.svg.png"
+            alt="">
+    </center>
+
+    <main>
+        <br>
+        <hr>
+        <br>
+        <h1> Inclure Ansible dans Jenkins</h1>
+        <section>
+            <ol>
+                <br>
+                <br>
+                <a>Le but ici est d'excuter un playbook Ansible depuis Jenkis, voici le playbook :</a>
+<code>
+---
+- hosts: machine
+  tasks:
+    - name: Afficher un message
+      debug:
+        msg: "Ceci est un message de test"
+...
+</code>
+<br>
+<br>
+                <p> Une fois Jenkins installer, il faut :</p>
+                <li>Aller dans : <strong>Tableau de bord > Administrer Jenkins > Plugins > Available plugins</strong>
+                </li>
+                <li>Cherche Ansible et l'installer</li>
+                <li>Aller dans : <strong>Tableau de bord > Administrer Jenkins > Tools</strong></li>
+                
+                    <ul>
+                        <li>Chercher Ansible</li>
+                        <li>Ajouter Ansible</li>
+                        <li>
+                            <ul>
+                                <li><strong>name :</strong> Ansible par défaut</li>
+                                <li><strong>path :</strong>/usr/bin/</li>
+
+                            </ul>
+                        </li>
+                        <li>Enregistrer</li>
+                    </ul>
+                
+
+                <br>
+
+
+                <li>Aller dans : <strong>Tableau de bord >  + new item
+                    </strong>
+
+                </li>
+                <ul>
+                    <li> <strong>Saisissez un nom : </strong> Jenkis_Ansible_Test</li>
+                    <li> Sélectionner : <strong>Pipeline</strong> </li>
+                    <li><strong>ok</strong></li>
+                </ul>
+
+                <li>Arrivant ici: <strong>Tableau de bord > Jenkis_Ansible_Test > Configuration</strong> </li>
+                <ul>
+                    <li><strong>Pipeline</strong></li>
+                    <ul>
+                        <li>
+                            Definition : <strong>Pipeline script</strong>
+                        </li>
+                        <li>script : </li>
+                        <code>
+pipeline{
+    agent any
+    stages{
+        stage("Execute playbook"){
+            <span class="steps">steps{}</span>
+        }
+        
+    }
+}
+</code>
+<br>
+<br>
+<br>
+
+                        <li><a>Laisser en standby et aller sur <strong>Pipeline Syntax</strong> pour remplir <strong>Steps</strong></a></li>
+
+<br>
+<br>
+<br>
+                        <img  style=" box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" src="pipeline.PNG" alt="">
+                        
+                        <br>
+                        <br>
+<br>
+                        <li><a>Remplir les champs selon architechture  et bien choisir <strong>Invoke ans ansible playbook</strong></a></li>
+                        <br>
+                        <br>
+                        <img  style=" box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" src="steps.PNG" alt="">
+                        <br>
+                        <br>
+                        <br>
+
+                        <br>
+                        <li>
+                            <a>Remplir les champs et puis appuyer sur : <strong>ADD</strong> pour introduire la clé  privé SSH
+                        </a>
+                    </li>
+                        <br>
+                        <br>
+                        <img  style=" box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" src="ssh.PNG" alt="">
+                        
+                        <br>
+                        <br>
+                        <br>
+
+                        <li>
+                           <a> pour trouver la clé il suffit de tape dans le terminal : </a>
+                            <code>
+cat ~/.ssh/id_rsa                          
+                            </code>
+                        </li>
+                        <br>
+                        <li><a>Enregistrer et continuer sur le menu précendant en choisissant l'utilisateur dans <strong>SSH connection credentials</strong>
+                        </a> </li>
+                        <li><a>Cocher : <strong>Disable the host SSH key check</strong> et générer le script
+                        </a></li>
+                         <br>
+                        <img  style=" box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" src="final.PNG" alt="">
+                       <br>
+                       <br>
+                       <li><a>Revenons à notre script et coller le script généré précédemment dans <strong>steps{}</strong> et enregistrer !!   
+                       </a></li><br>
+<code>
+pipeline{
+    agent any
+    stages{
+        stage("Execute playbook"){
+            steps{
+                ansiblePlaybook credentialsId: 'connect135', disableHostKeyChecking: true, installation: 'Ansible par défaut', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/playbook/pb_msg.yml'
+            }
+        }
+        
+    }
+}
+</code>
+
+<br><br>
+
+
+                       
+                    </ul>
+                </ul>
+                    <li>Finalement on va Lancer un build pour ce Pipeline
+                        <ul>
+                            <li>Aller dans : <strong>Tableau de bord > Jenkis_Ansible_Test</strong>
+                                <ul>
+                                    <li><strong>Lancer un build</strong></li>
+                                    <li>Select Build <strong>#1</strong></li>
+                                    <li>Select <strong>Console Output</strong></li>
+                                    <li>Et voilà, Mission accomplie ! </li>
+                                    <code>
+Finished: SUCCESS
+                                    </code>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                    </li>
+
+              
+            </ol>
+
+
+
+
+        </section>
+
+
+
+    </main>
+
+</body>
+
+</html>
