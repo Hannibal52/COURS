@@ -152,6 +152,9 @@ code{
     position: relative;
     left: 20px;
 }
+span{
+    color: #1ddb43;
+}
     </style>
 </head>
 <body>
@@ -215,7 +218,7 @@ modprobe br_netfilter
 # Load the overlay module required for overlayFS storage, often used with Docker and other containerization tools.
 modprobe overlay
 
-#verifier
+<span>#verifier</span>
 lsmod | head
 
 # Enable iptables filtering for bridges. This is essential for certain Kubernetes network types.
@@ -237,17 +240,27 @@ curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 # Add the signature key for the opensuse repository for cri-o 1.20.
 curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/Release.key | apt-key add -
 
+<span>#verifier</span>
+apt-key list
+
 # Add the repository for libcontainers.
 apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04 /"
 
 # Add the repository for cri-o 1.20.
 apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/ /"
 
+
+<span>#verifier</span>
+cat /etc/apt/sources.list
+
 # Install CRI-O (a Kubernetes runtime) and other related tools.
 apt-get install -y cri-o cri-o-runc cri-tools runc
 
 # Start the CRI-O service.
 systemctl start crio
+
+<span>#verifier</span>
+ss -lntp
 
 # Enable the CRI-O service on startup.
 systemctl enable crio
