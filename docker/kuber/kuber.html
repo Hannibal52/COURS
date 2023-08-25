@@ -501,6 +501,18 @@ La commande ressemble généralement à ceci :
 </code></pre> 
 
 
+<br>
+<hr>
+<br>
+
+<p class="ordre">NAT sur le master</p>
+
+<pre><code>
+cat /proc/sys/net/ipv4/ip_forward
+iptables -I FORWARD -i eth0 -o eth1 -j ACCEPT
+iptables -t nat -I POSTROUTING -o eth1 -j MASQUERADE</code></pre>
+
+
     </main>
 </body>
 
