@@ -148,6 +148,10 @@ img{
    position: relative;
    left: 250px;
 }
+code{
+    position: relative;
+    left: 20px;
+}
     </style>
 </head>
 <body>
@@ -157,6 +161,9 @@ img{
     <h1>Kubernetes Installation Guide</h1>
 
     <img src="plan.png" alt="">
+
+    <img src="caas.png" alt="">
+
 
     <h2>Verify MAC Address and product_uuid</h2>
     <p>
@@ -199,67 +206,67 @@ executer ce script sur les trois VMs : attention ! configuration adresse IP priv
 </p>
 
     <pre><code>
-        # Disable all swap devices, which can improve performance but may also increase the risk of memory shortage.
-        swapoff -a
-        
-        # Load the br_netfilter module for bridge filtering.
-        modprobe br_netfilter
-        
-        # Load the overlay module required for overlayFS storage, often used with Docker and other containerization tools.
-        modprobe overlay
-        
-        #verifier
-        lsmod | head
-        
-        # Enable iptables filtering for bridges. This is essential for certain Kubernetes network types.
-        echo "1" > /proc/sys/net/bridge/bridge-nf-call-iptables
-        echo "1" > /proc/sys/net/bridge/bridge-nf-call-ip6tables
-        
-        # Enable IP forwarding to allow packet routing between interfaces.
-        echo "1" > /proc/sys/net/ipv4/ip_forward
-        
-        # Update the package list for the apt package manager.
-        apt-get update
-        
-        # Install the apt-transport-https and curl tools.
-        apt-get install -y apt-transport-https curl
-        
-        # Add the signature key for the opensuse repository for libcontainers.
-        curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key | apt-key add -
-        
-        # Add the signature key for the opensuse repository for cri-o 1.20.
-        curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/Release.key | apt-key add -
-        
-        # Add the repository for libcontainers.
-        apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04 /"
-        
-        # Add the repository for cri-o 1.20.
-        apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/ /"
-        
-        # Install CRI-O (a Kubernetes runtime) and other related tools.
-        apt-get install -y cri-o cri-o-runc cri-tools runc
-        
-        # Start the CRI-O service.
-        systemctl start crio
-        
-        # Enable the CRI-O service on startup.
-        systemctl enable crio
-        
-        # Add the signature key for the Kubernetes repository.
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-        
-        # Add the Kubernetes repository.
-        echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-        
-        # Update the package list.
-        apt-get update
-        
-        # Install specific versions of kubectl, kubeadm, and kubelet.
-        apt-get install -y kubectl=1.20.1-00 kubeadm=1.20.1-00 kubelet=1.20.1-00
-        
-        # Configure additional arguments for kubelet. $1 represents the IP address you want to use for the node.
-        echo "KUBELET_EXTRA_ARGS=--node-ip="$1" --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=\"unix:///var/run/crio/crio.sock\"" > /etc/default/kubelet
-        
+# Disable all swap devices, which can improve performance but may also increase the risk of memory shortage.
+swapoff -a
+
+# Load the br_netfilter module for bridge filtering.
+modprobe br_netfilter
+
+# Load the overlay module required for overlayFS storage, often used with Docker and other containerization tools.
+modprobe overlay
+
+#verifier
+lsmod | head
+
+# Enable iptables filtering for bridges. This is essential for certain Kubernetes network types.
+echo "1" > /proc/sys/net/bridge/bridge-nf-call-iptables
+echo "1" > /proc/sys/net/bridge/bridge-nf-call-ip6tables
+
+# Enable IP forwarding to allow packet routing between interfaces.
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
+# Update the package list for the apt package manager.
+apt-get update
+
+# Install the apt-transport-https and curl tools.
+apt-get install -y apt-transport-https curl
+
+# Add the signature key for the opensuse repository for libcontainers.
+curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key | apt-key add -
+
+# Add the signature key for the opensuse repository for cri-o 1.20.
+curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/Release.key | apt-key add -
+
+# Add the repository for libcontainers.
+apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04 /"
+
+# Add the repository for cri-o 1.20.
+apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/ /"
+
+# Install CRI-O (a Kubernetes runtime) and other related tools.
+apt-get install -y cri-o cri-o-runc cri-tools runc
+
+# Start the CRI-O service.
+systemctl start crio
+
+# Enable the CRI-O service on startup.
+systemctl enable crio
+
+# Add the signature key for the Kubernetes repository.
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+# Add the Kubernetes repository.
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+
+# Update the package list.
+apt-get update
+
+# Install specific versions of kubectl, kubeadm, and kubelet.
+apt-get install -y kubectl=1.20.1-00 kubeadm=1.20.1-00 kubelet=1.20.1-00
+
+# Configure additional arguments for kubelet. $1 represents the IP address you want to use for the node.
+echo "KUBELET_EXTRA_ARGS=--node-ip="$1" --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=\"unix:///var/run/crio/crio.sock\"" > /etc/default/kubelet
+
             </code></pre>
 
 
