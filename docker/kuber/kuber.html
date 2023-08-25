@@ -568,8 +568,9 @@ kubectl get pods -l run=my-nginx -o wide
 
 
 <div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>[map[ip:10.244.3.4]]
-[map[ip:10.244.2.5]]    
+    <pre style="color: #4690f0;"><code>POD_IP
+[map[ip:192.168.45.194]]
+[map[ip:192.168.45.193]]   
     </code></pre>
 </div>
 
@@ -577,9 +578,91 @@ kubectl get pods -l run=my-nginx -o wide
 <hr>
 <br>
 
+<h1>Creating a Service</h1>
+<br>
+<hr>
+<br>
+
+
+<p class="info">You can create a Service for your 2 nginx replicas with kubectl expose:</p>
+
+
+<pre><code>kubectl expose deployment/my-nginx</code></pre>
+<div style="box-sizing: border-box;     display: block;">
+    <pre style="color: #4690f0;"><code>service/my-nginx exposed  
+    </code></pre>
+</div>
+
+<br>
+<hr>
+<br>
+
+<p class="info">This is equivalent to kubectl apply -f the following yaml:</p>
+<pre><code>nano nginx-svc.yaml</code>
+<span>
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: my-nginx
+      labels:
+        run: my-nginx
+    spec:
+      ports:
+      - port: 80
+        protocol: TCP
+      selector:
+        run: my-nginx
+</span>
+</pre> 
+
+<br>
+<hr>
+<br>
+
+
+<p class="info">This specification will create a Service which targets TCP port 80 on any Pod with the run: my-nginx label, and expose it on an abstracted Service port (targetPort: is the port the container accepts traffic on, port: is the abstracted Service port, which can be any port other pods use to access the Service). View Service API object to see the list of supported fields in service definition. Check your Service:
+</p>
+
+<pre><code>kubectl get svc my-nginx</code></pre>
+
+
+<div style="box-sizing: border-box;     display: block;">
+    <pre style="color: #4690f0;"><code>NAME       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+my-nginx   ClusterIP   10.245.2.235   < none >        80/TCP    6m38s  
+    </code></pre>
+</div>
+
+
+<br>
+<hr>
+<br>
+
+
+<pre><code>kubectl describe svc my-nginx</code></pre>
+
+<div style="background-color: #131313;"> 
+    <br>
+<img src="desc.png" alt="">
+<br>
+</div>
+
+<br>
+<hr>
+<br>
+
+<pre><code>kubectl get endpointslices -l kubernetes.io/service-name=my-nginx</code></pre>
 
 
 
+<div style="box-sizing: border-box;     display: block;">
+    <pre style="color: #4690f0;"><code>NAME             ADDRESSTYPE   PORTS   ENDPOINTS               AGE
+        my-nginx-7vzhx   IPv4          80      10.244.2.5,10.244.3.4   21s</code></pre>
+</div>
+<br>
+<hr>
+<br>
+
+<h1>Accessing the Service</h1>
     </main>
 </body>
 
