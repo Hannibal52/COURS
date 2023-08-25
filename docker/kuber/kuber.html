@@ -6,289 +6,458 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubernetes Installation Guide</title>
     <style>
-         body {
+        body {
 
-font-family: Arial, sans-serif;
-line-height: 1.6;
-color: #333;
-background-color: #f4f4f4;
-padding: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2C3E50;
+        }
+
+        pre {
+            background-color: #313131;
+            color: #f5f5f5;
+            padding: 5px 5px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+
+        }
+
+
+
+        p {
+
+
+            border-left: 5px solid #2b8a3e;
+            color: #000000;
+            /* une nuance de gris foncé pour le texte */
+            background-color: #e7e7e7;
+            /* une nuance de bleu ciel pour le fond */
+            max-width: 900px;
+            /* fixe une largeur maximale pour le paragraphe */
+            width: 100%;
+            /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
+            padding: 15px;
+            /* ajoute un espace entre le texte et le bord de son conteneur */
+            font-family: 'Helvetica', sans-serif;
+            /* utilise une police plus moderne */
+            line-height: 1.6;
+            /* ajoute de l'espace entre les lignes de texte */
+            border-radius: 10px;
+            /* arrondit les coins du conteneur du paragraphe */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            /* ajoute une petite ombre pour donner du relief */
+            font-size: 15px;
+
+        }
+
+
+        a {
+            border-left: 5px solid #1a71e2;
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 1em 0;
+        }
+
+
+        main {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        header {
+
+            background-image: url('https://geekflare.com/wp-content/uploads/2019/06/ansible-beginner.jpg');
+            background-size: cover;
+            /* Ajuste l'image pour couvrir l'élément */
+            background-repeat: no-repeat;
+            /* Empêche l'image de se répéter */
+            background-position: center 37%;
+            height: 200px;
+            /* Hauteur de l'en-tête, à ajuster selon vos besoins */
+            width: 100%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #2b8a3e;
+        }
+
+        section {
+            padding-left: 60px;
+        }
+
+        .info,
+        .playbook {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+
+        .info {
+            border-left: 5px solid #da590f;
+            color: #000000;
+            /* une nuance de gris foncé pour le texte */
+            background-color: #e7e7e7;
+            /* une nuance de bleu ciel pour le fond */
+            max-width: 900px;
+            /* fixe une largeur maximale pour le paragraphe */
+            width: 100%;
+            /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
+            padding: 15px;
+            /* ajoute un espace entre le texte et le bord de son conteneur */
+            font-family: 'Helvetica', sans-serif;
+            /* utilise une police plus moderne */
+            line-height: 1.6;
+            /* ajoute de l'espace entre les lignes de texte */
+            border-radius: 10px;
+            /* arrondit les coins du conteneur du paragraphe */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            /* ajoute une petite ombre pour donner du relief */
+            font-size: 15px;
+
+        }
+
+        .ordre {
+            border-left: 5px solid #1197cc;
+            color: #000000;
+            /* une nuance de gris foncé pour le texte */
+            background-color: #e7e7e7;
+            /* une nuance de bleu ciel pour le fond */
+            max-width: 900px;
+            /* fixe une largeur maximale pour le paragraphe */
+            width: 100%;
+            /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
+            padding: 15px;
+            /* ajoute un espace entre le texte et le bord de son conteneur */
+            font-family: 'Helvetica', sans-serif;
+            /* utilise une police plus moderne */
+            line-height: 1.6;
+            /* ajoute de l'espace entre les lignes de texte */
+            border-radius: 10px;
+            /* arrondit les coins du conteneur du paragraphe */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            /* ajoute une petite ombre pour donner du relief */
+            font-size: 15px;
+
+        }
+
+
+
+
+        /* Styles existants... */
+
+        /* Styles adaptatifs pour mobile */
+        @media (max-width: 768px) {
+
+            /* Ceci cible les écrans jusqu'à 768px de largeur, typiquement des tablettes et smartphones */
+            body {
+                padding: 10px;
+            }
+
+            main {
+                max-width: 100%;
+            }
+
+            header {
+                height: 150px;
+                /* Réduction de la hauteur pour les écrans mobiles */
+            }
+
+            header h1 {
+                font-size: 1.5em;
+                /* Ajustement de la taille de la police pour les écrans mobiles */
+            }
+
+            section {
+                padding-left: 10px;
+                /* Réduction du padding gauche pour les écrans mobiles */
+            }
+
+            pre {
+                font-size: 0.85em;
+                /* Diminution de la taille de police pour les blocs de code pour une meilleure visibilité */
+                overflow-x: auto;
+                /* Pour permettre le défilement horizontal si le code déborde */
+            }
+
+            p,
+            a {
+                margin: 0.5em 0;
+                /* Réduction des marges pour les écrans mobiles */
+                padding: 5px;
+                /* Réduction du padding pour les écrans mobiles */
+            }
+        }
+
+
+        .main img {
+  display: inline-block; /* Permettre aux images de s'aligner horizontalement */
+  vertical-align: middle; /* Aligner les images verticalement au milieu */
+  /* Styles spécifiques pour les images */
+ 
+  margin: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  /* Ajoutez d'autres styles si nécessaire */
 }
 
-h2 {
-color: #2C3E50;
+
+       
+
+        code {
+            position: relative;
+            left: 20px;
+        }
+
+        span {
+            color: #1ddb43;
+        }
+
+        cmd {
+            color: #f18023;
+        }
+
+        com {
+            color: #388803;
+        }
+        
+.image-wrapper {
+    display: flex;
+  justify-content: center; /* Alignement horizontal au centre */
+  align-items: center; 
+  flex-direction: column; /* Empile les éléments verticalement */
 }
 
-pre {
-background-color: #313131;
-color: #f5f5f5;
-padding: 5px 5px;
-border-radius: 5px;
-display: block;
-margin: 10px 0;
+.image-wrapper img{
+    margin: 5px; /* Espacement entre les images */
+  box-shadow: 0 0 20px rgba(0, 0,0, 0.9); /* Ajout de l'ombre */
+  /* Autres styles pour les images */
 
 }
 
-
-
-p {
-border-left: 5px solid #2b8a3e;
-background-color: #e8e8e8;
-padding: 10px;
-margin: 1em 0;
-}
-
-a {
-border-left: 5px solid #1a71e2;
-background-color: #e8e8e8;
-padding: 10px;
-margin: 1em 0;
-}
-
-
-main {
-max-width: 1200px;
-margin: 0 auto;
-}
 
 header {
-
-background-image: url('https://geekflare.com/wp-content/uploads/2019/06/ansible-beginner.jpg');
-background-size: cover;  /* Ajuste l'image pour couvrir l'élément */
-background-repeat: no-repeat; /* Empêche l'image de se répéter */
-background-position: center 37%; 
-height: 200px;  /* Hauteur de l'en-tête, à ajuster selon vos besoins */
-width: 100%;
-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-
-}
-
-header h1 {
-font-size: 2em;
-color: #2b8a3e;
-}
-section{
-padding-left: 60px;
-}
-
-.info, .playbook {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-
-    .info{
-        border-left: 5px solid #da590f;
-  color: #000000; /* une nuance de gris foncé pour le texte */
-    background-color: #e7e7e7; /* une nuance de bleu ciel pour le fond */
-    max-width: 900px; /* fixe une largeur maximale pour le paragraphe */
-    width: 100%; /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
-    padding: 15px; /* ajoute un espace entre le texte et le bord de son conteneur */
-    font-family: 'Helvetica', sans-serif; /* utilise une police plus moderne */
-    line-height: 1.6; /* ajoute de l'espace entre les lignes de texte */
-    border-radius: 10px; /* arrondit les coins du conteneur du paragraphe */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une petite ombre pour donner du relief */
-    font-size:15px;
-
-}
-.ordre{
-        border-left: 5px solid #1197cc;
-  color: #000000; /* une nuance de gris foncé pour le texte */
-    background-color: #e7e7e7; /* une nuance de bleu ciel pour le fond */
-    max-width: 900px; /* fixe une largeur maximale pour le paragraphe */
-    width: 100%; /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
-    padding: 15px; /* ajoute un espace entre le texte et le bord de son conteneur */
-    font-family: 'Helvetica', sans-serif; /* utilise une police plus moderne */
-    line-height: 1.6; /* ajoute de l'espace entre les lignes de texte */
-    border-radius: 10px; /* arrondit les coins du conteneur du paragraphe */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une petite ombre pour donner du relief */
-    font-size:15px;
-
-}
-
-
-
-
-/* Styles existants... */
-
-/* Styles adaptatifs pour mobile */
-@media (max-width: 768px) { /* Ceci cible les écrans jusqu'à 768px de largeur, typiquement des tablettes et smartphones */
-body {
-padding: 10px;
-}
-
-main {
-max-width: 100%;
-}
-
-header {
-height: 150px;  /* Réduction de la hauteur pour les écrans mobiles */
-}
-
-header h1 {
-font-size: 1.5em;  /* Ajustement de la taille de la police pour les écrans mobiles */
-}
-
-section {
-padding-left: 10px;  /* Réduction du padding gauche pour les écrans mobiles */
-}
-
-pre {
-font-size: 0.85em; /* Diminution de la taille de police pour les blocs de code pour une meilleure visibilité */
-overflow-x: auto; /* Pour permettre le défilement horizontal si le code déborde */
-}
-
-p, a {
-margin: 0.5em 0;  /* Réduction des marges pour les écrans mobiles */
-padding: 5px;    /* Réduction du padding pour les écrans mobiles */
-}
-}
-img{
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ajoute une petite ombre pour donner du relief */
+    background-image: url('https://static-00.iconduck.com/assets.00/kubernetes-color-icon-256x256-t8ualzkj.png');
+ width: 50px;
+ height: 50px;
    position: relative;
-   left: 250px;
-}
-code{
-    position: relative;
-    left: 20px;
-}
-span{
-    color: #1ddb43;
-}
+   top:65px;
+   left: 120px;
+  background-position: center 47%;
+  box-shadow: 0 0 0px;
+ 
+   }
+
+
     </style>
 </head>
+
 <body>
+
+    
+    <header>
+    </header>
+
     <main>
 
 
-    <h1>Kubernetes Installation Guide</h1>
+        <h1>Kubernetes Installation Guide</h1>
+        <div class="image-wrapper">
 
-    <img src="plan.png" alt="">
+        <br>
 
-    <img src="caas.png" alt="">
+        <img src="caas.png" alt="">
+        <br>
 
+</div>
 
-    <h2>Verify MAC Address and product_uuid</h2>
-    <p>
-        You can get the MAC address of network interfaces using the command <code>ip link</code> or <code>ifconfig -a</code>.<br>
-        The product_uuid can be checked using the command <code>sudo cat /sys/class/dmi/id/product_uuid</code>.
-    </p>
+        <h2>Verify MAC Address and product_uuid</h2>
+        <p>
+            You can get the MAC address of network interfaces using the command <code>ip link</code> or
+            <code>ifconfig -a</code>.<br>
+            The product_uuid can be checked using the command <code>sudo cat /sys/class/dmi/id/product_uuid</code>.
+        </p>
 
-    <h2>Ping Between Nodes</h2>
-    <p>Verify network filtering (firewall) by running:</p>
-    <pre><code>nc 127.0.0.1 6443 <br># or ss -lntp 6443 </code> <!-- or <code>ss -lntp 6443</code> --></pre>
+        <h2>Ping Between Nodes</h2>
+        <p>Verify network filtering (firewall) by running:</p>
+        <pre><code>nc 127.0.0.1 6443 <br># or ss -lntp 6443 </code> <!-- or <code>ss -lntp 6443</code> --></pre>
 
-    <h2>Install Container Runtime</h2>
-    <p class="info">Note: <strong>Docker Engine </strong>does not implement the CRI which is a requirement for a container runtime to work with Kubernetes. For that reason, an additional service cri-dockerd has to be installed. cri-dockerd is a project based on the legacy built-in Docker Engine support that was removed from the kubelet in <strong>version 1.24</strong>. fini 07/2022
-    </p>
-    <p>Runtime Unix domain socket paths:</p>
-    <ul>
-        <li>containerd: <code>unix:///var/run/containerd/containerd.sock</code></li>
-        <li>CRI-O: <code>unix:///var/run/crio/crio.sock</code></li>
-        <li>Docker Engine (using cri-dockerd): <code>unix:///var/run/cri-dockerd.sock</code></li>
-    </ul>
+        <h2>Install Container Runtime</h2>
+        <p class="info">Note: <strong>Docker Engine </strong>does not implement the CRI which is a requirement for a
+            container runtime to work with Kubernetes. For that reason, an additional service cri-dockerd has to be
+            installed. cri-dockerd is a project based on the legacy built-in Docker Engine support that was removed from
+            the kubelet in <strong>version 1.24</strong>. fini 07/2022
+        </p>
+        <p>Runtime Unix domain socket paths:</p>
+        <ul>
+            <li>containerd: <code>unix:///var/run/containerd/containerd.sock</code></li>
+            <li>CRI-O: <code>unix:///var/run/crio/crio.sock</code></li>
+            <li>Docker Engine (using cri-dockerd): <code>unix:///var/run/cri-dockerd.sock</code></li>
+        </ul>
 
-    <h2>Installing kubeadm, kubelet, and kubectl</h2>
-    <p>You need to install these packages on all of your machines:</p>
-    <ul>
-        <li><code>kubeadm</code>: Command to bootstrap the cluster.</li>
-        <li><code>kubelet</code>: Component that runs on all machines and manages pods and containers.</li>
-        <li><code>kubectl</code>: Command-line utility to interact with the cluster.</li>
-    </ul>
+        <h2>Installing kubeadm, kubelet, and kubectl</h2>
+        <p>You need to install these packages on all of your machines:</p>
+        <ul>
+            <li><code>kubeadm</code>: Command to bootstrap the cluster.</li>
+            <li><code>kubelet</code>: Component that runs on all machines and manages pods and containers.</li>
+            <li><code>kubectl</code>: Command-line utility to interact with the cluster.</li>
+        </ul>
 
-    <h2>Using kubeadm to Create a Cluster</h2>
-    <p>To initialize the control-plane node, run: <code>kubeadm init &lt;args&gt;</code></p>
+        <h2>Using kubeadm to Create a Cluster</h2>
+        <p>To initialize the control-plane node, run: <code>kubeadm init &lt;args&gt;</code></p>
 
+        <div class="image-wrapper">
+        <img src="archi.png" alt="">
+        </div>
 
-    <img src="archi.png" alt="">
-    <h2>Additional Setup Steps</h2>
-    <p>It's recommended to follow these steps before initializing the cluster:</p>
+        <h2>Additional Setup Steps</h2>
+        <p>It's recommended to follow these steps before initializing the cluster:</p>
 
-<p class="ordre"><strong>Sur les trois machines</strong>     <br>
-executer ce script sur les trois VMs : attention ! configuration adresse IP privée
-</p>
+        <p class="ordre"><strong>Sur les trois machines</strong> <br>
+            executer ce script sur les trois VMs : attention ! configuration adresse IP privée
+        </p>
 
-    <pre><code>
-# Disable all swap devices, which can improve performance but may also increase the risk of memory shortage.
+        <pre><code>
+<com># Disable all swap devices, which can improve performance but may also increase the risk of memory shortage.</com>
 swapoff -a
 
-# Load the br_netfilter module for bridge filtering.
+<com># Load the br_netfilter module for bridge filtering.</com>
 modprobe br_netfilter
 
-# Load the overlay module required for overlayFS storage, often used with Docker and other containerization tools.
+<com># Load the overlay module required for overlayFS storage, often used with Docker and other containerization tools.</com>
 modprobe overlay
 
 <span>#verifier</span>
 lsmod | head
 
-# Enable iptables filtering for bridges. This is essential for certain Kubernetes network types.
+<com># Enable iptables filtering for bridges. This is essential for certain Kubernetes network types.</com>
 echo "1" > /proc/sys/net/bridge/bridge-nf-call-iptables
 echo "1" > /proc/sys/net/bridge/bridge-nf-call-ip6tables
 
-# Enable IP forwarding to allow packet routing between interfaces.
+<com># Enable IP forwarding to allow packet routing between interfaces.</com>
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
-# Update the package list for the apt package manager.
+<com># Update the package list for the apt package manager.</com>
 apt-get update
 
-# Install the apt-transport-https and curl tools.
+<com># Install the apt-transport-https and curl tools.</com>
 apt-get install -y apt-transport-https curl
 
-# Add the signature key for the opensuse repository for libcontainers.
+<com># Add the signature key for the opensuse repository for libcontainers.</com>
 curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key | apt-key add -
 
-# Add the signature key for the opensuse repository for cri-o 1.20.
+<com># Add the signature key for the opensuse repository for cri-o 1.20.</com>
 curl -s https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/Release.key | apt-key add -
 
 <span>#verifier</span>
 apt-key list
 
-# Add the repository for libcontainers.
+<com># Add the repository for libcontainers.</com>
 apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04 /"
 
-# Add the repository for cri-o 1.20.
+<com># Add the repository for cri-o 1.20.</com>
 apt-add-repository "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.20/xUbuntu_20.04/ /"
 
 
 <span>#verifier</span>
 cat /etc/apt/sources.list
 
-# Install CRI-O (a Kubernetes runtime) and other related tools.
+<com># Install CRI-O (a Kubernetes runtime) and other related tools.</com>
 apt-get install -y cri-o cri-o-runc cri-tools runc
 
-# Start the CRI-O service.
+<com># Start the CRI-O service.</com>
 systemctl start crio
 
 <span>#verifier</span>
 ss -lntp
 
-# Enable the CRI-O service on startup.
+<com># Enable the CRI-O service on startup.</com>
 systemctl enable crio
 
-# Add the signature key for the Kubernetes repository.
+<com># Add the signature key for the Kubernetes repository.</com>
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
-# Add the Kubernetes repository.
+<com># Add the Kubernetes repository.</com>
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 
-# Update the package list.
+<com># Update the package list.</com>
 apt-get update
 
-# Install specific versions of kubectl, kubeadm, and kubelet.
+<com># Install specific versions of kubectl, kubeadm, and kubelet.</com>
 apt-get install -y kubectl=1.20.1-00 kubeadm=1.20.1-00 kubelet=1.20.1-00
 
-# Configure additional arguments for kubelet. $1 represents the IP address you want to use for the node.
-echo "KUBELET_EXTRA_ARGS=--node-ip="$1" --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=\"unix:///var/run/crio/crio.sock\"" > /etc/default/kubelet
+<com># Configure additional arguments for kubelet. $1 represents the IP address you want to use for the node.</com>
+<cmd>echo</cmd> <span>"KUBELET_EXTRA_ARGS=--node-ip="$1" --cgroup-driver=systemd --container-runtime=remote --container-runtime-endpoint=\"unix:///var/run/crio/crio.sock\"" </span>> /etc/default/kubelet
 
             </code></pre>
 
 
-            <p class="info"><strong>$1</strong> corresponds to the private IP address of the worker or master interface to be used for the cluster.</p>
+        <p class="info"><strong>$1</strong> corresponds to the private IP address of the worker or master interface to
+            be used for the cluster.</p>
+        <br>
+        <hr>
+        <br>
+        <p class="ordre">Executer ce script sur le master</p>
+
+        <pre><code>
+<com># Crée (ou écrase si existant) un fichier de configuration pour `kubeadm` qui contient plusieurs paramètres pour initialiser un cluster Kubernetes.</com>
+<com># Vous utilisez le Here Document pour cela. `$1` est censé être l'adresse IP de l'API endpoint.</com>
+<cmd>cat</cmd> << <span> EOF | tee /etc/kubernetes/kubeadmcfg.yaml
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: $1
+  bindPort: 6443
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: 1.20.1
+networking:
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: "10.245.0.0/16"
+  dnsDomain: "cluster.internal"
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+EOF </span>
+
+<com># Utilise `kubeadm` pour initialiser le cluster Kubernetes en utilisant le fichier de configuration précédemment créé. </com>
+<com># L'option `--upload-certs` est utilisée pour stocker les certificats du cluster dans un secret pour une utilisation avec `join`.</com>
+kubeadm init --config /etc/kubernetes/kubeadmcfg.yaml --upload-certs
+
+<com># Définit la variable d'environnement KUBECONFIG pour utiliser le fichier de configuration admin de Kubernetes.</com>
+<com># Cela informe `kubectl` sur la manière de communiquer avec votre cluster.</com>
+<cmd>export</cmd> KUBECONFIG=/etc/kubernetes/admin.conf
+
+<com># Télécharge le manifeste YAML pour Calico, qui est une solution de mise en réseau pour Kubernetes.</com>
+curl https://docs.projectcalico.org/v3.8/manifests/calico.yaml -o calico.yaml
+
+<com># Applique le manifeste Calico, ce qui installe Calico dans le cluster pour la mise en réseau des pods.</com>
+kubectl apply -f calico.yaml
+
+<com># Affiche des informations détaillées sur tous les nœuds du cluster.</com>
+kubectl get nodes -o wide
+
+<com># Ajoute la définition de la variable KUBECONFIG à .bashrc, ce qui fait que chaque nouvelle session shell utilisera le bon fichier de configuration pour `kubectl`.</com>
+<cmd>echo</cmd> <span>"export KUBECONFIG=/etc/kubernetes/admin.conf"</span> >> .bashrc
+
+            </code></pre>
+
+        <p class="info">$1 correspond à l'adresse IP de l'interface du master qui sera utilisé pour le cluster </p>
 
 
 
 
-
-        </main>
+    </main>
 </body>
+
 </html>
