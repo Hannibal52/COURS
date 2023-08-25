@@ -222,6 +222,7 @@
 
         span {
             color: #1ddb43;
+            
         }
 
         cmd {
@@ -463,29 +464,15 @@ kubectl get nodes -o wide
 
         <pre><code>
             root@master8:~# crictl ps
-            CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID
-            dfe24df96e76c       ee86d6374c0e7eab9a6c6499aef64786ee384070a5d2434ce8d4e6e712c59153   2 minutes ago       Running             calico-node               16                  da33e730795a0
-            406ff95978667       bfe3a36ebd2528b454be6aebece806db5b40407b833e2af9617bf39afaff8c16   About an hour ago   Running             coredns                   0                   67d88fa1dbac0
-            c03abc9ec25b1       bfe3a36ebd2528b454be6aebece806db5b40407b833e2af9617bf39afaff8c16   About an hour ago   Running             coredns                   0                   407ad77616a22
-            3a22abf164c65       f66b238f39802a222e9a0e06580d61f3678ffc9d58da99e4475b492d7dc35c5d   About an hour ago   Running             calico-kube-controllers   0                   f6d37cbf57df7
-            ccc7ca1e268ae       e3f6fcd87756eee780767035bc8b0894fb662a0dcf4efcfc607a46d195089f92   About an hour ago   Running             kube-proxy                0                   8af0648138de7
-            61641811a65dd       75c7f711208082c548b935ab31e681ea30acccdce6b7abeecabae5bbfd326627   About an hour ago   Running             kube-apiserver            0                   edc91bf1f964e
-            91f350a5b6288       4aa0b4397bbbcc08d662f227e6a880453ff559be8ccf0541422f3d29aad62b0d   About an hour ago   Running             kube-scheduler            0                   69d3f319ce24a
-            2762f7a4e4881       2893d78e47dc3b788c3c94d7115d9e9ed6a32bb1495481b8160f907ba554d903   About an hour ago   Running             kube-controller-manager   0                   5efb70e4b11e2
-            bff2b73572e07       0369cf4303ffdb467dc219990960a9baa8512a54b0ad9283eaf55bd6c0adb934   About an hour ago   Running             etcd                      0                   56896e4c0843d
-            root@master8:~#
-            root@master8:~# crictl ps
-            CONTAINER           IMAGE                                                              CREATED             STATE               NAME                      ATTEMPT             POD ID
-            dfe24df96e76c       ee86d6374c0e7eab9a6c6499aef64786ee384070a5d2434ce8d4e6e712c59153   2 minutes ago       Running             calico-node               16                  da33e730795a0
-            406ff95978667       bfe3a36ebd2528b454be6aebece806db5b40407b833e2af9617bf39afaff8c16   About an hour ago   Running             coredns                   0                   67d88fa1dbac0
-            c03abc9ec25b1       bfe3a36ebd2528b454be6aebece806db5b40407b833e2af9617bf39afaff8c16   About an hour ago   Running             coredns                   0                   407ad77616a22
-            3a22abf164c65       f66b238f39802a222e9a0e06580d61f3678ffc9d58da99e4475b492d7dc35c5d   About an hour ago   Running             calico-kube-controllers   0                   f6d37cbf57df7
-            ccc7ca1e268ae       e3f6fcd87756eee780767035bc8b0894fb662a0dcf4efcfc607a46d195089f92   About an hour ago   Running             kube-proxy                0                   8af0648138de7
-            61641811a65dd       75c7f711208082c548b935ab31e681ea30acccdce6b7abeecabae5bbfd326627   About an hour ago   Running             kube-apiserver            0                   edc91bf1f964e
-            91f350a5b6288       4aa0b4397bbbcc08d662f227e6a880453ff559be8ccf0541422f3d29aad62b0d   About an hour ago   Running             kube-scheduler            0                   69d3f319ce24a
-            2762f7a4e4881       2893d78e47dc3b788c3c94d7115d9e9ed6a32bb1495481b8160f907ba554d903   About an hour ago   Running             kube-controller-manager   0                   5efb70e4b11e2
-            bff2b73572e07       0369cf4303ffdb467dc219990960a9baa8512a54b0ad9283eaf55bd6c0adb934   About an hour ago   Running             etcd                      0                   56896e4c0843d
-        </code></pre>
+</code></pre>
+
+
+<div style="background-color: #131313;"> 
+    <br>
+<img src="images.png" alt="">
+<br>
+</div>
+
 
         <br>
         <hr>
@@ -511,6 +498,86 @@ La commande ressemble généralement à ceci :
 cat /proc/sys/net/ipv4/ip_forward
 iptables -I FORWARD -i eth0 -o eth1 -j ACCEPT
 iptables -t nat -I POSTROUTING -o eth1 -j MASQUERADE</code></pre>
+
+<br>
+<hr>
+<br>
+<p class="info">Une fois que tous les nœuds worker ont rejoint, revenez au nœud master et exécutez :</p>
+<pre><code>kubectl get nodes</code></pre>
+
+<div style="background-color: #131313;"> 
+    <br>
+<img src="getpod.png" alt="">
+<br>
+</div>
+
+
+<br>
+<hr>
+<br>
+
+<h1>Connecting Applications with Services</h1>
+
+<br>
+<hr>
+<br>
+
+
+<pre><code>nano run-my-nginx.yaml
+</code>
+<span>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+spec:
+  selector:
+    matchLabels:
+      run: my-nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-nginx
+    spec:
+      containers:
+      - name: my-nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+    </span>
+<code>
+<com>This makes it accessible from any node in your cluster. Check the nodes the Pod is running on:</com>
+kubectl apply -f ./run-my-nginx.yaml
+kubectl get pods -l run=my-nginx -o wide    
+</code>
+</pre>
+
+
+<div style="box-sizing: border-box;     display: block;">
+    <pre style="color: #4690f0;"><code>NAME                        READY     STATUS    RESTARTS   AGE       IP            NODE
+        my-nginx-3800858182-jr4a2   1/1       Running   0          13s       10.244.3.4    kubernetes-minion-905m
+        my-nginx-3800858182-kna2y   1/1       Running   0          13s       10.244.2.5    kubernetes-minion-ljyd</code></pre>
+</div>
+
+<br>
+<hr>
+<br>
+
+<p class="info">Check your pods' IPs:</p>
+<pre><code>kubectl get pods -l run=my-nginx -o custom-columns=POD_IP:.status.podIPs</code></pre>
+
+
+<div style="box-sizing: border-box;     display: block;">
+    <pre style="color: #4690f0;"><code>[map[ip:10.244.3.4]]
+[map[ip:10.244.2.5]]    
+    </code></pre>
+</div>
+
+<br>
+<hr>
+<br>
+
+
 
 
     </main>
