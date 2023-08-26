@@ -39,7 +39,7 @@
             /* une nuance de gris foncé pour le texte */
             background-color: #e7e7e7;
             /* une nuance de bleu ciel pour le fond */
-            max-width: 900px;
+            max-width: 95%;
             /* fixe une largeur maximale pour le paragraphe */
             width: 100%;
             /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
@@ -53,7 +53,7 @@
             /* arrondit les coins du conteneur du paragraphe */
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             /* ajoute une petite ombre pour donner du relief */
-            font-size: 15px;
+            font-size: 10px;
 
         }
 
@@ -85,7 +85,17 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 
         }
+        header {
+            background-image: url('https://static-00.iconduck.com/assets.00/kubernetes-color-icon-256x256-t8ualzkj.png');
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: 65px;
+            left: 120px;
+            background-position: center 47%;
+            box-shadow: 0 0 0px;
 
+        }
         header h1 {
             font-size: 2em;
             color: #2b8a3e;
@@ -108,7 +118,7 @@
             /* une nuance de gris foncé pour le texte */
             background-color: #e7e7e7;
             /* une nuance de bleu ciel pour le fond */
-            max-width: 900px;
+            max-width: 95%;
             /* fixe une largeur maximale pour le paragraphe */
             width: 100%;
             /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
@@ -122,7 +132,11 @@
             /* arrondit les coins du conteneur du paragraphe */
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             /* ajoute une petite ombre pour donner du relief */
-            font-size: 15px;
+            font-size: 10px;
+            margin: 0.5em 0;
+                /* Réduction des marges pour les écrans mobiles */
+                padding: 5px;
+
 
         }
 
@@ -132,7 +146,7 @@
             /* une nuance de gris foncé pour le texte */
             background-color: #e7e7e7;
             /* une nuance de bleu ciel pour le fond */
-            max-width: 900px;
+            max-width: 95%;
             /* fixe une largeur maximale pour le paragraphe */
             width: 100%;
             /* s'assure que le paragraphe s'étend à la largeur complète de son conteneur */
@@ -146,7 +160,10 @@
             /* arrondit les coins du conteneur du paragraphe */
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             /* ajoute une petite ombre pour donner du relief */
-            font-size: 15px;
+            font-size: 10px;
+            margin: 0.5em 0;
+                /* Réduction des marges pour les écrans mobiles */
+                padding: 5px;
 
         }
 
@@ -157,6 +174,11 @@
 
         /* Styles adaptatifs pour mobile */
         @media (max-width: 768px) {
+            header {
+                top: 10px;
+                left: 0px;
+
+            }
 
             /* Ceci cible les écrans jusqu'à 768px de largeur, typiquement des tablettes et smartphones */
             body {
@@ -167,13 +189,14 @@
                 max-width: 100%;
             }
 
-            header {
-                height: 150px;
-                /* Réduction de la hauteur pour les écrans mobiles */
-            }
+           
 
-            header h1 {
-                font-size: 1.5em;
+             h1 {
+                font-size: 1em;
+                /* Ajustement de la taille de la police pour les écrans mobiles */
+            }
+            h2 {
+                font-size: 0.8em;
                 /* Ajustement de la taille de la police pour les écrans mobiles */
             }
 
@@ -196,25 +219,33 @@
                 padding: 5px;
                 /* Réduction du padding pour les écrans mobiles */
             }
+
+
+            img {
+                width: 90%;
+            }
+
         }
 
 
         .main img {
-  display: inline-block; /* Permettre aux images de s'aligner horizontalement */
-  vertical-align: middle; /* Aligner les images verticalement au milieu */
-  /* Styles spécifiques pour les images */
- 
-  margin: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  /* Ajoutez d'autres styles si nécessaire */
-}
+            display: inline-block;
+            /* Permettre aux images de s'aligner horizontalement */
+            vertical-align: middle;
+            /* Aligner les images verticalement au milieu */
+            /* Styles spécifiques pour les images */
+
+            margin: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            /* Ajoutez d'autres styles si nécessaire */
+        }
 
 
-       
+
 
         code {
             position: relative;
-        
+
             max-width: 100%;
             white-space: pre-line;
             overflow-wrap: break-word;
@@ -222,7 +253,7 @@
 
         span {
             color: #1ddb43;
-            
+
         }
 
         cmd {
@@ -232,41 +263,33 @@
         com {
             color: #388803;
         }
-        
-.image-wrapper {
-    display: flex;
-  justify-content: center; /* Alignement horizontal au centre */
-  align-items: center; 
-  flex-direction: column; /* Empile les éléments verticalement */
-}
 
-.image-wrapper img{
-    margin: 5px; /* Espacement entre les images */
-  box-shadow: 0 0 20px rgba(0, 0,0, 0.9); /* Ajout de l'ombre */
-  /* Autres styles pour les images */
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            /* Alignement horizontal au centre */
+            align-items: center;
+            flex-direction: column;
+            /* Empile les éléments verticalement */
+        }
 
-}
+        .image-wrapper img {
+            margin: 5px;
+            /* Espacement entre les images */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            /* Ajout de l'ombre */
+            /* Autres styles pour les images */
 
-
-header {
-    background-image: url('https://static-00.iconduck.com/assets.00/kubernetes-color-icon-256x256-t8ualzkj.png');
- width: 50px;
- height: 50px;
-   position: relative;
-   top:65px;
-   left: 120px;
-  background-position: center 47%;
-  box-shadow: 0 0 0px;
- 
-   }
+        }
 
 
+     
     </style>
 </head>
 
 <body>
 
-    
+
     <header>
     </header>
 
@@ -276,12 +299,12 @@ header {
         <h1>installation kubernetes sur 3 machines avec kubeadm</h1>
         <div class="image-wrapper">
 
-        <br>
+            <br>
 
-        <img src="caas.png" alt="">
-        <br>
+            <img src="caas.png" alt="">
+            <br>
 
-</div>
+        </div>
 
         <h2>Verify MAC Address and product_uuid</h2>
         <p>
@@ -319,7 +342,7 @@ header {
         <p>To initialize the control-plane node, run: <code>kubeadm init &lt;args&gt;</code></p>
 
         <div class="image-wrapper">
-        <img src="archi.png" alt="">
+            <img src="archi.png" alt="">
         </div>
 
         <h2>Additional Setup Steps</h2>
@@ -467,11 +490,11 @@ kubectl get nodes -o wide
 </code></pre>
 
 
-<div style="background-color: #131313;"> 
-    <br>
-<img src="images.png" alt="">
-<br>
-</div>
+        <div style="background-color: #0C0C0C;">
+            <br>
+            <img src="images.png" alt="">
+            <br>
+        </div>
 
 
         <br>
@@ -479,51 +502,53 @@ kubectl get nodes -o wide
         <br>
 
 
-        <p class="info">Lorsque vous avez exécuté <strong>kubeadm init</strong> sur votre master, à la fin de son exécution, il a dû vous afficher une commande <strong>kubeadm join</strong> avec un token et l'adresse IP du master. Cette commande est spécifique à votre cluster.
+        <p class="info">Lorsque vous avez exécuté <strong>kubeadm init</strong> sur votre master, à la fin de son
+            exécution, il a dû vous afficher une commande <strong>kubeadm join</strong> avec un token et l'adresse IP du
+            master. Cette commande est spécifique à votre cluster.
 
-La commande ressemble généralement à ceci :
-<br>
+            La commande ressemble généralement à ceci :
+            <br>
         </p>
-<pre><code></code>kubeadm join <strong>[master-ip]</strong>:6443 --token <strong>[token]</strong> --discovery-token-ca-cert-hash <strong>[hash]</strong>
-</code></pre> 
+        <pre><code></code>kubeadm join <strong>[master-ip]</strong>:6443 --token <strong>[token]</strong> --discovery-token-ca-cert-hash <strong>[hash]</strong>
+</code></pre>
 
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
-<p class="ordre">NAT sur le master</p>
+        <p class="ordre">NAT sur le master</p>
 
-<pre><code>
+        <pre><code>
 cat /proc/sys/net/ipv4/ip_forward
 iptables -I FORWARD -i eth0 -o eth1 -j ACCEPT
 iptables -t nat -I POSTROUTING -o eth1 -j MASQUERADE</code></pre>
 
-<br>
-<hr>
-<br>
-<p class="info">Une fois que tous les nœuds worker ont rejoint, revenez au nœud master et exécutez :</p>
-<pre><code>kubectl get nodes</code></pre>
+        <br>
+        <hr>
+        <br>
+        <p class="info">Une fois que tous les nœuds worker ont rejoint, revenez au nœud master et exécutez :</p>
+        <pre><code>kubectl get nodes</code></pre>
 
-<div style="background-color: #131313;"> 
-    <br>
-<img src="getpod.png" alt="">
-<br>
-</div>
-
-
-<br>
-<hr>
-<br>
-
-<h1>Connecting Applications with Services</h1>
-
-<br>
-<hr>
-<br>
+        <div style="background-color: #0C0C0C;">
+            <br>
+            <img src="getpod.png" alt="">
+            <br>
+        </div>
 
 
-<pre><code>nano run-my-nginx.yaml
+        <br>
+        <hr>
+        <br>
+
+        <h1>Connecting Applications with Services</h1>
+
+        <br>
+        <hr>
+        <br>
+
+
+        <pre><code>nano run-my-nginx.yaml
 </code>
 <span>apiVersion: apps/v1
 kind: Deployment
@@ -553,52 +578,53 @@ kubectl get pods -l run=my-nginx -o wide
 </pre>
 
 
-<div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>NAME                        READY     STATUS    RESTARTS   AGE       IP            NODE
+        <div style="box-sizing: border-box;     display: block;">
+            <pre
+                style="color: #4690f0;"><code>NAME                        READY     STATUS    RESTARTS   AGE       IP            NODE
         my-nginx-3800858182-jr4a2   1/1       Running   0          13s       10.244.3.4    kubernetes-minion-905m
         my-nginx-3800858182-kna2y   1/1       Running   0          13s       10.244.2.5    kubernetes-minion-ljyd</code></pre>
-</div>
+        </div>
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
-<p class="info">Check your pods' IPs:</p>
-<pre><code>kubectl get pods -l run=my-nginx -o custom-columns=POD_IP:.status.podIPs</code></pre>
+        <p class="info">Check your pods' IPs:</p>
+        <pre><code>kubectl get pods -l run=my-nginx -o custom-columns=POD_IP:.status.podIPs</code></pre>
 
 
-<div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>POD_IP
+        <div style="box-sizing: border-box;     display: block;">
+            <pre style="color: #4690f0;"><code>POD_IP
 [map[ip:192.168.45.194]]
 [map[ip:192.168.45.193]]   
     </code></pre>
-</div>
+        </div>
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
-<h1>Creating a Service</h1>
-<br>
-<hr>
-<br>
-
-
-<p class="info">You can create a Service for your 2 nginx replicas with kubectl expose:</p>
+        <h1>Creating a Service</h1>
+        <br>
+        <hr>
+        <br>
 
 
-<pre><code>kubectl expose deployment/my-nginx</code></pre>
-<div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>service/my-nginx exposed  
+        <p class="info">You can create a Service for your 2 nginx replicas with kubectl expose:</p>
+
+
+        <pre><code>kubectl expose deployment/my-nginx</code></pre>
+        <div style="box-sizing: border-box;     display: block;">
+            <pre style="color: #4690f0;"><code>service/my-nginx exposed  
     </code></pre>
-</div>
+        </div>
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
-<p class="info">This is equivalent to kubectl apply -f the following yaml:</p>
-<pre><code>nano nginx-svc.yaml</code>
+        <p class="info">This is equivalent to kubectl apply -f the following yaml:</p>
+        <pre><code>nano nginx-svc.yaml</code>
 <span>
     apiVersion: v1
     kind: Service
@@ -613,56 +639,75 @@ kubectl get pods -l run=my-nginx -o wide
       selector:
         run: my-nginx
 </span>
-</pre> 
+</pre>
 
-<br>
-<hr>
-<br>
-
-
-<p class="info">This specification will create a Service which targets TCP port 80 on any Pod with the run: my-nginx label, and expose it on an abstracted Service port (targetPort: is the port the container accepts traffic on, port: is the abstracted Service port, which can be any port other pods use to access the Service). View Service API object to see the list of supported fields in service definition. Check your Service:
-</p>
-
-<pre><code>kubectl get svc my-nginx</code></pre>
+        <br>
+        <hr>
+        <br>
 
 
-<div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>NAME       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+        <p class="info">This specification will create a Service which targets TCP port 80 on any Pod with the run:
+            my-nginx label, and expose it on an abstracted Service port (targetPort: is the port the container accepts
+            traffic on, port: is the abstracted Service port, which can be any port other pods use to access the
+            Service). View Service API object to see the list of supported fields in service definition. Check your
+            Service:
+        </p>
+
+        <pre><code>kubectl get svc my-nginx</code></pre>
+
+
+        <div style="box-sizing: border-box;     display: block;">
+            <pre style="color: #4690f0;"><code>NAME       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 my-nginx   ClusterIP   10.245.2.235   < none >        80/TCP    6m38s  
     </code></pre>
-</div>
+        </div>
 
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
 
-<pre><code>kubectl describe svc my-nginx</code></pre>
+        <pre><code>kubectl describe svc my-nginx</code></pre>
 
-<div style="background-color: #131313;"> 
-    <br>
-<img src="desc.png" alt="">
-<br>
-</div>
+        <div style="background-color: #0C0C0C;">
+            <br>
+            <img src="desc.png" alt="">
+            <br>
+        </div>
 
-<br>
-<hr>
-<br>
+        <br>
+        <hr>
+        <br>
 
-<pre><code>kubectl get endpointslices -l kubernetes.io/service-name=my-nginx</code></pre>
+        <pre><code>kubectl get endpointslices -l kubernetes.io/service-name=my-nginx</code></pre>
 
 
 
-<div style="box-sizing: border-box;     display: block;">
-    <pre style="color: #4690f0;"><code>NAME             ADDRESSTYPE   PORTS   ENDPOINTS               AGE
+        <div style="box-sizing: border-box;     display: block;">
+            <pre style="color: #4690f0;"><code>NAME             ADDRESSTYPE   PORTS   ENDPOINTS               AGE
         my-nginx-7vzhx   IPv4          80      10.244.2.5,10.244.3.4   21s</code></pre>
-</div>
-<br>
-<hr>
-<br>
+        </div>
+        <br>
+        <hr>
+        <br>
 
-<h1>Accessing the Service</h1>
+        <br>
+        <br>
+        <center><h1>success !!</h1></center>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <br>
+
+        <center>  <span style="color: #000000; font-size: 0.4em;">Un grand remerciement à Mr Samir BELABES</span>
+        </center>
+       
+        <br>
+        <br>
 
     </main>
 </body>
