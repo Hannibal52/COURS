@@ -1638,6 +1638,37 @@
                 </div>
             </div>
         </li>
+
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="bdd.png"> </div>
+                <div style="flex: 1;">
+                    <label for="bdd" style=" font-size: 1.5em;">Base de données</label>
+                    <input type="checkbox" id="bdd" />
+                    <div class="content">
+
+                        <ul class="el">
+
+                            <li>
+                                <a class="name" href="#" data-src="bdd/sauv/sauv.html">
+                                     Oracle : Sauvegarde et restauration
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+
+
+
+
+
         <li>
             <label for="links">Liens utiles</label>
             <input type="checkbox" id="links" />
@@ -1775,6 +1806,10 @@
 
 
                     } else if (src === "acro.html") {
+                        document.getElementById('frame').style.paddingTop = "0px";
+                        document.getElementById('frame').style.paddingLeft = "160px";
+                    }
+                      else if (src === "bdd/sauv/sauv.html") {
                         document.getElementById('frame').style.paddingTop = "0px";
                         document.getElementById('frame').style.paddingLeft = "160px";
                     }

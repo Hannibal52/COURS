@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Document</title>
+    <style>
+        th,
+        td {
+            border: 0px;
+            padding: 8px;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        code {
+            background-color: #2B5A67;
+            max-width: 600px;
+            color: #f5f5f5;
+            padding: 5px 5px;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+            text-align: left;
+            white-space: pre-line;
+
+        }
+
+        .custom-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-tooltip:hover .tooltip-content {
+  display: block;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  width: 800px; /* ajustez la largeur selon vos besoins */
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  top: 30px; /* position du tooltip par rapport à l'image */
+  left: -50%;
+  transform: translateX(-50%);
+  white-space: pre-wrap;
+  text-align: left;
+}
+ 
+    </style>
+</head>
+
+<body>
+
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <h1>Admin BD Oracle - Sauvegarde et restauration</h1>
+    </center>
+    <br>
+
+    <br>
+    <table>
+        <tr>
+            <th>
+                <p>Outils les plus utilisé</p>
+                <ul>
+                    <li>RMAN
+                        <ul>
+                            <li>Gestiionnaire de SAuvegarde BD</li>
+                        </ul>
+                    </li>
+                    <li>SQL * Loader
+                        <ul>
+                            <li>Importation de données</li>
+                        </ul>
+                    </li>
+
+                    <li>DATA Pump
+                        <ul>
+                            <li>Nouvel Outil</li>
+                            <li>Importation et exportation des objets (telque les table) Anisi que les données</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <hr>
+                <p>- Dsposer d'une sauvegarde fiable est sûre pour éviter la perte de données</p>
+                <p>- Cause de pertes de données : </p>
+                <ul>
+                    <li>Un crash matériel</li>
+                    <li>une Mauvaise manipulation de données</li>
+                    <li>virus ( corruption de données ) </li>
+                </ul>
+                <hr>
+                <br>
+
+                <ul>
+                    <li>
+                        <h2>1 . RMAN</h2>
+                        <ul>
+                            <li>
+                                <h4>Recovery Manager</h4>
+                                <ul>
+                                    <li>Installer avec la BD Oracle</li>
+                                    <li>Effectue des tâches de <strong>sauvegarde et de restauration de BD</strong></li>
+                                    <li> <strong>Automatise l'administration</strong> de vos stratégie de sauvegarde
+                                    </li>
+                                    <li> <strong>Le plus utilisé</strong> pour sauvegarde <strong>quotidiennes</strong>
+                                    </li>
+                                    <li>Permets au <strong>BDA</strong> de <strong>gérer des sauvegardes</strong> de
+                                        manière
+                                        <strong>souple et optimisée</strong>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>Ce qui est sauvegardé</h4>
+                                <p><strong>RMAN</strong> Permet de réaliser des sauvegardes :</p>
+                                <ul>
+                                    <li><strong>globales</strong> de la BD</li>
+                                    <li><strong>tablespace</strong> : espaces disque logiques</li>
+                                    <li><strong>datafiles</strong> : fichiers de données</li>
+                                    <li><strong>controlfiles</strong> : fichiers de contrôle</li>
+                                    <li><strong>archivelog</strong> : journaux de transactions </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <li>
+                                <strong>RMAN</strong> sauvegarde les données par <strong>bloc de données</strong>
+                                <ul>
+                                    <li>La BD Oracle utilise la métadonnées <strong>rowid</strong> pour identifier de
+                                        manière unique une line dans un bloc de données</li>
+                                    <li>les <strong>rowid</strong> est une structure qui contien les informations dont
+                                        la base de données a besoin pour accèder à une ligne</li>
+                                    <li>
+                                        <P style="color: rgb(224, 87, 8);">SELECT ROWID FROM employees WHERE employee_id
+                                            = 100 ;</P>
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <br>
+                            <li>
+                                <h4>Types de sauvegarde classique</h4>
+                                <ul>
+                                    <li><strong>complète</strong> : on sauvegarde toutes les données</li>
+                                    <li><strong>Incrémentielle</strong> : on sauvegarde uniquement les données
+                                        modifiées..
+                                        <ul>
+                                            <li><strong>Differentielle</strong> : depuis la dernière sauvegarde
+                                                <strong>complète</strong>
+                                            </li>
+                                            <li><strong>Incrémentielle (cumulative)</strong> depuis la dernière
+                                                sauvegarde quel que soit son type</li>
+                                        </ul>
+                                    </li>
+                                    <br>
+                                    <iframe width="560" height="315"
+                                        src="https://www.youtube.com/embed/ikf77CLBSog?si=phSGC_adP0oxWATX&amp;start=327"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <hr>
+                                <h4>1 - La stratégie de sauvegarde</h4>
+                                <hr>
+                                <h4>2 - Comparaison des types de sauvegardes</h4>
+                                <img src="typestra.png" alt="">
+
+                            </li>
+
+                            <br>
+                            <br>
+
+
+                            <li>
+
+
+                                <h4>Modes <strong>ARCHIVE</strong> vs <strong>NO ARCHIVE</strong></h4>
+                                <ul>
+                                    <li>
+                                        <h5>ARCHIVE</h5>
+
+                                        <strong>Objectif principal</strong>: Permettre la récupération à un point
+                                        antérieur dans le
+                                        temps. <br>
+                                        <strong>Espace disque</strong>: Requiert plus d'espace pour stocker les journaux
+                                        d'archivage.
+                                        <br>
+                                        <strong>Opérations</strong>: Supporte les opérations de sauvegarde en ligne et
+                                        permet la création
+                                        de bases de données en standby. <br>
+                                        <strong>Durabilité</strong>: Convient aux applications nécessitant une haute
+                                        disponibilité et une
+                                        protection contre la perte de données. <br>
+                                    </li>
+                                    <li>
+                                        <h5>NO ARCHIVE</h5>
+                                        <strong>Objectif principal</strong>: Optimisé pour des performances maximales
+                                        sans récupération
+                                        point-in-time. <br>
+                                        <strong>Espace disque</strong>: Utilise moins d'espace disque car il n'y a pas
+                                        de journaux
+                                        d'archivage. <br>
+                                        <strong>Opérations</strong>: Ne supporte pas les opérations de sauvegarde en
+                                        ligne ni la création
+                                        de bases de données en standby. <br>
+                                        <strong>Durabilité</strong>: Plus exposé aux risques de perte de données car il
+                                        n'y a pas de
+                                        traçabilité des transactions passées.<br>
+
+                                    </li>
+                                    <br>
+                                    <br>
+
+                                    <li>
+                                        Choisir entre les deux modes dépend largement de vos besoins en matière de
+                                        disponibilité, <br> de récupération et de performance.
+
+                                    </li>
+
+                                </ul>
+
+
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <br><br> <br><br>
+                    <hr>
+                    <br><br> <br><br>
+
+                    <li>
+                        <h2>2 . SQL * Loader</h2>
+
+                        <ul>
+
+                            <li><strong>Chargement de données:</strong>
+                                <p>SQL*Loader peut charger des données à partir de différents formats de fichiers tels
+                                    que les fichiers texte délimités, <strong>CSV</strong>, <br> les fichiers de
+                                    longueur fixe, etc.
+                                </p>
+                            </li>
+                            <li><strong>Transformation de données:</strong>
+                                <p>Il offre la possibilité de manipuler les données avant leur insertion dans la base de
+                                    données. <br> Par exemple, convertir des chaînes de caractères en majuscules ou en
+                                    minuscules, diviser ou combiner des colonnes, etc.
+                                </p>
+                            </li>
+                            <li><strong>Gestion des erreurs:</strong>
+                                <p>SQL*Loader permet de spécifier un nombre maximal d'erreurs avant de s'arrêter. <br>
+                                    Les enregistrements erronés peuvent être sauvegardés dans un fichier d'erreurs pour
+                                    analyse.</p>
+                            </li>
+                        </ul>
+
+                        <br>
+                        <p>Pour exécuter SQL*Loader, vous avez généralement besoin de <strong>trois fichiers:</strong>
+                        </p>
+                        <ul>
+                            <li><strong>Fichier de données</strong> contient les données à charger.</li>
+                            <li><strong>Fichier de contrôle</strong> spécifie le format des fichiers de données et les
+                                mappages de colonnes.</li>
+                            <li><strong>Fichier de paramètres</strong> Ce fichier spécifie des paramètres de chargement pour SQLLoader <br>
+                                qui ne sont pas toujours faciles à transmettre via la ligne de commande.</li>
+                        </ul>
+
+                        <h5>Exemple</h5>
+
+                        <ul>
+                            <li>
+                                <p>Fichier de données (persons.dat):</p>
+                                <code>John,Smith,30
+Jane,Doe,25
+                                </code>
+                            </li>
+                            <li>
+                                <p>Fichier de contrôle (persons.ctl):</p>
+                                <code>LOAD DATA
+INFILE 'persons.dat'
+INTO TABLE users
+FIELDS TERMINATED BY ','
+( first_name CHAR(50),
+  last_name CHAR(50),
+  age INTEGER
+)
+                                </code>
+                            </li>
+                            <li>
+                                <p>Fichier de paramètres (persons.par):</p>
+                                <code>USERID=username/password@db
+CONTROL=persons.ctl
+LOG=load.log
+BAD=bad_records.bad
+DATA=persons.dat
+ERRORS=100
+DIRECT=TRUE
+                                </code>
+                            </li>
+                        </ul>
+                        <h5>Execution avec le fichier de paramètres:</h5>
+                        <code>sqlldr persons=persons.par</code>
+
+
+                    </li>
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <br>
+
+                    <li>
+                      
+
+                        <h2>3. Oracle Data Pump </h2>
+
+                        <p>Oracle Data Pump est un utilitaire fourni par Oracle qui permet d'importer et d'exporter des
+                            données entre des BD Oracle. <br>
+                            Contrairement à <strong>SQL*Loader</strong> qui est principalement utilisé pour charger des
+                            données à partir de fichiers <strong>externes</strong>, <br>
+                            Data Pump est utilisé pour migrer des données <strong>entre</strong> BD, y
+                            compris les métadonnées. Il remplace les anciens utilitaires <strong>exp et imp</strong>.
+                        </p>
+
+                      
+
+                            <p style="color: #8a3200;">doit être exécutée en tant que <strong>SYSDBA</strong></p>
+<br>
+                       
+
+                        
+
+
+                        <ul> 
+
+                         
+                    <li>
+                        <h4>1. Principales commandes:</h4>
+                        <ul>
+                            <li><strong>expdp</strong>: Exporte des données et des métadonnées à partir d'une base de
+                                données Oracle.</li>
+                            <li><strong>impdp</strong>: Importe des données et des métadonnées dans une base de données
+                                Oracle.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <h4>2. Utilisation de base:</h4>
+                        <ul>
+                            <li>
+                                <h5>Export avec Data Pump (expdp):</h5>
+                                <p>Pour exporter une table entière:</p>
+                                <code>expdp username/password@db schemas=SCHEMA_NAME directory=DIR_NAME dumpfile=export.dmp logfile=export.log</code>
+                                <ul>
+                                    <strong>schemas</strong>: Nom du schéma à exporter. <br>
+                                    <strong>directory</strong>: Nom de l'objet DIRECTORY Oracle où les fichiers seront créés. <br>
+                                    <strong>dumpfile</strong>: Nom du fichier dump créé. <br>
+                                    <strong>logfile</strong>: Nom du fichier journal pour l'exportation. <br>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <h5>Import avec Data Pump (impdp):</h5>
+                                <p> Pour importer une table entière:</p>
+                                <code>impdp username/password@db schemas=SCHEMA_NAME directory=DIR_NAME dumpfile=export.dmp logfile=import.log</code>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>3. Exemples avancés:</h4>
+
+                        <li><h5>Exporter certaines tables:</h5>
+                            <code>expdp username/password@db tables=SCHEMA_NAME.TABLE_NAME1,SCHEMA_NAME.TABLE_NAME2 directory=DIR_NAME dumpfile=export_tables.dmp logfile=export_tables.log</code>
+                        </li>
+                        <li><h5>Exporter avec des requêtes:</h5>
+                        <p>Pour exporter uniquement les lignes d'une table répondant à une condition particulière:</p>
+                        <code>expdp username/password@db tables=SCHEMA_NAME.TABLE_NAME query=\"WHERE condition\" directory=DIR_NAME dumpfile=export_query.dmp logfile=export_query.log
+                        </code>
+                        </li>
+                        <li><h5>Remappage lors de l'import:</h5>
+                        <p>Si vous souhaitez remapper un schéma source vers un schéma cible:</p>
+                        <code>impdp username/password@db remap_schema=SOURCE_SCHEMA:TARGET_SCHEMA directory=DIR_NAME dumpfile=export.dmp logfile=import_remap.log</code>
+
+                    
+                    </li>
+                        
+                    </li>
+                    <li>
+                        <h4>4. Conseils:</h4>
+                        <p>Assurez-vous d'avoir créé un objet DIRECTORY Oracle correspondant à un répertoire physique sur <br>
+                            le serveur de base de données.<br>
+                            Les droits appropriés doivent être accordés à l'utilisateur pour accéder à cet objet DIRECTORY. <br>
+                            Oracle Data Pump est multithreaded et est donc souvent plus rapide que les anciens utilitaires  
+                            exp et imp.</p>
+                    </li>
+                </ul>
+
+                </ul>
+
+                </li>
+                </ul>
+
+            </th>
+            <td>
+                <br><br><br><br><br><br>
+                <br><br><br><br><br><br>
+                <br><br><br>
+                <img src="blocs.png" alt=""> <br>
+                <br>
+                <br>
+                <img src="bloc.png" alt="">
+                <br>
+                <hr>
+                <img style="border-left: 1px solid black;  padding-left: 10px; " src="stra.png" alt="">
+                <hr>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                <img style="width: 70%;" src="archive.png" alt="">
+                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br> 
+               
+                <img style="width: 50%;" src="https://3.bp.blogspot.com/_f48bGre1-7k/Si0Rl41MqYI/AAAAAAAAI7M/E0MkBeM3oG4/w1200-h630-p-k-no-nu/clip_image001.jpg"
+                    alt="">
+
+                    <br><br><br><br><br><br><br><br><hr><br><hr>
+                    <br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br>
+
+
+                    <div class="custom-tooltip">
+                        <img style="width: 95%;" src="migrate.png" alt="">
+                        <span class="tooltip-content">
+L'image présente un diagramme d'architecture du processus de migration d'une base de données sur site vers le cloud à l'aide d'Oracle Data Pump pour exporter les données sur site vers Oracle ACFS dans une région Oracle Cloud.
+
+La région Oracle Cloud dispose de VCN, d'une passerelle de routage dynamique, d'une passerelle de service et d'un stockage d'objets pour la sauvegarde et la restauration RMAN. La région possède un domaine de disponibilité avec Oracle ACFS, un sous-réseau privé contenant des serveurs d'applications, un sous-réseau public (client), un sous-réseau privé (sauvegarde) et une instance Oracle Database Exadata Cloud Service. Les sous-réseaux ont des tables de routage et des listes de sécurité. La restauration RMAN extrait de la banque d'objets via la passerelle de service vers le système de base de données Exadata.
+
+Sur site : Customer Premises Equipment (CPE), Oracle Database Enterprise Edition (16 coeurs), storage, Data Pump et Oracle Instant Client. Il existe une connexion privée entre les sites et le cloud qui utilise IPSec VPN et Oracle FastConnect.
+
+Dans le centre de données sur site, le client instantané Oracle et le processus d'importation Oracle Data Pump utilisent SQL*Net pour envoyer des données dans les deux sens au système de base de données Exadata. Les sauvegardes sont stockées dans Object Storage dans la région Oracle Cloud. Oracle Data Pump Export utilise une connexion scp pour transférer des données vers Oracle ACFS. Les données circulent dans les deux sens entre Exadata DB System et Oracle ACFS.
+
+Oracle RMAN Restaurer les informations circule dans les deux directions, via la passerelle de service, entre Object Storage (Backup) et Exadata DB System.
+                        </span>
+                      </div>
+
+
+                     
+            </td>
+        </tr>
+
+        
+        
+</body>
+
+</html>
