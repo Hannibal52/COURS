@@ -343,6 +343,44 @@
 
 
 
+        <button onclick="copyToClipboard('playbook12')">Copier</button>
+        
+        <p>
+          gérer et déployer des applications sur des machines Windows depuis un poste Linux. Pour cela, Ansible utilise le protocole Windows Remote Management (<strong>WinRM</strong>) pour exécuter des commandes à distance sur des hôtes Windows.
+        </p>
+        <p><strong>Prérequis:</strong></p>
+        <ul>
+          <li>Activez WinRM sur l'hôte Windows cible.</li>
+          <li>Installez les bibliothèques Python nécessaires ( <strong>pywinrm</strong> ) sur votre poste Linux.</li>
+        </ul>
+        <div class="playbook" id="playbook12">
+---
+- name: Deployer une application sur Windows
+  hosts: windows_server
+  gather_facts: no
+  tasks:
+    - name: Copier le fichier de l'application sur le poste Windows
+      win_copy:
+        src: /path/to/app.zip
+        dest: C:\path\on\windows\app.zip
+
+    - name: Extraire le fichier de l'application
+      win_unzip:
+        src: C:\path\on\windows\app.zip
+        dest: C:\path\to\extract\to
+
+    - name: Exécuter le programme d'installation ou autre commande nécessaire
+      win_command: C:\path\to\extract\to\install.exe
+
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+         </div>
+
+
+
+
       
 
 
