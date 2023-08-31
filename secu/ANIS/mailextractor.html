@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+
+
+
+	<title>Tutoriel Configuration Routeur Cisco</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 8px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		.language-bash {
+			background-color: #FF0000;
+		}
+
+		li {
+
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<h1> Azure key Vault</h1>
+	</header>
+
+
+
+	<div class="container">
+
+		<pre><code class="language-python">
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from bs4 import BeautifulSoup
+import urllib.request
+import random
+import os
+import time
+import sqlite3
+from sqlite3 import Error
+import sys
+import re
+from fake_useragent import UserAgent
+from socket import timeout
+from urllib.error import HTTPError, URLError
+
+imageExt = ["jpeg", "exif", "tiff", "gif", "bmp", "png", "ppm", "pgm", "pbm", "pnm", "webp", "hdr", "heif", "bat", "bpg", "cgm", "svg"]
+ua = UserAgent()
+
+def menu():
+    try:
+        clear()
+        print("#"*50)
+        print("1 - Rechercher dans l'url")
+        print("2 - Rechercher dans l'url (Deux niveaux)")
+        print("3 - Lister les emails")
+        print("4 - Enregistrer les emails en .txt")
+        print("5 - Supprimer les Emails depuis la BDD")
+        print("6 - Sortir")
+        print("#"*50)
+        
+        opcion = input("Entrer une option: ")
+        if (opcion == "1"):
+            print("")
+            print ("Example d'URL: http://www.python.com")
+            url = str(input("Enterer l'URL: "))
+            extractOnlyUrl(url)
+            input("Appuyer sur une touche pour continuer")
+            menu()
+            
+        if (opcion == "2"):
+            print("")
+            print ("Example d'URL: http://www.python.com")
+            url = str(input("Enterer l'URL: "))
+            extractUrl(url)
+            input("Appuyer sur une touche pour continuer")
+            menu()
+        elif (opcion == "3"):
+            ListerTout("Emails.db")
+
+        elif (opcion == "4"):
+            RemplacerTout("Emails.db")
+				
+
+        elif (opcion == "5"):
+            deleteAll("Emails.db")
+		
+        elif (opcion == "6"):
+            sys.exit(0)
+
+        else:			
+            print("")
+            print ("Option incorrect")
+            time.sleep(3)
+            clear()
+            menu()
+	
+    except KeyboardInterrupt:
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    except Exception as e:
+        print (e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+def insertEmail(db_file, email, frase, url):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+        c.execute("INSERT INTO emails (phrase, email, url) VALUES (?,?,?)", (frase, email, url))
+        conn.commit()
+        conn.close()
+
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    finally:
+        conn.close()
+
+def searchEmail(db_file, email, frase):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+        sql = 'SELECT COUNT(*) FROM emails where email LIKE "%' + str(email) + '%" AND phrase LIKE "%' + str(frase) + '%"'
+        result = c.execute(sql).fetchone()
+        conn.close()
+
+        return (result[0])
+
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    finally:
+        conn.close()
+
+def CreeTable(db_file, delete = False):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+
+        if(delete == True):
+            c.execute('drop table if exists emails')			
+
+        sql = '''create table if not exists emails 
+				(ID INTEGER PRIMARY KEY AUTOINCREMENT,
+				 phrase varchar(500) NOT NULL,
+				 email varchar(200) NOT NULL,
+				 url varchar(500) NOT NULL)'''
+
+        c.execute(sql)
+        conn.close()
+
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    finally:
+        conn.close()
+
+
+def RemplacerTout(db_file):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+        sql = 'SELECT COUNT(*) FROM emails'
+        result = c.execute(sql).fetchone()
+
+        if(result[0] == 0):
+            print("Pas d'email")
+            input("Appuyer sur une touche pour continuer")
+            menu()
+			
+        else:
+            nameFile = str(input("Nom du fichier: "))
+            print("")
+            print("Enregistrement...")
+			
+            f = open(nameFile + ".txt", "w")
+		
+            c.execute('SELECT * FROM emails')
+			
+            count = 0
+			
+            for i in c:
+                count += 1
+                f.write("")
+                f.write("Number: " + str(count) + '\n')
+                f.write("Phrase: " + str(i[1]) + '\n')
+                f.write("Email: " + str(i[2]) + '\n')
+                f.write("Url: " + str(i[3]) + '\n')
+                f.write("-------------------------------------------------------------------------------" + '\n')
+				
+            f.close()
+			
+        conn.close()
+		
+        input("Appuyer sur une touche pour continuer")
+        menu()
+		
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+		
+    except Exception as o:
+        print(o)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+		
+    finally:
+        conn.close()
+
+
+def deleteAll(db_file):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+        sql = 'SELECT COUNT(*) FROM emails'
+        result = c.execute(sql).fetchone()
+
+        if(result[0] == 0):
+            print("Pas d'emails")
+            input("Appuyer sur une touche pour continuer")
+            menu()
+		
+		
+        else:			
+            option = str(input("Supprimer les " + str(result[0]) + " emails? O/N :"))
+			
+            if(option == "O" or option == "o"):
+                c.execute("DELETE FROM emails")
+                conn.commit()
+                CreeTable("Emails.db", True)
+                input("Appuyer sur une touche pour continuer")
+                menu()
+
+            elif(option == "N" or option == "n"):
+                print("Annulée...")
+                time.sleep(2)
+                menu()
+
+            else:
+                print("Select a correct option")
+                time.sleep(2)
+                deleteAll(db_file)
+				
+        conn.close()
+
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    finally:
+        conn.close()
+
+def ListerTout(db_file):
+    try:
+        conn = sqlite3.connect(db_file)
+        c = conn.cursor()
+
+        sql = 'SELECT COUNT(*) FROM emails'
+        result = c.execute(sql).fetchone()
+
+        if(result[0] == 0):
+            print("La base est vide")
+            input("Appuyer sur une touche pour continuer")
+            menu()
+
+        c.execute("SELECT * FROM emails")
+
+        for i in c:
+
+            print ("")
+            print ("Number: " + str(i[0]))
+            print ("Phrase: " + str(i[1]))
+            print ("Email: " + str(i[2]))
+            print ("Url: " + str(i[3]))
+            print ("-------------------------------------------------------------------------------")
+
+        conn.close()
+		
+        print ("")
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    except Error as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    finally:
+        conn.close()
+
+def extractOnlyUrl(url):
+    try:
+        print ("Recherche d'e-mails...")
+
+        count = 0
+        listUrl = []
+
+        req = urllib.request.Request(
+            url, 
+            data=None, 
+            headers={
+            'User-Agent': ua.random
+            })
+
+        try:
+            conn = urllib.request.urlopen(req, timeout=10)
+
+        except timeout:
+            raise ValueError('Timeout ERROR')
+
+        except (HTTPError, URLError):
+            raise ValueError('Mauvaise Url...')
+
+        status = conn.getcode()
+        contentType = conn.info().get_content_type()
+
+        if(status != 200 or contentType == "audio/mpeg"):
+            raise ValueError('Mauvais URL...')
+
+
+        html = conn.read().decode('utf-8')
+
+        emails = re.findall(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}', html)
+
+        for email in emails:
+            if (email not in listUrl and email[-3:] not in imageExt):
+                count += 1
+                print(str(count) + " - " + email)
+                listUrl.append(email)
+                if(searchEmail("Emails.db", email, "Especific Search") == 0):
+                    insertEmail("Emails.db", email, "Especific Search", url)
+
+        print("")
+        print("***********************")
+        print(str(count) + " emails trouvés")
+        print("***********************")
+
+    except KeyboardInterrupt:
+        input("")
+        menu()
+
+    except Exception as e:
+        print (e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    
+def extractUrl(url):
+    print ("Recherche d'emails...")
+    try:
+        count = 0
+        listUrl = []
+        req = urllib.request.Request(
+            url, 
+            data=None, 
+            headers={
+            'User-Agent': ua.random
+            })
+
+        try:
+            conn = urllib.request.urlopen(req, timeout=10)
+
+        except timeout:
+            raise ValueError('Timeout ERROR')
+
+        except (HTTPError, URLError):
+            raise ValueError('Bad Url...')
+
+        status = conn.getcode()
+        contentType = conn.info().get_content_type()
+
+        if(status != 200 or contentType == "audio/mpeg"):
+            raise ValueError('Bad Url...')
+
+        html = conn.read().decode('utf-8')
+		
+        emails = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", html)
+        print ("Searching in " + url)
+		
+        for email in emails:
+            if (email not in listUrl and email[-3:] not in imageExt):
+                count += 1
+                print(str(count) + " - " + email)
+                listUrl.append(email)
+
+        soup = BeautifulSoup(html, "lxml")
+        links = soup.find_all('a')
+
+        print("Analyse d'url :" + str(len(links) + 1) )
+        time.sleep(2)
+
+        for tag in links:
+            link = tag.get('href', None)
+            if link is not None:
+                try:
+                    print ("Recherche dans " + link)
+                    if(link[0:4] == 'http'):
+                        req = urllib.request.Request(
+                        link, 
+                        data=None, 
+                        headers={
+                        'User-Agent': ua.random
+                        })
+
+                        try:
+                            f = urllib.request.urlopen(req, timeout=10)
+
+                        except timeout:
+                            print("Bad Url..")
+                            time.sleep(2)
+                            pass
+
+                        except (HTTPError, URLError):
+                            print("Bad Url..")
+                            time.sleep(2)
+                            pass
+
+                        status = f.getcode()
+                        contentType = f.info().get_content_type()
+
+                        if(status != 200 or contentType == "audio/mpeg"):
+                            print("Bad Url..")
+                            time.sleep(2)
+                            pass
+						
+                        s = f.read().decode('utf-8')
+
+                        emails = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", s)
+
+                        for email in emails:
+                            if (email not in listUrl and email[-3:] not in imageExt):
+                                count += 1
+                                print(str(count) + " - " + email)
+                                listUrl.append(email)
+                                if(searchEmail("Emails.db", email, "Especific Search") == 0):
+                                    insertEmail("Emails.db", email, "Especific Search", url)
+
+    
+                except Exception:
+                    pass
+		
+        print("")
+        print("***********************")
+        print(str(count) + " emails were found")
+        print("***********************")
+
+    except KeyboardInterrupt:
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    except Exception as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+def extractKeywordsList(txtFile):
+    f = open(txtFile, 'r')
+    text = f.read()
+    keywordList = text.split(sep='\n')
+    for key in keywordList:
+        print(key)
+
+
+
+def clear():
+    try:
+        if os.name == "posix":
+            os.system("clear")
+        elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system("cls")
+    except Exception as e:
+        print(e)
+        input("Appuyer sur une touche pour continuer")
+        menu()
+
+    
+def Main():
+    clear()
+    CreeTable("Emails.db", False)	
+    menu()
+
+Main()
+	</code></pre>
+
+
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+
+</body>
+
+</html>
