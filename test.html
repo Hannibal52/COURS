@@ -1,28 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Dimensions de la fenêtre</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensibilisation à la Sécurité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+
+        .thanks {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <p id="largeur">Largeur: </p>
-    <p id="hauteur">Hauteur: </p>
-
-    <script>
-        function afficherDimensions() {
-            var largeur = window.innerWidth;
-            var hauteur = window.innerHeight;
-
-            document.getElementById('largeur').innerHTML = "Largeur: " + largeur;
-            document.getElementById('hauteur').innerHTML = "Hauteur: " + hauteur;
-        }
-
-        // Affiche les dimensions initiales
-        afficherDimensions();
-
-        // Met à jour les dimensions lorsqu'on redimensionne la fenêtre
-        window.onresize = afficherDimensions;
-    </script>
+<div class="container">
+    <h1>Sensibilisation à la Sécurité</h1>
+    <p>Les tutoriels de cette section sont conçus pour éduquer sur les méthodes de hacking afin de mieux se protéger.</p>
+    <p class="warning">Je ne suis pas responsable de la manière dont vous choisissez d'utiliser ces tutoriels. Ils sont uniquement destinés à des fins éducatives. Il est illégal d'attaquer quelqu'un sans son consentement explicite.</p>
+    <div class="thanks">
+        Un grand merci à mon formateur <strong>Anis Hmidach</strong> pour son soutien et ses précieuses connaissances.
+    </div>
+</div>
 
 </body>
 </html>
