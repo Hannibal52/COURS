@@ -1,470 +1,277 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
-  <style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types d'attaques sur Internet et Solutions</title>
+    
+    
+    <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-      color: #333;
-      display: flex;
-      justify-content: space-between;
+        font-family: Arial, sans-serif;
     }
 
-    .container {
-      width: 45%;
+    .responsive-table {
+        overflow-x: auto; /* Permet le défilement horizontal */
     }
 
-    a {
-      color: #007bff;
-      text-decoration: none;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
     }
 
-    a:hover {
-      color: #0056b3;
+    table, th, td {
+        border: 1px solid #ddd;
     }
 
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 2px solid #007bff;
+    th, td {
+        padding: 10px;
+        text-align: left;
     }
 
-    .sticky {
-      position: sticky;
-      top: 0;
+    th {
+        background-color: #f2f2f2;
     }
+</style>
 
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border-radius: 4px;
-      border: 2px solid #ccc;
-    }
-
-    mark {
-      background-color: yellow;
-      color: black;
-    }
-  </style>
+    
 </head>
 
 <body>
-  <div class="container" style="width: 35% ">
 
-    <h2>Acronyms</h2>
-    <input type="text" id="search" placeholder="Search acronyms...">
-
-
-    <div id="content" style="height: 100vh; overflow-y: auto;"></div>
-  </div>
-
-  <div class="container sticky" style="width: 65% ">
-    <h2>Details</h2>
-    <iframe id="infoframe" style="height: 100vh;"></iframe>
-  </div>
-
-
-  <script>
-    let acronyms = [
-
-    ["2RP", "Reseau Radioelectrique Prive", "Le 2RP (Reseau Radioelectrique Prive) est un réseau de télécommunications sans fil utilisé dans le cadre d'une infrastructure privée pour des communications internes sécurisées."],
-    ["3RD", "Reseau Radioelectrique Reserve aux Donnees", "Le 3RD (Reseau Radioelectrique Reserve aux Donnees) est un réseau sans fil spécifiquement conçu pour le transfert de données, offrant une connectivité et une bande passante dédiées aux transmissions de données."],
-    ["3RP", "Reseau Radioelectrique a Ressources Partagees", "Le 3RP (Reseau Radioelectrique a Ressources Partagees) est un réseau sans fil où les ressources, telles que la bande passante, sont partagées entre plusieurs utilisateurs pour permettre une connectivité efficace et une utilisation optimale des ressources disponibles."],
-    ["ADSL", "Asymmetrical bit rate Digital Subscriber Line", "L'ADSL (Asymmetrical bit rate Digital Subscriber Line) est une technologie de transmission de données à haut débit utilisée pour fournir une connectivité Internet sur les lignes téléphoniques standard. Elle permet des débits asymétriques, c'est-à-dire des vitesses de téléchargement et de téléversement différentes."],
-    ["AES", "Advanced Encryption Standard", "L'AES (Advanced Encryption Standard) est un algorithme de chiffrement utilisé pour sécuriser les communications et les données. Il est largement utilisé pour le cryptage et le décryptage des données sensibles, offrant une protection robuste contre les attaques informatiques."],
-    ["AI n°5", "Alphabet International n°5", "L'AI n°5 (Alphabet International n°5) est un système de classification international pour les signaux et les fréquences radioélectriques. Il est utilisé pour l'attribution et la gestion des ressources fréquentielles afin de garantir une utilisation efficace du spectre radioélectrique."],
-    ["AMRF/T", "Acces Multiple a Repartition en Frequence / dans le Temps", "L'AMRF/T (Acces Multiple a Repartition en Frequence / dans le Temps) est une méthode d'accès utilisée dans les systèmes de communication sans fil pour permettre à plusieurs utilisateurs de partager la même bande de fréquences en utilisant des plages de temps ou des plages de fréquences différentes."],
-    ["ANSI", "American National Standard Institute", "L'ANSI (American National Standard Institute) est un organisme de normalisation aux États-Unis qui établit des normes pour diverses industries, y compris les technologies de l'information et des communications. Les normes ANSI jouent un rôle essentiel dans l'interopérabilité et la compatibilité des systèmes."],
-    ["API", "Application Programming Interface", "Une API (Application Programming Interface) est un ensemble de règles et de protocoles qui permettent à différents logiciels de communiquer entre eux. Elle définit les méthodes, les structures de données et les conventions à suivre pour l'échange d'informations entre les applications."],
-    ["ARP", "Adress Resolution Protocol", "L'ARP (Adress Resolution Protocol) est un protocole de communication utilisé dans les réseaux informatiques pour associer une adresse IP à une adresse physique (MAC) d'un appareil connecté au réseau. Il permet d'établir la correspondance entre les adresses IP et les adresses MAC pour la transmission des données."],
-    ["ARQ", "Automatic Repeat reQuest", "L'ARQ (Automatic Repeat reQuest) est un mécanisme utilisé dans les protocoles de communication pour assurer la fiabilité de la transmission des données. Il permet de détecter et de corriger les erreurs lors de la transmission en demandant la retransmission des données corrompues ou perdues."],
-    ["ASCII", "American Standard Code for Information Interchange", "L'ASCII (American Standard Code for Information Interchange) est un système de codage qui attribue des valeurs numériques aux caractères utilisés dans les ordinateurs et les dispositifs de communication. Il permet la représentation et l'échange de texte dans les systèmes informatiques."],
-    ["ASN-1", "Abstract Syntax Notation", "ASN-1 (Abstract Syntax Notation) est une notation standardisée utilisée pour décrire la structure et le contenu des messages échangés entre les systèmes informatiques. Elle définit les règles pour la représentation des données et facilite l'interopérabilité entre les différents systèmes."],
-    ["ASP", "Application Service Provider", "Un ASP (Application Service Provider) est un fournisseur de services qui propose des applications logicielles et des services informatiques à ses clients via Internet ou un réseau. Les clients accèdent aux applications et aux services à la demande, sans avoir besoin de les installer localement."],
-    ["ATM", "Asynchronous Transfer Mode", "L'ATM (Asynchronous Transfer Mode) est une technologie de transmission de données qui divise les informations en petits paquets, appelés cellules, pour les transmettre sur un réseau. Elle offre une haute capacité de transmission et une faible latence, ce qui la rend adaptée aux applications à large bande passante, telles que la voix, la vidéo et les données."],
-    ["B2B", "Business to Business", "Le B2B (Business to Business) est un modèle commercial dans lequel les transactions commerciales se font entre deux entreprises. Il s'agit de l'échange de biens, de services ou d'informations entre des partenaires commerciaux plutôt qu'entre une entreprise et un consommateur final."],
-    ["B2C", "Business to Consumer", "Le B2C (Business to Consumer) est un modèle commercial dans lequel les transactions commerciales se font entre une entreprise et des consommateurs finaux. Il s'agit de la vente directe de biens ou de services aux clients individuels plutôt qu'à d'autres entreprises."],
-    ["BASIC", "Beginner's All purpose Symbolic Instruction Code", "BASIC (Beginner's All purpose Symbolic Instruction Code) est un langage de programmation de haut niveau conçu pour être facile à apprendre et à utiliser. Il a été largement utilisé dans l'enseignement de la programmation et le développement de logiciels dans les premières années de l'informatique."],
-  
- 
-    ["BBS", "Bulletin Board System", "Un BBS (Bulletin Board System) est un système informatique en ligne qui permet aux utilisateurs de se connecter et d'échanger des messages, de télécharger des fichiers et de participer à des discussions sur des sujets spécifiques."],
-    ["BERT/BLERT", "Bit Error Rate Transfer / BLoc Error Rate Transfer", "BERT (Bit Error Rate Transfer) et BLERT (BLoc Error Rate Transfer) sont des mesures utilisées pour évaluer la qualité et la fiabilité d'une transmission de données. Ils représentent le taux d'erreurs de bits ou de blocs détectées lors de la transmission, ce qui permet d'évaluer les performances du canal de communication."],
-    ["BIND", "Berkeley Internet Name Daemon/Domain.", "BIND (Berkeley Internet Name Daemon/Domain) est un logiciel de serveur de noms de domaine utilisé pour la résolution des noms sur Internet. Il convertit les noms de domaine en adresses IP et permet ainsi de localiser les ressources sur le réseau."],
-    ["BIOS", "Basic Input/Output System", "Le BIOS (Basic Input/Output System) est un firmware présent sur les cartes mères des ordinateurs. Il fournit les instructions de base pour démarrer l'ordinateur et effectuer des opérations d'entrée/sortie de base, telles que la gestion du clavier, de l'affichage et des disques."],
-    ["CATV", "Community Antenna TeleVision", "CATV (Community Antenna TeleVision) est un système de distribution de signaux de télévision par câble qui permet aux foyers de recevoir des chaînes de télévision via un réseau câblé. Il offre une plus grande variété de chaînes et une meilleure qualité de signal par rapport à la télévision traditionnelle terrestre."],
-    ["CCETT", "Centre Commun d'Etude de Telediffusion et de Telecommunications", "Le CCETT (Centre Commun d'Etude de Telediffusion et de Telecommunications) était un centre de recherche français spécialisé dans les technologies de la télédiffusion et des télécommunications. Il a joué un rôle important dans le développement de normes et de technologies utilisées dans ces domaines."],
-    ["CCIR", "Comite Consultatif International des Radiocommunications", "Le CCIR (Comite Consultatif International des Radiocommunications) était un organisme international chargé de la coordination et de la réglementation des radiocommunications. Il a été remplacé par l'UIT-R (Union Internationale des Télécommunications - Secteur des Radiocommunications)."],
-    ["CCITT", "Comite Consultatif International Telegraphique et Telephonique", "Le CCITT (Comite Consultatif International Telegraphique et Telephonique) était un organisme international chargé de la normalisation des télécommunications. Il a été remplacé par l'UIT-T (Union Internationale des Télécommunications - Secteur de la Normalisation des Télécommunications)."],
-    ["CDMA", "Code Division Multiple Access", "CDMA (Code Division Multiple Access) est une technique de modulation utilisée dans les systèmes de télécommunications pour permettre à plusieurs utilisateurs de partager simultanément la même bande de fréquences. Elle est couramment utilisée dans les réseaux mobiles pour la transmission de voix et de données."],
-    ["CEPT", "Conference Europeenne des Postes et Telecommunications", "La CEPT (Conference Europeenne des Postes et Telecommunications) est une organisation internationale qui regroupe les administrations et les opérateurs de télécommunications en Europe. Elle vise à promouvoir la coopération et l'harmonisation des politiques et des réglementations dans le domaine des communications en Europe."],
-    ["CGI", "Common Gateway Interface", "CGI (Common Gateway Interface) est un protocole qui permet aux serveurs web d'exécuter des programmes externes et de générer des pages web dynamiques en fonction des demandes des utilisateurs. Il est utilisé pour créer des formulaires interactifs, des applications web et d'autres fonctionnalités avancées sur les sites web."],
-    ["CNET", "Centre National d'Etudes des Telecommunications", "Le CNET (Centre National d'Etudes des Telecommunications) était un centre de recherche français spécialisé dans les télécommunications. Il a contribué au développement de nombreuses technologies et normes dans le domaine des télécommunications en France."],
-    ["CNIL", "Commission Nationale de l’Informatique et des Libertes", "La CNIL (Commission Nationale de l’Informatique et des Libertes) est une autorité administrative indépendante en France chargée de veiller à la protection des données personnelles et à la vie privée des individus. Elle joue un rôle essentiel dans la réglementation et la supervision des activités liées à la collecte, au traitement et à l'utilisation des données personnelles."],
-    ["COBOL", "COmmon Business Oriented Language", "COBOL (COmmon Business Oriented Language) est un langage de programmation orienté vers les applications commerciales et les systèmes d'entreprise. Il a été largement utilisé dans les années 1960 et 1970 pour le développement de logiciels de gestion et de traitement des données."],
-    ["CORBA", "Common Object Request Broker Architecture", "CORBA (Common Object Request Broker Architecture) est une architecture logicielle qui permet à des objets répartis sur un réseau de communiquer et de s'échanger des données de manière transparente. Il fournit un mécanisme de communication inter-objets indépendant de la plate-forme et du langage de programmation."],
-    ["CRC", "Cyclic Redundancy Check.", "Le CRC (Cyclic Redundancy Check) est une technique de détection d'erreurs utilisée dans les systèmes de communication pour vérifier l'intégrité des données transmises. Il consiste à calculer un code de contrôle basé sur le contenu des données, et à le comparer au code reçu pour déterminer si des erreurs de transmission se sont produites."],
-    ["CSMA/CD", "Carrier Sense Multiple Access / Collision Detection", "CSMA/CD (Carrier Sense Multiple Access / Collision Detection) est une méthode d'accès utilisée dans les réseaux Ethernet pour gérer le partage du support de transmission. Les appareils détectent la présence de signaux avant de transmettre et, en cas de collision, utilisent une méthode de détection des collisions pour éviter les conflits."],
-    ["CT2/CAI", "Cordless Telephone 2d generation / Common Air Interface", "CT2/CAI (Cordless Telephone 2d generation / Common Air Interface) est un système de téléphonie"],
-  
-    ["CTI", "Couplage Telephone Informatique / Computer Telephony Integration", "Le CTI (Couplage Telephone Informatique / Computer Telephony Integration) est une technologie qui permet l'intégration des systèmes de téléphonie et des applications informatiques. Il permet d'établir des liens entre les téléphones et les ordinateurs, facilitant ainsi les fonctionnalités avancées telles que le suivi des appels, le routage intelligent et l'intégration de la téléphonie dans les applications logicielles."],
-    ["DAEMON", "Disk And Execution MONitor", "Un DAEMON (Disk And Execution MONitor) est un programme informatique qui s'exécute en arrière-plan sur un système d'exploitation. Il effectue des tâches de surveillance, de gestion et de contrôle des ressources système, telles que les processus, les fichiers et les services."],
-    ["DCE", "Data Circuit Equipment", "DCE (Data Circuit Equipment) est un équipement de télécommunications qui fournit une interface entre les appareils de données, tels que les ordinateurs, et les lignes de communication. Il assure la conversion et l'adaptation des signaux pour permettre la transmission des données sur le réseau."],
-    ["DCOM", "Distributed Component Object Model", "DCOM (Distributed Component Object Model) est un modèle d'architecture logicielle qui permet aux objets de communication de s'exécuter sur différents ordinateurs d'un réseau. Il facilite l'intégration et la communication entre les composants logiciels distribués, en permettant l'accès aux objets distants comme s'ils étaient locaux."],
-    ["DCS", "Digital Cellular System", "Le DCS (Digital Cellular System) est un système de téléphonie mobile numérique qui utilise des technologies de transmission numérique pour la communication sans fil. Il offre des fonctionnalités avancées par rapport aux systèmes analogiques, notamment une meilleure qualité audio, une meilleure sécurité et une plus grande capacité de réseau."],
-    ["DECT", "Digital Enhanced Cordless Telephone", "Le DECT (Digital Enhanced Cordless Telephone) est un standard de téléphonie sans fil numérique utilisé pour les téléphones sans fil domestiques et professionnels. Il offre une meilleure qualité audio, une portée plus étendue et des fonctionnalités supplémentaires par rapport aux technologies précédentes."],
-    ["DES", "Data Encryption Standard", "Le DES (Data Encryption Standard) est un algorithme de chiffrement symétrique largement utilisé pour la protection des données. Il utilise une clé de 56 bits pour chiffrer et déchiffrer les données, offrant une sécurité adéquate pour de nombreux scénarios d'utilisation."],
-    ["DHCP", "Dynamic Host Configuration Protocol", "Le DHCP (Dynamic Host Configuration Protocol) est un protocole de réseau qui permet aux appareils d'obtenir automatiquement une configuration réseau, telle qu'une adresse IP, un masque de sous-réseau et une passerelle par défaut, lorsqu'ils se connectent à un réseau. Il simplifie la configuration des appareils et facilite la gestion des adresses IP dans un réseau."],
-    ["DIN", "Deutsche Institut fur Normung", "Le DIN (Deutsche Institut fur Normung) est l'Institut allemand de normalisation. Il est responsable de l'établissement de normes techniques dans divers domaines, y compris l'ingénierie, les technologies de l'information et les communications."],
-    ["DLL", "Dynamic Link Library", "Une DLL (Dynamic Link Library) est un fichier contenant du code et des données pouvant être utilisés par plusieurs programmes en même temps. Elle permet de partager des fonctionnalités communes entre les applications, ce qui réduit la taille des programmes et facilite la mise à jour et la maintenance du code partagé."],
-    ["DNS", "Domain Name System/Service", "Le DNS (Domain Name System/Service) est un système qui associe les noms de domaine (par exemple, www.example.com) aux adresses IP des serveurs où les sites web sont hébergés. Il permet aux utilisateurs d'accéder aux sites web en utilisant des noms faciles à retenir plutôt que des adresses IP numériques."],
-    ["DSA", "Distributed System Architecture.", "DSA (Distributed System Architecture) est une architecture logicielle qui permet à des systèmes distribués de communiquer, de coordonner et de collaborer de manière transparente. Elle fournit des mécanismes pour la gestion des ressources, la synchronisation des données et l'échange d'informations entre les nœuds d'un réseau distribué."],
-    ["DTE", "Data Terminal Equipment", "DTE (Data Terminal Equipment) est un équipement terminal utilisé pour la transmission et la réception de données sur un réseau de télécommunications. Il peut s'agir d'un ordinateur, d'un modem, d'un terminal de point de vente ou d'autres dispositifs similaires."],
-    ["DTMF", "Dual Tone Multi-Frequency", "Le DTMF (Dual Tone Multi-Frequency) est un système de signalisation utilisé dans les téléphones et les systèmes de communication pour transmettre les chiffres, les symboles et les commandes spéciales. Il utilise une combinaison de deux tonalités distinctes pour représenter chaque élément."],
-    ["SSH", "Secure Shell", "SSH (Secure Shell) est un protocole de réseau sécurisé qui permet l'accès sécurisé à distance à des ordinateurs et l'exécution de commandes à distance. Il utilise une architecture client-serveur pour établir une connexion chiffrée et authentifiée, protégeant ainsi les données contre les interceptions et les attaques."],
-    ["DVD", "Digital Versatile Disk", "Le DVD (Digital Versatile Disk) est un support de stockage optique utilisé pour l'enregistrement et la lecture de données numériques. Il offre une plus grande capacité de stockage que les CD traditionnels et est couramment utilisé pour la distribution de films, de logiciels et de données multimédias."],
-    ["EBCDIC", "Extended Binary Coded Decimal Interchange Code", "L'EBCDIC (Extended Binary Coded Decimal Interchange Code) est un système de codage utilisé pour représenter les caractères alphanumériques et spéciaux sur les ordinateurs. Il était largement utilisé dans les systèmes IBM et est encore utilisé dans certains environnements informatiques spécifiques."],
-    ["ECMA", "European Computer Manufacturer Association", "ECMA (European Computer Manufacturer Association) est une association internationale qui établit des normes et des standards pour les technologies de l'information et de la communication. Elle est notamment connue pour la définition du langage"],
-
-  ["EDGE", "Enhanced Data GSM Environnement", "EDGE (Enhanced Data GSM Environnement) est une technologie de téléphonie mobile qui améliore les performances de transfert de données sur les réseaux GSM. Elle permet des débits de données plus élevés que le GSM traditionnel, offrant ainsi une meilleure connectivité pour la navigation sur Internet et le téléchargement de contenu multimédia."],
-  ["EDI", "Echange de Documents Informatise / Electronic Data Interchange", "L'EDI (Echange de Documents Informatise / Electronic Data Interchange) est une méthode électronique de transmission de documents commerciaux et administratifs entre les partenaires commerciaux. Il facilite l'échange automatisé de données structurées, telles que les commandes, les factures et les confirmations, sans nécessiter de saisie manuelle."],
-  ["EIA", "Electrical Industries Association", "L'EIA (Electrical Industries Association) est une association qui représente les intérêts des entreprises et des professionnels de l'industrie électrique. Elle établit des normes et des directives techniques dans le domaine de l'électronique et des technologies de l'information et de la communication."],
-  ["EJD", "Enterprise Java Beans", "Les EJB (Enterprise Java Beans) sont des composants logiciels utilisés dans le développement d'applications d'entreprise en utilisant la plate-forme Java. Ils fournissent un modèle de programmation pour la création de services distribués, tels que la gestion des transactions, la sécurité et l'accès aux données, facilitant ainsi le développement d'applications évolutives et fiables."],
-  ["EPON", "Ethernet over Passive Optical Network", "L'EPON (Ethernet over Passive Optical Network) est une technologie de réseau qui utilise une infrastructure optique passive pour fournir des services Ethernet à haut débit. Elle offre une connectivité rapide et fiable pour les réseaux locaux (LAN) et permet une transmission de données à grande vitesse sur de longues distances."],
-  ["ERMES", "European Radio Messaging System", "ERMES (European Radio Messaging System) est un système de messagerie radio européen utilisé pour la transmission de messages courts. Il offre une couverture étendue et une grande fiabilité pour les communications de type 'pager' et est utilisé dans divers secteurs, tels que les services d'urgence et les services de messagerie professionnels."],
-  ["ERP", "Enterprise Resource Planning", "Un ERP (Enterprise Resource Planning) est un système informatique intégré utilisé par les entreprises pour gérer et automatiser leurs processus commerciaux. Il regroupe différentes fonctions telles que la gestion des stocks, la comptabilité, les ressources humaines et la gestion de la chaîne logistique dans un seul système centralisé."],
-  ["ETCD", "Equipement Terminal de Circuit de Donnees", "L'ETCD (Equipement Terminal de Circuit de Donnees) est un équipement utilisé dans les réseaux de télécommunications pour la transmission de données sur des circuits dédiés. Il assure la conversion, le traitement et la transmission des signaux de données entre les équipements terminaux et les réseaux de communication."],
-  ["ETSI", "European Telecommunications Standard Institute", "L'ETSI (European Telecommunications Standard Institute) est un organisme de normalisation européen chargé d'établir des normes techniques pour les télécommunications en Europe. Il joue un rôle clé dans l'harmonisation et la réglementation des technologies de l'information et de la communication dans la région."],
-  ["ETTD", "Equipement Terminal de Traitement de Donnees", "L'ETTD (Equipement Terminal de Traitement de Donnees) est un équipement utilisé pour le traitement et la gestion des données dans les réseaux de télécommunications. Il peut inclure des serveurs, des ordinateurs, des équipements de stockage et d'autres dispositifs qui manipulent et traitent les données transmises sur le réseau."],
-  ["FAI", "Fournisseur d’Acces Internet", "Un FAI (Fournisseur d’Acces Internet) est une entreprise qui fournit des services d'accès à Internet aux utilisateurs finaux. Il fournit une connectivité à Internet, des services de messagerie électronique, d'hébergement web et d'autres services liés à l'accès et à l'utilisation d'Internet."],
-  ["FAQ", "Frequently Asked Questions / Foire Aux Questions", "Une FAQ (Frequently Asked Questions / Foire Aux Questions) est une liste de questions fréquemment posées et de leurs réponses associées. Elle est utilisée pour fournir des informations préalables et des réponses aux questions courantes sur un sujet spécifique, tel qu'un produit, un service ou un site web."],
- 
-  ["FAT", "File Allocation Table", "La FAT (File Allocation Table) est une structure de données utilisée par les systèmes de fichiers pour enregistrer et organiser les emplacements des fichiers sur un support de stockage, tel qu'un disque dur ou une clé USB. Elle permet de suivre les clusters utilisés par les fichiers et de gérer l'espace libre disponible sur le support."],
-  ["FCS", "Frame Check Sequence", "Le FCS (Frame Check Sequence) est un champ utilisé dans les trames de données pour détecter les erreurs de transmission. Il contient un code de contrôle calculé à partir du contenu de la trame, permettant ainsi de vérifier son intégrité lors de la réception."],
-  ["FDDI", "Fiber Distributed Data Interface", "Le FDDI (Fiber Distributed Data Interface) est un standard de réseau local à haute vitesse qui utilise des fibres optiques pour la transmission des données. Il offre des débits élevés et une grande résistance aux pannes, ce qui en fait une technologie adaptée aux environnements critiques nécessitant une connectivité fiable."],
-  ["FDMA", "Frequency Division Multiple Access", "Le FDMA (Frequency Division Multiple Access) est une technique d'accès utilisée dans les systèmes de télécommunications pour partager la bande de fréquences entre plusieurs utilisateurs. Chaque utilisateur est attribué une portion de la bande de fréquences, lui permettant de transmettre et de recevoir des données simultanément avec d'autres utilisateurs."],
-  ["FSK", "Frequency Shift Keying", "Le FSK (Frequency Shift Keying) est une méthode de modulation utilisée dans les communications pour transmettre des données numériques. Elle consiste à moduler la fréquence du signal porteur entre deux valeurs distinctes pour représenter les bits de données, généralement 0 et 1."],
-  ["FORTRAN", "FORmula TRANslator", "FORTRAN (FORmula TRANslator) est un langage de programmation utilisé principalement dans le domaine scientifique et de l'ingénierie. Il a été développé pour faciliter la programmation de calculs scientifiques et de simulations numériques."],
-  ["FTAM", "File Transfer Access and Management", "Le FTAM (File Transfer Access and Management) est un protocole de réseau utilisé pour le transfert de fichiers et l'accès aux données sur des systèmes distants. Il fournit des mécanismes pour la gestion des droits d'accès, la recherche de fichiers et la manipulation de données sur des serveurs distants."],
-  ["FTP", "File Transfer Protocol", "Le FTP (File Transfer Protocol) est un protocole de réseau utilisé pour le transfert de fichiers entre un client et un serveur. Il permet aux utilisateurs de copier, de télécharger et de mettre à jour des fichiers sur des serveurs distants, facilitant ainsi l'échange de données sur Internet."],
-  ["GIF", "Graphics Interchange Format", "Le GIF (Graphics Interchange Format) est un format de fichier d'image largement utilisé sur Internet. Il prend en charge la compression sans perte des images et permet l'affichage d'animations simples. Les fichiers GIF utilisent une palette de couleurs limitée, ce qui les rend adaptés aux images avec des zones de couleur solides, telles que les graphiques et les illustrations."],
-  ["GIMP", "GNU Image Manupulator Program", "GIMP (GNU Image Manupulator Program) est un logiciel de retouche d'images gratuit et open source. Il offre des fonctionnalités avancées de manipulation et de traitement d'images, permettant aux utilisateurs de modifier, de retoucher et de créer des images numériques."],
-  ["GPRS", "Generalized Packed Radio System", "Le GPRS (Generalized Packed Radio System) est un système de communication mobile qui étend les fonctionnalités du GSM en ajoutant la transmission de données. Il permet aux utilisateurs de se connecter à Internet, d'envoyer des courriers électroniques et d'accéder à des services basés sur IP via des réseaux mobiles."],
-  ["GSM", "Global System for Mobile communications", "Le GSM (Global System for Mobile communications) est un standard de téléphonie mobile utilisé dans de nombreux pays à travers le monde. Il permet la transmission de la voix et des données sur les réseaux mobiles et offre des services tels que les appels téléphoniques, les SMS et l'accès à Internet mobile."],
-  ["GUI", "Graphical User Interface", "Une GUI (Graphical User Interface) est une interface utilisateur graphique qui permet aux utilisateurs d'interagir avec les logiciels et les systèmes informatiques en utilisant des éléments visuels tels que des fenêtres, des icônes et des boutons. Elle facilite l'utilisation des ordinateurs en fournissant une représentation visuelle intuitive des actions et des commandes."],
-  ["HDB", "High Density Bipolary code", "Le HDB (High Density Bipolary code) est un code binaire utilisé dans les communications numériques pour représenter les données. Il utilise des transitions de signal pour coder les bits, ce qui permet une utilisation plus efficace de la bande passante et une meilleure résistance aux erreurs de transmission."],
-  ["HDLC", "High level Data Link Control", "HDLC (High level Data Link Control) est un protocole de liaison de données utilisé dans les réseaux de télécommunications pour assurer la fiabilité et la synchronisation des transmissions de données. Il définit les règles et les procédures de gestion des trames de données, permettant ainsi d'assurer une communication efficace et sécurisée."],
-  ["HPIB/GPIB", "Hewlett Packard Interface Bus / General Purpose", "HPIB (Hewlett Packard Interface Bus), également connu sous le nom de GPIB (General Purpose Interface Bus), est un bus de communication série utilisé pour connecter des instruments de mesure et des dispositifs électroniques. Il permet le contrôle et l'échange de données entre les appareils, facilitant ainsi les tests et les mesures automatisés."],
-  ["HTML", "Hyper Text Markup Language", "HTML (Hyper Text Markup Language) est un langage de balisage utilisé pour la création de pages web. Il permet de structurer et de formater le contenu d'une page en utilisant des balises et des attributs, permettant ainsi l'affichage de texte, d'images, de liens et d'autres éléments interactifs sur Internet."],
-  ["HTTP", "Hyper Text Transfer Protocol", "HTTP (Hyper Text Transfer Protocol) est un protocole de communication utilisé pour le transfert de données sur le Web. Il définit les règles et les procédures pour l'échange de ressources, telles que les pages web, entre les clients (navigateurs web) et les serveurs web, permettant ainsi la navigation et l'accès aux informations sur Internet."],
-  ["ICANN", "Internet Corporation for Assigned Names and Numbers", "L'ICANN (Internet Corporation for Assigned Names and Numbers) est une organisation à but non lucratif chargée de la coordination et de la gestion des noms de domaine, des adresses IP et d'autres identificateurs uniques sur Internet. Elle joue un rôle clé dans la réglementation et la gouvernance de l'infrastructure d'adressage d'Internet."],
-  ["IDE", "Integrated Device Electronics", "IDE (Integrated Device Electronics) est une interface de connexion utilisée pour connecter des périphériques de stockage, tels que des disques durs et des lecteurs de CD/DVD, à un ordinateur. Il permet le transfert de données entre l'ordinateur et les périphériques de stockage, facilitant ainsi le stockage et l'accès aux données."],
-  ["IDS", "Intrusion Detection System", "Un IDS (Intrusion Detection System) est un système de sécurité informatique utilisé pour détecter les activités suspectes ou malveillantes sur un réseau ou sur un système informatique. Il analyse le trafic réseau, les journaux d'événements et les modèles de comportement pour identifier les tentatives d'intrusion, les attaques ou les violations de la politique de sécurité."],
-  ["IEEE", "Institute of Electrical and Electronic Engineers", "L'IEEE (Institute of Electrical and Electronic Engineers) est une organisation professionnelle internationale dédiée à l'avancement de la technologie dans les domaines de l'électricité, de l'électronique et de l'informatique. Elle établit des normes techniques, publie des recherches et organise des conférences dans ces domaines."],
-  ["IETF", "Internet Engineering Task Force", "L'IETF (Internet Engineering Task Force) est une organisation internationale chargée du développement et de la promotion des standards et des protocoles d'Internet. Elle rassemble des experts de l'industrie, des chercheurs et des universitaires pour collaborer à l'évolution d'Internet et à la résolution des problèmes techniques liés à son développement."],
-  ["IMAP", "Interactive Mail Access Protocol", "IMAP (Interactive Mail Access Protocol) est un protocole de messagerie électronique qui permet aux utilisateurs d'accéder et de gérer leurs e-mails sur un serveur distant. Il offre des fonctionnalités avancées telles que la gestion des dossiers, la synchronisation des boîtes aux lettres et la possibilité de consulter les e-mails à partir de différents appareils."],
-  ["INRIA", "Institut National de Recherche en Informatique et Automatisme", "L'INRIA (Institut National de Recherche en Informatique et Automatisme) est un institut de recherche français spécialisé dans les domaines de l'informatique, de l'automatique et des technologies de l'information. Il mène des recherches fondamentales et appliquées dans ces domaines et collabore avec l'industrie et les universités pour promouvoir l'innovation technologique."],
-  ["IP", "Internet Protocol", "IP (Internet Protocol) est un protocole de communication qui permet l'acheminement des paquets de données sur Internet. Il définit les règles et les procédures pour l'adressage, l'encapsulation et le routage des paquets de données sur les réseaux IP, permettant ainsi la transmission de l'information à travers les réseaux interconnectés."],
-  ["IPX/SPX", "Internet Packet eXchange / Sequenced Packet eXchange", "IPX/SPX (Internet Packet eXchange / Sequenced Packet eXchange) est un ensemble de protocoles utilisés dans les réseaux Novell NetWare pour la communication entre les ordinateurs. IPX est responsable du routage et de la livraison des paquets, tandis que SPX fournit un contrôle de flux et de séquence pour assurer la fiabilité des transmissions."],
-  ["IRLE", "Interconnexion des Reseaux Locaux d’Entreprise", "L'IRLE (Interconnexion des Reseaux Locaux d’Entreprise) est un système qui permet de connecter plusieurs réseaux locaux (LAN) d'entreprise pour former un réseau plus étendu. Il permet aux utilisateurs d'accéder aux ressources et aux services disponibles sur les différents LAN, facilitant ainsi la communication et le partage d'informations au sein de l'entreprise."],
-  ["ISDN", "Integrated Service Digital Network", "L'ISDN (Integrated Service Digital Network) est un réseau de télécommunications numérique qui permet la transmission simultanée de la voix, des données et de la vidéo sur un même support de transmission. Il offre des débits plus élevés et une meilleure qualité de communication que les réseaux téléphoniques traditionnels, permettant ainsi des services avancés tels que la visioconférence et l'accès à haut débit."],
-  ["ISP", "Internet Service Provider", "Un ISP (Internet Service Provider) est une entreprise qui fournit des services d'accès à Internet aux utilisateurs finaux. Il offre une connectivité à Internet, des services d'hébergement, de messagerie électronique et d'autres services liés à l'utilisation d'Internet. Les ISP peuvent être des fournisseurs de services à large bande, des opérateurs de télécommunications ou des fournisseurs de services Internet locaux."],
-  ["ISO", "International Standards Organisation", "L'ISO (International Standards Organisation) est une organisation internationale qui développe et publie des normes dans différents domaines, y compris les technologies de l'information et de la communication. Ses normes définissent les bonnes pratiques, les spécifications techniques et les méthodologies pour promouvoir l'interopérabilité et la compatibilité des systèmes et des produits."],
-  ["IUT-T", "International Union of Telecommunications - Telecommunications sector", "L'IUT-T (International Union of Telecommunications - Telecommunications sector) est une organisation spécialisée des Nations Unies qui travaille sur les normes et les recommandations techniques pour les télécommunications. Elle collabore avec les gouvernements, les organismes de réglementation et l'industrie pour développer des normes et des spécifications techniques pour les réseaux de télécommunications."],
-  ["JPEG", "Join Photographic Expert Group", "JPEG (Join Photographic Expert Group) est un format de compression d'image couramment utilisé pour le stockage et la transmission d'images numériques. Il utilise des techniques de compression avec perte pour réduire la taille des fichiers images tout en préservant une qualité visuelle acceptable."],
-  ["LAN", "Local Area Network", "Un LAN (Local Area Network) est un réseau informatique qui connecte des ordinateurs et des périphériques sur une courte distance, telle qu'un bureau, un bâtiment ou un campus. Il permet le partage de ressources, tels que des fichiers et des imprimantes, ainsi que la communication entre les utilisateurs et les appareils connectés."],
-  ["LAP B", "Link Access Protocol", "LAP B (Link Access Protocol) est un protocole de liaison de données utilisé dans les réseaux de télécommunications pour assurer la fiabilité et le contrôle d'erreur lors de la transmission des données. Il définit les règles et les procédures pour l'établissement, la maintenance et la libération des connexions de données sur un lien de communication."],
-  ["LDAP", "Lightweight Directory Access Protocol", "LDAP (Lightweight Directory Access Protocol) est un protocole de réseau utilisé pour accéder et gérer les informations d'un annuaire électronique. Il fournit des mécanismes pour rechercher, ajouter, modifier et supprimer des entrées dans l'annuaire, facilitant ainsi la gestion des informations d'identification, des adresses e-mail et d'autres données liées aux utilisateurs et aux ressources."],
-  ["LLC", "Logical Link Control", "LLC (Logical Link Control) est une sous-couche du protocole de liaison de données utilisée dans les réseaux de communication. Elle assure le contrôle de la liaison logique entre les appareils connectés, permettant ainsi le transfert fiable des données et la gestion des erreurs de transmission."],
-  ["MAC", "Media Access Control", "MAC (Media Access Control) est une sous-couche du modèle OSI qui gère l'accès au support de transmission dans un réseau. Elle définit les règles et les procédures pour l'attribution et la gestion des adresses MAC, qui identifient de manière unique les interfaces réseau des dispositifs connectés."],
-  ["MAN", "Metropolitan Area Network", "Un MAN (Metropolitan Area Network) est un réseau informatique qui couvre une zone géographique plus large qu'un LAN, généralement une ville ou une région métropolitaine. Il permet la connectivité entre plusieurs LAN et offre des services de communication avancés pour les organisations et les utilisateurs dans une zone géographique étendue."],
-  ["MAP", "Manufacturing Automation Protocol", "MAP (Manufacturing Automation Protocol) est un protocole de communication utilisé dans les systèmes de contrôle et d'automatisation industriels. Il facilite l'échange de données entre les équipements et les systèmes utilisés dans les environnements de fabrication, permettant ainsi la coordination et le contrôle des processus de production."],
-  ["MAU", "Multistation Access Unit", "MAU (Multistation Access Unit) est un dispositif utilisé dans les réseaux Token Ring pour connecter et gérer les stations de travail. Il agit comme un concentrateur, permettant aux stations de communiquer entre elles en utilisant la topologie en anneau du réseau Token Ring."],
-  ["MIB", "Management Information Base", "MIB (Management Information Base) est une base de données qui stocke des informations de gestion et de configuration sur les dispositifs réseau. Elle est utilisée dans le protocole SNMP (Simple Network Management Protocol) pour collecter des informations sur les performances et l'état des dispositifs réseau, facilitant ainsi la surveillance et la gestion des réseaux."],
-  ["MIC /DA", "Modulation par Impulsion et Codage / Differentielle Adaptative", "MIC/DA (Modulation par Impulsion et Codage / Differentielle Adaptative) est une technique de modulation utilisée dans les systèmes de communication pour transmettre des données numériques. Elle combine la modulation par impulsion pour coder les bits de données et la modulation différentielle adaptative pour atténuer les effets des perturbations et du bruit sur le signal transmis."],
-  ["MIME", "Multipurpose Internet Mail Extension", "MIME (Multipurpose Internet Mail Extension) est une extension du protocole SMTP (Simple Mail Transfer Protocol) utilisé pour la gestion des e-mails. Il permet l'inclusion de différents types de contenus, tels que des fichiers multimédias et des documents, dans les e-mails, facilitant ainsi le partage de données et de médias via les services de messagerie électronique."],
-  ["MMS", "Multimedia Messages Services", "Les MMS (Multimedia Messages Services) sont des services de messagerie qui permettent l'envoi et la réception de messages multimédias, tels que des images, des vidéos et des fichiers audio, via des appareils mobiles. Ils offrent une expérience de messagerie enrichie en permettant aux utilisateurs de partager du contenu multimédia avec d'autres utilisateurs à travers les réseaux de télécommunications."],
-
-  ["MNP x", "Microcom Network Protocol", "MNP x (Microcom Network Protocol) est un protocole de réseau utilisé pour la transmission de données sur des connexions de communication série. Il fournit des mécanismes de compression des données, de correction d'erreurs et de contrôle de flux, améliorant ainsi l'efficacité et la fiabilité de la transmission des données."],
-  ["MSSP", "Managed Security Service Providers", "Les MSSP (Managed Security Service Providers) sont des fournisseurs de services spécialisés dans la gestion de la sécurité informatique. Ils proposent des services de surveillance, de détection des intrusions, de gestion des vulnérabilités et de réponse aux incidents de sécurité, aidant ainsi les organisations à protéger leurs systèmes et leurs données contre les menaces et les attaques."],
-  ["MTBF", "Mean Time Between Failures", "Le MTBF (Mean Time Between Failures) est une mesure de la fiabilité d'un système ou d'un composant. Il représente la durée moyenne entre les pannes d'un système, indiquant ainsi sa capacité à fonctionner sans défaillance pendant une période donnée."],
-  ["MP3", "MPEG1/2 - Audio layer 3", "MP3 (MPEG1/2 - Audio layer 3) est un format de compression audio couramment utilisé pour la compression et la lecture de fichiers musicaux. Il permet de réduire considérablement la taille des fichiers audio tout en préservant une qualité sonore acceptable."],
-  ["MPEG", "Moving Picture Experts Group", "MPEG (Moving Picture Experts Group) est un groupe de travail qui développe des normes de compression audio et vidéo. Il est responsable de la création de normes telles que MPEG-1, MPEG-2 et MPEG-4, qui sont largement utilisées dans l'industrie du multimédia pour la compression et la lecture de contenus audiovisuels."],
-  ["NAT", "Network Address Translation, translation d’adresse IP", "NAT (Network Address Translation) est une technique utilisée dans les réseaux informatiques pour traduire les adresses IP entre différents réseaux. Il permet de connecter des réseaux avec des adresses IP incompatibles, en traduisant les adresses source et destination lors de la transmission des paquets de données."],
-  ["NBS", "National Bureau of Standards", "Le NBS (National Bureau of Standards) est un ancien organisme américain responsable de l'établissement de normes et de mesures dans différents domaines scientifiques et technologiques. Il a été remplacé par le National Institute of Standards and Technology (NIST) en 1988."],
-  ["NDIS", "Network Driver Interface Specification", "NDIS (Network Driver Interface Specification) est une interface de programmation qui permet aux pilotes de périphériques réseau de communiquer avec le système d'exploitation. Il fournit des abstractions et des mécanismes standardisés pour la gestion des connexions réseau, facilitant ainsi le développement de pilotes de périphériques réseau compatibles avec différents systèmes d'exploitation."],
-  ["NETBIOS", "NETwork Basic Input Output System", "NETBIOS (NETwork Basic Input Output System) est une interface de programmation qui permet aux applications de réseau de communiquer entre elles sur des réseaux locaux. Il fournit des fonctions pour la résolution de noms, l'établissement de connexions et le transfert de données entre les nœuds d'un réseau."],
-  ["NFS", "Network File System", "NFS (Network File System) est un protocole de réseau qui permet le partage de fichiers entre des systèmes informatiques distants. Il permet à un utilisateur d'accéder et de manipuler des fichiers sur un système distant comme s'ils étaient locaux, facilitant ainsi le partage de ressources et la collaboration dans les environnements informatiques distribués."],
-  ["NIC", "Network Information Center", "Un NIC (Network Information Center) est une entité responsable de la gestion des enregistrements de noms de domaine et des adresses IP pour une zone géographique spécifique ou une extension de domaine particulière. Il fournit des services tels que l'enregistrement de noms de domaine, la gestion des serveurs de noms et la résolution des conflits liés aux noms de domaine."],
-  ["NNTP", "Network News Transfer Protocol", "NNTP (Network News Transfer Protocol) est un protocole de réseau utilisé pour la distribution et la récupération des articles de groupes de discussion sur Internet. Il permet aux utilisateurs d'accéder et de participer à des discussions en ligne, de lire et de poster des articles dans des forums de discussion."],
-  ["NRZ", "No Return to Zero", "NRZ (No Return to Zero) est une méthode de codage binaire où chaque bit est représenté par un niveau de tension constant pendant la durée du bit. Un niveau de tension élevé peut représenter un '1' et un niveau de tension bas peut représenter un '0'. Il n'y a pas de transition de tension pendant la durée d'un bit."],
-  ["NT/NTFS", "New Technology / NT File System", "NT/NTFS (New Technology / NT File System) est une combinaison de la nouvelle technologie (NT) de Microsoft et du système de fichiers NTFS utilisé dans les systèmes d'exploitation Windows. NT est la base des versions avancées de Windows, tandis que NTFS est un système de fichiers offrant des fonctionnalités avancées, telles que la sécurité des fichiers, la journalisation des transactions et la prise en charge de fichiers de grande taille."],
-  ["NTIC", "Nouvelles Technologies de l’Information et de la Communication", "Les NTIC (Nouvelles Technologies de l’Information et de la Communication) font référence à l'ensemble des technologies utilisées pour la collecte, le traitement, le stockage et la transmission de l'information. Cela inclut les ordinateurs, les réseaux, Internet, les télécommunications, les logiciels et les systèmes d'information."],
-  ["NTP", "Network Time Protocol", "NTP (Network Time Protocol) est un protocole de réseau utilisé pour la synchronisation des horloges des ordinateurs sur un réseau. Il permet d'obtenir l'heure précise à partir de serveurs de temps fiables et de régler l'horloge des systèmes pour maintenir une synchronisation précise."],
-  ["OCR", "Optical Characters Recognition", "OCR (Optical Character Recognition) est une technologie utilisée pour reconnaître et convertir des caractères imprimés ou manuscrits en texte numérique. Elle utilise des algorithmes de traitement d'image pour analyser les motifs et les formes des caractères, permettant ainsi leur conversion en texte éditable et leur reconnaissance automatique par des systèmes informatiques."],
-  ["ODI", "Open Data-link Interface", "ODI (Open Data-link Interface) est une interface de programmation réseau utilisée pour la communication entre les pilotes de cartes réseau et les protocoles de réseau dans les systèmes d'exploitation. Il fournit une abstraction de niveau supérieur pour les fonctions de gestion de liaison de données, facilitant ainsi le développement de pilotes de cartes réseau compatibles avec différents protocoles de réseau."],
-  ["OEM", "Original Equipment Manufacturer", "OEM (Original Equipment Manufacturer) est un terme utilisé pour désigner une entreprise qui fabrique des produits ou des composants qui sont utilisés comme pièces détachées ou équipements dans les produits d'autres entreprises. Les OEM produisent souvent des composants ou des produits selon les spécifications et les exigences des entreprises partenaires ou des fabricants de marque."],
-  ["OSI", "Open System Interconnection", "OSI (Open System Interconnection) est un modèle de référence qui définit les protocoles et les services de communication nécessaires à l'interopérabilité des systèmes ouverts. Il comprend sept couches, de la couche physique à la couche application, et permet la communication entre des systèmes informatiques hétérogènes."],
-  ["PABX", "Private Automatic Branch eXchange", "Un PABX (Private Automatic Branch eXchange) est un système de téléphonie privé utilisé dans les entreprises et les organisations. Il permet la gestion des appels téléphoniques internes, l'acheminement des appels vers les extensions appropriées, ainsi que des fonctionnalités avancées telles que les boîtes vocales, la mise en attente des appels et les transferts d'appels."],
-  ["PAD", "Packet Assembler Desassembler", "Un PAD (Packet Assembler Disassembler) est un dispositif utilisé dans les réseaux de communication pour convertir les données série en paquets de données et vice versa. Il assemble les données en paquets pour la transmission sur le réseau et les désassemble à la réception pour la conversion en données séquentielles."],
-
-  ["PDF", "Portable Document Format", "PDF (Portable Document Format) est un format de fichier couramment utilisé pour la présentation et l'échange de documents électroniques. Il préserve la mise en page, les polices, les images et d'autres éléments d'un document, indépendamment du logiciel, du matériel et du système d'exploitation utilisés."],
-  ["PDU", "Protocol Data Unit", "PDU (Protocol Data Unit) est une unité de données utilisée dans les protocoles de communication pour encapsuler les informations à transférer. Selon le protocole, une PDU peut représenter une partie spécifique d'un message, un paquet de données complet ou une autre unité logique de transfert."],
-  ["PERL", "Practical Extraction Report Language", "PERL (Practical Extraction Report Language) est un langage de programmation polyvalent utilisé pour le traitement de texte, la manipulation de fichiers et le développement d'applications Web. Il est apprécié pour sa capacité à traiter facilement des expressions régulières, à manipuler des chaînes de caractères et à automatiser des tâches de manipulation de fichiers."],
-  ["PGP", "Pretty Good Privacy", "PGP (Pretty Good Privacy) est un logiciel de chiffrement et de signature numérique utilisé pour protéger la confidentialité et l'intégrité des données. Il utilise des techniques de cryptographie asymétrique pour chiffrer les données et les signer numériquement, offrant ainsi un moyen sûr de communiquer et de partager des informations sensibles."],
-  ["PHP", "Personal Home Page", "PHP (Personal Home Page) est un langage de script utilisé principalement pour le développement d'applications Web dynamiques. Il permet d'incorporer des instructions PHP directement dans le code HTML pour générer dynamiquement des pages Web, interagir avec des bases de données et effectuer d'autres tâches côté serveur."],
-  ["PING", "Packet INternet Groper", "PING (Packet INternet Groper) est une commande utilisée pour tester la connectivité réseau entre deux hôtes. Elle envoie des paquets de données ICMP (Internet Control Message Protocol) à une adresse IP spécifique et mesure le temps nécessaire pour les paquets pour aller de l'émetteur au destinataire et revenir."],
-  ["PIRE", "Puissance Isotrope Rayonnée Équivalente", "PIRE (Puissance Isotrope Rayonnée Équivalente) est une mesure de la puissance émise par une antenne dans une direction donnée. Elle représente la puissance rayonnée dans toutes les directions par rapport à une antenne isotrope idéale, qui rayonnerait également la puissance dans toutes les directions."],
-  ["PKI", "Public Key Infrastructure", "PKI (Public Key Infrastructure) est une infrastructure de sécurité utilisée pour gérer les clés publiques et les certificats numériques. Elle fournit des mécanismes pour générer, distribuer, stocker et révoquer les clés et les certificats utilisés dans les systèmes de cryptographie à clé publique, assurant ainsi la confidentialité, l'authenticité et l'intégrité des communications numériques."],
-  ["PMR", "Professional Mobile Radiocommunication", "PMR (Professional Mobile Radiocommunication) est une technologie de communication utilisée dans les systèmes de radio professionnels pour les services de communication mobile. Elle est utilisée dans des secteurs tels que la sécurité publique, les services d'urgence, les services de transport et les entreprises qui nécessitent une communication fiable et sécurisée sur des distances étendues."],
-  ["PNG", "Portable Network Graphic, Format d’images", "PNG (Portable Network Graphics) est un format de fichier d'image couramment utilisé pour stocker et afficher des images sur les sites Web et d'autres applications. Il offre une compression sans perte, prend en charge la transparence et la gestion des couleurs étendues, et est largement pris en charge par les navigateurs et les logiciels de manipulation d'images."],
-  ["POTS", "Plain Ordinary/Old Telephone Service", "POTS (Plain Ordinary/Old Telephone Service) désigne le service téléphonique traditionnel utilisé pour les appels vocaux analogiques sur les réseaux téléphoniques traditionnels. Il utilise la commutation de circuits pour établir des connexions entre les appels et est largement utilisé dans les lignes résidentielles et les petites entreprises."],
-  ["POP", "Post Office Protocol", "POP (Post Office Protocol) est un protocole de réseau utilisé pour récupérer les e-mails à partir d'un serveur de messagerie. Il permet à un client de messagerie de se connecter à un serveur de messagerie, de télécharger les messages sur l'appareil local et de les supprimer du serveur. Les versions populaires de POP incluent POP3 (Post Office Protocol version 3)."],
-  ["PPP", "Point to Point Protocol", "PPP (Point to Point Protocol) est un protocole de réseau utilisé pour établir une connexion point à point entre deux nœuds d'un réseau. Il est utilisé pour les connexions Internet via une ligne téléphonique commutée, une ligne spécialisée ou une connexion sans fil, et offre un moyen fiable d'acheminer les paquets de données sur la liaison."],
- 
-  ["PSTN", "Public Switched Telephone Network", "PSTN (Public Switched Telephone Network) est le réseau téléphonique commuté public traditionnel utilisé pour les appels téléphoniques analogiques. Il utilise la commutation de circuits pour établir des connexions entre les utilisateurs et permet la communication vocale sur des lignes téléphoniques traditionnelles."],
-  ["PTS", "Point de Transfert Semaphore", "PTS (Point de Transfert Semaphore) est un point de transfert dans les réseaux de télécommunication où le trafic est acheminé vers différentes destinations. Il s'agit d'un point de convergence pour les connexions provenant de différents utilisateurs ou réseaux et permet la distribution du trafic vers les destinations appropriées."],
-  ["QOS", "Quality Of Service", "QoS (Quality of Service) fait référence à la capacité d'un réseau à fournir différents niveaux de qualité de service en fonction des besoins des applications et des utilisateurs. Il inclut des mécanismes pour garantir la bande passante, la latence, la gigue et d'autres paramètres de performance afin de répondre aux exigences spécifiques de chaque application ou service."],
-  ["RADIUS", "Remote Access Dial In User Server", "RADIUS (Remote Access Dial-In User Server) est un protocole de réseau utilisé pour l'authentification, l'autorisation et la gestion des comptes d'utilisateurs qui se connectent à distance à un réseau. Il est largement utilisé dans les systèmes d'accès à distance tels que les réseaux privés virtuels (VPN) et les points d'accès sans fil sécurisés."],
-  ["RAID", "Redundancy Array of Inexpensive/Independent Disk", "RAID (Redundant Array of Inexpensive/Independent Disks) est une technologie de stockage qui combine plusieurs disques durs physiques en un seul groupe logique pour améliorer la performance, la redondance ou les deux. Il existe plusieurs niveaux de RAID, tels que RAID 0, RAID 1, RAID 5, qui offrent différentes configurations de stockage pour répondre aux besoins spécifiques en matière de performance et de fiabilité."],
-  ["RFC", "Request For Comment", "RFC (Request for Comment) est une série de documents publiés par l'Internet Engineering Task Force (IETF) qui décrivent les normes, les protocoles, les procédures et les aspects techniques d'Internet. Les RFC sont le résultat d'un processus collaboratif de révision et de commentaires de la part de la communauté Internet et servent de référence pour le développement et l'implémentation des technologies Internet."],
-  ["RIP", "Routing Information Protocol", "RIP (Routing Information Protocol) est un protocole de routage utilisé pour échanger des informations de routage entre les routeurs dans un réseau. Il utilise une approche de routage à vecteur de distance et se base sur le nombre de sauts pour prendre des décisions de routage. RIP est largement utilisé dans les réseaux de taille moyenne et offre une configuration et une gestion relativement simples."],
-  ["RIPE", "Reseaux IP Europeens", "RIPE (Reseaux IP Europeens) est une organisation qui coordonne et gère les ressources Internet, telles que les adresses IP et les allocations de blocs d'adresses en Europe, au Moyen-Orient et en Afrique. RIPE est également responsable du développement et de la promotion des normes et des bonnes pratiques liées à l'utilisation des ressources Internet dans sa région."],
-  ["RISC", "Reduced Instruction Set Code/Computer", "RISC (Reduced Instruction Set Code/Computer) est un type d'architecture de processeur qui se caractérise par l'utilisation d'un ensemble d'instructions simples et de longueurs fixes. L'objectif principal de l'architecture RISC est de maximiser la vitesse d'exécution en réduisant le nombre d'instructions complexes et en favorisant l'utilisation de registres internes pour les opérations de traitement."],
-  ["RLAN", "Radio Local Area Network", "RLAN (Radio Local Area Network) est un réseau local sans fil utilisant des technologies radio pour la communication entre les dispositifs. Il permet la connectivité sans fil dans une zone géographique limitée, telle qu'un bâtiment ou un campus, offrant une mobilité et une flexibilité accrues pour les utilisateurs."],
-  ["RNIS", "Reseau Numerique a Integration de Services", "RNIS (Réseau Numérique à Intégration de Services) est un réseau de télécommunication numérique qui permet la transmission de données numériques, de la voix et d'autres services sur des lignes téléphoniques numériques. Il offre des capacités avancées, telles que la commutation de circuits numériques, la signalisation intégrée et des débits de données plus élevés, par rapport au réseau téléphonique analogique traditionnel."],
- 
-  ["RSA", "Rivest Shamir and Adleman", "RSA (Rivest-Shamir-Adleman) est un algorithme de chiffrement asymétrique largement utilisé. Il repose sur le principe de la cryptographie à clé publique, où une paire de clés est utilisée : une clé publique pour chiffrer les données et une clé privée correspondante pour déchiffrer les données. L'algorithme RSA est utilisé pour sécuriser les communications, le stockage des données et l'authentification dans de nombreux systèmes informatiques."],
-  ["RTC", "Réseau Téléphonique Commuté", "RTC (Réseau Téléphonique Commuté) désigne le réseau de télécommunications traditionnel utilisé pour la transmission des appels téléphoniques. Il est basé sur la commutation de circuits et permet la communication vocale analogique entre les utilisateurs sur des lignes téléphoniques physiques."],
-  ["RTC", "Real Time Clock", "RTC (Real Time Clock) est une horloge intégrée dans un système informatique qui maintient l'heure et la date actuelles, même lorsque l'ordinateur est éteint ou déconnecté de l'alimentation électrique. Il est utilisé pour les fonctions de synchronisation, de planification et de journalisation dans les systèmes informatiques."],
-  ["SAN", "Storage Area Network", "SAN (Storage Area Network) est un réseau spécialisé utilisé pour connecter des dispositifs de stockage, tels que des serveurs de fichiers, des baies de disques et des bandes de sauvegarde, à des serveurs et à d'autres dispositifs informatiques. Il permet un partage efficace des ressources de stockage et offre des fonctionnalités avancées telles que la gestion centralisée du stockage, la redondance et la haute disponibilité."],
-  ["SANS", "System Administration, Networking & Security", "SANS (System Administration, Networking & Security) est une organisation qui propose des formations et des certifications dans les domaines de l'administration système, des réseaux informatiques et de la sécurité informatique. SANS offre des programmes de formation et des certifications reconnues internationalement pour les professionnels de l'informatique qui souhaitent acquérir des compétences avancées dans ces domaines."],
-  ["SCSI", "Small Computer System Interface", "SCSI (Small Computer System Interface) est une interface de communication utilisée pour connecter des périphériques de stockage, tels que des disques durs, des lecteurs de disques optiques et des bandes magnétiques, à des ordinateurs. SCSI offre des performances élevées, une gestion avancée des périphériques et des fonctionnalités de partage des ressources dans les environnements informatiques professionnels."],
-  ["SDH", "Synchronous Digital Hierarchy", "SDH (Synchronous Digital Hierarchy) est une norme de télécommunications qui définit une hiérarchie de signaux numériques synchrones utilisés pour la transmission de données sur des réseaux de fibre optique. SDH permet la transmission fiable et synchronisée de voix, de données et d'autres services sur de longues distances."],
-  ["SDLC", "Synchronous Data Link Control", "SDLC (Synchronous Data Link Control) est un protocole de contrôle de liaison de données synchrone utilisé pour la communication série entre les dispositifs. Il définit les règles de formatage, de synchronisation, de contrôle d'erreur et de flux de données pour assurer une transmission fiable des données."],
-  ["SESAME", "Système Électronique de Saisie et d'Aiguillages de MEssages", "SESAME (Système Électronique de Saisie et d'Aiguillages de MEssages) est un système de gestion des messages utilisé dans les réseaux de télécommunications. Il permet la collecte, la transmission, la mise en file d'attente et la distribution des messages entre les différents nœuds du réseau."],
-  ["SGBD", "Système de Gestion de Base de Données", "SGBD (Système de Gestion de Base de Données) est un logiciel utilisé pour gérer et organiser les données dans une base de données. Il offre des fonctionnalités pour la création, la modification, le stockage, la recherche et l'interrogation des données, ainsi que la gestion des autorisations, la sauvegarde et la récupération des données."],
-  ["SLIC", "Subscriber Loop Interface Circuit", "SLIC (Subscriber Loop Interface Circuit) est un circuit utilisé dans les systèmes de télécommunications pour interfacer la ligne d'abonné téléphonique avec le reste du réseau. Il assure la conversion des signaux électriques entre la ligne téléphonique et les circuits internes du système de télécommunication."],
-  ["SLIP", "Serial Line Internet Protocol", "SLIP (Serial Line Internet Protocol) est un protocole de réseau utilisé pour l'encapsulation des paquets IP sur des connexions série. Il permet de connecter des périphériques série tels que des modems à des réseaux IP, facilitant ainsi l'accès à Internet via des connexions dial-up ou série."],
-
-  ["SMB", "Server Message Block", "SMB (Server Message Block) est un protocole de réseau utilisé pour le partage de fichiers, d'imprimantes et d'autres ressources entre des ordinateurs sur un réseau local. Il permet à plusieurs utilisateurs d'accéder et de manipuler des fichiers situés sur un serveur, facilitant ainsi la collaboration et le partage de données dans un environnement réseau."],
-  ["SMS", "Short Message Service", "SMS (Short Message Service) est un service de messagerie texte utilisé pour envoyer et recevoir des messages courts sur des téléphones mobiles. Il permet aux utilisateurs d'envoyer des messages texte de taille limitée, généralement jusqu'à 160 caractères, à d'autres utilisateurs mobiles."],
-  ["SMTP", "Simple Mail Transfer Protocol", "SMTP (Simple Mail Transfer Protocol) est un protocole de réseau utilisé pour l'envoi de courriers électroniques. Il est utilisé pour transférer les e-mails d'un serveur de messagerie sortant vers un serveur de messagerie entrant, en utilisant des messages de contrôle pour gérer le transfert et la remise des e-mails."],
-  ["SNA", "Systems Network Architecture", "SNA (Systems Network Architecture) est une architecture de réseau propriétaire développée par IBM pour la communication entre les systèmes informatiques. Il fournit un ensemble de protocoles, de normes et de services pour la communication des données, la gestion des ressources et l'interconnexion des systèmes dans un environnement informatique distribué."],
-  ["SNMP", "Simple Network Management Protocol", "SNMP (Simple Network Management Protocol) est un protocole de réseau utilisé pour la gestion et le contrôle des périphériques réseau. Il permet aux administrateurs de surveiller les performances, la disponibilité et d'autres paramètres des équipements réseau, tels que les routeurs, les commutateurs et les serveurs, et de recevoir des notifications en cas de problème."],
-  ["SOAP", "Simple Object Access Protocol", "SOAP (Simple Object Access Protocol) est un protocole de communication utilisé pour l'échange de messages entre des applications distribuées. Il permet à des applications s'exécutant sur des plates-formes différentes d'interagir et de partager des informations en utilisant des messages XML (eXtensible Markup Language) sur des protocoles Internet standard tels que HTTP."],
-  ["SOHO", "Small Office and Home Office", "SOHO (Small Office and Home Office) désigne les environnements de travail comprenant de petits bureaux ou des bureaux à domicile. Il fait référence aux besoins et aux solutions informatiques spécifiques adaptés aux petites structures, telles que les connexions Internet, les réseaux locaux, les équipements informatiques et les services de support adaptés à ces environnements."],
-  ["SONET", "Synchronous Optical Network", "SONET (Synchronous Optical Network) est un standard de télécommunications basé sur la fibre optique utilisé pour la transmission de données à haute vitesse. Il utilise une structure synchrone pour transporter des signaux numériques sur des distances étendues, offrant des débits élevés et une fiabilité élevée pour les communications voix, données et vidéo."],
-  ["SPAM", "« Shoulder of Pork and hAM » , email publicitaire de masse", "Le SPAM (« Shoulder of Pork and hAM ») est un terme utilisé pour désigner les e-mails indésirables ou non sollicités envoyés en masse. Il s'agit généralement de messages publicitaires, de courriels frauduleux ou de pourriels. Les spams sont souvent envoyés à un grand nombre de destinataires sans leur consentement, et ils peuvent être une source de perturbation et de nuisance pour les utilisateurs."],
-  ["SPOOL", "Simultaneous Peripheral Operation On Line", "SPOOL (Simultaneous Peripheral Operation On Line) est un mécanisme utilisé dans les systèmes informatiques pour gérer les travaux d'impression et d'autres tâches de traitement des données. Il permet de mettre en file d'attente les travaux dans un ordre spécifié et de les traiter de manière simultanée, ce qui améliore l'efficacité du traitement des données et des périphériques."],
-  ["SQL", "Structured Query Language", "SQL (Structured Query Language) est un langage de programmation utilisé pour communiquer avec et manipuler des bases de données relationnelles. Il permet de créer, de modifier, de récupérer et de gérer les données stockées dans une base de données, en utilisant des commandes pour effectuer des requêtes, des mises à jour, des insertions et d'autres opérations de gestion de données."],
-  ["SSL", "Secure Socket Layer", "SSL (Secure Socket Layer) est un protocole de sécurité utilisé pour établir une connexion sécurisée entre un client et un serveur sur Internet. Il utilise un cryptage des données pour protéger la confidentialité des informations échangées, telles que les données personnelles et les mots de passe, et pour assurer l'authenticité des sites Web en utilisant des certificats numériques."],
-  ["SSII", "Société de Service et d'Ingénierie en Informatique", "SSII (Société de Service et d'Ingénierie en Informatique) est une entreprise spécialisée dans les services informatiques et l'ingénierie informatique. Elle propose des services de conseil, de développement de logiciels, de gestion de projets, de maintenance des systèmes et d'autres services liés à l'informatique pour répondre aux besoins des clients dans le domaine de l'informatique."],
-  ["STMx", "Synchronous Transmission Module", "STMx (Synchronous Transmission Module) est un standard de transmission synchrone utilisé pour la transmission numérique des données sur des réseaux de télécommunications. Il spécifie les débits binaires, les formats de trame et les méthodes de modulation pour la transmission fiable des signaux numériques sur des liaisons longue distance."],
-  ["TACACS", "Terminal Access Controller Access Control System", "TACACS (Terminal Access Controller Access Control System) est un protocole d'authentification et de gestion des accès utilisé dans les réseaux informatiques. Il permet de contrôler l'accès des utilisateurs aux ressources du réseau en vérifiant leurs informations d'identification et en autorisant ou refusant leur accès en fonction de leurs droits d'accès."],
-  ["TCO", "Total Cost Ownership", "TCO (Total Cost Ownership) fait référence au coût total de possession d'un système informatique, qui inclut les coûts d'acquisition, de déploiement, de maintenance, de mise à niveau et de support tout au long de la durée de vie du système. Le TCO prend en compte non seulement les coûts directs, tels que le matériel et les logiciels, mais également les coûts indirects, tels que la formation des utilisateurs, la gestion des risques et les coûts d'exploitation."],
-  ["TCP/IP", "Transmission Control Protocol / Internet Protocol", "TCP/IP (Transmission Control Protocol / Internet Protocol) est une suite de protocoles de réseau utilisés pour la communication et l'échange de données sur Internet. Il fournit les fondements de la communication sur Internet en spécifiant les méthodes de fragmentation, de routage et de réassemblage des paquets de données, ainsi que les règles pour établir et terminer des connexions entre les systèmes."],
-  ["TDMA", "Time Division Multiple Access", "TDMA (Time Division Multiple Access) est une technique de multiplexage utilisée dans les réseaux de télécommunications pour partager le spectre de fréquences entre plusieurs utilisateurs. Elle divise le temps en intervalles et attribue des créneaux de temps spécifiques à chaque utilisateur, leur permettant ainsi de partager efficacement une même fréquence pour la transmission de données vocales ou numériques."],
-  ["TETRA", "TErrestrial Trunked RAdio", "TETRA (TErrestrial Trunked RAdio) est un standard de communication radio numérique utilisé par les services de sécurité publique, les forces de l'ordre et les services d'urgence. Il offre des fonctionnalités avancées telles que la communication vocale, la messagerie de données et la localisation des utilisateurs, ainsi qu'une sécurité renforcée et une résistance aux interférences pour les communications critiques."],
-  ["TIFF", "Tagged Image File Format", "TIFF (Tagged Image File Format) est un format de fichier d'image couramment utilisé pour stocker des images bitmap de haute qualité. Il prend en charge une large gamme de résolutions, de profondeurs de couleurs et de méthodes de compression, offrant ainsi une flexibilité pour la manipulation et le stockage des images."],
-  ["TNA/TNR", "Terminaison Numérique d’Abonné/ Réseau", "TNA/TNR (Terminaison Numérique d'Abonné/ Réseau) fait référence à l'équipement utilisé pour interfacer les lignes numériques des abonnés avec le réseau de télécommunications. Il assure la conversion des signaux entre les formats numériques utilisés par le réseau et les équipements terminaux des abonnés, tels que les téléphones et les modems."],
-  ["TWAIN", "Technology Without Any Important Name", "TWAIN (Technology Without Any Important Name) est un standard logiciel utilisé pour l'acquisition d'images à partir de scanners, de caméras et d'autres périphériques d'imagerie. Il fournit une interface standardisée pour le contrôle des périphériques d'imagerie et la numérisation des documents, facilitant ainsi l'intégration des périphériques d'imagerie dans les applications logicielles."],
-  ["UCSD", "University of California San Diego", "UCSD (University of California San Diego) est une université de recherche située à San Diego, en Californie, aux États-Unis. Elle est réputée pour ses programmes d'informatique, d'ingénierie, de sciences et d'autres domaines académiques, ainsi que pour ses contributions à la recherche et à l'innovation dans de nombreux domaines."],
-  ["UDP", "User Datagram Protocol", "UDP (User Datagram Protocol) est un protocole de transport de données utilisé dans les réseaux informatiques. Contrairement au protocole TCP, qui offre une transmission fiable des données, UDP est un protocole non fiable qui ne garantit pas la livraison des paquets ni l'ordre de leur arrivée. Il est souvent utilisé pour les applications qui nécessitent une transmission rapide des données, telles que le streaming multimédia et les jeux en ligne."],
-  ["UIT-T", "Union Internationale des Télécommunications - Secteur des Télécommunications", "UIT-T (Union Internationale des Télécommunications - Secteur des Télécommunications) est une agence des Nations Unies chargée de la normalisation des télécommunications. Elle établit des normes techniques et des recommandations dans le domaine des télécommunications, favorisant ainsi l'interopérabilité et la compatibilité des équipements et des services de télécommunication à l'échelle internationale."],
-
-  ["UMTS", "Universal Mobile Telecommunication System", "UMTS (Universal Mobile Telecommunication System) est un standard de télécommunication mobile de troisième génération (3G) utilisé pour les communications vocales et de données sur les réseaux mobiles. Il offre des débits de données plus élevés par rapport aux normes de deuxième génération (2G) telles que le GSM, permettant ainsi des services avancés tels que la vidéo en streaming, la navigation sur Internet et la messagerie multimédia."],
-  ["URL", "Uniform Resource Locator", "URL (Uniform Resource Locator) est une adresse web qui spécifie l'emplacement d'une ressource sur Internet. Il est composé d'un protocole (comme HTTP ou HTTPS), d'un nom de domaine et d'un chemin d'accès vers la ressource spécifique. Les URL sont utilisées pour accéder aux sites Web, aux fichiers, aux images et à d'autres ressources en ligne."],
-  ["USB", "Universal Serial Bus", "USB (Universal Serial Bus) est une norme de connectivité utilisée pour connecter des périphériques électroniques, tels que des claviers, des souris, des imprimantes, des disques durs et des appareils mobiles, à des ordinateurs et à d'autres dispositifs. Il permet le transfert de données, l'alimentation électrique et d'autres fonctionnalités entre les périphériques et l'hôte via un câble USB."],
-  ["UTF-8", "Universal Transformation Format 8 bits", "UTF-8 (Universal Transformation Format 8 bits) est un encodage de caractères qui permet de représenter pratiquement tous les caractères du monde, y compris ceux des alphabets occidentaux et non occidentaux, dans un format compatible avec les systèmes informatiques. UTF-8 est largement utilisé comme encodage de caractères par défaut pour les pages Web, les documents texte et d'autres applications."],
-  ["VGA", "Video Graphic Adapter", "VGA (Video Graphic Adapter) est une norme d'affichage vidéo utilisée pour les écrans d'ordinateur. Il spécifie la résolution, le nombre de couleurs et la fréquence de rafraîchissement de l'affichage. VGA a été largement utilisé comme norme d'affichage pour les ordinateurs personnels et est maintenant remplacé par des normes d'affichage plus avancées telles que HDMI et DisplayPort."],
-  ["VOIP", "Voice Over IP", "VoIP (Voice over IP) est une technologie de communication vocale qui permet de passer des appels téléphoniques via Internet plutôt que par le réseau téléphonique traditionnel. Elle utilise le protocole IP pour transporter la voix sous forme de données numériques, offrant ainsi une alternative économique aux appels téléphoniques traditionnels."],
-  ["VPN", "Virtual Private Network", "VPN (Virtual Private Network) est un réseau privé virtuel qui permet de créer une connexion sécurisée et chiffrée entre des ordinateurs distants via un réseau public, tel qu'Internet. Il permet aux utilisateurs d'accéder à des ressources réseau partagées et de communiquer de manière sécurisée, en masquant leur adresse IP et en cryptant les données échangées."],
-  ["VRML", "Virtual Reality Modeling Language", "VRML (Virtual Reality Modeling Language) est un langage de modélisation utilisé pour créer des environnements virtuels en 3D sur Internet. Il permet de définir des objets 3D, des scènes, des interactions et des animations pour la visualisation en réalité virtuelle. VRML a été largement utilisé dans les premiers stades du développement de la réalité virtuelle sur le web."],
-  ["VSAT", "Very Small Aperture Terminal", "VSAT (Very Small Aperture Terminal) est un système de communication par satellite utilisé pour établir des connexions bidirectionnelles à haut débit sur de longues distances. Il utilise une antenne parabolique de petite taille (aperture) pour établir la communication avec le satellite, offrant ainsi une connectivité Internet, téléphonique et de données dans les régions éloignées et peu desservies par les infrastructures terrestres."],
-  ["WAN", "Wide Area Network", "WAN (Wide Area Network) est un réseau étendu qui couvre une vaste zone géographique, telle qu'une région, un pays ou même plusieurs pays. Il permet la connectivité entre des sites distants et facilite la communication et le partage de données entre ces sites, généralement via des connexions à large bande passante, telles que les lignes louées, les réseaux privés virtuels (VPN) ou les connexions Internet."],
-  ["WAP", "Wireless Application Protocol", "WAP (Wireless Application Protocol) est un ensemble de protocoles et de normes utilisés pour permettre l'accès à Internet et l'exécution d'applications sur des appareils mobiles tels que les téléphones portables. Il optimise le contenu web pour les écrans et les capacités des appareils mobiles, offrant ainsi une expérience de navigation adaptée aux appareils mobiles."],
-  ["W-CDMA", "Wideband Code Division Multiple Access", "W-CDMA (Wideband Code Division Multiple Access) est une norme de communication mobile utilisée pour les réseaux de téléphonie mobile de troisième génération (3G). Il utilise une technique de multiplexage pour permettre la transmission simultanée de voix et de données à haut débit sur les réseaux mobiles, offrant ainsi une meilleure capacité et une meilleure qualité de service par rapport aux normes précédentes."],
-  ["WEP", "Wireless Equivalent Privacy", "WEP (Wireless Equivalent Privacy) est un protocole de sécurité utilisé pour protéger les réseaux sans fil. Il utilise une clé de chiffrement partagée entre les périphériques du réseau pour sécuriser les communications sans fil. Cependant, WEP a été largement remplacé par des protocoles de sécurité plus robustes, tels que WPA (Wi-Fi Protected Access), en raison de ses vulnérabilités et de sa faible sécurité."],
-  ["WDM", "Wavelength Division Multiplexing", "WDM (Wavelength Division Multiplexing) est une technique utilisée dans les réseaux de fibre optique pour transmettre plusieurs signaux sur une seule fibre en utilisant différentes longueurs d'onde de lumière. Il permet d'augmenter la capacité du réseau en multiplexant plusieurs signaux sur une seule fibre optique, offrant ainsi une transmission à haut débit sur de longues distances."],
-  ["WINS", "Windows Internet Name Service", "WINS (Windows Internet Name Service) est un service de résolution de noms utilisé dans les réseaux Microsoft Windows. Il permet de traduire les noms NetBIOS (Network Basic Input/Output System) en adresses IP, facilitant ainsi la communication entre les ordinateurs et les périphériques dans un réseau Windows."],
-  ["WLAN", "Wireless Local Area Network", "WLAN (Wireless Local Area Network) est un réseau local sans fil qui utilise des technologies de communication sans fil pour connecter des périphériques au réseau. Il permet une connectivité sans fil dans une zone géographique limitée, telle qu'une maison, un bureau ou un campus, offrant ainsi la mobilité et la flexibilité pour accéder au réseau et aux ressources à partir de différents emplacements."],
-  ["WML", "Wireless Markup Language", "WML (Wireless Markup Language) est un langage de balisage utilisé pour créer des pages web adaptées aux appareils mobiles. Il est basé sur XML et spécialement conçu pour être utilisé dans les appareils mobiles avec des écrans plus petits et des capacités limitées. WML est utilisé en conjonction avec WAP pour fournir un contenu web optimisé pour les appareils mobiles."],
-  ["WSDL", "Web Services Description Language", "WSDL (Web Services Description Language) est un langage de description utilisé pour décrire les services web et leurs interfaces. Il spécifie les opérations, les messages, les protocoles de communication et les formats de données utilisés pour l'interaction avec les services web, facilitant ainsi l'intégration et l'interopérabilité des applications distribuées basées sur les services web."],
-  ["WWW", "World Wide Web", "WWW (World Wide Web) est un système d'information en ligne qui permet l'accès et le partage de documents et de ressources sur Internet. Il est basé sur l'utilisation d'URL, de navigateurs web et de protocoles de communication tels que HTTP pour accéder aux sites web et naviguer à travers les pages et les liens hypertexte."],
-  ["WYSIWYG", "What You See Is What You Get", "WYSIWYG (What You See Is What You Get) est un terme utilisé pour décrire les éditeurs de texte ou les logiciels de mise en page qui permettent de visualiser le résultat final pendant le processus de création. Cela signifie que l'affichage à l'écran correspondra étroitement à la façon dont le contenu sera rendu ou imprimé, offrant ainsi une représentation précise de la mise en page et du formatage."],
-  ["XML", "eXtensible Markup Language", "XML (eXtensible Markup Language) est un langage de balisage utilisé pour structurer et stocker des données de manière lisible par machine et humain. Il permet de définir des balises personnalisées pour marquer les éléments d'un document, ce qui facilite l'échange et la manipulation des données entre différentes applications et plates-formes."],
-  ["XNS", "Xerox Network System", "XNS (Xerox Network System) était un système de réseau développé par Xerox Corporation dans les années 1970. Il a été l'un des premiers systèmes de réseau à mettre en œuvre le modèle de réseau en couches, et il a jeté les bases de protocoles tels que Ethernet et TCP/IP."],
-  ["ABR", "Available Bit Rate", "ABR (Available Bit Rate) est une classe de service utilisée dans les réseaux à commutation de cellules, tels que les réseaux ATM (Asynchronous Transfer Mode). Elle permet de fournir une bande passante supplémentaire lorsqu'elle est disponible, tout en garantissant un débit minimum en fonction des besoins de l'application."],
-  ["ACID", "Atomicity, Consistency, Isolation, Durability", "ACID (Atomicity, Consistency, Isolation, Durability) est un ensemble de propriétés garanties par les systèmes de gestion de bases de données pour assurer la fiabilité et la cohérence des opérations de traitement des données. Atomicité garantit que les transactions sont soit entièrement exécutées, soit annulées, sans état intermédiaire. Consistency garantit que les données respectent les contraintes définies. Isolation garantit que les transactions s'exécutent indépendamment les unes des autres. Durability garantit que les modifications apportées à la base de données sont persistantes même en cas de panne du système."],
-  ["ADC", "Analog-to-Digital Converter", "ADC (Analog-to-Digital Converter) est un convertisseur utilisé pour convertir des signaux analogiques en signaux numériques. Il mesure et échantillonne le signal analogique à des intervalles réguliers, puis le convertit en une représentation numérique en quantifiant les niveaux de tension du signal. Les ADC sont largement utilisés dans les systèmes de traitement de signal, les dispositifs audio et les systèmes de contrôle pour numériser et traiter les signaux analogiques."],
-  ["APIPA", "Automatic Private IP Addressing", "APIPA (Automatic Private IP Addressing) est une fonctionnalité utilisée par les systèmes d'exploitation pour attribuer automatiquement des adresses IP aux périphériques lorsqu'aucun serveur DHCP (Dynamic Host Configuration Protocol) n'est disponible sur le réseau. Il permet aux périphériques de configurer automatiquement une adresse IP à partir d'une plage d'adresses prédéfinie, ce qui facilite la connectivité dans les petits réseaux locaux sans configuration IP manuelle."],
-  ["BGP", "Border Gateway Protocol", "BGP (Border Gateway Protocol) est un protocole de routage utilisé pour échanger des informations de routage entre les routeurs sur Internet. Il est utilisé pour déterminer les chemins optimaux pour acheminer le trafic entre les réseaux autonomes, en prenant en compte divers critères tels que la disponibilité des chemins, la bande passante et les politiques de routage."],
-
-  ["BLOB", "Binary Large Object", "BLOB (Binary Large Object) est un type de données utilisé pour stocker de grandes quantités de données binaires dans une base de données. Il est utilisé pour stocker des images, des fichiers multimédias, des documents et d'autres types de données binaires. Les BLOB sont généralement traités en tant qu'objets distincts dans une base de données et peuvent être récupérés, modifiés et supprimés en tant qu'unités individuelles."],
-  ["BSS", "Base Station Subsystem", "BSS (Base Station Subsystem) est un sous-système d'un réseau de téléphonie mobile qui gère les fonctions liées aux stations de base. Il comprend les équipements nécessaires pour établir et gérer les connexions sans fil avec les appareils mobiles, tels que les antennes, les contrôleurs de base et les équipements de commutation."],
-  ["CDN", "Content Delivery Network", "CDN (Content Delivery Network) est un réseau de serveurs distribués géographiquement conçu pour livrer rapidement du contenu web aux utilisateurs finaux. Il fonctionne en dupliquant et en distribuant le contenu sur plusieurs serveurs situés dans différentes régions, ce qui permet de réduire la latence et d'améliorer les performances de livraison du contenu, en particulier pour les sites web à fort trafic."],
-  ["CLI", "Command Line Interface", "CLI (Command Line Interface) est une interface utilisateur basée sur du texte qui permet aux utilisateurs de donner des commandes à un ordinateur en saisissant des lignes de texte. Les utilisateurs interagissent avec le système en exécutant des commandes et en fournissant des arguments pour effectuer différentes opérations. Les interfaces en ligne de commande sont couramment utilisées dans les systèmes d'exploitation et les applications en ligne de commande."],
-  ["CRUD", "Create, Read, Update, Delete", "CRUD (Create, Read, Update, Delete) est un acronyme utilisé pour décrire les quatre opérations de base sur les données d'un système d'information. Create (Créer) permet de créer de nouvelles données, Read (Lire) permet de lire les données existantes, Update (Mettre à jour) permet de modifier les données existantes, et Delete (Supprimer) permet de supprimer les données existantes. Ces opérations forment la base des opérations de manipulation des données dans les applications."],
-  ["DaaS", "Desktop as a Service", "DaaS (Desktop as a Service) est un modèle de livraison de bureau virtuel dans le cloud. Il permet aux utilisateurs d'accéder à un environnement de bureau complet, y compris les applications et les données, via Internet, sans avoir besoin d'installer ou de gérer localement le logiciel et l'infrastructure. Les bureaux virtuels sont hébergés et gérés par un fournisseur de services cloud."],
-  ["DHCP", "Dynamic Host Configuration Protocol", "DHCP (Dynamic Host Configuration Protocol) est un protocole réseau utilisé pour attribuer automatiquement des adresses IP et d'autres paramètres de configuration aux périphériques dans un réseau. Il permet aux périphériques de demander et de recevoir des adresses IP de manière dynamique, simplifiant ainsi la gestion des adresses IP dans un réseau."],
-  ["DOS", "Disk Operating System", "DOS (Disk Operating System) est un système d'exploitation pour ordinateurs personnels basé sur des disquettes ou des disques durs. Il a été largement utilisé dans les premiers jours des ordinateurs personnels avant l'avènement des systèmes d'exploitation modernes tels que Windows, macOS et Linux."],
-  ["DSL", "Digital Subscriber Line", "DSL (Digital Subscriber Line) est une technologie de transmission de données qui permet d'utiliser les lignes téléphoniques existantes pour fournir des connexions Internet à haut débit. Il utilise des techniques de modulation pour transmettre des données numériques sur les lignes téléphoniques, offrant ainsi des vitesses de téléchargement et de téléchargement plus rapides que les connexions analogiques traditionnelles."],
-  ["ECC", "Elliptic Curve Cryptography", "ECC (Elliptic Curve Cryptography) est une méthode de cryptographie basée sur les courbes elliptiques. Elle utilise des propriétés mathématiques des courbes elliptiques pour sécuriser les communications et les données en utilisant des algorithmes de chiffrement et de signature numérique. ECC offre un niveau de sécurité équivalent à d'autres algorithmes de cryptographie plus anciens, mais avec des clés plus courtes, ce qui la rend plus efficace en termes de performances et d'utilisation des ressources."],
-  ["FIFO", "First In, First Out", "FIFO (First In, First Out) est une méthode de gestion de données où les éléments qui sont entrés en premier sont les premiers à être traités ou récupérés. Il suit le principe de l'ordonnancement de file d'attente, où les éléments sont traités dans l'ordre d'arrivée. Cela signifie que le premier élément inséré dans une file d'attente sera le premier à être retiré."],
-  ["FTP", "File Transfer Protocol", "FTP (File Transfer Protocol) est un protocole utilisé pour transférer des fichiers sur un réseau. Il permet à un utilisateur d'envoyer et de recevoir des fichiers vers ou depuis un serveur FTP. FTP est largement utilisé pour le téléchargement et le téléchargement de fichiers sur Internet, ainsi que pour la gestion et le partage de fichiers sur des réseaux internes."],
- ["RACI","Responsibility assignment matrix","L'acronyme RACI (responsible, accountable, consulted et informed) ou RAM (responsibility assignment matrix) désigne dans le domaine du management une matrice des responsabilités. Elle indique les rôles et les responsabilités des intervenants au sein de chaque processus et activité. Cette matrice représente l'organisation du travail en reliant dans un tableau commun la structure de découpage de projet (WBS) et la structure organisationnelle du projet (OBS)."],
- ["GPIO", "General Purpose Input/Output", "GPIO (General Purpose Input/Output) est une interface d'E/S utilisée pour connecter des périphériques électroniques à un système informatique. Elle permet à un système de contrôler et de surveiller des signaux numériques, tels que des capteurs, des interrupteurs et des actionneurs, en utilisant des broches d'entrée et de sortie configurables."],
- ["GUI", "Graphical User Interface", "GUI (Graphical User Interface) est une interface utilisateur qui permet aux utilisateurs d'interagir avec un système informatique en utilisant des éléments graphiques tels que des fenêtres, des icônes, des menus et des boutons. Elle offre une expérience utilisateur conviviale en permettant une interaction visuelle et intuitive avec le système."],
- ["HDMI", "High-Definition Multimedia Interface", "HDMI (High-Definition Multimedia Interface) est une interface audio/vidéo numérique utilisée pour connecter des appareils tels que des téléviseurs, des moniteurs et des lecteurs multimédias à des sources de contenu, telles que des lecteurs Blu-ray, des consoles de jeux et des ordinateurs. Il prend en charge la transmission de signaux audio et vidéo haute définition sur un seul câble."],
- ["HTML", "Hypertext Markup Language", "HTML (Hypertext Markup Language) est un langage de balisage utilisé pour structurer le contenu des pages web. Il est utilisé pour définir la structure, le style et les éléments interactifs d'une page web, tels que les titres, les paragraphes, les images, les liens et les formulaires."],
- ["HTTP", "Hypertext Transfer Protocol", "HTTP (Hypertext Transfer Protocol) est un protocole de communication utilisé pour transférer des informations sur le Web. Il définit les règles et les formats d'échange de données entre un navigateur web et un serveur web. Les requêtes HTTP sont utilisées pour récupérer des ressources, telles que des pages web, des images et des vidéos, à partir de serveurs web."],
- ["HTTPS", "Hypertext Transfer Protocol Secure", "HTTPS (Hypertext Transfer Protocol Secure) est une version sécurisée du protocole HTTP. Il ajoute une couche de chiffrement SSL/TLS pour sécuriser la communication entre un navigateur web et un serveur web. Il est largement utilisé pour protéger les transactions en ligne, telles que les transactions bancaires et les achats en ligne, en assurant la confidentialité et l'intégrité des données échangées."],
- ["IaaS", "Infrastructure as a Service", "IaaS (Infrastructure as a Service) est un modèle de fourniture de services cloud dans lequel les ressources informatiques, telles que les serveurs, le stockage et les réseaux, sont fournies en tant que services sur demande via Internet. Les utilisateurs peuvent accéder et gérer ces ressources à distance, sans avoir besoin de gérer l'infrastructure physique sous-jacente."],
- ["IDE", "Integrated Development Environment", "IDE (Integrated Development Environment) est un environnement logiciel qui regroupe des outils de développement pour faciliter la création, le test et le débogage de logiciels. Il fournit des fonctionnalités telles que l'édition de code, la compilation, le débogage et l'intégration avec d'autres outils de développement. Les IDE sont couramment utilisés par les développeurs pour créer des applications dans divers langages de programmation."],
- ["IoT", "Internet of Things", "IoT (Internet of Things) fait référence à un réseau de dispositifs physiques interconnectés qui sont capables de collecter et d'échanger des données via Internet. Ces dispositifs, souvent équipés de capteurs et d'actuateurs, peuvent être des objets du quotidien tels que des thermostats, des appareils électroménagers, des véhicules, etc. L'IoT permet la création de systèmes intelligents et de nouvelles applications dans divers domaines."],
- ["JSON", "JavaScript Object Notation", "JSON (JavaScript Object Notation) est un format léger d'échange de données basé sur la syntaxe JavaScript. Il est largement utilisé pour représenter et échanger des données structurées entre les applications. JSON est facilement lisible par les humains et peut être facilement analysé et généré par les langages de programmation."],
- ["LAN", "Local Area Network", "LAN (Local Area Network) est un réseau informatique qui connecte des dispositifs dans une zone géographique limitée, telle qu'un bureau, une maison ou un campus. Il permet le partage de ressources, tels que des fichiers et des imprimantes, et la communication entre les utilisateurs du réseau."],
- ["LTE", "Long-Term Evolution", "LTE (Long-Term Evolution) est une norme de communication mobile utilisée pour les réseaux 4G. Elle offre des vitesses de connexion plus rapides et une meilleure capacité par rapport aux normes précédentes. LTE est largement déployé dans le monde entier pour fournir des services de données mobiles haut débit."],
- ["MAC", "Media Access Control", "MAC (Media Access Control) est une adresse physique unique attribuée à une interface réseau. Elle identifie de manière unique un périphérique connecté à un réseau et est utilisée pour le contrôle d'accès au support de communication. Le MAC est souvent représenté sous la forme d'une série de chiffres hexadécimaux."],
- ["NAT", "Network Address Translation", "NAT (Network Address Translation) est une technique utilisée pour traduire les adresses IP entre des réseaux différents. Elle permet à plusieurs périphériques dans un réseau privé d'utiliser une seule adresse IP publique pour communiquer avec Internet. Le NAT améliore l'utilisation des adresses IP et renforce la sécurité en masquant les adresses IP privées des périphériques internes."],
- ["OCR", "Optical Character Recognition", "OCR (Optical Character Recognition) est une technologie qui permet de convertir des images de texte imprimé en texte éditable. Elle utilise des algorithmes de reconnaissance de caractères pour analyser les formes des caractères dans une image et les convertir en texte numérique. L'OCR est largement utilisé dans les applications de numérisation de documents, de reconnaissance de texte et de conversion de PDF en texte."],
-  ["ORM", "Object-Relational Mapping", "ORM (Object-Relational Mapping) est une technique de programmation qui permet de mapper les objets d'une application orientée objet avec les tables d'une base de données relationnelle. Il facilite l'accès et la manipulation des données en fournissant une couche d'abstraction entre l'application et la base de données. L'ORM gère la conversion automatique des objets en enregistrements de base de données et vice versa."],
-  ["PaaS", "Platform as a Service", "PaaS (Platform as a Service) est un modèle de fourniture de services cloud dans lequel une plateforme de développement et d'exécution est mise à disposition des utilisateurs. Elle offre un environnement de développement complet avec des outils, des bibliothèques et des services d'infrastructure préconfigurés. Les utilisateurs peuvent se concentrer sur le développement d'applications sans avoir à gérer l'infrastructure sous-jacente."],
-  ["PCI", "Peripheral Component Interconnect", "PCI (Peripheral Component Interconnect) est une norme de bus d'extension utilisée pour connecter des périphériques d'extension à un ordinateur. Il permet la connexion de cartes d'extension telles que les cartes graphiques, les cartes réseau et les cartes son. Le bus PCI offre une haute bande passante et une compatibilité avec plusieurs types de périphériques."],
-  ["PHP", "PHP: Hypertext Preprocessor", "PHP (PHP: Hypertext Preprocessor) est un langage de programmation côté serveur principalement utilisé pour le développement web. Il est largement utilisé pour créer des sites web dynamiques et des applications web. PHP est intégré dans le code HTML et permet l'exécution de scripts sur le serveur pour générer du contenu dynamique."],
-  ["QoS", "Quality of Service", "QoS (Quality of Service) fait référence à la capacité d'un réseau à fournir un niveau de performance et de fiabilité spécifique pour les applications et les services. Il s'agit de garantir des paramètres tels que la bande passante, la latence, la gigue et la priorité de trafic pour répondre aux exigences spécifiques des applications. La QoS est essentielle pour assurer une expérience utilisateur optimale dans les réseaux et les systèmes informatiques."],
-  ["RAID", "Redundant Array of Independent Disks", "RAID (Redundant Array of Independent Disks) est une technologie de stockage qui utilise plusieurs disques durs pour améliorer la performance, la redondance et/ou la capacité de stockage. Les configurations RAID peuvent offrir une tolérance aux pannes, une augmentation de la vitesse de lecture/écriture ou une combinaison des deux. Il existe plusieurs niveaux de RAID, tels que RAID 0, RAID 1, RAID 5, etc."],
-  ["REST", "Representational State Transfer", "REST (Representational State Transfer) est un style d'architecture logicielle pour les services web. Il repose sur le principe de l'utilisation des méthodes standard du protocole HTTP (GET, POST, PUT, DELETE) pour accéder et manipuler les ressources d'une application distribuée. REST favorise l'interopérabilité, la scalabilité et la simplicité des services web."],
-  ["RFID", "Radio-Frequency Identification", "RFID (Radio-Frequency Identification) est une technologie de suivi et d'identification qui utilise des tags électroniques pour stocker et récupérer des données à distance. Les tags RFID contiennent une puce électronique et une antenne qui permettent la communication sans fil avec les lecteurs RFID. Cette technologie est largement utilisée dans des domaines tels que la logistique, la gestion des stocks, le contrôle d'accès et le paiement sans contact."],
-  ["ROM", "Read-Only Memory", "ROM (Read-Only Memory) est un type de mémoire informatique qui conserve les données même en cas de perte d'alimentation. Contrairement à la mémoire vive (RAM), la ROM est non volatile et ne peut pas être modifiée ou effacée par des opérations normales d'écriture. Elle est utilisée pour stocker des données permanentes, telles que le firmware du système, les programmes d'amorçage et les données de configuration."],
-  ["RTOS", "Real-Time Operating System", "RTOS (Real-Time Operating System) est un système d'exploitation conçu pour des applications nécessitant une réponse en temps réel. Il offre des fonctionnalités pour gérer les tâches en temps réel, la planification, la communication et la synchronisation des opérations. Les systèmes d'exploitation en temps réel sont couramment utilisés dans les systèmes embarqués, les systèmes de contrôle industriels, les dispositifs médicaux, etc."],
-  ["SaaS", "Software as a Service", "SaaS (Software as a Service) est un modèle de fourniture de logiciel dans lequel les applications sont fournies sous forme de services via Internet. Les utilisateurs peuvent accéder et utiliser les applications via un navigateur web sans avoir besoin d'installer ou de gérer les logiciels localement. Les applications SaaS sont généralement basées sur un abonnement et offrent une flexibilité et une évolutivité accrues pour les utilisateurs."],
-
-  ["SAN", "Storage Area Network", "SAN (Storage Area Network) est un réseau spécialisé utilisé pour connecter des dispositifs de stockage, tels que des serveurs de fichiers, des baies de stockage et des bandes de sauvegarde. Il permet de centraliser et de gérer efficacement les ressources de stockage, offrant ainsi une capacité de stockage évolutive, une haute disponibilité et des performances élevées."],
-  ["SDK", "Software Development Kit", "SDK (Software Development Kit) est un ensemble d'outils de développement logiciel qui comprend des bibliothèques, des compilateurs, des débogueurs et d'autres utilitaires. Il est utilisé par les développeurs pour créer des applications pour une plateforme ou un système spécifique. Les SDK fournissent des ressources et des fonctionnalités prédéfinies qui facilitent le processus de développement et permettent aux développeurs de tirer parti des fonctionnalités de la plateforme cible."],
-  ["SMTP", "Simple Mail Transfer Protocol", "SMTP (Simple Mail Transfer Protocol) est un protocole de communication utilisé pour l'envoi de courriers électroniques sur Internet. Il spécifie les règles et les procédures pour transférer les messages électroniques entre les serveurs de messagerie. SMTP est largement utilisé dans les applications de messagerie pour acheminer et livrer les e-mails."],
-  ["SOAP", "Simple Object Access Protocol", "SOAP (Simple Object Access Protocol) est un protocole de communication basé sur XML utilisé pour l'échange de données structurées entre des applications web. Il permet aux applications de différentes plateformes et langages de communiquer de manière standardisée en utilisant des messages XML. SOAP est souvent utilisé dans les services web pour l'appel de méthodes distantes et la transmission de données entre les applications."],
-  ["SSD", "Solid State Drive", "SSD (Solid State Drive) est un type de dispositif de stockage qui utilise des puces de mémoire flash pour stocker des données de manière permanente. Contrairement aux disques durs traditionnels, les SSD n'ont pas de parties mobiles, ce qui les rend plus rapides, plus résistants aux chocs et plus économes en énergie. Les SSD sont couramment utilisés comme alternatives plus rapides et plus fiables aux disques durs dans les ordinateurs et les serveurs."],
-  ["TCP", "Transmission Control Protocol", "TCP (Transmission Control Protocol) est un protocole de communication fiable et orienté connexion utilisé dans les réseaux informatiques. Il garantit la livraison des données dans l'ordre et sans perte, en établissant une connexion virtuelle entre les applications qui communiquent. TCP est largement utilisé dans les applications qui nécessitent une transmission fiable des données, telles que les transferts de fichiers, les e-mails et les sites web."],
-  ["TLS", "Transport Layer Security", "TLS (Transport Layer Security) est un protocole de sécurité qui établit une connexion sécurisée et chiffrée entre un client et un serveur sur Internet. Il assure la confidentialité, l'intégrité et l'authentification des données échangées. TLS est couramment utilisé pour sécuriser les transactions en ligne, les communications par e-mail et les connexions VPN."],
-  ["URL", "Uniform Resource Locator", "URL (Uniform Resource Locator) est une adresse web qui identifie de manière unique une ressource sur Internet. Elle spécifie le protocole à utiliser (http://, https://, ftp://, etc.), le nom de domaine, le chemin d'accès et éventuellement des paramètres. Les URL sont utilisées pour accéder aux pages web, aux fichiers, aux images et à d'autres ressources en ligne."],
-  ["VLAN", "Virtual Local Area Network", "VLAN (Virtual Local Area Network) est un réseau local virtuel qui permet de regrouper des périphériques réseau en fonction de critères tels que la fonction, le département ou l'emplacement physique, indépendamment de leur emplacement physique. Les VLAN permettent de segmenter et d'isoler le trafic réseau, d'améliorer la sécurité et la performance, et de simplifier la gestion des réseaux."],
-  ["VPN", "Virtual Private Network", "VPN (Virtual Private Network) est un réseau privé virtuel qui permet de créer une connexion sécurisée et chiffrée entre un utilisateur ou un réseau local et un réseau distant via Internet. Il permet d'accéder de manière sécurisée aux ressources d'un réseau distant comme si l'utilisateur était directement connecté à ce réseau. Les VPN sont largement utilisés pour assurer la confidentialité et la sécurité des communications sur Internet, ainsi que pour contourner les restrictions géographiques."],
-
-  ["WAN", "Wide Area Network", "Un WAN (Wide Area Network) est un réseau étendu qui couvre une grande zone géographique, généralement composée de plusieurs sites distants interconnectés. Il permet la communication entre des ordinateurs et des réseaux situés à des emplacements géographiquement éloignés, en utilisant des technologies telles que les connexions Internet, les liaisons louées et les réseaux privés virtuels (VPN). Les WAN sont utilisés par les organisations pour faciliter la communication et le partage de ressources entre leurs succursales et leurs bureaux distants."],
-  ["XML", "eXtensible Markup Language", "XML (eXtensible Markup Language) est un langage de balisage qui permet de structurer et de décrire des données de manière lisible par les humains et les machines. Il est largement utilisé pour l'échange de données entre différents systèmes, notamment sur Internet. XML permet de créer des documents avec une structure hiérarchique en utilisant des balises personnalisées, ce qui le rend flexible et extensible."],
-  ["ZIP", "Zone Improvement Plan", "ZIP (Zone Improvement Plan) est un système de codes postaux utilisé aux États-Unis pour faciliter le tri et la distribution du courrier. Chaque code postal représente une zone géographique spécifique et est composé de cinq chiffres, avec une extension optionnelle de quatre chiffres. Le système ZIP est largement utilisé pour l'acheminement précis du courrier et l'identification des localités."],
-  ["SD-WAN", "Software-Defined Wide Area Network", "SD-WAN (Software-Defined Wide Area Network) est une technologie de réseau qui permet de gérer et de contrôler un réseau étendu de manière centralisée en utilisant des logiciels et des techniques de virtualisation. Il permet aux organisations de simplifier la gestion de leurs réseaux WAN, d'améliorer les performances et de réduire les coûts. SD-WAN utilise des fonctionnalités telles que la répartition de charge, l'optimisation du trafic et la sécurité avancée pour améliorer l'efficacité et la fiabilité des connexions WAN."],
-  ["WWAN", "Wireless Wide Area Network", "WWAN (Wireless Wide Area Network) est un réseau sans fil qui permet la connectivité à large bande sur de grandes distances géographiques. Il utilise des technologies de communication mobile, telles que la 3G, la 4G et la 5G, pour fournir une connectivité Internet à des appareils mobiles, tels que les smartphones, les tablettes et les ordinateurs portables, sur de vastes territoires. Les WWAN sont utilisés pour offrir une connectivité Internet dans les zones où les réseaux filaires ne sont pas disponibles ou pratiques, tels que les zones rurales ou les zones en développement."],
-
-
-
-    ];
-
-
- 
-  
-  // Trier les acronymes en ordre alphabétique
-  acronyms.sort((a, b) => {
-    const acronymA = a[0].split(' ')[0].toLowerCase();
-    const acronymB = b[0].split(' ')[0].toLowerCase();
-  
-    if (acronymA < acronymB) {
-      return -1;
-    } else if (acronymA > acronymB) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  
-  // Supprimer les doublons
-  let uniqueAcronyms = [];
-  let previousAcronym = '';
-  
-  for (let i = 0; i < acronyms.length; i++) {
-    if (!Array.isArray(acronyms[i])) {
-      console.log(`acronyms[${i}] is not an array:`, acronyms[i]);
-      continue;
-    } else if (typeof acronyms[i][0] !== 'string') {
-      console.log(`acronyms[${i}][0] is not a string:`, acronyms[i][0]);
-      continue;
-    }
-  
-    const currentAcronym = acronyms[i][0].split(' ')[0];
-  
-    if (currentAcronym !== previousAcronym) {
-      uniqueAcronyms.push(acronyms[i]);
-      previousAcronym = currentAcronym;
-    }
-  }
-  
-  function highlight(text, searchQuery) {
-    const index = text.toLowerCase().indexOf(searchQuery.toLowerCase());
-  
-    if (index >= 0) {
-      return text.substring(0, index) + '<span class="highlight">' + text.substring(index, index + searchQuery.length) + '</span>' + text.substring(index + searchQuery.length);
-    } else {
-      return text;
-    }
-  }
-  
-  function updateContent(searchQuery = '') {
-    let filteredAcronyms = uniqueAcronyms;
+<div class="responsive-table">
     
-    if (searchQuery) {
-      filteredAcronyms = uniqueAcronyms.filter(acronymData => acronymData.join(' ').toLowerCase().includes(searchQuery.toLowerCase()));
-    }
+
+    <h2>Types d'attaques sur Internet et leurs Solutions</h2>
+
+    <table>
+        <tr>
+            <th>Type d'attaque</th>
+            <th>Solution de sécurité</th>
+        </tr>
+        <tr>
+            <td>Attaque par déni de service (DoS)</td>
+            <td>Utiliser un système de prévention des DoS, répartir le trafic avec un équilibrage de charge.</td>
+        </tr>
+        <tr>
+            <td>Attaque de type Man-in-the-Middle (MitM)</td>
+            <td>Utiliser des protocoles de chiffrement (comme HTTPS), et une authentification forte.</td>
+        </tr>
+        <tr>
+            <td>Injections SQL</td>
+            <td>Préparer les requêtes SQL, utiliser un ORM, valider et désinfecter les entrées.</td>
+        </tr>
+        <tr>
+            <td>Cross-Site Scripting (XSS)</td>
+            <td>Valider, désinfecter et échapper aux entrées, utiliser des politiques de sécurité de contenu (CSP).</td>
+        </tr>
+        <tr>
+            <td>Cross-Site Request Forgery (CSRF)</td>
+            <td>Utiliser des jetons anti-CSRF, s'assurer que les actions sensibles nécessitent une authentification.</td>
+        </tr>
+        <tr>
+            <td>Phishing</td>
+            <td>Éduquer les utilisateurs à reconnaître les tentatives de phishing, utiliser des filtres anti-phishing.</td>
+        </tr>
+        <tr>
+            <td>Attaque par force brute</td>
+            <td>Utiliser des limites de tentatives de connexion, une authentification à deux facteurs.</td>
+        </tr>
+        
+                ...
+        <tr>
+            <td>Drive-by download</td>
+            <td>Mettre à jour régulièrement les navigateurs et plugins, désactiver les plugins inutiles, utiliser des outils de navigation sécurisée.</td>
+        </tr>
+        <tr>
+            <td>Attaque par dictionnaire</td>
+            <td>Encourager l'utilisation de mots de passe forts, mettre en œuvre une authentification à deux facteurs.</td>
+        </tr>
+        <tr>
+            <td>Malware et ransomware</td>
+            <td>Mettre en place des solutions antivirus et anti-ransomware, effectuer des sauvegardes régulières.</td>
+        </tr>
+        <tr>
+            <td>Pass-the-Hash</td>
+            <td>Isoler les actifs critiques, mettre en œuvre LSA Protection, utiliser des mots de passe forts.</td>
+        </tr>
+        <tr>
+            <td>Attaque Zero-Day</td>
+            <td>Utiliser des solutions de détection des comportements anormaux, mettre à jour régulièrement les logiciels et les systèmes.</td>
+        </tr>
+        <tr>
+            <td>Attaque par rejeu</td>
+            <td>Utiliser des jetons à usage unique, mettre en œuvre des protocoles sécurisés comme TLS.</td>
+        </tr>
+        <tr>
+            <td>Eavesdropping (écoute clandestine)</td>
+            <td>Chiffrer les communications, utiliser des réseaux privés virtuels (VPN).</td>
+        </tr>
     
-    let formattedContent = '';
-  
-    for (let i = 0; i < filteredAcronyms.length; i++) {
-      const acronymData = filteredAcronyms[i];
-      const acronym = acronymData[0].split(' ')[0];
-      const name = acronymData[1].split(',')[0];
-      const fullName = name.replace(/ /g, '_');
-      const additionalInfo = acronymData[2];
-  
-      let acronymHyperlink = `<a href="#" data-url="https://en.wikipedia.org/wiki/${acronym}">${acronym}</a>`;
-      let nameHyperlink = `<a href="#" data-url="https://en.wikipedia.org/wiki/${fullName}">${name}</a>`;
-      
-      let formattedLine = acronymData[0].replace(acronym, acronymHyperlink) + '<br>' + acronymData[1].replace(name, nameHyperlink);
-      let highlightedInfo = additionalInfo;
-      
-      if (searchQuery) {
-        formattedLine = highlight(formattedLine, searchQuery);
-        highlightedInfo = highlight(highlightedInfo, searchQuery);
-      }
-      
-      formattedContent += formattedLine + '<br>' + highlightedInfo + '<br><br>';
-    }
-  
-    document.getElementById('content').innerHTML = formattedContent;
-  
-    const links = document.querySelectorAll('#content a');
-  
-    for (let link of links) {
-      link.addEventListener('click', function(event) {
-        event.preventDefault();
-  
-        document.getElementById('infoframe').src = this.getAttribute('data-url');
-      });
-    }
-  }
-  
-  // Add event listener for the search input
-  document.getElementById('search').addEventListener('keyup', function() {
-    updateContent(this.value);
-  });
-  
-  // Initialize the content with all acronyms
-  updateContent();
-  
-  </script>
+    ...        ...
+        <tr>
+            <td>Attaque par usurpation d'IP (IP Spoofing)</td>
+            <td>Utiliser l'authentification pour les applications et réseaux critiques, mettre en œuvre des filtres d'adresses IP entrantes.</td>
+        </tr>
+        <tr>
+            <td>Attaque par l'homme du milieu sur les points d'accès Wi-Fi (Evil Twin)</td>
+            <td>Utiliser un chiffrement WPA3, éviter les réseaux publics non sécurisés, utiliser un VPN lors de la connexion à des réseaux publics.</td>
+        </tr>
+        <tr>
+            <td>Clickjacking</td>
+            <td>Mettre en œuvre des politiques de sécurité de contenu (CSP), utiliser des en-têtes X-Frame-Options.</td>
+        </tr>
+        <tr>
+            <td>Attaque Sybil</td>
+            <td>Utiliser des mécanismes d'authentification et de validation pour rejoindre un réseau, limiter les ressources accessibles aux nouveaux membres.</td>
+        </tr>
+        <tr>
+            <td>Attaque par débordement de tampon</td>
+            <td>Utiliser des langages de programmation qui gèrent la mémoire de manière sûre, mettre en place des protections d'exécution de la pile.</td>
+        </tr>
+        <tr>
+            <td>Attaque de l'intercepteur (Session Sidejacking)</td>
+            <td>Utiliser le protocole HTTPS pour toutes les communications, éviter les cookies non sécurisés.</td>
+        </tr>
+        <tr>
+            <td>Attaque DNS Cache Poisoning</td>
+            <td>Mettre à jour les serveurs DNS régulièrement, utiliser DNSSEC (DNS Security Extensions).</td>
+        </tr>
+        
+                ...
+        <tr>
+            <td>Attaque Watering Hole</td>
+            <td>Utiliser des solutions de détection d'intrusion, mettre à jour régulièrement les navigateurs et plugins, former les utilisateurs à reconnaître les sites suspects.</td>
+        </tr>
+        <tr>
+            <td>Directory Traversal</td>
+            <td>Valider et désinfecter toutes les entrées utilisateur, utiliser des configurations de serveur sécurisées.</td>
+        </tr>
+        <tr>
+            <td>Attaque de suppression de code (Code Deletion)</td>
+            <td>Mettre en place des contrôles d'accès stricts, surveiller régulièrement les journaux système pour détecter toute activité suspecte.</td>
+        </tr>
+        <tr>
+            <td>Timing Attack</td>
+            <td>Implémenter des temps de réponse constants pour les opérations sensibles, éviter d'exposer des horodatages précis.</td>
+        </tr>
+        <tr>
+            <td>Bait and Switch</td>
+            <td>Mettre en place des contrôles d'accès stricts aux magasins d'applications, éduquer les utilisateurs sur les permissions d'application.</td>
+        </tr>
+        <tr>
+            <td>Attaque Birthday</td>
+            <td>Utiliser des algorithmes cryptographiques avec des tailles de hash suffisamment longues, mise à jour régulière des systèmes cryptographiques.</td>
+        </tr>
+        <tr>
+            <td>Attaque de l'homme dans le navigateur (Man-in-the-Browser)</td>
+            <td>Mettre à jour régulièrement les navigateurs, utiliser des solutions de sécurité spécialisées pour détecter des modifications malveillantes dans le navigateur.</td>
+        </tr>
+        
+        
+                ...
+        <tr>
+            <td>Attaque par force brute sur le protocole SSH (SSH Brute Force)</td>
+            <td>Utiliser des clés d'authentification plutôt que des mots de passe, limiter le nombre de tentatives de connexion, changer le port par défaut de SSH.</td>
+        </tr>
+        <tr>
+            <td>MAC Flooding</td>
+            <td>Configurer les switchs pour limiter le nombre d'adresses MAC, mettre en place une surveillance du réseau.</td>
+        </tr>
+        <tr>
+            <td>ARP Spoofing (Poisoning)</td>
+            <td>Utiliser des solutions de sécurité ARP, configurer les équipements pour rejeter les réponses ARP non sollicitées.</td>
+        </tr>
+        <tr>
+            <td>Cookie Poisoning</td>
+            <td>Chiffrer les cookies, utiliser le drapeau "Secure" et "HttpOnly" pour les cookies sensibles.</td>
+        </tr>
+        <tr>
+            <td>Attaque de déni de service distribué (DDoS)</td>
+            <td>Utiliser des solutions anti-DDoS, répartir le trafic à travers plusieurs centres de données, mettre en place des rate-limits.</td>
+        </tr>
+        <tr>
+            <td>Heap Spraying</td>
+            <td>Mettre à jour régulièrement les navigateurs et plugins, désactiver ou restreindre l'exécution de scripts.</td>
+        </tr>
+        <tr>
+            <td>Attaque par reniflage (Sniffing)</td>
+            <td>Chiffrer les données en transit, utiliser des réseaux privés virtuels (VPN), éviter les réseaux non sécurisés.</td>
+        </tr>
+        
+        
+                ...
+        <tr>
+            <td>Trojans et Backdoors</td>
+            <td>Utiliser une solution antivirus à jour, effectuer des scans réguliers, être prudent avec les téléchargements et les pièces jointes inconnues.</td>
+        </tr>
+        <tr>
+            <td>URL Redirection (Open Redirect)</td>
+            <td>Valider et désinfecter toutes les entrées utilisateur, ne pas utiliser les entrées utilisateur pour les destinations de redirection.</td>
+        </tr>
+        <tr>
+            <td>XML External Entity (XXE) Attack</td>
+            <td>Désactiver la résolution d'entités externes dans les parsers XML, utiliser des API qui ne sont pas vulnérables aux attaques XXE.</td>
+        </tr>
+        <tr>
+            <td>Shimming et Shim Caching</td>
+            <td>Maintenir les systèmes à jour, surveiller l'intégrité du système pour détecter toute modification non autorisée.</td>
+        </tr>
+        <tr>
+            <td>Fileless Malware</td>
+            <td>Mettre à jour régulièrement les logiciels et le système d'exploitation, utiliser des solutions de sécurité avancées capables de détecter des comportements anormaux.</td>
+        </tr>
+        <tr>
+            <td>Attaque par réflexion (Reflected Attack)</td>
+            <td>Valider et désinfecter toutes les entrées utilisateur, utiliser des listes blanches pour les entrées attendues.</td>
+        </tr>
+        <tr>
+            <td>Attaque de l'interface utilisateur (UI Redress Attack)</td>
+            <td>Utiliser l'en-tête X-Frame-Options pour éviter que le site soit intégré dans une iframe, sensibiliser les utilisateurs à ne pas cliquer sur des liens suspects.</td>
+        </tr>
+        
+        
+                ...
+        <tr>
+            <td>Insider Threats (Menaces internes)</td>
+            <td>Effectuer des contrôles réguliers des antécédents des employés, mettre en place un contrôle d'accès basé sur les rôles, surveiller et auditer régulièrement les activités internes.</td>
+        </tr>
+        <tr>
+            <td>Attaques de chaîne d'approvisionnement (Supply Chain Attack)</td>
+            <td>Valider la sécurité des fournisseurs tiers, surveiller les mises à jour logicielles pour toute activité suspecte, avoir une stratégie de réponse aux incidents.</td>
+        </tr>
+        <tr>
+            <td>Attaques ciblées (Advanced Persistent Threats, APT)</td>
+            <td>Mettre en place une surveillance continue du réseau, effectuer des analyses de comportement, sensibiliser les employés à la sécurité, et établir un plan d'intervention en cas d'incident.</td>
+        </tr>
+        <tr>
+            <td>Shadow IT (Technologies non approuvées)</td>
+            <td>Éduquer les employés sur les risques, mettre en place des politiques strictes de gestion des dispositifs et applications, et utiliser des outils de détection d'ombre IT.</td>
+        </tr>
+        <tr>
+            <td>Data Leakage (Fuite de données)</td>
+            <td>Utiliser des outils de prévention des fuites de données (DLP), chiffrer les données sensibles, et mettre en place une surveillance des transferts de données.</td>
+        </tr>
+        <tr>
+            <td>Spear Phishing (Hameçonnage ciblé)</td>
+            <td>Éduquer les employés sur les signes de tentatives d'hameçonnage, utiliser des filtres de courrier électronique avancés, et encourager la vérification des requêtes suspectes.</td>
+        </tr>
+        <tr>
+            <td>Attaque de déni de service sur les services cloud (Cloud DDoS)</td>
+            <td>Utiliser des solutions anti-DDoS spécialisées pour les services cloud, répartir les ressources cloud, et mettre en place un plan de continuité des affaires.</td>
+        </tr>
+        
+    
+    
+
+
+    </table>
+    
+    </div>
+
 </body>
 
 </html>
