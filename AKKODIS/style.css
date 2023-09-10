@@ -1,0 +1,162 @@
+#tree2 {
+    margin-top: 40px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tree,
+.tree ul {
+
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.tree ul {
+    margin-left: 1em;
+    position: relative
+}
+
+.tree ul ul {
+    margin-left: .5em
+}
+
+.tree ul:before {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid
+}
+
+.tree li {
+    margin: 0;
+
+    padding: 0 1em;
+    line-height: 2em;
+    color: rgb(231, 231, 231);
+    font-weight: 700;
+    position: relative
+}
+
+.tree ul li:before {
+    content: "";
+    background-color: rgb(19, 19, 19);
+    display: block;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid;
+    margin-top: -1px;
+    position: absolute;
+    top: 1em;
+    left: 0
+}
+
+.tree ul li:last-child:before {
+
+    height: auto;
+    top: 1em;
+    bottom: 0
+}
+
+
+
+
+.indicator {
+    margin-right: 0px;
+}
+
+.tree li a {
+    text-decoration: none;
+    color: rgb(231, 231, 231);
+}
+
+.tree li button,
+.tree li button:active,
+.tree li button:focus {
+    text-decoration: none;
+    color: rgb(231, 231, 231);
+    border: none;
+    background: transparent;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    outline: 0;
+}
+
+ 
+
+
+.col-2 {
+    background-color: rgb(19, 19, 19);
+    height: 100vh;
+}
+
+
+
+
+
+
+@media (max-width: 576px) {
+
+    /* correspond à la taille d'écran "sm" de Bootstrap */
+    #treeview-container {
+        flex: 0 0 100% !important;
+        /* 100% de largeur */
+        max-width: 100% !important;
+
+
+    }
+
+    .col-2 {
+
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+.d-block {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+p {
+    color: red;
+}
+
+iframe {
+    overflow: hidden;
+}
+
+
+
+#contentDiv {
+    width: 100%;
+    height: 100vh;
+    /* Prend toute la hauteur de la fenêtre de visualisation */
+    overflow: hidden;
+    /* Cache les barres de défilement */
+    overflow-y: hidden;
+}
+
+html,
+body {
+    overflow-y: hidden;
+}
+.row{
+    overflow-y: hidden;
+}
+
+.col {
+    padding-left: 0px;
+    width: 110%;
+     
+}
+
+* {
+    box-sizing: border-box;
+}

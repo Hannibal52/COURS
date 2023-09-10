@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Pinky</title>
+</head>
+
+<body>
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container-fluid">
+        <div class="row">
+ 
+            <div class="col-2 col-sm-4 col-md-3 col-lg-2" id="treeview-container">
+
+                <ul id="tree2">
+                    <li><a href="#">TECH</a>
+
+                        <ul>
+                            <li>Company Maintenance</li>
+                            <li>Employees
+                                <ul>
+                                    <li>Reports
+                                        <ul>
+                                            <li>Report1</li>
+                                            <li>Report2</li>
+                                            <li>Report3</li>
+                                        </ul>
+                                    </li>
+                                    <li>Employee Maint.</li>
+                                </ul>
+                            </li>
+                            <li>Human Resources</li>
+                        </ul>
+                    </li>
+                    <li>XRP
+                        <ul>
+                            <li file="files/1.html">Company Maintenance</li>
+                            <li>Employees
+                                <ul>
+                                    <li>Reports
+                                        <ul>
+                                            <li file="files/1.html">Report1</li>
+                                            <li>Report2</li>
+                                            <li>Report3</li>
+                                        </ul>
+                                    </li>
+                                    <li>Employee Maint.</li>
+                                </ul>
+                            </li>
+                            <li>Human Resources</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col" id="contentDiv">
+                <iframe id="initialIframe" src="2.html" frameborder="0" width="105%" height="100%" scrolling="no"></iframe>
+                <!-- Le contenu du fichier sera chargé ici -->
+            </div>
+
+            <div class="d-block">
+                <button class="btn btn-primary"  id="toggleTreeButton"> <<< </button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

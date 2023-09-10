@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Pyramide avec Three.js et Texture</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        body {
+            background-color: black;
+            width: 100vh;
+        }
+
+        body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+    <script>
+        let scene, camera, renderer, pyramid, loader;
+        let light, lightr;
+
+
+        function generateSprite() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 120;
+            canvas.height = 120;
+
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.2, 'rgba(0,255,255,1)'); // Cyan
+            gradient.addColorStop(0.6, 'rgba(0,0,64,1)'); // Bleu foncé
+            gradient.addColorStop(1, 'rgba(0,0,0,1)'); // Noir
+
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            return canvas;
+        }
+
+        function generateSpriter() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 120;
+            canvas.height = 120;
+
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');     // Blanc
+            gradient.addColorStop(0.2, 'rgba(255,0,0,1)');       // Rouge
+            gradient.addColorStop(0.4, 'rgba(64,0,0,1)');        // Rouge foncé
+            gradient.addColorStop(1, 'rgba(0,0,0,1)');           // Noir
+
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            return canvas;
+        }
+
+
+
+
+        function createPyramidGeometry() {
+            const geometry = new THREE.BufferGeometry();
+
+            const vertices = new Float32Array([
+                0, 2, 0, -1, 0, -1, 1, 0, -1, // A -> B -> C
+                0, 2, 0, 1, 0, -1, 1, 0, 1, // A -> C -> D
+                0, 2, 0, 1, 0, 1, -1, 0, 1, // A -> D -> E
+                0, 2, 0, -1, 0, 1, -1, 0, -1 // A -> E -> B
+            ]);
+            const uvs = new Float32Array([
+                0.5, 1, 0, 0, 1, 0,   // Face A -> B -> C
+                0.5, 1, 0, 0, 1, 0,   // Face A -> C -> D
+                0.5, 1, 0, 0, 1, 0,   // Face A -> D -> E
+                0.5, 1, 1, 0, 0, 0    // Face A -> E -> B
+            ]);
+
+
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+            geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+
+            return geometry;
+        }
+
+        function init() {
+
+            scene = new THREE.Scene();
+            light = new THREE.PointLight(0x0000ff); // Couleur bleue
+            light.position.set(-0.4, 0.5, -0.8);
+            lightr = new THREE.PointLight(0xff0000); // Couleur bleue
+            lightr.position.set(-0.8, 0.5, -0.40);
+
+            // Ajustez cette position selon où vous voulez placer la lumière à côté de la pyramide
+
+
+
+
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            document.body.appendChild(renderer.domElement);
+
+            const spriteMaterial = new THREE.SpriteMaterial({
+                map: new THREE.CanvasTexture(generateSprite()), // Nous définirons la fonction generateSprite plus bas
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                opacity: 1.5, // Ajustez pour l'effet de transparence désiré
+                color: 0x0000ff // Couleur bleue
+            });
+
+            const spriteMaterialr = new THREE.SpriteMaterial({
+                map: new THREE.CanvasTexture(generateSpriter()), // Nous définirons la fonction generateSprite plus bas
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                opacity: 1.5, // Ajustez pour l'effet de transparence désiré
+                color: 0xff0000 // Couleur bleue
+            });
+
+
+
+            const sprite = new THREE.Sprite(spriteMaterial);
+            sprite.scale.set(0.5, 0.5, 0.5);
+
+            const spriter = new THREE.Sprite(spriteMaterialr);
+            spriter.scale.set(0.5, 0.5, 0.5);
+
+            // Taille de la sprite, ajustez selon votre besoin
+            light.add(sprite);
+            lightr.add(spriter);
+
+
+
+
+            loader = new THREE.TextureLoader();
+            loader.load('A.png', texture => {
+                texture.minFilter = THREE.LinearMipMapLinearFilter;
+                texture.magFilter = THREE.LinearFilter;
+                texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+                const geometry = createPyramidGeometry();
+
+                const material = new THREE.MeshBasicMaterial({
+                    map: texture,
+                    side: THREE.DoubleSide
+                });
+
+                pyramid = new THREE.Mesh(geometry, material);
+                light.visible = false; // Lumière bleue
+                lightr.visible = false; // Lumière rouge
+
+                pyramid.add(light);
+                pyramid.add(lightr);
+
+
+
+
+
+                let rotationSpeed = 0.0021; // Vitesse de rotation
+                let direction = 1; // Direction de rotation (1 pour en avant, -1 pour en arrière)
+                const face2 = Math.PI / 2; // Angle de la 2ème face (90 degrés en radians)
+                const face3 = Math.PI; // Angle de la 3ème face (180 degrés en radians)
+
+
+                pyramid.rotation.y = face2;
+
+                scene.add(pyramid);
+
+                camera.position.z = 6;
+                camera.position.y = 0.75;
+
+                window.addEventListener('resize', () => {
+                    var width = window.innerWidth;
+                    var height = window.innerHeight;
+
+                    renderer.setSize(width, height);
+
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+
+                });
+
+                animate();
+            });
+        }
+
+        let rotationSpeed = 0.0021; // Vitesse de rotation
+        let direction = 0.5; // Direction de rotation (1 pour en avant, -1 pour en arrière)
+        const face2 = Math.PI / 2; // Angle de la 2ème face (90 degrés en radians)
+        const face3 = Math.PI; // Angle de la 3ème face (180 degrés en radians)
+
+        let lightTimeout;
+        const lightDuration = 50; // Durée en millisecondes (0.2 secondes)
+        const midAngle = (face2 + face3) / 2; // Angle moyen
+        const angleTolerance = 0.02; // Tolerance d'angle (Ajustez cette valeur en fonction de la durée pendant laquelle vous souhaitez que les lumières soient actives)
+
+        function animate() {
+            requestAnimationFrame(animate);
+            pyramid.rotation.y += rotationSpeed * direction;
+            
+            const midRotation = (face2 + face3) / 2;
+
+            // Si la rotation de la pyramide est proche de l'angle médian
+            if (Math.abs(pyramid.rotation.y - midRotation) < 0.005) { // 0.05 est une tolérance, vous pouvez l'ajuster
+                light.visible = true;  // Afficher la première lumière
+
+                // Afficher la deuxième lumière après 50 ms
+                setTimeout(() => {
+                    lightr.visible = true;
+                }, 50);
+
+                // Masquer la première lumière après 50 ms
+                setTimeout(() => {
+                    light.visible = false;
+                }, 50);
+
+                // Masquer la deuxième lumière après 100 ms
+                setTimeout(() => {
+                    lightr.visible = false;
+                }, 100);
+            }
+
+            if (pyramid.rotation.y > face3 || pyramid.rotation.y < face2) {
+                direction = -direction; // Inversion de la direction
+            }
+            renderer.render(scene, camera);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
