@@ -1,77 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutoriel RIPv2</title>
     <style>
-  	body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background-color: #f5f5f5;
-			margin: 0;
-			padding: 0;
-		}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
-		header {
-			background-color: #333;
-			color: #fff;
-			text-align: center;
-			padding: 20px;
-			margin-bottom: 20px;
-		}
-		
-		
-			.container {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #fff;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		}
-		
-		
-		
-    h1, h2, h3, h4, h5, h6 {
-        margin-bottom: 10px;
-    }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-    ul {
-        padding-left: 20px;
-    }
 
-    pre {
-        	color : lime;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        pre {
+            color: lime;
             background-color: #000000;
             padding: 10px;
             border-radius: 5px;
             font-size: 14px;
-    }
-</style>
+        }
+    </style>
 </head>
+
 <body>
 
-	<header>
-		<h1> RIPv2</h1>
-	</header>
+    <header>
+        <h1> RIPv2</h1>
+    </header>
 
-	<div class="container">
-	
- 
-    <p>Route Information Protocol version 2 (RIPv2) est un protocole de routage à vecteur de distance utilisé pour échanger des informations de routage entre les routeurs sur un réseau. Ce tutoriel vous montre comment configurer et utiliser RIPv2.</p>
- 
-<h2>1. Présentation de RIPv2</h2>
-<p>Les principales caractéristiques de RIPv2 sont les suivantes:</p>
-<ul>
-    <li>Support des masques de sous-réseau variable (VLSM)</li>
-    <li>Utilisation de multicast pour les mises à jour de routage (adresse 224.0.0.9)</li>
-    <li>Métrique basée sur le nombre de sauts (hop count), avec une limite maximale de 15 sauts</li>
-    <li>Utilisation d'algorithmes de prévention de bouclage, tels que le split horizon et le poison reverse</li>
-    <li>Authentification des mises à jour de routage (en option)</li>
-</ul>
+    <div class="container">
 
-<h2>2. Configuration de RIPv2</h2>
-<p>Pour configurer RIPv2 sur un routeur Cisco, suivez les étapes suivantes:</p>
-<pre>
+
+        <p>Route Information Protocol version 2 (RIPv2) est un protocole de routage à vecteur de distance utilisé pour
+            échanger des informations de routage entre les routeurs sur un réseau. Ce tutoriel vous montre comment
+            configurer et utiliser RIPv2.</p>
+
+        <h2>1. Présentation de RIPv2</h2>
+        <p>Les principales caractéristiques de RIPv2 sont les suivantes:</p>
+        <ul>
+            <li>Support des masques de sous-réseau variable (VLSM)</li>
+            <li>Utilisation de multicast pour les mises à jour de routage (adresse 224.0.0.9)</li>
+            <li>Métrique basée sur le nombre de sauts (hop count), avec une limite maximale de 15 sauts</li>
+            <li>Utilisation d'algorithmes de prévention de bouclage, tels que le split horizon et le poison reverse</li>
+            <li>Authentification des mises à jour de routage (en option)</li>
+        </ul>
+
+        <h2>2. Configuration de RIPv2</h2>
+        <p>Pour configurer RIPv2 sur un routeur Cisco, suivez les étapes suivantes:</p>
+        <pre>
 Router> enable
 Router# configure terminal
 Router(config)# router rip
@@ -79,34 +88,36 @@ Router(config-router)# version 2
 Router(config-router)# network 192.168.1.0
 Router(config-router)# network 192.168.2.0
 </pre>
-<p>(Optionnel) Pour configurer l'authentification:</p>
-<pre>
+        <p>(Optionnel) Pour configurer l'authentification:</p>
+        <pre>
 Router(config)# interface FastEthernet0/0
 Router(config-if)# ip rip authentication key-chain MY_KEY_CHAIN
 Router(config-if)# ip rip authentication mode md5
 </pre>
- 
-<h2>3. Vérification de la configuration RIPv2</h2>
-<p>Pour vérifier que RIPv2 fonctionne correctement, utilisez les commandes suivantes:</p>
-<ul>
-    <li>Afficher la table de routage: <code>show ip route</code></li>
-    <li>Afficher les informations sur le processus RIPv2: <code>show ip protocols</code></li>
-    <li>Afficher les voisins RIPv2 et les routes apprises: <code>show ip rip database</code></li>
-</ul>
 
-<h2>4. Dépannage de RIPv2</h2>
-<p>En cas de problèmes avec RIPv2, vérifiez les éléments suivants:</p>
-<ul>
-<li>Assurez-vous que RIPv2 est activé sur toutes les interfaces concernées</li>
-<li>Vérifiez que les versions de RIP correspondent sur tous les routeurs voisins</li>
-<li>Vérifiez que les masques de sous-réseau sont corrects et que les réseaux sont annoncés correctement</li>
-<li>Vérifiez l'authentification, si elle est utilisée</li>
-<li>Assurez-vous que les mises à jour de routage ne sont pas bloquées par des listes de contrôle d'accès (ACL) ou des pare-feu</li>
-</ul>
+        <h2>3. Vérification de la configuration RIPv2</h2>
+        <p>Pour vérifier que RIPv2 fonctionne correctement, utilisez les commandes suivantes:</p>
+        <ul>
+            <li>Afficher la table de routage: <code>show ip route</code></li>
+            <li>Afficher les informations sur le processus RIPv2: <code>show ip protocols</code></li>
+            <li>Afficher les voisins RIPv2 et les routes apprises: <code>show ip rip database</code></li>
+        </ul>
 
-<h2>5. Configurer la route par défaut (Default Route)</h2>
-<p>La route par défaut est une route utilisée pour acheminer le trafic vers des réseaux inconnus ou non présents dans la table de routage du routeur. Voici comment configurer une route par défaut:</p>
-<pre>
+        <h2>4. Dépannage de RIPv2</h2>
+        <p>En cas de problèmes avec RIPv2, vérifiez les éléments suivants:</p>
+        <ul>
+            <li>Assurez-vous que RIPv2 est activé sur toutes les interfaces concernées</li>
+            <li>Vérifiez que les versions de RIP correspondent sur tous les routeurs voisins</li>
+            <li>Vérifiez que les masques de sous-réseau sont corrects et que les réseaux sont annoncés correctement</li>
+            <li>Vérifiez l'authentification, si elle est utilisée</li>
+            <li>Assurez-vous que les mises à jour de routage ne sont pas bloquées par des listes de contrôle d'accès
+                (ACL) ou des pare-feu</li>
+        </ul>
+
+        <h2>5. Configurer la route par défaut (Default Route)</h2>
+        <p>La route par défaut est une route utilisée pour acheminer le trafic vers des réseaux inconnus ou non présents
+            dans la table de routage du routeur. Voici comment configurer une route par défaut:</p>
+        <pre>
 
 
 Router> enable
@@ -115,13 +126,15 @@ Router(config)# ip route 0.0.0.0 0.0.0.0 [Adresse_IP_de_l'interface_connectée_a
 Router(config)# router rip
 Router(config-router)# default-information originate
 </pre>
-<p>Maintenant, les autres routeurs du réseau devraient apprendre la route par défaut via RIPv2 et être en mesure de router le trafic vers Internet.</p>
+        <p>Maintenant, les autres routeurs du réseau devraient apprendre la route par défaut via RIPv2 et être en mesure
+            de router le trafic vers Internet.</p>
 
 
 
-  <h2>6. Configuration d'un routeur avec un nom d'hôte et plusieurs interfaces</h2>
-    <p>Voici un exemple de configuration d'un routeur avec un nom d'hôte et plusieurs interfaces, en utilisant RIPv2:</p>
-    <pre>
+        <h2>6. Configuration d'un routeur avec un nom d'hôte et plusieurs interfaces</h2>
+        <p>Voici un exemple de configuration d'un routeur avec un nom d'hôte et plusieurs interfaces, en utilisant
+            RIPv2:</p>
+        <pre>
 Router#configure terminal
 Router(config)#no ip domain-lookup
 Router(config)#hostname R5
@@ -150,119 +163,149 @@ R5(config-router)#network 70.0.0.0
 R5(config-router)#end
     </pre>
 
-    <p>Cette configuration montre comment définir un nom d'hôte pour le routeur, désactiver la recherche de noms de domaine, configurer des adresses IP pour plusieurs interfaces et activer RIPv2 sur ces interfaces.</p>
+        <p>Cette configuration montre comment définir un nom d'hôte pour le routeur, désactiver la recherche de noms de
+            domaine, configurer des adresses IP pour plusieurs interfaces et activer RIPv2 sur ces interfaces.</p>
 
 
- <h2>7. RIP et la Distance Administrative</h2>
-    <p>La distance administrative (AD) est une valeur utilisée pour déterminer la fiabilité d'une source d'information de routage. Les protocoles de routage ont des valeurs AD par défaut pour éviter les boucles de routage et les conflits entre les protocoles. Pour RIP, la distance administrative par défaut est de 120.</p>
-    <p>Si vous avez plusieurs protocoles de routage configurés sur le même routeur, la distance administrative permet de choisir la meilleure route. Plus la valeur de l'AD est faible, plus la source d'information est considérée comme fiable.</p>
-	<br>
-	
-	
-	
-	<centre><img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_004.png"> </centre>
+        <h2>7. RIP et la Distance Administrative</h2>
+        <p>La distance administrative (AD) est une valeur utilisée pour déterminer la fiabilité d'une source
+            d'information de routage. Les protocoles de routage ont des valeurs AD par défaut pour éviter les boucles de
+            routage et les conflits entre les protocoles. Pour RIP, la distance administrative par défaut est de 120.
+        </p>
+        <p>Si vous avez plusieurs protocoles de routage configurés sur le même routeur, la distance administrative
+            permet de choisir la meilleure route. Plus la valeur de l'AD est faible, plus la source d'information est
+            considérée comme fiable.</p>
+        <br>
 
-<br>
-    <h2>8. RIP et la métrique</h2>
-    <p>RIP utilise le nombre de sauts (hop count) comme métrique pour déterminer le meilleur chemin vers une destination. Le nombre de sauts est égal au nombre de routeurs traversés pour atteindre une destination spécifique. La métrique maximale autorisée pour RIP est de 15 sauts, et toute destination à plus de 15 sauts est considérée comme inatteignable.</p>
-    
-	<centre><img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_003.png"> </centre>
 
-	
-	
-	
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	
-	
-	  <h2>Optionnel</h2>
-	
-	<p>Pour mettre à jour la métrique RIP, vous pouvez utiliser la commande <code>metric-offset</code> dans le mode de configuration du protocole RIP :</p>
-    <pre>
+
+        <centre><img src="https://Hannibal52.github.io/COURS/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_004.png">
+        </centre>
+
+        <br>
+        <h2>8. RIP et la métrique</h2>
+        <p>RIP utilise le nombre de sauts (hop count) comme métrique pour déterminer le meilleur chemin vers une
+            destination. Le nombre de sauts est égal au nombre de routeurs traversés pour atteindre une destination
+            spécifique. La métrique maximale autorisée pour RIP est de 15 sauts, et toute destination à plus de 15 sauts
+            est considérée comme inatteignable.</p>
+
+        <centre><img src="https://Hannibal52.github.io/COURS/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_003.png">
+        </centre>
+
+
+
+
+        <br>
+        <hr>
+        <br>
+        <br>
+        <br>
+
+
+        <h2>Optionnel</h2>
+
+        <p>Pour mettre à jour la métrique RIP, vous pouvez utiliser la commande <code>metric-offset</code> dans le mode
+            de configuration du protocole RIP :</p>
+        <pre>
 Router(config)# router rip
 Router(config-router)# metric-offset 1
     </pre>
-    <p>Cette commande ajoute un décalage de 1 à la métrique RIP pour toutes les routes apprises par le routeur.</p>
+        <p>Cette commande ajoute un décalage de 1 à la métrique RIP pour toutes les routes apprises par le routeur.</p>
 
-    <h3> - Temporisations</h3>
-    <p>RIP utilise plusieurs temporisateurs pour gérer la mise à jour et la suppression des routes dans la table de routage :</p>
-    <ul>
-        <li><strong>Temporisateur de mise à jour :</strong> Les routeurs envoient des mises à jour de routage périodiques (toutes les 30 secondes par défaut).</li>
-        <li><strong>Temporisateur d'invalidation :</strong> Si une route n'est pas mise à jour pendant une certaine période (180 secondes par défaut), elle est considérée comme invalide.</li>
-        <li><strong>Temporisateur de suppression :</strong> Une fois qu'une route est considérée
+        <h3> - Temporisations</h3>
+        <p>RIP utilise plusieurs temporisateurs pour gérer la mise à jour et la suppression des routes dans la table de
+            routage :</p>
+        <ul>
+            <li><strong>Temporisateur de mise à jour :</strong> Les routeurs envoient des mises à jour de routage
+                périodiques (toutes les 30 secondes par défaut).</li>
+            <li><strong>Temporisateur d'invalidation :</strong> Si une route n'est pas mise à jour pendant une certaine
+                période (180 secondes par défaut), elle est considérée comme invalide.</li>
+            <li><strong>Temporisateur de suppression :</strong> Une fois qu'une route est considérée
 
 
 
- 
-comme invalide, le temporisateur de suppression commence à compter (240 secondes par défaut). Après expiration de ce délai, la route est supprimée de la table de routage.</li>
-<li><strong>Temporisateur de rétention :</strong> Ce temporisateur (180 secondes par défaut) empêche les mises à jour de routage d'entrer en conflit avec les routes récemment supprimées.</li>
-</ul>
-<p>Vous pouvez ajuster ces temporisateurs selon les besoins de votre réseau. Voici comment modifier les temporisateurs pour RIP :</p>
-<pre>
+
+                comme invalide, le temporisateur de suppression commence à compter (240 secondes par défaut). Après
+                expiration de ce délai, la route est supprimée de la table de routage.</li>
+            <li><strong>Temporisateur de rétention :</strong> Ce temporisateur (180 secondes par défaut) empêche les
+                mises à jour de routage d'entrer en conflit avec les routes récemment supprimées.</li>
+        </ul>
+        <p>Vous pouvez ajuster ces temporisateurs selon les besoins de votre réseau. Voici comment modifier les
+            temporisateurs pour RIP :</p>
+        <pre>
 Router(config)# router rip
 Router(config-router)# timers basic [mise à jour] [invalidation] [suppression] [rétention]
 </pre>
-<p>Par exemple, pour modifier les temporisateurs de mise à jour à 45 secondes, d'invalidation à 270 secondes, de suppression à 360 secondes et de rétention à 270 secondes :</p>
-<pre>
+        <p>Par exemple, pour modifier les temporisateurs de mise à jour à 45 secondes, d'invalidation à 270 secondes, de
+            suppression à 360 secondes et de rétention à 270 secondes :</p>
+        <pre>
 Router(config)# router rip
 Router(config-router)# timers basic 45 270 360 270
 </pre>
 
 
 
-<p>N'oubliez pas de sauvegarder la configuration du routeur pour conserver les modifications après un redémarrage avec la commande <code>write memory</code> ou <code>copy running-config startup-config</code>.</p>
+        <p>N'oubliez pas de sauvegarder la configuration du routeur pour conserver les modifications après un
+            redémarrage avec la commande <code>write memory</code> ou <code>copy running-config startup-config</code>.
+        </p>
 
 
 
 
-<br>
-	
-		
-<br>
-		
-		
-		<h2> Sous-réseaux et réseaux discontinus </h2> 
- 
-<p>Comme je l’ai cité dans les différences entre RIPv1 et RIPv2, RIPv1 ne prend pas en charge le masque de sous-réseau dans les mises à jour de la table de routage. Par conséquence RIP ne peut pas prendre en charge des réseaux discontinus, des réseaux VLSM (réseau ayant un masque à valeur variable), ou encore un super-réseau de routage inter-domaine et sans classe.
-Pour mieux comprendre ce que je viens de dire voici le schéma d’un réseau ayant un problème de discontinuité : </p>
-		
-		<img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_008.png">
-		
- <p>Comme on peut le voir, à gauche du schéma R1 connait deux sous-réseaux (172.16.10.0\24 et 172.16.20.0\24).
-Et on peut voir aussi qu’à droite du schéma R3 connait trois sous-réseaux (172.16.30.0\24, 172.16.40.0\24 et 172.16.50.0\24).
+        <br>
 
-Avec RIPv1, lorsque R1 et R3 enverront leur table de routage à R2, l’information fournie par les deux routeurs sera 172.16.0.0. RIPv1 fonctionnant avec le système de classe réseau et ne prenant pas en charge les masques de sous-réseaux. Celui-ci va voir 5 adresses réseaux identiques.</p>
-		
-<br>
-	
-		
-<br>
-		
-		
-		
-<h1> TP </h1>
 
- <p>Voici le schéma réseau (ci-dessous), il comprend 5 routeurs avec RIPv2 activé, 9 réseaux et deux ordinateurs : </p>
- 
- <br>
-		
-		
-		
-		
-	<img src="https://aisyassine.github.io/8/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_006.png">
+        <br>
 
-	 <br>
-	 
-	 
-	 
-	  <h2> Configurations du réseau </h2>
-	  <p>Nous allons maintenant configurer les 5 routeurs. Nous commencerons par configurer les adresses IP des interfaces. Pour ensuite configurer le routage RIP.</p>
 
-	  <h3>Routeur 1 </h2>
-<pre>
+        <h2> Sous-réseaux et réseaux discontinus </h2>
+
+        <p>Comme je l’ai cité dans les différences entre RIPv1 et RIPv2, RIPv1 ne prend pas en charge le masque de
+            sous-réseau dans les mises à jour de la table de routage. Par conséquence RIP ne peut pas prendre en charge
+            des réseaux discontinus, des réseaux VLSM (réseau ayant un masque à valeur variable), ou encore un
+            super-réseau de routage inter-domaine et sans classe.
+            Pour mieux comprendre ce que je viens de dire voici le schéma d’un réseau ayant un problème de discontinuité
+            : </p>
+
+        <img src="https://Hannibal52.github.io/COURS/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_008.png">
+
+        <p>Comme on peut le voir, à gauche du schéma R1 connait deux sous-réseaux (172.16.10.0\24 et 172.16.20.0\24).
+            Et on peut voir aussi qu’à droite du schéma R3 connait trois sous-réseaux (172.16.30.0\24, 172.16.40.0\24 et
+            172.16.50.0\24).
+
+            Avec RIPv1, lorsque R1 et R3 enverront leur table de routage à R2, l’information fournie par les deux
+            routeurs sera 172.16.0.0. RIPv1 fonctionnant avec le système de classe réseau et ne prenant pas en charge
+            les masques de sous-réseaux. Celui-ci va voir 5 adresses réseaux identiques.</p>
+
+        <br>
+
+
+        <br>
+
+
+
+        <h1> TP </h1>
+
+        <p>Voici le schéma réseau (ci-dessous), il comprend 5 routeurs avec RIPv2 activé, 9 réseaux et deux ordinateurs
+            : </p>
+
+        <br>
+
+
+
+
+        <img src="https://Hannibal52.github.io/COURS/R%C3%A9seaux/routeur%20cisco/rip_files/article_213_006.png">
+
+        <br>
+
+
+
+        <h2> Configurations du réseau </h2>
+        <p>Nous allons maintenant configurer les 5 routeurs. Nous commencerons par configurer les adresses IP des
+            interfaces. Pour ensuite configurer le routage RIP.</p>
+
+        <h3>Routeur 1 </h2>
+            <pre>
 Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
@@ -296,14 +339,14 @@ R1#wr
 </pre>
 
 
-<br>
+            <br>
 
-<h3> Routeur 2 : </h3>
+            <h3> Routeur 2 : </h3>
 
-<br>
+            <br>
 
 
-<pre>
+            <pre>
 Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
@@ -335,12 +378,12 @@ R2(config-router)#end
 R2#wr
 </pre>
 
- <br>
+            <br>
 
-<h3> Routeur 3</h3>
+            <h3> Routeur 3</h3>
 
-<br>
-<pre>
+            <br>
+            <pre>
 Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
@@ -377,12 +420,12 @@ R3(config-router)#end
 R3#wr
 
 </pre>
-<br>
- 
-<h3> Routeur 4 </h3>
+            <br>
 
-<br>
-<pre>
+            <h3> Routeur 4 </h3>
+
+            <br>
+            <pre>
 Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
@@ -413,11 +456,11 @@ R4(config-router)#end
 R4#wr
 </pre>
 
-<br>
-<h3> Routeur 5 </h3>
+            <br>
+            <h3> Routeur 5 </h3>
 
-<br>
-<pre>
+            <br>
+            <pre>
 Router#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#no ip domain-lookup 
@@ -451,21 +494,25 @@ R5(config-router)#end
 
 
 
-<br>
+            <br>
 
 
-<p>RIPv2 est un protocole de routage sans classe, on a donc tendance à penser que les sous-réseaux devraient s’afficher individuellement dans la table de routage. Et c’est faux ! Comme nous le montre les tables de routage ci-dessus.
+            <p>RIPv2 est un protocole de routage sans classe, on a donc tendance à penser que les sous-réseaux devraient
+                s’afficher individuellement dans la table de routage. Et c’est faux ! Comme nous le montre les tables de
+                routage ci-dessus.
 
-On peut voir que les sous réseaux sont résumés avec les deux mêmes chemins à coût égal. Les routeurs R1 n’inclus toujours pas les sous-réseaux de R3 et inversement R3 n’inclus pas les sous-réseaux de R1.
+                On peut voir que les sous réseaux sont résumés avec les deux mêmes chemins à coût égal. Les routeurs R1
+                n’inclus toujours pas les sous-réseaux de R3 et inversement R3 n’inclus pas les sous-réseaux de R1.
 
-La solution existe bien, elle consiste à désactiver le résumé automatique avec la commande suivante :</p>
+                La solution existe bien, elle consiste à désactiver le résumé automatique avec la commande suivante :
+            </p>
 
-<pre>no auto-summary</pre>
- 
+            <pre>no auto-summary</pre>
 
 
-</div>
+
+    </div>
 
 </body>
-</html>
 
+</html>
