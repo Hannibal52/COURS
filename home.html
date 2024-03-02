@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taha Yassine Jguirim</title>
+    <link rel="icon" href="https://www.zarla.com/images/zarla-y-1x1-2400x2400-20211124-q9j4pd9kv8387vhckddk.png"
+        type="image/x-icon">
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+        /* Couleur de la poignée */
+        ::-webkit-scrollbar-thumb {
+            background-color: #011626;
+            border-radius: 10px;
+        }
+
+        /* Couleur du fond */
+        ::-webkit-scrollbar-track {
+            background-color: #3193d3;
+            border-radius: 10px;
+        }
+
+        /* Largeur de la barre de défilement */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Espace entre la barre de défilement et le contenu */
+        ::-webkit-scrollbar {
+            scrollbar-gutter: 10px;
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            height: 99.8vh;
+        }
+
+        header {
+            background-color: #4a4a4a;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        #row {
+            display: flex;
+            flex-wrap: nowrap;
+            margin-top: 0rem;
+            height: 100%;
+        }
+
+
+
+        .treeviewparent {
+            background: linear-gradient(to bottom, #131921, #131921, #00306200);
+
+            background-size: 100% auto;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            padding: 1rem;
+            height: 100%;
+
+        }
+
+        #col1 {
+            flex: 0 0 600px;
+            background-color: #01122c;
+            background-image: url('side.png');
+            background-size: 100% auto;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            position: -webkit-sticky;
+
+            top: 8rem;
+        }
+
+        #col2 {
+            flex: 1;
+
+
+
+        }
+
+
+
+
+
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-width: 0px;
+        }
+
+        .collapsed {
+            display: none;
+        }
+
+        .toggle-btn {
+            position: absolute;
+
+            top: 10px;
+            left: 30px;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            background: linear-gradient(to bottom, #3193d3, #259be9, #23a8ff);
+
+
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            font-size: 40px;
+
+        }
+
+        .toggle-btn:hover {
+
+            background: linear-gradient(to bottom, #3193d3, #259be9, #23a8ff);
+        }
+
+        .collapsee {
+            position: absolute;
+
+            top: 10px;
+            left: 630px;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            background: linear-gradient(to bottom, #3193d3, #259be9, #23a8ff);
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            font-size: 40px;
+        }
+
+
+
+
+
+        .treeview ul {
+            list-style: none;
+        }
+
+        .treeview label,
+        a {
+            text-decoration: none;
+            color: azure;
+            display: block;
+            padding: 0.5rem 0;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #ul1 label {
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+
+        .treeview input {
+            display: none;
+        }
+
+        .content {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        .treeview input:checked~.content {
+            display: block;
+        }
+
+        .sousEl {
+            padding-left: 1rem;
+        }
+
+        .sousEl a {
+            display: block;
+            text-decoration: none;
+            color: rgb(197, 197, 197);
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        label:hover,
+        a:hover,
+        .sousEl a.active {
+            color: rgb(140, 209, 221);
+            background-color: #4a4a4a;
+            padding-left: 0.5rem;
+        }
+
+        a.active {
+            color: #3ac7cc;
+            background-color: #707070;
+            padding-left: 0.5rem;
+        }
+
+        .draggable {
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        #arrow {
+
+            position: fixed;
+            top: 150px;
+            left: 120px;
+            animation: apparait-disparait 2s infinite;
+            transform: rotate(230deg);
+
+            width: 400px;
+            height: 115px;
+
+
+        }
+
+        #arrowdiv {
+            animation: fadeOut 1s linear 4s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes apparait-disparait {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        @media (max-width: 985px) {
+            li {
+                padding-bottom: 40px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="row">
+        <div id="arrowdiv"> <img id="arrow" src="arrow.png"> </div>
+        <button id="toggle-btn" class="toggle-btn draggable"> 〈 〉</button>
+        <div id="col1" class="tree">
+
+            <div class="treeviewparent">
+                <div class="treeview">
+                    <ul id="ul1">
+
+
+
+                        <!-- ----  Lien utiles  ---- -->
+
+
+                        <!-- moi -->
+
+
+
+
+
+                        <li>
+                            <div style="display: flex;">
+                                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                                        style="width: 30px; height: 30px; " src="network.png"> </div>
+                                <div style="flex: 1;">
+                                    <label for="fil" style=" font-size: 1.5em;"> Réseaux</label>
+                                    <input type="checkbox" id="fil" />
+                                    <div class="content">
+
+                                        <ul class="el">
+                                            <!-- Calculatrice -->
+                                            <li id="file">
+                                                <a class="name" href="#"
+                                                    data-src="https://www.sebastienadam.be/ipcalculator/">
+                                                    Calculatrice rapide</a>
+                                            </li>
+
+                                            <!-- Switchs -->
+                                            <li>
+                                                <label for="vlanvtp"> Switchs</label>
+                                                <input type="checkbox" id="vlanvtp" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+
+                                                        <li id="file"><a class="name" href="#"
+                                                                data-src="https://www.clemanet.com/switch-cisco.php">
+                                                                1ere première connexion -> routage inter-Vlan </a>
+                                                        </li>
+
+
+
+                                                        <li>
+                                                            <p> ____________ </p>
+                                                        </li>
+
+                                                        <li id="file"><a class="name" href="#"
+                                                                data-src="Réseaux/Spannig.html">
+
+                                                                Spannig Tree/etherchannel </a>
+
+                                                        </li>
+
+
+                                                        <li id="file"><a class="name" href="#"
+                                                                data-src="Réseaux/password.html">
+
+                                                                Récup mot de passse switch </a>
+
+                                                        </li>
+
+
+
+                                                        <li id="file"><a class="name" href="#"
+                                                                data-src="Réseaux/sticky1.html">
+
+                                                                configuration de sécurité de port Cisco </a>
+
+                                                        </li>
+
+
+
+
+
+
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+
+                                            <!-- Routeur cisco  -->
+                                            <li>
+                                                <label for="rcisco">Routeurs</label>
+                                                <input type="checkbox" id="rcisco" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\routeur cisco\password.html">
+                                                                Password router cisco</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\routeur cisco\ssh.html">
+                                                                SSH</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\routeur cisco\acl.html">
+                                                                ACL</a>
+                                                        </li>
+                                                        <li id="file"><a class="name" href="#"
+                                                                data-src="Réseaux/HSRP.html">
+
+                                                                HSRP : redondance des routeurs </a>
+
+                                                        </li>
+
+                                                        <p>______________________________________</p>
+
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\routeur cisco\rip.html">
+                                                                RIP v2</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\routeur cisco\ospf.html">
+                                                                OSPF</a>
+                                                        </li>
+
+                                                        <p>______________________________________</p>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux\vpn\gre.html">
+                                                                Configuration de GRE</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\vpn\gre-sitetosite.html">
+                                                                GRE site to site</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux\vpn\ipsec.html">
+                                                                IPsec</a>
+                                                        </li>
+
+
+                                                        <p
+                                                            style="padding-top: 0px; padding-bottom: 0px; margin-top: 0px; margin-top: 0px; ">
+                                                            _________</p>
+
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\vpn\greoveripsec-map.html">
+                                                                GRE Over IPsec (map) </a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux\vpn\greoveripsec-profile.html">
+                                                                GRE Over IPsec (profile ✓ ) </a>
+                                                        </li>
+
+
+                                                        <p>______________________________________</p>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <label for="raduis">Serveurs Radius</label>
+                                                <input type="checkbox" id="raduis" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="https://all-it-network.com/radius/">
+                                                                Mise en place</a>
+                                                        </li>
+
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="https://all-it-network.com/radius-switch/">
+                                                                Authentification Radius Switch Cisco</a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                            <!-- Cisco doc -->
+                                            <li>
+                                                <label for="sis1">Docs</label>
+                                                <input type="checkbox" id="sis1" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-type="pdf"
+                                                                data-src="https://perso.ens-lyon.fr/eric.fleury/CPS/ART/slides/M1_ART_02-ROUTAGE.pdf">
+                                                                Routage PDF (pdf lent)</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#"
+                                                                data-src="Réseaux/Config router basic.html">
+                                                                Conf Routeur</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <p>-------- </p>
+                                                        </li>
+
+                                                        <!-- CCNA -->
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CCNA1.html">
+                                                                CCNA1</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <p>-------- </p>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/1.html">
+                                                                Présentation des réseaux commutés 1</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/2.html">
+                                                                Présentation des réseaux commutés 2 </a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/3.html">
+                                                                Implémentation de la sécurité VLAN</a>
+
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/4.html">
+                                                                Concepts du routage</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/5.html">
+                                                                Routage inter-VLAN</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/6.html">
+                                                                Routage statique </a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/7.html">
+                                                                Routage dynamique</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/8.html">
+                                                                OSPF à zone unique</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/9.html">
+                                                                Listes de contrôle d'accès</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/10.html">
+                                                                DHCP</a>
+                                                        </li>
+                                                        <li id="file">
+                                                            <a class="name" href="#" data-src="Réseaux/CISCO/11.html">
+                                                                Traduction d'adresse réseau pour IPv4</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Windows -->
+                        <li>
+                            <div style="display: flex;">
+                                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                                        style="width: 30px; height: 30px; " src="windows.png"> </div>
+                                <div style="flex: 1;">
+                                    <label for="file1" style=" font-size: 1.5em; ">Windows</label>
+                                    <input type="checkbox" id="file1" />
+                                    <div class="content">
+                                        <ul class="el">
+
+
+
+                                            <li id="file"><a class="name" href="#" data-src="Windows/commandes.html">
+
+                                                    Commandes raccourci </a>
+
+                                            </li>
+
+                                            <li>
+                                                <p> ____________ </p>
+                                            </li>
+
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://informerick.com/tutoriels-informatique/installer-active-directory/">Active
+                                                    directory AD</a>
+                                            </li>
+
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.it-connect.fr/chapitres/comment-creer-sa-premiere-gpo/">GPO</a>
+                                            </li>
+
+
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://rdr-it.com/blog/agdlp-agudlp-comment-bien-gerer-les-droits-sur-un-serveur-de-fichiers-windows-serveur">AGDLP</a>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.tutos.eu/8908">DFSR</a>
+
+                                            </li>
+
+                                            <a>________________________</a>
+
+
+                                            <li id="file"><a class="name" href="#" data-src="Windows/nlb.html">
+                                                    NLB Files</a>
+                                            </li>
+
+
+                                            <li id="file"><a class="name" href="#" data-src="Windows/ha/dhcp.pdf">DHCP
+                                                    HA</a>
+                                            </li>
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="Windows/1controleurDns.pdf">DNS 1</a>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="Windows/2serviceDns.pdf">DNS 2</a>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#" data-src="Windows/addnsdhcp.pdf">Rep
+                                                    AD DNS DHCP</a>
+                                            </li>
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.it-connect.fr/ipam-installation-et-configuration-sous-windows-server-2022/">IPAM</a>
+                                            </li>
+
+
+                                            <a>________________________</a>
+
+
+                                            <li id="file"><a class="name" href="#" id="myLink"
+                                                    data-src="Windows/ad.png">Installer un contrôleur de domaine Windows
+                                                    Server 2012 répliqué dans un domaine existant</a>
+                                            </li>
+
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="Windows/NTDSUTIL.html">NTDSUTIL</a>
+                                            </li>
+
+                                            <a>________________________</a>
+
+
+
+
+
+
+
+
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://www.it-connect.fr/acceder-partage-nfs-sous-windows-server-2012-r2/">NFS</a>
+                                            </li>
+                                            <li id="file"><a class="name" href="#"
+                                                    data-src="https://rdr-it.com/active-directory-strategie-de-mot-de-passe-pso/">
+                                                    PSO</a>
+                                            </li>
+                                            <li><a class="name" href="#"
+                                                    data-src="Windows/Routage WINS/wins.html">Routage
+                                                    WINS</a>
+                                            </li>
+
+                                            <li>
+                                                <p> ____________ </p>
+                                            </li>
+
+                                            <li><a class="name" href="#"
+                                                    data-src="https://deployadmin.com/2019/06/21/serveur-dimpression-ws2019-et-papercut/">
+                                                    Serveur d’impression WS2019 et PaperCut</a>
+                                            </li>
+
+
+                                            <li><a class="name" href="#"
+                                                    data-src="https://deployadmin.com/2019/11/05/windows-2008-server-mot-de-passe-local-perdu/">
+                                                    Mot de passe local perdu</a>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Linux -->
+                        <li>
+                            <div style="display: flex;">
+                                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                                        style="width: 30px; height: 30px; " src="linux.png"> </div>
+                                <div style="flex: 1;">
+                                    <label for="file2" style="font-size: 1.5em;">Linux</label>
+                                    <input type="checkbox" id="file2" />
+                                    <div class="content">
+                                        <ul class="el">
+
+
+                                            <li id="file">
+                                                <a data-src="main.html"
+                                                    onclick="window.open('https://upload.wikimedia.org/wikipedia/commons/a/ad/2023_Linux_Distributions_Timeline.svg', '_blank', 'width=1400,height=900')">
+                                                    DISTRIB</a>
+                                            </li>
+
+
+
+
+                                            <li id="file">
+                                                <label for="cli"> Commandes utiles </label>
+                                                <input type="checkbox" id="cli" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/searchcmd/step1.html">
+                                                                Démarrer</a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/40commandes.html">
+                                                                Alinux et les 40 commandes</a></li>
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/searchcmd/searchcmd.html">
+                                                                Commandes de recherches</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+
+                                            <li id="file">
+                                                <label for="server">AD / DNS / DHCP </label>
+                                                <input type="checkbox" id="server" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li><a class="name" href="#" data-src="Linux/sambaAD.html">
+                                                                AD DS Samba </a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/dhcp.pdf">
+                                                                DHCP Server</a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/dns/dns.html">
+                                                                DNS Server</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <label for="serverAD"> Partage & FTP </label>
+                                                <input type="checkbox" id="serverAD" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li><a class="name" href="#" data-src="Linux/smb.html">
+                                                                Samba Share </a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/nfs1/nfs1.html">
+                                                                NFS Part 1 </a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/nfs2/nfs2.html">
+                                                                NFS Part 2 </a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/server FTP.html">
+                                                                FTP Server </a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <label for="serverweb"> Web Srv </label>
+                                                <input type="checkbox" id="serverweb" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li><a class="name" href="#" data-src="Linux/GLPI - CMS.html">
+                                                                Apache </a></li>
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/GLPI - FusionIventory.html">
+                                                                GLPI - FusionIventory</a></li>
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/wordpress/wordpress.html">
+                                                                Wordpress</a></li>
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/ngx/install/nfs1.html">
+                                                                Nginx</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li id="file">
+                                                <label for="superv">Zabbix</label>
+                                                <input type="checkbox" id="superv" />
+                                                <div class="content">
+                                                    <ul class="sousEl">
+                                                        <li><a class="name" href="#" data-src="Linux/super/zabbix.html">
+                                                                Zabbix</a></li>
+                                                        <li><a class="name" href="#" data-src="Linux/super/snmp.html">
+                                                                SNMP</a></li>
+                                                        <li><a class="name" href="#"
+                                                                data-src="Linux/super/snmpwins.html">
+                                                                SNMP WINS</a></li>
+
+
+                                                        <li><a onclick="window.open('https://www.zabbix.com/documentation/4.0/fr/manual/web_monitoring/example', '_blank'
+                                                                , 'width=1600,height=900' )">
+                                                                Scénario Web</a></li>
+
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <a class="name" style="color: #d96c6c;" href="#"
+                                                    data-src="Linux/super/redhat.html">
+                                                    Redhat RHET</a>
+                                            </li>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </li>
+
+        <!-- MDT -->
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="mdt.png"> </div>
+                <div style="flex: 1;">
+                    <label for="file3" style=" font-size: 1.5em;">MDT</label>
+                    <input type="checkbox" id="file3" />
+                    <div class="content">
+
+                        <ul class="el">
+                            <li id="file"><a class="name" href="#" data-type="pdf"
+                                    data-src="https://www.gdidees.eu/userfiles/file/docs/Guide%20de%20deploiement%20Windows10.pdf">
+                                    WINDOWS 10</a></li>
+
+                            <li id="file"><a class="name" href="#" data-type="pdf"
+                                    data-src="https://neptunet.fr/wds-autonome/">
+                                    Installation d’un serveur de déploiement WDS (no AD)</a></li>
+
+                            <a>______________</a>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/04/12/video-test-de-linstallation-automatisee-de-windows/">
+                                    Vidéo de l’installation automatisée</a></li>
+
+
+
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/05/29/enlever-les-apps-indesirables-via-la-mdt/">
+                                    Enlever les Apps indésirables</a></li>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/05/31/activer-bitlocker-dans-une-task-sequence/">
+                                    Activer BitLocker dans une Task Sequence</a></li>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/06/13/mdt-2013-desactiver-cortana/">
+                                    Désactiver Cortana</a></li>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/08/29/jonction-au-domaine-avec-la-mdt/">
+                                    Jonction au Domaine</a></li>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/05/07/changer-le-background-de-la-mdt/">
+                                    Changer le background de la MDT</a></li>
+                            <li id="file"><a class="name" href="#"
+                                    data-src="https://deployadmin.com/2018/04/13/recupere-limage-windows-dune-cle-usb-de-recuperation-dell/">
+                                    Récupéré l’image windows d’une clé USB de récupération Dell</a></li>
+
+
+
+
+
+
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="secu.png"> </div>
+                <div style="flex: 1;">
+                    <label for="secu" style=" font-size: 1.5em;">Sécurité </label>
+                    <input type="checkbox" id="secu" />
+                    <div class="content">
+
+                        <ul>
+
+                            <li>
+                                <div style="display: flex;">
+                                    <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                                            style="width: 30px; height: 30px; " src="hack.png"> </div>
+                                    <div style="flex: 1;">
+                                        <label for="secuhack" style=" font-size: 1.5em;">Sécurité HACK</label>
+                                        <input type="checkbox" id="secuhack" />
+                                        <div class="content">
+
+
+
+                                            <ul class="el">
+
+<li>
+                                                    <a class="name" href="#" style="color: #d96c6c;" data-src="test.html">
+                                                        IMPORTANT                                           </a>
+                                                </li>
+
+<a>_____________</a>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/2.1-ReconPassive.pdf">
+                                                        Recon Passive
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/2.2-GoogleHackWEB.pdf">
+                                                        2.2-GoogleHackWEB
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3.1.0 Configuration de la sécurité du commutateur.pdf">
+                                                        3.1.0 Switch's confg sec
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3.1-ScanCouche2.pdf">
+                                                        3.1 Scan Couche2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3-2-ScanCouche3.pdf">
+                                                        3-2 Scan Couche3
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3-3-ScanPort.pdf">
+                                                        3-3 Scan Port
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3-4-PriseDempreinte.pdf">
+                                                        3-4 Prise d'empreinte
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/Doxing.txt">
+                                                        Doxing ;)
+                                                    </a>
+                                                </li>
+
+                                                <a>______________________________________</a>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/mailextractor.html">
+                                                        Mail extractor
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/paquets.txt">
+                                                        Paquets
+                                                    </a>
+                                                </li>
+
+                                                <a>______________________________________</a>
+                                                                                           <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/1-Nmap Scripting Engine.pdf">
+                                                        1- Nmap Scripting Engine
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/2-Utilisation de la base de données dans Metasploitv1.pdf">
+                                                        2-1 Use DB in metasploit 
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/2-Utilisation de la base de données dans Metasploit.pdf">
+                                                        2-2 Use DB in metasploit 2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/3-Vol d_identifiant Windows via Responder.pdf">
+                                                        3- Vol ID via Responder
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/4-Attaque DoS.pdf">
+                                                        4-1 Attaque DoS
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/4-Attaque DoS.pdf">
+                                                        4-1 Attaque DoS
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/Exploit windows msfvenom Final v3.pdf">
+                                                        Exploit windows msfvenom Final v3 
+                                                    </a> 
+                                                </li>
+
+                                                <a>______________________________________</a>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/ANIS/log.html">
+                                                        Windows log
+                                                    </a>
+                                                </li>
+
+                                                <a>______________________________________</a>
+
+
+<li>
+                                                    <a class="name" href="#" style="color: #008000;" data-src="acro.html">
+                                                        Plan de sécurité
+                                                    </a>
+                                                </li>
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div style="display: flex;">
+                                    <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                                            style="width: 30px; height: 30px; " src="secuhard.png"> </div>
+                                    <div style="flex: 1;">
+                                        <label for="secuhard" style=" font-size: 1.5em;">Sécurité HARD</label>
+                                        <input type="checkbox" id="secuhard" />
+                                        <div class="content">
+
+
+                                            <ul class="el">
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/base.html">
+                                                        Base
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/durcissement.pdf">
+                                                        Durcissement
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/wifi.html">
+                                                        Attaques wifi (2015)
+                                                    </a>
+                                                </li>
+                                                <a> ________________</a>
+                                                <li>
+
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/Watchguard/Watchguard.html">
+                                                        Watchguard : VPN SSL
+                                                    </a>
+                                                </li>
+                                                <a> ________________</a>
+                                                <li>
+
+                                                    <a class="name" href="#" data-src="secu/ssh.html">
+                                                        PfSense SSH
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/openvpn.html">
+                                                        OpenVPN
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/pfsense.html">
+                                                        PfSense redondants (failover)
+                                                    </a>
+                                                </li>
+
+                                                <a> ________________</a>
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="https://news.sophos.com/fr-fr/2020/10/27/vnp-acces-distance-simple-et-rapide-avec-sophos-connect-v2/">
+                                                        Sophos xg - VPN SSL
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="https://doc.sophos.com/nsg/sophos-firewall/18.5/help/en-us/webhelp/onlinehelp/AdministratorHelp/VPN/RemoteAccessVPN/VPNIPsecSophosConnectClient/index.html#configure-a-locally-signed-certificate">
+                                                        Sophos xg - VPN IPsec
+                                                    </a>
+                                                </li>
+                                                <a> ________________</a>
+
+
+
+
+
+
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="secu/sns.pdf">
+                                                        STORMSHIELD NETWORK SECURITY
+                                                    </a>
+                                                </li>
+
+                                                <a> ________________</a>
+
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="https://all-it-network.com/fortinet-vpn-ssl/">
+                                                        Fortinet VPN SSL
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="https://all-it-network.com/fortinet-vpn-ipsec/">
+                                                        Fortinet VPN IPsec
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="https://network-knowledge.work/fortigate-ha/">
+                                                        FortiGate HA
+                                                    </a>
+                                                </li>
+
+
+
+
+
+
+
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="IMG_20230609_102410.png"> </div>
+                <div style="flex: 1;">
+                    <label for="vmw" style=" font-size: 1.5em;">VMware - Vsphere</label>
+                    <input type="checkbox" id="vmw" />
+                    <div class="content">
+
+                        <ul class="el">
+
+                            <li>
+                                <a class="name" href="#" data-src="VMware/vSphere8.pdf">
+                                    VSphere 8 Lab Tuto
+                                </a>
+                            </li>
+
+                            <a>_____________________</a>
+                            <li>
+                                <label for="docvm"> DOC VMware 6</label>
+                                <input type="checkbox" id="docvm" />
+                                <div class="content">
+                                    <ul class="sousEl">
+
+                                        <li>
+                                            <label for="doc1"> 01_vSphere 6 et Cloud Computing </label>
+                                            <input type="checkbox" id="doc1" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\01_vSphere 6 et Cloud Computing\00_Introduction.pdf">00_Introduction
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\01_vSphere 6 et Cloud Computing\01_Les environnements cloud.pdf">01_Les
+                                                            environnements cloud
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\01_vSphere 6 et Cloud Computing\02_vSphere 6 comme base du cloud.pdf">02_vSphere
+                                                            6 comme base du cloud
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc2"> 02_Installation et configuration </label>
+                                            <input type="checkbox" id="doc2" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\01_Différences entre vSphere 5.x et vSphere 6.pdf">01_Différences
+                                                            entre vSphere 5.x et vSphere 6
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\02_Prérequis pour vSphere 6.pdf">02_Prérequis
+                                                            pour vSphere 6
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\03_Installation d’un serveur ESXi.pdf">03_Installation
+                                                            d’un serveur ESXi
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\04_vCenter pour Windows.pdf">04_vCenter
+                                                            pour Windows
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\05_vCenter Server Appliance.pdf">05_vCenter
+                                                            Server Appliance
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\06_Inventaire.pdf">06_Inventaire
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\02_Installation et configuration\07_Mise à jour upgrade.pdf">07_Mise
+                                                            à jour upgrade
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc3"> 03_Fontctionnement de l'hyperviseur
+                                            </label>
+                                            <input type="checkbox" id="doc3" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\03_Fontctionnement de l'hyperviseur\00_Introduction.pdf">00_Introduction
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\03_Fontctionnement de l'hyperviseur\01_Processeurs.pdf">01_Processeurs
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\03_Fontctionnement de l'hyperviseur\02_Mémoire.pdf">02_Mémoire
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\03_Fontctionnement de l'hyperviseur\03_Stockage.pdf">03_Stockage
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\03_Fontctionnement de l'hyperviseur\04_Réseau.pdf">04_Réseau
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc4"> 04_vCenter </label>
+                                            <input type="checkbox" id="doc4" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\04_vCenter\00_Qu’est-ce que vCenter.pdf">00_Qu’est-ce
+                                                            que vCenter
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\04_vCenter\01_Déploiement de VM.pdf">01_Déploiement
+                                                            de VM
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\04_vCenter\02_Modèles d’hyperviseur (profils d’hôtes).pdf">02_Modèles
+                                                            d’hyperviseur (profils d’hôtes)
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\04_vCenter\03_Administration.pdf">03_Administratio
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc5"> 05_Les machines virtuelles </label>
+                                            <input type="checkbox" id="doc5" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\05_Les machines virtuelles\00_Introduction.pdf">00_Introduction
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\05_Les machines virtuelles\01_Description d’une machine virtuelle.pdf">01_Description
+                                                            d’une machine virtuelle
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\05_Les machines virtuelles\02_Stockage associé aux machines virtuelles.pdf">02_Stockage
+                                                            associé aux machines virtuelles
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\05_Les machines virtuelles\03_Gestion des machines virtuelles.pdf">03_Gestion
+                                                            des machines virtuelles
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc6"> 06_Gestion des ressources</label>
+                                            <input type="checkbox" id="doc6" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\06_Gestion des ressources\00_Introduction.pdf">00_Introduction
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\06_Gestion des ressources\01_CPU.pdf">01_CPU
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\06_Gestion des ressources\02_Mémoire.pdf">
+                                                            02_Mémoire</a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\06_Gestion des ressources\03_Resource pools.pdf">03_Resource
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\06_Gestion des ressources\04_Surveillance.pdf">04_Surveillance
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc7"> 07_Réseau </label>
+                                            <input type="checkbox" id="doc7" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\07_Réseau\01_Réseaux virtuels.pdf">01_Réseaux
+                                                            virtuels </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\07_Réseau\02_L’agrégation de liens.pdf">02_L’agrégation
+                                                            de liens
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\07_Réseau\03_NSX.pdf">03_NSX
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc8"> 08_Stockage </label>
+                                            <input type="checkbox" id="doc8" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\00_Introduction.pdf">
+                                                            00_Introduction</a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\01_Périphérique de stockage.pdf">01_Périphérique
+                                                            de stockage </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\02_L’entrée sortie (E S) ou I O.pdf">02_L’entrée
+                                                            sortie (E S) ou I O
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\03_La connectique, protocole et performances de transfert.pdf">03_La
+                                                            connectique, protocole et performances de
+                                                            transfert
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\04_Gestion des périphériques de stockage.pdf">04_Gestion
+                                                            des périphériques de stockage
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\05_Les baies de stockage.pdf">05_Les
+                                                            baies de stockage </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\06_La convergence.pdf">06_La
+                                                            convergence </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\07_L’hyperconvergence.pdf">07_L’hyperconvergence
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\08_VMware vSphere et le stockage.pdf">08_VMware
+                                                            vSphere et le stockage
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\08_Stockage\09_Les types de systèmes de fichiers pour stockage des machines virtuelles.pdf">09_Les
+                                                            types de systèmes de fichiers pour stockage
+                                                            des machines virtuelles
+                                                        </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <label for="doc9"> 09_Cluster DRS </label>
+                                            <input type="checkbox" id="doc9" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\09_Cluster DRS\00_Introduction.pdf">09_Cluster
+                                                            DRS\00_Introduction </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\09_Cluster DRS\01_Le cluster DRS.pdf">01_Le
+                                                            cluster DRS
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\09_Cluster DRS\02_Les migrations.pdf">02_Les
+                                                            migrations
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\09_Cluster DRS\03_Storage DRS.pdf">03_Storage
+                                                            DRS </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc10"> 10_Cluster HA </label>
+                                            <input type="checkbox" id="doc10" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\10_Cluster HA\00_Introduction.pdf">
+                                                            00_Introduction</a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\10_Cluster HA\01_La haute disponibilité, pour quoi faire.pdf">01_La
+                                                            haute disponibilité, pour quoi faire
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\10_Cluster HA\02_Haute disponibilité appliquée aux machines virtuelles.pdf">02_Haute
+                                                            disponibilité appliquée aux machines
+                                                            virtuelles
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\10_Cluster HA\03_Mise en place d’un cluster HA.pdf">03_Mise
+                                                            en place d’un cluster HA
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\10_Cluster HA\04_vCenter HA.pdf">
+                                                            04_vCenter HA</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label for="doc11"> 11_Sécurité </label>
+                                            <input type="checkbox" id="doc11" />
+                                            <div class="content">
+                                                <ul class="sousEl">
+
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\11_Sécurité\00_Introduction.pdf">00_Introduction
+                                                        </a>
+                                                    </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\11_Sécurité\01_Principales fonctionnalités de sécurisation VMware.pdf">01_Principales
+                                                            fonctionnalités de sécurisation VMware
+                                                        </a> </li>
+                                                    <li> <a class="name" href="#"
+                                                            data-src="VMware\16 - VMware\vSphere\11_Sécurité\02_Produits Tiers.pdf">
+                                                            02_Produits Tiers</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <a>_____________________</a>
+
+                            <li> <a class="name" href="#" data-src="VMware\16 - VMware\Vmware Vsphere 7.pdf">
+                                    DOC VMware 7 </a>
+                            </li>
+                            <a>_____________________</a>
+
+                            <li>
+                                <label for="doc18"> DOC VMware 8 </label>
+                                <input type="checkbox" id="doc18" />
+                                <div class="content">
+                                    <ul class="sousEl">
+
+
+                                        <li>
+                                            <a class="name" href="#" data-src="VMware/availability-guide.pdf">
+                                                Disponibilité vSphere
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="name" href="#" data-src="VMware/networking-guide.pdf">
+                                                Mise en réseau vSphere
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="name" href="#" data-src="VMware/resource-management-guide.pdf">
+                                                Gestion des ressources vSphere
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="name" href="#" data-src="VMware/security-guide.pdf">
+                                                Sécurité vSphere
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="name" href="#" data-src="VMware/storage-guide.pdf">
+                                                Stockage vSphere
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <a>_____________________</a>
+
+
+                            <li id="file">
+                                <a data-src="main.html"
+                                    onclick="window.open('https://help.ovhcloud.com/csm/en-nutanix-move-migration-tool?id=kb_article_view&sysparm_article=KB0045085', '_blank', 'width=1400,height=900')">
+
+                                    Migrating to Nutanix via the Nutanix Move tool</a>
+                            </li>
+
+
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="cloud.png"> </div>
+                <div style="flex: 1;">
+                    <label for="cloud" style=" font-size: 1.5em;">Cloud</label>
+                    <input type="checkbox" id="cloud" />
+                    <div class="content">
+
+                        <ul class="el">
+
+
+
+                            <li>
+                                <div style="display: flex;">
+                                    <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; ">
+                                        <img style="width: 30px; height: 30px; " src="azure.png">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label for="azure" style=" font-size: 1.5em;">Azure</label>
+                                        <input type="checkbox" id="azure" />
+                                        <div class="content">
+
+                                            <ul class="el">
+
+                                                <li>
+                                                    <a class="name" href="#"
+                                                        data-src="cloud/AZ-900 TrainerHandbook.pdf">
+                                                        AZ-900
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="cloud/Fundamentals-01.pdf">
+                                                        Fundamentals 1
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="name" href="#" data-src="cloud/Fundamentals-02.pdf">
+                                                        Fundamentals 2
+                                                    </a>
+                                                </li>
+                                                <a>_____________________ </a>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="cloud/ps1.html">
+                                                        Powershell : Script Création VMs en boucle
+                                                    </a>
+                                                </li>
+
+
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div style="display: flex;">
+                                    <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; ">
+                                        <img style="width: 30px; height: 30px; " src="aws.jpg">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label for="aws" style=" font-size: 1.5em;">AWS</label>
+                                        <input type="checkbox" id="aws" />
+                                        <div class="content">
+
+                                            <ul class="el">
+                                            <li id="file">
+                                                <a data-src="main.html"
+                                                    onclick="window.open('https://squasta.github.io/aws_foundamentals.html', '_blank', 'width=1400,height=900')">
+                                                    AWS Certified Cloud Practitioner(Mindcard) </a>
+                                            </li>
+
+                                                
+                                                
+                                                <li>
+                                                    <a class="name" href="#" data-src="cloud/AWS.html">
+                                                        AWS Amazon Web Services
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div style="display: flex;">
+                                    <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; ">
+                                        <img style="width: 27.3px; height: 30px; " src="365.png">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label for="365" style=" font-size: 1.5em;">Microsoft
+                                            365</label>
+                                        <input type="checkbox" id="365" />
+                                        <div class="content">
+
+                                            <ul class="el">
+                                                <li>
+                                                    <a class="name" href="#" data-src="https://m365maps.com">
+                                                        Microsoft 365 Licensing
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="name" href="#" data-src="cloud/de365.html">
+                                                        TP 365
+                                                    </a>
+                                                </li>
+
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="docker.png"> </div>
+                <div style="flex: 1;">
+                    <label for="docker" style=" font-size: 1.5em;">APT - ANSIBLE - Docker - Kubernetes</label>
+                    <input type="checkbox" id="docker" />
+                    <div class="content">
+
+                        <ul class="el">
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/samir.html">
+                                    Doc Samir BELLABES
+                                </a>
+                            </li>
+                            <li>
+                                <a class="name" href="#" data-src="docker/ansible.html">
+                                    ANSIBLE
+                                </a>
+                            </li>
+                            <li>
+                                <a class="name" href="#" data-src="docker/playbook.html">
+                                    Playbooks
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/vault.html">
+                                    Ansible Vault
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/jenkins.html">
+                                    jenkins
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/includeansible.html">
+                                    Inclure Ansible dans Jenkins
+                                </a>
+                            </li>
+
+
+
+
+
+
+                            <a>________________________</a>
+
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/cmdbase.html">
+                                    Commandes de base
+                                </a>
+                            </li>
+                            <li>
+                                <a class="name" href="#" data-src="docker/debian.html">
+                                    Install sur Linux
+                                </a>
+                            </li>
+                            <li>
+                                <a class="name" href="#" data-src="docker/windows.html">
+                                    Install sur Windows
+                                </a>
+                            </li>
+                            <a>________________________</a>
+
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/kuber/kuber.html">
+                                    Installation Kubernetes avec Kubeadm
+                                </a>
+                            </li>
+
+
+                            <a>________________________</a>
+
+                            <li>
+                                <a class="name" href="#" data-src="docker/SELinux.html">
+                                    SELinux & Udica Container Security
+                                </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+        <li>
+            <div style="display: flex;">
+                <div style="flex: 0 0 20px; margin-top: 23px; margin-right:10px; "> <img
+                        style="width: 30px; height: 30px; " src="bdd.png"> </div>
+                <div style="flex: 1;">
+                    <label for="bdd" style=" font-size: 1.5em;">Base de données</label>
+                    <input type="checkbox" id="bdd" />
+                    <div class="content">
+
+                        <ul class="el">
+
+                            <li>
+                                <a class="name" href="#" data-src="bdd/sauv/sauv.html">
+                                    Oracle : Sauvegarde et restauration
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+
+
+
+
+
+        <li>
+            <label for="links">Liens utiles</label>
+            <input type="checkbox" id="links" />
+            <div class="content">
+
+                <ul class="el">
+
+                    <li id="file">
+
+                    <li>
+                        <a class="name" href="#" data-src="acro.html">
+                            Acronymes
+                        </a>
+                    </li>
+
+
+
+                    <a data-src="main.html"
+                        onclick="window.open('https://products.groupdocs.app/editor/word', '_blank', 'width=1400,height=900')">
+
+                        Opérations document</a>
+
+
+                    <li id="file">
+                        <a data-src="main.html"
+                            onclick="window.open('https://unsplash.com/fr/s/photos/wallpaper-desktop', '_blank', 'width=1400,height=900')">
+
+                            Wallpapers</a>
+                    </li>
+
+                    <li id="file">
+                        <a data-src="main.html"
+                            onclick="window.open('https://j.top4top.io/f_K0DCQteAD9c2xD4Ezl-RaQ/1689677330/866757sw1.rar', '_blank', 'width=1400,height=900')">
+
+                            Photoshop cs4 portable gratuit</a>
+                    </li>
+
+
+
+
+
+
+
+                    <li id="file">
+                        <a data-src="main.html"
+                            onclick="window.open('https://www.pdf24.org/fr/', '_blank', 'width=1400,height=900')">
+
+                            PDFS</a>
+                    </li>
+                    <li id="file">
+
+                        <a data-src="main.html"
+                            onclick="window.open('https://www.trustradius.com/', '_blank', 'width=1400,height=900')">
+                            Technology Reviews You Can Trust</a>
+                    </li>
+
+
+                    <li id="file">
+
+                        <a data-src="main.html"
+                            onclick="window.open('https://www.cert.ssi.gouv.fr/alerte/', '_blank', 'width=1400,height=900')">
+                            ALERTES DE SÉCURITÉ</a>
+                    </li>
+
+                    <li id="file">
+                        <a data-src="main.html"
+                            onclick="window.open('https://www.softwaretestinghelp.com/', '_blank', 'width=1400,height=900')">
+                            Software Testing Help</a>
+                    </li>
+                    <li id="file">
+                        <a data-src="main.html"
+                            onclick="window.open('https://moakt.com/fr/', '_blank', 'width=1400,height=900')">
+                            E-mail rapide</a>
+                    </li>
+
+
+
+
+                </ul>
+            </div>
+        </li>
+
+
+
+        </ul>
+
+
+    </div>
+    </div>
+    </div>
+
+    <div id="col2">
+
+        <iframe class="frame" id="frame" src="main.html"></iframe>
+        <div id="btns">
+
+        </div>
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const frames = document.querySelectorAll('.frame');
+            const subitems = document.querySelectorAll('.treeview ul li ul li a');
+            const container = document.getElementById('row'); // Remplacez par la classe ou l'ID de votre conteneur
+            const col2 = document.getElementById('col2')
+            const arrow = document.getElementById('arrow')
+
+            const toggleBtn = document.getElementById('toggle-btn');
+
+            const treeview = document.getElementById('col1');
+            treeview.classList.toggle('collapsed');
+            toggleBtn.addEventListener('click', () => {
+                treeview.classList.toggle('collapsed');
+                toggleBtn.classList.toggle('collapsee');
+                arrow.style.display = 'none';
+                btn2.style.display = 'none';
+
+            });
+
+            for (let i = 0; i < subitems.length; i++) {
+                subitems[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const src = this.getAttribute('data-src');
+                    const type = this.getAttribute('data-type');
+
+
+
+                    if (src === "https://m365maps.com") {
+                        document.getElementById('frame').style.paddingTop = "0px";
+                        document.getElementById('frame').style.paddingLeft = "160px";
+
+                        window.open(src, '_blank');
+
+
+                    } else if (src === "acro.html") {
+                        document.getElementById('frame').style.paddingTop = "0px";
+                        document.getElementById('frame').style.paddingLeft = "160px";
+                    }
+                    else if (src === "bdd/sauv/sauv.html") {
+                        document.getElementById('frame').style.paddingTop = "0px";
+                        document.getElementById('frame').style.paddingLeft = "160px";
+                    }
+
+
+                    else if (src === "https://aisyassine.github.io/8/anglais.html") {
+
+                        document.getElementById('frame').style.paddingLeft = "160px";
+                    }
+
+
+                    else if (src === "Windows/ad.png") {
+                        console.log('Ouverture de la nouvelle fenêtre');
+                        window.open('https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/deploy/install-a-replica-windows-server-2012-domain-controller-in-an-existing-domain--level-200-', '_newWindow');
+
+                        frames[0].setAttribute('src', src)
+                    }
+
+
+
+
+
+
+
+                    else {
+                        document.getElementById('frame').style.paddingTop = "0px";
+                        document.getElementById('frame').style.paddingLeft = "0px";
+                    }
+
+
+                    if (type === 'pdf') {
+                        const googleDocsViewer = 'https://docs.google.com/viewer?url=';
+                        const encodedSrc = encodeURIComponent(src);
+                        const viewerUrl = googleDocsViewer + encodedSrc + '&embedded=true';
+                        frames[0].setAttribute('src', viewerUrl);
+                    } else {
+                        frames[0].setAttribute('src', src);
+                    }
+
+                    // Fermer toutes les autres listes
+                    const otherLists = document.querySelectorAll('.treeview ul');
+                    for (let j = 0; j < otherLists.length; j++) {
+                        if (!this.closest('ul').contains(otherLists[j])) {
+                            otherLists[j].classList.remove('treeview-expanded');
+                            otherLists[j].classList.add('treeview-collapsed');
+                        }
+                    }
+                    for (let j = 0; j < subitems.length; j++) {
+                        subitems[j].classList.remove('active');
+                        subitems[j].classList.add('notactive');
+                    }
+
+                    this.classList.add('active');
+                });
+            }
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
