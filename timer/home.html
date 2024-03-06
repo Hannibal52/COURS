@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Composition</title>
+  <style>
+    /* Style resets for better cross-browser compatibility */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Wrapper for the entire page content to manage padding */
+    .page-wrapper {
+      background-color: rgb(71, 111, 168);
+      /* Couleur de fond inchangée */
+      display: flex;
+      flex-direction: row;
+      /* Organisation horizontale par défaut */
+      align-items: center;
+      justify-content: space-around;
+      padding: 5% 10%;
+      min-height: 100vh;
+    }
+
+    /* Specific wrapper for composition */
+    .composition-wrapper {
+      max-width: 600px;
+      /* Set a max-width for your image composition */
+      width: 100%;
+    }
+
+    .animate-element {
+      position: absolute;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+
+      width: 100%;
+      /* Make sure elements are not larger than their parent */
+      max-width: 600px;
+      /* Match max-width of composition wrapper */
+    }
+
+    /* Responsive typography */
+    .text {
+      max-width: 600px;
+      /* Contrôle de la largeur maximale du texte */
+      padding: 2rem;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+
+
+    .desc {
+      font-size: 1rem;
+    }
+
+    /* Define different keyframes for different oscillations */
+    @keyframes updown1 {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes updown2 {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes updown3 {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* Element-specific animations */
+    .element1 {
+      animation-name: updown1;
+      animation-duration: 4s;
+    }
+
+    .element2 {
+      animation-name: updown2;
+      animation-duration: 3.5s;
+    }
+
+    .element3 {
+      animation-name: updown3;
+      animation-duration: 3s;
+    }
+
+    .element4 {
+      animation-name: updown1;
+      animation-duration: 3.5s;
+    }
+
+    .element5 {
+      animation-name: updown2;
+      animation-duration: 4s;
+    }
+
+    .element6 {
+      animation-name: updown3;
+      animation-duration: 3.5s;
+    }
+
+    /* Background image styling */
+    .back {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .anim{
+      min-height: 60vh;
+    }
+    .text{
+      min-height: 60vh;
+      z-index: 8;
+    }
+
+    /* Media queries pour la mise en page responsive */
+    @media (max-width: 768px) {
+      .page-wrapper {
+        flex-direction: column;
+        /* Organisation verticale sur mobile */
+      }
+
+      .text,
+      .composition-wrapper {
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      /* Ajustements de la taille du texte pour mobile */
+      .titre,
+      .desc {
+        margin-top: 20px;
+        margin-left: 50px;
+        text-align: center;
+        z-index: 8;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="composition-wrapper">
+      <!-- Background image -->
+      <img class="back" src="back.png" alt="Background">
+      <div class="anim">
+        <!-- Animated elements -->
+        <img src="pc_back.png" class="animate-element element1" style="z-index: 2;">
+        <img src="pc_right.png" class="animate-element element4" style="z-index: 3;">
+        <img src="server_bottom.png" class="animate-element element5" style="z-index: 4;">
+        <img src="server_top.gif" class="animate-element element6" style="z-index: 5;">
+        <img src="pc_front.png" class="animate-element element2" style="z-index: 6;">
+        <img src="pc_left.png" class="animate-element element3" style="z-index: 7;">
+      </div>
+    </div>
+
+    <div class="text">
+      <h1 class="titre">Taha Yassine JGUIRIM</h1>
+      <p class="desc">
+        Un administrateur systèmes n'est pas jugé sur la profondeur de ses connaissances dans un domaine unique,
+        mais sur l'étendue de sa compréhension à travers de multiples horizons,
+        car c'est dans la diversité que réside la sagesse de ses choix.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
