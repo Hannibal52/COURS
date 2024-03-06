@@ -133,22 +133,22 @@
       z-index: 1;
     }
 
-    .anim{
+    .anim {
       min-height: 60vh;
     }
- 
+
     .text {
       max-width: 600px;
       /* Contrôle de la largeur maximale du texte */
       padding-top: 2rem;
       padding-bottom: 2rem;
-       
-      font-size: 2rem; 
+
+      font-size: 2rem;
       color: #fff;
 
       min-height: 60vh;
       z-index: 8;
-      padding-left: 150px; 
+      padding-left: 150px;
     }
 
 
@@ -157,6 +157,9 @@
       .page-wrapper {
         flex-direction: column;
         /* Organisation verticale sur mobile */
+        padding: 0% 0%;
+        max-width: 100%;
+
       }
 
       .text,
@@ -169,10 +172,26 @@
       .titre,
       .desc {
         margin-top: 20px;
-        margin-left: 50px;
-        text-align: center;
+         
+         
         z-index: 8;
       }
+
+      .anim {
+        min-height: 10vh;
+        padding-left: 0;
+      }
+
+      .text{
+        padding-top: 6rem;
+        padding-left: 1rem; 
+      }
+      .desc{
+        padding-top: 4rem;
+        padding-right: 3rem;
+      }
+     
+
     }
   </style>
 </head>
