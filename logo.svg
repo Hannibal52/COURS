@@ -11,7 +11,7 @@
     <linearGradient bx:pinned="true" id="color-1">
       <stop style="stop-color: rgb(36, 169, 95);" offset="0.67"/>
       <stop style="stop-color: rgb(46, 109, 74);" offset="0.69"/>
-      <stop style="stop-color: rgb(37, 45, 46);" offset="0.777"/>
+      <stop style="stop-color: rgb(37, 45, 46);" offset="1"/>
     </linearGradient>
     <linearGradient id="color-1-0" href="#color-1" gradientUnits="userSpaceOnUse" x1="248.816" y1="29.508" x2="248.816" y2="472.678" gradientTransform="matrix(1, 0, 0, 1, 1.078639, 0)"/>
     <linearGradient id="color-0-0" href="#color-0" gradientUnits="userSpaceOnUse" x1="248.816" y1="29.508" x2="248.816" y2="472.678" gradientTransform="matrix(1, 0, 0, 1, 1.078639, 0)"/>
