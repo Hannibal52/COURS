@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="gradient-1" bx:pinned="true">
+      <stop offset="0.5" style="stop-color: rgb(255, 0, 0);"/>
+    </linearGradient>
+    <linearGradient bx:pinned="true" id="color-0">
+      <stop style="stop-color: rgb(239, 239, 239);" offset="0.68"/>
+      <stop style="stop-color: rgb(37, 45, 46);" offset="0.68"/>
+    </linearGradient>
+    <linearGradient bx:pinned="true" id="color-1">
+      <stop style="stop-color: rgb(36, 169, 95);" offset="0.67"/>
+      <stop style="stop-color: rgb(46, 109, 74);" offset="0.69"/>
+      <stop style="stop-color: rgb(37, 45, 46);" offset="0.777"/>
+    </linearGradient>
+    <linearGradient id="color-1-0" href="#color-1" gradientUnits="userSpaceOnUse" x1="248.816" y1="29.508" x2="248.816" y2="472.678" gradientTransform="matrix(1, 0, 0, 1, 1.078639, 0)"/>
+    <linearGradient id="color-0-0" href="#color-0" gradientUnits="userSpaceOnUse" x1="248.816" y1="29.508" x2="248.816" y2="472.678" gradientTransform="matrix(1, 0, 0, 1, 1.078639, 0)"/>
+    <linearGradient id="color-0-1" href="#color-0" gradientUnits="userSpaceOnUse" x1="248.816" y1="29.508" x2="248.816" y2="472.678" gradientTransform="matrix(1, 0, 0, 1, 0.979355, -0.79424)"/>
+    <linearGradient bx:pinned="true" id="color-2">
+      <stop style="stop-color: rgb(37, 81, 59);" offset="0.913"/>
+      <stop style="stop-color: rgb(140, 220, 180);" offset="1"/>
+    </linearGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="249.894" cy="252.033" r="221.585" id="color-2-1" href="#color-2" spreadMethod="reflect" gradientTransform="matrix(1, 0, 0, 1, -0.097946, -1.734664)"/>
+    <linearGradient id="color-3" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.403475, 0, 0, -0.518616, 132.941787, 290.833223)">
+      <stop style="stop-color: rgb(37, 45, 46);"/>
+    </linearGradient>
+    <linearGradient bx:pinned="true" id="color-4">
+      <title>leaf</title>
+      <stop style="stop-color: rgb(4, 95, 59);" offset="0"/>
+      <stop style="stop-color: rgb(64, 197, 144);" offset="1"/>
+    </linearGradient>
+    <linearGradient id="color-4-0" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.742184, 0, 0, 0.760853, 128.716189, -0.29826)"/>
+    <linearGradient id="color-4-1" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.139311, 0.550586, -0.497874, 0.185523, 395.575963, 115.86606)"/>
+    <linearGradient id="color-4-2" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.139311, 0.550586, -0.497874, 0.185523, 210.753578, 114.811439)"/>
+    <linearGradient id="color-4-3" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.179783, 0.727495, -0.642513, 0.245133, 407.661958, 19.735881)"/>
+    <linearGradient id="color-4-4" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.179783, 0.727495, -0.642513, 0.245133, 204.664871, 14.684412)"/>
+    <linearGradient id="color-4-5" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.468594, 0, 0, 0.450478, 99.801901, 60.924359)"/>
+    <linearGradient id="color-4-6" href="#color-4" gradientUnits="userSpaceOnUse" x1="161.683" y1="91.226" x2="161.683" y2="198.729" gradientTransform="matrix(0.468594, 0, 0, 0.450478, 234.019316, 67.316071)"/>
+  </defs>
+  <ellipse style="stroke-width: 50px; fill-rule: nonzero; paint-order: stroke markers; stroke: url(&quot;#color-1-0&quot;); fill: url(&quot;#color-0-0&quot;);" cx="249.894" cy="251.092" rx="221.585" ry="221.585"/>
+  <ellipse style="fill-rule: nonzero; fill: url(&quot;#color-0-1&quot;); stroke: url(&quot;#color-2-1&quot;); paint-order: stroke markers; stroke-width: 50px; stroke-linejoin: bevel; stroke-dasharray: 20; stroke-dashoffset: -71px; stroke-opacity: 0;" cx="249.795" cy="250.3" rx="221.585" ry="221.585"/>
+  <path style="stroke-width: 0px; stroke: rgb(37, 45, 46); fill: rgb(37, 45, 46); transform-box: fill-box; transform-origin: 50% 50%;" d="M 158.709 413.214 C 226.756 432.09 229.881 172.081 229.881 172.081 L 273.941 171.922 C 273.941 171.922 284.357 424.703 346.723 413.164 C 420.534 399.509 158.709 413.214 158.709 413.214 Z">
+    <animateMotion path="M 0 97.141 L -5.018 -26.254" calcMode="linear" dur="0.5s" fill="freeze"/>
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0.2 0.1;1 1" begin="-0.07s" dur="0.58s" fill="freeze" keyTimes="0; 1"/>
+  </path>
+  <path style="stroke-width: 0px; stroke: currentcolor; fill: url(&quot;#color-3&quot;); transform-box: fill-box; transform-origin: 50% 50%;" d="M 256.187 266.984 C 256.187 266.984 272.3314631957714 238.96854405515313 282.404 231.002 C 290.6184201590691 224.50507262642225 304.2466902946406 219.08469621777192 309.708 219.547 C 312.1997214120156 219.75792600405046 314.27883450088814 221.3615647523355 314.91 222.853 C 315.4901752546522 224.2239460130955 315.16446896733066 226.4557986997011 313.855 227.953 C 311.33418067317433 230.83521719498685 301.48524185829154 230.42536769618002 295.644 234.345 C 288.06461875204025 239.43097115188783 279.5954767746185 251.95317944707102 274.063 258.639 C 270.3619008863054 263.1116594490716 268.55985473058996 269.163974799949 265.19 270.161 C 262.45959886154895 270.96883266903825 256.187 266.984 256.187 266.984 C 256.187 266.9839999999999 256.187 266.984 256.187 266.984 C 256.187 266.984 256.187 266.98400000000004 256.187 266.984" bx:d="M 256.187 266.984 R 282.404 231.002 R 309.708 219.547 R 314.91 222.853 R 313.855 227.953 R 295.644 234.345 R 274.063 258.639 R 265.19 270.161 R 256.187 266.984 R 256.187 266.984 Z 1@18206b8b">
+    <animateMotion path="M -43.46 108.926 C -63.918 114.159 -40.67 9.413 0.426 -1.1" calcMode="linear" begin="-0.02s" dur="0.99s" fill="freeze"/>
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;1 1" begin="0.09s" dur="0.97s" fill="freeze" keyTimes="0; 1" end="0.69s"/>
+  </path>
+  <path style="stroke-width: 0px; stroke: currentcolor; fill: url(&quot;#color-3&quot;); transform-box: fill-box; transform-origin: 50% 50%;" d="M 193.908 195.408 C 193.908 195.408 206.1053675258899 223.3618920356061 214.305 231.39 C 220.5684120466358 237.5223904814813 231.3200535400842 243.248626406105 235.547 242.845 C 237.51391631423758 242.65718135347734 239.05947197486574 240.9458026340037 239.594 239.539 C 240.12544891238423 238.14030115798346 239.94218549664305 235.96651305886067 238.773 234.439 C 236.74489606473188 231.7893304182753 229.0490827217058 231.7520002557819 224.605 228.047 C 218.47937857696124 222.94011285131285 212.10770967489208 210.41576644862897 207.816 203.753 C 204.921613579365 199.2595411703881 203.6606132530759 193.08883003095087 200.913 192.231 C 198.8337585920351 191.5818417826446 193.908 195.408 193.908 195.408 C 193.908 195.40800000000002 193.908 195.408 193.908 195.408 C 193.908 195.408 193.90800000000002 195.40800000000002 193.908 195.408" bx:d="M 193.908 195.408 R 214.305 231.39 R 235.547 242.845 R 239.594 239.539 R 238.773 234.439 R 224.605 228.047 R 207.816 203.753 R 200.913 192.231 R 193.908 195.408 R 193.908 195.408 Z 1@0c6205a5" transform="matrix(-1, 0, 0, -1, 0.000003, 0.000003)">
+    <animateMotion path="M 36.859 145.234 L -7.826 -6.601" calcMode="linear" dur="1.17s" fill="freeze"/>
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;1 1" begin="-0.05s" dur="1.19s" fill="freeze" keyTimes="0; 1"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-0&quot;); transform-box: fill-box; transform-origin: 50% 50%;" d="M 238.516 86.802 C 232.09 93.426 227.718 103.06 227.506 110.875 C 227.406 114.511 226.128 123.879 232.419 127.922 C 237.13 130.951 245.345 134.419 254.621 129.907 C 263.364 125.653 269.199 120.875 274.389 114.427 C 283.774 99.248 286.087 86.506 283.628 69.642 C 268.599 66.46 246.792 78.27 238.516 86.802 Z" transform="matrix(0.775795, -0.630985, 0.630985, 0.775795, 0, -0.000007)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" dur="2s" fill="freeze" keyTimes="0; 0.523438; 1"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-1&quot;); transform-origin: 353.437px 234.845px;" d="M 359.19 218.558 C 353.649 215.407 346.526 214.512 341.372 216.26 C 338.974 217.073 332.604 218.409 331.139 224.061 C 330.041 228.295 329.314 235.235 334.008 241.016 C 338.432 246.465 342.654 249.628 347.848 251.906 C 359.541 255.168 368.313 253.776 378.888 247.84 C 378.148 235.915 366.327 222.618 359.19 218.558 Z" transform="matrix(0.998536, -0.054096, 0.054096, 0.998536, 0, -0.000002)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" begin="0s" dur="2s" fill="freeze" keyTimes="0; 0.5; 1"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-2&quot;); transform-origin: 168.614px 233.791px;" d="M 174.366 217.504 C 168.825 214.353 161.702 213.458 156.548 215.206 C 154.15 216.019 147.78 217.355 146.315 223.007 C 145.217 227.241 144.49 234.181 149.184 239.962 C 153.608 245.411 157.83 248.574 163.024 250.852 C 174.717 254.114 183.489 252.722 194.064 246.786 C 193.324 234.861 181.503 221.564 174.366 217.504 Z" transform="matrix(-0.290888, 0.956757, -0.956757, -0.290888, -0.000025, 0.000014)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" dur="1.99s" fill="freeze" keyTimes="0; 0.61223; 1" begin="-0.02s"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-3&quot;); transform-origin: 353.279px 176.944px;" d="M 360.704 155.424 C 353.553 151.26 344.36 150.078 337.709 152.387 C 334.615 153.462 326.394 155.227 324.503 162.695 C 323.087 168.289 322.148 177.46 328.206 185.098 C 333.915 192.298 339.363 196.477 346.066 199.487 C 361.157 203.797 372.477 201.958 386.124 194.115 C 385.169 178.358 369.914 160.788 360.704 155.424 Z" transform="matrix(0.635823, -0.771835, 0.771835, 0.635823, 0.000001, -0.000025)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" begin="0s" dur="2s" fill="freeze" keyTimes="0; 0.475; 1"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-4&quot;); transform-origin: 150.282px 171.893px;" d="M 157.707 150.373 C 150.556 146.209 141.363 145.027 134.712 147.336 C 131.618 148.411 123.397 150.176 121.506 157.644 C 120.09 163.238 119.151 172.409 125.209 180.047 C 130.918 187.247 136.366 191.426 143.069 194.436 C 158.16 198.746 169.48 196.907 183.127 189.064 C 182.172 173.307 166.917 155.737 157.707 150.373 Z" transform="matrix(-0.988965, 0.148147, -0.148147, -0.988965, -0.000028, 0.00002)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" dur="2s" fill="freeze" keyTimes="0; 0.530078; 1" begin="-0.1s"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-5&quot;); transform-box: fill-box; transform-origin: 64.9332% 43.2908%;" d="M 169.127 112.494 C 165.07 116.416 162.309 122.12 162.175 126.747 C 162.112 128.9 161.306 134.446 165.277 136.84 C 168.252 138.633 173.439 140.687 179.295 138.015 C 184.815 135.497 188.499 132.668 191.776 128.849 C 197.701 119.863 199.162 112.318 197.609 102.334 C 188.12 100.45 174.352 107.443 169.127 112.494 Z" transform="matrix(-0.004157, -0.999991, 0.999991, -0.004157, 0.00001, 0.000014)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" begin="-0.09s" dur="2s" fill="freeze" keyTimes="0; 0.455078; 1"/>
+  </path>
+  <path style="stroke: rgb(0, 0, 0); stroke-opacity: 0; stroke-width: 0px; fill: url(&quot;#color-4-6&quot;); transform-box: fill-box; transform-origin: 72.825% 30.6067%;" d="M 303.344 118.885 C 299.287 122.807 296.526 128.511 296.392 133.138 C 296.329 135.291 295.523 140.837 299.494 143.231 C 302.469 145.024 307.656 147.078 313.512 144.406 C 319.032 141.888 322.716 139.059 325.993 135.24 C 331.918 126.254 333.379 118.709 331.826 108.725 C 322.337 106.841 308.569 113.834 303.344 118.885 Z" transform="matrix(0.999852, 0.017206, -0.017206, 0.999852, 0, 0)">
+    <animateTransform type="scale" additive="sum" attributeName="transform" values="0 0;0 0;1 1" dur="2s" fill="freeze" keyTimes="0; 0.493359; 1" begin="-0.1s"/>
+  </path>
+</svg>
